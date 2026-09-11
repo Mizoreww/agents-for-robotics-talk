@@ -1,0 +1,461 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/mmohtj",
+    "id": "mmohtj",
+    "slide": 15,
+    "layoutId": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Noto Sans",
+      "Noto Serif"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "08723ab0-d954-4462-8af8-8dba31132563",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/uhsreh8b",
+      "id": "1",
+      "bbox": [
+        1087,
+        30,
+        153,
+        38
+      ],
+      "alt": "CLEAR logo",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "5e153eaf-67c2-47ca-b9ec-deb2858a3b7b",
+        "contentType": "image/png",
+        "byteLength": 70217
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/of6dwf6x",
+      "id": "2",
+      "bbox": [
+        64,
+        57,
+        45,
+        48
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Noto Serif",
+        "color": "#2BA39B",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Noto Serif",
+            "color": "#2BA39B",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 36,
+              "typeface": "Noto Serif",
+              "color": "#2BA39B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9gfu5kni",
+      "id": "3",
+      "name": "Slide 15 title",
+      "bbox": [
+        110,
+        57,
+        965,
+        48
+      ],
+      "geometry": "rect",
+      "text": "ENPIRE: Environment and Improvement",
+      "textPreview": "ENPIRE: Environment and Improvement",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Noto Serif",
+        "color": "#1A1A1A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ENPIRE: Environment and Improvement"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ENPIRE: Environment and Improvement",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Noto Serif",
+            "color": "#1A1A1A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ENPIRE: Environment and Improvement",
+              "fontSize": 36,
+              "typeface": "Noto Serif",
+              "color": "#1A1A1A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ahovypo3",
+      "id": "4",
+      "bbox": [
+        64,
+        111,
+        1152,
+        3
+      ],
+      "geometry": "rect",
+      "fillColor": "#2BA39B",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b2hc7u5o",
+      "id": "5",
+      "bbox": [
+        64,
+        679,
+        1090,
+        28
+      ],
+      "geometry": "rect",
+      "text": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  |  Original Figure 2, method panel",
+      "textPreview": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  |  Original Figure 2, method panel",
+      "resolvedFontSize": 11,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 11,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  |  Original Figure 2, method panel"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  |  Original Figure 2, method panel",
+          "resolvedTextStyle": {
+            "fontSize": 11,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  |  Original Figure 2, method panel",
+              "fontSize": 11,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w3qd0z6t",
+      "id": "6",
+      "bbox": [
+        1192,
+        667,
+        46,
+        26
+      ],
+      "geometry": "rect",
+      "text": "15",
+      "textPreview": "15",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "15"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "15",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "15",
+              "fontSize": 16,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/sfa9c7ql",
+      "id": "7",
+      "bbox": [
+        74,
+        171,
+        1138,
+        445
+      ],
+      "alt": "ENPIRE original framework, including human-assisted environment construction",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "243794ed-08b7-464f-bc38-d4066e417274",
+        "contentType": "image/png",
+        "byteLength": 504733
+      }
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y58v2poz",
+      "id": "8",
+      "bbox": [
+        79,
+        633,
+        1100,
+        44
+      ],
+      "geometry": "rect",
+      "text": "Environment construction precedes autonomous policy improvement.",
+      "textPreview": "Environment construction precedes autonomous policy improvement.",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17,
+        "typeface": "Noto Sans",
+        "color": "#646464",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Environment construction precedes autonomous policy improvement."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Environment construction precedes autonomous policy improvement.",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "typeface": "Noto Sans",
+            "color": "#646464",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Environment construction precedes autonomous policy improvement.",
+              "fontSize": 17,
+              "typeface": "Noto Sans",
+              "color": "#646464",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

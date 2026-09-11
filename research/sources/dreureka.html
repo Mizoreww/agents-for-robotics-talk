@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DrEureka | Language Model Guided Sim-To-Real Transfer</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">DrEureka: <br>
+                            Language Model Guided Sim-To-Real Transfer</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://jasonma2016.github.io/">
+                                    Jason&#160;Ma*</a>
+                                    <a href="mailto:jasonyma@seas.upenn.edu">
+                                        <span class="icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                    </a>
+                                    <sup>1</sup>,
+                                <a target="_blank"
+                                    href="https://www.seas.upenn.edu/~wjhliang/">William&#160;Liang*</a><sup>1</sup>,
+                                <a target="_blank"
+                                    href="https://www.linkedin.com/in/hungju-wang">Hungju&#160;Wang</a><sup>1</sup>,
+                                    <a target="_blank"
+                                    href="https://www.linkedin.com/in/sam-wang-penn/">Sam&#160;Wang</a><sup>1</sup>,
+                                <br>
+                                <a target="_blank" href="https://www.cs.utexas.edu/~yukez/">Yuke&#160;Zhu</a><sup>2,3</sup>,
+                                <a target="_blank" href="https://jimfan.me/">Linxi&#160;"Jim"&#160;Fan</a><sup>2</sup>,
+
+                                <a target="_blank"
+                                    href="https://obastani.github.io/">Osbert&#160;Bastani</a><sup>1</sup>,
+                                <a target="_blank"
+                                    href="https://www.seas.upenn.edu/~dineshj/">Dinesh&#160;Jayaraman</a><sup>1</sup>,
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>UPenn; </span>
+                            <span class="author-block"><sup>2</sup>NVIDIA; </span>
+                            <span class="author-block"><sup>3</sup>UT Austin; </span>
+                            <span class="author-block"><sup>*</sup>Equal Contribution</span>                        </div>
+
+                        <!-- <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                                    <span class="icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                            Corresponding authors: TODO
+                        </span>
+                        </div> -->
+
+                        <!-- <div class="is-size-5 publication-authors">
+                        <span class="author-block">Work done during the first author's internship at NVIDIA</span>
+                        </div> -->
+
+                        <div class="is-size-5 publication-authors">
+
+                            <span class="author-block">
+                                        <span class="icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                Corresponding authors: jasonyma@seas.upenn.edu, wjhliang@seas.upenn.edu
+                            </span>
+                            </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Robotics: Science and Systems (RSS) 2024</span>
+                            </div>
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO REPLACE ALL LINKS -->
+                                <!-- <span class="link-block">
+                                    <a target="_blank" href=""
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span> -->
+
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/2406.01967"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span><b>arxiv</b></span>
+                                    </a>
+                                    <a target="_blank" href="assets/dreureka-paper.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span><b>PDF</b></span>
+                                    </a>
+                                    <a target="_blank" href="https://github.com/eureka-research/DrEureka"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span><b>Code</b></span>
+                                    </a>
+
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 0">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <img src="figures/droid_teaser.png" class="interpolation-image" alt=""
+                style="display: block; width: 100%; margin-left: auto; margin-right: auto" />
+            </div> -->
+            <div>
+                <video poster="" id="" autoplay controls muted loop width="100%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="videos/dreureka_teaser.mp4" type="video/mp4">
+                    <!-- <source src="videos/dreureka_teaser_compressed.mp4" type="video/mp4"> -->
+                </video>
+                <!-- <br>
+                <br>
+                <br> -->
+                <!-- <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">DrEureka 5-Minute Uncut Deployment Video</h2>
+                </div>
+                <br>
+                <br>
+                <div class="columns is-centered has-text-centered">
+
+                <iframe width="950" height="560" src="https://www.youtube.com/embed/kRj3crlFdOU" frameborder="0" allowfullscreen></iframe>
+
+            </div> -->
+
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%">
+                            Transferring policies learned in simulation to the real world is a promising strategy for acquiring robot skills at scale. However, sim-to-real approaches typically rely on manual design and tuning of the task reward function as well as the simulation physics parameters, rendering the process slow and human-labor intensive. In this paper, we investigate using Large Language Models (LLMs) to automate and accelerate sim-to-real design. Our LLM-guided sim-to-real approach requires only the physics simulation for the target task and automatically constructs suitable reward functions and domain randomization distributions to support real-world transfer. We first demonstrate our approach can discover sim-to-real configurations that are competitive with existing human-designed ones on quadruped locomotion and dexterous manipulation tasks. Then, we showcase that our approach is capable of solving novel robot tasks, such as quadruped balancing and walking atop a yoga ball, without iterative manual design. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">DrEureka Components</span></h2>
+
+                        <!-- <img src="assets/images/eureka.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto" />
+                        <br> -->
+                        <div class="columns is-centered has-text-centered">
+                        <video poster="" id="" autoplay controls muted width="90%" playbackRate=2.0 style="border-radius: 5px;">
+                            <source src="videos/concept.mp4" type="video/mp4">
+                        </video>
+                        </div>
+                        <span style="font-size: 125%"><b>Overview.</b> DrEureka takes the task and safety instruction, along with environment source code, and runs Eureka to generate a regularized
+                            reward function and policy. Then, it tests the policy under different simulation conditions to build a reward-aware physics prior, which is
+                            provided to the LLM to generate a set of domain randomization (DR) parameters. Finally, using the synthesized reward and DR parameters,
+                            it trains policies for real-world deployment.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-2"><span class="dvima">Experiment Highlights</span></h2>
+                        <p style="font-size: 125%">
+                            In this section, we present the key qualitative results from our experiments, highlighting the robustness of DrEureka policies in the real-world yoga ball walking task as well as the 
+                            best DrEureka outputs for all our benchmark tasks. Detailed quantitative experiments and comparisons can be found in the paper. All videos are played at 1x speed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </section>
+
+    <section class="section"> -->
+        <br>
+        <br>
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">DrEureka 5-Minute Uncut Deployment Video</h2>
+            </div>
+            <br>
+            <div class="columns is-centered has-text-centered">
+
+            <iframe width="950" height="560" src="https://www.youtube.com/embed/kRj3crlFdOU" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+        <br>
+        <br>
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">DrEureka Walking Globe Gallery</span></h2>
+                        <p style="font-size: 125%">
+                        DrEureka policy exhibits impressive robustness in the real-world, adeptly balancing and walking atop a yoga ball under various real-world, un-controlled terrain condition changes and disturbances.   
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="hero is-light is-small"> -->
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <div class="container">
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item">
+                            <video poster="videos/gallery/C0014_walk_sideway.png" preload="none" id="" controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/gallery/C0014_walk_sideway_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/gallery/C0014_height_obstacle.png" preload="none"  id="" autoplay controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/gallery/C0014_height_obstacle_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/gallery/C0014_bridge.png" preload="none"  id="" controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/gallery/C0014_bridge_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/gallery/C0015_crossroad.png" preload="none"  id="" controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/gallery/C0015_crossroad_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/gallery/C0013_upenn_grass_to_road2.png" preload="none"  id="" controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/gallery/C0013_upenn_grass_to_road2_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <p style="font-size: 125%">
+                            We also tried kicking or deflating the ball; DrEureka policy is robust to these disturbances and can recover from them!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <div class="container">
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item">
+                            <video poster="videos/kick/C0020_clip1.png" preload="none" id=""  controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/kick/C0020_clip1_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/kick/C0021_clip2.png" id="" autoplay controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/kick/C0021_clip2_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/kick/C0021_clip1.png" preload="none" id=""  controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/kick/C0021_clip1_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/kick/C0020_clip2.png" preload="none" id=""  controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/kick/C0020_clip2_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">DrEureka Balancing on a Deflating Ball</h2>
+                </div>
+                <br>
+                <div class="columns is-centered has-text-centered">
+
+                <iframe width="950" height="560" src="https://www.youtube.com/embed/eECuJUuSt5c" frameborder="0" allowfullscreen></iframe>
+
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">DrEureka Rewards, DR parameters, and Policies</span></h2>
+                        <p style="font-size: 125%">
+                            We evaluate DrEureka on 3 tasks, quadruped globe walking, quadruped locomotion, and dexterous cube rotation. In this demo, we visualize the unmodified best DrEureka reward and DR parameters
+                            for each
+                            task and visualize the policy deployed in the training simulation environment as well as the real-world environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="columns" style="align-items: end;">
+                <div class="column is-one-fifths">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <img src="videos/tasks/walking_globe.png" width="100%" style="border-radius: 5px;" alt='<b>Walking Globe</b>, best DrEureka reward and DR parameters:
+                        [sep]
+                        assets/reward_functions/walking_globe.txt [sep] assets/domain_randomizations/walking_globe.txt' onclick="populateDemo(this, 1);">
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <img src="videos/tasks/cube_rotation.png" width="100%" style="border-radius: 5px;" alt='<b>Cube Rotation</b>, best DrEureka reward and DR parameters:
+                        [sep]
+                        assets/reward_functions/cube_rotation.txt [sep] assets/domain_randomizations/cube_rotation.txt' onclick="populateDemo(this, 1);">  
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <img src="videos/tasks/forward_locomotion.png" width="100%" style="border-radius: 5px;" alt='<b>Forward Locomotion</b>, best DrEureka reward and DR parameters:
+                        [sep]
+                        assets/reward_functions/forward_locomotion.txt [sep] assets/domain_randomizations/forward_locomotion.txt' onclick="populateDemo(this, 1);">  
+                    </div>
+                </div> 
+                <div class="column is-two-fifths" style="padding-top:12px; padding-bottom:12px;">
+                    <h1 style = "font-size:1.5em; text-align: center;">Simulation</h1>
+                    <div class="row border rounded" style = "display:flex; height: 20em;  overflow: hidden;">
+                        <video id="demo-video-1" style="border-radius: 5px;  object-fit: cover;" autoplay loop muted webkit-playsinline
+                            playsinline onclick="setAttribute('controls', 'true');">
+                            <source id="expandedImg-1"  type="video/mp4">
+                        </video>
+                        
+                    </div>
+                </div>
+                <div class="column is-two-fifths" style="padding-top:12px; padding-bottom:12px;">
+                    <h1 style = "font-size:1.5em;  text-align: center;">Real</h1>
+                    <div class="row border rounded" style = "display:flex; height: 20em ; overflow: hidden;">
+                        <video id="demo-video-2" style="border-radius: 5px; object-fit: cover;" autoplay loop muted webkit-playsinline
+                            playsinline onclick="setAttribute('controls', 'true');">
+                            <source id="expandedImg-2" src="videos/placeholder.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="imgtext-1" style="font-size: 1.5em">Select an image above:</div>
+                <div>
+                    <pre class="p-1"><code class="language-python" id="answer-1">DrEureka responses shown within code block.</code></pre>
+                    <pre class="p-1"><code class="language-python" id="answer-2"></code></pre>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        
+        <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Qualitative Comparisons</span></h2>
+                    <p style="font-size: 125%">
+                        We have conducted systematic study on the benchmark quadrupedal locomotion task. Here, we present several qualitative results. See the full paper for details. 
+                     </p>  
+                     <br>              
+                    <p style="font-size: 125%">
+                       <b>Terrain Robustness.</b> On the quadrupedal locomotion task, we also systematically evaluate DrEureka policies on several real-world terrains and find they remain robust and outperform policies 
+                       trained using human-designed reward and DR configurations.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <img src="figures/quadruped_terrains.png" class="interpolation-image" alt=""
+                    style="display: block; width:89%; margin-left: auto; margin-right: auto" />
+                    <br>
+                    <span style="font-size: 125%">
+                        <span style="font-weight: bold">The default as well as additional real-world environments to test DrEureka's robustness for quadrupedal locomotion.
+                    </span> 
+                    </div>
+                    <div class="column has-text-centered">
+                        <img src="figures/real_world_robustness.png" class="interpolation-image" alt=""
+                        style="display: block; width: 95%; margin-left: auto; margin-right: auto" />
+
+                        <span style="font-size: 125%">
+                            <span style="font-weight: bold">DrEureka performs consistently across different terrains and maintains advantages over Human-Designed.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="columns is-centered has-text-centered">
+                <video poster="videos/comparisons/dr_eureka_terrains.png" preload="none" id="" controls muted width="90%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="videos/comparisons/dr_eureka_terrains.mp4" type="video/mp4">
+                </video>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">    
+                        <p style="font-size: 125%">
+                            <b> DrEureka Safety Instruction.</b> DrEureka's LLM reward design subroutine improves upon Eureka by incorporating safety instructions. We find this to be critical for generating reward functions 
+                            safe enough to be deployed in the real world.
+                         </p>
+                    </div>
+                </div>
+                <br>
+                <br>
+            <div class="columns is-centered has-text-centered">
+                <video poster="videos/comparisons/dr_eureka_safety.png" preload="none" id="" controls muted width="90%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="videos/comparisons/dr_eureka_safety.mp4" type="video/mp4">
+                </video>
+            </div>
+            </div>
+
+            <br>
+            <br>
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">    
+                        <p style="font-size: 125%">
+                            <b> DrEureka Reward-Aware Physics Prior.</b> Through extensive ablation studies, we find that using the initial Eureka policy to generate a reward-aware physics prior is crucial for the success of DrEureka.
+                            and then using LLM to sample DR parameters are critical for obtaining the best real-world performance.
+                         </p>
+                    </div>
+                </div>
+                <br>
+                <br>
+            <div class="columns is-centered has-text-centered">
+                <video poster="videos/comparisons/dr_eureka_ablations.png" preload="none" id="" controls muted width="90%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="videos/comparisons/dr_eureka_ablations.mp4" type="video/mp4">
+                </video>
+            </div>
+            </div>
+        </div>
+    </div>
+
+        </section>
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Failure Videos and Limitations</span></h2>
+                        <p style="font-size: 125%">
+                        Finally, we show several occasions when the robot falls from the ball. There are many avenues to further improve DrEureka. For example,
+                        DrEureka policies are currently entirely trained in simulation, but using real-world execution failure as feedback may serve as an effective 
+                        way for LLMs to determine how to best tune sim-to-real in successive iterations. Furthermore, all tasks and policies in our work operately purely from 
+                        robot's proprioceptive inputs, and incorporating vision or other sensors may further improve policy performance and LLM feedback loop.
+                        </p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <div class="container">
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item">
+                            <video poster="videos/failures/C0005_clip.png" preload="none" id=""  controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/failures/C0005_clip_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/failures/C0019_clip.png" preload="none" id=""  autoplay controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/failures/C0019_clip_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/failures/IMG_1575_clip.png" id="" controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/failures/IMG_1575_clip_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item">
+                            <video poster="videos/failures/C0013_clip.png" preload="none" id=""  controls muted loop height="100%" playbackRate=2.0>
+                                <source src="videos/failures/C0013_clip_compressed.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@inproceedings{ma2024dreureka,
+    title   = {DrEureka: Language Model Guided Sim-To-Real Transfer},
+    author  = {Yecheng Jason Ma and William Liang and Hungju Wang and Sam Wang and Yuke Zhu and Linxi Fan and Osbert Bastani and Dinesh Jayaraman},
+    year    = {2024},
+  booktitle = {Robotics: Science and Systems (RSS)}
+}
+</code></pre>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-centered">
+                        <p>
+                            Website template borrowed from <a
+                                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+                                and <a href="https://eureka-research.github.io/">Eureka</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+
+    // timeoutIds = [];
+    var timeoutIds = [];
+
+    function clearExistingTypeWriters() {
+        timeoutIds.forEach(timeoutId => clearTimeout(timeoutId));
+        timeoutIds = [];
+    }
+
+    function typeWriter(txt, i, elementId) {
+        var element = document.getElementById(elementId);
+        if (i < txt.length) {
+            if (txt.charAt(i) == '\\') {
+                element.innerHTML += "<br>";
+            } else {
+                element.innerHTML += txt.charAt(i);
+            }
+            var timeoutId = setTimeout(() => typeWriter(txt, i + 1, elementId), 1);
+            timeoutIds.push(timeoutId);
+        }  else {
+        // Apply syntax highlighting once the full text has been written
+        hljs.highlightElement(element);
+        }
+    }
+
+    function populateDemo(imgs, num) {
+        clearExistingTypeWriters();  // Clear any ongoing typewriter effects
+
+        // Clear previous text content
+        document.getElementById("answer-1").innerHTML = "";
+        document.getElementById("answer-2").innerHTML = "";
+        // Get the expanded image
+        var expandImg = document.getElementById("expandedImg-" + (num+1));
+        var expandImgSim = document.getElementById("expandedImg-" + (num));
+        // Get the image text
+        var imgText = document.getElementById("imgtext-" + num);
+        var answer = document.getElementById("answer-" + num);
+
+        // Use the same src in the expanded image as the image being clicked on from the grid
+        expandImg.src = imgs.src.replace(".png", ".mp4");
+        expandImgSim.src = imgs.src.split(".png")[0] + "_sim.mp4";
+        var videoReal = document.getElementById('demo-video-' + num);
+        // or video = $('.video-selector')[0];
+        videoReal.pause()
+        videoReal.load();
+        videoReal.play();
+        videoReal.removeAttribute('controls');
+
+        var videoSim = document.getElementById('demo-video-2');
+        // or video = $('.video-selector')[0];
+        videoSim.pause()
+        videoSim.load();
+        videoSim.play();
+        videoSim.removeAttribute('controls');
+
+
+        console.log(expandImg.src);
+        // Use the value of the alt attribute of the clickable image as text inside the expanded image
+        var qa = imgs.alt.split("[sep]");
+        imgText.innerHTML = qa[0];
+        answer.innerHTML = "";
+        // Show the container element (hidden with CSS)
+        expandImg.parentElement.style.display = "block";
+        for (timeoutId of timeoutIds) {
+            clearTimeout(timeoutId);
+        }
+
+        // NOTE (wliang): Modified from original to read from file instead
+        console.log("Fetching text from qa:", qa);
+        console.log("Fetching text from 1:", qa[1]);
+        console.log("Fetching text from 2:", qa[2]);
+
+        fetch(qa[1])
+            .then(response => response.text())
+            .then(contents => {
+                // Call the processData function and pass the contents as an argument
+                // typeWriter(contents, 0, qa[0], num);
+                typeWriter(contents, 0, "answer-1");
+
+            })
+            .catch(error => console.error('Error reading file:', error));
+
+        fetch(qa[2])
+            .then(response => response.text())
+            .then(contents => {
+                // typeWriter(contents,  0, qa[0], num);
+                typeWriter(contents, 0, "answer-2");
+
+            })
+            .catch(error => console.error('Error fetching the second text file:', error));
+    }
+
+    // function typeWriter(txt, i, q, num) {
+    //     var imgText = document.getElementById("imgtext-" + num);
+    //     var answer = document.getElementById("answer-" + num);
+    //     if (imgText.innerHTML == q) {
+    //         for (let k = 0; k < 5; k++) {
+    //             if (i < txt.length) {
+    //                 if (txt.charAt(i) == "\\") {
+    //                     answer.innerHTML += "\n";
+    //                     i += 1;
+    //                 } else {
+    //                     answer.innerHTML += txt.charAt(i);
+    //                 }
+    //                 i++;
+    //             }
+    //         }
+    //         hljs.highlightAll();
+    //         timeoutIds.push(setTimeout(typeWriter, 1, txt, i, q, num));
+    //     }
+    // }
+
+    // function typeWriter(txt, i, elementId) {
+    //     var element = document.getElementById(elementId);
+    //     if (i < txt.length) {
+    //         if (txt.charAt(i) == '\\') {
+    //             element.innerHTML += "<br>"; // Use <br> for HTML line breaks
+    //         } else {
+    //             element.innerHTML += txt.charAt(i);
+    //         }
+    //         setTimeout(() => typeWriter(txt, i + 1, elementId), 1); // Adjust typewriter speed here
+    //     }
+    // }
+
+    
+
+</script>
+
+</html>

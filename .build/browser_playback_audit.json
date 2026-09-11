@@ -1,0 +1,137 @@
+[
+  {
+    "slide": 2,
+    "clip": "painting",
+    "time": 0.231913,
+    "paused": false,
+    "readyState": 4,
+    "width": 1280,
+    "error": null
+  },
+  {
+    "slide": 6,
+    "clip": "claude_humanoid",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.251919,
+    "width": 720
+  },
+  {
+    "slide": 6,
+    "clip": "claude_manip",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.250836,
+    "width": 360
+  },
+  {
+    "slide": 8,
+    "clip": "astra_bowl",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.242132,
+    "width": 1280
+  },
+  {
+    "slide": 8,
+    "clip": "astra_insertion",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.239051,
+    "width": 1280
+  },
+  {
+    "slide": 9,
+    "clip": "wiping",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.253928,
+    "width": 640
+  },
+  {
+    "slide": 10,
+    "clip": "ar2s_real",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.24466,
+    "width": 1280
+  },
+  {
+    "slide": 10,
+    "clip": "ar2s_sim",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.246853,
+    "width": 960
+  },
+  {
+    "slide": 13,
+    "clip": "astra_real2sim",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.251241,
+    "width": 720
+  },
+  {
+    "slide": 13,
+    "clip": "astra_microphone",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.251212,
+    "width": 778
+  },
+  {
+    "slide": 14,
+    "clip": "enpire_task",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.253095,
+    "width": 1280
+  },
+  {
+    "slide": 16,
+    "clip": "enpire_reset",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.240118,
+    "width": 1280
+  },
+  {
+    "slide": 16,
+    "clip": "enpire_verify",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.234711,
+    "width": 565
+  },
+  {
+    "slide": 19,
+    "clip": "hand",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.253615,
+    "width": 1190
+  },
+  {
+    "slide": 20,
+    "clip": "aspire_trace",
+    "error": null,
+    "paused": false,
+    "readyState": 4,
+    "time": 0.248665,
+    "width": 1280
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "key": "saycan",
+  "url": "https://say-can.github.io/",
+  "final_url": "https://say-can.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "efa67e52e79f4792d8e673ae04fffed3155037e8bb094d7ce3d3da7161993a90",
+  "chars": 12284,
+  "links": [
+    "http://g.co/robotics",
+    "https://everydayrobots.com",
+    "https://say-can.github.io/assets/palm_saycan.pdf",
+    "https://youtu.be/ysFav0b472w",
+    "https://ai.googleblog.com/2022/08/towards-helpful-robots-grounding.html",
+    "https://github.com/google-research/google-research/tree/master/saycan",
+    "https://sites.research.google/palm-saycan",
+    "https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html",
+    "https://say-can.github.io/#new-capability",
+    "https://say-can.github.io/#open-source",
+    "https://arxiv.org/abs/2201.11903",
+    "https://innermonologue.github.io/",
+    "https://arxiv.org/abs/2204.01691",
+    "https://github.com/say-can/say-can.github.io/tree/main/data",
+    "http://jonbarron.info/"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/demo_sequence_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/palm_saycan_teaser_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/ysFav0b472w"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/mosaic_16_demo_white_compat.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/demo_sequence_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/demo_sequence2_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/demo_sequence3_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/saycan_drawer_compressed_1.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/saycan_drawer_compressed_2.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://say-can.github.io/img/saycan_cot_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://say-can.github.io/img/open_source_tabletop.png"
+    }
+  ]
+}

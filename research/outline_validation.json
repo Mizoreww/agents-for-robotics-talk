@@ -1,0 +1,25 @@
+{
+  "revision": 2,
+  "narrative": "background -> problem -> methods -> experiments and limitations -> conclusion",
+  "outline_slides": 36,
+  "outline_minutes": 60,
+  "section_minutes": [
+    6,
+    10,
+    14,
+    10,
+    16,
+    4
+  ],
+  "curated_source_records": 24,
+  "planned_video_sequences": 7,
+  "planned_video_seconds": 185,
+  "local_reference_check": "passed",
+  "snapshot_hash_check": "passed",
+  "source_id_check": "passed",
+  "media_page_alignment": "passed",
+  "original_outline_archived": true,
+  "pptx_created": false,
+  "video_visual_audit": "not complete",
+  "status": "reorganized outline ready for feedback"
+}

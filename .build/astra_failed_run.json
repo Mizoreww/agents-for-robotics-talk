@@ -1,0 +1,20 @@
+{
+  "selection": "first listed Astra puzzle trial at stage 3; illustrative, not newly measured",
+  "record": [
+    [
+      "Puzzle into groove",
+      "GPT-6 Astra",
+      "3",
+      "2.3",
+      "2,581",
+      "view",
+      "watch",
+      "download"
+    ],
+    [
+      "https://openai.robocurve.org/gpt-6-astra/runs/transcripts/rig-4_76c6c1aa.html",
+      "https://openai.robocurve.org/gpt-6-astra/runs/videos/rig-4_76c6c1aa.mp4",
+      "https://openai.robocurve.org/gpt-6-astra/runs/rrd/rig-4_76c6c1aa.rrd"
+    ]
+  ]
+}

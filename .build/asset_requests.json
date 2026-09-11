@@ -1,0 +1,21 @@
+{
+  "astra_bowl.mp4": "https://openai.robocurve.org/gpt-6-astra/video/bowl-astra-vs-fable51-cost.mp4",
+  "astra_insertion.mp4": "https://openai.robocurve.org/gpt-6-astra/runs/videos/rig-4_76c6c1aa.mp4",
+  "enpire_pin.mp4": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+  "enpire_verify.mp4": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4",
+  "ar2s_teaser.mp4": "https://agentic-real2sim.github.io/static/videos/ar2s_teaser.mp4?v=d6a9655b",
+  "ar2s_real.mp4": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_real.mp4",
+  "ar2s_sim.mp4": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_simulated.mp4",
+  "aspire_method.mp4": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/how_aspire_works.mp4?v=20260629b",
+  "aspire_trace.mp4": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/robot_execution_engine.mp4?v=20260629",
+  "voxposer.jpg": "https://voxposer.github.io/media/figures/method.jpg",
+  "enpire_verifier.png": "https://arxiv.org/html/2606.19980v1/ziptie_reward.png",
+  "enpire_fleet.png": "https://arxiv.org/html/2606.19980v1/corl_2026_template_submission/figures/fleet_narrow.png",
+  "aspire_system.png": "https://arxiv.org/html/2607.00272v1/system_design.png",
+  "aspire_skills.png": "https://arxiv.org/html/2607.00272v1/skill_library_update.png",
+  "aspire_debug.png": "https://arxiv.org/html/2607.00272v1/1-debugging-skill.png",
+  "ar2s_teaser.png": "https://agentic-real2sim.github.io/static/images/Fig_teaser.png",
+  "rats_method.png": "https://Playful-RATs.github.io/assets/images/rats-method.png",
+  "rats_teaser.png": "https://Playful-RATs.github.io/assets/images/rats-teaser.png",
+  "autort.png": "https://auto-rt.github.io/static/images/Auto-RT.png"
+}

@@ -1,0 +1,274 @@
+Gemini Robotics ER 2 — Google DeepMind
+Skip to main content
+[#chevron-left] [#chevron-right] [#expand-less] [#expand-more] [#arrow-back] [#arrow-forward] [#arrow-upward] [#arrow-downward] [#arrow-left] [#arrow-right] [#arrow-drop-up] [#arrow-drop-down] [#help] [#menu] [#more-vert] [#drive-pdf] [#file-download] [#open-in-new] [#phone] [#email] [#instagram] [#link] [#post-blogger] [#blogger] [#post-facebook] [#facebook] [#post-linkedin] [#linkedin] [#share] [#twitter] [#video-youtube] [#youtube] [#video-youtube-white] [#video-youtube-black] [#video-youtube-red] [#video-youtube-white] [#close] [#expand-all] [#play-circle-filled] [#search] [#error] [#pause-button] [#play-button] [#access-time] [#info] [#filter] [#checkmark] [#x] [#discord] [#reddit] [#tiktok] [#tiktok-color] [#google-color-logo] [#google-solid-logo] [#google-logo-adjustable] [#github]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Models
+[#submenu-1]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Research
+[#submenu-2]
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Science
+[#submenu-3]
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+About
+[#submenu-4]
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Build with Gemini Try Gemini
+Google DeepMind
+Google AI
+Learn about all our AI
+Google DeepMind
+Explore the frontier of AI
+Google Labs
+Try our AI experiments
+Google Research
+Explore our research
+Products and apps
+Gemini app
+Chat with Gemini
+Google AI Studio
+Build with our next-gen AI models
+Google Antigravity
+Our agentic development platform
+Models
+Research
+Science
+About
+Build with Gemini
+Try Gemini [#page-content]
+[#cover]
+Gemini Robotics ER 2
+Our embodied reasoning model: capable of understanding the physical world and complex, multi-step planning
+Try Gemini Robotics ER 2
+Your browser does not support the video tag.
+[#intro]
+Our embodied reasoning model understands the physical world, plans multi-step tasks, and can coordinate multiple robots in the same space to complete a shared task.
+[#capabilities]
+Capabilities
+Gemini Robotics ER 2 is a high-level brain for robots. It allows robots to chat with humans, understand the physical world, and plan multi-step tasks. It then hands off motor execution to any given lower level vision-language-action (VLA) model. The design of Gemini Robotics ER 2 allows the robot to “think” about what comes next while simultaneously performing its actions.
+Multi-robot collaboration
+Solves challenges that are too complex for one robot. Multiple robots can communicate, recognize each other's unique physical strengths, and autonomously delegate tasks to complete a shared mission.
+Your browser does not support the video tag.
+Your browser does not support the video tag.
+Advanced spatial logic
+Considers physical spaces, precisely identifying objects and movement. Then plans effective and safe actions in response.
+Success tracking
+Knows when a task is complete. And knows when it needs to try again.
+Your browser does not support the video tag.
+Your browser does not support the video tag.
+Tool use
+Uses tools – like Google Search or Google Calendar – to better understand its environment, and use that information to instruct its reasoning.
+Conversational interactions
+Understands and follows everyday commands, and can explain its thinking and actions. Adjusts to new instructions and changes in its environment efficiently.
+Your browser does not support the video tag.
+[#performance]
+Performance
+[#carousel-5ce94728-de7f-4cc6-ae52-0b2a6c8ec275]
+[#carousel-announcer-carousel-5ce94728-de7f-4cc6-ae52-0b2a6c8ec275] Slide 1 of 4
+[#model-information]
+Model information
+NameGemini Robotics ER 2StatusPublic preview: Google AI Studio, Gemini API
+Private preview: Gemini Enterprise Agent PlatformInput
+Text
+Image
+Video
+Audio
+text_snippetimagevideocammicOutput
+Text
+text_snippetLive APIYes (Text out only)Tool use
+Search
+Function calling
+Code execution
+Structured output
+URL context
+Availability
+Google AI Studio
+Gemini API
+Gemini Enterprise Agent Platform
+Model cardView model card
+Follow us
+Sign up for updates on our latest innovations
+I accept Google's Terms and Conditions and acknowledge that my information will be used in accordance with Google's Privacy Policy.
+[#1-label]
+Sign up
+[#1-validation]
+[#1-response]
+Build AI responsibly to benefit humanity
+Models
+Gemini
+Gemini Omni
+Nano Banana
+Gemini Audio
+Gemma
+Genie
+Lyria
+Veo
+Research
+Gemini Robotics
+Breakthroughs
+Evals
+Publications
+Frontier safety
+Responsibility
+Science
+AlphaFold
+AlphaGenome
+WeatherNext
+AlphaEarth
+AlphaEvolve
+Products
+Gemini app
+Google AI Studio
+Google Antigravity
+Learn more
+About
+News
+Careers
+National Partnerships for AI
+Accelerator programs
+The Podcast
+About Google
+Google products
+Privacy
+Terms
+Cookies management controls

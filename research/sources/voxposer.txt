@@ -1,0 +1,84 @@
+VoxPoser
+VoxPoser: Composable 3D Value Maps
+for Robotic Manipulation with Language Models
+CoRL 2023 (Oral)
+Wenlong Huang1,
+Chen Wang1,
+Ruohan Zhang1,
+Yunzhu Li1, 2,
+Jiajun Wu1,
+Li Fei-Fei1
+1Stanford University,
+2University of Illinois Urbana-Champaign
+Paper
+ArXiv
+Video
+Code
+[#teaser]
+VoxPoser extracts affordances and constraints from large language models and vision-language models
+to compose 3D value maps, which are used by motion planners to zero-shot synthesize trajectories for everyday manipulation tasks.
+[#results-carousel]
+VoxPoser can zero-shot synthesize trajectories for real-world manipulation tasks with an open-set of free-form language instructions and an open-set of objects.
+Abstract
+Large language models (LLMs) are shown to possess a wealth of actionable knowledge that can be extracted for robot manipulation in the form of reasoning and planning.
+Despite the progress, most still rely on pre-defined motion primitives to carry out the physical interactions with the environment, which remains a major bottleneck.
+In this work, we aim to synthesize robot trajectories, i.e., a dense sequence of 6-DoF end-effector waypoints,
+for a large variety of manipulation tasks given an open-set of instructions and an open-set of objects.
+We achieve this by first observing that LLMs excel at inferring affordances and constraints given a free-form language instruction
+More importantly, by leveraging their code-writing capabilities, they can interact with a vision-language model (VLM) to compose 3D value maps to ground the knowledge into the observation space of the agent.
+The composed value maps are then used in a model-based planning framework to zero-shot synthesize closed-loop robot trajectories with robustness to dynamic perturbations.
+We further demonstrate how the proposed framework can benefit from online experiences by efficiently learning a dynamics model for scenes that involve contact-rich interactions.
+We present a large-scale study of the proposed method in both simulated and real-robot environments, showcasing the ability to perform a large variety of everyday manipulation tasks specified in free-form natural language.
+Video
+VoxPoser
+Given the RGB-D observation of the environment and a language instruction, LLMs generate code, which interacts with VLMs, to produce a sequence of 3D affordance maps and constraint maps (collectively referred to as value maps) grounded in the observation space of the robot (a). The composed value maps then serve as objective functions for motion planners to synthesize trajectories for robot manipulation (b). The entire process does not involve any additional training.
+Interactive Visualization
+Visualize value maps for
+[#interative-menu]
+"Hang towel on rack"
+"Close the top drawer."
+"Take out a napkin."
+"Turn open vitamin bottle."
+[#interactive-video]
+[#interactive-html-1]
+Interactive Value Map 1
+[#second-iframe-container]
+[#interactive-html-2]
+Interactive Value Map 2
+Execution under Disturbances
+Because the language model output stays the same throughout the task, we can cache its output and re-evaluate the generated code using closed-loop visual feedback, which enables fast replanning using MPC. This enables VoxPoser to be robust to online disturbances.
+[#dist1]
+"Sort the paper trash into the blue tray."
+[#dist2]
+"Close the top drawer."
+Emergent Behavioral Capabilities
+Behavioral Commonsense Reasoning: During a task where robot is setting the table, the user can specify behavioral preferences such as “I am left-handed”, which requires the robot to comprehend its meaning in the context of the task. VoxPoser decides that it should move the fork from the right side of the bowl to the left side.
+Fine-grained Language Correction: For tasks that require high precision such as “covering the teapot with the lid”, the user can give precise instructions to the robot such as “you’re off by 1cm”. VoxPoser similarly adjusts its action based on the feedback.
+Multi-step Visual Program: Given a task “open the drawer precisely by half” where there is insufficient information because object models are not available, VoxPoser can come up with multi-step manipulation strategies based on visual feedback that first opens the drawer fully while recording handle displacement, then close it back to the midpoint to satisfy the requirement.
+Prompts
+Prompts in Real-World Environments:
+Planner |
+Composer |
+Parse Query Object |
+Get Affordance Maps |
+Get Avoidance Maps |
+Get Rotation Maps |
+Get Velocity Maps |
+Get Gripper Maps
+Prompts in Simulation Environments (planners are not used in simulation):
+Composer |
+Parse Query Object |
+Get Affordance Maps |
+Get Avoidance Maps |
+Get Rotation Maps |
+Get Velocity Maps |
+Get Gripper Maps
+[#BibTeX]
+BibTeX
+@article{huang2023voxposer,
+title={VoxPoser: Composable 3D Value Maps for Robotic Manipulation with Language Models},
+author={Huang, Wenlong and Wang, Chen and Zhang, Ruohan and Li, Yunzhu and Wu, Jiajun and Fei-Fei, Li},
+journal={arXiv preprint arXiv:2307.05973},
+year={2023}
+}
+Website template borrowed from NeRFies and PerAct.

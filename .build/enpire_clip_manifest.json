@@ -1,0 +1,34 @@
+[
+  {
+    "name": "enpire_task",
+    "source_file": "enpire_task_source.mp4",
+    "start_seconds": 300,
+    "duration_seconds": 30.0,
+    "speed_multiplier": 1,
+    "audio": "removed",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_task.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/enpire_task.jpg",
+    "codec_name": "h264",
+    "width": 1280,
+    "height": 720,
+    "pix_fmt": "yuv420p",
+    "sha256": "07f5cf91c12aefaf1ea424285593d1b9f4551e008a77a52bdc565774bb453fcd",
+    "full_decode": "passed"
+  },
+  {
+    "name": "enpire_reset",
+    "source_file": "enpire_reset_source.mp4",
+    "start_seconds": 0,
+    "duration_seconds": 61.92,
+    "speed_multiplier": 1,
+    "audio": "removed",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_reset.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/enpire_reset.jpg",
+    "codec_name": "h264",
+    "width": 1280,
+    "height": 720,
+    "pix_fmt": "yuv420p",
+    "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
+    "full_decode": "passed"
+  }
+]

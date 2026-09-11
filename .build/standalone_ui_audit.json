@@ -1,0 +1,71 @@
+{
+  "html_sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "transitions": [
+    {
+      "opening": 5,
+      "intro": "Slide 5: Agent Controls Robot",
+      "caseTitle": "Slide 6: Direct Actions and Code",
+      "back": 5
+    },
+    {
+      "opening": 15,
+      "intro": "Slide 15: Agent Produces Data",
+      "caseTitle": "Slide 16: Real Episode and Its Twin",
+      "back": 15
+    },
+    {
+      "opening": 20,
+      "intro": "Slide 20: Agent Post-trains Robot",
+      "caseTitle": "Slide 21: ENPIRE: Real Experiments in the Loop",
+      "back": 20
+    }
+  ],
+  "keyboard": {
+    "endSlide": 28,
+    "homeSlide": 1,
+    "focusExited": true
+  },
+  "figureDialog": {
+    "open": true,
+    "loaded": true,
+    "closed": true
+  },
+  "focusView": {
+    "enabled": true,
+    "native": true
+  },
+  "currentScript": {
+    "heading": "05. Agent Controls Robot",
+    "text": "播放与指图提示：先沿最上方 Direct action output 走到 Execution，再指出下方 Agent Tools 是其他可选分支。此处只作导读，接口优势留到后面的实验页展开。先看这张总图。Agent 可以自己决定下一步 a"
+  },
+  "fullScriptHeadings": [
+    "01. Agents for Robotics",
+    "02. Demo: Painting with Feedback",
+    "03. Our Goal",
+    "04. Three Roles",
+    "05. Agent Controls Robot",
+    "06. Direct Actions and Code",
+    "07. Model and Interface",
+    "08. VLA as a Tool",
+    "09. Demo: Placement and Insertion",
+    "10. Demo: Zero-shot Real Arms",
+    "11. Demo: Dexterity in Simulation",
+    "12. Harness: Semantic Actions",
+    "13. RPent: Robotics as Tools",
+    "14. Gaps and Directions",
+    "15. Agent Produces Data",
+    "16. Real Episode and Its Twin",
+    "17. Conversion Pipeline",
+    "18. Replay Acceptance on DROID-100",
+    "19. Demo: Real2Sim and a Failure",
+    "20. Agent Post-trains Robot",
+    "21. ENPIRE: Real Experiments in the Loop",
+    "22. ENPIRE: Environment and Improvement",
+    "23. ENPIRE: Reset and Verification",
+    "24. ENPIRE: Pin Insertion Curve",
+    "25. Faster Research, Higher Token Use",
+    "26. ASPIRE: Repairing Skills",
+    "27. Beyond: Structural Design",
+    "28. Conclusion"
+  ]
+}

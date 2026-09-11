@@ -1,0 +1,1296 @@
+ENPIRE: Agentic Robot Policy Self-Improvement in the Real World
+[#modal-form]
+[#modal-form-content]
+[#modal-title] Report GitHub Issue
+×
+Title:
+[#form_title]
+[#selectedTextModalDescription] Content selection saved. Describe the issue below:
+Description:
+[#description]
+Submit without GitHub
+Submit in GitHub
+[#announcement-banner]
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract
+1 Introduction
+2 Method
+2.1 Stage One: Environment Construction from Human Feedback
+Hard safety constraints
+Automated verification
+Automated reset
+2.2 Stage Two: Automated Policy Improvement from Real-World Feedback
+A motivating example
+Accelerating autoresearch via multi-agent scaling
+3 Experiment
+3.1 Autoresearch for Heuristic Learning
+The unique challenge of physical autoresearch
+3.2 Autoresearch for Gradient-Based Policy Improvement
+3.3 Scaling Policy Learning on a Robot Fleet
+3.4 Transferring Autoresearch Experience through Agentic Continue Learning
+3.5 ENPIRE Discovers Synergy between Code-Based Policies and VLAs
+3.6 Quantifying Agent Resource Utilization
+4 Limitations
+Robot and compute resources are underutilized
+Token cost grows super-linearly with fleet size.
+5 Related Work
+5.1 Coding Agents & Code as Policies
+5.2 Agentic Self-Improvement
+5.3 Autonomous Research Agents and Scientific Discovery
+6 Acknowledgement
+References
+A Environment Creation
+A.1 Autonomous Reset
+A.2 Autoresearch-driven Reward Design
+B Robot System Setup
+B.1 Fleet Architecture
+Control endpoints.
+Agent sandbox and context.
+B.2 Station Hardware
+Manipulators and actuation.
+Compute.
+Perception.
+B.3 Low-Level Control
+B.4 Per-Task Configuration
+B.5 Real-World RL System Integration
+B.6 Idea Tree for Pin Insertion
+C Physical Autoresearch: Ablation Studies
+C.1 Experimental Setup
+C.2 Token Utilization
+C.3 Native Vision Capability
+C.4 Model and Harness Comparison
+D Simulation Benchmark Result
+D.1 RoboCasa Simulation Interface and API Surface
+Camera and visualization.
+Motion.
+Perception.
+Planner and collision.
+D.2 RoboCasa Evaluation Protocol
+Fixed seeds and layouts.
+Fair comparison with GR00T.
+Discovered policy demonstration.
+Result Analysis
+[#infobox]
+[#license-tr]
+License: CC BY 4.0
+[#watermark-tr]
+arXiv:2606.19980v1 [cs.AI] 18 Jun 2026
+[#p1] [#p1.1] \DeclareCaptionType
+[#p1.2] codesnippet[Code Snippet][List of Code Snippets]
+[#1] ENPIRE: Agentic Robot Policy Self-Improvement in the Real World
+[#2]
+[#2.1] [#2.1.1] Wenli Xiao,
+Jia Xie,
+Tonghe Zhang,
+Haotian Lin,
+Letian ‘‘Max’’ Fu,
+Haoru Xue,
+Jalen Lu
+Yi Yang,
+Cunxi Dai,
+Zi Wang,
+Jimmy Wu,
+Guanzhi Wang,
+S. Shankar Sastry,
+Ken Goldberg
+Linxi “Jim” Fan,
+Yuke Zhu,
+Guanya Shi
+[#2.1.2] NVIDIA CMU UC Berkeley [#2.1.2.1] *Equal contribution [#2.1.2.2] †Equal advising
+[#abstract1]
+Abstract
+[#abstract1.1] Achieving dexterous robotic manipulation in the real world relies heavily on human supervision and algorithmic engineering, which is a central bottleneck in the pursuit of general physical intelligence. Although emerging coding agents can generate code to automate algorithm search, their successes remain largely confined to digital environments. We conjecture that the missing abstraction to automate robotics research is a [#abstract1.1.1] repeatable feedback loop for real-world policy improvement: reset the scene, execute a policy, verify the outcome, and refine the next iteration.
+To bridge this gap, we introduce [#abstract1.1.2] EN [#abstract1.1.2.1] PIRE, a harness framework for coding agents that instantiates this physical feedback routine with four core modules: an [#abstract1.1.3] Environment module ( [#abstract1.1.4] EN) for automatic reset and verification, a [#abstract1.1.5] Policy [#abstract1.1.6] Improvement module ( [#abstract1.1.7] PI) that launches policy refinement, a [#abstract1.1.8] Rollout module ( [#abstract1.1.9] R) to evaluate policies with single or multiple physical robots operating in parallel, and an [#abstract1.1.10] Evolution module ( [#abstract1.1.11] E) in which coding agents analyze logs, consult literature, improve training infrastructure and algorithm code to address failure modes. This closed-loop system transforms real-world robot learning into a controllable optimization procedure that agents can manage, thus minimizing human effort while allowing fair ablations across training recipes and agent variants. Powered by [#abstract1.1.12] ENPIRE, frontier coding agents can autonomously develop a policy to achieve a 99% success rate on challenging, dexterous manipulation tasks in the real world, such as PushT, organizing pins into a pin box, and using a cutter to cut a zip tie. Coding agents can improve policies with various [#abstract1.1.13] PI regimes, such as heuristic learning, tool calling, behavior cloning, offline or online reinforcement learning. Moreover, [#abstract1.1.14] ENPIRE can be significantly accelerated on a robot fleet, and we propose two metrics, namely, [#abstract1.1.15] Mean [#abstract1.1.16] Robot [#abstract1.1.17] Utilization (MRU) and [#abstract1.1.18] Mean [#abstract1.1.19] Token [#abstract1.1.20] Utilization (MTU) to measure the efficiency of multi-agent physical autoresearch. We also include simulation results in RoboCasa. Our findings suggest a practical and scalable path towards autonomously advancing robotics in the real world.
+[#p2] [#g1]
+[#p3]
+[#p3.1] [#p3.1.1]
+[#p3.1.1.1]
+[#p3.1.1.1.1] Figure 1: [#p3.1.1.1.1.1] Robot fleet for physical autoresearch. The fleet contains eight bimanual YAM robot stations. Each station owns its robot hardware, compute, and coding agent. Website: research.nvidia.com/labs/gear/enpire
+[#p4] [#p4.1] \abscontent
+[#S0.F2] [#S0.F2.g1]
+[#S0.F2.5] Figure 2: [#S0.F2.6]
+Overview of physical autoresearch framework [#S0.F2.6.1] ENPIRE. To solve a dexterous task in the real world, [#S0.F2.6.2] ENPIRE first uses tool calls to construct an environment with automatic reset and verification mechanisms according to human feedback. Next, the coding agent calls environment APIs to conduct autoresearch and hill-climb the policy success rate from real-world reward signals. More results are available at research.nvidia.com/labs/gear/enpire.
+[#S1]
+1 Introduction
+[#S1.p1]
+[#S1.p1.1] Automatically learning dexterous manipulation skills has been a major obstacle in the journey towards general physical intelligence. Frontier policy training methods, although highly effective, still rely on humans behind the scenes to participate in the data collection, evaluation with reset, and algorithm adjustment life cycle (20; 19; 24). As we scale up real-world policy learning, humans labor of babysitting policy improvement inevitably become one of the limiting factors of how quickly robots acquire dexterity.
+[#S1.p2]
+[#S1.p2.1] Recent advances in autonomous research (22) (autoresearch), powered by coding agents, show a promising path toward automating algorithmic improvements. However, unique challenges arise when we extend this paradigm to automate real-world policy learning. First, coding agents lack a set of [#S1.p2.1.1] real-world environment interfaces for closed-loop hypothesis testing in the physical world, which requires automated policy deployment, evaluation, and scene resetting. Second, when [#S1.p2.1.2] scaling up autoresearch throughput across robot fleet, it remains an open problem to select and verify hypotheses while maintaining efficiency of resource utilization.
+[#S1.p3]
+[#S1.p3.1] To address these challenges, we introduce [#S1.p3.1.1] ENPIRE, an agent harness framework that leverages a suite of autonomous environment interfaces to enable scalable physical autoresearch. [#S1.p3.1.2] ENPIRE decomposes the acquisition of dexterous manipulation skills into two autoresearch procedures. In the first phase ( [#S1.p3.1.3] EN in [#S1.p3.1.4] ENPIRE), coding agents construct an autonomous environment interface from human feedback. Through this initial research loop, agents implement and optimize procedural tool calls that establish safety boundaries, automated reset, and verification procedures for a specific task. They are optimized offline with a one-time setup cost; once finalized, they serve as immutable APIs that are reused throughout the subsequent stage. The second phase ( [#S1.p3.1.5] PIRE in [#S1.p3.1.6] ENPIRE) transitions to a fully autonomous autoresearch procedure, where coding agents refine policies based on real-world feedback. Guided entirely by the environment’s automated verification signals, the agents independently explore and optimize diverse methodologies to maximize real-world task success rates without human intervention.
+[#S1.p4]
+[#S1.p4.1] To scale this pipeline across multiple robots in parallel, [#S1.p4.1.1] ENPIRE introduces a mechanism to evolutionarily select hypotheses, which accelerates policy improvement. We dispatch a decentralized team of agents to test training recipes asynchronously, sharing and abandoning ideas based on the average success rates. The accumulated knowledge can be transferred to similar, novel tasks.
+[#S1.p5]
+[#S1.p5.1] We highlight the contributions of this work as follows:
+[#S1.I1]
+[#S1.I1.i1] •
+[#S1.I1.i1.p1]
+[#S1.I1.i1.p1.1] We formalize physical autoresearch for dexterous manipulation as a distinct problem for the coding agent and robotics communities. We propose to tackle this with a two-step approach: first, conducting a human-guided autoresearch to construct automatic environment feedback and verify it offline, then executing a fully autonomous autoresearch from real-world feedback in an online fashion to improve the policy.
+[#S1.I1.i2] •
+[#S1.I1.i2.p1]
+[#S1.I1.i2.p1.1] We implement [#S1.I1.i2.p1.1.1] ENPIRE, an agentic harness through which a coding agent develops reusable robotic tools, constructs rewards and reset mechanisms with procedural tool calls, and effectively optimizes learning algorithms on real robots without human intervention.
+[#S1.I1.i3] •
+[#S1.I1.i3.p1]
+[#S1.I1.i3.p1.1] We demonstrate that [#S1.I1.i3.p1.1.1] ENPIRE can hill-climb the success rate to a high level in multiple dexterous manipulation tasks. In pin insertion, policy convergence to 100% is achieved faster than a frontier human-in-the-loop method (48). We also observe initial scaling behavior for parallelized autoresearch on a robot fleet and propose key metrics, Mean Token Utilization (MTU) and Mean Robot Utilization (MRU), to benchmark the efficiency of this procedure.
+[#S1.F3] [#S1.F3.g1]
+[#S1.F3.8] Figure 3: [#S1.F3.9] Benchmarking coding agents for physical autoresearch [#S1.F3.9.1] . ENPIRE [#S1.F3.9.2] enables state-of-the-art coding agents to achieve autonomous policy improvement on Push-T [#S1.F3.9.3] and Pin Insertion [#S1.F3.9.4] tasks. ENPIRE [#S1.F3.9.5] also scales with resources, as increasing the number of robot agent workers reduces the wall-clock time required to reach the same task performance.
+[#S2]
+2 Method
+[#S2.p1]
+[#S2.p1.1] In this section, we present a harness design that allows coding agents to perform automated research in the physical world. This procedure is decomposed into two stages: [#S2.p1.1.1] environment construction from human feedback ( [#S2.p1.1.2] EN in [#S2.p1.1.3] ENPIRE) and [#S2.p1.1.4] automatic policy improvement from real-world feedback ( [#S2.p1.1.5] PIRE in [#S2.p1.1.6] ENPIRE).
+[#S2.SS1]
+2.1 Stage One: Environment Construction from Human Feedback
+[#S2.SS1.p1]
+[#S2.SS1.p1.1] For coding agents to conduct autonomous physical autoresearch, we need to first construct an agent-friendly abstraction of physical interaction and feedback as a structured environment. This includes task-specific safety constraints to support long-term operation, a real-time automated verification process for feedback and credit assignment, and a robust automatic reset mechanism to ensure fast iteration. To improve reliability, agents construct the environment APIs with procedural tool calls and refine their implementation according to human assessment. Human effort is a one-time cost that will be amortized across all implementations on all robots during subsequent automatic policy improvement in Sec. 2.2.
+[#S2.SS1.SSS0.Px1]
+Hard safety constraints
+[#S2.SS1.SSS0.Px1.p1]
+[#S2.SS1.SSS0.Px1.p1.1] We restrict the configuration space and kinematic behaviors of the robot to a safe operational limit. The safety regions are sufficient for task completion and serve as hard constraints: violating these limits triggers an immediate task failure and an automated reset. This serves as a safeguard for real-world interaction, also as a source of episode termination or truncation.
+[#S2.SS1.SSS0.Px2]
+Automated verification
+[#S2.SS1.SSS0.Px2.p1]
+[#S2.SS1.SSS0.Px2.p1.1] During real-world experiments, robot learning needs real-time verification from sensor inputs to quantify experimental progress. To minimize human engineering efforts, coding agents are tasked with synthesizing a binary reward function from procedural tool calls to distinguish task outcomes. Given only a few minutes of success and failure demonstrations, the agents use the videos and proprioception recordings to maximize the prediction accuracy score while minimizing processing latency. For example, autoresearch discovers a robust reward function for pin insertion that is based on visual alignment, end-effector height, and force estimates.
+Coding agents also show their ability to design perception-dependent rewards in zip-tie insertion in Fig. 4 and optimize its inference latency to under 150ms, which approaches the reactiveness of the human visual system (43). More details are provided in the appendix.
+[#S2.F4] [#S2.F4.g1]
+[#S2.F4.3] Figure 4: [#S2.F4.4] Reward for zip-tie insertion. Cropping and image segmentation test whether the zip-tie strap passes through the zip-tie head. Two camera views are considered to prevent false positives.
+[#S2.SS1.SSS0.Px3]
+Automated reset
+[#S2.SS1.SSS0.Px3.p1]
+[#S2.SS1.SSS0.Px3.p1.1] Once a task is completed or fails, the agent executes a series of tool calls to restore the environment to its initial state. For contact-rich tasks, we employ procedural tool calls inspired by CaP-X (15), using modular manipulation skills to reset the environment directly to the start of the most challenging phase. By positioning the robot at the precise onset of critical actions, such as inserting a pin, seating a GPU, or grasping scissors, we strategically focus the learning system on these precision bottlenecks.
+[#S2.SS1.SSS0.Px3.p2]
+[#S2.SS1.SSS0.Px3.p2.1] The safety constraints, automated verification, and automated reset constitute our Environment module ( [#S2.SS1.SSS0.Px3.p2.1.1] EN in [#S2.SS1.SSS0.Px3.p2.1.2] ENPIRE). Policies also receive visual-proprioception sensor inputs and submit action commands to the robot controller, which, combined with our reward, constitutes the Rollout module ( [#S2.SS1.SSS0.Px3.p2.1.3] R in [#S2.SS1.SSS0.Px3.p2.1.4] ENPIRE). Once constructed, coding agents have access to these modules through immutable Gym APIs (7), which provide feedback signals and debugging information for automated policy improvement.
+[#S2.SS2]
+2.2 Stage Two: Automated Policy Improvement from Real-World Feedback
+[#S2.SS2.p1]
+[#S2.SS2.p1.1] The second stage leverages automated research to train a policy for a specific task. Upon initialization, the coding agent receives the task description with the ultimate objective of maximizing the task’s success rate through autonomous experimentation. To achieve this, the agent is granted write permissions to a streamlined training codebase that supports basic end-to-end policy training and code-based policy synthesis.
+[#S2.SS2.SSS0.Px1]
+A motivating example
+[#S2.SS2.SSS0.Px1.p1]
+[#S2.SS2.SSS0.Px1.p1.1] We illustrate this process using a pin insertion task, where the policy must insert a pin into a hole with a tight 4mm clearance (Fig. 2). During this automated research phase, the agent operates through a Policy Improvement module ( [#S2.SS2.SSS0.Px1.p1.1.1] PI in [#S2.SS2.SSS0.Px1.p1.1.2] ENPIRE), where it reviews the literature to generate insights, formulates hypotheses, and directly modifies the training code—such as behavior cloning or RL algorithms—to optimize performance based on real-world automatic verification results. To gather rich evidence, the agent invokes environment APIs to log robot trajectories, video recordings, and reward signals during rollouts, and inspects these statistics to guide continued improvement.
+[#S2.SS2.SSS0.Px2]
+Accelerating autoresearch via multi-agent scaling
+[#S2.SS2.SSS0.Px2.p1]
+[#S2.SS2.SSS0.Px2.p1.1] While automatic reset and verification mechanisms enhance the scalability of a single deployment loop, physical autoresearch can be further accelerated by launching a parallel, multi-agent decentralized collaboration protocol. This protocol deploys [#S2.SS2.SSS0.Px2.p1.m1] NN agents across [#S2.SS2.SSS0.Px2.p1.m2] NN physical robots to test [#S2.SS2.SSS0.Px2.p1.m3] NN hypotheses asynchronously. Each agent branches off from the same baseline policy training codebase, collaborating autonomously via Git to scale this Evolution module ( [#S2.SS2.SSS0.Px2.p1.1.1] E in [#S2.SS2.SSS0.Px2.p1.1.2] PIRE). Without human intervention, agents spontaneously cherry-pick, copy, or merge successful training recipes from their peers to optimize their code search. Empirically, we observe that scaling the number of parallel agent-robot pairs drastically reduces the wall-clock time required to discover a high-success-rate policy recipe, as illustrated in Fig. 3.
+[#S2.SS2.SSS0.Px2.p2]
+[#S2.SS2.SSS0.Px2.p2.1] To quantify how efficiently a coding agent converts its allocated physical resources into research progress, we propose two utilization metrics that complement task-level outcomes. Mean Robot Utilization (MRU) is the fraction of research wall-clock time during which the robot is actively executing an experiment. GPU utilization is the fraction of research wall-clock time during which the GPU is actively in use.
+A perfectly resource-saturated agent would push both metrics toward [#S2.SS2.SSS0.Px2.p2.m1] 11; in practice, neither metric reaches this value for any frontier coding agent we evaluate.
+To measure how efficiently an agent team converts tokens into successful robot policies, we define Mean Token Utilization (MTU) as the fleet’s average token consumption throughout autoresearch. We then calculate the token-to-success ratio to reflect the token efficiency of task learning. An empirical result of how robot and token utilization changes with agent team size is illustrated in Fig. 7.
+[#S3]
+3 Experiment
+[#S3.p1]
+[#S3.p1.1] We show that [#S3.p1.1.1] ENPIRE is a capable and scalable agentic autoresearch framework.
+[#S3.I1]
+[#S3.I1.i1] •
+[#S3.I1.i1.p1]
+[#S3.I1.i1.p1.1] [#S3.I1.i1.p1.1.1] First, [#S3.I1.i1.p1.1.1.1] ENPIRE supports the autonomous policy learning after environment construction.
+[#S3.I1.i2] •
+[#S3.I1.i2.p1]
+[#S3.I1.i2.p1.1] [#S3.I1.i2.p1.1.1] Second, the convergence speed of the success rate [#S3.I1.i2.p1.1.1.1] ENPIRE scales with robot and token resources.
+[#S3.p1.2] We will focus on the following dexterous tasks, which require precise and reactive control from perceptual feedback: [#S3.p1.2.1] Push-T (12), where the robot uses non-prehensile movement to align a T-shape block to a goal region; [#S3.p1.2.2] Pin insertion, where the robot organizes a pin box by plugging in pins into 4mm-diameter holes; [#S3.p1.2.3] GPU-insertion, where the robot seats GPU chips in thin sockets on the motherboard, and [#S3.p1.2.4] Ziptie-cutting, where the robot grabs and closes scissors to cut the tail of a zip tie. A visualization of these tasks is provided in Fig. 2.
+[#S3.p2]
+[#S3.p2.1] We measure success as the chance of completing a task in one rollout, given a fixed number of retries (here, eight). Unlike measuring success by i.i.d. best-of-N sampling, where each attempt is independent, our retries happen after witnessing the previous failure, implying that our metric captures both precision and in-context recovery in the face of environment uncertainty. We stress that recovery, not just one-shot precision, matters for highly dexterous tasks and reflects the robustness needed for reliable deployment in the real world.
+[#S3.p3]
+[#S3.p3.1] We use [#S3.p3.1.1] ENPIRE to conduct autoresearch in various policy learning paradigms. Coding agents have the freedom to choose various methods and their combinations to solve a task, including end-to-end neural network training such as behavior cloning (BC) (36) or real-world reinforcement learning (RL) (18), as well as gradient-free learning methods such as heuristic learning (47) and code-based policy synthesis (25). Our real robot platform is the bimanual 6-DoF YAM robot. We benchmark three coding agents in our physical autoresearch experiments, namely, Codex with GPT-5.5 xhigh (35), Claude Code with Opus 4.7 High (3), and Kimi Code with Kimi K2.6 thinking (33).
+[#S3.SS1]
+3.1 Autoresearch for Heuristic Learning
+[#S3.F5] [#S3.F5.g1]
+[#S3.F5.4] Figure 5: [#S3.F5.5] Autonomous heuristic learning in simulation [#S3.F5.5.1] . On the Gym-PushT (10) benchmark, Claude Code (orange) and Codex (blue) achieve 95% success rate within approximately 2 hours, while Kimi Code (black) takes twice the time.
+[#S3.SS1.p1]
+[#S3.SS1.p1.1] We tested [#S3.SS1.p1.1.1] ENPIRE’s ability to drive automatic policy improvement in its simplest form: learning heuristics (47) by synthesizing perception and control tool calls (25). To this end, we built a real-world [#S3.SS1.p1.1.2] Push-T environment with its simulation counterpart for comparison.
+[#S3.SS1.SSS0.Px1]
+The unique challenge of physical autoresearch
+[#S3.SS1.SSS0.Px1.p1]
+[#S3.SS1.SSS0.Px1.p1.1] As illustrated in Figs. 5 and 3, all coding agents successfully solve the Push-T task in simulation using heuristic learning. However, the real-world environment proves significantly more challenging, causing two of the three agents to fail. While simulators offer consistent, predictable physics for low-variance hypothesis testing, real-world conditions are non-deterministic and time-varying: factors such as robot dynamics, contact friction, and object movements are inherently less predictable and vary across trials and hardware.
+[#S3.SS1.SSS0.Px1.p2]
+[#S3.SS1.SSS0.Px1.p2.1] To improve real-world robustness, in subsequent tasks, we encourage agents to explore and even combine diverse learning methods that span heuristics and gradient-based learning, to tackle the corner cases in real-world deployment. We also propose scaling up a physical agent team to test hypotheses in diverse and nondeterministic real-world physics. We will elaborate on these designs in subsequent sections.
+[#S3.SS2]
+3.2 Autoresearch for Gradient-Based Policy Improvement
+[#S3.SS2.p1]
+[#S3.SS2.p1.1] Apart from supporting heuristic learning, [#S3.SS2.p1.1.1] ENPIRE is also capable of training end-to-end policies in a precision-critical task, pin insertion, as shown in Fig. 3. In this task, coding agents are required to achieve 50 consecutive successes in real-world evaluations. The agents tested multiple methods to improve the policy, including behavior cloning (BC), iterative BC with online rollout data aggregation, and online, offline, and offline-to-online RL with a BC regularization term. The agents also tuned parameters such as batch size, the actor-critic policy update rate, and the BC-term hyperparameters.
+[#S3.SS3]
+3.3 Scaling Policy Learning on a Robot Fleet
+[#S3.SS3.p1]
+[#S3.SS3.p1.1] We further study whether scaling the number of robots and agents reduces the wall-clock time required to achieve the same target task performance. We assign one coding agent to one robot, and set up identical environment interfaces, reward functions, and reset mechanisms on this robot fleet. We consider fleet sizes of 1, 4, and 8 robots in Push-T and pin insertion tasks.
+[#S3.SS3.p2]
+[#S3.SS3.p2.1] In Push-T, scaling from one to eight agents reduces the time to reach a 1.0 normalized score from roughly five to two hours. In pin insertion, scaling from one to eight agents reduces the time to reach a near-perfect success rate from more than 1.5 hours to approximately 40 minutes.
+This shows that [#S3.SS3.p2.1.1] ENPIRE is capable of transferring additional robot resources to faster policy improvement through distributed hypothesis selection.
+[#S3.SS3.p3]
+[#S3.SS3.p3.1] In a multiagent setting, [#S3.SS3.p3.1.1] ENPIRE can also leverage code-based policies to automatically apply domain randomization during reset. For example, the variations in spatial configurations during GPU insertion span a significantly broader range than prior work (48), which enforces stronger policy robustness.
+[#S3.F6] [#S3.F6.g1]
+[#S3.F6.5] Figure 6: [#S3.F6.6] Simulation results [#S3.F6.6.1] . On RoboCasa365 (34) benchmark, ENPIRE [#S3.F6.6.2] outperforms end-to-end VLA (GR00T (5)) and zero-shot agentic tool use without autoresearch (CaP-X (15)).
+[#S3.SS4]
+3.4 Transferring Autoresearch Experience through Agentic Continue Learning
+[#S3.SS4.p1]
+[#S3.SS4.p1.1] We observe that the insights accumulated by multi-agent physical autoresearch are also transferable to similar, novel dexterous tasks. Following the autonomous exploration phase in pin insertion, agents are prompted to document and reflect on the evolution of their training recipes. When we instantiate a new round of autoresearch for the GPU insertion task, appending this knowledge to the new task’s instructions allows coding agents to achieve a high success rate. A detailed analysis is provided in the Appendix.
+[#S3.SS5]
+3.5 [#S3.SS5.2] ENPIRE Discovers Synergy between Code-Based Policies and VLAs
+[#S3.SS5.p1]
+[#S3.SS5.p1.1] Beyond end-to-end or heuristic training, [#S3.SS5.p1.1.1] ENPIRE can automatically integrate vision-language-action models (VLAs) (8) with procedural tool calls for long-horizon manipulation. In the RoboCasa365 simulator (34), the agent boosted the success rate of the GR00T VLA (5) by using motion planning and detection tools to hover above an object before grasping. We successfully transferred this strategy to the real world, where the agent learned to hover over scissors, grasp them, and cut a zip tie, as shown in Figure 2.
+[#S3.SS6]
+3.6 Quantifying Agent Resource Utilization
+[#S3.F7] [#S3.F7.g1]
+[#S3.F7.4] Figure 7: [#S3.F7.5] Quantifying agent resource utilization [#S3.F7.5.1] . Scaling from 1 to 8 agents raises GPU utilization and token consumption but lowers per-robot utilization.
+[#S3.SS6.p1]
+[#S3.SS6.p1.1] Figure 7 summarizes the resource-scaling behavior of ENPIRE on the pin insertion task across single-, four-, and eight-agent fleets. We report Mean Robot Utilization (MRU) and GPU utilization using the definitions introduced above. In addition, we measure Mean Token Utilization (MTU), defined as the number of tokens consumed per minute. We further measure Tokens to Success and Time to Success, which quantify the token budget and wall-clock time required to complete the autoresearch objective.
+[#S4]
+4 Limitations
+[#S4.SS0.SSS0.Px1]
+Robot and compute resources are underutilized
+[#S4.SS0.SSS0.Px1.p1]
+[#S4.SS0.SSS0.Px1.p1.1] Coding agents do not fully utilize robot resource when they are reading logs, writing code, debugging, or waiting for the language-model backbone. Moreover, as we scale the number of robots, MRU decreases, while GPU active utilization increases (Figure 7a). Compared to a single-robot setup, the composition of agent activity causes agent teams to spend more of their time summarizing peer branches and less time actually operating the robot. Coding agents may also fail to launch parallel training sessions to exhaust GPU resources.
+[#S4.SS0.SSS0.Px2]
+Token cost grows super-linearly with fleet size.
+[#S4.SS0.SSS0.Px2.p1]
+[#S4.SS0.SSS0.Px2.p1.1] As the fleet size increases, token usage grows faster than the ideal linear trend. MTU remains close to the linear projection up to four agents, but rises sharply at eight agents (Figure 7b). The total token budget required to obtain a successful policy shows the same trend, increasing much more rapidly than the corresponding reduction in wall-clock time (Figure 7c). Thus, increasing the fleet size trades token efficiency for faster policy improvement: larger fleets reach success sooner, but require a disproportionately higher token budget.
+[#S5]
+5 Related Work
+[#S5.SS1]
+5.1 Coding Agents & Code as Policies
+[#S5.SS1.p1]
+[#S5.SS1.p1.1] This line of work rests on a central abstraction— [#S5.SS1.p1.1.1] executable code as the agent’s action: the model generates a program, the runtime returns structured feedback, and the loop iterates. Code-as-Policies (25) and ProgPrompt (41) introduced this formulation for robotics, composing perception and skill APIs into a task plan, and visual reasoning carried the same compositional idea to vision modules (42). Subsequent research extended single-shot generation into multi-turn loops driven by execution feedback—reason-and-act traces (51), self-critique and iterative repair (40; 32), inference-time search (52), and learned tool invocation (37); Wang et al. (45) argues code is a stronger action representation than language because each step is runtime-verifiable. A parallel thread formalizes the [#S5.SS1.p1.1.2] agent–computer interface, a sandboxed shell in which agents read, run, and debug code, now underlying frontier coding products (35; 3; 33).
+[#S5.SS1.p2]
+[#S5.SS1.p2.1] Within robotics, early code-as-policy systems exposed high-level, human-engineered APIs—closed-form skills, language-conditioned grasping primitives, and affordance scorers (1)—leaving the agent to decompose tasks rather than synthesize low-level control. Wang et al. (44) grows a reusable Minecraft skill library via self-verification and an automatic curriculum where trials are near-free, and Fu et al. (15) finds that multi-turn feedback, skill synthesis, and ensembled sampling improve manipulation reliability over low-level primitives. A related line uses LLMs to synthesize auxiliary training signals: reward functions (31; 49; 53), sim-to-real transfer protocols (30), simulation environments (46), and data-collection pipelines (2).
+[#S5.SS2]
+5.2 Agentic Self-Improvement
+[#S5.SS2.p1]
+[#S5.SS2.p1.1] A self-improvement loop needs each trial to be cheap enough to repeat at scale; systems differ mainly in what a trial returns to the agent. Ellis et al. (13) set the retention pattern that the rest build on: each solved synthesis task adds named subroutines to a growing library, which is viable because execution is free. Wang et al. (44) carried this into an embodied setting, swapping the success signal for LLM self-verification and an automatic curriculum—again viable because Minecraft rollouts cost nothing. Yu et al. (53), Ma et al. (31), and Xie et al. (49) return a reward rather than a skill: an LLM proposes a dense reward, a policy is trained against it, and the reward is revised from training statistics—a loop Eureka closes via thousands of Isaac Gym rollouts per minute. Ma et al. (30) reaches toward hardware via synthesized domain-randomization parameters, yet still iterates in simulation and deploys only after revision stops; at the experimental-setting level, Wang et al. (46) generates new tasks and assets in simulation, and Ahn et al. (2) coordinates a mobile-robot fleet for offline data collection rather than within-loop iteration. In every case, the loop closes on a cheap substrate while real-robot execution serves only as a sim-to-real or data target, never as the medium of iteration. We retain these skill-accumulation and reward-generation mechanisms but run the loop directly on hardware, where the binding resource is the agent’s robot-access budget, not its compute.
+[#S5.SS3]
+5.3 Autonomous Research Agents and Scientific Discovery
+[#S5.SS3.p1]
+[#S5.SS3.p1.1] The final body of work automates the research loop itself, best read along [#S5.SS3.p1.1.1] the medium in which experiments are launched. Prior to LLMs, autonomous systems closed the hypothesis–experiment loop on real laboratory hardware (23; 9). LLM-era systems instead automate the [#S5.SS3.p1.1.2] digital loop end to end (26; 50; 39; 38), with a recent strand reaching back into the physical sciences through lab automation (6; 29) or human-executed wet-lab validation (16). Evaluation tracks this digital emphasis: MLE-bench (11) scores ML-engineering agents and resource scaling, while analyses of SWE-bench (21) caution that gains can reflect contamination over capability. Two gaps follow: no system autonomously runs and optimizes a physical [#S5.SS3.p1.1.3] robotics loop under an explicit hardware budget—classical robot scientists fixed the apparatus and never wrote their own tools, while LLM research agents never touch real robots—and no benchmark measures utilization of a scarce physical resource rather than capability or cost-per-paper. Our system addresses both gaps by running and optimizing the experimental loop on real robots and introducing resource-utilization metrics for this budget-bound regime.
+[#S6]
+6 Acknowledgement
+[#S6.p1]
+[#S6.p1.1] We are grateful to many colleagues whose help made this project possible. We thank Jason Liu, Tony Tao, Tairan He, Alex Lin, Jim Yang, Paul Zhou, and Abhi Maddukuri for insightful discussions and feedback; Yide Shentu, Bike Zhang, Angchen Xie, Dvij Kalaria, and Yuqi Xie for their support with the experiments; Lion Park, Matin Furutan, Jeremy Chimienti, Dennis Da, and Tri Cao for fleet operation; and Tri Cao for the demo shots. We also thank the NVIDIA GEAR Team and the CMU LeCAR Lab for their continuous support.
+[#bib]
+References
+[#bib.bib1] (1)
+Michael Ahn, Anthony Brohan, Noah Brown, Yevgen Chebotar, Omar Cortes, Byron
+David, Chelsea Finn, Chuyuan Fu, Keerthana Gopalakrishnan, Karol Hausman,
+et al.
+Do as i can, not as i say: Grounding language in robotic affordances.
+[#bib.bib1.1] arXiv preprint arXiv:2204.01691, 2022.
+[#bib.bib2] (2)
+Michael Ahn, Debidatta Dwibedi, Chelsea Finn, Montse Gonzalez Arenas, Keerthana
+Gopalakrishnan, Karol Hausman, Brian Ichter, Alex Irpan, Nikhil Joshi, Ryan
+Julian, et al.
+Autort: Embodied foundation models for large scale orchestration of
+robotic agents.
+[#bib.bib2.1] arXiv preprint arXiv:2401.12963, 2024.
+[#bib.bib3] (3)
+Anthropic.
+Introducing claude opus 4.7.
+https://www.anthropic.com/news/claude-opus-4-7, 2026.
+[#bib.bib4] (4)
+Philip J Ball, Laura Smith, Ilya Kostrikov, and Sergey Levine.
+Efficient online reinforcement learning with offline data.
+In [#bib.bib4.1] International Conference on Machine Learning, pages
+1577–1594. PMLR, 2023.
+[#bib.bib5] (5)
+Johan Bjorck, Fernando Castañeda, Nikita Cherniadev, Xingye Da, Runyu Ding,
+Linxi Fan, Yu Fang, Dieter Fox, Fengyuan Hu, Spencer Huang, et al.
+Gr00t n1: An open foundation model for generalist humanoid robots.
+[#bib.bib5.1] arXiv preprint arXiv:2503.14734, 2025.
+[#bib.bib6] (6)
+Daniil A Boiko, Robert MacKnight, Ben Kline, and Gabe Gomes.
+Autonomous chemical research with large language models.
+[#bib.bib6.1] Nature, 624(7992):570–578, 2023.
+[#bib.bib7] (7)
+Greg Brockman, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John Schulman,
+Jie Tang, and Wojciech Zaremba.
+Openai gym.
+[#bib.bib7.1] arXiv preprint arXiv:1606.01540, 2016.
+[#bib.bib8] (8)
+Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Joseph Dabis,
+Chelsea Finn, Keerthana Gopalakrishnan, Karol Hausman, Alex Herzog, Jasmine
+Hsu, et al.
+Rt-1: Robotics transformer for real-world control at scale.
+[#bib.bib8.1] arXiv preprint arXiv:2212.06817, 2022.
+[#bib.bib9] (9)
+Benjamin Burger, Phillip M Maffettone, Vladimir V Gusev, Catherine M Aitchison,
+Yang Bai, Xiaoyan Wang, Xiaobo Li, Ben M Alston, Buyi Li, Rob Clowes, et al.
+A mobile robotic chemist.
+[#bib.bib9.1] Nature, 583(7815):237–241, 2020.
+[#bib.bib10] (10)
+Rémi Cadène, Quentin Gallouédec, Alexander Soare, and Simon Alibert.
+gym-pusht: A gymnasium environment for PushT.
+https://github.com/huggingface/gym-pusht, 2024.
+Version 0.1.6, adapted from Diffusion Policy.
+[#bib.bib11] (11)
+Jun Shern Chan, Neil Chowdhury, Oliver Jaffe, James Aung, Dane Sherburn, Evan
+Mays, Giulio Starace, Kevin Liu, Leon Maksin, Tejal Patwardhan, et al.
+Mle-bench: Evaluating machine learning agents on machine learning
+engineering.
+In [#bib.bib11.1] International Conference on Learning Representations,
+volume 2025, pages 50466–50494, 2025.
+[#bib.bib12] (12)
+Cheng Chi, Zhenjia Xu, Siyuan Feng, Eric Cousineau, Yilun Du, Benjamin
+Burchfiel, Russ Tedrake, and Shuran Song.
+Diffusion policy: Visuomotor policy learning via action diffusion.
+[#bib.bib12.1] The International Journal of Robotics Research, 44(10-11):1684–1704, 2025.
+[#bib.bib13] (13)
+Kevin Ellis, Catherine Wong, Maxwell Nye, Mathias Sablé-Meyer, Lucas
+Morales, Luke Hewitt, Luc Cary, Armando Solar-Lezama, and Joshua B Tenenbaum.
+Dreamcoder: Bootstrapping inductive program synthesis with wake-sleep
+library learning.
+In [#bib.bib13.1] Proceedings of the 42nd acm sigplan international conference
+on programming language design and implementation, pages 835–850, 2021.
+[#bib.bib14] (14)
+Martin A Fischler and Robert C Bolles.
+Random sample consensus: a paradigm for model fitting with
+applications to image analysis and automated cartography.
+[#bib.bib14.1] Communications of the ACM, 24(6):381–395,
+1981.
+[#bib.bib15] (15)
+Max Fu, Justin Yu, Karim El-Refai, Ethan Kou, Haoru Xue, Huang Huang, Wenli
+Xiao, Guanzhi Wang, Fei-Fei Li, Guanya Shi, et al.
+Cap-x: A framework for benchmarking and improving coding agents for
+robot manipulation.
+[#bib.bib15.1] arXiv preprint arXiv:2603.22435, 2026.
+[#bib.bib16] (16)
+Ali Essam Ghareeb, Benjamin Chang, Ludovico Mitchener, Angela Yiu, Caralyn J
+Szostkiewicz, Dmytro Shved, Gavin J Gyimesi, Jon M Laurent, Samantha M
+Wright, Muhammed T Razzak, et al.
+A multi-agent system for automating scientific discovery.
+[#bib.bib16.1] Nature, pages 1–3, 2026.
+[#bib.bib17] (17)
+Stefan Gottschalk, Ming C Lin, and Dinesh Manocha.
+Obbtree: A hierarchical structure for rapid interference detection.
+In [#bib.bib17.1] Proceedings of the 23rd annual conference on Computer
+graphics and interactive techniques, pages 171–180, 1996.
+[#bib.bib18] (18)
+Tuomas Haarnoja, Sehoon Ha, Aurick Zhou, Jie Tan, George Tucker, and Sergey
+Levine.
+Learning to walk via deep reinforcement learning.
+[#bib.bib18.1] arXiv preprint arXiv:1812.11103, 2018.
+[#bib.bib19] (19)
+Physical Intelligence, Ali Amin, Raichelle Aniceto, Ashwin Balakrishna, Kevin
+Black, Ken Conley, Grace Connors, James Darpinian, Karan Dhabalia, Jared
+DiCarlo, et al.
+pi*0.6: a vla that learns from experience.
+[#bib.bib19.1] arXiv preprint arXiv:2511.14759, 2025a.
+[#bib.bib20] (20)
+Physical Intelligence, Kevin Black, Noah Brown, James Darpinian, Karan
+Dhabalia, Danny Driess, Adnan Esmail, Michael Equi, Chelsea Finn, Niccolo
+Fusai, et al.
+pi05: a vision-language-action model with open-world generalization.
+[#bib.bib20.1] arXiv preprint arXiv:2504.16054, 2025b.
+[#bib.bib21] (21)
+Carlos E Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir
+Press, and Karthik Narasimhan.
+Swe-bench: Can language models resolve real-world github issues?
+In [#bib.bib21.1] International Conference on Learning Representations,
+volume 2024, pages 54107–54157, 2024.
+[#bib.bib22] (22)
+Andrej Karpathy.
+autoresearch: AI agents running research on single-GPU nanochat
+training automatically.
+https://github.com/karpathy/autoresearch, 2025.
+GitHub repository.
+[#bib.bib23] (23)
+Ross D King, Kenneth E Whelan, Ffion M Jones, Philip GK Reiser, Christopher H
+Bryant, Stephen H Muggleton, Douglas B Kell, and Stephen G Oliver.
+Functional genomic hypothesis generation and experimentation by a
+robot scientist.
+[#bib.bib23.1] Nature, 427(6971):247–252, 2004.
+[#bib.bib24] (24)
+Kun Lei, Huanyu Li, Dongjie Yu, Zhenyu Wei, Lingxiao Guo, Zhennan Jiang, Ziyu
+Wang, Shiyu Liang, and Huazhe Xu.
+Rl-100: Performant robotic manipulation with real-world reinforcement
+learning.
+[#bib.bib24.1] arXiv preprint arXiv:2510.14830, 2025.
+[#bib.bib25] (25)
+Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman, Brian Ichter, Pete
+Florence, and Andy Zeng.
+Code as policies: Language model programs for embodied control.
+In [#bib.bib25.1] 2023 IEEE International conference on robotics and
+automation (ICRA), pages 9493–9500. IEEE, 2023.
+[#bib.bib26] (26)
+Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Foerster, Jeff Clune, and David
+Ha.
+The ai scientist: Towards fully automated open-ended scientific
+discovery.
+[#bib.bib26.1] arXiv preprint arXiv:2408.06292, 2024.
+[#bib.bib27] (27)
+Jianlan Luo, Zheyuan Hu, Charles Xu, You Liang Tan, Jacob Berg, Archit Sharma,
+Stefan Schaal, Chelsea Finn, Abhishek Gupta, and Sergey Levine.
+Serl: A software suite for sample-efficient robotic reinforcement
+learning.
+In [#bib.bib27.1] 2024 IEEE International Conference on Robotics and
+Automation (ICRA), pages 16961–16969. IEEE, 2024.
+[#bib.bib28] (28)
+Jianlan Luo, Charles Xu, Jeffrey Wu, and Sergey Levine.
+Precise and dexterous robotic manipulation via human-in-the-loop
+reinforcement learning.
+[#bib.bib28.1] Science Robotics, 10(105):eads5033, 2025.
+[#bib.bib29] (29)
+Andres M. Bran, Sam Cox, Oliver Schilter, Carlo Baldassari, Andrew D White, and
+Philippe Schwaller.
+Augmenting large language models with chemistry tools.
+[#bib.bib29.1] Nature machine intelligence, 6(5):525–535, 2024.
+[#bib.bib30] (30)
+Jason Ma, William Liang, Hung-Ju Wang, Yuke Zhu, Linxi Fan, Osbert Bastani, and
+Dinesh Jayaraman.
+Dreureka: Language model guided sim-to-real transfer.
+RSS, 2024a.
+[#bib.bib31] (31)
+Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani,
+Dinesh Jayaraman, Yuke Zhu, Jim Fan, et al.
+Eureka: Human-level reward design via coding large language models.
+In [#bib.bib31.1] International conference on learning Representations,
+volume 2024, pages 26516–26560, 2024b.
+[#bib.bib32] (32)
+Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao, Sarah
+Wiegreffe, Uri Alon, Nouha Dziri, Shrimai Prabhumoye, Yiming Yang, et al.
+Self-refine: Iterative refinement with self-feedback.
+[#bib.bib32.1] Advances in neural information processing systems,
+36:46534–46594, 2023.
+[#bib.bib33] (33)
+Moonshot AI.
+Kimi code.
+https://www.kimi.com/code/en, 2026.
+[#bib.bib34] (34)
+Soroush Nasiriany, Sepehr Nasiriany, Abhiram Maddukuri, and Yuke Zhu.
+Robocasa365: A large-scale simulation framework for training and
+benchmarking generalist robots.
+[#bib.bib34.1] arXiv preprint arXiv:2603.04356, 2026.
+[#bib.bib35] (35)
+OpenAI.
+Openai codex.
+https://developers.openai.com/codex/, 2026.
+[#bib.bib36] (36)
+Dean A Pomerleau.
+Alvinn: An autonomous land vehicle in a neural network.
+[#bib.bib36.1] Advances in neural information processing systems, 1, 1988.
+[#bib.bib37] (37)
+Timo Schick, Jane Dwivedi-Yu, Roberto Dessì, Roberta Raileanu, Maria
+Lomeli, Eric Hambro, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom.
+Toolformer: Language models can teach themselves to use tools.
+[#bib.bib37.1] Advances in neural information processing systems,
+36:68539–68551, 2023.
+[#bib.bib38] (38)
+Samuel Schmidgall and Michael Moor.
+Agentrxiv: Towards collaborative autonomous research.
+[#bib.bib38.1] arXiv preprint arXiv:2503.18102, 2025.
+[#bib.bib39] (39)
+Samuel Schmidgall, Yusheng Su, Ze Wang, Ximeng Sun, Jialian Wu, Xiaodong Yu,
+Jiang Liu, Michael Moor, Zicheng Liu, and Emad Barsoum.
+Agent laboratory: Using llm agents as research assistants.
+[#bib.bib39.1] Findings of the Association for Computational Linguistics:
+EMNLP 2025, pages 5977–6043, 2025.
+[#bib.bib40] (40)
+Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu
+Yao.
+Reflexion: Language agents with verbal reinforcement learning.
+[#bib.bib40.1] Advances in neural information processing systems,
+36:8634–8652, 2023.
+[#bib.bib41] (41)
+Ishika Singh, Valts Blukis, Arsalan Mousavian, Ankit Goyal, Danfei Xu, Jonathan
+Tremblay, Dieter Fox, Jesse Thomason, and Animesh Garg.
+Progprompt: Generating situated robot task plans using large language
+models.
+[#bib.bib41.1] arXiv preprint arXiv:2209.11302, 2022.
+[#bib.bib42] (42)
+Dídac Surís, Sachit Menon, and Carl Vondrick.
+Vipergpt: Visual inference via python execution for reasoning.
+In [#bib.bib42.1] Proceedings of the IEEE/CVF international conference on
+computer vision, pages 11888–11898, 2023.
+[#bib.bib43] (43)
+Simon Thorpe, Denis Fize, and Catherine Marlot.
+Speed of processing in the human visual system.
+[#bib.bib43.1] Nature, 381(6582):520–522, 1996.
+10.1038/381520a0.
+[#bib.bib44] (44)
+Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu,
+Linxi Fan, and Anima Anandkumar.
+Voyager: An open-ended embodied agent with large language models.
+[#bib.bib44.1] arXiv preprint arXiv:2305.16291, 2023a.
+[#bib.bib45] (45)
+Xingyao Wang, Yangyi Chen, Lifan Yuan, Yizhe Zhang, Yunzhu Li, Hao Peng, and
+Heng Ji.
+Executable code actions elicit better llm agents.
+In [#bib.bib45.1] Forty-first International Conference on Machine Learning,
+2024.
+[#bib.bib46] (46)
+Yufei Wang, Zhou Xian, Feng Chen, Tsun-Hsuan Wang, Yian Wang, Katerina
+Fragkiadaki, Zackory Erickson, David Held, and Chuang Gan.
+Robogen: Towards unleashing infinite data for automated robot
+learning via generative simulation.
+[#bib.bib46.1] arXiv preprint arXiv:2311.01455, 2023b.
+[#bib.bib47] (47)
+Jiayi Weng.
+Learning beyond gradients.
+https://trinkle23897.github.io/learning-beyond-gradients/, May
+2026.
+Blog post.
+[#bib.bib48] (48)
+Wenli Xiao, Haotian Lin, Andy Peng, Haoru Xue, Tairan He, Yuqi Xie, Fengyuan
+Hu, Jimmy Wu, Zhengyi Luo, Linxi Fan, et al.
+Self-improving vision-language-action models with data generation via
+residual rl.
+[#bib.bib48.1] arXiv preprint arXiv:2511.00091, 2025.
+[#bib.bib49] (49)
+Tianbao Xie, Siheng Zhao, Chen Wu, Yitao Liu, Qian Luo, Victor Zhong, Yanchao
+Yang, and Tao Yu.
+Text2reward: Reward shaping with language models for reinforcement
+learning.
+In [#bib.bib49.1] International Conference on Learning Representations,
+volume 2024, pages 35663–35699, 2024.
+[#bib.bib50] (50)
+Yutaro Yamada, Robert Tjarko Lange, Cong Lu, Shengran Hu, Chris Lu, Jakob
+Foerster, Jeff Clune, and David Ha.
+The ai scientist-v2: Workshop-level automated scientific discovery
+via agentic tree search.
+[#bib.bib50.1] arXiv preprint arXiv:2504.08066, 2025.
+[#bib.bib51] (51)
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan,
+and Yuan Cao.
+React: Synergizing reasoning and acting in language models.
+[#bib.bib51.1] arXiv preprint arXiv:2210.03629, 2022.
+[#bib.bib52] (52)
+Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Tom Griffiths, Yuan Cao, and
+Karthik Narasimhan.
+Tree of thoughts: Deliberate problem solving with large language
+models.
+[#bib.bib52.1] Advances in neural information processing systems,
+36:11809–11822, 2023.
+[#bib.bib53] (53)
+Wenhao Yu, Nimrod Gileadi, Chuyuan Fu, Sean Kirmani, Kuang-Huei Lee,
+Montse Gonzalez Arenas, Hao-Tien Lewis Chiang, Tom Erez, Leonard Hasenclever,
+Jan Humplik, et al.
+Language to rewards for robotic skill synthesis.
+[#bib.bib53.1] arXiv preprint arXiv:2306.08647, 2023.
+[#Ax1]
+Appendices
+[#Ax1.p1]
+[#Ax1.p1.1] All videos are available at research.nvidia.com/labs/gear/enpire
+[#Ax2]
+Appendix Outline
+[#A1]
+Appendix A Environment Creation
+[#A1.SS1]
+A.1 Autonomous Reset
+[#A1.SS1.p1]
+[#A1.SS1.p1.1] We show that, given a task specification, coding agents can synthesize long-horizon reset functions by composing perception and planning APIs, including SAM3 for open-vocabulary object detection (illustrated in Section A.1), BundleSDF for continuous 6-DOF pose tracking, and cuRobo for GPU-accelerated collision-free trajectory optimization. During execution, these reset functions consume real-time RGBD streams and proprioceptive state, which together support robust object localization, grasp pose generation, and motion planning. Coding agents can also command and read gripper torque signals, which serve as a surrogate for tactile feedback; we find that these signals are crucial for slip detection and controlling the force of the grip in precision-critical manipulation tasks.
+[#A1.SS1.p2] [#A1.SS1.p2.1] {codesnippet}
+[#A1.SS1.p2.3] Tool API: SAM3 Multi-Object Segmentation. Detects all instances of a queried object from a chosen camera view, returning per-instance masks, confidence scores, and back-projected 3D centroids.
+[#A1.SS1.p2.4]
+⬇
+[#lstnumberx1] [#lstnumberx1.1] class [#lstnumberx1.2] [#lstnumberx1.3] SegmentAllObjectsTool( [#lstnumberx1.4] Tool):
+[#lstnumberx2] [#lstnumberx2.1] """ [#lstnumberx2.2] Detect [#lstnumberx2.3] [#lstnumberx2.4] all [#lstnumberx2.5] [#lstnumberx2.6] instances [#lstnumberx2.7] [#lstnumberx2.8] of [#lstnumberx2.9] [#lstnumberx2.10] an [#lstnumberx2.11] [#lstnumberx2.12] object [#lstnumberx2.13] [#lstnumberx2.14] using [#lstnumberx2.15] [#lstnumberx2.16] SAM3 [#lstnumberx2.17] [#lstnumberx2.18] multi- [#lstnumberx2.19] detection."""
+[#lstnumberx3] [#lstnumberx3.1] [#lstnumberx3.2] parameters [#lstnumberx3.3] = [#lstnumberx3.4] [
+[#lstnumberx4] [#lstnumberx4.1] [#lstnumberx4.2] ToolParameter(" [#lstnumberx4.3] query", [#lstnumberx4.4] " [#lstnumberx4.5] str"),
+[#lstnumberx5] [#lstnumberx5.1] [#lstnumberx5.2] ToolParameter(" [#lstnumberx5.3] camera", [#lstnumberx5.4] " [#lstnumberx5.5] str", [#lstnumberx5.6] [#lstnumberx5.7] default=" [#lstnumberx5.8] top"),
+[#lstnumberx6] [#lstnumberx6.1] [#lstnumberx6.2] ToolParameter(" [#lstnumberx6.3] score_thresh", [#lstnumberx6.4] " [#lstnumberx6.5] float", [#lstnumberx6.6] [#lstnumberx6.7] default=0.1),
+[#lstnumberx7] [#lstnumberx7.1] [#lstnumberx7.2] ToolParameter(" [#lstnumberx7.3] image_bbox", [#lstnumberx7.4] " [#lstnumberx7.5] list", [#lstnumberx7.6] [#lstnumberx7.7] default= [#lstnumberx7.8] None),
+[#lstnumberx8] [#lstnumberx8.1] [#lstnumberx8.2] ToolParameter(" [#lstnumberx8.3] image_exclude_bboxes", [#lstnumberx8.4] " [#lstnumberx8.5] list", [#lstnumberx8.6] [#lstnumberx8.7] default= [#lstnumberx8.8] None),
+[#lstnumberx9] [#lstnumberx9.1] [#lstnumberx9.2] ToolParameter(" [#lstnumberx9.3] filters", [#lstnumberx9.4] " [#lstnumberx9.5] list", [#lstnumberx9.6] [#lstnumberx9.7] default= [#lstnumberx9.8] None),
+[#lstnumberx10] [#lstnumberx10.1] [#lstnumberx10.2] ToolParameter(" [#lstnumberx10.3] rank_by", [#lstnumberx10.4] " [#lstnumberx10.5] dict", [#lstnumberx10.6] [#lstnumberx10.7] default= [#lstnumberx10.8] None),
+[#lstnumberx11] [#lstnumberx11.1] ]
+[#lstnumberx12] [#lstnumberx12.1] # [#lstnumberx12.2] [#lstnumberx12.3] query:
+[#lstnumberx13] [#lstnumberx13.1] # [#lstnumberx13.2] [#lstnumberx13.3] Natural- [#lstnumberx13.4] language [#lstnumberx13.5] [#lstnumberx13.6] description [#lstnumberx13.7] [#lstnumberx13.8] of [#lstnumberx13.9] [#lstnumberx13.10] the [#lstnumberx13.11] [#lstnumberx13.12] object [#lstnumberx13.13] [#lstnumberx13.14] to [#lstnumberx13.15] [#lstnumberx13.16] segment.
+[#lstnumberx14] [#lstnumberx14.1] # [#lstnumberx14.2] [#lstnumberx14.3] camera:
+[#lstnumberx15] [#lstnumberx15.1] # [#lstnumberx15.2] [#lstnumberx15.3] Camera [#lstnumberx15.4] [#lstnumberx15.5] view [#lstnumberx15.6] [#lstnumberx15.7] to [#lstnumberx15.8] [#lstnumberx15.9] capture [#lstnumberx15.10] [#lstnumberx15.11] from. [#lstnumberx15.12] [#lstnumberx15.13] One [#lstnumberx15.14] [#lstnumberx15.15] of [#lstnumberx15.16] { [#lstnumberx15.17] top, [#lstnumberx15.18] [#lstnumberx15.19] left, [#lstnumberx15.20] [#lstnumberx15.21] right}.
+[#lstnumberx16] [#lstnumberx16.1] # [#lstnumberx16.2] [#lstnumberx16.3] score_thresh:
+[#lstnumberx17] [#lstnumberx17.1] # [#lstnumberx17.2] [#lstnumberx17.3] Minimum [#lstnumberx17.4] [#lstnumberx17.5] SAM3 [#lstnumberx17.6] [#lstnumberx17.7] confidence [#lstnumberx17.8] [#lstnumberx17.9] score. [#lstnumberx17.10] [#lstnumberx17.11] Detections [#lstnumberx17.12] [#lstnumberx17.13] below [#lstnumberx17.14] [#lstnumberx17.15] threshold [#lstnumberx17.16] [#lstnumberx17.17] are [#lstnumberx17.18] [#lstnumberx17.19] dropped.
+[#lstnumberx18] [#lstnumberx18.1] # [#lstnumberx18.2] [#lstnumberx18.3] image_bbox:
+[#lstnumberx19] [#lstnumberx19.1] # [#lstnumberx19.2] [ [#lstnumberx19.3] x_min, [#lstnumberx19.4] [#lstnumberx19.5] y_min, [#lstnumberx19.6] [#lstnumberx19.7] x_max, [#lstnumberx19.8] [#lstnumberx19.9] y_max] [#lstnumberx19.10] [#lstnumberx19.11] pixel [#lstnumberx19.12] [#lstnumberx19.13] crop. [#lstnumberx19.14] [#lstnumberx19.15] Zeros [#lstnumberx19.16] [#lstnumberx19.17] all [#lstnumberx19.18] [#lstnumberx19.19] pixels [#lstnumberx19.20] [#lstnumberx19.21] outside [#lstnumberx19.22] [#lstnumberx19.23] the
+[#lstnumberx20] [#lstnumberx20.1] # [#lstnumberx20.2] [#lstnumberx20.3] box [#lstnumberx20.4] [#lstnumberx20.5] before [#lstnumberx20.6] [#lstnumberx20.7] sending [#lstnumberx20.8] [#lstnumberx20.9] to [#lstnumberx20.10] [#lstnumberx20.11] SAM3 [#lstnumberx20.12] [#lstnumberx20.13] to [#lstnumberx20.14] [#lstnumberx20.15] suppress [#lstnumberx20.16] [#lstnumberx20.17] background [#lstnumberx20.18] [#lstnumberx20.19] noise. [#lstnumberx20.20] [#lstnumberx20.21] Returned [#lstnumberx20.22] [#lstnumberx20.23] masks
+[#lstnumberx21] [#lstnumberx21.1] # [#lstnumberx21.2] [#lstnumberx21.3] remain [#lstnumberx21.4] [#lstnumberx21.5] in [#lstnumberx21.6] [#lstnumberx21.7] full- [#lstnumberx21.8] image [#lstnumberx21.9] [#lstnumberx21.10] coordinates [#lstnumberx21.11] [#lstnumberx21.12] so [#lstnumberx21.13] [#lstnumberx21.14] centroid_world_xyz [#lstnumberx21.15] [#lstnumberx21.16] back- [#lstnumberx21.17] projects [#lstnumberx21.18] [#lstnumberx21.19] correctly.
+[#lstnumberx22] [#lstnumberx22.1] # [#lstnumberx22.2] [#lstnumberx22.3] image_exclude_bboxes:
+[#lstnumberx23] [#lstnumberx23.1] # [#lstnumberx23.2] [#lstnumberx23.3] List [#lstnumberx23.4] [#lstnumberx23.5] of [#lstnumberx23.6] [ [#lstnumberx23.7] x_min, [#lstnumberx23.8] [#lstnumberx23.9] y_min, [#lstnumberx23.10] [#lstnumberx23.11] x_max, [#lstnumberx23.12] [#lstnumberx23.13] y_max] [#lstnumberx23.14] [#lstnumberx23.15] boxes [#lstnumberx23.16] [#lstnumberx23.17] to [#lstnumberx23.18] [#lstnumberx23.19] zero [#lstnumberx23.20] [#lstnumberx23.21] out [#lstnumberx23.22] [#lstnumberx23.23] before [#lstnumberx23.24] [#lstnumberx23.25] sending [#lstnumberx23.26] [#lstnumberx23.27] to
+[#lstnumberx24] [#lstnumberx24.1] # [#lstnumberx24.2] [#lstnumberx24.3] SAM3. [#lstnumberx24.4] [#lstnumberx24.5] Inverse [#lstnumberx24.6] [#lstnumberx24.7] of [#lstnumberx24.8] [#lstnumberx24.9] image_bbox [#lstnumberx24.10] — [#lstnumberx24.11] [#lstnumberx24.12] used [#lstnumberx24.13] [#lstnumberx24.14] to [#lstnumberx24.15] [#lstnumberx24.16] blank [#lstnumberx24.17] [#lstnumberx24.18] known [#lstnumberx24.19] [#lstnumberx24.20] distractors [#lstnumberx24.21] ( [#lstnumberx24.22] e. [#lstnumberx24.23] g. [#lstnumberx24.24] [#lstnumberx24.25] gripper
+[#lstnumberx25] [#lstnumberx25.1] # [#lstnumberx25.2] [#lstnumberx25.3] jaws). [#lstnumberx25.4] [#lstnumberx25.5] Combinable [#lstnumberx25.6] [#lstnumberx25.7] with [#lstnumberx25.8] [#lstnumberx25.9] image_bbox: [#lstnumberx25.10] [#lstnumberx25.11] image_bbox [#lstnumberx25.12] [#lstnumberx25.13] is [#lstnumberx25.14] [#lstnumberx25.15] applied [#lstnumberx25.16] [#lstnumberx25.17] first, [#lstnumberx25.18] [#lstnumberx25.19] then
+[#lstnumberx26] [#lstnumberx26.1] # [#lstnumberx26.2] [#lstnumberx26.3] exclusions [#lstnumberx26.4] [#lstnumberx26.5] zero [#lstnumberx26.6] [#lstnumberx26.7] out [#lstnumberx26.8] [#lstnumberx26.9] within [#lstnumberx26.10] [#lstnumberx26.11] the [#lstnumberx26.12] [#lstnumberx26.13] kept [#lstnumberx26.14] [#lstnumberx26.15] region.
+[#lstnumberx27] [#lstnumberx27.1] # [#lstnumberx27.2] [#lstnumberx27.3] filters:
+[#lstnumberx28] [#lstnumberx28.1] # [#lstnumberx28.2] [#lstnumberx28.3] List [#lstnumberx28.4] [#lstnumberx28.5] of [#lstnumberx28.6] { [#lstnumberx28.7] metric, [#lstnumberx28.8] [#lstnumberx28.9] op, [#lstnumberx28.10] [#lstnumberx28.11] value} [#lstnumberx28.12] [#lstnumberx28.13] dicts [#lstnumberx28.14] [#lstnumberx28.15] AND- [#lstnumberx28.16] ed [#lstnumberx28.17] [#lstnumberx28.18] together [#lstnumberx28.19] [#lstnumberx28.20] to [#lstnumberx28.21] [#lstnumberx28.22] prune [#lstnumberx28.23] [#lstnumberx28.24] detections.
+[#lstnumberx29] [#lstnumberx29.1] # [#lstnumberx29.2] [#lstnumberx29.3] metric [#lstnumberx29.4] [#lstnumberx29.5] in [#lstnumberx29.6] { [#lstnumberx29.7] confidence, [#lstnumberx29.8] [#lstnumberx29.9] area, [#lstnumberx29.10] [#lstnumberx29.11] AR, [#lstnumberx29.12] [#lstnumberx29.13] C, [#lstnumberx29.14] [#lstnumberx29.15] P}; [#lstnumberx29.16] [#lstnumberx29.17] op [#lstnumberx29.18] [#lstnumberx29.19] in [#lstnumberx29.20] {>=, [#lstnumberx29.21] <=}.
+[#lstnumberx30] [#lstnumberx30.1] # [#lstnumberx30.2] [#lstnumberx30.3] AR: [#lstnumberx30.4] [#lstnumberx30.5] aspect [#lstnumberx30.6] [#lstnumberx30.7] ratio; [#lstnumberx30.8] [#lstnumberx30.9] C: [#lstnumberx30.10] [#lstnumberx30.11] compactness [#lstnumberx30.12] 4* [#lstnumberx30.13] pi* [#lstnumberx30.14] area/ [#lstnumberx30.15] P^2; [#lstnumberx30.16] [#lstnumberx30.17] P: [#lstnumberx30.18] [#lstnumberx30.19] perimeter [#lstnumberx30.20] [#lstnumberx30.21] in [#lstnumberx30.22] [#lstnumberx30.23] pixels.
+[#lstnumberx31] [#lstnumberx31.1] # [#lstnumberx31.2] [#lstnumberx31.3] Detections [#lstnumberx31.4] [#lstnumberx31.5] with [#lstnumberx31.6] [#lstnumberx31.7] None [#lstnumberx31.8] [#lstnumberx31.9] or [#lstnumberx31.10] [#lstnumberx31.11] non- [#lstnumberx31.12] finite [#lstnumberx31.13] [#lstnumberx31.14] metric [#lstnumberx31.15] [#lstnumberx31.16] values [#lstnumberx31.17] [#lstnumberx31.18] are [#lstnumberx31.19] [#lstnumberx31.20] dropped.
+[#lstnumberx32] [#lstnumberx32.1] # [#lstnumberx32.2] [#lstnumberx32.3] rank_by:
+[#lstnumberx33] [#lstnumberx33.1] # [#lstnumberx33.2] { [#lstnumberx33.3] metric, [#lstnumberx33.4] [#lstnumberx33.5] direction} [#lstnumberx33.6] [#lstnumberx33.7] dict [#lstnumberx33.8] [#lstnumberx33.9] controlling [#lstnumberx33.10] [#lstnumberx33.11] sort [#lstnumberx33.12] [#lstnumberx33.13] order [#lstnumberx33.14] [#lstnumberx33.15] of [#lstnumberx33.16] [#lstnumberx33.17] returned [#lstnumberx33.18] [#lstnumberx33.19] detections.
+[#lstnumberx34] [#lstnumberx34.1] # [#lstnumberx34.2] [#lstnumberx34.3] metric [#lstnumberx34.4] [#lstnumberx34.5] in [#lstnumberx34.6] { [#lstnumberx34.7] confidence, [#lstnumberx34.8] [#lstnumberx34.9] area, [#lstnumberx34.10] [#lstnumberx34.11] AR, [#lstnumberx34.12] [#lstnumberx34.13] C, [#lstnumberx34.14] [#lstnumberx34.15] P}; [#lstnumberx34.16] [#lstnumberx34.17] direction [#lstnumberx34.18] [#lstnumberx34.19] in [#lstnumberx34.20] { [#lstnumberx34.21] max, [#lstnumberx34.22] [#lstnumberx34.23] min}.
+[#lstnumberx35] [#lstnumberx35.1] # [#lstnumberx35.2] [#lstnumberx35.3] Default: [#lstnumberx35.4] { [#lstnumberx35.5] confidence, [#lstnumberx35.6] [#lstnumberx35.7] max}.
+[#lstnumberx36]
+[#lstnumberx37] [#lstnumberx37.1] [#lstnumberx37.2] def [#lstnumberx37.3] [#lstnumberx37.4] execute( [#lstnumberx37.5] self, [#lstnumberx37.6] ** [#lstnumberx37.7] kwargs) [#lstnumberx37.8] -> [#lstnumberx37.9] [#lstnumberx37.10] ToolResult:
+[#lstnumberx38] [#lstnumberx38.1] [#lstnumberx38.2] rgb [#lstnumberx38.3] = [#lstnumberx38.4] [#lstnumberx38.5] self. [#lstnumberx38.6] _fetch_camera_image( [#lstnumberx38.7] kwargs[" [#lstnumberx38.8] camera"])
+[#lstnumberx39] [#lstnumberx39.1] [#lstnumberx39.2] rgb_for_sam [#lstnumberx39.3] = [#lstnumberx39.4] [#lstnumberx39.5] self. [#lstnumberx39.6] _preprocess( [#lstnumberx39.7] rgb, [#lstnumberx39.8] [#lstnumberx39.9] kwargs[" [#lstnumberx39.10] image_bbox"],
+[#lstnumberx40] [#lstnumberx40.1] [#lstnumberx40.2] kwargs[" [#lstnumberx40.3] image_exclude_bboxes"])
+[#lstnumberx41] [#lstnumberx41.1] [#lstnumberx41.2] detections [#lstnumberx41.3] = [#lstnumberx41.4] [#lstnumberx41.5] requests. [#lstnumberx41.6] post( [#lstnumberx41.7] f"{ [#lstnumberx41.8] self. [#lstnumberx41.9] _sam3_url}/ [#lstnumberx41.10] segment_all",
+[#lstnumberx42] [#lstnumberx42.1] [#lstnumberx42.2] json={" [#lstnumberx42.3] text": [#lstnumberx42.4] [#lstnumberx42.5] kwargs[" [#lstnumberx42.6] query"],
+[#lstnumberx43] [#lstnumberx43.1] " [#lstnumberx43.2] image_b64": [#lstnumberx43.3] [#lstnumberx43.4] to_b64( [#lstnumberx43.5] rgb_for_sam),
+[#lstnumberx44] [#lstnumberx44.1] " [#lstnumberx44.2] score_threshold": [#lstnumberx44.3] kwargs[" [#lstnumberx44.4] score_thresh"]}). [#lstnumberx44.5] json()
+[#lstnumberx45] [#lstnumberx45.1] [#lstnumberx45.2] depth, [#lstnumberx45.3] [#lstnumberx45.4] intr, [#lstnumberx45.5] [#lstnumberx45.6] T_cam_world [#lstnumberx45.7] = [#lstnumberx45.8] [#lstnumberx45.9] _fetch_camera_params( [#lstnumberx45.10] self. [#lstnumberx45.11] _cam, [#lstnumberx45.12] [#lstnumberx45.13] kwargs[" [#lstnumberx45.14] camera"])
+[#lstnumberx46] [#lstnumberx46.1] [#lstnumberx46.2] results [#lstnumberx46.3] = [#lstnumberx46.4] [
+[#lstnumberx47] [#lstnumberx47.1] [#lstnumberx47.2] SegmentationResult(
+[#lstnumberx48] [#lstnumberx48.1] [#lstnumberx48.2] mask [#lstnumberx48.3] = [#lstnumberx48.4] [#lstnumberx48.5] np. [#lstnumberx48.6] load( [#lstnumberx48.7] io. [#lstnumberx48.8] BytesIO( [#lstnumberx48.9] base64. [#lstnumberx48.10] b64decode( [#lstnumberx48.11] d[" [#lstnumberx48.12] mask_b64"]))),
+[#lstnumberx49] [#lstnumberx49.1] [#lstnumberx49.2] score [#lstnumberx49.3] = [#lstnumberx49.4] [#lstnumberx49.5] d[" [#lstnumberx49.6] score"],
+[#lstnumberx50] [#lstnumberx50.1] [#lstnumberx50.2] bbox_xywh [#lstnumberx50.3] = [#lstnumberx50.4] [#lstnumberx50.5] d[" [#lstnumberx50.6] bbox_xywh"],
+[#lstnumberx51] [#lstnumberx51.1] [#lstnumberx51.2] mask_area [#lstnumberx51.3] = [#lstnumberx51.4] [#lstnumberx51.5] d[" [#lstnumberx51.6] mask_area"],
+[#lstnumberx52] [#lstnumberx52.1] [#lstnumberx52.2] perimeter_px [#lstnumberx52.3] = [#lstnumberx52.4] [#lstnumberx52.5] _shape_stats( [#lstnumberx52.6] mask)[" [#lstnumberx52.7] perimeter_px"],
+[#lstnumberx53] [#lstnumberx53.1] [#lstnumberx53.2] compactness [#lstnumberx53.3] = [#lstnumberx53.4] [#lstnumberx53.5] _shape_stats( [#lstnumberx53.6] mask)[" [#lstnumberx53.7] compactness"],
+[#lstnumberx54] [#lstnumberx54.1] [#lstnumberx54.2] centroid_uv [#lstnumberx54.3] = [#lstnumberx54.4] [#lstnumberx54.5] _shape_stats( [#lstnumberx54.6] mask)[" [#lstnumberx54.7] centroid_uv"],
+[#lstnumberx55] [#lstnumberx55.1] [#lstnumberx55.2] centroid_world_xyz [#lstnumberx55.3] = [#lstnumberx55.4] [#lstnumberx55.5] _project_centroid( [#lstnumberx55.6] mask, [#lstnumberx55.7] [#lstnumberx55.8] depth, [#lstnumberx55.9] [#lstnumberx55.10] intr, [#lstnumberx55.11] [#lstnumberx55.12] T_cam_world),
+[#lstnumberx56] [#lstnumberx56.1] [#lstnumberx56.2] depth_m [#lstnumberx56.3] = [#lstnumberx56.4] [#lstnumberx56.5] depth[ [#lstnumberx56.6] v, [#lstnumberx56.7] [#lstnumberx56.8] u],
+[#lstnumberx57] [#lstnumberx57.1] ) [#lstnumberx57.2] [#lstnumberx57.3] for [#lstnumberx57.4] [#lstnumberx57.5] d [#lstnumberx57.6] [#lstnumberx57.7] in [#lstnumberx57.8] [#lstnumberx57.9] detections
+[#lstnumberx58] [#lstnumberx58.1] ]
+[#lstnumberx59] [#lstnumberx59.1] [#lstnumberx59.2] return [#lstnumberx59.3] [#lstnumberx59.4] ToolResult( [#lstnumberx59.5] success= [#lstnumberx59.6] True,
+[#lstnumberx60] [#lstnumberx60.1] [#lstnumberx60.2] data= [#lstnumberx60.3] _rank_results( [#lstnumberx60.4] _apply_filters( [#lstnumberx60.5] results,
+[#lstnumberx61] [#lstnumberx61.1] [#lstnumberx61.2] kwargs[" [#lstnumberx61.3] filters"]), [#lstnumberx61.4] [#lstnumberx61.5] kwargs[" [#lstnumberx61.6] rank_by"]))
+[#A1.SS1.p3]
+[#A1.SS1.p3.1] From these API tools, coding agents can synthesize perception skills such as semantic segmentation and 3D bounding box generation, as well as manipulation skills including pick-and-place, object reorientation, localization, and bimanual handover. Composing these skills with failure detection and retry mechanisms yields long-horizon reset functions that are robust to real-world perturbations. Section A.1 illustrates a concrete example for the GPU insertion task, where the agent sequences SAM3-based object localization, RANSAC (14) and OBB (17)-based 3D bounding box estimation, torque-verified grasping, and cuRobo collision-free handover into a complete reset pipeline. Visualizations of the intermediate segmentation and bounding box outputs are provided in Figure 8.
+[#A1.SS1.p4] [#A1.SS1.p4.1] {codesnippet}
+[#A1.SS1.p4.3] Reset Policy: GPU Insertion Recovery. Localizes the motherboard and target slot with SAM3, grasps and extracts the GPU with a torque-verified grip, then carries it to a parking pose via a cuRobo collision-free handover.
+[#A1.SS1.p4.4]
+⬇
+[#lstnumberx62] [#lstnumberx62.1] def [#lstnumberx62.2] [#lstnumberx62.3] reset_gpu_insertion():
+[#lstnumberx63] [#lstnumberx63.1] [#lstnumberx63.2] go_home()
+[#lstnumberx64]
+[#lstnumberx65] [#lstnumberx65.1] # [#lstnumberx65.2] — [#lstnumberx65.3] [#lstnumberx65.4] SAM3: [#lstnumberx65.5] [#lstnumberx65.6] localize [#lstnumberx65.7] [#lstnumberx65.8] motherboard [#lstnumberx65.9] [#lstnumberx65.10] and [#lstnumberx65.11] [#lstnumberx65.12] target [#lstnumberx65.13] [#lstnumberx65.14] PCIe [#lstnumberx65.15] [#lstnumberx65.16] slot [#lstnumberx65.17] —
+[#lstnumberx66] [#lstnumberx66.1] [#lstnumberx66.2] scene [#lstnumberx66.3] = [#lstnumberx66.4] [#lstnumberx66.5] sam3_localize_motherboard( [#lstnumberx66.6] camera=" [#lstnumberx66.7] top")
+[#lstnumberx67] [#lstnumberx67.1] [#lstnumberx67.2] hover_pos, [#lstnumberx67.3] [#lstnumberx67.4] scene [#lstnumberx67.5] = [#lstnumberx67.6] [#lstnumberx67.7] acquire_slot_hover( [#lstnumberx67.8] scene)
+[#lstnumberx68]
+[#lstnumberx69] [#lstnumberx69.1] # [#lstnumberx69.2] — [#lstnumberx69.3] [#lstnumberx69.4] grasp [#lstnumberx69.5] [#lstnumberx69.6] GPU [#lstnumberx69.7] [#lstnumberx69.8] and [#lstnumberx69.9] [#lstnumberx69.10] extract [#lstnumberx69.11] [#lstnumberx69.12] from [#lstnumberx69.13] [#lstnumberx69.14] slot [#lstnumberx69.15] —
+[#lstnumberx70] [#lstnumberx70.1] [#lstnumberx70.2] descend_guided( [#lstnumberx70.3] scene)
+[#lstnumberx71] [#lstnumberx71.1] [#lstnumberx71.2] close_gripper( [#lstnumberx71.3] torque_limit= [#lstnumberx71.4] LEFT_CLOSE_TORQUE_LIMIT)
+[#lstnumberx72] [#lstnumberx72.1] [#lstnumberx72.2] verify_grasp_or_raise() [#lstnumberx72.3] # [#lstnumberx72.4] [#lstnumberx72.5] gripper [#lstnumberx72.6] [#lstnumberx72.7] torque [#lstnumberx72.8] [#lstnumberx72.9] check
+[#lstnumberx73] [#lstnumberx73.1] [#lstnumberx73.2] lift_and_pull( [#lstnumberx73.3] scene)
+[#lstnumberx74]
+[#lstnumberx75] [#lstnumberx75.1] # [#lstnumberx75.2] — [#lstnumberx75.3] [#lstnumberx75.4] handover: [#lstnumberx75.5] [#lstnumberx75.6] carry [#lstnumberx75.7] [#lstnumberx75.8] GPU [#lstnumberx75.9] [#lstnumberx75.10] to [#lstnumberx75.11] [#lstnumberx75.12] parking [#lstnumberx75.13] [#lstnumberx75.14] pose [#lstnumberx75.15] [#lstnumberx75.16] on [#lstnumberx75.17] [#lstnumberx75.18] table [#lstnumberx75.19] —
+[#lstnumberx76] [#lstnumberx76.1] [#lstnumberx76.2] freespace_move( [#lstnumberx76.3] left_target_pos= [#lstnumberx76.4] TABLE_APPROACH_POS,
+[#lstnumberx77] [#lstnumberx77.1] [#lstnumberx77.2] left_target_rpy= [#lstnumberx77.3] TABLE_PLACE_RPY,
+[#lstnumberx78] [#lstnumberx78.1] [#lstnumberx78.2] backend=" [#lstnumberx78.3] curobo")
+[#lstnumberx79] [#lstnumberx79.1] [#lstnumberx79.2] release_glide( [#lstnumberx79.3] TABLE_PLACE_POS, [#lstnumberx79.4] [#lstnumberx79.5] TABLE_PLACE_RPY) [#lstnumberx79.6] # [#lstnumberx79.7] [#lstnumberx79.8] synchronized [#lstnumberx79.9] [#lstnumberx79.10] open
+[#lstnumberx80] [#lstnumberx80.1] [#lstnumberx80.2] cartesian_retract_after_release()
+[#lstnumberx81] [#lstnumberx81.1] [#lstnumberx81.2] go_home()
+[#A1.F8] [#A1.F8.g1]
+[#A1.F8.3] Figure 8: [#A1.F8.4] Visual tools for GPU insertion. Agent-written auxiliary detection tools for GPU localization via SAM3 and depth estimation.
+[#A1.SS2]
+A.2 Autoresearch-driven Reward Design
+[#A1.SS2.p1]
+[#A1.SS2.p1.1] Autoresearch can be applied to automate the design of reward functions. This procedure requires human effort in only two steps: first, collect a few minutes of representative success and failure demonstrations; second, specify the reward design requirements, including target precision, recall, and inference latency.
+[#A1.SS2.p2]
+[#A1.SS2.p2.1] As an example, we assign the agent to build a visual reward function that detects whether a zip tie is fastened. For evaluation, we record a few minutes of labeled success and failure snapshots of zip tie fastening as a sandboxed held-out evaluation set—the agent may study failures, but cannot train on the test set or alter metric computation. The agent autonomously probes the SAM3 API via prompt search, tunes cropping and depth thresholds to suppress background noise, and meets the 150 ms latency budget by converting to ONNX, compiling the computation graph for simultaneous multi-object forward passes. The decision-making logic converges on the two-view geometric test, illustrated in Figure 4. A simplified implementation is provided in Section A.2.
+[#A1.SS2.p3]
+[#A1.SS2.p3.1] Autoresearch is not limited to visual rewards; the coding agent can compose hybrid reward functions that fuse multiple sensing modalities, including proprioception and end-effector force estimates. As an example, Figure 9 illustrates an autonomously designed reward for pin insertion that combines visual alignment, depth of insertion, and contact force signals.
+[#A1.SS2.p4] [#A1.SS2.p4.1] {codesnippet}
+[#A1.SS2.p4.3] Dual-View Zip Tie Verification. Combines the top and right camera views in a geometric test of whether the zip-tie strap passes through the head, guarding against single-view false positives.
+[#A1.SS2.p4.4]
+⬇
+[#lstnumberx82] [#lstnumberx82.1] def [#lstnumberx82.2] [#lstnumberx82.3] get_reward_from_top_right_cam( [#lstnumberx82.4] rgb_t, [#lstnumberx82.5] [#lstnumberx82.6] rgb_r):
+[#lstnumberx83] [#lstnumberx83.1] [#lstnumberx83.2] dets [#lstnumberx83.3] = [#lstnumberx83.4] [#lstnumberx83.5] segment_zip_tie_views( [#lstnumberx83.6] rgb_t, [#lstnumberx83.7] [#lstnumberx83.8] rgb_r, [#lstnumberx83.9] [#lstnumberx83.10] threshold= [#lstnumberx83.11] sam3_score_threshold)
+[#lstnumberx84] [#lstnumberx84.1] [#lstnumberx84.2] strap [#lstnumberx84.3] = [#lstnumberx84.4] [#lstnumberx84.5] union([ [#lstnumberx84.6] d[" [#lstnumberx84.7] mask"] [#lstnumberx84.8] [#lstnumberx84.9] for [#lstnumberx84.10] [#lstnumberx84.11] d [#lstnumberx84.12] [#lstnumberx84.13] in [#lstnumberx84.14] [#lstnumberx84.15] top2_by_score( [#lstnumberx84.16] dets[" [#lstnumberx84.17] top"][" [#lstnumberx84.18] strap"])])
+[#lstnumberx85] [#lstnumberx85.1] [#lstnumberx85.2] head [#lstnumberx85.3] = [#lstnumberx85.4] [#lstnumberx85.5] top1_by_score( [#lstnumberx85.6] dets[" [#lstnumberx85.7] top"][" [#lstnumberx85.8] head"])[" [#lstnumberx85.9] mask"]
+[#lstnumberx86] [#lstnumberx86.1] [#lstnumberx86.2] strap [#lstnumberx86.3] = [#lstnumberx86.4] [#lstnumberx86.5] binary_dilation( [#lstnumberx86.6] strap, [#lstnumberx86.7] [#lstnumberx86.8] iterations= [#lstnumberx86.9] top_dilate)
+[#lstnumberx87] [#lstnumberx87.1] [#lstnumberx87.2] head [#lstnumberx87.3] = [#lstnumberx87.4] [#lstnumberx87.5] binary_dilation( [#lstnumberx87.6] head, [#lstnumberx87.7] [#lstnumberx87.8] iterations= [#lstnumberx87.9] top_dilate)
+[#lstnumberx88] [#lstnumberx88.1] [#lstnumberx88.2] overlap [#lstnumberx88.3] = [#lstnumberx88.4] ( [#lstnumberx88.5] strap [#lstnumberx88.6] & [#lstnumberx88.7] [#lstnumberx88.8] head). [#lstnumberx88.9] sum() [#lstnumberx88.10] / [#lstnumberx88.11] [#lstnumberx88.12] head. [#lstnumberx88.13] sum()
+[#lstnumberx89] [#lstnumberx89.1] [#lstnumberx89.2] protrude [#lstnumberx89.3] = [#lstnumberx89.4] [#lstnumberx89.5] strap[:, [#lstnumberx89.6] : [#lstnumberx89.7] head_left_x( [#lstnumberx89.8] head)]. [#lstnumberx89.9] sum() [#lstnumberx89.10] / [#lstnumberx89.11] [#lstnumberx89.12] head. [#lstnumberx89.13] sum()
+[#lstnumberx90] [#lstnumberx90.1] [#lstnumberx90.2] top_ok [#lstnumberx90.3] = [#lstnumberx90.4] [#lstnumberx90.5] overlap [#lstnumberx90.6] >= [#lstnumberx90.7] [#lstnumberx90.8] top_inter_frac [#lstnumberx90.9] [#lstnumberx90.10] and [#lstnumberx90.11] [#lstnumberx90.12] protrude [#lstnumberx90.13] >= [#lstnumberx90.14] [#lstnumberx90.15] top_left_mult
+[#lstnumberx91]
+[#lstnumberx92] [#lstnumberx92.1] [#lstnumberx92.2] right [#lstnumberx92.3] = [#lstnumberx92.4] [#lstnumberx92.5] binary_dilation( [#lstnumberx92.6] dets[" [#lstnumberx92.7] right"][" [#lstnumberx92.8] strap"][" [#lstnumberx92.9] mask"], [#lstnumberx92.10] [#lstnumberx92.11] iterations= [#lstnumberx92.12] right_dilate)
+[#lstnumberx93] [#lstnumberx93.1] [#lstnumberx93.2] head_box [#lstnumberx93.3] = [#lstnumberx93.4] [#lstnumberx93.5] bbox_shrunk( [#lstnumberx93.6] dets[" [#lstnumberx93.7] right"][" [#lstnumberx93.8] head"], [#lstnumberx93.9] [#lstnumberx93.10] frac= [#lstnumberx93.11] right_shrunk_frac)
+[#lstnumberx94] [#lstnumberx94.1] [#lstnumberx94.2] labeled, [#lstnumberx94.3] [#lstnumberx94.4] n_comp [#lstnumberx94.5] = [#lstnumberx94.6] [#lstnumberx94.7] label( [#lstnumberx94.8] right)
+[#lstnumberx95] [#lstnumberx95.1] [#lstnumberx95.2] if [#lstnumberx95.3] [#lstnumberx95.4] n_comp [#lstnumberx95.5] == [#lstnumberx95.6] 2:
+[#lstnumberx96] [#lstnumberx96.1] [#lstnumberx96.2] right [#lstnumberx96.3] = [#lstnumberx96.4] [#lstnumberx96.5] right [#lstnumberx96.6] | [#lstnumberx96.7] [#lstnumberx96.8] connect_components( [#lstnumberx96.9] labeled)
+[#lstnumberx97] [#lstnumberx97.1] [#lstnumberx97.2] right_ok [#lstnumberx97.3] = [#lstnumberx97.4] [#lstnumberx97.5] n_comp [#lstnumberx97.6] [#lstnumberx97.7] in [#lstnumberx97.8] (1, [#lstnumberx97.9] 2) [#lstnumberx97.10] [#lstnumberx97.11] and [#lstnumberx97.12] ( [#lstnumberx97.13] right [#lstnumberx97.14] & [#lstnumberx97.15] [#lstnumberx97.16] head_box). [#lstnumberx97.17] any()
+[#lstnumberx98] [#lstnumberx98.1] [#lstnumberx98.2] return [#lstnumberx98.3] [#lstnumberx98.4] top_ok [#lstnumberx98.5] [#lstnumberx98.6] and [#lstnumberx98.7] [#lstnumberx98.8] right_ok
+[#A1.F9] [#A1.F9.g1]
+[#A1.F9.3] Figure 9: [#A1.F9.4] Reward function for pin insertion.
+The agent proposes a hybrid verification strategy fusing visual alignment of the
+pin tip to the hole, insertion depth from proprioception signals, and end-effector torque detection.
+[#A2]
+Appendix B Robot System Setup
+[#A2.SS1]
+B.1 Fleet Architecture
+[#A2.SS1.p1]
+[#A2.SS1.p1.1] Our physical infrastructure is a fleet of [#A2.SS1.p1.1.1] eight bimanual robot stations, operated in a decentralized manner. Each station owns its robot arms and cameras, compute, and its own coding agent. Hardware-control requests from each station’s agent are routed through a local FastAPI server. Coordination across stations is mediated entirely through [#A2.SS1.p1.1.2] Git: rather than streaming state to a central server, stations share code, configurations, tools, and results by pushing to and pulling from a common repository, so that improvements discovered on one station propagate to the rest through ordinary version control. Because all coordination flows through Git, agents can borrow ideas from one another: they freely merge changes from other branches or cherry-pick individual commits, selectively adopting promising approaches and results discovered at other stations. This keeps the fleet loosely coupled and fault-tolerant, since stations run, fail, and recover independently, while the shared Git history serves as the single source of truth for what each station has tried and learned.
+[#A2.SS1.SSS0.Px1]
+Control endpoints.
+[#A2.SS1.SSS0.Px1.p1]
+[#A2.SS1.SSS0.Px1.p1.1] The FastAPI server exposes a small set of endpoints through which the agent drives data collection and execution: /start begins a rollout on the real hardware, /restart allocates a fresh rollout buffer directory, and /home returns the arms to the home configuration. The /restart endpoint keeps successive rollouts separate and individually addressable, so that the data from different hypotheses or experiments is never mixed together: each rollout is written to its own directory, and the agent can attribute outcomes to the specific change it was testing. These endpoints are shared across all of our tasks. The Push-T task additionally exposes /avoid and /resume endpoints to handle occlusion: /avoid backs the arm out of the top-camera frame so it no longer occludes the scene, and /resume returns the arm to its original position to continue manipulation.
+[#A2.SS1.SSS0.Px2]
+Agent sandbox and context.
+[#A2.SS1.SSS0.Px2.p1]
+[#A2.SS1.SSS0.Px2.p1.1] Each station’s coding agent operates within a sandbox scoped to a single autoresearch repository. Within this sandbox the agent runs with elevated autonomy: action-level permission prompts are bypassed, so it can execute commands without per-step human approval, and it is granted unrestricted internet access. The agent is provided with the complete set of robot data collected during the current autoresearch session, and is free to make full use of all available information in pursuit of its objective. For ordinary fresh sessions, raw repository state, rollout data, checkpoints, and transient logs from prior sessions are pruned before initialization, so that the agent starts from a clean, isolated workspace. For transfer experiments, such as initializing GPU insertion after pin insertion, the agent is instead given an explicit markdown summary distilled from the previous pin-insertion autoresearch session; raw trajectories, hidden logs, and checkpoints are still removed, so transfer occurs through the written summary rather than through unbounded access to prior session state. The prompt given to each station’s agent is shown in Figure 10.
+[#A2.F10]
+[#A2.F10.3]
+⬇
+[#lstnumberx99] / [#lstnumberx99.1] goal [#lstnumberx99.2] [#lstnumberx99.3] Achieve [#lstnumberx99.4] [#lstnumberx99.5] a [#lstnumberx99.6] 100% [#lstnumberx99.7] [#lstnumberx99.8] success [#lstnumberx99.9] [#lstnumberx99.10] rate [#lstnumberx99.11] [#lstnumberx99.12] over [#lstnumberx99.13] [#lstnumberx99.14] each [#lstnumberx99.15] [#lstnumberx99.16] window [#lstnumberx99.17] [#lstnumberx99.18] of [#lstnumberx99.19] 50 [#lstnumberx99.20] [#lstnumberx99.21] consecutive
+[#lstnumberx100] [#lstnumberx100.1] episodes. [#lstnumberx100.2] [#lstnumberx100.3] Read [#lstnumberx100.4] [#lstnumberx100.5] @auto_research. [#lstnumberx100.6] md [#lstnumberx100.7] [#lstnumberx100.8] and [#lstnumberx100.9] [#lstnumberx100.10] fan [#lstnumberx100.11] [#lstnumberx100.12] out [#lstnumberx100.13] [#lstnumberx100.14] a [#lstnumberx100.15] [#lstnumberx100.16] subagent [#lstnumberx100.17] [#lstnumberx100.18] team [#lstnumberx100.19] [#lstnumberx100.20] to [#lstnumberx100.21] [#lstnumberx100.22] study
+[#lstnumberx101] [#lstnumberx101.1] different [#lstnumberx101.2] [#lstnumberx101.3] algorithms [#lstnumberx101.4] ( [#lstnumberx101.5] RL, [#lstnumberx101.6] [#lstnumberx101.7] BC, [#lstnumberx101.8] [#lstnumberx101.9] hybrid). [#lstnumberx101.10] [#lstnumberx101.11] You [#lstnumberx101.12] [#lstnumberx101.13] may [#lstnumberx101.14] [#lstnumberx101.15] reuse [#lstnumberx101.16] [#lstnumberx101.17] checkpoints [#lstnumberx101.18] [#lstnumberx101.19] or [#lstnumberx101.20] [#lstnumberx101.21] data
+[#lstnumberx102] [#lstnumberx102.1] buffers [#lstnumberx102.2] [#lstnumberx102.3] across [#lstnumberx102.4] [#lstnumberx102.5] hypotheses. [#lstnumberx102.6] [#lstnumberx102.7] Create [#lstnumberx102.8] [#lstnumberx102.9] your [#lstnumberx102.10] [#lstnumberx102.11] own [#lstnumberx102.12] [#lstnumberx102.13] branch [#lstnumberx102.14] [#lstnumberx102.15] from [#lstnumberx102.16] [#lstnumberx102.17] autorl [#lstnumberx102.18] [#lstnumberx102.19] following [#lstnumberx102.20] [#lstnumberx102.21] the
+[#lstnumberx103] [#lstnumberx103.1] instructions. [#lstnumberx103.2] [#lstnumberx103.3] Do [#lstnumberx103.4] [#lstnumberx103.5] not [#lstnumberx103.6] [#lstnumberx103.7] directly [#lstnumberx103.8] [#lstnumberx103.9] work [#lstnumberx103.10] [#lstnumberx103.11] on [#lstnumberx103.12] [#lstnumberx103.13] or [#lstnumberx103.14] [#lstnumberx103.15] push [#lstnumberx103.16] [#lstnumberx103.17] to [#lstnumberx103.18] [#lstnumberx103.19] autorl. [#lstnumberx103.20] [#lstnumberx103.21] You [#lstnumberx103.22] [#lstnumberx103.23] must [#lstnumberx103.24] [#lstnumberx103.25] actively
+[#lstnumberx104] [#lstnumberx104.1] monitor [#lstnumberx104.2] [#lstnumberx104.3] other [#lstnumberx104.4] [#lstnumberx104.5] branches [#lstnumberx104.6] [#lstnumberx104.7] and [#lstnumberx104.8] [#lstnumberx104.9] commits [#lstnumberx104.10] [#lstnumberx104.11] from [#lstnumberx104.12] [#lstnumberx104.13] origin [#lstnumberx104.14] [#lstnumberx104.15] that [#lstnumberx104.16] [#lstnumberx104.17] branched [#lstnumberx104.18] [#lstnumberx104.19] off [#lstnumberx104.20] [#lstnumberx104.21] autorl [#lstnumberx104.22] [#lstnumberx104.23] to
+[#lstnumberx105] [#lstnumberx105.1] leverage [#lstnumberx105.2] [#lstnumberx105.3] knowledge [#lstnumberx105.4] [#lstnumberx105.5] from [#lstnumberx105.6] [#lstnumberx105.7] those [#lstnumberx105.8] [#lstnumberx105.9] branches. [#lstnumberx105.10] [#lstnumberx105.11] You [#lstnumberx105.12] [#lstnumberx105.13] must [#lstnumberx105.14] [#lstnumberx105.15] actively [#lstnumberx105.16] [#lstnumberx105.17] push [#lstnumberx105.18] [#lstnumberx105.19] your [#lstnumberx105.20] [#lstnumberx105.21] branch [#lstnumberx105.22] [#lstnumberx105.23] to
+[#lstnumberx106] [#lstnumberx106.1] contribute [#lstnumberx106.2] [#lstnumberx106.3] to [#lstnumberx106.4] [#lstnumberx106.5] the [#lstnumberx106.6] [#lstnumberx106.7] repo [#lstnumberx106.8] [#lstnumberx106.9] and [#lstnumberx106.10] [#lstnumberx106.11] pull [#lstnumberx106.12] [#lstnumberx106.13] from [#lstnumberx106.14] [#lstnumberx106.15] origin. [#lstnumberx106.16] [#lstnumberx106.17] Collaborate [#lstnumberx106.18] [#lstnumberx106.19] with [#lstnumberx106.20] [#lstnumberx106.21] other [#lstnumberx106.22] [#lstnumberx106.23] agents
+[#lstnumberx107] [#lstnumberx107.1] via [#lstnumberx107.2] [#lstnumberx107.3] Git.
+[#A2.F10.4] Figure 10: [#A2.F10.5] The autoresearch prompt provided to each station’s coding agent.
+[#A2.SS2]
+B.2 Station Hardware
+[#A2.SS2.p1]
+[#A2.SS2.p1.1] All 8 stations are hardware-identical. Each station comprises two YAM (Yet Another Manipulator) arms from I2RT in a fixed bimanual configuration, a set of cameras, and a single workstation that runs the FastAPI server, policy inference, and the station’s agent.
+[#A2.SS2.SSS0.Px1]
+Manipulators and actuation.
+[#A2.SS2.SSS0.Px1.p1]
+[#A2.SS2.SSS0.Px1.p1.1] Each arm is a 6-DoF manipulator equipped with a 1-DoF parallel-jaw gripper, giving seven actuated joints per arm and fourteen across the bimanual pair. All joints are driven by brushless actuators over a CAN bus. The six arm joints are run under PD control with gravity compensation, while the gripper is run in a force-limited mode that bounds grip force directly (Section B.3); we exploit this gripper-level force limiting both for robust grasping and for safe, unattended operation across the fleet.
+[#A2.SS2.SSS0.Px2]
+Compute.
+[#A2.SS2.SSS0.Px2.p1]
+[#A2.SS2.SSS0.Px2.p1.1] Each station runs on a single workstation whose specifications are listed in Table 1. All policy inference and on-station computation run on this single GPU, with no shared cluster or off-station compute.
+[#A2.T1]
+[#A2.T1.3] Table 1: [#A2.T1.4] Per-station compute specifications.
+[#A2.T1.5]
+[#A2.T1.5.1]
+[#A2.T1.5.1.1] Component
+[#A2.T1.5.1.2] Specification
+[#A2.T1.5.2]
+[#A2.T1.5.2.1] GPU
+[#A2.T1.5.2.2] 1 [#A2.T1.m1] ×\times NVIDIA RTX 5090, 32 GB
+[#A2.T1.5.3]
+[#A2.T1.5.3.1] CPU
+[#A2.T1.5.3.2] Intel Core Ultra 9 285K, 24 cores
+[#A2.T1.5.4]
+[#A2.T1.5.4.1] RAM
+[#A2.T1.5.4.2] 128 GB
+[#A2.T1.5.5]
+[#A2.T1.5.5.1] OS
+[#A2.T1.5.5.2] Ubuntu 22.04 LTS
+[#A2.T1.5.6]
+[#A2.T1.5.6.1] GPU stack
+[#A2.T1.5.6.2] NVIDIA driver 595.58.03, CUDA 13.2
+[#A2.SS2.SSS0.Px3]
+Perception.
+[#A2.SS2.SSS0.Px3.p1]
+[#A2.SS2.SSS0.Px3.p1.1] Unless noted otherwise, perception uses Intel RealSense [#A2.SS2.SSS0.Px3.p1.1.1] D405 cameras: one top-down camera viewing the workspace and two wrist-mounted cameras, one per arm, that provide close-range views of the grasped object and the contact region. One task also uses a side-mounted RealSense [#A2.SS2.SSS0.Px3.p1.1.2] D435i for a wider third-person view (Section B.4). The policy runs at [#A2.SS2.SSS0.Px3.p1.1.3] 30 Hz, and its action targets are tracked by the low-level joint controllers described below, which run at [#A2.SS2.SSS0.Px3.p1.1.4] 100 Hz over the CAN bus. We additionally use [#A2.SS2.SSS0.Px3.p1.1.5] Viser for real-time, browser-based 3D visualization of robot state, camera frames, and target poses, which supports monitoring of autonomous runs, calibration debugging, and episode inspection.
+[#A2.SS3]
+B.3 Low-Level Control
+[#A2.SS3.p1]
+[#A2.SS3.p1.1] Policy actions are inferred at [#A2.SS3.p1.1.1] 30 Hz, and each action target is tracked by the low-level joint controllers running at [#A2.SS3.p1.1.2] 100 Hz over the CAN bus. The two joint groups are controlled differently. The six arm joints use [#A2.SS3.p1.1.3] PD control with gravity compensation, which tracks the commanded joint targets while the feedforward gravity term offloads the static load so the PD gains only need to handle the residual error.
+[#A2.SS3.p2]
+[#A2.SS3.p2.1] The 1-DoF gripper runs as a [#A2.SS3.p2.1.1] torque-limiting compliant grasp: instead of closing to a rigid target width, the gripper applies a bounded grip force set by a commanded torque limit. This force limiting is the key to robust and safe grasping. Because the fingers settle around the object at a bounded force rather than driving to a fixed position, the grasp accommodates variation in object pose and size and is robust to perception and placement error. The same bound caps the force the system can exert during grasping, contact, and insertion, preventing damage to the gripper, the manipulated parts, and the fixtures when an attempt is misaligned or fails. Because the fleet operates autonomously and unattended across all 8 stations, this bounded-force behavior is essential: a bad contact results in a safe stall rather than a hardware-damaging push, with no human in the loop to intervene.
+[#A2.SS4]
+B.4 Per-Task Configuration
+[#A2.F11]
+[#A2.F11.fig1] [#A2.F11.g1]
+[#A2.F11.fig1.1] (a) [#A2.F11.fig1.2] Four-camera setup (GPU insertion).
+[#A2.F11.fig2] [#A2.F11.g2]
+[#A2.F11.fig2.1] (b) [#A2.F11.fig2.2] Three-camera setup (pin insertion, Push-T, zip tie).
+[#A2.F11.3] Figure 11: [#A2.F11.4] Per-station camera configurations. All tasks use one top-down camera and two wrist-mounted cameras, all RealSense D405. The GPU insertion task in Figure 11 additionally uses a side-mounted RealSense D435i on the left pole for a wider third-person view of the slot; the remaining tasks use the three-camera setup in Figure 11.
+[#A2.SS4.p1]
+[#A2.SS4.p1.1] The four tasks share the station hardware and the 30 Hz policy loop above, and differ only in minor details of their camera and control configuration. As shown in Figure 11, all four use one top-down camera and two wrist cameras, all RealSense D405; the GPU insertion task additionally uses a side-mounted RealSense D435i for a wider third-person view of the slot.
+[#A2.SS5]
+B.5 Real-World RL System Integration
+[#A2.SS5.p1]
+[#A2.SS5.p1.1] We integrated the PLD-RL pipeline (48) to provide a controlled sandbox for the coding agent to conduct algorithm auto-research with online data collection. The infrastructure is developed following the asynchronous design of SERL (27; 28). We implement it as a three-tier distributed system that decouples robot interaction, policy learning, and inference across separate processes. The deployment layer runs on a robot-adjacent control machine and is responsible for hardware orchestration, episode recording, and human-in-the-loop teleoperation. The second tier, learner, runs on a GPU host and trains an RL agent (actor & critic) with pixel observations encoded through a pre-trained visual backbone. The third tier, actor, exposes a Portal/ZMQ msgpack-compatible endpoint, so that the controller can request actions through a uniform protocol shared with scripted and teleoperated control modes.
+[#A2.SS5.p2]
+[#A2.SS5.p2.1] Data flow between the deployment layer and the learner is mediated by a deliberately loose disk-based contract. The deployment layer serializes each episode as a per-step observation tensor and synchronized camera streams (.mp4) into a rollout-buffer directory, accompanied by a per-step action label identifying the action source (rl, human, etc.). Meanwhile, a daemon thread ( [#A2.SS5.p2.1.1] DiskBufferIngestor) polls this directory periodically, parses newly finalized episodes, and routes transitions by action-source label following the RLPD-style data-mixing protocol (4): RL-generated transitions populate the online replay buffer, while human and manual transitions populate a separate demonstration buffer that is mixed into each training batch. This design is flexible for mixing data from different sources.
+[#A2.SS6]
+B.6 Idea Tree for Pin Insertion
+[#A2.SS6.p1]
+[#A2.SS6.p1.1] Figure 12 visualizes an agent-team autoresearch run on the pin
+insertion task as an idea tree (top) paired with its hill-climbing curve (bottom).
+Each node [#A2.SS6.p1.m1] I​k\mathrm{I}k is an idea explored by the team; ideas that are related are
+connected by a horizontal line, and each new lane corresponds to a new branch of ideas.
+Solid green nodes mark ideas that improved the team-average best success rate, while
+hollow nodes were evaluated but yielded no gain. The thick black line traces the lineage
+of the highest-scoring idea. Circled nodes are highlighted ideas that are also annotated
+on the hill-climbing curve below, to which they are connected by dashed lines. The bottom
+panel reports the team-average best success rate as a function of research wall-clock time, sharing the time axis of the tree above. As the agents collaborate through Git,
+a few high-impact ideas account for most of the progress—most notably BC regularization
+(I37, [#A2.SS6.p1.m2] +10.8+10.8 pp)—while later ideas such as batch-size tuning (I66, [#A2.SS6.p1.m3] +0.9+0.9 pp) and
+controller compensation (I76, [#A2.SS6.p1.m4] +1.3+1.3 pp) contribute smaller, incremental refinements as
+the success rate approaches [#A2.SS6.p1.m5] 100%100\%.
+[#A2.F12] [#A2.F12.g1]
+[#A2.F12.6] Figure 12: [#A2.F12.7] Idea tree and hill-climbing progress for the pin insertion task. [#A2.F12.7.1]
+[#A2.F12.7.1.1] Top: the agent’s idea tree, where each node [#A2.F12.m2] I​k\mathrm{I}k is a proposed idea and
+each new lane is a new idea branch. Two nodes joined by a horizontal line are related
+ideas. Solid green nodes improved the team-average best success rate; hollow nodes were
+evaluated but yielded no gain. The thick black line traces the lineage of the
+highest-scoring idea, and circled nodes are highlighted ideas linked by dashed lines to
+their milestones below. [#A2.F12.7.1.2] Bottom: the team-average best success rate over research
+wall-clock time, sharing the time axis of the tree. Annotated milestones report each
+highlighted idea’s improvement in percentage points (pp).
+[#A3]
+Appendix C Physical Autoresearch: Ablation Studies
+[#A3.SS1]
+C.1 Experimental Setup
+[#A3.SS1.p1]
+[#A3.SS1.p1.1] We constructed a simplified real-world Push-T environment, pusht-simple, for controlled ablations of the autoresearch agent. The task preserves the core visual servoing and contact-planning structure of Push-T while reducing episode length and setup variability, making it suitable for repeated comparisons across model, harness, and visual-grounding conditions. Compared with the Push-T task in the main paper, this variant uses a relaxed success boundary so that ablations can focus on controller discovery rather than rare terminal precision. An episode is counted as successful when the pushed T block reaches the target region within the prescribed translational tolerance and its orientation is within [#A3.SS1.p1.m1] 10∘10^{\circ} of the goal orientation. Operationally, the agent must write a controller that rotates the T block by approximately [#A3.SS1.p1.m2] 180∘180^{\circ} and places it inside the enlarged success region.
+[#A3.SS2]
+C.2 Token Utilization
+[#A3.F13] [#A3.F13.g1]
+[#A3.F13.3] Figure 13: [#A3.F13.4] Token-utilization breakdown for Codex agents on the simplified real-world Push-T task. Each panel reports a different view of token consumption over the autoresearch process, separating prompt/input, generated/output, and cached-context usage where available. The figure complements the aggregate MTU analysis in the main paper by showing how token demand is distributed across planning, code editing, log inspection, and repeated policy-evaluation iterations.
+[#A3.SS2.p1]
+[#A3.SS2.p1.1] In the main paper, we summarize token scaling by aggregating input and output tokens. Because input, output, and cached tokens differ in cost, latency, and the type of agent activity they reflect, we additionally report token usage by category. This breakdown clarifies how much of the autoresearch budget is spent on context ingestion, code and plan generation, and reuse of cached interaction history. For a more detailed qualitative analysis, we visualize total token usage, input token usage, cached input token usage, fresh input token usage, output token usage, and reasoning token usage.
+[#A3.SS3]
+C.3 Native Vision Capability
+[#A3.F14] [#A3.F14.g1]
+[#A3.F14.3] Figure 14: [#A3.F14.4] Stage-wise progress on the simplified real-world Push-T task under different visual-grounding conditions.
+[#A3.SS3.p1]
+[#A3.SS3.p1.1] Since Push-T requires the agent to localize the object, infer contact geometry, and diagnose failures from evaluation rollouts, we ablate the effect of native vision capability in the coding agent. The Codex harness supports native visual understanding, meaning that the coding agent can directly inspect images. However, many open-source agent harnesses expose only text input. This experiment measures how visual access affects auto-search hill-climbing on the simplified Push-T task. In addition to the original Codex configuration, we evaluated two baselines:
+[#A3.SS3.p2]
+[#A3.I1]
+[#A3.I1.i1] 1.
+[#A3.I1.i1.p1]
+[#A3.I1.i1.p1.1] [#A3.I1.i1.p1.1.1] Codex without native vision; We mask image tokens from the coding agent but provide a separate image-understanding module as a callable function. The module reads images, produces descriptions, and answers visual questions; the system prompt is modified to allow the coding agent to call this function when visual information is needed.
+[#A3.I1.i2] 2.
+[#A3.I1.i2.p1]
+[#A3.I1.i2.p1.1] [#A3.I1.i2.p1.1.1] Codex without visual capability. We remove both native image streaming and visual function calling. In this setting, Codex can only analyze text-based information or write code to extract information from images.
+[#A3.SS3.p3]
+[#A3.SS3.p3.1] Codex with native vision reaches success first. Surprisingly, the no-vision baseline succeeds before the function-call vision baseline. This suggests that even without direct visual access, the coding agent can infer useful task state from other logging signals, while repeated image function calls introduce additional overhead during task solving.
+[#A3.F15] [#A3.F15.g1]
+[#A3.F15.3] Figure 15: [#A3.F15.4] Time-to-success comparison across model and agent-harness configurations on the simplified real-world Push-T task. Each configuration is evaluated by the wall-clock time required to reach the predefined success criterion, capturing both model reasoning capability and the practical overhead introduced by the coding interface, tool access, execution loop, and log-inspection workflow.
+[#A3.SS4]
+C.4 Model and Harness Comparison
+[#A3.SS4.p1]
+[#A3.SS4.p1.1] We study how the choice of model and agent harness affects end-to-end autoresearch performance. We compare Codex with GPT-5.5, Claude with Opus 4.7, and Codex with Opus 4.7. Codex solves the task fastest, while the Codex harness using the Opus API is the least efficient among the tested configurations.
+[#A4]
+Appendix D Simulation Benchmark Result
+[#A4.SS1]
+D.1 RoboCasa Simulation Interface and API Surface
+[#A4.SS1.p1]
+[#A4.SS1.p1.1] The RoboCasa365 benchmark provides the simulation-side evaluation setting for generated vision-language control scripts. We build middle-level vision and planning stacks on top of the RoboCasa simulation, and encapsulate modular and end-to-end tools as APIs. This interface is injected into generated vision scripts as a single Python namespace. For canonical evaluation scripts, APIs that leak privileged state or enable repeated retries are removed from the runtime namespace. In particular, the environment disables APIs such as get_task_info, reset_env, reset_to_initial, task-specific CLI helpers, and
+oracle-target queries. The oracle target API is only exposed outside the canonical script
+runtime. Table 2 summarizes the surface and marks, for each call, whether it is
+available in the canonical script runtime (✓) or gated to CLI/oracle modes
+( [#A4.SS1.p1.1.1] C/ [#A4.SS1.p1.1.2] O).
+[#A4.T2]
+[#A4.T2.3] Table 2: [#A4.T2.4] RoboCasa environment API surface used in our evaluation. [#A4.T2.4.1] Avail. indicates availability in the canonical script runtime: ✓ available;
+[#A4.T2.4.2] C exposed only in non-canonical CLI mode; [#A4.T2.4.3] O exposed only when the Oracle interface is explicitly enabled.
+[#A4.T2.13]
+[#A4.T2.13.1]
+[#A4.T2.13.1.1] [#A4.T2.13.1.1.1] API
+[#A4.T2.13.1.2]
+[#A4.T2.13.1.2.1]
+[#A4.T2.13.1.2.1.1] [#A4.T2.13.1.2.1.1.1] Description
+[#A4.T2.13.1.3] [#A4.T2.13.1.3.1] Avail.
+[#A4.T2.13.2]
+[#A4.T2.13.2.1] [#A4.T2.13.2.1.1] State and gripper
+[#A4.T2.13.3]
+[#A4.T2.13.3.1] [#A4.T2.13.3.1.1] get_robot_state
+[#A4.T2.13.3.2]
+[#A4.T2.13.3.2.1]
+[#A4.T2.13.3.2.1.1] [#A4.T2.13.3.2.1.1.1] Joint positions, EEF pose, gripper measurement, and base/arm state
+[#A4.T2.13.3.3] [#A4.T2.13.3.3.1] ✓
+[#A4.T2.13.4]
+[#A4.T2.13.4.1] [#A4.T2.13.4.1.1] get_gripper_info
+[#A4.T2.13.4.2]
+[#A4.T2.13.4.2.1]
+[#A4.T2.13.4.2.1.1] [#A4.T2.13.4.2.1.1.1] Gripper command, measured state, contact bodies, and actuator force
+[#A4.T2.13.4.3] [#A4.T2.13.4.3.1] ✓
+[#A4.T2.13.5]
+[#A4.T2.13.5.1] [#A4.T2.13.5.1.1] set_gripper
+[#A4.T2.13.5.2]
+[#A4.T2.13.5.2.1]
+[#A4.T2.13.5.2.1.1] [#A4.T2.13.5.2.1.1.1] Set normalized gripper command ( [#A4.T2.m1] 11 [#A4.T2.13.5.2.1.1.2] open, [#A4.T2.m2] 00 [#A4.T2.13.5.2.1.1.3] closed)
+[#A4.T2.13.5.3] [#A4.T2.13.5.3.1] ✓
+[#A4.T2.13.6]
+[#A4.T2.13.6.1] [#A4.T2.13.6.1.1] open_gripper
+[#A4.T2.13.6.2]
+[#A4.T2.13.6.2.1]
+[#A4.T2.13.6.2.1.1] [#A4.T2.13.6.2.1.1.1] Open the gripper
+[#A4.T2.13.6.3] [#A4.T2.13.6.3.1] ✓
+[#A4.T2.13.7]
+[#A4.T2.13.7.1] [#A4.T2.13.7.1.1] close_gripper
+[#A4.T2.13.7.2]
+[#A4.T2.13.7.2.1]
+[#A4.T2.13.7.2.1.1] [#A4.T2.13.7.2.1.1.1] Close the gripper
+[#A4.T2.13.7.3] [#A4.T2.13.7.3.1] ✓
+[#A4.T2.13.8]
+[#A4.T2.13.8.1] [#A4.T2.13.8.1.1] Motion
+[#A4.T2.13.9]
+[#A4.T2.13.9.1] [#A4.T2.13.9.1.1] move_with_curobo
+[#A4.T2.13.9.2]
+[#A4.T2.13.9.2.1]
+[#A4.T2.13.9.2.1.1] [#A4.T2.13.9.2.1.1.1] cuRobo plan, OSC waypoint tracking, scene collision
+[#A4.T2.13.9.3] [#A4.T2.13.9.3.1] ✓
+[#A4.T2.13.10]
+[#A4.T2.13.10.1] [#A4.T2.13.10.1.1] move_with_pyroki
+[#A4.T2.13.10.2]
+[#A4.T2.13.10.2.1]
+[#A4.T2.13.10.2.1.1] [#A4.T2.13.10.2.1.1.1] Pyroki IK with SE(3) interpolation, no scene collision
+[#A4.T2.13.10.3] [#A4.T2.13.10.3.1] ✓
+[#A4.T2.13.11]
+[#A4.T2.13.11.1] [#A4.T2.13.11.1.1] move_with_curobo_joint_exec
+[#A4.T2.13.11.2]
+[#A4.T2.13.11.2.1]
+[#A4.T2.13.11.2.1.1] [#A4.T2.13.11.2.1.1.1] cuRobo plan executed in joint-position mode
+[#A4.T2.13.11.3] [#A4.T2.13.11.3.1] ✓
+[#A4.T2.13.12]
+[#A4.T2.13.12.1] [#A4.T2.13.12.1.1] move_with_pyroki_joint_exec
+[#A4.T2.13.12.2]
+[#A4.T2.13.12.2.1]
+[#A4.T2.13.12.2.1.1] [#A4.T2.13.12.2.1.1.1] Pyroki plan executed in joint-position mode
+[#A4.T2.13.12.3] [#A4.T2.13.12.3.1] ✓
+[#A4.T2.13.13]
+[#A4.T2.13.13.1] [#A4.T2.13.13.1.1] freespace_move
+[#A4.T2.13.13.2]
+[#A4.T2.13.13.2.1]
+[#A4.T2.13.13.2.1.1] [#A4.T2.13.13.2.1.1.1] Backward-compatible wrapper over configured backend
+[#A4.T2.13.13.3] [#A4.T2.13.13.3.1] ✓
+[#A4.T2.13.14]
+[#A4.T2.13.14.1] [#A4.T2.13.14.1.1] move_eef
+[#A4.T2.13.14.2]
+[#A4.T2.13.14.2.1]
+[#A4.T2.13.14.2.1.1] [#A4.T2.13.14.2.1.1.1] Move to a direct end-effector target
+[#A4.T2.13.14.3] [#A4.T2.13.14.3.1] ✓
+[#A4.T2.13.15]
+[#A4.T2.13.15.1] [#A4.T2.13.15.1.1] select_best_grasp
+[#A4.T2.13.15.2]
+[#A4.T2.13.15.2.1]
+[#A4.T2.13.15.2.1.1] [#A4.T2.13.15.2.1.1.1] Planner-check grasp candidates and select a feasible one
+[#A4.T2.13.15.3] [#A4.T2.13.15.3.1] ✓
+[#A4.T2.13.16]
+[#A4.T2.13.16.1] [#A4.T2.13.16.1.1] go_home
+[#A4.T2.13.16.2]
+[#A4.T2.13.16.2.1]
+[#A4.T2.13.16.2.1.1] [#A4.T2.13.16.2.1.1.1] Return to the home configuration
+[#A4.T2.13.16.3] [#A4.T2.13.16.3.1] ✓
+[#A4.T2.13.17]
+[#A4.T2.13.17.1] [#A4.T2.13.17.1.1] nudge
+[#A4.T2.13.17.2]
+[#A4.T2.13.17.2.1]
+[#A4.T2.13.17.2.1.1] [#A4.T2.13.17.2.1.1.1] Small local end-effector displacement
+[#A4.T2.13.17.3] [#A4.T2.13.17.3.1] ✓
+[#A4.T2.13.18]
+[#A4.T2.13.18.1] [#A4.T2.13.18.1.1] nudge_brutal
+[#A4.T2.13.18.2]
+[#A4.T2.13.18.2.1]
+[#A4.T2.13.18.2.1.1] [#A4.T2.13.18.2.1.1.1] Small local move with collision avoidance off
+[#A4.T2.13.18.3] [#A4.T2.13.18.3.1] ✓
+[#A4.T2.13.19]
+[#A4.T2.13.19.1] [#A4.T2.13.19.1.1] rotate_gripper_in_place
+[#A4.T2.13.19.2]
+[#A4.T2.13.19.2.1]
+[#A4.T2.13.19.2.1.1] [#A4.T2.13.19.2.1.1.1] In-place wrist rotation
+[#A4.T2.13.19.3] [#A4.T2.13.19.3.1] ✓
+[#A4.T2.13.20]
+[#A4.T2.13.20.1] [#A4.T2.13.20.1.1] Camera and visualization
+[#A4.T2.13.21]
+[#A4.T2.13.21.1] [#A4.T2.13.21.1.1] get_camera_image_480_640
+[#A4.T2.13.21.2]
+[#A4.T2.13.21.2.1]
+[#A4.T2.13.21.2.1.1] [#A4.T2.13.21.2.1.1.1] RGB image at [#A4.T2.m3] 480×640480\times 640
+[#A4.T2.13.21.3] [#A4.T2.13.21.3.1] ✓
+[#A4.T2.13.22]
+[#A4.T2.13.22.1] [#A4.T2.13.22.1.1] get_camera_depth_480_640
+[#A4.T2.13.22.2]
+[#A4.T2.13.22.2.1]
+[#A4.T2.13.22.2.1.1] [#A4.T2.13.22.2.1.1.1] Aligned depth map at [#A4.T2.m4] 480×640480\times 640
+[#A4.T2.13.22.3] [#A4.T2.13.22.3.1] ✓
+[#A4.T2.13.23]
+[#A4.T2.13.23.1] [#A4.T2.13.23.1.1] get_camera_intrinsics_480_640
+[#A4.T2.13.23.2]
+[#A4.T2.13.23.2.1]
+[#A4.T2.13.23.2.1.1] [#A4.T2.13.23.2.1.1.1] Intrinsics matched to [#A4.T2.m5] 480×640480\times 640
+[#A4.T2.13.23.3] [#A4.T2.13.23.3.1] ✓
+[#A4.T2.13.24]
+[#A4.T2.13.24.1] [#A4.T2.13.24.1.1] get_camera_image
+[#A4.T2.13.24.2]
+[#A4.T2.13.24.2.1]
+[#A4.T2.13.24.2.1.1] [#A4.T2.13.24.2.1.1.1] Legacy RGB image alias at the environment-native resolution
+[#A4.T2.13.24.3] [#A4.T2.13.24.3.1] ✓
+[#A4.T2.13.25]
+[#A4.T2.13.25.1] [#A4.T2.13.25.1.1] get_camera_depth
+[#A4.T2.13.25.2]
+[#A4.T2.13.25.2.1]
+[#A4.T2.13.25.2.1.1] [#A4.T2.13.25.2.1.1.1] Legacy depth alias at the environment-native resolution
+[#A4.T2.13.25.3] [#A4.T2.13.25.3.1] ✓
+[#A4.T2.13.26]
+[#A4.T2.13.26.1] [#A4.T2.13.26.1.1] get_camera_intrinsics
+[#A4.T2.13.26.2]
+[#A4.T2.13.26.2.1]
+[#A4.T2.13.26.2.1.1] [#A4.T2.13.26.2.1.1.1] Legacy intrinsics alias at the environment-native resolution
+[#A4.T2.13.26.3] [#A4.T2.13.26.3.1] ✓
+[#A4.T2.13.27]
+[#A4.T2.13.27.1] [#A4.T2.13.27.1.1] get_camera_extrinsics
+[#A4.T2.13.27.2]
+[#A4.T2.13.27.2.1]
+[#A4.T2.13.27.2.1.1] [#A4.T2.13.27.2.1.1.1] Camera extrinsics
+[#A4.T2.13.27.3] [#A4.T2.13.27.3.1] ✓
+[#A4.T2.13.28]
+[#A4.T2.13.28.1] [#A4.T2.13.28.1.1] set_debug_markers
+[#A4.T2.13.28.2]
+[#A4.T2.13.28.2.1]
+[#A4.T2.13.28.2.1.1] [#A4.T2.13.28.2.1.1.1] Place visualization markers
+[#A4.T2.13.28.3] [#A4.T2.13.28.3.1] ✓
+[#A4.T2.13.29]
+[#A4.T2.13.29.1] [#A4.T2.13.29.1.1] Perception
+[#A4.T2.13.30]
+[#A4.T2.13.30.1] [#A4.T2.13.30.1.1] detect_object
+[#A4.T2.13.30.2]
+[#A4.T2.13.30.2.1]
+[#A4.T2.13.30.2.1.1] [#A4.T2.13.30.2.1.1.1] Text-conditioned object detection
+[#A4.T2.13.30.3] [#A4.T2.13.30.3.1] ✓
+[#A4.T2.13.31]
+[#A4.T2.13.31.1] [#A4.T2.13.31.1.1] segment_object
+[#A4.T2.13.31.2]
+[#A4.T2.13.31.2.1]
+[#A4.T2.13.31.2.1.1] [#A4.T2.13.31.2.1.1.1] Single-instance segmentation
+[#A4.T2.13.31.3] [#A4.T2.13.31.3.1] ✓
+[#A4.T2.13.32]
+[#A4.T2.13.32.1] [#A4.T2.13.32.1.1] segment_object_all
+[#A4.T2.13.32.2]
+[#A4.T2.13.32.2.1]
+[#A4.T2.13.32.2.1.1] [#A4.T2.13.32.2.1.1.1] Multi-instance segmentation
+[#A4.T2.13.32.3] [#A4.T2.13.32.3.1] ✓
+[#A4.T2.13.33]
+[#A4.T2.13.33.1] [#A4.T2.13.33.1.1] detect_objects_oneshot
+[#A4.T2.13.33.2]
+[#A4.T2.13.33.2.1]
+[#A4.T2.13.33.2.1.1] [#A4.T2.13.33.2.1.1.1] One-shot object detection
+[#A4.T2.13.33.3] [#A4.T2.13.33.3.1] ✓
+[#A4.T2.13.34]
+[#A4.T2.13.34.1] [#A4.T2.13.34.1.1] sample_grasp_pose_anygrasp
+[#A4.T2.13.34.2]
+[#A4.T2.13.34.2.1]
+[#A4.T2.13.34.2.1.1] [#A4.T2.13.34.2.1.1.1] AnyGrasp grasp-pose sampling
+[#A4.T2.13.34.3] [#A4.T2.13.34.3.1] ✓
+[#A4.T2.13.35]
+[#A4.T2.13.35.1] [#A4.T2.13.35.1.1] vlm_query
+[#A4.T2.13.35.2]
+[#A4.T2.13.35.2.1]
+[#A4.T2.13.35.2.1.1] [#A4.T2.13.35.2.1.1.1] Vision-language model query
+[#A4.T2.13.35.3] [#A4.T2.13.35.3.1] ✓
+[#A4.T2.13.36]
+[#A4.T2.13.36.1] [#A4.T2.13.36.1.1] Planner and collision
+[#A4.T2.13.37]
+[#A4.T2.13.37.1] [#A4.T2.13.37.1.1] update_planner_world
+[#A4.T2.13.37.2]
+[#A4.T2.13.37.2.1]
+[#A4.T2.13.37.2.1.1] [#A4.T2.13.37.2.1.1.1] Set the cuRobo collision geometry
+[#A4.T2.13.37.3] [#A4.T2.13.37.3.1] ✓
+[#A4.T2.13.38]
+[#A4.T2.13.38.1] [#A4.T2.13.38.1.1] refresh_planner_world
+[#A4.T2.13.38.2]
+[#A4.T2.13.38.2.1]
+[#A4.T2.13.38.2.1.1] [#A4.T2.13.38.2.1.1.1] Refresh collision geometry from the scene
+[#A4.T2.13.38.3] [#A4.T2.13.38.3.1] ✓
+[#A4.T2.13.39]
+[#A4.T2.13.39.1] [#A4.T2.13.39.1.1] disable_collision_avoid
+[#A4.T2.13.39.2]
+[#A4.T2.13.39.2.1]
+[#A4.T2.13.39.2.1.1] [#A4.T2.13.39.2.1.1.1] Disable collision avoidance
+[#A4.T2.13.39.3] [#A4.T2.13.39.3.1] ✓
+[#A4.T2.13.40]
+[#A4.T2.13.40.1] [#A4.T2.13.40.1.1] Task, policy, and navigation
+[#A4.T2.13.41]
+[#A4.T2.13.41.1] [#A4.T2.13.41.1.1] get_task_description
+[#A4.T2.13.41.2]
+[#A4.T2.13.41.2.1]
+[#A4.T2.13.41.2.1.1] [#A4.T2.13.41.2.1.1.1] Natural-language task instruction
+[#A4.T2.13.41.3] [#A4.T2.13.41.3.1] ✓
+[#A4.T2.13.42]
+[#A4.T2.13.42.1] [#A4.T2.13.42.1.1] use_policy_output
+[#A4.T2.13.42.2]
+[#A4.T2.13.42.2.1]
+[#A4.T2.13.42.2.1.1] [#A4.T2.13.42.2.1.1.1] Query an external policy’s output
+[#A4.T2.13.42.3] [#A4.T2.13.42.3.1] ✓
+[#A4.T2.13.43]
+[#A4.T2.13.43.1] [#A4.T2.13.43.1.1] get_base_state
+[#A4.T2.13.43.2]
+[#A4.T2.13.43.2.1]
+[#A4.T2.13.43.2.1.1] [#A4.T2.13.43.2.1.1.1] Mobile-base state
+[#A4.T2.13.43.3] [#A4.T2.13.43.3.1] ✓
+[#A4.T2.13.44]
+[#A4.T2.13.44.1] [#A4.T2.13.44.1.1] execute_base_trajectory
+[#A4.T2.13.44.2]
+[#A4.T2.13.44.2.1]
+[#A4.T2.13.44.2.1.1] [#A4.T2.13.44.2.1.1.1] Execute a planned base trajectory
+[#A4.T2.13.44.3] [#A4.T2.13.44.3.1] ✓
+[#A4.T2.13.45]
+[#A4.T2.13.45.1] [#A4.T2.13.45.1.1] create_goat_agent
+[#A4.T2.13.45.2]
+[#A4.T2.13.45.2.1]
+[#A4.T2.13.45.2.1.1] [#A4.T2.13.45.2.1.1.1] Instantiate a GOAT navigation agent
+[#A4.T2.13.45.3] [#A4.T2.13.45.3.1] ✓
+[#A4.T2.13.46]
+[#A4.T2.13.46.1] [#A4.T2.13.46.1.1] set_goat_goal
+[#A4.T2.13.46.2]
+[#A4.T2.13.46.2.1]
+[#A4.T2.13.46.2.1.1] [#A4.T2.13.46.2.1.1.1] Set the GOAT navigation goal
+[#A4.T2.13.46.3] [#A4.T2.13.46.3.1] ✓
+[#A4.T2.13.47]
+[#A4.T2.13.47.1] [#A4.T2.13.47.1.1] goat_navigate
+[#A4.T2.13.47.2]
+[#A4.T2.13.47.2.1]
+[#A4.T2.13.47.2.1.1] [#A4.T2.13.47.2.1.1.1] Run GOAT navigation
+[#A4.T2.13.47.3] [#A4.T2.13.47.3.1] ✓
+[#A4.T2.13.48]
+[#A4.T2.13.48.1] [#A4.T2.13.48.1.1] get_goat_state
+[#A4.T2.13.48.2]
+[#A4.T2.13.48.2.1]
+[#A4.T2.13.48.2.1.1] [#A4.T2.13.48.2.1.1.1] Return GOAT state and configuration
+[#A4.T2.13.48.3] [#A4.T2.13.48.3.1] ✓
+[#A4.T2.13.49]
+[#A4.T2.13.49.1] [#A4.T2.13.49.1.1] reset_goat
+[#A4.T2.13.49.2]
+[#A4.T2.13.49.2.1]
+[#A4.T2.13.49.2.1.1] [#A4.T2.13.49.2.1.1.1] Reset GOAT state
+[#A4.T2.13.49.3] [#A4.T2.13.49.3.1] ✓
+[#A4.T2.13.50]
+[#A4.T2.13.50.1] [#A4.T2.13.50.1.1] Utilities
+[#A4.T2.13.51]
+[#A4.T2.13.51.1] [#A4.T2.13.51.1.1] display_rpy_to_quat
+[#A4.T2.13.51.2]
+[#A4.T2.13.51.2.1]
+[#A4.T2.13.51.2.1.1] [#A4.T2.13.51.2.1.1.1] Convert display RPY angles to an xyzw quaternion
+[#A4.T2.13.51.3] [#A4.T2.13.51.3.1] ✓
+[#A4.T2.13.52]
+[#A4.T2.13.52.1] [#A4.T2.13.52.1.1] np, numpy
+[#A4.T2.13.52.2]
+[#A4.T2.13.52.2.1]
+[#A4.T2.13.52.2.1.1] [#A4.T2.13.52.2.1.1.1] NumPy convenience exports for generated scripts
+[#A4.T2.13.52.3] [#A4.T2.13.52.3.1] ✓
+[#A4.T2.13.53]
+[#A4.T2.13.53.1] [#A4.T2.13.53.1.1] Gated / removed in the canonical script runtime
+[#A4.T2.13.54]
+[#A4.T2.13.54.1] [#A4.T2.13.54.1.1] get_task_info
+[#A4.T2.13.54.2]
+[#A4.T2.13.54.2.1]
+[#A4.T2.13.54.2.1.1] [#A4.T2.13.54.2.1.1.1] Structured task information
+[#A4.T2.13.54.3] [#A4.T2.13.54.3.1] C
+[#A4.T2.13.55]
+[#A4.T2.13.55.1] [#A4.T2.13.55.1.1] reset_env
+[#A4.T2.13.55.2]
+[#A4.T2.13.55.2.1]
+[#A4.T2.13.55.2.1.1] [#A4.T2.13.55.2.1.1.1] Reset the environment
+[#A4.T2.13.55.3] [#A4.T2.13.55.3.1] C
+[#A4.T2.13.56]
+[#A4.T2.13.56.1] [#A4.T2.13.56.1.1] reset_to_initial
+[#A4.T2.13.56.2]
+[#A4.T2.13.56.2.1]
+[#A4.T2.13.56.2.1.1] [#A4.T2.13.56.2.1.1.1] Reset to the initial state
+[#A4.T2.13.56.3] [#A4.T2.13.56.3.1] C
+[#A4.T2.13.57]
+[#A4.T2.13.57.1] [#A4.T2.13.57.1.1] get_oracle_targets
+[#A4.T2.13.57.2]
+[#A4.T2.13.57.2.1]
+[#A4.T2.13.57.2.1.1] [#A4.T2.13.57.2.1.1.1] Ground-truth target pose / oracle query
+[#A4.T2.13.57.3] [#A4.T2.13.57.3.1] O
+[#A4.SS1.SSS0.Px1]
+Camera and visualization.
+[#A4.SS1.SSS0.Px1.p1]
+[#A4.SS1.SSS0.Px1.p1.1] The camera APIs provide RGB-D observations, camera intrinsics, and extrinsics. We use resolution-specific calls to keep RGB, depth, and intrinsics mutually aligned, while retaining unsuffixed aliases for backward compatibility. Debug markers are used only for visualizing intermediate targets during development.
+[#A4.SS1.SSS0.Px2]
+Motion.
+[#A4.SS1.SSS0.Px2.p1]
+[#A4.SS1.SSS0.Px2.p1.1] The motion APIs provide both cuRobo- and Pyroki-based execution. cuRobo uses scene collision geometry and is the default choice for free-space manipulation, whereas Pyroki provides lightweight SE(3) interpolation with inverse kinematics but no scene-level collision model. The standard mode
+tracks end-effector waypoints with OSC, while joint-execution variants are used when faithfully following the planned joint path is important, such as near joint limits or tight obstacles.
+[#A4.SS1.SSS0.Px3]
+Perception.
+[#A4.SS1.SSS0.Px3.p1]
+[#A4.SS1.SSS0.Px3.p1.1] The perception APIs provide text-conditioned detection, segmentation, one-shot detection,
+grasp-pose sampling, and vision-language queries. These calls allow generated scripts to ground
+language instructions in visual observations without accessing the simulator ground truth.
+[#A4.SS1.SSS0.Px4]
+Planner and collision.
+[#A4.SS1.SSS0.Px4.p1]
+[#A4.SS1.SSS0.Px4.p1.1] The planner APIs maintain the cuRobo collision geometry from the simulated scene. Collision
+avoidance is enabled by default for ordinary free-space motion, and collision disabling is reserved
+for short, intentional contact-rich actions or known collision-model artifacts.
+[#A4.SS2]
+D.2 RoboCasa Evaluation Protocol
+[#A4.SS2.p1]
+[#A4.SS2.p1.1] We evaluate each RoboCasa task in simulation using the same environment wrapper
+and script runtime described above. Each script generated by the coding agent is executed
+once per episode through the canonical evaluation harness. The harness creates
+the RoboCasa environment, injects the restricted Python tool namespace into the
+script, runs the script to completion, records videos and logs, and then queries
+the environment’s native success function for the final score. We report binary
+task success as defined by RoboCasa’s native success predication: an episode is
+counted as successful when this predicate returns true at the end of execution.
+[#A4.SS2.SSS0.Px1]
+Fixed seeds and layouts.
+[#A4.SS2.SSS0.Px1.p1]
+[#A4.SS2.SSS0.Px1.p1.1] For each reported 40-episode evaluation, we use a fixed list of seed triplets.
+Each triplet contains a RoboCasa random seed, a layout identifier, and a style
+identifier: (seed, layout_id, style_id).
+The 40 triplets are generated once using a deterministic seed-list generator
+with generator seed 42, and then saved as a static evaluation file. For all
+reported evaluations, including smaller diagnostic subsets, we use rows from
+this saved file rather than regenerating a new list, so that subsets are
+prefixes or explicit selections from the same canonical 40-episode benchmark.
+The same triplet list is used for all methods compared on a task.
+[#A4.SS2.SSS0.Px2]
+Fair comparison with GR00T.
+[#A4.SS2.SSS0.Px2.p1]
+[#A4.SS2.SSS0.Px2.p1.1] When comparing generated vision scripts with GR00T, we use the same task name,
+same seed triplets, same initial simulator states, same camera configuration,
+and same RoboCasa success predicate. GR00T and the vision scripts are therefore
+scored on matched episodes rather than on separately sampled scenes. The task
+language prompt is the same RoboCasa instruction, and neither method receives
+oracle target poses or simulator object states during execution. The methods
+differ in their execution pathway: GR00T acts through its learned policy
+rollout, while the generated scripts compose the public perception, planning,
+and manipulation APIs listed in Table 2. We report success over the same fixed evaluation set so that differences reflect the policy or script behavior rather than different scene sampling or privileged information.
+[#A4.SS2.SSS0.Px3]
+Discovered policy demonstration.
+[#A4.SS2.SSS0.Px3.p1]
+[#A4.SS2.SSS0.Px3.p1.1] In addition to the matched-seed success rates reported in the main paper, the
+project website at research.nvidia.com/labs/gear/enpireincludes qualitative
+demonstrations of the coding-agent-discovered policy. In particular, the videos
+show the agent-discovered strategy of combining detection and motion planning to
+move the gripper to a hover pose above the target object before grasping, which
+is the RoboCasa strategy transferred to the real-world scissors and zip tie
+task in the main paper.
+[#A4.F16] [#A4.F16.g1]
+[#A4.F16.3] Figure 16: [#A4.F16.4] SAM3 target-object detection accuracy on RoboCasa counter-to-cabinet scenes as a function of top-camera RGB resolution. Each point evaluates 20 target-object queries. The original task prompt improves from 10/20 correct detections at [#A4.F16.m2] 256×256256\times 256 to 14/20 at higher resolutions, while candidate prompts generated by the coding agent improve from 14/20 to 17/20 and then plateau.
+[#A4.F17] [#A4.F17.g1]
+[#A4.F17.3] Figure 17: [#A4.F17.4] Per-object SAM3 detection outcomes across top-camera resolutions and prompt variants for the RoboCasa counter-to-cabinet diagnostic set. Green cells indicate that the original target prompt produced a correct mask, yellow cells indicate that a candidate prompt produced a correct mask, gray cells indicate an incorrect mask, and red cells indicate that no correct mask was returned.
+[#A4.F18] [#A4.F18.g1]
+[#A4.F18.3] Figure 18: [#A4.F18.4] Qualitative SAM3 mask outputs for 20 RoboCasa counter-to-cabinet target objects at [#A4.F18.m2] 480×640480\times 640 resolution. Yellow boxes show selected target masks; labels indicate whether the original prompt, a candidate prompt, or a wrong mask was used.
+[#A4.SS2.SSS0.Px4]
+Result Analysis
+[#A4.SS2.SSS0.Px4.p1]
+[#A4.SS2.SSS0.Px4.p1.1] We identified a perception bottleneck in which SAM3 can return an incorrect mask or no usable mask for small or ambiguous RoboCasa objects. Figures 16 and 18 isolate this effect by varying image resolution and prompt wording on the same counter-to-cabinet diagnostic set. Increasing the top-camera resolution from [#A4.SS2.SSS0.Px4.p1.m1] 256×256256\times 256 to [#A4.SS2.SSS0.Px4.p1.m2] 480×640480\times 640 improves detection, but resolution alone does not solve all failures. Allowing the coding agent to rewrite object prompts further improves target detection and recovers several cases where the original task wording produces a distractor mask. This analysis shows that generated RoboCasa scripts are limited not only by planning and control, but also by the reliability of the perception API exposed to the agent; prompt search and resolution selection are therefore useful parts of the agent’s simulation-side tool use.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from
+[#fixed-buttons-container]
+[#disable-reading-mode-btn]

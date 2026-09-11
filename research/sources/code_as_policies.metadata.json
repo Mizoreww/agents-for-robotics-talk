@@ -1,0 +1,153 @@
+{
+  "key": "code_as_policies",
+  "url": "https://code-as-policies.github.io/",
+  "final_url": "https://code-as-policies.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "417ba914a2ae50bea9bfc95a6fee4188d32f62bbedf82c1ea6cb617359584e31",
+  "chars": 8825,
+  "links": [
+    "https://jacky.io",
+    "https://wenlong.page/",
+    "https://fxia22.github.io/",
+    "https://karolhausman.github.io/",
+    "https://brianichter.com/",
+    "https://www.peteflorence.com/",
+    "https://andyzeng.github.io/",
+    "http://g.co/robotics",
+    "https://arxiv.org/abs/2209.07753",
+    "https://ai.googleblog.com/2022/11/robots-that-write-their-own-code.html",
+    "https://github.com/google-research/google-research/tree/master/code_as_policies",
+    "https://colab.research.google.com/drive/124TE4TsGYyrvduzeDclufyvwcc2qbbrE",
+    "https://huggingface.co/spaces/jackyliang42/code-as-policies",
+    "https://t.co/QS6bgGOORw",
+    "https://t.co/C7eqCJ4has",
+    "https://twitter.com/jackyliang42/status/1587798590386233344?ref_src=twsrc%5Etfw",
+    "https://code-as-policies.github.io/prompts/tabletop_ui.txt",
+    "https://code-as-policies.github.io/prompts/parse_obj_name.txt",
+    "https://code-as-policies.github.io/prompts/parse_position.txt",
+    "https://code-as-policies.github.io/prompts/parse_question.txt",
+    "https://code-as-policies.github.io/prompts/fgen.txt",
+    "https://code-as-policies.github.io/prompts/draw_ui.txt",
+    "https://code-as-policies.github.io/prompts/parse_shape_pts.txt",
+    "https://code-as-policies.github.io/prompts/transform_shape_pts.txt",
+    "https://code-as-policies.github.io/prompts/fgen_simple.txt",
+    "https://code-as-policies.github.io/prompts/mobile_ui.txt",
+    "https://code-as-policies.github.io/prompts/mobile_parse_obj_name.txt",
+    "https://code-as-policies.github.io/prompts/mobile_parse_pos.txt",
+    "https://code-as-policies.github.io/prompts/mobile_transform_traj.txt"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/tasks.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/3_min_explainer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/blocks.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/blocks_and_bowls.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/fruits_and_bottles.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/whiteboard.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilenav_0_rect_phone.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilenav_1_rect_phone.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilenav_2_coke_phone.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilenav_3_convex_hull_phone.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilenav_4_back_and_forth_phone.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilemnp_sort_trash_4x_stab_narrated.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilemnp_coke_between_fruit_4x_stab.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://code-as-policies.github.io/videos/mobilemnp_how_many_fruits_phone.mp4",
+      "type": "video/mp4"
+    }
+  ]
+}

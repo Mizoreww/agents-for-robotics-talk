@@ -1,0 +1,392 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zohqmd",
+    "id": "zohqmd",
+    "slide": 20,
+    "layoutId": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Noto Sans",
+      "Noto Serif"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "08723ab0-d954-4462-8af8-8dba31132563",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/8jupgfa1",
+      "id": "1",
+      "bbox": [
+        1087,
+        30,
+        153,
+        38
+      ],
+      "alt": "CLEAR logo",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "1da8a0f2-5200-4512-808c-0aeabfecb11c",
+        "contentType": "image/png",
+        "byteLength": 70217
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mhs3mdsb",
+      "id": "2",
+      "name": "Slide 20 title",
+      "bbox": [
+        64,
+        57,
+        1011,
+        48
+      ],
+      "geometry": "rect",
+      "text": "Demo: Inspecting and Repairing an Execution",
+      "textPreview": "Demo: Inspecting and Repairing an Execution",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Noto Serif",
+        "color": "#1A1A1A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Demo: Inspecting and Repairing an Execution"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Demo: Inspecting and Repairing an Execution",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Noto Serif",
+            "color": "#1A1A1A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Demo: Inspecting and Repairing an Execution",
+              "fontSize": 36,
+              "typeface": "Noto Serif",
+              "color": "#1A1A1A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ni14vi9w",
+      "id": "3",
+      "bbox": [
+        64,
+        111,
+        1152,
+        3
+      ],
+      "geometry": "rect",
+      "fillColor": "#2BA39B",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0falknal",
+      "id": "4",
+      "bbox": [
+        64,
+        679,
+        1090,
+        28
+      ],
+      "geometry": "rect",
+      "text": "ASPIRE, arXiv:2607.00272v1 (Jun 2026)  |  Original ASPIRE project demonstration",
+      "textPreview": "ASPIRE, arXiv:2607.00272v1 (Jun 2026)  |  Original ASPIRE project demonstration",
+      "resolvedFontSize": 11,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 11,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "ASPIRE, arXiv:2607.00272v1 (Jun 2026)  |  Original ASPIRE project demonstration"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "ASPIRE, arXiv:2607.00272v1 (Jun 2026)  |  Original ASPIRE project demonstration",
+          "resolvedTextStyle": {
+            "fontSize": 11,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "ASPIRE, arXiv:2607.00272v1 (Jun 2026)  |  Original ASPIRE project demonstration",
+              "fontSize": 11,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1gjmt8r6",
+      "id": "5",
+      "bbox": [
+        1192,
+        667,
+        46,
+        26
+      ],
+      "geometry": "rect",
+      "text": "20",
+      "textPreview": "20",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "20"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "20",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "20",
+              "fontSize": 16,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/ze1o3qtk",
+      "id": "6",
+      "bbox": [
+        235.89,
+        151,
+        814.22,
+        458
+      ],
+      "alt": "VIDEO:aspire_trace",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "6c47469d-c00c-49e1-88a1-6b7675d9609e",
+        "contentType": "image/png",
+        "byteLength": 182151
+      }
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ze14ri90",
+      "id": "7",
+      "bbox": [
+        74,
+        618,
+        1138,
+        42
+      ],
+      "geometry": "rect",
+      "text": "▷  Multimodal execution trace and program debugging",
+      "textPreview": "▷  Multimodal execution trace and program debugging",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17,
+        "typeface": "Noto Sans",
+        "color": "#646464",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "▷  Multimodal execution trace and program debugging"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "▷  Multimodal execution trace and program debugging",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "typeface": "Noto Sans",
+            "color": "#646464",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "▷  Multimodal execution trace and program debugging",
+              "fontSize": 17,
+              "typeface": "Noto Sans",
+              "color": "#646464",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

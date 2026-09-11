@@ -1,0 +1,111 @@
+{
+  "file": "/home/limx/Desktop/agent_for_robotics/.build/focus_media.pptx",
+  "count": 15,
+  "videos": [
+    {
+      "slide": 2,
+      "shape_id": "17",
+      "part": "ppt/media/video_painting.mp4",
+      "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+      "source": "https://x.com/cdngdev/status/2097339677128982873"
+    },
+    {
+      "slide": 6,
+      "shape_id": "21",
+      "part": "ppt/media/video_claude_humanoid.mp4",
+      "sha256": "bae111e4ec39b843613e7c04300c272ca6d4fef7faf406e9cac7848ec8f5abe8",
+      "source": "https://www.anthropic.com/research/claude-plays-robotics"
+    },
+    {
+      "slide": 6,
+      "shape_id": "23",
+      "part": "ppt/media/video_claude_manip.mp4",
+      "sha256": "256142b82215c3921c81fa2c76fab59b9c6f4c341bd344b8ee6254b9f5041e49",
+      "source": "https://www.anthropic.com/research/claude-plays-robotics"
+    },
+    {
+      "slide": 8,
+      "shape_id": "21",
+      "part": "ppt/media/video_astra_bowl.mp4",
+      "sha256": "08b7ca30dfd840d9a602fa6dcb581702a01c678dbf182e5c3bce0387a35e073a",
+      "source": "https://openai.robocurve.org/gpt-6-astra/"
+    },
+    {
+      "slide": 8,
+      "shape_id": "23",
+      "part": "ppt/media/video_astra_insertion.mp4",
+      "sha256": "e4089a3a778fefe428ac44e89bb42e32649b882927060a5bcbd3323a8a93ac99",
+      "source": "https://openai.robocurve.org/gpt-6-astra/"
+    },
+    {
+      "slide": 9,
+      "shape_id": "15",
+      "part": "ppt/media/video_wiping.mp4",
+      "sha256": "8f0954d07b5c477e913729ba9645c2d34c381f02cc920876035d500becf86f36",
+      "source": "https://x.com/k7agar/status/2096593654320341027"
+    },
+    {
+      "slide": 10,
+      "shape_id": "19",
+      "part": "ppt/media/video_ar2s_real.mp4",
+      "sha256": "c292f2fa539061124a6e3b13cb1bcfc1c9a63fae8befa5f75667ab23a3aa4c7e",
+      "source": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "slide": 10,
+      "shape_id": "21",
+      "part": "ppt/media/video_ar2s_sim.mp4",
+      "sha256": "7c1d705172770378155b4fb9011758fa63f8264cd28c2e850a4535b973922d58",
+      "source": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "slide": 13,
+      "shape_id": "16",
+      "part": "ppt/media/video_astra_real2sim.mp4",
+      "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
+      "source": "https://x.com/Lingxiao234/status/2096992059731443923"
+    },
+    {
+      "slide": 13,
+      "shape_id": "18",
+      "part": "ppt/media/video_astra_microphone.mp4",
+      "sha256": "121a5280e9074b1cf0df3673491a7a89bed7c2b05a4a2bb9b0d6d70a8d022e88",
+      "source": "https://x.com/Lingxiao234/status/2096992132527702382"
+    },
+    {
+      "slide": 14,
+      "shape_id": "19",
+      "part": "ppt/media/video_enpire_task.mp4",
+      "sha256": "07f5cf91c12aefaf1ea424285593d1b9f4551e008a77a52bdc565774bb453fcd",
+      "source": "https://research.nvidia.com/labs/gear/enpire/"
+    },
+    {
+      "slide": 16,
+      "shape_id": "19",
+      "part": "ppt/media/video_enpire_reset.mp4",
+      "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
+      "source": "https://research.nvidia.com/labs/gear/enpire/"
+    },
+    {
+      "slide": 16,
+      "shape_id": "21",
+      "part": "ppt/media/video_enpire_verify.mp4",
+      "sha256": "4be0fa9ee68c4c7b05b6418aadb39a02ec2da3058c04d8b88d5f79a28c84da77",
+      "source": "https://research.nvidia.com/labs/gear/enpire/"
+    },
+    {
+      "slide": 19,
+      "shape_id": "15",
+      "part": "ppt/media/video_hand.mp4",
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "source": "https://x.com/earthtojake/status/2097789988670709821"
+    },
+    {
+      "slide": 20,
+      "shape_id": "13",
+      "part": "ppt/media/video_aspire_trace.mp4",
+      "sha256": "e7a8152c5bd2e17c9aac499fc22478fea99b3cbd822c1a8a81dae05fbbad08a9",
+      "source": "https://research.nvidia.com/labs/gear/aspire/"
+    }
+  ]
+}

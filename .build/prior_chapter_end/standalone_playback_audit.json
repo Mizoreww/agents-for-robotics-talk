@@ -1,0 +1,272 @@
+[
+  {
+    "slide": 2,
+    "before": [
+      {
+        "name": "painting",
+        "time": 0.252608
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "painting",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.560558
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 6,
+    "before": [
+      {
+        "name": "claude_humanoid",
+        "time": 0.253796
+      },
+      {
+        "name": "claude_manip",
+        "time": 0.253731
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "claude_humanoid",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.560304
+      },
+      {
+        "error": null,
+        "name": "claude_manip",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.560243
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 8,
+    "before": [
+      {
+        "name": "astra_bowl",
+        "time": 0.254229
+      },
+      {
+        "name": "astra_insertion",
+        "time": 0.254163
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "astra_bowl",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.559491
+      },
+      {
+        "error": null,
+        "name": "astra_insertion",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.559431
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 9,
+    "before": [
+      {
+        "name": "wiping",
+        "time": 0.253499
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "wiping",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.560387
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 11,
+    "before": [
+      {
+        "name": "ar2s_real",
+        "time": 0.253723
+      },
+      {
+        "name": "ar2s_sim",
+        "time": 0.253668
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "ar2s_real",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.56105
+      },
+      {
+        "error": null,
+        "name": "ar2s_sim",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.561002
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 14,
+    "before": [
+      {
+        "name": "astra_real2sim",
+        "time": 0.254561
+      },
+      {
+        "name": "astra_microphone",
+        "time": 0.254486
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "astra_real2sim",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.561074
+      },
+      {
+        "error": null,
+        "name": "astra_microphone",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.561
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 16,
+    "before": [
+      {
+        "name": "enpire_task",
+        "time": 0.254972
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "enpire_task",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.559307
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 18,
+    "before": [
+      {
+        "name": "enpire_reset",
+        "time": 0.253972
+      },
+      {
+        "name": "enpire_verify",
+        "time": 0.253949
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "enpire_reset",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.561568
+      },
+      {
+        "error": null,
+        "name": "enpire_verify",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.561552
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 22,
+    "before": [
+      {
+        "name": "hand",
+        "time": 0.255539
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "hand",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.562214
+      }
+    ],
+    "paused": true,
+    "reset": true
+  },
+  {
+    "slide": 23,
+    "before": [
+      {
+        "name": "aspire_trace",
+        "time": 0.25305
+      }
+    ],
+    "after": [
+      {
+        "error": null,
+        "name": "aspire_trace",
+        "paused": false,
+        "ready": 4,
+        "source": "blob",
+        "time": 0.557892
+      }
+    ],
+    "paused": true,
+    "reset": true
+  }
+]

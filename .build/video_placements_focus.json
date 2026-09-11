@@ -1,0 +1,152 @@
+[
+  {
+    "slide": 2,
+    "alt": "VIDEO:painting",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/painting.mp4",
+    "sourceUrl": "https://x.com/cdngdev/status/2097339677128982873",
+    "x": 74,
+    "y": 165.25,
+    "w": 792,
+    "h": 445.5
+  },
+  {
+    "slide": 6,
+    "alt": "VIDEO:claude_humanoid",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/claude_humanoid.mp4",
+    "sourceUrl": "https://www.anthropic.com/research/claude-plays-robotics",
+    "x": 76,
+    "y": 210.75,
+    "w": 652,
+    "h": 244.5
+  },
+  {
+    "slide": 6,
+    "alt": "VIDEO:claude_manip",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/claude_manip.mp4",
+    "sourceUrl": "https://www.anthropic.com/research/claude-plays-robotics",
+    "x": 839,
+    "y": 158,
+    "w": 334,
+    "h": 334
+  },
+  {
+    "slide": 8,
+    "alt": "VIDEO:astra_bowl",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/astra_bowl.mp4",
+    "sourceUrl": "https://openai.robocurve.org/gpt-6-astra/",
+    "x": 96.5,
+    "y": 229,
+    "w": 496,
+    "h": 279
+  },
+  {
+    "slide": 8,
+    "alt": "VIDEO:astra_insertion",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/astra_insertion.mp4",
+    "sourceUrl": "https://openai.robocurve.org/gpt-6-astra/",
+    "x": 675,
+    "y": 279.13984375,
+    "w": 537,
+    "h": 178.7203125
+  },
+  {
+    "slide": 9,
+    "alt": "VIDEO:wiping",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/wiping.mp4",
+    "sourceUrl": "https://x.com/k7agar/status/2096593654320341027",
+    "x": 171.39999999999998,
+    "y": 143.99999999999997,
+    "w": 435.20000000000005,
+    "h": 476.00000000000006
+  },
+  {
+    "slide": 10,
+    "alt": "VIDEO:ar2s_real",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/ar2s_real.mp4",
+    "sourceUrl": "https://agentic-real2sim.github.io/",
+    "x": 76,
+    "y": 217.1875,
+    "w": 538,
+    "h": 302.625
+  },
+  {
+    "slide": 10,
+    "alt": "VIDEO:ar2s_sim",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/ar2s_sim.mp4",
+    "sourceUrl": "https://agentic-real2sim.github.io/",
+    "x": 675,
+    "y": 220.55,
+    "w": 538,
+    "h": 295.9
+  },
+  {
+    "slide": 13,
+    "alt": "VIDEO:astra_real2sim",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/astra_real2sim.mp4",
+    "sourceUrl": "https://x.com/Lingxiao234/status/2096992059731443923",
+    "x": 143,
+    "y": 170,
+    "w": 404,
+    "h": 404
+  },
+  {
+    "slide": 13,
+    "alt": "VIDEO:astra_microphone",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/astra_microphone.mp4",
+    "sourceUrl": "https://x.com/Lingxiao234/status/2096992132527702382",
+    "x": 726.7277777777778,
+    "y": 170,
+    "w": 436.5444444444444,
+    "h": 404
+  },
+  {
+    "slide": 14,
+    "alt": "VIDEO:enpire_task",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_task.mp4",
+    "sourceUrl": "https://research.nvidia.com/labs/gear/enpire/",
+    "x": 75,
+    "y": 157.125,
+    "w": 812,
+    "h": 456.75
+  },
+  {
+    "slide": 16,
+    "alt": "VIDEO:enpire_reset",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_reset.mp4",
+    "sourceUrl": "https://research.nvidia.com/labs/gear/enpire/",
+    "x": 75,
+    "y": 208.625,
+    "w": 540,
+    "h": 303.75
+  },
+  {
+    "slide": 16,
+    "alt": "VIDEO:enpire_verify",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_verify.mp4",
+    "sourceUrl": "https://research.nvidia.com/labs/gear/enpire/",
+    "x": 809.875,
+    "y": 188,
+    "w": 270.25,
+    "h": 345
+  },
+  {
+    "slide": 19,
+    "alt": "VIDEO:hand",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/hand.mp4",
+    "sourceUrl": "https://x.com/earthtojake/status/2097789988670709821",
+    "x": 100.70138888888886,
+    "y": 151.99999999999997,
+    "w": 801.5972222222223,
+    "h": 485.00000000000006
+  },
+  {
+    "slide": 20,
+    "alt": "VIDEO:aspire_trace",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/aspire_trace.mp4",
+    "sourceUrl": "https://research.nvidia.com/labs/gear/aspire/",
+    "x": 235.8888888888889,
+    "y": 151,
+    "w": 814.2222222222222,
+    "h": 458
+  }
+]

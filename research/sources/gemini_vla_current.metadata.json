@@ -1,0 +1,398 @@
+{
+  "key": "gemini_vla_current",
+  "url": "https://deepmind.google/models/gemini-robotics/vla/",
+  "final_url": "https://deepmind.google/models/gemini-robotics/vla/",
+  "accessed": "2026-09-10",
+  "sha256": "8c5201db68f877205ef9aa24d3db429790e3463360e67ddef1f92a88185b0c94",
+  "chars": 7279,
+  "links": [
+    "https://deepmind.google/models/gemini-robotics/vla/#page-content",
+    "https://deepmind.google/models/",
+    "https://deepmind.google/models/gemini/",
+    "https://deepmind.google/models/gemini-omni/",
+    "https://deepmind.google/models/gemini-image/",
+    "https://deepmind.google/models/gemini-audio/",
+    "https://deepmind.google/models/veo/",
+    "https://deepmind.google/models/imagen/",
+    "https://deepmind.google/models/lyria/",
+    "https://deepmind.google/models/genie/",
+    "https://deepmind.google/models/gemini-robotics/",
+    "https://deepmind.google/models/gemma/",
+    "https://deepmind.google/research/",
+    "https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/",
+    "https://deepmind.google/research/alphago/",
+    "https://deepmind.google/research/evals/",
+    "https://deepmind.google/research/publications/",
+    "https://deepmind.google/responsibility-and-safety/",
+    "https://deepmind.google/frontier-safety/",
+    "https://deepmind.google/science/",
+    "https://deepmind.google/science/alphafold/",
+    "https://deepmind.google/science/alphagenome/",
+    "https://deepmind.google/science/weathernext/",
+    "https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/",
+    "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "https://ai.google/gemini-for-science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/use-cases/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/about/",
+    "https://deepmind.google/blog/",
+    "https://deepmind.google/careers/",
+    "https://deepmind.google/education/",
+    "https://deepmind.google/national-partnerships-for-ai/",
+    "https://deepmind.google/accelerators/",
+    "https://deepmind.google/the-podcast/",
+    "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/",
+    "https://ai.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://research.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://docs.google.com/forms/d/1sM5GqcVMWv-KmKY3TOMpVtQ-lDFeAftQ-d9xQn92jCE/viewform?ts=67cef986&edit_requested=true",
+    "https://x.com/googledeepmind",
+    "https://www.instagram.com/googledeepmind",
+    "https://www.youtube.com/@googledeepmind",
+    "https://www.linkedin.com/company/googledeepmind/",
+    "https://github.com/google-deepmind",
+    "https://policies.google.com/privacy",
+    "https://deepmind.google/research/projects/",
+    "https://aistudio.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://www.google.com/?utm_source=ai.google&utm_medium=referral",
+    "https://about.google/",
+    "https://about.google/products/",
+    "https://policies.google.com/terms"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/ZsESQomQVqDDx1cEgfieGSttJCm7GFWa0wrOtvJg94ft9L3Y1oMeY2N_UqTKLJPQmomv7M5ojBiMbA63EeJJGsDmnECqU25NTCgXTKm90neY6BCv=w1440-h1440-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/ZsESQomQVqDDx1cEgfieGSttJCm7GFWa0wrOtvJg94ft9L3Y1oMeY2N_UqTKLJPQmomv7M5ojBiMbA63EeJJGsDmnECqU25NTCgXTKm90neY6BCv"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/iRajtSmG_3TVU-3kg0wCKajPPlubJMe-jEQtHI5CdUQ9OnJBadgIlxBgRxVshK0fDYSfkhzjmcf-Y3fR_eSIyCRlJz-F-_-5MZU8EUN5x2lzZJt_=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/iRajtSmG_3TVU-3kg0wCKajPPlubJMe-jEQtHI5CdUQ9OnJBadgIlxBgRxVshK0fDYSfkhzjmcf-Y3fR_eSIyCRlJz-F-_-5MZU8EUN5x2lzZJt_"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/6A7O9PPga8BcmQOJuAKVYICspfU2qA6e39kZmlGV1EkQm6bzZ3mVbvpGw_LDued0CEMK8IvVR_7P3uDUNhYy4T9NP3A3KfEpv4VEGhGxyKZaoWKmgA=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/6A7O9PPga8BcmQOJuAKVYICspfU2qA6e39kZmlGV1EkQm6bzZ3mVbvpGw_LDued0CEMK8IvVR_7P3uDUNhYy4T9NP3A3KfEpv4VEGhGxyKZaoWKmgA"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/-GiwlXUVTWuK_ep5Focge0aLXqUxJFd9MPtVlPNoVev9JZbGyPYUIOIn4gB5D7p9Ft6N9I8wg_PtqsHeF7sFYgiXuaGnxvCG5gJyuvE6LNBesBS-lQ=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/-GiwlXUVTWuK_ep5Focge0aLXqUxJFd9MPtVlPNoVev9JZbGyPYUIOIn4gB5D7p9Ft6N9I8wg_PtqsHeF7sFYgiXuaGnxvCG5gJyuvE6LNBesBS-lQ"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"General whole body manipulation\" with subtitle \"Apollo with Inspire hands\" displaying accuracy percentages with error bars across three tasks: \"Pick up from table\" at 68.4%, \"Pick up from floor\" at 45.7%, and \"Pick up from shelf\" at 76.3%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__general-whole-body-manipulation__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"General whole body manipulation\" with subtitle \"Apollo with Inspire hands\" displaying accuracy percentages with error bars across three tasks: \"Pick up from table\" at 68.4%, \"Pick up from floor\" at 45.7%, and \"Pick up from shelf\" at 76.3%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__general-whole-body-manipulation__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Multi-finger dexterity\" with subtitle \"Apollo with Sharpa hands\" displaying accuracy percentages with error bars across five tasks: \"Screw bulb\" at 36%, \"Unscrew bulb\" at 92%, \"Tie trash bag\" at 44%, \"Dustpan\" at 32%, and \"Ziplock\" at 40%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__multi-finger-dexterity__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Multi-finger dexterity\" with subtitle \"Apollo with Sharpa hands\" displaying accuracy percentages with error bars across five tasks: \"Screw bulb\" at 36%, \"Unscrew bulb\" at 92%, \"Tie trash bag\" at 44%, \"Dustpan\" at 32%, and \"Ziplock\" at 40%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__multi-finger-dexterity__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Gripper dexterity\" with subtitle \"Franka Duo\" displaying accuracy percentages with error bars across three tasks: \"General pick and place\" at 74.2%, \"Diverse tool kitting\" at 78.9%, and \"Precise insertion tasks\" at 89.6%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__gripper-dexterity__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Gripper dexterity\" with subtitle \"Franka Duo\" displaying accuracy percentages with error bars across three tasks: \"General pick and place\" at 74.2%, \"Diverse tool kitting\" at 78.9%, and \"Precise insertion tasks\" at 89.6%.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__gripper-dexterity__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__light",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__dark",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg"
+    }
+  ]
+}

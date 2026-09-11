@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RoboGen</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+
+
+                        <!-- <h1 class="title is-1 publication-title">RoboGen: Towards Unleashing Infinite Data for Robot Learning via Generative Simulation</h1> -->
+                        <h1 class="title is-1 publication-title">
+                          <img src="assets/images/logo.png" class="small-image"><span style="color: rgb(24, 209, 207);">R</span><span style="color: rgb(21, 182, 198);">o</span><span style="color: rgb(18, 156, 189);">b</span><span style="color: rgb(16, 130, 180);">o</span><span style="color: rgb(13, 104, 171);">G</span><span style="color: rgb(10, 78, 162);">e</span><span style="color: rgb(8, 52, 154);">n</span>: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation
+                        </h1>
+                        <h3 class="title is-4 conference-authors"><a target="_blank" href="https://icml.cc/">ICML 2024</a>
+                    </h3>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a target="_blank" href="https://yufeiwang63.github.io/">
+                                    Yufei Wang</a><sup>*,1</sup>,
+                                <a target="_blank"
+                                    href="https://www.zhou-xian.com/">Zhou Xian</a><sup>*,1</sup>,
+
+                                <a target="_blank" href="https://robogen-ai.github.io">Feng Chen</a><sup>*, 2</sup>,
+                                <a target="_blank"
+                                    href="https://zswang666.github.io/">Tsun-Hsuan Wang</a><sup>3</sup>,
+                                <a target="_blank"
+                                    href="https://wangyian-me.github.io/">Yian Wang</a><sup>4</sup>,
+                                <br>
+                                <a target="_blank"
+                                    href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a><sup>1</sup>,
+                                <a target="_blank"
+                                    href="https://zackory.com/">Zackory Erickson</a><sup>1</sup>,
+                                <a target="_blank"
+                                    href="http://davheld.github.io/">David Held</a><sup>1</sup>,
+
+                                <a target="_blank" href="http://people.csail.mit.edu/ganchuang/">Chuang Gan</a><sup>4,5</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>CMU, </span>
+                            <span class="author-block"><sup>2</sup>Tsinghua IIIS, </span>
+                            <span class="author-block"><sup>3</sup>MIT CSAIL, </span>
+                            <span class="author-block"><sup>4</sup>UMass Amherst,</span>
+                            <span class="author-block"><sup>5</sup>MIT-IBM AI Lab</span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*</sup>Equal Contribution </span>
+                        </div>
+                        <!-- <div class="is-size-5 publication-authors">
+                        <span class="author-block">Work done during the first author's internship at NVIDIA</span>
+                        </div> -->
+
+                        <!-- <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>&dagger;</sup>Equal Contribution</span>
+                        <span class="author-block"><sup>&#8225;</sup>Equal Advising </span>
+                    </div> -->
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- TODO REPLACE ALL LINKS -->
+                                <span class="link-block">
+                                    <a target="_blank" href="https://arxiv.org/abs/2311.01455"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a target="_blank" href="https://github.com/Genesis-Embodied-AI/RoboGen"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 0">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <video poster="" id="" autoplay controls loop width="100%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="videos/trailer.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%">
+                            We present RoboGen, a generative robotic agent that automatically learns diverse
+robotic skills at scale via generative simulation. RoboGen leverages the latest
+advancements in foundation and generative models. Instead of directly using or
+adapting these models to produce policies or low-level actions, we advocate for
+a generative scheme, which uses these models to automatically generate diversified tasks, scenes, and training supervisions, thereby scaling up robotic skill
+learning with minimal human supervision. Our approach equips a robotic agent
+with a self-guided propose-generate-learn cycle: the agent first proposes interesting tasks and skills to develop, and then generates corresponding simulation
+environments by populating pertinent objects and assets with proper spatial configurations. Afterwards, the agent decomposes the proposed high-level task into
+sub-tasks, selects the optimal learning approach (reinforcement learning, motion
+planning, or trajectory optimization), generates required training supervision, and
+then learns policies to acquire the proposed skill. Our work attempts to extract the
+extensive and versatile knowledge embedded in large-scale models and transfer
+them to the field of robotics. Our fully generative pipeline can be queried repeatedly, producing an endless stream of skill demonstrations associated with diverse
+tasks and environments.
+
+<br>
+<br>
+
+RoboGen is simulated and rendered with <a href="https://github.com/Genesis-Embodied-AI/Genesis"><b>Genesis</b></a>, a multi-material multi-solver generative simulation engine for general-purpose robot learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">RoboGen Pipeline</span></h2>
+                        <!-- <img src="videos/pipeline.m4v" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto; max-width: 80%;" /> -->
+                            <video autoplay controls muted loop playsinline height="100%">
+                              <source src="videos/pipeline_cropped.mp4"
+                                      type="video/mp4">
+                            </video>
+                        <br>
+                        <span style="font-size: 125%">
+                            <span style="font-weight: bold">RoboGen is a fully automated pipeline for endless and diverse skill acquisition.</span> RoboGen pipeline consists of 4 stages: A) task proposal, B) scene generation, C) training supervision generation, and D) skill learning with generated information.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="rows">
+                <div class="rows is-centered ">
+                    <div class="row is-full-width">
+                        <h2 class="title is-3"><span class="dvima">Long-horizon task generation and learning</span></h2>
+                        <img src="assets/images/long-horizon.png" class="interpolation-image" alt=""
+                            style="display: block; margin-left: auto; margin-right: auto; max-width: 80%;" />
+                        <br>
+                        <span style="font-size: 125%">RoboGen is able to propose high-level tasks, generate corresponding environments, decompose the high-level goal into low-level subtasks, and then learn the sub-skills sequentially.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- interactive examples of long horizon tasks -->
+    <section class="section">
+      <div class="container is-max-widescreen">
+          <div class="rows">
+              <div class="rows is-centered ">
+                  <div class="row is-full-width">
+                      <h2 class="title is-3"><span class="dvima">RoboGen generated tasks, scenes, training supervisions, and learned skills</span></h2>
+                      <p style="font-size: 125%">
+                          Please select an image below to view the results.
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <br>
+          <div class="columns" style="align-items: end;">
+              <div class="column is-half">
+                  <!-- <p style="font-size: 1.5em"><b>Isaac</b></p> -->
+                  
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+
+                    <img src="videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-26-46.png" width="24.5%" style="border-radius: 10px;" alt='<b>store an item into the storagefurniture</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/store_an_item_into_the_storagefurniture.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    
+                    <!-- <img src="videos/task_Throw_Trash_Away_2023-10-09-01-01-03.png" width="24.5%" style="border-radius: 10px;" alt='<b>Throw Trash Away</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Throw_Trash_Away.txt' onclick="populateDemo(this, 1);"> -->
+            
+                    <img src="videos/task_Heat_up_a_bowl_of_soup_in_microwave_2023-10-05-02-51-38.png" width="24.5%" style="border-radius: 10px;" alt='<b>Heat up a bowl of soup in microwave</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Heat_up_a_bowl_of_soup_in_microwave.txt' onclick="populateDemo(this, 1);">
+            
+
+                
+                    <img src="videos/task_Open_Window_Halfway_2023-10-05-00-47-41.png" width="24.5%" style="border-radius: 10px;" alt='<b>Slide Window Halfway</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Slide_Window_Halfway.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/2023-10-07-18-37-30_a1_run_at_3_-61.125.png" width="24.5%" style="border-radius: 10px;" alt='<b>Gallop</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_gallop.txt' onclick="populateDemo(this, 1);">
+                      
+        
+                    
+                    <img src="videos/2023-10-09-03-07-40_atlas_spin_right_-145.235.png" width="24.5%" style="border-radius: 10px;" alt='<b>Rotate in place</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_rotate_in_place.txt' onclick="populateDemo(this, 1);">
+
+                    <img src="videos/task_retrieve_an_item_from_safe_2023-10-05-00-31-31.png" width="24.5%" style="border-radius: 10px;" alt='<b>retrieve an item from safe</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/retrieve_an_item_from_safe.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    
+                    <img src="videos/task_Unload_Objects_from_Cart_2023-10-05-22-36-46.png" width="24.5%" style="border-radius: 10px;" alt='<b>Unload Objects from Cart</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Unload_Objects_from_Cart.txt' onclick="populateDemo(this, 1);">
+            
+        
+                      
+                   
+        
+                    <img src="videos/task_Change_Lamp_Direction_2023-10-08-02-54-38.png" width="24.5%" style="border-radius: 10px;" alt='<b>Change Lamp Direction</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Change_Lamp_Direction.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/task_Retrieve_item_from_box_2023-10-06-02-47-42.png" width="24.5%" style="border-radius: 10px;" alt='<b>Retrieve item from box</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Retrieve_item_from_box.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <!-- <img src="videos/task_load_dish_into_dishwasher_2023-10-07-19-49-34.png" width="24.5%" style="border-radius: 10px;" alt='<b>load dish into dishwasher</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/load_dish_into_dishwasher.txt' onclick="populateDemo(this, 1);"> -->
+                    <img src="videos/task_store_food_in_refrigerator_2023-10-07-19-42-17.png" width="24.5%" style="border-radius: 10px;" alt='<b>store food in refrigerator</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/store_food_in_refrigerator.txt' onclick="populateDemo(this, 1);">
+
+                    <img src="videos/2023-10-08-18-43-13_anymal_jump_-1041.067.png" width="24.5%" style="border-radius: 10px;" alt='<b>jump up</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_jump.txt' onclick="populateDemo(this, 1);">
+            
+                    <img src="videos/task_Extend_Suitcase_Handle_2023-10-05-00-35-37.png" width="24.5%" style="border-radius: 10px;" alt='<b>Extend Suitcase Handle</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Extend_Suitcase_Handle.txt' onclick="populateDemo(this, 1);">
+
+                <img src="videos/task_Pull_Lever_to_Start_Coffee_Brewing_2023-10-09-03-39-55.png" width="24.5%" style="border-radius: 10px;" alt='<b>Pull Lever to Start Coffee Brewing</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Pull_Lever_to_Start_Coffee_Brewing.txt' onclick="populateDemo(this, 1);">
+            
+        
+                    <img src="videos/task_Flush_the_Toilet_2023-10-06-03-20-55.png" width="24.5%" style="border-radius: 10px;" alt='<b>Flush the Toilet</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Flush_the_Toilet.txt' onclick="populateDemo(this, 1);">
+            
+                    <img src="videos/task_Rotate_Laptop_Screen_2023-10-05-00-32-43.png" width="24.5%" style="border-radius: 10px;" alt='<b>Close laptop lid</b>, RoboGen Results (scene configuration, task decomposition and supervisions):
+                    [sep]
+                    assets/robogen_results/Close_Laptop_Lid.txt' onclick="populateDemo(this, 1);">
+            
+        
+                  
+        
+             
+
+                    <img src="videos/2023-10-07-22-04-04_a1_flip_leftward_-2207.387.png" width="24.5%" style="border-radius: 10px;" alt='<b>Flip leftwards</b>, RoboGen Results:
+                    [sep]
+                    assets/robogen_results/locomotion_flip_leftwards.txt' onclick="populateDemo(this, 1);">
+            
+
+                </div>
+
+              </div>
+              <div class="row border rounded" style="padding-top:2px; padding-bottom:12px;">
+                  <div class="col-md-6">
+                      <video id="demo-video-1" style="border-radius: 5px;" autoplay loop muted webkit-playsinline
+                          playsinline onclick="setAttribute('controls', 'true');">
+                          <source id="expandedImg-1" src="videos/select.m4v" type="video/mp4">
+                      </video>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div id="imgtext-1" style="font-size: 1.5em">Select an image above to show the RoboGen results:</div>
+              <div>
+                  <!-- <pre class="p-1"><code class="language-python" id="answer-1">RoboGen response shown within code block.</code></pre> -->
+
+                  <pre class="p-1 scrollable"><code class="language-python" id="answer-1">RoboGen response shown within code block.</code></pre>
+
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- interactive examples of long horizon tasks -->
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+  
+  
+      <div class="rows is-centered ">
+        <div class="row is-full-width">
+            <h2 class="title is-3"><span class="dvima">Gallery</span></h2>
+        </div>
+    </div>
+    <br>
+    <br>
+  
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Change_Lamp_Direction_2023-10-08-02-54-38.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Change lamp light direction
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Pull_Lever_to_Start_Coffee_Brewing_2023-10-09-03-39-55.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Pull lever to start coffee brewing
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-26-46.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Store the toy into the storage
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-23-09-24_a1_walk_forward_using_only_hind_legs_-282.268.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Stand upright and walk forward using only hind legs
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/wrap_a_rope.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Bend noodle into a U-shape
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Stapler_Lid_2023-10-06-14-39-37.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open stapler lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-04-44-56_atlas_jump_-2782.662.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump up
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_retrieve_an_item_from_safe_2023-10-05-00-31-31.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Retrieve the gold bar from safe
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/flat_a_dough.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flatten the rice ball
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-16-08-57_atlas_headstand_-231.609.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Do a headstand
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Trashcan_Lid_2023-10-06-03-06-40.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Uncover trashcan lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_close_the_drawer_of_the_table_2023-10-06-21-55-38.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close the drawer of the table
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Heat_up_a_bowl_of_soup_in_microwave_2023-10-05-02-51-38.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Heat up a bowl of soup in microwave
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-00-25-01_a1_kick_soccer_ball_to_the_left_-68.214.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Kick the soccer ball to the left
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Unfold_the_Chair_2023-10-10-03-03-30.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Fold the chair
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-19-22-46_a1_spin_right_without_right_hind_foot_touching_ground-80.867.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin clockwise without right hind foot touching the ground
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-17-39-28_a1_walk_at_1_-43.471.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Walk forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Retrieve_item_from_box_2023-10-06-02-47-42.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Retrieve the toy car from box
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-11-55-50_atlas_jump_backward_-2612.166.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump backward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-22-04-04_a1_flip_leftward_-2207.387.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip leftward
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Table_Drawer_2023-10-08-04-14-47.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Slide in table drawer
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-00-41-09_a1_headstand_-78.553.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Do a headstand
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_store_food_in_refrigerator_2023-10-07-19-42-17.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Store the apple in refrigerator
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Toilet_Lid_2023-10-07-01-04-12.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Lift up toilet lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Rotate_Clock_Hands_2023-10-09-02-58-17.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Set the clock back by 5 minutes
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-00-30-29_a1_flip_backward_-909.943.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip backward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-23-58-02_a1_jump_forward_-2529.424.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Take jumps forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Throw_Trash_Away_2023-10-09-01-01-03.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Throw trash away
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-00-47-50_atlas_run_back_-161.500.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Walk backward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-16-15-19_atlas_crawl_-388.259.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Lie face down and cawl forward
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-37-21_anymal_headstand_-76.375.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Do a headstead
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Window_Halfway_2023-10-05-00-47-41.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Slide window halfway
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_load_dish_into_dishwasher_2023-10-07-19-49-34.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Load dish into dishwasher
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-22-17-52_atlas_run_-605.585.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Stay balanced and move forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-15-47-11_a1_climb_up_stairs_-582.621.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Climp up the stairs
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-18-37-30_a1_run_at_3_-61.125.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Run forward fast
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Microwave_Door_2023-10-10-03-03-54.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open microwave door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Arrange_three_different_cans_in_a_row_2023-10-21-17-54-26.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Arrange three different cans in a row
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-17-58-19_anymal_walk_back_-50.305.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Walk backward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Unload_Objects_from_Cart_2023-10-05-22-36-46.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Unload the milk from cart
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Trash_Can_2023-10-08-04-25-34.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open the door of trash can
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Pull_Drawer_Out_2023-10-06-22-20-17.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Pull drawer out
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Retrieve_Item_from_Fridge_2023-10-14-01-51-01.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Take out a bottle of water from fridge
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Tilt_Display_Screen_2023-10-09-03-54-09.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Tilt display screen
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-06-31-59_atlas_flip_rightward_-2532.720.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip rightward
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-22-13-21_a1_flip_rightward_-2212.043.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip rightward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Dispenser_Lid_2023-10-07-00-56-24.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Press and rotate dispenser lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Store_an_Object_in_the_Drawer_2023-10-14-02-14-00.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Put a book in the drawer
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/cut_a_dough.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Cut the dough in half
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Rotate_Globe_Horizontally_2023-10-10-03-01-07.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Rotate globe horizontally
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Unfold_Chair_2023-10-06-14-36-48.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Collapse chair
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Turn_On_Faucet_2023-10-06-14-34-52.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Turn on faucet
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Store_an_object_inside_the_box_2023-10-14-02-03-58.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Store a toy inside the box
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Dispenser_Lid_2023-10-06-23-04-24.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close dispenser lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-08-44_anymal_flip_backward_-870.296.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip backward
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Turn_Off_Faucet_2023-10-09-04-32-04.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Turn off faucet
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-23-46-02_a1_jump_-1428.538.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump as high as possible
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-44-04.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Put an toy into the storage
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Dispenser_Lid_2023-10-08-04-14-06.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Direct and press dispenser
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-00-26-48_a1_flip_forward_-1535.937.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip forward
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-10-18-22_atlas_flip_backward_-1178.823.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Do a backflip
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Kettle_Lid_2023-10-10-03-01-18.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Lift up kettle lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-00-44-34_anymal_kick_soccer_ball_to_the_left_-29.356.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Kick the soccer ball to the left
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-17-32-35_anymal_walk_-56.206.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Crawl forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Flush_the_Toilet_2023-10-06-03-20-55.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flush the toilet
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Washing_Machine_Door_2023-10-09-03-33-52.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open washing machine door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Laptop_2023-10-07-01-01-11.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Raise laptop screen
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Turn_On_Water_Faucet_2023-10-07-01-07-15.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Activate water faucet
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Window_2023-10-08-04-15-17.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Slide both windows
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Rotate_Fan_Rotor_2023-10-07-01-04-10.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Rotate fan rotor
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Fridges_Freezer_Door_2023-10-10-02-56-53.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open fridges freezer door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Lift_Kettle_by_Handle_2023-10-06-15-48-45.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Twist kettle handle
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Oven_Door_2023-10-10-02-56-49.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open oven door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-43-13_anymal_jump_-1041.067.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump higher than 5 meters
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-15-16_anymal_spin_left_without_right_hind_leg-89.263.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin left without using right hind leg
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-05-16-56_atlas_flip_forward_-17546.605.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-00-36-30_a1_run_back_using_only_front_and_left_hind_legs-62.381.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Run backward fast using only front and left hind legs
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-48-26_anymal_jump_backward_-2087.739.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Take a big jump backward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Put_Object_in_Middle_Drawer_2023-10-07-01-15-56.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Pull out the top drawer of the cabinet
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Turn_On_the_Printer_2023-10-06-15-36-13.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Press the button to turn on the printer
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Trashcan_Lid_2023-10-07-01-16-21.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close trashcan lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-17-48-21_anymal_run_-136.290.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Run forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Toilet_Lid_2023-10-09-03-36-01.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Shut toilet lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-23-26-45_a1_push_ball_forward_-176.344.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Push the ball forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Partial_Box_Lid_2023-10-06-22-17-22.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open box lid halfway
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-23-37-49_anymal_push_ball_forward_-148.055.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Push the ball forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/wrap_a_dumpling.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Wrap the dumpling wrapper
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Box_2023-10-09-03-48-05.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Lift box lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-02-02-56_atlas_spin_left_-260.948.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin leftward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-18-19-52_a1_walk_back_at_1_-25.821.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Crawl backward at 1m/s
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Press_Start_Button_2023-10-06-23-01-28.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Start dishwasher by pressing the start button
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Opening_Both_Refrigerator_Doors_2023-10-07-01-10-18.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Opening both refrigerator doors
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/make_a_baguette.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Shape the dough into a baguette
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-15-06-00_a1_jump_over_the_hurdle_-79.365.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump over the hurdle
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Window_2023-10-09-02-57-51.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close window
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Extend_Display_Screen_2023-10-06-14-32-35.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Slide down display screen
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Put_a_fruit_into_a_fruit_bowl_2023-10-13-12-27-49.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Put a fruit into a fruit bowl
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-22-26-43_a1_jump_and_kick_basketball_-116.668.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Jump and kick the basketball
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_turn_on_coffeemachine_2023-10-07-19-52-37.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Turning on coffee machine using the knob
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-53-15_anymal_spin_right_-107.493.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Turn rightward continuously
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-08-18-01-38_anymal_flip_forward_-1674.325.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Flip forward
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Door_2023-10-09-04-42-55.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Open door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-01-47-13_anymal_kick_soccer_ball_to_the_right_-60.291.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Kick the soccer ball to the right
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Extend_Suitcase_Handle_2023-10-05-00-35-37.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Extend suitcase handle
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-22-20-28_a1_spin_right_-100.093.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin clockwise
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/lift_a_dumpling_up.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Lift up the dumpling
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-23-25-39_a1_stand_upright_on_two_hind_legs_-138.742.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Stand upright on two hind legs
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-09-03-07-40_atlas_spin_right_-145.235.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin clockwise
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Lifting_Bucket_2023-10-08-04-08-42.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Rotate bucket handle
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Open_Drawer_2023-10-08-04-14-46.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Draw out drawer
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-10-01-22-18_a1_backflip_and_kick_soccer_ball_to_the_right_-84.792.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Do a backflip and kick the soccer ball to the right
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Remove_Pot_Lid_2023-10-09-03-33-00.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Remove pot lid
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Rotate_Laptop_Screen_2023-10-05-00-32-43.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close laptop screen
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/flat_a_dough_with_rolling_pin.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Roll out the doll
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/2023-10-07-19-05-49_a1_spin_left_-88.953.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Spin counter-clockwise
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="columns is-centered">
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Close_Door_2023-10-06-21-55-56.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Close door
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/put_a_ball_on_a_cube_best_sol.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Put filling onto the wrapper
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Turn_On_Lamp_2023-10-10-02-56-17.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Turn on lamp by pressing the toggle button
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_Move_Clock_Ahead_for_Daylight_Saving_2023-10-07-19-36-13.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Move clock ahead for daylight saving
+            </p>
+          </div>
+        </div>
+        <div class="column" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content">
+            <video autoplay controls muted loop playsinline height="100%">
+              <source src="./videos/task_close_the_oven_door_2023-10-06-03-06-14.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center;">
+              Shut the oven door
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@misc{wang2023robogen,
+      title={RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation}, 
+      author={Yufei Wang and Zhou Xian and Feng Chen and Tsun-Hsuan Wang and Yian Wang and Katerina Fragkiadaki and Zackory Erickson and David Held and Chuang Gan},
+      year={2023},
+      eprint={2311.01455},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
+</code></pre>
+    </div>
+</section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-centered">
+                        <p>
+                            Website template borrowed from <a
+                                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+                                href="https://eureka-research.github.io/">Eureka</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+
+  timeoutIds = [];
+
+  function populateDemo(imgs, num) {
+      // Get the expanded image
+      var expandImg = document.getElementById("expandedImg-" + num);
+      // Get the image text
+      var imgText = document.getElementById("imgtext-" + num);
+      var answer = document.getElementById("answer-" + num);
+
+      // Use the same src in the expanded image as the image being clicked on from the grid
+      expandImg.src = imgs.src.replace(".png", ".mp4");
+      var video = document.getElementById('demo-video-' + num);
+      // or video = $('.video-selector')[0];
+      video.pause()
+      video.load();
+      video.play();
+      video.removeAttribute('controls');
+
+      console.log(expandImg.src);
+      // Use the value of the alt attribute of the clickable image as text inside the expanded image
+      var qa = imgs.alt.split("[sep]");
+      imgText.innerHTML = qa[0];
+      answer.innerHTML = "";
+
+      // Show the container element (hidden with CSS)
+      expandImg.parentElement.style.display = "block";
+      for (timeoutId of timeoutIds) {
+          clearTimeout(timeoutId);
+      }
+
+      // NOTE (wliang): Modified from original to read from file instead
+      fetch(qa[1])
+          .then(response => response.text())
+          .then(contents => {
+              // Call the processData function and pass the contents as an argument
+              typeWriter(contents, 0, qa[0], num, "imgtext-", "answer-");
+          })
+          .catch(error => console.error('Error reading file:', error));
+  }
+
+  function typeWriter(txt, i, q, num, text1, text2) {
+      var imgText = document.getElementById(text1 + num);
+      var answer = document.getElementById(text2 + num);
+      if (imgText.innerHTML == q) {
+          for (let k = 0; k < 5; k++) {
+              if (i < txt.length) {
+                  if (txt.charAt(i) == "\\") {
+                      answer.innerHTML += "\n";
+                      i += 1;
+                  } else {
+                      answer.innerHTML += txt.charAt(i);
+                  }
+                  i++;
+              }
+          }
+          hljs.highlightAll();
+          timeoutIds.push(setTimeout(typeWriter, 1, txt, i, q, num, text1, text2));
+      }
+  }
+
+</script>
+
+</html>

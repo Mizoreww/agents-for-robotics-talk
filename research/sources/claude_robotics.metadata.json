@@ -1,0 +1,254 @@
+{
+  "key": "claude_robotics",
+  "url": "https://www.anthropic.com/research/claude-plays-robotics",
+  "final_url": "https://www.anthropic.com/research/claude-plays-robotics",
+  "accessed": "2026-09-10",
+  "sha256": "a4029d0aadde68f7565555e30a2a2bf631f1151e3d826b777f2c0969eed3b453",
+  "chars": 56021,
+  "links": [
+    "https://www.anthropic.com/research/claude-plays-robotics#main-content",
+    "https://www.anthropic.com/research/claude-plays-robotics#footer",
+    "https://www.anthropic.com/",
+    "https://www.anthropic.com/policy",
+    "https://www.anthropic.com/news",
+    "https://claude.ai/",
+    "https://www.anthropic.com/research/project-fetch-phase-two",
+    "https://twitter.com/intent/tweet?text=https://www.anthropic.com/research/claude-plays-robotics",
+    "https://www.linkedin.com/shareArticle?mini=true&url=https://www.anthropic.com/research/claude-plays-robotics",
+    "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+    "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+    "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+    "https://claude.com/product/overview",
+    "https://claude.com/product/claude-code",
+    "https://claude.com/product/claude-code/enterprise",
+    "https://claude.com/product/cowork",
+    "https://claude.com/product/tag",
+    "https://claude.com/product/design",
+    "https://claude.com/product/claude-science",
+    "https://claude.com/product/claude-security",
+    "https://claude.com/claude-in-chrome",
+    "https://claude.com/claude-for-microsoft-365",
+    "https://www.claude.com/skills",
+    "https://claude.ai/download",
+    "https://claude.com/pricing",
+    "https://www.anthropic.com/claude/mythos",
+    "https://www.anthropic.com/claude/fable",
+    "https://www.anthropic.com/claude/opus",
+    "https://www.anthropic.com/claude/sonnet",
+    "https://www.anthropic.com/claude/haiku",
+    "https://claude.com/solutions/agents",
+    "https://claude.com/solutions/code-modernization",
+    "https://claude.com/solutions/coding",
+    "https://claude.com/solutions/commerce",
+    "https://claude.com/solutions/customer-support",
+    "https://claude.com/solutions/cybersecurity",
+    "https://claude.com/solutions/enterprise",
+    "https://claude.com/solutions/financial-services",
+    "https://claude.com/solutions/government",
+    "https://claude.com/solutions/healthcare",
+    "https://claude.com/solutions/education",
+    "https://claude.com/solutions/teachers",
+    "https://claude.com/solutions/legal",
+    "https://claude.com/solutions/life-sciences",
+    "https://claude.com/solutions/nonprofits",
+    "https://claude.com/solutions/small-business",
+    "https://claude.com/platform/api",
+    "https://platform.claude.com/docs",
+    "https://claude.com/pricing#api",
+    "https://claude.com/ecosystem",
+    "https://claude.com/platform/marketplace",
+    "https://claude.com/regional-compliance",
+    "https://claude.com/partners/claude-on-aws",
+    "https://claude.com/partners/google-cloud-vertex-ai",
+    "https://claude.com/partners/microsoft-foundry",
+    "https://platform.claude.com/",
+    "https://claude.com/blog",
+    "https://claude.com/partners",
+    "https://claude.com/community",
+    "https://claude.com/connectors",
+    "https://academy.claude.com",
+    "https://claude.com/customers",
+    "https://www.anthropic.com/engineering",
+    "https://www.anthropic.com/events",
+    "https://claude.com/plugins",
+    "https://claude.com/partners/powered-by-claude",
+    "https://claude.com/partners/services",
+    "https://claude.com/resources/tutorials",
+    "https://claude.com/resources/use-cases",
+    "https://claude.com/programs/startups",
+    "https://claude.com/programs/team-plan-for-scientists",
+    "https://www.anthropic.com/supported-countries",
+    "https://status.anthropic.com/",
+    "https://support.claude.com/en/",
+    "https://www.anthropic.com/company",
+    "https://www.anthropic.com/careers",
+    "https://www.anthropic.com/company/leadership",
+    "https://www.anthropic.com/economic-futures",
+    "https://www.anthropic.com/research",
+    "https://www.anthropic.com/constitution",
+    "https://www.anthropic.com/claude-corps",
+    "https://www.anthropic.com/path-to-hope",
+    "https://www.anthropic.com/policy-on-the-ai-exponential",
+    "https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy",
+    "https://trust.anthropic.com/",
+    "https://www.anthropic.com/transparency",
+    "https://www.anthropic.com/legal/privacy",
+    "https://www.anthropic.com/legal/consumer-health-data-privacy-policy",
+    "https://www.anthropic.com/responsible-disclosure-policy",
+    "https://www.anthropic.com/legal/commercial-terms",
+    "https://www.anthropic.com/legal/consumer-terms",
+    "https://anthropic.com/legal/k12-terms",
+    "https://anthropic.com/legal/k12-dpa",
+    "https://www.anthropic.com/legal/aup",
+    "https://www.linkedin.com/company/anthropicresearch",
+    "https://x.com/AnthropicAI",
+    "https://www.youtube.com/@anthropic-ai"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "alt": "Bar graph showing per-model embodiment score by interface. Mythos Preview scores the highest at 0.389, while Opus 4 scores the lowest at 0.115.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb82f549f17f19f77687b44191441c71d07e6d198-2640x1320.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Visualization of an AI agent playing a game where it controls a set of flippers, seeking to maximize the ball’s time in the air.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F30b4c51653aeadd65678de6844ac245e288c5390-480x360.gif&w=1080&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Six bar graphs showing different AI models' classic control performance on various tasks, both directly and via code control: pendulum balance (direct and code), hopper velocity (direct and code), and TwinFlipper air time (direct and code). ",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F67a32f2391eda5c15032f42833f02db57c3bafad-6951x6292.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar graphs showing models' classic control performance when training an RL policy to perform three tasks: pendulum balance, hopper velocity, and TwinFlipper air time.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Faaecef16d5f8fa1375accc602429b0c561f3664c-6500x2400.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar graphs with performance intervals showing various AI models' performance at directly controlling a robotic quadruped.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fc7015fa90f5134a5178d14b42372a79bf74b015b-6000x2550.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Four bar graphs showing various AI models' performance at controlling a robotic quadruped's movements using code control.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Feb82966f3a5ebb8f3c9d1b0a9c80bc2590274fab-8000x2750.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two computer renderings of a humanoid robot being controlled by an AI. In the first labeled \"Opus 4.6 (Python controller),\" the robot is standing but starts to twist its torso to one side. In the second, labeled \"zero commands (passive),\" the robot collapses to the ground.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F2d91fbe744a8e22fa60e8e8d287f1f998e4260f5-720x270.gif&w=1920&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar graphs showing various AI models' performance on controlling a humanoid robot. More advanced models perform reasonably well on the \"Go2 Stand\" task, but all models fail on the \"G1 Stand\" task.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F6e41b0cf335d8f90debd63057d45cdab15489c2f-9425x3639.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Rendering of an AI model manipulating a simulated robotic arm. The robotic arm reaches down, picks up an object, and moves it to a pedestal.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F910d0e73cc16479c5e31ff196bece2d6b8f80289-360x360.gif&w=750&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar graphs (the second with performance intervals) showing various AI models' success on LIBERO with direct control. Mythos Preview has the highest success rate, at 5.5; many AI models have a success rate of 0.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F2ad888f5aac3302eb70d844c1bd131cb39e39c11-6500x2400.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar charts showing various AI models' performance on various LIBERO subgoals. Here, the models show higher rates of progress.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F1380257d31c7ed2adbbb0f10f6e066def1821a18-8000x2800.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Bar chart showing various models' performance on high-level locomotion with various reasoning configs. Mythos Preview (adamax) and Mythos Preview (20k) have the highest scores, at 54 and 49.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F31b1248bf11ca460dd1077060b3113ca6645645f-4750x5500.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Four bar charts showing how perceptual aids change various models' performance on high-level locomotion tasks: compass, third-person cam, all combined, crosshair, and depth overlay.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F3b89c8c4e229501a45726fca1a88bd1e03bb47b3-6453x1761.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar charts showing various models' performance on LIBERO tasks with VLA supervision.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F35be79dfefc49b5ff33f87fb1771f64a8c5c8c1b-6500x2550.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar charts showing various models' follow rate on familiar (LIBERO-40) and novel tasks.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F950ef9f18406837c8f265bfd4f53d08b17f35819-7000x2400.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar charts showing various models' VLA-supervised performance on novel tasks.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fb957451d85e48a344d16052fb6bdde329aaa503b-6500x2700.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar charts showing various LLMs' success on familiar and novel touch, grasp, and place tasks.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fa86ffc18f5b012e73d69b2c56a391d06d0369353-7500x3000.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three colorful renderings of overlays given to the manipulation model.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fe2d956b8d755355e3dca8a9063b118cfae019170-2048x764.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Four bar charts showing various models' success rates when given vision tools: RGB baseline, depth, segmentation, and cursor.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F19fc142a57f8a25e4f04d4404df0c293e46002b6-7000x2300.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Bar chart showing the per-task effect of replacing the forward camera with a third-person camera on various models' performance on high-level locomotion tasks. Some tasks, like color_sequence, improved, while some tasks, such as find_x declined.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F8368ba2585173f52aa269eb60151ca966d37c82f-6000x2500.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Bar chart showing various AI models' average best progress on tasks when using RGB baseline vs. VLM scene description. Performance was generally higher with RGB baseline.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F5773bcff06d744fa7cadde3e2cd4b0ec798509b3-6000x2550.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Bar chart showing the effect of reasoning on classic code control for various AI models when performing two tasks: pendulum code controller and hopper code controller. The two reasoning modes—baseline vs. high—show similar results.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F2a5f5b74f10cf7ec6ecfd4d5700e64672b453c45-8450x3639.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two bar charts showing the effect of reasoning on locomotion using code control for various AI models. ",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Feb283889a737e2c4115df62facffcf82d0149794-6000x2900.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar charts showing the effect of reasoning on VLA-familiar tasks for various models.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F8facf609f81803b818fae588d26022d00210905f-8000x3900.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar charts showing the effect of reasoning on VLA-familiar tasks with VLA and LLM supervision for various AI models.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F98e91d4e6bdc21191c92ed493235bb8f91f20315-8000x3900.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Four bar charts showing how different reasoning levels and a perceptual aid affect various AI models' performance on tasks. The models shown are Opus 4.6, Opus 4.7, Mythos Preview, and Sonnet 4.6.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F235fbbe717d3a81a05cf26b0e1f34e60a772936c-6953x2391.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three charts showing performance ranges, from average first attempt to average best attempt, for various AI models on three tasks: pendulum (direct), pendulum (code), and TwinFlipper (code).",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2Fc56553c8bf4a12ea4838deee45086e66131d0ba7-7000x2900.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Three bar charts showing various models' performance on LIBERO-40 under three context truncation conditions: full context, keep first 10 + last 12, and keep first 10 + last 6.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F7a4cf5c2c251820944b6a7d20e75588bdadf99aa-6750x2400.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Two line graphs showing various AI models' performance on practice runs on one_shot course. The models show varied performance on the L-hallway (easy) course; all models failed on the ultimate (hard) course.",
+      "src": "https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F9494d0b620e660f01b4160cbd2c47c2acdf0a8e6-6000x2300.png&w=3840&q=75"
+    }
+  ]
+}

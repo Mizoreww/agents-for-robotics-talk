@@ -1,0 +1,245 @@
+{
+  "key": "agentic_real2sim",
+  "url": "https://agentic-real2sim.github.io/",
+  "final_url": "https://agentic-real2sim.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "41fb37404ed303f4d0b666f819bc0f106dfb57f228095544b0c0563c6b840270",
+  "chars": 5824,
+  "links": [
+    "https://agentic-real2sim.github.io/",
+    "https://www.cs.ubc.ca/~gxchen/",
+    "https://qianjun-xia.github.io/",
+    "https://www.linkedin.com/in/jiawei-peng-59a713190",
+    "https://home.mediosz.club/",
+    "https://de.linkedin.com/in/david-bole-ma",
+    "https://ca.linkedin.com/in/justin-qian",
+    "https://ca.linkedin.com/in/allison-ziyi-jiao",
+    "https://sg.linkedin.com/in/bingyang-zhou-69613b292",
+    "https://www.linkedin.com/in/luoxin-ye-b584a0317",
+    "https://kywind.github.io/",
+    "https://ca.linkedin.com/in/kunyi-wang-0933b2241",
+    "https://www.linkedin.com/in/weijia-zeng-0a4686238",
+    "https://yunuoch.github.io/",
+    "https://pengzhi1998.github.io/",
+    "https://ziqiu-zeng.github.io/homepage/",
+    "https://www.siyuanluo.com/",
+    "https://wanghmin.github.io/",
+    "https://chaoliu.tech/",
+    "https://www.cs.jhu.edu/~ayuille1/",
+    "https://fanshi14.github.io/me/",
+    "https://www.cs.columbia.edu/~cxz/",
+    "https://people.csail.mit.edu/liyunzhu/",
+    "https://www.math.ucla.edu/~cffjiang/",
+    "https://peterchencyc.com/",
+    "https://agentic-real2sim.github.io/static/pdfs/agentic-real2sim.pdf",
+    "https://arxiv.org/abs/2607.19190",
+    "https://github.com/agentic-real2sim/agentic_real2sim",
+    "http://creativecommons.org/licenses/by-sa/4.0/",
+    "https://github.com/nerfies/nerfies.github.io",
+    "https://nerfies.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_teaser.mp4?v=d6a9655b",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_real.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_simulated.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_089_real.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_089_simulated.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_091_real.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://agentic-real2sim.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_091_simulated.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://agentic-real2sim.github.io/usd-viewer/?viewer=three&file=tri-success-nov8-2023-sample12.usd"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/double_drag_cloth_26-07-15_tracked_pc.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/double_stretch_Toyandona_sloth_26-05-18_tracked_pc.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/humanoid_idx13_real.png",
+      "alt": "Real humanoid reference for pose 13."
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/humanoid_idx13_settling.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/humanoid_idx20_real.png",
+      "alt": "Real humanoid reference for pose 20."
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://agentic-real2sim.github.io/static/videos/humanoid_idx20_settling.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/Fig_teaser.png",
+      "alt": "Agentic Real2Sim system architecture."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/combined_5x5_tight.gif",
+      "alt": "Selected 25 episodes from the DROID Dataset."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_01.gif",
+      "alt": "Real-world demonstration of placing an object in a blue cup."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_01.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_02.gif",
+      "alt": "Real-world demonstration of repositioning an object on the table."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_02.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_03.gif",
+      "alt": "Real-world demonstration of placing an object in a mug."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_03.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_04.gif",
+      "alt": "Real-world demonstration of repositioning an object on the table."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_04.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_05.gif",
+      "alt": "Real-world demonstration of stacking one bowl on another."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_05.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_06.gif",
+      "alt": "Real-world demonstration of dropping a yellow block into a blue cup."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_06.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_07.gif",
+      "alt": "Real-world demonstration of stacking blocks in sequence."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_07.gif",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_08.gif",
+      "alt": "Real-world demonstration of placing an object on a plate."
+    },
+    {
+      "tag": "img",
+      "src": "https://agentic-real2sim.github.io/static/images/policy_evaluation/episode_08.gif",
+      "alt": ""
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube-nocookie.com/embed/qpLM2Dvp9mk"
+    }
+  ]
+}

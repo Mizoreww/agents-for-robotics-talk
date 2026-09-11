@@ -1,0 +1,549 @@
+Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents
+[#modal-form]
+[#modal-form-content]
+[#modal-title] Report GitHub Issue
+×
+Title:
+[#form_title]
+[#selectedTextModalDescription] Content selection saved. Describe the issue below:
+Description:
+[#description]
+Submit without GitHub
+Submit in GitHub
+[#announcement-banner]
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract
+1 Introduction
+2 Related Work
+Automated real-to-sim alignment.
+VLM-driven asset generation.
+Robotic interaction datasets.
+Visual processing and simulation tools.
+Downstream use of simulator episodes.
+3 Method
+3.1 System Overview
+3.2 Converting DROID Episodes
+3.3 Converting PhysTwin and BFM-Zero Episodes
+4 Experiments
+4.1 Evaluation Metric
+4.2 DROID Episode Conversion at Scale
+Quantitative.
+Qualitative.
+4.3 Multi-VLM Support and Cost Efficiency
+4.4 Deformable and Humanoid Episode Conversion
+Deformable.
+Humanoid.
+Qualitative.
+5 Conclusions, Limitations and Future Work
+References
+[#infobox]
+[#license-tr]
+License: CC BY 4.0
+[#watermark-tr]
+arXiv:2607.19190v3 [cs.RO] 24 Jul 2026
+Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents
+Guanxiong Chen
+Affiliation: University of British Columbia
+Qianjun Xia
+Affiliation: University of British Columbia
+Jiawei Peng
+Affiliation: Johns Hopkins University
+Heng Zhang
+Affiliation: University of British Columbia
+Bole Ma
+Affiliation: Erlangen National High Performance Computing Center (NHR@FAU), Friedrich-Alexander-Universität Erlangen-Nürnberg
+Justin Qian
+Affiliation: University of British Columbia
+Ziyi Jiao
+Affiliation: University of British Columbia
+Bingyang Zhou
+Affiliation: National University of Singapore
+Luoxin Ye
+Affiliation: Johns Hopkins University
+Kaifeng Zhang
+Affiliation: Columbia University
+Kunyi Wang
+Affiliation: University of British Columbia
+Weijia Zeng
+Affiliation: University of British Columbia
+Yunuo Chen
+Affiliation: University of California, Los Angeles
+Pengzhi Yang
+Affiliation: National University of Singapore
+Ziqiu Zeng
+Affiliation: National University of Singapore
+Siyuan Luo
+Affiliation: National University of Singapore
+Huamin Wang
+Affiliation: Style3D
+Chao Liu
+Affiliation: University of British Columbia
+Alan Yuille
+Affiliation: Johns Hopkins University
+Fan Shi
+Affiliation: National University of Singapore
+Changxi Zheng
+Affiliation: Columbia University
+Yunzhu Li
+Affiliation: Columbia University
+Chenfanfu Jiang
+Affiliation: University of California, Los Angeles
+Peter Yichen Chen
+Affiliation: University of British Columbia
+[#abstract1]
+Abstract
+[#abstract1.1] Real-to-sim conversion for robotic interaction with objects remains labor-intensive because it requires more than visual reconstruction: a streamlined real2sim process must recover scene geometries and object states, infer physical parameters, and assemble actors, objects, cameras, poses, and trajectories into a runnable physical simulation. Today this process still depends on manual tuning of visual foundation models, mesh cleanup, coordinate-frame alignment, and brittle workflow glue across visual perception tools and simulators. We introduce [#abstract1.1.1] Agentic Real2Sim, a framework for generalized physical world modeling with vision-language agents, converting a real-world recording of object-robot interaction into a simulatable episodic twin which preserves observations, geometries, robot interactions, and object states. We evaluate Agentic Real2Sim on rigid-object manipulation, deformable-object interaction, and humanoid motion scenes, spanning domains that are usually handled by separate Real2Sim pipelines, marking a first step toward scalable conversion. The framework’s agentic decisions can be driven by an open-weight VLM backend at a small fraction of the cost of frontier models, while attaining comparable conversion success rate. We aim to use the resulting real-world-aligned twins for downstream robotics tasks, specifically policy learning and evaluation. The project site is available at https://agentic-real2sim.github.io/.
+[#S1]
+1 Introduction
+[#S1.p1]
+[#S1.p1.1] Large real-world robot datasets and increasingly capable simulators have made it tempting to treat real-to-sim conversion as a solved plumbing problem: collect observations, reconstruct assets, drop them into a physics engine, and train or evaluate policies. In practice, physical interaction episodes resist this simplification. A manipulation recording is not just a static scene: it contains a robot, manipulated objects, camera setup, object states, contacts, physical parameters, as well as a task description which dictates how the robot behaves across space and time. Accumulating these elements into a [#S1.p1.1.1] simulatable twin episode still requires a significant amount of manual labor: tuning visual foundation models, cleaning up meshes, aligning coordinate frames, and gluing together brittle workflows across visual perception tools and simulators.
+[#S1.p2]
+[#S1.p2.1] Recent work has made strong progress on parts of this problem.
+Automated Real2Sim frameworks recover simulation-ready assets and physical parameters from robotic interaction [16], while Real2Sim2Real frameworks align visual and dynamic properties for manipulation policy development [5, 9, 4].
+At the same time, state-of-the-art VLM-based agentic data-generation frameworks use the generate-critic-improve paradigm to build simulation-ready scenes [14, 20, 26, 15] or object-level assets [25]. These lines of work point to a missing capability: scalable conversion of recorded physical interaction episodes into physically simulatable digital twins. Given a real-world recording of an interaction, can a framework produce a simulatable artifact that replays the episode, with physically plausible scene setup and physical parameters that support downstream applications such as robotic policy learning?
+[#S1.p3]
+[#S1.p3.1] We frame this problem as [#S1.p3.1.1] Agentic Real2Sim: Given a recorded physical interaction episode, our goal is to establish a framework that automatically produces a physically realistic digital twin, preserving the actors, objects, trajectories, physical parameters, and replay artifacts needed for downstream robotic learning and evaluation—see Fig. 1. Our contributions are threefold:
+[#S1.I1]
+[#S1.I1.i1] (1) [#S1.I1.i1.2] First, we introduce an Agentic Real2Sim pipeline for converting DROID robot manipulation episodes [12] into MuJoCo-simulated episodic twins [18]. We view this as a first step toward scalable interaction conversion: the system transforms recorded robot-object interactions into simulatable artifacts through visual processing, physical-prior inference, scene preparation, and simulator-in-the-loop refinement.
+[#S1.I1.i2] (2) [#S1.I1.i2.2] Second, we demonstrate that Agentic Real2Sim supports interchangeable VLM backends. Across four backends evaluated on DROID-100, an open 31B VLM achieves comparable observed replay-success outcomes to proprietary backends while reducing model cost by up to [#S1.I1.i2.m1] 31.4×31.4\times.
+[#S1.I1.i3] (3) [#S1.I1.i3.2] Third, we generalize the framework beyond the DROID manipulation dataset, by enabling the same conversion process for deformable manipulation in a PhysTwin-style setting [9] and for humanoid motion with BFM-Zero-style motion context [13].
+[#S1.2]
+[#S1.p4] [#S1.g1]
+[#S1.F1]
+Figure 1: [#S1.F1.3] Agentic Real2Sim architecture. A recorded DROID episode is converted into a simulatable digital twin through four linked agents: The visual processing agent from raw video extracts segmentation and depth masks, geometries and object poses. The physical-prior inference agent attaches object identity, material class, mass hints, and other constitutive properties needed by the simulator. The scene preparation agent initializes a scene with the robot’s initial state, cameras, and reconstructed geometry, and places objects of interest in the correct locations. Simulator-in-the-loop grasp optimization further optimizes object placements to enable successful grasping. The same episode contract supplies the inputs and feedback channels used by the rigid, deformable, and humanoid adapters.
+[#S1.3]
+[#S1.p5] [#S1.g2]
+[#S1.F2]
+Figure 2: [#S1.F2.4] DROID episode conversion at scale. Representative episodes from [#S1.F2.5] DROID-100 spanning the sampled axes, each pairing the real DROID observation with its MuJoCo episode twin. Intermediate pipeline artifacts are exposed for selected scenes: object segmentation and FoundationPose pose-tracking overlays.
+[#S2]
+2 Related Work
+[#S2.SS0.SSS0.Px1]
+Automated real-to-sim alignment.
+[#S2.SS0.SSS0.Px1.p1]
+[#S2.SS0.SSS0.Px1.p1.1] Real2Sim frameworks have been gradually shifting from manually authored simulator scenes toward automated asset and parameter recovery: scalable Real2Sim reconstructs simulation-ready object assets through robotic pick-and-place interaction, estimating visual geometry, collision geometry, and inertial properties with a dedicated acquisition setup [16]. TwinAligner similarly targets physics-aware Real2Sim2Real for robotic manipulation, combining visual alignment with rigid-body system identification and evaluating whether aligned simulators improve policy development [5]. These works establish that reconstructing photorealistic scenes alone is insufficient for robotic learning: simulators used for manipulation must also recover dynamics, contacts, and task-relevant behavior. Agentic Real2Sim shares this emphasis on physical alignment, but differs in its unit of conversion. Rather than scanning isolated objects or constructing a scene for a new policy-training setup, it converts recorded interaction episodes into simulatable twin episodes that preserve the observed actors, manipulated objects, trajectories, contacts, and ensures visual alignment.
+[#S2.SS0.SSS0.Px2]
+VLM-driven asset generation.
+[#S2.SS0.SSS0.Px2.p1]
+[#S2.SS0.SSS0.Px2.p1.1] Recent works leverage state-of-the-art visual-language models for generating visually realistic and physically plausible assets for downstream applications. While earlier frameworks primarily rely on one-off VLM API calls embedded in larger scene-reconstruction and task-generation pipelines [24, 11, 26, 17], more recent works such as SceneSmith [15], SceneWeaver [23], PhyScensis [20], SimWorld Studio [10], and LychSim [14] have shown the strong potential of agentic VLM pipelines in reconstructing realistic scenes from real-world data, or building articulated assets through agentic code and testing loops [25]. These agentic frameworks enable VLMs to operate directly over intermediate generation artifacts, using structured, artifact-level feedback to identify omissions or implausibilities and to iteratively refine subsequent generation decisions. Our work follows this paradigm of using VLM-driven agents for synthetic scene generation and real-to-sim construction, yet places greater emphasis on reconstructing full manipulation behaviors from real-world recordings, as well as generating physical parameters, in addition to placing assets appropriately to recreate visually realistic scenes.
+[#S2.SS0.SSS0.Px3]
+Robotic interaction datasets.
+[#S2.SS0.SSS0.Px3.p1]
+[#S2.SS0.SSS0.Px3.p1.1] DROID provides large-scale in-the-wild robot demonstrations with synchronized RGB streams, depth, calibration, language instructions, and robot trajectories, with a primary focus on rigid-object manipulation [12]. PointWorld builds on this style of in-the-wild manipulation data for scalable 3D world modeling and further refines camera extrinsic estimates as part of its annotation pipeline [8]. These datasets make DROID-style manipulation a natural substrate for episode-level Real2Sim, while also exposing the practical difficulty of turning raw demonstrations into physically and visually realistic simulated demonstrations. Beyond rigid object manipulation, PhysTwin emphasizes deformable manipulation by reconstructing physics-informed deformable digital twins from videos of interacted objects [9]. For humanoid motion, BFM-Zero studies promptable behavioral foundation models and motion-context retrieval for humanoid control [13]. Together, these lines motivate a conversion problem that spans rigid robot-object interaction, deformable-object interaction, and whole-body motion rather than a single dataset format.
+[#S2.SS0.SSS0.Px4]
+Visual processing and simulation tools.
+[#S2.SS0.SSS0.Px4.p1]
+[#S2.SS0.SSS0.Px4.p1.1] Our pipeline also relies on replaceable visual and simulation components. SAM 3 supplies open-vocabulary segmentation for selecting and tracking relevant objects or regions [2]. SAM 3D is used as a geometry-extraction component, not as the object-discovery mechanism, by recovering 3D object assets from image evidence [3]. FoundationStereo provides stereo depth estimation from rectified camera pairs [21], and FoundationPose provides 6D object pose estimation and tracking for novel objects [22]. Deformable simulation tools such as PhysTwin and EMPM further show how visual evidence can be coupled with simulator rollouts and parameter optimization to recover material or connectivity parameters [9, 4]. These components are important building blocks, but they are not the paper’s main contribution. Agentic Real2Sim contributes the episode contract and alignment loop that compose visual extraction, simulator execution, critic feedback, and domain-specific repair into executable episode twins.
+[#S2.SS0.SSS0.Px5]
+Downstream use of simulator episodes.
+[#S2.SS0.SSS0.Px5.p1]
+[#S2.SS0.SSS0.Px5.p1.1] Simulation-ready episodes are useful only if they support physical queries beyond visual reconstruction. Prior work on demonstration amplification and simulation data generation studies how converted or synthesized demonstrations can support skill learning and deployment [6, 19]. We aim to use our converted synthetic DROID episodes as simulation assets for downstream robotics tasks, specifically policy learning and evaluation.
+[#S3]
+3 Method
+[#S3.p1]
+[#S3.p1.1] Agentic Real2Sim converts a real physical interaction episode into a simulatable [#S3.p1.1.1] episode twin: a simulator artifact that preserves the observation streams, actors, manipulated entities, geometry, temporal state, physical parameters, and evaluation evidence needed to replay or query the original episode. An episode twin is represented as
+[#S3.E1]
+[#S3.E1.m1] 𝒯=(𝒪,𝒜,𝒢,𝒮1:T,Θ,ℬ,ℳ),\mathcal{T}=(\mathcal{O},\mathcal{A},\mathcal{G},\mathcal{S}_{1:T},\Theta,\mathcal{B},\mathcal{M}),
+(1)
+[#S3.p1.2] where [#S3.p1.m1] 𝒪\mathcal{O} denotes real observations, [#S3.p1.m2] 𝒜\mathcal{A} actors or end effectors, [#S3.p1.m3] 𝒢\mathcal{G} geometry and appearance assets, [#S3.p1.m4] 𝒮1:T\mathcal{S}_{1:T} simulator states over time, [#S3.p1.m5] Θ\Theta physical and alignment parameters, [#S3.p1.m6] ℬ\mathcal{B} the simulator backend, and [#S3.p1.m7] ℳ\mathcal{M} the metrics and traces used to decide whether conversion succeeded. The design goal is to share the pipeline stages, artifact contract, replay loop, and critic interface across domains while allowing skill and tool invocations to differ between rigid-object manipulation, deformable-object interaction, and whole-body humanoid motion.
+[#S3.SS1]
+3.1 System Overview
+[#S3.SS1.p1]
+[#S3.SS1.p1.1] Fig. 1 summarizes the architecture through a rigid object manipulation example. The [#S3.SS1.p1.1.1] visual processing agent reads a recorded demonstration, discovers relevant objects, selects keyframes, segments actors and objects, reconstructs or imports geometry, estimates scale, tracks poses, and emits a canonical episode folder. The [#S3.SS1.p1.1.2] physical-prior inference agent converts visual evidence and task context into simulator-facing priors such as object identity, material class, mass hints, and contact-relevant attributes. The [#S3.SS1.p1.1.3] scene preparation agent converts those artifacts into an initialized simulator scene by aligning robot base pose, object pose, camera frame, assets, trajectories, and ground reference. The final [#S3.SS1.p1.1.4] simulator-in-the-loop grasp optimization stage optimizes the position of the manipulated object and identifies the optimal object placement which enables successful grasping.
+[#S3.SS1.p2]
+[#S3.SS1.p2.1] The architecture deliberately separates deterministic tools from agentic decisions. Agentic nodes make choices that depend on ambiguous visual or physical evidence: which objects matter, which frame provides a clean mask, whether a segmentation or track is acceptable, which object defines the ground plane, which episode subtype should be routed to which adapter, and which feedback channel should drive the next refinement. Deterministic tools invoked by agents perform extraction, rendering, pose optimization and grasp optimization. This separation makes the system easier to ablate: removing a critic or replacing a VLM backend changes the decision layer without rewriting the underlying visual processing and simulation utilities.
+[#S3.SS2]
+3.2 Converting DROID Episodes
+[#S3.SS2.p1]
+[#S3.SS2.p1.1] Our framework primarily focuses on DROID-style robot-object interactions [12]. The input contains synchronized camera streams, calibration data, a robot trajectory, depth or stereo-derived geometry, and language or task context. The visual pipeline first selects the primary external camera from the synchronized streams, then extracts frames from its recording and builds a rectified video. A VLM-driven object discovery node proposes scene entities, after which a keyframe selector chooses a frame for segmentation. A mask critic can reject poor segmentations and route the graph back to keyframe selection with a bounded retry budget. Accepted masks feed mesh recovery, while full-image depth reconstruction [21] further enables mesh scaling and FoundationPose-style object tracking [22]. A tracking critic records pose-quality judgments and can request a new initialization frame. Finally, two VLM queries identify the object the robot manipulates and the scene entity that serves as the ground reference.
+[#S3.SS2.p2]
+[#S3.SS2.p2.1] The resolved visual state is written into an episode folder containing object meshes, scales, pose tracks, robot trajectory, camera metadata, first-frame observations, masks, and task semantics. Next, the scene preparation agent proceeds: it invokes a deterministic calibration stage, optimizes the robot base pose against the robot mask, and estimates the ground plane’s orientation and offset beneath the ground reference chosen upstream. The agent then loads the calibrated scene into MuJoCo [18], and makes a decision: either it performs a deterministic sweep over object shift parameters, or it calls an LLM-assisted loop that proposes refinements from replay evidence. The sweep path evaluates a batch of candidate shifts against contact and grasp outcomes; the loop path exposes rendered keyframes and structured replay summaries to the agent before each refinement.
+[#S3.SS2.p3]
+[#S3.SS2.p3.1] Tab. 1 lists the tools exposed to each stage in our conversion process, separating the tools an agent uses to interact with and build artifacts from the skills that describe the high-level decision-making subprocesses an agent must follow within each stage.
+[#S3.T1]
+[#S3.T1.2]
+[#S3.T1.2.1]
+[#S3.T1.2.1.1] [#S3.T1.2.1.1.1] Block
+[#S3.T1.2.1.2]
+[#S3.T1.2.1.2.1]
+[#S3.T1.2.1.2.1.1] [#S3.T1.2.1.2.1.1.1] Tool
+[#S3.T1.2.1.3]
+[#S3.T1.2.1.3.1]
+[#S3.T1.2.1.3.1.1] [#S3.T1.2.1.3.1.1.1] Skill
+[#S3.T1.2.1.4]
+[#S3.T1.2.1.4.1]
+[#S3.T1.2.1.4.1.1] [#S3.T1.2.1.4.1.1.1] Purpose
+[#S3.T1.2.2]
+[#S3.T1.2.2.1] [#S3.T1.2.2.1.1] Object discovery
+[#S3.T1.2.2.2]
+[#S3.T1.2.2.2.1]
+[#S3.T1.2.2.2.1.1] [#S3.T1.2.2.2.1.1.1] —
+[#S3.T1.2.2.3]
+[#S3.T1.2.2.3.1]
+[#S3.T1.2.2.3.1.1] [#S3.T1.2.2.3.1.1.1] object_discovery [#S3.T1.2.2.3.1.1.2] , [#S3.T1.2.2.3.1.1.3] object_relevance [#S3.T1.2.2.3.1.1.4] , [#S3.T1.2.2.3.1.1.5] pickup_object [#S3.T1.2.2.3.1.1.6] , [#S3.T1.2.2.3.1.1.7] support_tree
+[#S3.T1.2.2.4]
+[#S3.T1.2.2.4.1]
+[#S3.T1.2.2.4.1.1] [#S3.T1.2.2.4.1.1.1] List the objects in the scene, keep the ones the task involves, pick out the one being manipulated, and infer what rests on what.
+[#S3.T1.2.3]
+[#S3.T1.2.3.1] [#S3.T1.2.3.1.1] Segmentation
+[#S3.T1.2.3.2]
+[#S3.T1.2.3.2.1]
+[#S3.T1.2.3.2.1.1] [#S3.T1.2.3.2.1.1.1] segment [#S3.T1.2.3.2.1.1.2] [#S3.T1.2.3.2.1.1.3] (SAM 3)
+[#S3.T1.2.3.3]
+[#S3.T1.2.3.3.1]
+[#S3.T1.2.3.3.1.1] [#S3.T1.2.3.3.1.1.1] segment [#S3.T1.2.3.3.1.1.2] : keyframe + mask critic
+[#S3.T1.2.3.4]
+[#S3.T1.2.3.4.1]
+[#S3.T1.2.3.4.1.1] [#S3.T1.2.3.4.1.1.1] Pick a clean frame, segment each object, and retry with a new frame if a mask is rejected.
+[#S3.T1.2.4]
+[#S3.T1.2.4.1] [#S3.T1.2.4.1.1] Geometry
+[#S3.T1.2.4.2]
+[#S3.T1.2.4.2.1]
+[#S3.T1.2.4.2.1.1] [#S3.T1.2.4.2.1.1.1] mesh_recover [#S3.T1.2.4.2.1.1.2] [#S3.T1.2.4.2.1.1.3] (SAM 3D) [#S3.T1.2.4.2.1.1.4] , [#S3.T1.2.4.2.1.1.5] mesh_scale
+[#S3.T1.2.4.3]
+[#S3.T1.2.4.3.1]
+[#S3.T1.2.4.3.1.1] [#S3.T1.2.4.3.1.1.1] scale_critic
+[#S3.T1.2.4.4]
+[#S3.T1.2.4.4.1]
+[#S3.T1.2.4.4.1.1] [#S3.T1.2.4.4.1.1.1] Reconstruct each object’s mesh and set its real-world size; the critic checks the size is stable.
+[#S3.T1.2.5]
+[#S3.T1.2.5.1] [#S3.T1.2.5.1.1] Pose tracking
+[#S3.T1.2.5.2]
+[#S3.T1.2.5.2.1]
+[#S3.T1.2.5.2.1.1] [#S3.T1.2.5.2.1.1.1] pose_tracking [#S3.T1.2.5.2.1.1.2] [#S3.T1.2.5.2.1.1.3] (FoundationPose)
+[#S3.T1.2.5.3]
+[#S3.T1.2.5.3.1]
+[#S3.T1.2.5.3.1.1] [#S3.T1.2.5.3.1.1.1] tracking_critic
+[#S3.T1.2.5.4]
+[#S3.T1.2.5.4.1]
+[#S3.T1.2.5.4.1.1] [#S3.T1.2.5.4.1.1.1] Track each object’s 6-DoF pose over time; the critic checks the track and can restart it from a new frame.
+[#S3.T1.2.6]
+[#S3.T1.2.6.1] [#S3.T1.2.6.1.1] Physical prior
+[#S3.T1.2.6.2]
+[#S3.T1.2.6.2.1]
+[#S3.T1.2.6.2.1.1] [#S3.T1.2.6.2.1.1.1] —
+[#S3.T1.2.6.3]
+[#S3.T1.2.6.3.1]
+[#S3.T1.2.6.3.1.1] [#S3.T1.2.6.3.1.1.1] material_classify
+[#S3.T1.2.6.4]
+[#S3.T1.2.6.4.1]
+[#S3.T1.2.6.4.1.1] [#S3.T1.2.6.4.1.1.1] Infer each object’s material and mass so the simulator has physical parameters to use.
+[#S3.T1.2.7]
+[#S3.T1.2.7.1] [#S3.T1.2.7.1.1] Scene prep
+[#S3.T1.2.7.2]
+[#S3.T1.2.7.2.1]
+[#S3.T1.2.7.2.1.1] [#S3.T1.2.7.2.1.1.1] calibration [#S3.T1.2.7.2.1.1.2] , base-pose opt.
+[#S3.T1.2.7.3]
+[#S3.T1.2.7.3.1]
+[#S3.T1.2.7.3.1.1] [#S3.T1.2.7.3.1.1.1] camera_select [#S3.T1.2.7.3.1.1.2] , [#S3.T1.2.7.3.1.1.3] ground_ref
+[#S3.T1.2.7.4]
+[#S3.T1.2.7.4.1]
+[#S3.T1.2.7.4.1.1] [#S3.T1.2.7.4.1.1.1] Pick the primary camera view (done once at data preprocessing), calibrate the cameras, place the ground and robot base, and load the scene into MuJoCo.
+[#S3.T1.2.8]
+[#S3.T1.2.8.1] [#S3.T1.2.8.1.1] Grasp opt.
+[#S3.T1.2.8.2]
+[#S3.T1.2.8.2.1]
+[#S3.T1.2.8.2.1.1] [#S3.T1.2.8.2.1.1.1] grasp sweep
+[#S3.T1.2.8.3]
+[#S3.T1.2.8.3.1]
+[#S3.T1.2.8.3.1.1] [#S3.T1.2.8.3.1.1.1] —
+[#S3.T1.2.8.4]
+[#S3.T1.2.8.4.1]
+[#S3.T1.2.8.4.1.1] [#S3.T1.2.8.4.1.1.1] Try many small shifts of the object and keep the one that leads to a successful grasp.
+Table 1: [#S3.T1.12] Tools and skills exposed to each conversion stage. Each stage wraps fixed perception and simulation backends as [#S3.T1.13] tools (backend in [#S3.T1.14] italics), and defers high-level decisions to [#S3.T1.15] skills: bounded, schema-constrained VLM queries. Monospace names are the exact invoked tool functions; a dash (—) means the stage has no tool or skill to be invoked.
+[#S3.SS3]
+3.3 Converting PhysTwin and BFM-Zero Episodes
+[#S3.SS3.p1]
+[#S3.SS3.p1.1] The deformable and humanoid adapters extend the same episode contract beyond rigid DROID manipulation. The deformable adapter follows the PhysTwin/EMPM setting, replacing rigid object pose tracking with tracked geometry, point, particle, spring, or material state and using simulator rollouts to check whether recovered parameters reproduce observed deformation [9, 4]. The humanoid adapter replaces object-centric scene preparation with motion-context retrieval, embodiment-specific initialization, and closed-loop replay against retargeted reference motion, using motion priors from the humanoid/video domain [7]. Both adapters reuse the shared folder contract, visual evidence, structured replay metrics, and repair interface, but expose domain-specific states and refinement variables instead of forcing all episodes into a single rigid-body representation.
+[#S4]
+4 Experiments
+[#S4.SS1]
+4.1 Evaluation Metric
+[#S4.SS1.p1]
+[#S4.SS1.p1.1] We evaluate the rigid DROID conversions with replay success, an episode-level metric that measures consistency between the simulated episode and the real episode. Specifically, following paradigm adopted in Cao et al. [1], we compute the metric following a structured, VLM-based process: a evaluator first prepares a fixed set of real and simulated keyframes with the labels [#S4.SS1.p1.1.1] start, [#S4.SS1.p1.1.2] middle_1, [#S4.SS1.p1.1.3] middle_2, and [#S4.SS1.p1.1.4] end. Next, the evaluator selects reconstruction candidates deterministically from the latest grasp sweep: a sample is eligible only if the probe marks it as grasped, its replay video exists, and its lift and displacement statistics are finite and within broad sanity bounds. Among the eligible samples, the evaluator sends at most five candidates to the judges, ranked by peak object displacement with sample id as the deterministic tie-breaker. Three judges, each with a distinct VLM backend, then independently compare the episode’s real keyframes with each candidate’s simulated keyframes, using the same structured schema; each judge scores the quality of a candidate based on target-object identity, the target object’s final location, action similarity, and end-gripper location, while recording start-pose drift as context. The rubric is defined as follows: a judge scores each candidate out of [#S4.SS1.p1.m1] 1010, subtracting up to [#S4.SS1.p1.m2] 44 points for identifying the wrong target object, [#S4.SS1.p1.m3] 33 for a wrong final object location, [#S4.SS1.p1.m4] 22 for a wrong action performed, and [#S4.SS1.p1.m5] 11 for a wrong final gripper location. Starting-pose drift is recorded as context rather than directly subtracted; scores of [#S4.SS1.p1.m6] 88 or higher count as pass, [#S4.SS1.p1.m7] 77 as partial, and [#S4.SS1.p1.m8] 66 or lower as fail. Each judge acts as a success finder by nominating its own highest-scored candidate. We define [#S4.SS1.p1.m9] re∈{0,1}r_{e}\in\{0,1\} as the episode replay-success indicator, with [#S4.SS1.p1.m10] re=1r_{e}=1 if at least one of the three judges assigns a best-candidate score of at least [#S4.SS1.p1.m11] 88 out of [#S4.SS1.p1.m12] 1010; otherwise [#S4.SS1.p1.m13] re=0r_{e}=0. Episodes without a valid judge record are also assigned [#S4.SS1.p1.m14] re=0r_{e}=0. The reported replay score for the episode is the maximum of the three judge-best scores.
+[#S4.SS2]
+4.2 DROID Episode Conversion at Scale
+[#S4.SS2.p1]
+[#S4.SS2.p1.1] We evaluate the rigid object manipulation setting on [#S4.SS2.p1.1.1] DROID-100, a randomly selected set of [#S4.SS2.p1.m1] 100100 manipulation episodes sampled to span objects, camera viewpoints, occlusion patterns, and manipulation verbs (pick / place / push / insert). All sampled episodes remain in the replay-success denominator, including runs that stop before producing a valid replay record.
+[#S4.SS2.SSS0.Px1]
+Quantitative.
+[#S4.SS2.SSS0.Px1.p1]
+[#S4.SS2.SSS0.Px1.p1.1] Using Gemma 4 31B as the VLM backend, Agentic Real2Sim produces 48 successful, 8 partial, and 44 failed replay outcomes over DROID-100, with a total model bill of $2.62. Fig. 3 reports the corresponding outcomes for three additional VLM backends and compares their model costs.
+[#S4.SS2.SSS0.Px2]
+Qualitative.
+[#S4.SS2.SSS0.Px2.p1]
+[#S4.SS2.SSS0.Px2.p1.1] Fig. 2 pairs real DROID observations with their MuJoCo replays for representative episodes spanning the sampled axes, exposing intermediate pipeline artifacts for at least one scene: recovered object meshes, FoundationPose-style pose-tracking overlays, and the calibrated robot/ground state. We include at least one informative failure (e.g. a segmentation or pose-tracking miss) so the panel is honest rather than cherry-picked.
+[#S4.SS3]
+4.3 Multi-VLM Support and Cost Efficiency
+[#S4.SS3.2]
+[#S4.SS3.p1] [#S4.SS3.g1]
+[#S4.F3]
+Figure 3: [#S4.F3.3] Replay-acceptance outcomes and model cost across VLM backends. The left panel decomposes all 100 attempted DROID episodes into replay success, partial, and failure outcomes for each backend. Replay success denotes a best judge score of at least [#S4.F3.m4] 8/108/10, partial a score of [#S4.F3.m5] 7/107/10, and failure a score of [#S4.F3.m6] 6/106/10 or lower or the absence of a valid judge record. The right panel reports the corresponding 100-episode model bill on a logarithmic scale. Observed replay-success counts range from 37 to 48 episodes, while model bills range from 2.62 to 82.30 USD.
+[#S4.SS3.p2]
+[#S4.SS3.p2.1] Across all four backends, we use the same pipeline configuration, with reasoning enabled for selected agentic steps, and vary only the VLM. The reported model bills include all model usage under this configuration. Fig. 3 shows that the four backends have broadly similar observed outcome compositions: Gemma 4 31B, Qwen 3.6 35B, GPT-5.4, and Claude Haiku 4.5 obtain [#S4.SS3.p2.m1] 48/10048/100, [#S4.SS3.p2.m2] 45/10045/100, [#S4.SS3.p2.m3] 43/10043/100, and [#S4.SS3.p2.m4] 37/10037/100 replay successes, respectively. The clearer separation is cost: relative to Gemma’s 2.62 model bill, Claude costs [#S4.SS3.p2.m5] 3.5×3.5\times as much, Qwen [#S4.SS3.p2.m6] 5.0×5.0\times, and GPT-5.4 [#S4.SS3.p2.m7] 31.4×31.4\times.
+[#S4.SS3.p3]
+[#S4.SS3.p3.1] We attribute the similar outcomes across backends to how the pipeline scopes the VLM’s role. The VLM does not perform geometry or physics itself: it orchestrates deterministic specialist components for segmentation, stereo depth, and pose tracking, together with a deterministic grasp sweep, and is queried only for bounded, schema-constrained decisions such as object discovery, keyframe and mask selection under a capped retry budget, and replay-refinement choices.
+Because these queries are narrowly scoped, they lie well within the capability of modern reasoning VLMs, and the pipeline transfers across backends without per-model tuning: even the 31B open model attains the highest observed success count while using roughly [#S4.SS3.p3.m1] 3%3\% of GPT-5.4’s model bill. Backend choice therefore reduces largely to cost, making open-weight models a practical default for large conversion batches. That absolute replay success stays below [#S4.SS3.p3.m2] 50%50\% for every backend further suggests that the remaining headroom lies mostly in the upstream visual and simulation components rather than in the choice of VLM alone.
+[#S4.SS4]
+4.4 Deformable and Humanoid Episode Conversion
+[#S4.SS4.p1]
+[#S4.SS4.p1.1] We use the deformable and humanoid settings as qualitative stress tests for the same conversion contract under non-rigid dynamics and closed-loop humanoid control. These domains are presented through representative visual comparisons rather than aggregate scores.
+[#S4.SS4.SSS0.Px1]
+Deformable.
+[#S4.SS4.SSS0.Px1.p1]
+[#S4.SS4.SSS0.Px1.p1.1] These are PhysTwin-style episodes with assets such as rope, cloth, plush objects, soft packages, and elastoplastic materials. We compare the real interaction video with the recovered geometry and simulated deformation, and report representative real-sim matches together with failure cases.
+[#S4.SS4.SSS0.Px2]
+Humanoid.
+[#S4.SS4.SSS0.Px2.p1]
+[#S4.SS4.SSS0.Px2.p1.1] These are Unitree G1 clips of locomotion and short whole-body motions, retargeted from LAFAN1. We compare the simulated humanoid against the reference motion in closed-loop simulation and report qualitative side-by-side motion comparisons.
+[#S4.SS4.SSS0.Px2.1]
+[#S4.SS4.SSS0.Px2.p2] [#S4.SS4.SSS0.Px2.g1]
+[#S4.F4]
+Figure 4: [#S4.F4.5] Deformable and humanoid episode conversion. Two non-rigid object manipulation settings that stress the same conversion contract beyond rigid manipulation. [#S4.F4.6] A: PhysTwin-style deformable episodes pair real interaction video with the recovered geometry and a deformation overlay. [#S4.F4.7] B: Unitree G1 humanoid clips of locomotion and short whole-body motions, retargeted from LAFAN1, where the simulated humanoid is shown against the real frames after the controller’s joint-level gains are tuned to match the reference trajectory in closed-loop simulation.
+[#S4.SS4.SSS0.Px3]
+Qualitative.
+[#S4.SS4.SSS0.Px3.p1]
+[#S4.SS4.SSS0.Px3.p1.1] Fig. 4 shows both domains. In Fig. 4 (a), deformable cases pair real interaction video with tracked geometry and a deformation overlay, emphasizing whether the recovered material response follows the visible bending, stretching, and contact sequence. In Fig. 4 (b), we show a simulated humanoid against its reference motion for standing, kneeling, and short-locomotion clips, emphasizing gross pose, balance, and motion-phase agreement.
+[#S5]
+5 Conclusions, Limitations and Future Work
+[#S5.p1]
+[#S5.p1.1] We introduced [#S5.p1.1.1] Agentic Real2Sim, a framework for converting real-world physical interaction recordings into simulatable digital twins. The framework must preserve the actors, manipulated entities, geometry, physical parameters, camera setup and objects along with end effector trajectories needed for simulation. For the task of converting DROID episodes, Agentic Real2Sim converts robot-object manipulation recordings into MuJoCo episode twins through visual processing, physical-prior inference, scene preparation, and simulator-in-the-loop refinement. The same episode contract also provides a common interface for PhysTwin-style deformable manipulation and BFM-Zero-style humanoid motion, allowing the pipeline to span settings that are usually handled by separate Real2Sim systems. Also, our framework decouples agentic decisions from any single VLM provider: on DROID-100, an open 31B backend attains comparable observed replay-success outcomes to proprietary alternatives while using only about [#S5.p1.m1] 3%3\% of GPT-5.4’s model cost. Finally, we aim to use the aligned episode twins as simulator assets for downstream robotics tasks, specifically policy learning and evaluation.
+[#S5.p2]
+[#S5.p2.1] Current limitations are the focus on rigid-object DROID episodes and the pipeline’s sensitivity to errors in upstream perception and simulator feedback. Future work will extend automated conversion to deformable episodes and systematically evaluate agentic components and VLM backends for reliability, replay stability, and enable policy learning and evaluation for the robotics community.
+[#Sx1]
+Acknowledgments
+[#Sx1.p1]
+[#Sx1.p1.1] This work was supported in part by the NVIDIA Academic Grant Program. We thank NVIDIA for supporting academic research and for providing resources that helped facilitate this work. We thank Yixian Cheng for episode rendering and video production. We also thank Beichen Li of OpenAI for support with computational resources.
+[#bib]
+References
+[#bib.L1]
+[#bib.bib26] [1]
+Z. Cao, Y. Liu, H. Li, R. Yao, F. Hong, Z. Chen, L. Pan, and Z. Liu (2026)
+PhysX-omni: unified simulation-ready physical 3d generation for rigid, deformable, and articulated objects.
+arXiv preprint arXiv:2605.21572.
+Cited by: §4.1.
+[#bib.bib11] [2]
+N. Carion, L. Gustafson, Y. Hu, S. Debnath, R. Hu, D. Suris, C. Ryali, K. V. Alwala, H. Khedr, A. Huang, et al. (2025)
+Sam 3: segment anything with concepts.
+arXiv preprint arXiv:2511.16719.
+Cited by: §2.
+[#bib.bib18] [3]
+X. Chen, F. Chu, P. Gleize, K. J. Liang, A. Sax, H. Tang, W. Wang, M. Guo, T. Hardin, X. Li, et al. (2025)
+Sam 3d: 3dfy anything in images.
+arXiv preprint arXiv:2511.16624.
+Cited by: §2.
+[#bib.bib1] [4]
+Y. Chen, Y. Hu, L. Sun, T. Kusnur, L. Herlant, and C. Jiang (2026)
+EMPM: embodied mpm for modeling and simulation of deformable objects.
+IEEE Robotics and Automation Letters 11 (4), pp. 4179–4186.
+External Links: ISSN 2377-3774,
+Link,
+Document
+Cited by: §1,
+§2,
+§3.3.
+[#bib.bib12] [5]
+H. Fan, H. Dai, J. Zhang, J. Li, Q. Yan, Y. Zhao, M. Gao, J. Wu, H. Tang, and H. Dong (2025)
+TwinAligner: visual-dynamic alignment empowers physics-aware real2sim2real for robotic manipulation.
+arXiv preprint arXiv:2512.19390.
+Cited by: §1,
+§2.
+[#bib.bib13] [6]
+C. Garrett, A. Mandlekar, B. Wen, and D. Fox (2024)
+SkillMimicGen: automated demonstration generation for efficient skill learning and deployment.
+In 8th Annual Conference on Robot Learning,
+Cited by: §2.
+[#bib.bib22] [7]
+F. G. Harvey, M. Yurick, D. Nowrouzezahrai, and C. Pal (2020)
+Robust motion in-betweening.
+ACM Transactions on Graphics 39 (4).
+External Links: ISSN 1557-7368,
+Link,
+Document
+Cited by: §3.3.
+[#bib.bib15] [8]
+W. Huang, Y. Chao, A. Mousavian, M. Liu, D. Fox, K. Mo, and L. Fei-Fei (2026)
+PointWorld: scaling 3d world models for in-the-wild robotic manipulation.
+arXiv preprint arXiv:2601.03782.
+Cited by: §2.
+[#bib.bib2] [9]
+H. Jiang, H. Hsu, K. Zhang, H. Yu, S. Wang, and Y. Li (2025)
+PhysTwin: physics-informed reconstruction and simulation of deformable objects from videos.
+In 2025 IEEE/CVF International Conference on Computer Vision (ICCV),
+pp. 7219–7230.
+External Links: Link,
+Document
+Cited by: item 3,
+§1,
+§2,
+§2,
+§3.3.
+[#bib.bib25] [10]
+H. Kang, X. Ye, Y. Liu, S. H. Mantri, L. Mao, J. Fleming, D. Regmi, and L. Qin (2026)
+SimWorld studio: automatic environment generation with evolving coding agent for embodied agent learning.
+arXiv preprint arXiv:2605.09423.
+Cited by: §2.
+[#bib.bib3] [11]
+P. Katara, Z. Xian, and K. Fragkiadaki (2024)
+Gen2Sim: scaling up robot learning in simulation with generative models.
+In 2024 IEEE International Conference on Robotics and Automation (ICRA),
+pp. 6672–6679.
+External Links: Link,
+Document
+Cited by: §2.
+[#bib.bib4] [12]
+A. Khazatsky, K. Pertsch, S. Nair, A. Balakrishna, S. Dasari, S. Karamcheti, S. Nasiriany, M. Srirama, L. Chen, K. Ellis, P. Fagan, J. Hejna, M. Itkina, M. Lepert, Y. Ma, P. Miller, J. Wu, S. Belkhale, S. Dass, H. Ha, A. Jain, A. Lee, Y. Lee, M. Memmel, S. Park, I. Radosavovic, K. Wang, A. Zhan, K. Black, C. Chi, K. Hatch, S. Lin, J. Lu, J. Mercat, A. Rehman, P. Sanketi, A. Sharma, C. Simpson, Q. Vuong, H. Walke, B. Wulfe, T. Xiao, J. Yang, A. Yavary, T. Zhao, C. Agia, R. Baijal, M. Castro, D. Chen, Q. Chen, T. Chung, J. Drake, E. Foster, J. Gao, D. Herrera, M. Heo, K. Hsu, J. Hu, D. Jackson, C. Le, Y. Li, R. Lin, Z. Ma, A. Maddukuri, S. Mirchandani, D. Morton, T. Nguyen, A. O’Neill, R. Scalise, D. Seale, V. Son, S. Tian, E. Tran, A. Wang, Y. Wu, A. Xie, J. Yang, P. Yin, Y. Zhang, O. Bastani, G. Berseth, J. Bohg, K. Goldberg, A. Gupta, A. Gupta, D. Jayaraman, J. Lim, J. Malik, R. Martín-Martín, S. Ramamoorthy, D. Sadigh, S. Song, J. Wu, M. Yip, Y. Zhu, T. Kollar, S. Levine, and C. Finn (2024)
+DROID: a large-scale in-the-wild robot manipulation dataset.
+In Robotics: Science and Systems XX,
+RSS2024.
+External Links: Link,
+Document
+Cited by: item 1,
+§2,
+§3.2.
+[#bib.bib23] [13]
+Y. Li, Z. Luo, T. Zhang, C. Dai, A. Kanervisto, A. Tirinzoni, H. Weng, K. Kitani, M. Guzek, A. Touati, A. Lazaric, M. Pirotta, and G. Shi (2025)
+BFM-zero: a promptable behavioral foundation model for humanoid control using unsupervised reinforcement learning.
+External Links: 2511.04131,
+Link
+Cited by: item 3,
+§2.
+[#bib.bib16] [14]
+W. Ma, C. Wang, S. Chen, J. Peng, P. Li, and A. Yuille (2026)
+LychSim: a controllable and interactive simulation framework for vision research.
+arXiv preprint arXiv:2605.12449.
+Cited by: §1,
+§2.
+[#bib.bib17] [15]
+N. Pfaff, T. Cohn, S. Zakharov, R. Cory, and R. Tedrake (2026)
+Scenesmith: agentic generation of simulation-ready indoor scenes.
+arXiv preprint arXiv:2602.09153.
+Cited by: §1,
+§2.
+[#bib.bib5] [16]
+N. Pfaff, E. Fu, J. Binagia, P. Isola, and R. Tedrake (2025)
+Scalable real2sim: physics-aware asset generation via robotic pick-and-place setups.
+In 2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS),
+pp. 6296–6303.
+External Links: Link,
+Document
+Cited by: §1,
+§2.
+[#bib.bib24] [17]
+N. Ranawaka, J. Wong, W. Pai, W. Chu, T. Dai, M. Moghani, H. Yin, Y. Jiang, W. Durbano, B. Huynh, et al. (2026)
+SimFoundry: modular and automated scene generation for policy learning and evaluation.
+arXiv preprint arXiv:2606.28276.
+Cited by: §2.
+[#bib.bib6] [18]
+E. Todorov, T. Erez, and Y. Tassa (2012)
+MuJoCo: a physics engine for model-based control.
+In 2012 IEEE/RSJ International Conference on Intelligent Robots and Systems,
+pp. 5026–5033.
+External Links: Link,
+Document
+Cited by: item 1,
+§3.2.
+[#bib.bib14] [19]
+W. Wan, J. Fu, X. Yuan, Y. Zhu, and H. Su (2025)
+LodeStar: long-horizon dexterity via synthetic data augmentation from human demonstrations.
+In 9th Annual Conference on Robot Learning,
+External Links: Link
+Cited by: §2.
+[#bib.bib19] [20]
+Y. Wang, H. Yang, M. Guo, X. Qiu, T. Wang, W. Matusik, J. B. Tenenbaum, and C. Gan (2026)
+Physcensis: physics-augmented llm agents for complex physical scene arrangement.
+arXiv preprint arXiv:2602.14968.
+Cited by: §1,
+§2.
+[#bib.bib8] [21]
+B. Wen, M. Trepte, J. Aribido, J. Kautz, O. Gallo, and S. Birchfield (2025)
+FoundationStereo: zero-shot stereo matching.
+CVPR.
+Cited by: §2,
+§3.2.
+[#bib.bib7] [22]
+B. Wen, W. Yang, J. Kautz, and S. Birchfield (2024)
+FoundationPose: unified 6d pose estimation and tracking of novel objects.
+In 2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+pp. 17868–17879.
+External Links: Link,
+Document
+Cited by: §2,
+§3.2.
+[#bib.bib20] [23]
+Y. Yang, B. Jia, S. Zhang, and S. Huang (2026)
+Sceneweaver: all-in-one 3d scene synthesis with an extensible and self-reflective agent.
+Advances in neural information processing systems 38, pp. 140319–140351.
+Cited by: §2.
+[#bib.bib9] [24]
+Y. Yang, F. Sun, L. Weihs, E. Vanderbilt, A. Herrasti, W. Han, J. Wu, N. Haber, R. Krishna, L. Liu, C. Callison-Burch, M. Yatskar, A. Kembhavi, and C. Clark (2024)
+Holodeck: language guided generation of 3d embodied ai environments.
+In 2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+pp. 16277–16287.
+External Links: Link,
+Document
+Cited by: §2.
+[#bib.bib21] [25]
+M. Zhou, R. Li, X. Lyu, Z. Song, Z. Huang, C. Zheng, C. Rupprecht, A. Vedaldi, and S. Wu (2026)
+Articraft: an agentic system for scalable articulated 3d asset generation.
+arXiv preprint arXiv:2605.15187.
+Cited by: §1,
+§2.
+[#bib.bib10] [26]
+A. Zook, F. Sun, J. Spjut, V. Blukis, S. Birchfield, and J. Tremblay (2025)
+GRS: generating robotic simulation tasks from real-world images.
+In 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW),
+pp. 594–603.
+External Links: Link,
+Document
+Cited by: §1,
+§2.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from
+[#fixed-buttons-container]
+[#disable-reading-mode-btn]

@@ -1,0 +1,264 @@
+A Steerable Model with Emergent Capabilities
+Physical Intelligence (π)
+HomeResearchJoin Us
+π0.7: a Steerable Model with Emergent Capabilities
+Published
+April 16, 2026
+Email
+research@physicalintelligence.companyBo Ai, Ali Amin, Raichelle Aniceto, Ashwin Balakrishna, Greg Balke, Kevin Black, George Bokinsky, Shihao Cao, Thomas Charbonnier, Vedant Choudhary, Foster Collins, Ken Conley, Grace Connors, James Darpinian, Karan Dhabalia, Maitrayee Dhaka, Jared DiCarlo, Danny Driess, Michael Equi, Adnan Esmail, Yunhao Fang, Chelsea Finn, Catherine Glossop, Thomas Godden, Ivan Goryachev, Lachlan Groom, Haroun Habeeb, Hunter Hancock, Karol Hausman, Gashon Hussein, Victor Hwang, Brian Ichter, Connor Jacobsen, Szymon Jakubczak, Rowan Jen, Tim Jones, Gregg Kammerer, Ben Katz, Liyiming Ke, Mairbek Khadikov, Chandra Kuchi, Marinda Lamb, Devin LeBlanc, Brendon LeCount, Sergey Levine, Xinyu Li, Adrian Li-Bell, Vladislav Lialin, Zhonglin Liang, Wallace Lim, Yao Lu, Enyu Luo, Vishnu Mano, Nandan Marwaha, Aikys Mongush, Liam Murphy, Suraj Nair, Tyler Patterson, Karl Pertsch, Allen Z. Ren, Gavin Schelske, Charvi Sharma, Baifeng Shi, Lucy Xiaoyang Shi, Laura Smith, Jost Tobias Springenberg, Kyle Stachowicz, Will Stoeckle, Jiaming Tang, Jimmy Tanner, Shalom Tekeste, Marcel Torne, Kyle Vedder, Quan Vuong, Anna Walling, Haohuan Wang, Jason Wang, XuDong Wang, Chris Whalen, Samuel Whitmore, Blake Williams, Charles Xu, Sukwon Yoo, Lili Yu, Wuming Zhang, Zhuoyang Zhang, Ury Zhilinsky
+Paper
+π0.7.pdf
+Loading…
+We’ve trained a new model, π0.7, that exhibits a step-change in generalization. π0.7 is a general-purpose model that can perform a wide range of dexterous tasks with the same performance as fine-tuned specialists, but even more importantly, it can follow new language commands and perform tasks that were never seen in its training data. In our experiments, we see π0.7 exhibiting the first signs of compositional generalization, recombining skills from various tasks to solve new problems, like using new kitchen appliances and even enabling a new robot to fold laundry for which there is no laundry folding data.
+While this kind of generalization has always been thought of as a key strength of robotic foundation models, actual models demonstrated to date have not shown the kind of broad compositional generalization that we’ve seen, for example, from LLMs. LLMs can compose concepts from their training data in new ways: if an LLM knows how to translate English to French, and it knows how to produce JSON output, it can provide translations formatted in JSON format. Vision-language-action models can understand diverse semantic concepts, but have not yet been shown to combine skills in new ways, like using a new tool or kitchen appliance. Even for skills that are seen in training, best results are typically obtained by fine-tuning such models to that skill, much like how early language models were fine-tuned for specific problem domains. A true generalist model should perform all of the skills out of the box, and be able to recombine them to solve new tasks. π0.7 demonstrates initial signs of such general capability: it can perform dexterous manipulation skills like those we’ve previously shown with our RL fine-tuned π*0.6 specialist models, with the same speed and robustness, it can compose and recombine the skills it learned to solve new tasks, and it can generalize across robot platforms, scenes, and tasks more effectively than our prior models. The examples below illustrate this breadth of capability, from fine manipulation to long-horizon household behaviors all with one model, straight out of the box.
+What makes π0.7 generalize so broadly? The key to generalization for foundation models is to use broad and diverse data, which in our case includes data from many different robots, human data, and even autonomous episodes collected by running various policies. Merging all these data sources naively does not lead to good results. We find that the key to using all of these data sources to attain compositional generalization is to add diverse context to the prompt: training the model with a variety of multimodal prompt structures that specify not only what the robot should do, but how it should do it. The prompt can include not just a textual description of the task, but a variety of other annotations and modalities. For example, providing the model with a visual subgoal defines a precise spatial layout of objects. Providing the desired length of the episode specifies how quickly the task should be done. Critically, all of these pieces of information disambiguate the behavior, enabling diverse data with different strategies, behaviors, and levels of proficiency to be included in training. At test time, our model accepts standard language instructions, but also information about the desired strategy, and even synthetically generated visual subgoals produced by a lightweight world model. We show some examples of what π0.7 can do below.
+[#leveraging-more-data-with-diverse-conditioning] Leveraging more data with diverse conditioning
+The different prompt modalities allow π0.7 to integrate a wide range of diverse data sources, including data from different robots and control modalities, human videos, and autonomous data. While our prior models also used some of these data sources (e.g., videos), π0.7 unifies these under a single prompting framework, supporting:
+Diverse language that describes the task and individual sub-steps.
+Metadata that describes how the task was performed, such as speed and quality.
+Control modality labels that indicate whether to use joint or end-effector control.
+Visual subgoal images that show what the end of the current sub-step should look like. These images can be generated at test time by a world model that provides for visual generalization.
+With these different annotation sources, π0.7 can leverage more types of data. For example, suboptimal autonomous evaluation data, which would ordinarily risk teaching the model to perform lower-quality actions, can be incorporated by annotating it with appropriate metadata (e.g., lower quality or lower speed).
+π0.7 is a steerable generalist model that can perform dexterous tasks across robots, scenes, and skills. It is trained with diverse multimodal prompts — language, meta-data, control modalities, and visual subgoals — that describe not just what to do but how to do it, allowing it to leverage broad data sources and recombine skills to solve new tasks.
+Training Time
+Language Instructions
+pick up the oven mitt
+open the drawer
+grab the spatula
+place pot on the stove
+fold the towel
+wipe the counter
+close the fridge
+Subgoal Images
+Episode Metadata
+Quality
+Speed
+π
+π0.7 VLAVision-Language-Action Model
+Observation
+MemoryObservation Memory
+Prompt
+Action Expert
+Inference Time
+High-Level Policy
+TASK INSTRUCTION
+SUBTASK INSTRUCTION
+World Model
+SUBTASK INSTRUCTION
+SUBGOAL
+Desired Metadata
+Quality
+Speed
+Loading…
+Out-of-the-Box Performance Without Fine-Tuning
+Loading…
+Specialist-Level Dexterity
+Loading…
+Cross-Embodiment Transfer
+[#arrow-vla-results-0-start-fade-grad] [#arrow-vla-results-1-start-fade-grad] [#arrow-vla-results-2-start-fade-grad]
+[#arrow-training-prompt-0-start-fade-grad] [#arrow-training-prompt-1-start-fade-grad] [#arrow-training-prompt-2-start-fade-grad]
+[#arrow-inference-prompt-0-start-fade-grad] [#arrow-inference-prompt-1-start-fade-grad] [#arrow-inference-prompt-2-start-fade-grad]
+[#arrow-inference-subtask-link-0-start-fade-grad]
+π0.7 is a steerable generalist model that can perform dexterous tasks across robots, scenes, and skills. It is trained with diverse multimodal prompts — language, meta-data, control modalities, and visual subgoals — that describe not just what to do but how to do it, allowing it to leverage broad data sources and recombine skills to solve new tasks.
+Training Time
+Language Instructions
+pick up the oven mitt
+open the drawer
+grab the spatula
+place pot on the stove
+fold the towel
+wipe the counter
+close the fridge
+Subgoal Images
+Episode Metadata
+Quality
+Speed
+π
+π0.7 VLAVision-Language-Action Model
+Observation
+MemoryObservation Memory
+Prompt
+Action Expert
+Inference Time
+High-Level Policy
+TASK INSTRUCTION
+SUBTASK INSTRUCTION
+World Model
+SUBTASK INSTRUCTION
+SUBGOAL
+Desired Metadata
+Quality
+Speed
+Loading…
+Out-of-the-Box Performance Without Fine-Tuning
+Loading…
+Specialist-Level Dexterity
+Loading…
+Cross-Embodiment Transfer
+[#arrow-mobile-training-prompt-0-start-fade-grad] [#arrow-mobile-training-prompt-1-start-fade-grad] [#arrow-mobile-training-prompt-2-start-fade-grad] [#arrow-mobile-inference-prompt-0-start-fade-grad] [#arrow-mobile-inference-prompt-1-start-fade-grad] [#arrow-mobile-inference-prompt-2-start-fade-grad]
+[#arrow-mobile-inference-subtask-link-0-start-fade-grad]
+[#arrow-mobile-prompt-results-0-start-fade-grad] [#arrow-mobile-prompt-results-1-start-fade-grad] [#arrow-mobile-prompt-results-2-start-fade-grad]
+[#compositional-task-generalization] Compositional task generalization
+One of the toughest generalization challenges for robotic foundation models is following user prompts to perform a new task. π0.7 shows early signs of compositional task generalization through a combination of diverse language instructions, language coaching, and visual subgoals. We first observed this emergent ability when we tasked the model to operate a variety of kitchen appliances. We did not collect demonstrations of these specific appliance tasks, and instead tried to prompt the model to operate them. For each appliance, the robot received language coaching for using the appliance – step by step language commands similar to those that could guide a person using the appliance for the first time. When we ask the robot to do a new task, using an air fryer appliance to cook a sweet potato, it makes a reasonable attempt, performing part of the task after a few false starts, but not finishing it fully:
+Loading…
+π0.7 attempting to use an air fryer with only a zero-shot prompt: "load a sweet potato into the air fryer".
+However, if we walk it through the task with step-by-step language coaching, it performs the task much more effectively. This is harder than it seems. It requires understanding the fine-grained instructions and grounding them correctly:
+Loading…
+Loading…
+π0.7 using the air fryer with step-by-step verbal coaching.
+After we’ve provided language coaching to the robot multiple times, we can use the instructions to fine-tune a high level policy that can then generate the language subgoals fully autonomously, significantly improving fully autonomous execution of the task without any additional teleoperation at all. The robot has effectively learned the task from language coaching:
+Loading…
+π0.7 performing the air fryer task with a fine-tuned high-level policy generating language subtasks. We also visualize the subgoal images produced by our world model for each language subtask. The language subtask and subgoal images are provided to π0.7 to perform the task fully autonomously.
+We wanted to understand where the robot learned what an air fryer even is. The size and diversity of our training set makes it hard to track down the precise episodes that informed this behavior, and the knowledge likely comes from a combination of robot episodes and web-scale vision-language pre-training. After a lot of searching, we found two episodes we collected in a home where a robot closes an air fryer (labeled “push the frying basket into the airfryer” and "put the basket of the airfryer on the leftmost side of the counter"), and data from the open-source DROID dataset on a Franka robot. These episodes look quite different from what the mobile robot actually does in our experiments, suggesting that π0.7 can generalize and compose behaviors to load the sweet potato into the air fryer, much like how an LLM composes different parts of text seen in large-scale datasets from the web:
+Loading…
+Loading…
+Loading…
+The closest episodes we found to the air fryer task: two episodes closing air fryers, and data from the open-source DROID dataset with a Franka arm.
+With the improved generalization and language following capabilities of π0.7, we can direct it with language to perform a wide variety of tasks, interactively “teach” new behaviors, and even have a bit of fun with precise and varied language commands!
+Loading…
+Interactively directing π0.7 with varied language commands.
+[#cross-embodiment-transfer] Cross-embodiment transfer
+π0.7 shows some of the most effective generalization of tasks across embodiments that we’ve seen. One of the most underrepresented embodiments in our training set is the bimanual UR5e system, consisting of two UR5e industrial arms with Robotiq parallel jaw grippers. This robot is hard to teleoperate: the heavy arms have a lot of inertia, and the grippers are relatively imprecise. We tasked π0.7 to control this robot to fold laundry, even though we did not collect any data of laundry folding with this robot, and to our surprise it could do this consistently. Note that the physical motion of the robot when folding t-shirts differs significantly from the (much smaller) robot that we used to collect t-shirt folding data:
+Loading…
+Loading…
+We collected data of laundry folding with the static bimanual robot (left), and then evaluated π0.7 on this task with the bimanual UR5e system (right). No training data was collected for this task with the UR5e bimanual system. Because the robots differ significantly in size, positioning, and morphology, π0.7 has to employ a substantially distinct strategy with the UR5e. Its success rate matches the "zero shot" success rate of expert teleoperators who have performed the task on the source robot, but attempt it on the UR5e for the first time.
+The success rate of π0.7 on this task actually matches the "zero shot" success rate of expert human teleoperators who had collected the training data for this task on the original robot, when the same teleoperators were asked to perform the task with the bimanual UR5e system. These teleoperators had a mean of 375 hours of teleoperation experience.
+[#conditioning-on-speed-and-optimality] Conditioning on speed and optimality
+Besides broad generalization, we also would like our models to achieve high success rates and to perform tasks quickly. In our recent work, we introduced Recap, an algorithm for training policies with RL to optimize for robustness and throughput. While Recap provided an effective way to optimize policies, with π0.7 we were able to have a single general-purpose model that could perform all of the tasks that we optimized with Recap with the same success rate and (sometimes even higher) throughput by distilling experience generated during Recap training into the π0.7 model with strategy metadata. The same π0.7 model can perform the laundry folding, espresso making, and box folding tasks to the same or even higher level of performance as the best models trained with Recap:
+π0.7
+π*0.6 Specialist
+Normalized Throughput (vs. specialist)
+Success Rate (%)
+Laundry (T-Shirts and Shorts)
+1.5
+1.2
+0.9
+0.6
+0.3
+0
+Loading…
+Laundry (T-Shirts and Shorts)
+100
+80
+60
+40
+20
+0
+Laundry (Diverse - Hardest Item)
+2
+1.6
+1.2
+0.8
+0.4
+0
+Loading…
+Laundry (Diverse - Hardest Item)
+100
+80
+60
+40
+20
+0
+Make Espresso
+1.5
+1.2
+0.9
+0.6
+0.3
+0
+Loading…
+Make Espresso
+100
+80
+60
+40
+20
+0
+Box Building
+2
+1.6
+1.2
+0.8
+0.4
+0
+Loading…
+Box Building
+100
+80
+60
+40
+20
+0
+Laundry (T-Shirts and Shorts)
+1.5
+1.2
+0.9
+0.6
+0.3
+0
+Laundry (Diverse - Hardest Item)
+2
+1.6
+1.2
+0.8
+0.4
+0
+Make Espresso
+1.5
+1.2
+0.9
+0.6
+0.3
+0
+Box Building
+2
+1.6
+1.2
+0.8
+0.4
+0
+Loading…
+Loading…
+Loading…
+Loading…
+Laundry (T-Shirts and Shorts)
+100
+80
+60
+40
+20
+0
+Laundry (Diverse - Hardest Item)
+100
+80
+60
+40
+20
+0
+Make Espresso
+100
+80
+60
+40
+20
+0
+Box Building
+100
+80
+60
+40
+20
+0
+A quantitative comparison of the single π0.7 model performing each of
+the tasks introduced in our Recap blog post, in comparison with the
+RL-trained specialist policy for each task. The y-axis is normalized by the throughput of the specialist. By training on diverse data,
+including autonomous data from the RL-trained models, the single π0.7 model
+attains similar or even stronger performance across tasks as the task-specific
+RL-trained specialists.
+[#out-of-the-box-performance-on-dexterous-tasks] Out-of-the-box performance on dexterous tasks
+π0.7 is a general-purpose model, in the sense that it can control a wide variety of different robots to perform a wide range of different tasks. Besides the specific controlled experiments that we discuss above that evaluate particular axes of performance and generalization, we also tested a wide range of tasks that include peeling vegetables, cleaning a glass door with Windex, and more. We show a selection of some of the tasks that π0.7 can perform with various robotic platforms below.
+[#whats-next] What’s next?
+π0.7 is a single unified model with emergent compositional generalization, the ability to follow diverse instructions and visual subgoals, and strong out-of-the-box performance even on tasks that previously required fine-tuned specialist models. Powerful and steerable models like π0.7 might make it possible in the future to solve even more complex unseen tasks by having the model “think through” possible ways to perform them, leverage its ability to follow diverse prompts to ground these thoughts in actions, and then reflect on the outcomes to revise the task plan. Effective prompt following and generalization is thus useful not only for allowing people to better specify what they want a robot to do, but also for grounding the semantic reasoning and problem solving capabilities of modern foundation models, allowing them to translate their semantic generalization capabilities into physical generalization.
+If you are excited about working on these problems and would like to join us, get in touch! And if you would like to collaborate with us and apply models like π0.7 to real-world robotics applications, you can contact us at research@physicalintelligence.company.
+Physical Intelligence
+HomeResearchJoin Us

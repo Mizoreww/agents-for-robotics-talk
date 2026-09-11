@@ -1,0 +1,107 @@
+CaP-X: Benchmarking Coding Agents for Robot Manipulation
+[#nav-brand] CaP-X
+Home
+Paper
+Code
+[#nav-team]
+[#home]
+[#hero-tagline]
+Paper
+Code
+[#institution-logos]
+[#progress]
+[#timeline-chart]
+[#timeline-tooltip]
+Closed Source
+Open Source
+Frontier AI
+Human Baseline
+[#paper-details]
+[#paper-title]
+[#authors-list]
+[#equal-note]
+[#affiliations-list]
+[#demo]
+LMs Can Zero-Shot on Robotics Tasks —
+with CaP-Agent0
+Today's off-the-shelf LMs have incredible generalization, reasoning, and planning capabilities.
+Agentic harnesses in CaP-Agent0 unleash their potential in the physical world.
+Click on each task to see the agent in action.
+Embodied Reasoning
+Cross Embodiment
+Loco-Manipulation
+Long-Horizon Task Planning
+Multimodal Reasoning
+Subtask Inference
+Language Following
+Enhanced Visual Grounding
+Semantic Reasoning
+[#demo-gallery-toggle] Show More
+[#introduction]
+CaP-Bench: Evaluating LM Agents
+on Embodied Intelligence
+CaP-Bench provides the first comprehensive benchmark for evaluating how well large language model agents
+can write code to control robots. Integrated with hundreds of manipulation tasks across multiple
+robot learning benchmarks (LIBERO-PRO, Robosuite, BEHAVIOR), CaP-Bench tests both LLM and VLM models on their
+ability to generate executable robot control policies from natural language instructions.
+100+ Manipulation Tasks
+12+ Frontier Models
+Sim-to-Real Transfer
+Multi-Turn Evaluation
+Code Generation
+Open Source
+Simulation Results
+Click on each task to see the agent in action.
+Cube Stack
+Semantic Object Selection
+Sequential Drawer Task
+Precise Bottle Racking
+Spill Cleanup
+Stove Knob Turning
+Bimanual Coordination
+Bimanual Handover
+Peg Insertion
+[#sim-gallery-toggle] Show More
+[#highlights]
+Key Findings
+1
+Frontier models achieve meaningful zero-shot success on robotic manipulation
+Without any task-specific training, today's best frontier models can directly generate executable robot control
+code and achieve over 30% average success — a sharp contrast to the prior belief that only specially trained
+models (VLAs) can perform manipulation. Yet a 56-point gap to human performance remains, marking this as
+one of AI's most important open challenges.
+[#highlight-fig-1]
+Loading chart...
+2
+Training-free CaP-Agent0 outperforms state-of-the-art VLAs on perturbed tasks
+On LIBERO-PRO — 30 manipulation tasks with position and instruction perturbations — state-of-the-art
+Vision-Language-Action models (OpenVLA, π0) score 0% across the board.
+Even the best VLA (π0.5) reaches only 13% average success. CaP-Agent0, a training-free
+coding agent, achieves 18% without any task-specific training, demonstrating that
+code-generation agents generalize where end-to-end learned policies break down.
+[#highlight-fig-2]
+Loading chart...
+3
+CaP-RL: Post-training on code dramatically boosts robot performance — and transfers sim-to-real
+Using CaP-RL, we apply reinforcement learning with environment rewards directly on the coding agent.
+A 7B model (Qwen 2.5 Coder) jumps from 20% to 72% average success in simulation after
+just 50 training iterations. The learned policies transfer to a real Franka Emika robot with
+minimal sim-to-real gap — reaching 84% on cube lifting and 76% on cube stacking,
+approaching human expert performance.
+[#highlight-fig-3]
+Loading chart...
+4
+Higher abstraction boosts all models — and dramatically closes the gap for smaller ones
+As API abstraction increases from raw primitives (S4) to high-level pick-and-place (S1),
+all models improve substantially — but the gains are most pronounced for
+weaker and open-source models, whose compilation rates collapse at low abstraction levels.
+This suggests a promising path: pair a lightweight LM for high-level planning
+with a visual-motor policy (e.g., a VLA) that handles low-level control, letting even
+smaller models achieve strong task performance through the right division of labor.
+[#highlight-fig-4]
+Loading chart...
+CaP-X © 2026
+[#demo-modal]
+×
+[#demo-modal-code]
+Agent Code

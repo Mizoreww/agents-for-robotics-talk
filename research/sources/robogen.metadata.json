@@ -1,0 +1,1101 @@
+{
+  "key": "robogen",
+  "url": "https://robogen-ai.github.io/",
+  "final_url": "https://robogen-ai.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "1406e5b708a50acc36ce3dbd477fa148ffd651b4e41e466838f57aa89ca4ae3c",
+  "chars": 5961,
+  "links": [
+    "https://icml.cc/",
+    "https://yufeiwang63.github.io/",
+    "https://www.zhou-xian.com/",
+    "https://robogen-ai.github.io",
+    "https://zswang666.github.io/",
+    "https://wangyian-me.github.io/",
+    "https://www.cs.cmu.edu/~katef/",
+    "https://zackory.com/",
+    "http://davheld.github.io/",
+    "http://people.csail.mit.edu/ganchuang/",
+    "https://arxiv.org/abs/2311.01455",
+    "https://github.com/Genesis-Embodied-AI/RoboGen",
+    "https://github.com/Genesis-Embodied-AI/Genesis",
+    "https://github.com/nerfies/nerfies.github.io",
+    "https://eureka-research.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/assets/images/logo.png"
+    },
+    {
+      "tag": "video",
+      "poster": "https://robogen-ai.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/trailer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/pipeline_cropped.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/assets/images/long-horizon.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-26-46.png",
+      "alt": "<b>store an item into the storagefurniture</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/store_an_item_into_the_storagefurniture.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Heat_up_a_bowl_of_soup_in_microwave_2023-10-05-02-51-38.png",
+      "alt": "<b>Heat up a bowl of soup in microwave</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Heat_up_a_bowl_of_soup_in_microwave.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Window_Halfway_2023-10-05-00-47-41.png",
+      "alt": "<b>Slide Window Halfway</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Slide_Window_Halfway.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-18-37-30_a1_run_at_3_-61.125.png",
+      "alt": "<b>Gallop</b>, RoboGen Results:\n                    [sep]\n                    assets/robogen_results/locomotion_gallop.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-03-07-40_atlas_spin_right_-145.235.png",
+      "alt": "<b>Rotate in place</b>, RoboGen Results:\n                    [sep]\n                    assets/robogen_results/locomotion_rotate_in_place.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_retrieve_an_item_from_safe_2023-10-05-00-31-31.png",
+      "alt": "<b>retrieve an item from safe</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/retrieve_an_item_from_safe.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Unload_Objects_from_Cart_2023-10-05-22-36-46.png",
+      "alt": "<b>Unload Objects from Cart</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Unload_Objects_from_Cart.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Change_Lamp_Direction_2023-10-08-02-54-38.png",
+      "alt": "<b>Change Lamp Direction</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Change_Lamp_Direction.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Retrieve_item_from_box_2023-10-06-02-47-42.png",
+      "alt": "<b>Retrieve item from box</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Retrieve_item_from_box.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_store_food_in_refrigerator_2023-10-07-19-42-17.png",
+      "alt": "<b>store food in refrigerator</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/store_food_in_refrigerator.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-43-13_anymal_jump_-1041.067.png",
+      "alt": "<b>jump up</b>, RoboGen Results:\n                    [sep]\n                    assets/robogen_results/locomotion_jump.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Extend_Suitcase_Handle_2023-10-05-00-35-37.png",
+      "alt": "<b>Extend Suitcase Handle</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Extend_Suitcase_Handle.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Pull_Lever_to_Start_Coffee_Brewing_2023-10-09-03-39-55.png",
+      "alt": "<b>Pull Lever to Start Coffee Brewing</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Pull_Lever_to_Start_Coffee_Brewing.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Flush_the_Toilet_2023-10-06-03-20-55.png",
+      "alt": "<b>Flush the Toilet</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Flush_the_Toilet.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/task_Rotate_Laptop_Screen_2023-10-05-00-32-43.png",
+      "alt": "<b>Close laptop lid</b>, RoboGen Results (scene configuration, task decomposition and supervisions):\n                    [sep]\n                    assets/robogen_results/Close_Laptop_Lid.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-22-04-04_a1_flip_leftward_-2207.387.png",
+      "alt": "<b>Flip leftwards</b>, RoboGen Results:\n                    [sep]\n                    assets/robogen_results/locomotion_flip_leftwards.txt"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/select.m4v",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Change_Lamp_Direction_2023-10-08-02-54-38.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Pull_Lever_to_Start_Coffee_Brewing_2023-10-09-03-39-55.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-26-46.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-23-09-24_a1_walk_forward_using_only_hind_legs_-282.268.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/wrap_a_rope.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Stapler_Lid_2023-10-06-14-39-37.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-04-44-56_atlas_jump_-2782.662.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_retrieve_an_item_from_safe_2023-10-05-00-31-31.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/flat_a_dough.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-16-08-57_atlas_headstand_-231.609.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Trashcan_Lid_2023-10-06-03-06-40.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_close_the_drawer_of_the_table_2023-10-06-21-55-38.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Heat_up_a_bowl_of_soup_in_microwave_2023-10-05-02-51-38.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-00-25-01_a1_kick_soccer_ball_to_the_left_-68.214.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Unfold_the_Chair_2023-10-10-03-03-30.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-19-22-46_a1_spin_right_without_right_hind_foot_touching_ground-80.867.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-17-39-28_a1_walk_at_1_-43.471.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Retrieve_item_from_box_2023-10-06-02-47-42.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-11-55-50_atlas_jump_backward_-2612.166.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-22-04-04_a1_flip_leftward_-2207.387.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Table_Drawer_2023-10-08-04-14-47.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-00-41-09_a1_headstand_-78.553.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_store_food_in_refrigerator_2023-10-07-19-42-17.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Toilet_Lid_2023-10-07-01-04-12.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Rotate_Clock_Hands_2023-10-09-02-58-17.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-00-30-29_a1_flip_backward_-909.943.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-23-58-02_a1_jump_forward_-2529.424.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Throw_Trash_Away_2023-10-09-01-01-03.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-00-47-50_atlas_run_back_-161.500.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-16-15-19_atlas_crawl_-388.259.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-37-21_anymal_headstand_-76.375.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Window_Halfway_2023-10-05-00-47-41.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_load_dish_into_dishwasher_2023-10-07-19-49-34.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-22-17-52_atlas_run_-605.585.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-15-47-11_a1_climb_up_stairs_-582.621.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-18-37-30_a1_run_at_3_-61.125.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Microwave_Door_2023-10-10-03-03-54.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Arrange_three_different_cans_in_a_row_2023-10-21-17-54-26.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-17-58-19_anymal_walk_back_-50.305.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Unload_Objects_from_Cart_2023-10-05-22-36-46.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Trash_Can_2023-10-08-04-25-34.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Pull_Drawer_Out_2023-10-06-22-20-17.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Retrieve_Item_from_Fridge_2023-10-14-01-51-01.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Tilt_Display_Screen_2023-10-09-03-54-09.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-06-31-59_atlas_flip_rightward_-2532.720.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-22-13-21_a1_flip_rightward_-2212.043.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Dispenser_Lid_2023-10-07-00-56-24.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Store_an_Object_in_the_Drawer_2023-10-14-02-14-00.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/cut_a_dough.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Rotate_Globe_Horizontally_2023-10-10-03-01-07.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Unfold_Chair_2023-10-06-14-36-48.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Turn_On_Faucet_2023-10-06-14-34-52.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Store_an_object_inside_the_box_2023-10-14-02-03-58.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Dispenser_Lid_2023-10-06-23-04-24.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-08-44_anymal_flip_backward_-870.296.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Turn_Off_Faucet_2023-10-09-04-32-04.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-23-46-02_a1_jump_-1428.538.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_store_an_item_into_the_storagefurniture_2023-10-05-00-44-04.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Dispenser_Lid_2023-10-08-04-14-06.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-00-26-48_a1_flip_forward_-1535.937.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-10-18-22_atlas_flip_backward_-1178.823.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Kettle_Lid_2023-10-10-03-01-18.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-00-44-34_anymal_kick_soccer_ball_to_the_left_-29.356.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-17-32-35_anymal_walk_-56.206.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Flush_the_Toilet_2023-10-06-03-20-55.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Washing_Machine_Door_2023-10-09-03-33-52.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Laptop_2023-10-07-01-01-11.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Turn_On_Water_Faucet_2023-10-07-01-07-15.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Window_2023-10-08-04-15-17.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Rotate_Fan_Rotor_2023-10-07-01-04-10.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Fridges_Freezer_Door_2023-10-10-02-56-53.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Lift_Kettle_by_Handle_2023-10-06-15-48-45.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Oven_Door_2023-10-10-02-56-49.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-43-13_anymal_jump_-1041.067.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-15-16_anymal_spin_left_without_right_hind_leg-89.263.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-05-16-56_atlas_flip_forward_-17546.605.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-00-36-30_a1_run_back_using_only_front_and_left_hind_legs-62.381.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-48-26_anymal_jump_backward_-2087.739.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Put_Object_in_Middle_Drawer_2023-10-07-01-15-56.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Turn_On_the_Printer_2023-10-06-15-36-13.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Trashcan_Lid_2023-10-07-01-16-21.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-17-48-21_anymal_run_-136.290.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Toilet_Lid_2023-10-09-03-36-01.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-23-26-45_a1_push_ball_forward_-176.344.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Partial_Box_Lid_2023-10-06-22-17-22.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-23-37-49_anymal_push_ball_forward_-148.055.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/wrap_a_dumpling.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Box_2023-10-09-03-48-05.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-02-02-56_atlas_spin_left_-260.948.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-18-19-52_a1_walk_back_at_1_-25.821.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Press_Start_Button_2023-10-06-23-01-28.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Opening_Both_Refrigerator_Doors_2023-10-07-01-10-18.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/make_a_baguette.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-15-06-00_a1_jump_over_the_hurdle_-79.365.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Window_2023-10-09-02-57-51.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Extend_Display_Screen_2023-10-06-14-32-35.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Put_a_fruit_into_a_fruit_bowl_2023-10-13-12-27-49.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-22-26-43_a1_jump_and_kick_basketball_-116.668.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_turn_on_coffeemachine_2023-10-07-19-52-37.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-53-15_anymal_spin_right_-107.493.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-08-18-01-38_anymal_flip_forward_-1674.325.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Door_2023-10-09-04-42-55.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-01-47-13_anymal_kick_soccer_ball_to_the_right_-60.291.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Extend_Suitcase_Handle_2023-10-05-00-35-37.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-22-20-28_a1_spin_right_-100.093.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/lift_a_dumpling_up.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-23-25-39_a1_stand_upright_on_two_hind_legs_-138.742.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-09-03-07-40_atlas_spin_right_-145.235.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Lifting_Bucket_2023-10-08-04-08-42.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Open_Drawer_2023-10-08-04-14-46.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-10-01-22-18_a1_backflip_and_kick_soccer_ball_to_the_right_-84.792.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Remove_Pot_Lid_2023-10-09-03-33-00.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Rotate_Laptop_Screen_2023-10-05-00-32-43.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/flat_a_dough_with_rolling_pin.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/2023-10-07-19-05-49_a1_spin_left_-88.953.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Close_Door_2023-10-06-21-55-56.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/put_a_ball_on_a_cube_best_sol.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Turn_On_Lamp_2023-10-10-02-56-17.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_Move_Clock_Ahead_for_Daylight_Saving_2023-10-07-19-36-13.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://robogen-ai.github.io/videos/task_close_the_oven_door_2023-10-06-03-06-14.mp4",
+      "type": "video/mp4"
+    }
+  ]
+}

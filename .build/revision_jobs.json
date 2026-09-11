@@ -1,0 +1,10 @@
+{
+  "enpire_task_source.mp4": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+  "enpire_reset_source.mp4": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4",
+  "ar2s_pipeline.png": "https://agentic-real2sim.github.io/static/images/Fig_teaser.png",
+  "claude_humanoid_source.gif": "https://www-cdn.anthropic.com/images/4zrzovbb/website/2d91fbe744a8e22fa60e8e8d287f1f998e4260f5-720x270.gif",
+  "claude_manip_source.gif": "https://www-cdn.anthropic.com/images/4zrzovbb/website/910d0e73cc16479c5e31ff196bece2d6b8f80289-360x360.gif",
+  "claude_direct.png": "https://www-cdn.anthropic.com/images/4zrzovbb/website/2ad888f5aac3302eb70d844c1bd131cb39e39c11-6500x2400.png",
+  "wiping_source.mp4": "https://video.twimg.com/amplify_video/2096592948205080576/vid/avc1/640x700/7UEKkcq8dkg2-mkL.mp4?tag=29",
+  "hand_source.mp4": "https://video.twimg.com/amplify_video/2097789448717217793/vid/avc1/1190x720/fhq6miW8FLjirxHR.mp4?tag=29"
+}

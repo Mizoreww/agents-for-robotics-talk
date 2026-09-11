@@ -1,0 +1,428 @@
+{
+  "key": "gemini_er_current",
+  "url": "https://deepmind.google/models/gemini-robotics/embodied-reasoning/",
+  "final_url": "https://deepmind.google/models/gemini-robotics/embodied-reasoning/",
+  "accessed": "2026-09-10",
+  "sha256": "98355ccc2288082d8b7b853474c4472ef62201cec111744586b3b18f1e0aa8fc",
+  "chars": 7976,
+  "links": [
+    "https://deepmind.google/models/gemini-robotics/embodied-reasoning/#page-content",
+    "https://deepmind.google/models/",
+    "https://deepmind.google/models/gemini/",
+    "https://deepmind.google/models/gemini-omni/",
+    "https://deepmind.google/models/gemini-image/",
+    "https://deepmind.google/models/gemini-audio/",
+    "https://deepmind.google/models/veo/",
+    "https://deepmind.google/models/imagen/",
+    "https://deepmind.google/models/lyria/",
+    "https://deepmind.google/models/genie/",
+    "https://deepmind.google/models/gemini-robotics/",
+    "https://deepmind.google/models/gemma/",
+    "https://deepmind.google/research/",
+    "https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/",
+    "https://deepmind.google/research/alphago/",
+    "https://deepmind.google/research/evals/",
+    "https://deepmind.google/research/publications/",
+    "https://deepmind.google/responsibility-and-safety/",
+    "https://deepmind.google/frontier-safety/",
+    "https://deepmind.google/science/",
+    "https://deepmind.google/science/alphafold/",
+    "https://deepmind.google/science/alphagenome/",
+    "https://deepmind.google/science/weathernext/",
+    "https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/",
+    "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "https://ai.google/gemini-for-science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/use-cases/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/about/",
+    "https://deepmind.google/blog/",
+    "https://deepmind.google/careers/",
+    "https://deepmind.google/education/",
+    "https://deepmind.google/national-partnerships-for-ai/",
+    "https://deepmind.google/accelerators/",
+    "https://deepmind.google/the-podcast/",
+    "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/",
+    "https://ai.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://research.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://aistudio.google.com/prompts/new_chat?model=gemini-robotics-er-2-preview&utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/models/model-cards/gemini-robotics-er-2",
+    "https://x.com/googledeepmind",
+    "https://www.instagram.com/googledeepmind",
+    "https://www.youtube.com/@googledeepmind",
+    "https://www.linkedin.com/company/googledeepmind/",
+    "https://github.com/google-deepmind",
+    "https://policies.google.com/privacy",
+    "https://deepmind.google/research/projects/",
+    "https://aistudio.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://www.google.com/?utm_source=ai.google&utm_medium=referral",
+    "https://about.google/",
+    "https://about.google/products/",
+    "https://policies.google.com/terms"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/aFacTkCjEOuJxvRMowYNSzn3LGOuI6gIKDVNN8mRwvxRzjOSMdUeEInhcSNNjq8PbZPXChqawkKqCqTw6IpqxjaWrtXznqbZtB3cnEmwzUP4kBXI1xQ=w1440-h1440-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/aFacTkCjEOuJxvRMowYNSzn3LGOuI6gIKDVNN8mRwvxRzjOSMdUeEInhcSNNjq8PbZPXChqawkKqCqTw6IpqxjaWrtXznqbZtB3cnEmwzUP4kBXI1xQ"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/qUo9zkNw_wjATTatqjueZBHpECRet6tCQMcsEhS8rCHRlNAEsgULz5-gDTWsk-iviqqyZ3SWfLTION-hGb829N7PSf5VT6C8JxGb-P6wf2rvgKf-EpE=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/qUo9zkNw_wjATTatqjueZBHpECRet6tCQMcsEhS8rCHRlNAEsgULz5-gDTWsk-iviqqyZ3SWfLTION-hGb829N7PSf5VT6C8JxGb-P6wf2rvgKf-EpE"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/tLIpDk8o1A2hAv_bgUJWKqd1W-3Zhjge2fvxLwgo11Y72z2slDnolDB-pGOUaTxDEWO0kqIKY8GDTtjs8kxeU3H1tdEacw6vE2SX8jC_B_tF1ZF0Wg=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/tLIpDk8o1A2hAv_bgUJWKqd1W-3Zhjge2fvxLwgo11Y72z2slDnolDB-pGOUaTxDEWO0kqIKY8GDTtjs8kxeU3H1tdEacw6vE2SX8jC_B_tF1ZF0Wg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"ER metrics comparison\" comparing the accuracy percentages of five models—Opus 5, GPT 5.6 Sol, Gemini Robotics ER 1.6, Gemini 3.6 Flash, and Gemini Robotics ER 2—across four evaluation categories. For Success detection (image-based), accuracy scores are Opus 5 at 83.6%, GPT 5.6 Sol at 83.1%, Gemini Robotics ER 1.6 at 82.9%, Gemini 3.6 Flash at 83.3%, and Gemini Robotics ER 2 at 87.7%. For Success detection (video-based), scores are Opus 5 at 81.0%, GPT 5.6 Sol at 74.7%, Gemini Robotics ER 1.6 at 76.0%, Gemini 3.6 Flash at 75.4%, and Gemini Robotics ER 2 at 82.4%. For Question answering (ERQA), scores are Opus 5 at 67.2%, GPT 5.6 Sol at 43.2%, Gemini Robotics ER 1.6 at 72.5%, Gemini 3.6 Flash at 73.0%, and Gemini Robotics ER 2 at 78.5%. For Generalized instrument reading, scores are Opus 5 at 53.0%, GPT 5.6 Sol at 61.5%, Gemini Robotics ER 1.6 at 52.8%, Gemini 3.6 Flash at 52.0%, and Gemini Robotics ER 2 at 65.7%. Gemini Robotics ER 2 achieves the highest accuracy across all four categories.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__er-metrics-comparison__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"ER metrics comparison\" comparing the accuracy percentages of five models—Opus 5, GPT 5.6 Sol, Gemini Robotics ER 1.6, Gemini 3.6 Flash, and Gemini Robotics ER 2—across four evaluation categories. For Success detection (image-based), accuracy scores are Opus 5 at 83.6%, GPT 5.6 Sol at 83.1%, Gemini Robotics ER 1.6 at 82.9%, Gemini 3.6 Flash at 83.3%, and Gemini Robotics ER 2 at 87.7%. For Success detection (video-based), scores are Opus 5 at 81.0%, GPT 5.6 Sol at 74.7%, Gemini Robotics ER 1.6 at 76.0%, Gemini 3.6 Flash at 75.4%, and Gemini Robotics ER 2 at 82.4%. For Question answering (ERQA), scores are Opus 5 at 67.2%, GPT 5.6 Sol at 43.2%, Gemini Robotics ER 1.6 at 72.5%, Gemini 3.6 Flash at 73.0%, and Gemini Robotics ER 2 at 78.5%. For Generalized instrument reading, scores are Opus 5 at 53.0%, GPT 5.6 Sol at 61.5%, Gemini Robotics ER 1.6 at 52.8%, Gemini 3.6 Flash at 52.0%, and Gemini Robotics ER 2 at 65.7%. Gemini Robotics ER 2 achieves the highest accuracy across all four categories.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__er-metrics-comparison__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Progress classification comparison\" displaying accuracy percentages for five models: Opus 5 at 37.1%, GPT 5.6 Sol at 46.2%, Gemini Robotics ER 1.6 at 42.7%, Gemini 3.6 Flash at 43.9%, and Gemini Robotics ER 2 at 57.4%. Gemini Robotics ER 2 achieves the highest accuracy among all five models.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__progress-classification-comparison__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A bar chart titled \"Progress classification comparison\" displaying accuracy percentages for five models: Opus 5 at 37.1%, GPT 5.6 Sol at 46.2%, Gemini Robotics ER 1.6 at 42.7%, Gemini 3.6 Flash at 43.9%, and Gemini Robotics ER 2 at 57.4%. Gemini Robotics ER 2 achieves the highest accuracy among all five models.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__progress-classification-comparison__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"Physical agent performance\" comparing the success rate percentages of Gemini Robotics ER 1.6 and Gemini Robotics ER 2 across three categories. For \"Controlling real VLA\", Gemini Robotics ER 1.6 scored 48.6% and Gemini Robotics ER 2 scored 60.0%. For \"Controlling sim VLA\", Gemini Robotics ER 1.6 scored 37.4% and Gemini Robotics ER 2 scored 42.9%. For \"Controlling human tele-op\", Gemini Robotics ER 1.6 scored 63.6% and Gemini Robotics ER 2 scored 74.0%. Gemini Robotics ER 2 outperforms Gemini Robotics ER 1.6 across all three metrics.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__physical-agent-performance__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"Physical agent performance\" comparing the success rate percentages of Gemini Robotics ER 1.6 and Gemini Robotics ER 2 across three categories. For \"Controlling real VLA\", Gemini Robotics ER 1.6 scored 48.6% and Gemini Robotics ER 2 scored 60.0%. For \"Controlling sim VLA\", Gemini Robotics ER 1.6 scored 37.4% and Gemini Robotics ER 2 scored 42.9%. For \"Controlling human tele-op\", Gemini Robotics ER 1.6 scored 63.6% and Gemini Robotics ER 2 scored 74.0%. Gemini Robotics ER 2 outperforms Gemini Robotics ER 1.6 across all three metrics.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__physical-agent-performance__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"Safety performance\" comparing accuracy percentages of four models—Opus 5, GPT 5.6 Sol, Gemini Robotics ER 1.6, and Gemini Robotics ER 2—across two safety metrics. For \"Safety instruction following accuracy\", scores are Opus 5 at 95.9%, GPT 5.6 Sol at 91.4%, Gemini Robotics ER 1.6 at 47.2%, and Gemini Robotics ER 2 at 97.9%. For \"Human proximity (1m)\", scores are Opus 5 at 77.1%, GPT 5.6 Sol at 83.4%, Gemini Robotics ER 1.6 at 51.1%, and Gemini Robotics ER 2 at 93.0%. Gemini Robotics ER 2 scores highest in both categories.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__safety-performance__light.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "A grouped bar chart titled \"Safety performance\" comparing accuracy percentages of four models—Opus 5, GPT 5.6 Sol, Gemini Robotics ER 1.6, and Gemini Robotics ER 2—across two safety metrics. For \"Safety instruction following accuracy\", scores are Opus 5 at 95.9%, GPT 5.6 Sol at 91.4%, Gemini Robotics ER 1.6 at 47.2%, and Gemini Robotics ER 2 at 97.9%. For \"Human proximity (1m)\", scores are Opus 5 at 77.1%, GPT 5.6 Sol at 83.4%, Gemini Robotics ER 1.6 at 51.1%, and Gemini Robotics ER 2 at 93.0%. Gemini Robotics ER 2 scores highest in both categories.",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/MVCfTE-4h3AwDVPZ/gemini-robotics-2__safety-performance__dark.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__light",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__dark",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg"
+    }
+  ]
+}

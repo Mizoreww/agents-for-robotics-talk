@@ -1,0 +1,403 @@
+{
+  "key": "eureka",
+  "url": "https://eureka-research.github.io/",
+  "final_url": "https://eureka-research.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "d37258ca3878cb02f8e6bd5824cc1a8cba429ab3a2ffa645e1e60389ca05a511",
+  "chars": 8495,
+  "links": [
+    "https://www.seas.upenn.edu/~jasonyma/",
+    "mailto:jasonyma@seas.upenn.edu",
+    "https://www.seas.upenn.edu/~wjhliang/",
+    "https://guanzhi.me/",
+    "https://ai.stanford.edu/~dahuang/",
+    "https://obastani.github.io/",
+    "https://www.seas.upenn.edu/~dineshj/",
+    "https://www.cs.utexas.edu/~yukez/",
+    "https://jimfan.me/",
+    "mailto:dr.jimfan.ai@gmail.com",
+    "http://tensorlab.cms.caltech.edu/users/anima/",
+    "https://arxiv.org/abs/2310.12931",
+    "https://eureka-research.github.io/assets/eureka_paper.pdf",
+    "https://github.com/eureka-research/Eureka",
+    "https://github.com/nerfies/nerfies.github.io",
+    "https://vimalabs.github.io/",
+    "https://language-to-reward.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/eureka_zoomout.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/allegro_hand.png",
+      "alt": "<b>AllegroHand</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/allegro_hand.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/ant.png",
+      "alt": "<b>Ant</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/ant.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/anymal.png",
+      "alt": "<b>Anymal</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/anymal.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/ball_balance.png",
+      "alt": "<b>BallBalance</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/ball_balance.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/cartpole.png",
+      "alt": "<b>Cartpole</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/cartpole.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/franka_cabinet.png",
+      "alt": "<b>FrankaCabinet</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/franka_cabinet.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/humanoid.png",
+      "alt": "<b>Humanoid</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/humanoid.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/quadcopter.png",
+      "alt": "<b>Quadcopter</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/quadcopter.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/shadow_hand.png",
+      "alt": "<b>ShadowHand</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_block_stacking.png",
+      "alt": "<b>ShadowHandBlockStack</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_block_stack.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_bottle_cap.png",
+      "alt": "<b>ShadowHandBottleCap</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_bottle_cap.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_catch_abreast.png",
+      "alt": "<b>ShadowHandCatchAbreast</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_catch_abreast.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_catch_over2underarm.png",
+      "alt": "<b>ShadowHandCatchOver2Underarm</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_catch_over_2_underarm.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_catch_underarm.png",
+      "alt": "<b>ShadowHandCatchUnderarm</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_catch_underarm.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_door_close_inward.png",
+      "alt": "<b>ShadowHandDoorCloseInward</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_door_close_inward.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_door_close_outward.png",
+      "alt": "<b>ShadowHandDoorCloseOutward</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_door_close_outward.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_door_open_inward.png",
+      "alt": "<b>ShadowHandDoorOpenInward</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_door_open_inward.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_door_open_outward.png",
+      "alt": "<b>ShadowHandDoorOpenOutward</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_door_open_outward.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_grasp_and_place.png",
+      "alt": "<b>ShadowHandGraspAndPlace</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_grasp_and_place.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_kettle.png",
+      "alt": "<b>ShadowHandKettle</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_kettle.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_lift_undearm.png",
+      "alt": "<b>ShadowHandLiftUnderarm</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_lift_underarm.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_over.png",
+      "alt": "<b>ShadowHandOver</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_over.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_pen.png",
+      "alt": "<b>ShadowHandPen</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_pen.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_push_block.png",
+      "alt": "<b>ShadowHandPushBlock</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_push_block.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_re_orientation.png",
+      "alt": "<b>ShadowHandReorientation</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_reorientation.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_scissors.png",
+      "alt": "<b>ShadowHandScissors</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_scissors.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_swing_cup.png",
+      "alt": "<b>ShadowHandSwingCup</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_swing_cup.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_switch.png",
+      "alt": "<b>ShadowHandSwitch</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_switch.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/task_final/bidex_two_catch_underarm.png",
+      "alt": "<b>ShadowHandTwoCatchUnderarm</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/shadow_hand_two_catch_underarm.txt"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/placeholder.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_styles.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_center.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_upside_down.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_-11-1.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_-101.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_-110.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_-1.0,1.0,-1.0.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_1.0,0.0,0.0.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_0-11.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_custom_withflip_0.0,-1.0,0.0.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/assets/images/eureka.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/eureka_env_context.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/shadow_hand_multi.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/eureka_reward_reflection.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/eureka_bar_chart.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/eureka_improvement.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/isaac_eureka_correlation.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/eureka_pen_spinning.png",
+      "alt": ""
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/task_final/shadow_hand.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/pen_gallery/pen_spin_center.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/bidex_reward_assistant.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/assets/images/eureka_rlhf.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-step0.png",
+      "alt": "<b>Iteration 1</b>, best Eureka reward:\n                        [sep]\n                        assets/rlhf_rewards/humanoid_step0.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-step1.png",
+      "alt": "<b>Iteration 2</b>, Human feedback: <br>\n                        <span style=\"font-size: 0.8em; line-height: 30px;\">The learned behavior resembles forward squat jump; \n                        please revise the reward function so that the behavior resembles forward running.</span><br><br>\n                        <b>Iteration 2</b>, Eureka reward:\n                        [sep]\n                        assets/rlhf_rewards/humanoid_step1.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-step2.png",
+      "alt": "<b>Iteration 3</b>, Human feedback: <br>\n                        <span style=\"font-size: 0.8em; line-height: 30px;\">The learned behavior now looks like duck walk; \n                            the legs are indeed alternating but the torso is very low. \n                            Could you improve the reward function for upright running?</span><br><br>\n                        <b>Iteration 3</b>, Eureka reward:\n                        [sep]\n                        assets/rlhf_rewards/humanoid_step2.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-step3.png",
+      "alt": "<b>Iteration 4</b>, Human feedback: <br>\n                        <span style=\"font-size: 0.8em; line-height: 30px;\">The learned behavior has the robot hopping on one of its foot in order to move forward.\n                            Please revise the reward function to encourage upright running behavior.</span><br><br>\n                        <b>Iteration 4</b>, Eureka reward:\n                        [sep]\n                        assets/rlhf_rewards/humanoid_step3.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-step4.png",
+      "alt": "<b>Iteration 5</b>, Human feedback: <br>\n                        <span style=\"font-size: 0.8em; line-height: 30px;\">This reward function removed the penalty for low torse position that you added last time; could you just add it back in? </span><br><br>\n                        <b>Iteration 5</b>, Eureka reward:\n                        [sep]\n                        assets/rlhf_rewards/humanoid_step4.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/videos/humanoid_rlhf/humanoid-norlhf.png",
+      "alt": "<b>Eureka without RLHF</b>, best Eureka reward:\n                        [sep]\n                        assets/reward_functions/humanoid.txt"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/videos/placeholder.mp4",
+      "type": "video/mp4"
+    }
+  ]
+}

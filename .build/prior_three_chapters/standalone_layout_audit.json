@@ -1,0 +1,444 @@
+{
+  "html_sha256": "3a433d0367c46be254994bdfabcf4f685cadfdaf3aab0745c0804a97801f0f22",
+  "slides": [
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "SUSTech logo",
+          "loaded": true
+        }
+      ],
+      "number": 1,
+      "overflow": [],
+      "title": "Slide 1: Agents for Robotics",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 2,
+      "overflow": [],
+      "title": "Slide 2: Demo: A Robot Paints with Feedback",
+      "videoClips": [
+        "painting"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 3,
+      "overflow": [],
+      "title": "Slide 3: Our Ultimate Goal",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 4,
+      "overflow": [],
+      "title": "Slide 4: Three Questions, Three Case Studies",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 5,
+      "overflow": [],
+      "title": "Slide 5: Execution: Reasoning Through an Interface",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original Claude Plays Robotics interface-level results",
+          "loaded": true
+        }
+      ],
+      "number": 6,
+      "overflow": [],
+      "title": "Slide 6: Claude Plays Robotics",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 7,
+      "overflow": [],
+      "title": "Slide 7: Direct Control Meets Physical Constraints",
+      "videoClips": [
+        "claude_humanoid",
+        "claude_manip"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report VLA supervision results on familiar LIBERO-40 tasks",
+          "loaded": true
+        }
+      ],
+      "number": 8,
+      "overflow": [],
+      "title": "Slide 8: A Supervisor Can Disrupt a Capable VLA",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 9,
+      "overflow": [],
+      "title": "Slide 9: Demo: Placement and Fine Insertion",
+      "videoClips": [
+        "astra_bowl",
+        "astra_insertion"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 10,
+      "overflow": [],
+      "title": "Slide 10: Demo: Wiping a Table",
+      "videoClips": [
+        "wiping"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 11,
+      "overflow": [],
+      "title": "Slide 11: World Building: Replay and Prediction",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 12,
+      "overflow": [],
+      "title": "Slide 12: Agentic Real2Sim: A Real Episode and Its Twin",
+      "videoClips": [
+        "ar2s_real",
+        "ar2s_sim"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
+          "loaded": true
+        }
+      ],
+      "number": 13,
+      "overflow": [],
+      "title": "Slide 13: Agentic Real2Sim: The Conversion Pipeline",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
+          "loaded": true
+        }
+      ],
+      "number": 14,
+      "overflow": [],
+      "title": "Slide 14: Replay Acceptance on DROID-100",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 15,
+      "overflow": [],
+      "title": "Slide 15: Demo: Real2Sim and a Disclosed Failure",
+      "videoClips": [
+        "astra_real2sim",
+        "astra_microphone"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 16,
+      "overflow": [],
+      "title": "Slide 16: Improvement: A Repeatable Real Experiment",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 17,
+      "overflow": [],
+      "title": "Slide 17: ENPIRE: Real Experiments Inside the Loop",
+      "videoClips": [
+        "enpire_task"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE original framework, including human-assisted environment construction",
+          "loaded": true
+        }
+      ],
+      "number": 18,
+      "overflow": [],
+      "title": "Slide 18: ENPIRE: Environment and Improvement",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 19,
+      "overflow": [],
+      "title": "Slide 19: ENPIRE: Reset and Verification",
+      "videoClips": [
+        "enpire_reset",
+        "enpire_verify"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+          "loaded": true
+        }
+      ],
+      "number": 20,
+      "overflow": [],
+      "title": "Slide 20: ENPIRE: Improvement on Pin Insertion",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+          "loaded": true
+        }
+      ],
+      "number": 21,
+      "overflow": [],
+      "title": "Slide 21: Faster Research, Higher Token Use",
+      "videoClips": []
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 22,
+      "overflow": [],
+      "title": "Slide 22: Demo: Designing a Tendon-Driven Hand",
+      "videoClips": [
+        "hand"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 23,
+      "overflow": [],
+      "title": "Slide 23: Demo: Inspecting and Repairing an Execution",
+      "videoClips": [
+        "aspire_trace"
+      ]
+    },
+    {
+      "fonts": [
+        "\"Noto Serif\"",
+        "\"Noto Sans\""
+      ],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 24,
+      "overflow": [],
+      "title": "Slide 24: Conclusion",
+      "videoClips": []
+    }
+  ]
+}

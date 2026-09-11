@@ -1,0 +1,138 @@
+{
+  "key": "aspire",
+  "url": "https://research.nvidia.com/labs/gear/aspire/",
+  "final_url": "https://research.nvidia.com/labs/gear/aspire/",
+  "accessed": "2026-09-10",
+  "sha256": "215c889cb4f0e607084863df9ca39d292ef1f2611b5094e7cc171da4650f7fe3",
+  "chars": 7804,
+  "links": [
+    "https://research.nvidia.com/labs/gear/aspire/#overview",
+    "https://research.nvidia.com/labs/gear/aspire/#method",
+    "https://research.nvidia.com/labs/gear/aspire/#gallery",
+    "https://research.nvidia.com/labs/gear/aspire/#skills",
+    "https://research.nvidia.com/labs/gear/aspire/#benchmarks",
+    "https://research.nvidia.com/labs/gear/aspire/#limitations",
+    "https://research.nvidia.com/labs/gear/aspire/#conclusion",
+    "https://research.nvidia.com/labs/gear/aspire/#team",
+    "https://research.nvidia.com/labs/gear/aspire/#citation",
+    "https://research.nvidia.com/labs/gear/aspire/",
+    "https://research.nvidia.com/labs/gear/aspire/#grid-hero",
+    "https://doi.org/10.48550/arXiv.2607.00272",
+    "https://github.com/NVlabs/ASPIRE",
+    "https://research.nvidia.com/labs/gear/"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/EvoForestCover.mp4?v=6",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/skill_grid_loop_poster.jpg?v=20260629b"
+    },
+    {
+      "tag": "source",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/skill_grid_loop.mp4?v=20260629b",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/EvoForestCoverFull.mp4?v=3",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/EvoForestCoverFull_poster.jpg?v=3"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/how_aspire_works.mp4?v=20260629b",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/posters/method/how_aspire_works.jpg?v=20260629b"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/robot_execution_engine.mp4?v=20260629",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/posters/method/robot_execution_engine.jpg?v=20260629"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/skill_accumulation.mp4?v=20260629",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/posters/method/skill_accumulation.jpg?v=20260629"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/evo_search.mp4?v=20260629",
+      "poster": "https://research.nvidia.com/labs/gear/aspire/assets/videos/posters/method/evo_search.jpg?v=20260629"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/runyu-lu.jpg?v=1",
+      "alt": "Runyu Lu"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/yubo-wu.jpg?v=1",
+      "alt": "Yubo Wu"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/ethan-kou.jpg?v=1",
+      "alt": "Ethan Kou"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/max-fu.jpg?v=1",
+      "alt": "Max Fu"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/wenli-xiao.jpg?v=1",
+      "alt": "Wenli Xiao"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/ajay-mandlekar.jpg?v=1",
+      "alt": "Ajay Mandlekar"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/yinzhen-xu.jpg?v=1",
+      "alt": "Yinzhen Xu"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/guanya-shi.jpg?v=1",
+      "alt": "Guanya Shi"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/ken-goldberg.jpg?v=1",
+      "alt": "Ken Goldberg"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/ang-chen.jpg?v=1",
+      "alt": "Ang Chen"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/mosharaf-chowdhury.jpg?v=1",
+      "alt": "Mosharaf Chowdhury"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/yuke-zhu.jpg?v=1",
+      "alt": "Yuke Zhu"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/linxi-fan.jpg?v=1",
+      "alt": "Linxi Fan"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/aspire/assets/team/guanzhi-wang.jpg?v=1",
+      "alt": "Guanzhi Wang"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+[
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/claude_interfaces.png",
+    "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/b82f549f17f19f77687b44191441c71d07e6d198-2640x1320.png",
+    "source_id": "S09",
+    "description": "Per-model embodiment scores by interface",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/png",
+    "bytes": 219656,
+    "sha256": "90158a23b9205f641e1686bf4bf3c82f80cb478b682233ea238a4112d2da8212",
+    "download": "complete"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/claude_vla.png",
+    "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/35be79dfefc49b5ff33f87fb1771f64a8c5c8c1b-6500x2550.png",
+    "source_id": "S09",
+    "description": "LIBERO VLA supervision results",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/png",
+    "bytes": 1304578,
+    "sha256": "622a88ab0da2fc9c6eaf95e367a22207ab2eafc5ee9f63f35f9f3d6d7aabb0a3",
+    "download": "complete"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/agentic_replay_results.png",
+    "url": "https://arxiv.org/html/2607.19190v3/figures/figs/compressed/replay_outcomes_model_cost.png",
+    "source_id": "S13",
+    "description": "Figure 3 replay-acceptance outcomes and model cost",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/png",
+    "bytes": 113289,
+    "sha256": "048010fa2871941a94f6228946d59fd97134b85235e606bb8f792642c5da682b",
+    "download": "complete"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/agentic_replay_examples.png",
+    "url": "https://arxiv.org/html/2607.19190v3/figures/figs/compressed/droid_results.png",
+    "source_id": "S13",
+    "description": "DROID real and simulated episodes",
+    "accessed": "2026-09-10",
+    "visual_audit": "pending",
+    "download": "failed",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/enpire_framework.png",
+    "url": "https://arxiv.org/html/2606.19980v1/figure-v4.png",
+    "source_id": "S15",
+    "description": "ENPIRE framework",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/png",
+    "bytes": 1146375,
+    "sha256": "57a399f2977cff39daa971d6cd056b4bfb1af72e3cd6b27be97978162349b823",
+    "download": "complete"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/capx_interface.png",
+    "url": "https://arxiv.org/html/2603.22435v2/high_vs_low.png",
+    "source_id": "S16",
+    "description": "High-level versus low-level code interface example; not an empirical results figure",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/png",
+    "bytes": 92782,
+    "sha256": "c490a30a08028e48a6698b1115340485fb98788a3aec1ee239c308351da31883",
+    "download": "complete"
+  },
+  {
+    "file": "/home/limx/Desktop/agent_for_robotics/research/assets/scenemosaic_pipeline.webp",
+    "url": "https://rxjfighting.github.io/SceneMosaic/assets/images/pipeline.webp",
+    "source_id": "S14",
+    "description": "SceneMosaic pipeline",
+    "accessed": "2026-09-10",
+    "visual_audit": "inspected_2026-09-10; image content and labels checked, not slide-layout QA",
+    "content_type": "image/webp",
+    "bytes": 459910,
+    "sha256": "246fdb970b5ea24a1c6531ea7eb83378fa1e101330ad7d27166c014d5958100a",
+    "download": "complete"
+  }
+]

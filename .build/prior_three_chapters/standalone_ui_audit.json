@@ -1,0 +1,65 @@
+{
+  "html_sha256": "3a433d0367c46be254994bdfabcf4f685cadfdaf3aab0745c0804a97801f0f22",
+  "currentScript": {
+    "heading": "05. Execution: Reasoning Through an Interface",
+    "text": "播放与指图提示：先从左到右讲四个框，再沿 observation 的反馈箭头返回 Agent。底部两行只作预告，具体证据留到后面的案例页。先用这张图说明第一章要看什么。在 execution loop 里，Agent 根据目标做出决策，controller 或 skill 把它变成可执行动作；机器人产生新的 observation，再影响 Agent 的下一次决策。这是我们的简化理解，不是报告完整实现的复刻。这一章的关键是中间的 interface。一个 move-to tool、一段生成的控制程序，以及一个 VLA，给 Agent 提供的支持并不相同。要解释模型表现，首先得分清哪些难题交给了模型，哪些由现成的 robotics stack 接管。下面的案例会围绕三个问题展开：精细接触能不能做好？决策是否来得及？额外的 supervision 会帮助执行，还是打断本来有效的动作？图下方的 Evidence 和 Still open 是本章的结论预告，我们稍后逐项看依据。带着这张图，先进入 Claude Plays Robotics 的原始 interface 对比，再看 direct control、VLA supervision 和几个真实机器人 demo。"
+  },
+  "fullScriptHeadings": [
+    "01. Agents for Robotics",
+    "02. Demo: A Robot Paints with Feedback",
+    "03. Our Ultimate Goal",
+    "04. Three Questions, Three Case Studies",
+    "05. Execution: Reasoning Through an Interface",
+    "06. Claude Plays Robotics",
+    "07. Direct Control Meets Physical Constraints",
+    "08. A Supervisor Can Disrupt a Capable VLA",
+    "09. Demo: Placement and Fine Insertion",
+    "10. Demo: Wiping a Table",
+    "11. World Building: Replay and Prediction",
+    "12. Agentic Real2Sim: A Real Episode and Its Twin",
+    "13. Agentic Real2Sim: The Conversion Pipeline",
+    "14. Replay Acceptance on DROID-100",
+    "15. Demo: Real2Sim and a Disclosed Failure",
+    "16. Improvement: A Repeatable Real Experiment",
+    "17. ENPIRE: Real Experiments Inside the Loop",
+    "18. ENPIRE: Environment and Improvement",
+    "19. ENPIRE: Reset and Verification",
+    "20. ENPIRE: Improvement on Pin Insertion",
+    "21. Faster Research, Higher Token Use",
+    "22. Demo: Designing a Tendon-Driven Hand",
+    "23. Demo: Inspecting and Repairing an Execution",
+    "24. Conclusion"
+  ],
+  "transitions": [
+    {
+      "opening": 5,
+      "intro": "Slide 5: Execution: Reasoning Through an Interface",
+      "caseTitle": "Slide 6: Claude Plays Robotics",
+      "back": 5
+    },
+    {
+      "opening": 11,
+      "intro": "Slide 11: World Building: Replay and Prediction",
+      "caseTitle": "Slide 12: Agentic Real2Sim: A Real Episode and Its Twin",
+      "back": 11
+    },
+    {
+      "opening": 16,
+      "intro": "Slide 16: Improvement: A Repeatable Real Experiment",
+      "caseTitle": "Slide 17: ENPIRE: Real Experiments Inside the Loop",
+      "back": 16
+    }
+  ],
+  "focusView": {
+    "enabled": true,
+    "native": false
+  },
+  "figureDialog": {
+    "loaded": true,
+    "open": true
+  },
+  "keyboard": {
+    "focusExited": true,
+    "slide": 5
+  }
+}

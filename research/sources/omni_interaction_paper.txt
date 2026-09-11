@@ -1,0 +1,1248 @@
+Omni Interaction Agent Technical Report
+[#modal-form]
+[#modal-form-content]
+[#modal-title] Report GitHub Issue
+×
+Title:
+[#form_title]
+[#selectedTextModalDescription] Content selection saved. Describe the issue below:
+Description:
+[#description]
+Submit without GitHub
+Submit in GitHub
+[#announcement-banner]
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract
+1 Introduction
+2 Related Work
+2.1 Speech Language Models and Full Duplex Interaction
+2.2 Omni Modalities and Continuous Multimodal Interaction
+2.3 From Omni Conversation to Voice Agents
+3 Gander: Omni Interaction Agent
+3.1 Overview
+3.2 Cerebellum-Brain Collaborative Framework
+3.2.1 Front Cerebellum Activation and Summarization
+3.2.2 Agent Orchestration Runtime
+3.2.3 Training Free Back Brain
+3.3 Streaming Thinker-Talker Architecture
+3.3.1 Omni Perception
+Visual perception.
+Acoustic perception.
+3.3.2 Streaming Chunk Flattening
+3.3.3 Speech Generation
+Speech token generation.
+Waveform synthesis.
+4 Data Construction Pipeline
+4.1 Speech Interaction Data
+4.2 Audio-Visual Interaction Data
+4.3 Agentic Interaction Data
+4.4 Robustness and Negative Data
+5 Experiments
+5.1 Evaluation Setup
+Model under evaluation.
+Full-duplex interaction.
+Spoken conversation.
+Omni understanding.
+5.2 Full-Duplex Interaction
+5.3 Spoken Conversation
+5.4 Omni Understanding
+6 Conclusion and Future Work
+References
+[#infobox]
+[#license-tr]
+License: arXiv.org perpetual non-exclusive license
+[#watermark-tr]
+arXiv:2609.08977v2 [eess.AS] 09 Sep 2026
+[#footnotex1] ††footnotetext: [#footnotex1.1] [#footnotex1.1.1] ∗Equal contribution. [#footnotex1.1.2] †Corresponding author.
+[#footnotex1.2] This is an academic research project. Email: [#footnotex1.2.1] orantqing@gmail.com, shengpengji@zju.edu.cn
+Omni Interaction Agent Technical Report
+Orantqing [#id1] [#id1.1] ∗1 Shengpeng Ji [#id2] [#id2.1] ∗†1 Junlong Tong [#id3] [#id3.1] ∗1,3 Jialong Zuo [#id4] [#id4.1] ∗1
+Dongjie Fu [#id5] [#id5.1] 1,2 Di Cao [#id6] 1 Yangzhuo Li Shangda Wu [#id7] 1 Franz Evan Theron Veyra Changhao Pan [#id8] 2 Jingyu Lu [#id9] 2 Dongchao Yang [#id10] 4 Zhifei Xie [#id11] 5 Yang Tan Xiaoyu Shen Xiaoda Yang [#id12] 2 Wenfu Wang [#id13] 1 Teddy Sun [#id14] 1 Steve Yves [#id15] 1 Zhou Zhao [#id16] 2
+Affiliation: [#id17] 1Hunyuan Speech Team, Tencent; [#id18] 2Zhejiang University; [#id19] 3Shanghai Jiao Tong University
+Affiliation: [#id20] 4The Chinese University of Hong Kong; [#id21] 5Nanyang Technological University
+[#abstract1]
+Abstract
+[#abstract1.1] In this work, we present [#abstract1.1.1] Gander, [#abstract1.1.2] an end-to-end model that unifies omni perception, realtime interaction, and agentic capabilities within a single framework. In contrast to turn-based conventional paradigms, [#abstract1.1.3] Gander continuously receives streaming inputs across multiple modalities, including video, speech, and text, enabling natural full-duplex interaction in both everyday conversations and complex workflow-oriented agent scenarios. Users can interrupt the model at any time, while the model can also proactively provide intermediate feedback or ask follow up questions. To natively support these capabilities, [#abstract1.1.4] Gander adopts two key architectural designs: 1) [#abstract1.1.5] It employs a Cerebellum-Brain collaborative framework, in which the Cerebellum is responsible for realtime interaction and omni conversational capabilities, while the Brain handles complex reasoning and higher-level agentic tasks. The two components interact continuously through [#abstract1.1.6] tool calling and the agent orchestration runtime. 2) The Cerebellum is built upon a streaming Thinker-Talker architecture, [#abstract1.1.7] user inputs and model outputs are further flattened into an ordered token stream at the chunk level, providing a unified representation for low latency, continuous interaction. We conduct comprehensive evaluations of [#abstract1.1.8] Gander across four dimensions: conversational ability, omni understanding, interactive capability, and agentic intelligence. Internal human evaluations demonstrate that Gander maintains the natural and expressive spoken dialogue capabilities of SOTA open source models while achieving competitive performance in omni interaction. [#abstract1.1.9] Gander also demonstrates robustness in challenging real-world scenarios, including background noise interference, multi-party interactions, and backchannel communication. We release [#abstract1.1.10] Gander together with its models, code, and data to facilitate further research and development in the community.
+[#p1]
+[#p1.1]
+[#p1.1.1]
+[#p1.1.1.1] [#p1.1.1.1.1] [#g1]
+[#p1.1.1.2] [#p1.1.1.2.1] Project Page: https://Omni-Interaction-Gander.github.io/Omni-Interaction-Agent
+[#p1.1.2]
+[#p1.1.2.1] [#p1.1.2.1.1] [#g2]
+[#p1.1.2.2] [#p1.1.2.2.1] Code: https://github.com/Omni-Interaction-Gander/Omni-Interaction-Agent
+[#S1]
+1 Introduction
+[#S1.p1]
+[#S1.p1.1] Large Language Models (LLMs) are rapidly evolving from passive language interfaces for question answering and conversation (Yang et al., 2025) into general purpose agents capable of autonomously accomplishing complex tasks (Yao et al., 2022; Singh et al., 2025; Anthropic, 2024). By integrating tool use, environmental interaction, and multi step planning and execution, LLM-based agents (Zeng et al., 2026; Team et al., 2026) can go beyond generating textual responses to actively perceive, reason about, and act upon external environments. This emerging agentic paradigm has substantially broadened the role of LLMs, enabling applications ranging from coding and tool-assisted problem solving to complex workflow automation.
+[#S1.F1] [#S1.F1.g1]
+[#S1.F1.3] Figure 1: [#S1.F1.4]
+Gander is an end-to-end model that unifies omni communication, realtime interactive engagement across diverse and complex scenarios, and agentic execution of multi step tasks in workflow oriented environments.
+[#S1.p2]
+[#S1.p2.1] Despite the rapid advancement of agentic capabilities, human–AI interaction remains largely confined to [#S1.p2.1.1] text based, turn by turn communication, where users provide instructions and models respond in discrete interaction cycles. This interaction paradigm is fundamentally different from the fluid and collaborative nature of human–human communication, in which [#S1.p2.1.2] participants continuously exchange information across modalities, listen and speak concurrently, observe and present contextual information, and flexibly initiate, interrupt, or redirect an ongoing interaction. A more natural and effective form of human–AI collaboration therefore requires AI systems to move beyond the conventional request response paradigm and participate in interaction as active, continuously engaged collaborators. Realizing such a paradigm requires the integration of three complementary capabilities: 1) comprehensive [#S1.p2.1.3] multimodal perception and understanding across speech, vision, and text; 2) continuous, low-latency, and bidirectional [#S1.p2.1.4] interaction that supports natural realtime communication; and 3) strong [#S1.p2.1.5] agentic capabilities for contextual reasoning, autonomous planning, tool use, and task execution. Together, these capabilities establish the foundation for next-generation multimodal agents that can continuously perceive, communicate, reason, and act in dynamic environments while collaborating with humans to accomplish complex tasks.
+[#S1.p3]
+[#S1.p3.1] Realizing the aforementioned human–AI collaboration raises two fundamental questions. First, can truly interactive omni communication be achieved by composing conventional perception and interaction modules, such as VAD (Xu et al., 2026b) and ASR (Radford et al., 2023; An et al., 2025), or must interactivity itself be an intrinsic capability of the model? Second, can a single model simultaneously provide the low-latency responsiveness required for realtime interaction and the long horizon reasoning required for complex agentic tasks?
+[#S1.p4]
+[#S1.p4.1] To address these questions, we present Gander, an Omni Interaction Agent designed to unify realtime multimodal interaction with agentic intelligence. 1) we argue that robust interactivity cannot be treated as an external orchestration layer. Real world human–AI interaction encompasses a diverse range of dynamic conversational scenarios, including spontaneous user interruptions, proactive agent initiated engagement, robust interaction in noisy environments, multi-party conversations, and backchannel (e.g., brief acknowledgments such as “uh-huh,” “right,” and “I see”). These behaviors are difficult to capture reliably through a pipeline that relies on independently designed modules such as VAD (Silero, 2024). More importantly, [#S1.p4.1.1] interactivity should be intrinsic to the model, enabling it to scale with the underlying intelligence. Inspired by this principle, Gander jointly processes streaming audio-visual inputs and the model’s generated text stream by partitioning all modalities into temporally aligned chunks and organizing them into a unified autoregressive sequence. Within each chunk, the model explicitly predicts whether to listen or speak, thereby learning to dynamically control its interaction state and coordinate perception and generation in realtime. 2) Realtime conversational interaction and complex agentic workflows impose fundamentally different computational and reasoning requirements. Casual conversation demands immediate responses and continuous contextual adaptation, whereas complex workflows often require long horizon reasoning, iterative planning, tool use, and sustained execution. Attempting to satisfy both requirements with a single monolithic model can introduce an inherent trade-off between responsiveness and intelligence. To address this challenge, following (Lab, 2026; Huang et al., 2026; Wu et al., 2025), [#S1.p4.1.2] we adopt a Brain–Cerebellum style decoupled architecture, conceptually related to recent approaches that separate realtime interaction from asynchronous long horizon reasoning. In Gander, the Cerebellum is responsible for realtime multimodal interaction, continuous perception, and responsive conversational control, while the Brain serves as a higher capacity reasoning module responsible for complex planning and agentic task execution. The Cerebellum continuously maintains the live interaction context and selectively invokes the Brain through tool calls, providing it with the accumulated textual context, speech transcriptions, and visual frames. The Brain then performs deeper reasoning asynchronously and can proactively return intermediate summaries, plans, or final results to the Cerebellum, which integrates these outputs into the ongoing interaction. Importantly, the Brain is designed as a training-free and plug-and-play component, allowing stronger reasoning models to be incorporated without retraining the core interaction model. Consequently, improvements in the underlying reasoning capability can be directly propagated to the overall system, providing a scalable pathway for simultaneously improving realtime interactivity and agentic intelligence.
+[#S1.p5]
+[#S1.p5.1] For reproducibility, Gander adopts a Thinker-Talker architecture, following recent omni systems such as MiniCPM-o 4.5 (Cui et al., 2026) and Qwen Omni (Team, 2026; Xu et al., 2025b), with a Codex based backend. Through extensive training on chat, interaction, omni understanding, and agentic data, as shown in Figure 1, Gander achieves strong performance across dialogue, multimodal understanding, realtime interaction, and agentic capabilities. It also exhibits emerging multimodal behaviors, such as resolving ambiguous references using visual context. As no dedicated benchmark currently exists for Omni Interaction Agents, we follow GPT-4o (Hurst et al., 2024) and GPT-Live (OpenAI, 2026) by reporting results on established benchmarks such as BigBenchAudio, together with subjective demos on the project website. [#S1.p5.1.1] We will release the data, code, and models to facilitate community research, while further exploring real world deployment with our industrial scale Hy-Realtime model.
+[#S1.p6]
+[#S1.p6.1] Our contributions are summarized as follows:
+[#S1.p7]
+[#S1.p7.1] [#S1.p7.m1] (1)(1) We introduce Gander, a unified end-to-end model that [#S1.p7.1.1] scales effectively and natively integrates omni perception, realtime interaction, and long horizon agentic reasoning.
+[#S1.p8]
+[#S1.p8.1] [#S1.p8.m1] (2)(2) Built on a Brain–Cerebellum collaborative framework with tool call feedback and chunk based streaming, Gander achieves strong capabilities in omni dialogue, interruption, proactive interaction, interference robustness, multiparty backchanneling, reasoning, and agentic capabilities.
+[#S1.p9]
+[#S1.p9.1] [#S1.p9.m1] (3)(3) We release the Gander model weights and code to facilitate open research, practical deployment, and further advances in Omni Interaction Agents.
+[#S2]
+2 Related Work
+[#S2.p1]
+[#S2.p1.1] Interaction with speech language models has gradually evolved from conventional turn based human computer dialogue toward full duplex interaction (Lu et al., 2026) and agentic task execution. Along this trajectory, existing research can be broadly organized into three closely related directions: audio interaction models, Omni interaction models, and voice agent systems for practical task execution. Although these lines of research pursue different objectives, they share a common goal: moving beyond the conventional paradigm in which a model waits for a complete user utterance before responding, toward agents that can continuously perceive their environment, infer the current interaction state, and engage in communication in a natural and timely manner.
+[#S2.SS1]
+2.1 Speech Language Models and Full Duplex Interaction
+[#S2.SS1.p1]
+[#S2.SS1.p1.1] Early speech language models (Ji et al., 2024a; An et al., 2024; Ding et al., 2025; Huang et al., 2025) achieved substantial progress in speech understanding (Chu et al., 2023; Chu et al., 2024) and speech generation (Du et al., 2025; Ji et al., 2025a; Ji et al., 2024b; Ji et al., 2025c; Ji et al., 2025b), but their interaction protocols were still largely governed by explicit dialogue turns. In typical systems, external modules such as Voice Activity Detection (VAD) (Silero, 2024; Xu et al., 2026b) are used to determine when the user begins and ends an utterance, after which the resulting speech segment is passed to the model for understanding and response generation. Consequently, the model itself has limited control over fundamental interaction decisions. Although this paradigm is effective for conventional question and answer interactions, it becomes less suitable for natural conversations involving hesitation, pauses, interruption, overlapping speech, and background interference. Recent work has therefore increasingly focused on enabling speech models to directly model interaction timing and conversational state.
+[#S2.SS1.p2]
+[#S2.SS1.p2.1] BayLing-Duplex (Fang et al., 2026) incorporates decisions about when to listen, when to speak, and when to terminate the current response directly into a single autoregressive model. By introducing a small number of dedicated state tokens, the model is able to make interaction decisions during streaming speech generation without relying on an additional turn taking controller. This design treats interaction timing as part of the model’s autoregressive prediction process rather than as an external system component. Qwen-Audio-3.0-Realtime (QwenAudio Team, 2026b) explores realtime speech interaction from a streaming perspective. Instead of treating each utterance as a complete acoustic segment, the continuous audio stream is processed incrementally [#S2.SS1.p2.1.1] in chunks, allowing the model to continuously acquire contextual information and generate responses with reduced interaction latency. Audio Interaction Model (Xie et al., 2026b) extends the scope of realtime interaction from conversational speech to general online audio interaction. The Model continuously listens to environmental sounds and user instructions and determines whether a response is necessary. The emphasis on proactive interaction is particularly important because the model is no longer required to respond only after an explicitly defined user turn. Instead, it can initiate a response when the semantics of the ongoing audio stream indicate that intervention is appropriate. Seeduplex (ByteDance Seed Team, 2026b) further investigates the challenges of continuous listening in realistic acoustic environments. Its focus goes beyond enabling simultaneous listening and speaking to include attentive listening and robust interference suppression. In particular, the model is required to distinguish relevant user speech from background sounds and speech produced by other speakers while maintaining the ability to respond appropriately to user interruptions. These capabilities highlight an important aspect of full duplex interaction: natural interaction depends not only on simultaneous input and output, [#S2.SS1.p2.1.2] but also on the model’s ability to maintain an appropriate interaction state under complex acoustic conditions. GPT-Live (OpenAI, 2026) represents another important line of development toward natural realtime speech interaction. GPT-Live adopts a full-duplex architecture similar to Moshi (Défossez et al., 2024), allowing it to continuously process incoming audio and generate speech output in parallel. This allows the system to make interaction decisions during an ongoing conversation, including whether to continue listening, respond, pause, or interrupt.
+[#S2.SS1.p3]
+[#S2.SS1.p3.1] These studies have substantially advanced speech interaction beyond the conventional turn based paradigm. The central question has shifted from whether a model can understand and generate speech to whether it can continuously listen, speak, and regulate its own participation in a conversation. Nevertheless, most of these efforts remain centered on audio based interaction. Their understanding of the surrounding environment is therefore primarily derived from acoustic information, and their interaction capabilities are still largely evaluated within relatively constrained conversational settings.
+[#S2.SS2]
+2.2 Omni Modalities and Continuous Multimodal Interaction
+[#S2.SS2.p1]
+[#S2.SS2.p1.1] The integration of visual, audio, and video information into a unified foundation model has opened a new research direction toward Omni interaction. Compared with speech only systems, Omni models have access to both auditory and visual context, enabling the model to reason about not only what the user says, but also the surrounding scene and its temporal evolution. This additional context provides new opportunities for interaction, particularly in situations where the meaning of speech depends on visual information. Representative models such as Qwen Omni (Team, 2026; Xu et al., 2025b) series integrate multiple input modalities within a unified foundation model and support streaming speech generation. These systems provide a general foundation for realtime multimodal interaction by enabling the model to jointly interpret linguistic, acoustic, visual, and temporal information within a shared context.
+[#S2.SS2.p2]
+[#S2.SS2.p2.1] MiniCPM-o 4.5 (Cui et al., 2026) further explores continuous multimodal interaction through Omni Flow. Rather than treating multimodal perception and response generation as independent stages, Omni Flow places multimodal inputs and outputs on a unified temporal axis, allowing the model to continuously perceive visual and audio signals while generating responses. This design is particularly relevant to realtime interaction because the model can maintain a continuous temporal representation of the interaction rather than repeatedly resetting its context at individual turns. MiniCPM-o 4.5 demonstrates proactive behaviors based on continuously observed environmental information. JoyAI-VL-Interaction (Yao et al., 2026) focuses on interaction over continuous visual streams. Instead of treating vision as a static source of contextual information, it considers continuous visual perception as part of the interaction process itself. The model observes changes in the environment over time and determines whether these changes warrant a response or further interaction. SeedRealtime (ByteDance Seed Team, 2026a) further advances this direction by introducing native audio visual full duplex interaction. It jointly integrates audio, video, and text within a unified architecture and enables continuous interaction over multimodal streams. Beyond simply combining multiple input modalities, SeedRealtime demonstrates that audio visual integration can directly improve interaction quality. For example, visual context can help resolve phonetic ambiguity, interpret temporal references, and connect what is being seen, heard, and said within the same interaction process. The model also demonstrates proactive interaction by responding to changes in the observed environment without requiring an explicit user request.
+[#S2.SS3]
+2.3 From Omni Conversation to Voice Agents
+[#S2.SS3.p1]
+[#S2.SS3.p1.1] Although the above approaches have improved the naturalness of conversational interaction, practical deployment introduces a further challenge. Users increasingly expect AI systems not only to converse with them, but also to perform meaningful tasks, such as writing code (Zeng et al., 2026), accessing files, invoking external tools (Liang et al., 2026), and executing multi step workflows. In these settings, conversational interaction and task execution are closely coupled, yet they are still commonly implemented as partially independent capabilities.
+[#S2.SS3.p2]
+[#S2.SS3.p2.1] Qwen Audio Agent (QwenAudio Team, 2026a) represents a system oriented toward this problem. It provides a realtime voice runtime that enables an agent to maintain continuous spoken interaction while delegating more complex tasks to a backend workflow. Such tasks can include code generation, computer file operations, and other work related activities. This design moves voice interaction beyond a conversational interface and toward a persistent interface to an agent workflow. GPT-Live with CodeX [#footnote1] 11
+1
+https://help.openai.com/en/articles/20001274-chatgpt-voice?utm_source=chatgpt.com and Claude Voice Mode [#footnote2] 22
+2
+https://support.claude.com/en/articles/11101966-use-voice-mode?utm_source=chatgpt.com demonstrate product oriented approaches in which natural voice interaction is integrated with general purpose AI assistant capabilities. These systems make increasingly complex AI functionality accessible through continuous spoken interaction, thereby reducing the distinction between a conversational interface and a general AI assistant.
+[#S2.SS3.p3]
+[#S2.SS3.p3.1] Despite these advances, current voice agent systems still face substantial challenges in realistic interactive workflows. Throughout task execution, users may interrupt the agent and provide new constraints, ask follow up questions, or correct previously stated information. The agent may also need to proactively communicate intermediate results, solicit clarification, and request additional details to ensure that the task proceeds correctly. A brief backchannel does not necessarily indicate that the current task should terminate. In multi party environments, the system may need to distinguish relevant speech from other speakers while simultaneously handling background noise and changes in the visual environment. These scenarios require the model to reason jointly about interaction state, environmental state, and task state. Treating speech only as an input and output interface is therefore insufficient for truly natural agent interaction.
+[#S2.SS3.p4]
+[#S2.SS3.p4.1] Motivated by these developments, we propose [#S2.SS3.p4.1.1] an omni interaction agent called Gander which studies a more general form of interaction in which a single end to end omni model simultaneously supports natural realtime conversation and agentic task execution. The key question is whether conversational interaction, multimodal perception, and task execution can be integrated into a single continuous process rather than being handled as independent system components. Gander aims to bring these capabilities together within a unified Omni Interaction Agent. Rather than focusing solely on conversational interaction, Gander is designed to move naturally between open ended conversation and practical task execution. Rather than treating speech as merely an interface to an external agent, Gander incorporates interaction state into the end to end modeling process, allowing conversational behavior and task execution to be coordinated within the same ongoing interaction.
+[#S3]
+3 Gander: Omni Interaction Agent
+[#S3.SS1]
+3.1 Overview
+[#S3.SS1.p1]
+[#S3.SS1.p1.1] Gander is an end-to-end omni interaction agent architecturally composed of [#S3.SS1.p1.1.1] the front cerebellum, the agent orchestration runtime, and the back brain. The front cerebellum is a realtime, full duplex multimodal model based on a thinker-talker architecture, responsible for continuous multimodal perception and interactive communication. The back brain is a general purpose task execution agent that requires no task specific training, instantiated by general purpose agents such as claude code and codex. The agent orchestration runtime serves as the coordination layer between the front cerebellum and back brain, jointly managing realtime multimodal inference and the orchestration of asynchronous background tasks. Through this division of responsibilities, the three components collectively support both continuous realtime interaction and complex long horizon task execution. We detail their respective architectures and interactions below.
+[#S3.SS1.p2]
+[#S3.SS1.p2.1] The remainder of this section is organized as follows. Section 3.2 describes the interaction between the brain and cerebellum, including [#S3.SS1.p2.1.1] front cerebellum activation and input transmission, the [#S3.SS1.p2.1.2] intermediate agent orchestration runtime, and the propagation of responses from the [#S3.SS1.p2.1.3] back brain. Section 3.3 details the front cerebellum architecture, including its Thinker-Talker design and streaming chunk flattening mechanism for omni interaction.
+[#S3.SS2]
+3.2 Cerebellum-Brain Collaborative Framework
+[#S3.F2] [#S3.F2.g1]
+[#S3.F2.3] Figure 2: [#S3.F2.4]
+Gander consists of three components: the front cerebellum, the agent orchestration runtime, and the back brain. The front cerebellum handles realtime user interaction, while the back brain performs complex reasoning and long horizon workflow execution. The agent orchestration runtime serves as the coordination layer for realtime multimodal inference and asynchronous background task orchestration.
+[#S3.SS2.p1]
+[#S3.SS2.p1.1] Gander employs a decoupled, two tier agent architecture consisting of a front cerebellum and a back brain. As shown in Figure 2, the front cerebellum is instantiated as a realtime, full-duplex omni model that serves as the primary interface [#S3.SS2.p1.1.1] for continuous interaction, processing streaming speech, camera, and screen inputs and autoregressively determining interaction actions, including listening, speaking, brief feedback, interruption, and tool invocation. The back brain is instantiated as a general purpose task execution agent for information retrieval, code and file manipulation, document processing, and other long horizon tasks. The intermediate agent orchestration runtime provides the execution substrate that coordinates the two layers, supporting unified realtime multimodal inference and asynchronous background task orchestration, and constitutes an integral component of the overall agent harness. We next characterize [#S3.SS2.p1.1.2] the information flow across these components from three complementary perspectives.
+[#S3.SS2.SSS1]
+3.2.1 Front Cerebellum Activation and Summarization
+[#S3.SS2.SSS1.p1]
+[#S3.SS2.SSS1.p1.1] The front cerebellum is itself a realtime omni interaction model, broadly analogous to systems such as GPT-Realtime (OpenAI, 2026) and Seed-Realtime (ByteDance Seed Team, 2026a), and can independently handle routine conversational exchanges, information seeking interactions, and simple search based tasks. Within the dual brain architecture, [#S3.SS2.SSS1.p1.1.1] it additionally assumes the role of task routing and back brain invocation. Based on the current interaction context, the front cerebellum dynamically determines whether a request can be resolved locally or requires delegation to the back brain. Simple conversational and short horizon tasks are handled directly by the front cerebellum, whereas complex workflows involving multi step reasoning, external tool use, or long horizon execution are delegated to the back brain.
+[#S3.SS2.SSS1.p2]
+[#S3.SS2.SSS1.p2.1] In Gander, this delegation mechanism is formalized through structured tool calls that expose the front cerebellum’s task-level decisions to the agent orchestration runtime. Specifically, the front cerebellum emits tool invocations enclosed by dedicated special tokens:
+[#S3.SS2.SSS1.p3]
+[#S3.SS2.SSS1.p3.1]
+[#S3.F3] [#S3.F3.g1]
+[#S3.F3.3] Figure 3: [#S3.F3.4]
+An example workflow illustrating cerebellum brain interaction, where users can engage in realtime conversation or modify previously assigned tasks while the back brain is executing ongoing workflows.
+[#S3.SS2.SSS1.p4]
+[#S3.SS2.SSS1.p4.1] The interface defines three primary operations: [#S3.SS2.SSS1.p4.1.1] task [#S3.SS2.SSS1.p4.m1] _\_start [#S3.SS2.SSS1.p4.1.2] , [#S3.SS2.SSS1.p4.1.2.1] task [#S3.SS2.SSS1.p4.m2] _\_send, and [#S3.SS2.SSS1.p4.1.2.2] task [#S3.SS2.SSS1.p4.m3] _\_resolve, corresponding to task creation, incremental task interaction, and deterministic [#S3.SS2.SSS1.p4.1.3] tool [#S3.SS2.SSS1.p4.m4] _\_state control respectively in the above tool calls. The three tool states are defined as follows.
+[#S3.SS2.SSS1.p5]
+[#S3.I1]
+[#S3.I1.i1] •
+[#S3.I1.i1.p1]
+[#S3.I1.i1.p1.1] [#S3.I1.i1.p1.1.1] task [#S3.I1.i1.p1.m1] _\_start. It initializes a new background task and associates it with the current user turn. The provided task description or name serves as the task identifier for subsequent lifecycle management, tracking, and interaction.
+[#S3.I1.i2] •
+[#S3.I1.i2.p1]
+[#S3.I1.i2.p1.1] [#S3.I1.i2.p1.1.1] task [#S3.I1.i2.p1.m1] _\_send. It routes subsequent user inputs to an existing task, enabling incremental task specification and dynamic task refinement. It is invoked when the user provides additional information, revises a prior request, or otherwise modifies an ongoing task. The operation supports two routing modes: 1) [#S3.I1.i2.p1.1.2] main, which steers the primary task by incorporating the new input into its active execution context; 2) [#S3.I1.i2.p1.1.3] fork, which instantiates a read only auxiliary inquiry without altering the state or execution trajectory of the primary task.
+[#S3.I1.i3] •
+[#S3.I1.i3.p1]
+[#S3.I1.i3.p1.1] [#S3.I1.i3.p1.1.1] task [#S3.I1.i3.p1.m1] _\_resolve. It provides deterministic control over the task lifecycle through four resolution actions: [#S3.I1.i3.p1.1.2] cancel, [#S3.I1.i3.p1.1.3] allow [#S3.I1.i3.p1.m2] _\_once, [#S3.I1.i3.p1.1.4] allow [#S3.I1.i3.p1.m3] _\_session, and [#S3.I1.i3.p1.1.5] deny. [#S3.I1.i3.p1.1.6] cancel terminates the active primary task; [#S3.I1.i3.p1.1.7] allow [#S3.I1.i3.p1.m4] _\_once authorizes the current operation on a one time basis; [#S3.I1.i3.p1.1.8] allow [#S3.I1.i3.p1.m5] _\_session extends the authorization to the duration of the current task session; and [#S3.I1.i3.p1.1.9] deny rejects the requested operation and blocks its execution. This interface enables the front cerebellum to express task level control decisions in a structured and explicit form, while the agent orchestration runtime deterministically enforces the associated state transitions and execution semantics.
+[#S3.SS2.SSS1.p6]
+[#S3.SS2.SSS1.p6.1] In Figure 3, the front cerebellum and back brain workflow is illustrated through a representative use case. Here, [#S3.SS2.SSS1.p6.m1] TT denotes a task, while [#S3.SS2.SSS1.p6.m2] EE denotes the back brain execution. The front cerebellum initiates a back brain tool call via [#S3.SS2.SSS1.p6.1.1] task [#S3.SS2.SSS1.p6.m3] _\_start. During back brain execution, users can engage in conversation with the front cerebellum or modify previously issued tasks through [#S3.SS2.SSS1.p6.1.2] task [#S3.SS2.SSS1.p6.m4] _\_send.
+[#S3.SS2.SSS1.p7]
+[#S3.SS2.SSS1.p7.1] For the various tool calling scenarios triggered by the front cerebellum described above, the front cerebellum forwards the transcribed text of the audio query together with the relevant final frames of the input video, to the intermediate agent orchestration runtime as the input to the back brain. This design presents several open design considerations, including whether the front cerebellum should perform additional reasoning based on the transcribed query before passing it to the subsequent stage, and whether a trainable back brain could directly receive the user’s complete multimodal input stream in real time. In Gander, we adopt the most straightforward approach, directly using the transcribed query and the relevant final video frames as the input to the back brain.
+[#S3.SS2.SSS1.p8]
+[#S3.SS2.SSS1.p8.1] Within the two-brain architecture, the front cerebellum is also responsible for [#S3.SS2.SSS1.p8.1.1] summarizing the results returned by the back brain and generating the final response to the user. This involves different scenarios, such as whether the summary should be based on the back brain’s intermediate execution states or its final result. We treat this as a data scaling design choice, determined by the training data and target interaction scenarios. To preserve the interactive nature of omni interaction, the synthesized response is optimized for natural conversational spoken language delivery, rather than being formulated solely as a textual task completion response.
+[#S3.SS2.SSS2]
+3.2.2 Agent Orchestration Runtime
+[#S3.SS2.SSS2.p1]
+[#S3.SS2.SSS2.p1.1] The agent orchestration runtime primarily serves as the coordination layer between the front cerebellum and the back brain. By providing a unified interface for realtime multimodal data transport and backend task orchestration, the runtime effectively turns the omni interaction agent into a unified harness for interactive task execution. For realtime interaction, [#S3.SS2.SSS2.p1.1.1] it manages audio and visual stream ingestion, incremental inference scheduling, serialization of model invocations, static prefix caching, and source aware rate limiting with persistent state across different visual inputs. The runtime also binds the [#S3.SS2.SSS2.p1.1.2] task [#S3.SS2.SSS2.p1.m1] _\_start, [#S3.SS2.SSS2.p1.1.3] task [#S3.SS2.SSS2.p1.m2] _\_send, and [#S3.SS2.SSS2.p1.1.4] task [#S3.SS2.SSS2.p1.m3] _\_resolve operations issued by the front cerebellum to the final user turn confirmed at the transport layer, ensuring that task objectives are consistently grounded in authenticated user input rather than tool parameters independently generated by the front cerebellum.
+[#S3.SS2.SSS2.p2]
+[#S3.SS2.SSS2.p2.1] The agent orchestration runtime supports two control modes: [#S3.SS2.SSS2.p2.1.1] lean and [#S3.SS2.SSS2.p2.1.2] coordinator.
+[#S3.SS2.SSS2.p3]
+[#S3.SS2.SSS2.p3.1] [#S3.SS2.SSS2.p3.m1] (1)(1) In the [#S3.SS2.SSS2.p3.1.1] lean mode, the runtime directly executes the task actions classified by the front cerebellum and uses the original user turn as the instruction to the back brain. This results in a shorter control path, lower additional latency, greater determinism, and fewer potential model failure points, making it suitable for scenarios in which the front cerebellum provides reliable task routing. Its limitation is that task configuration is largely determined at deployment time, making it difficult to dynamically adapt the reasoning intensity, supervision policy, or notification granularity to the semantics of individual tasks. In addition, routine intermediate events are more likely to be propagated directly through the delivery pipeline.
+[#S3.SS2.SSS2.p4]
+[#S3.SS2.SSS2.p4.1] [#S3.SS2.SSS2.p4.m1] (2)(2) The [#S3.SS2.SSS2.p4.1.1] coordinator mode introduces an independent control plane model between the front cerebellum and the gateway. Conditioned on trusted user requests and bounded system state, the [#S3.SS2.SSS2.p4.1.2] coordinator generates execution directives that specify the reasoning intensity, questioning policy, permission policy, and result delivery strategy. This design decouples complex task planning and supervision decisions from the realtime front cerebellum, at the cost of additional model invocations, latency, computational overhead, and nondeterminism. The [#S3.SS2.SSS2.p4.1.3] coordinator only produces a declarative control plan and does not execute user tasks or access files, shell, or network resources. Its output is subsequently subjected to structured validation by the gateway (the core control component of the runtime) against the current task state, provider capabilities, permission boundaries, and deployment configuration. In the current implementation, the [#S3.SS2.SSS2.p4.1.4] coordinator is primarily involved in [#S3.SS2.SSS2.p4.1.5] task [#S3.SS2.SSS2.p4.m2] _\_start, whereas [#S3.SS2.SSS2.p4.1.6] task [#S3.SS2.SSS2.p4.m3] _\_send and [#S3.SS2.SSS2.p4.1.7] task [#S3.SS2.SSS2.p4.m4] _\_resolve are handled directly by the gateway.
+[#S3.SS2.SSS2.p5]
+[#S3.SS2.SSS2.p5.1] The Gateway serves as the persistent orchestration core of the Runtime. As shown in Table 1, it organizes backend execution around five persistent entities, namely [#S3.SS2.SSS2.p5.1.1] Project, [#S3.SS2.SSS2.p5.1.2] Task, [#S3.SS2.SSS2.p5.1.3] Run, [#S3.SS2.SSS2.p5.1.4] WorkerEvent, and [#S3.SS2.SSS2.p5.1.5] Delivery. It manages task state transitions, worker scheduling, workspace isolation, concurrency control, permission handling, and result delivery. Different back brains are integrated through a unified [#S3.SS2.SSS2.p5.1.6] Worker Provider interface, with each [#S3.SS2.SSS2.p5.1.7] Provider declaring its supported capabilities, including native steering, read only side queries, user interaction, cross process recovery, supported input modalities, context acquisition mechanisms, and parallel execution. The current default back brain is implemented using the Codex app server, with each task lineage associated with a persistent Codex thread that can be incrementally updated throughout execution. User follow up instructions can be injected directly into the active thread, whereas read only side queries are executed in isolated forks to preserve the state of the primary thread and workspace.
+[#S3.T1]
+[#S3.T1.3] Table 1: [#S3.T1.4] Core entities managed by the gateway in the agent orchestration runtime.
+[#S3.T1.5]
+[#S3.T1.5.1]
+[#S3.T1.5.1.1] [#S3.T1.5.1.1.1] Entity
+[#S3.T1.5.1.2] [#S3.T1.5.1.2.1] Description
+[#S3.T1.5.2]
+[#S3.T1.5.2.1] [#S3.T1.5.2.1.1] Project
+[#S3.T1.5.2.2] A persistent container for a long-lived task or workflow.
+[#S3.T1.5.3]
+[#S3.T1.5.3.1] [#S3.T1.5.3.1.1] Task
+[#S3.T1.5.3.2] A logical unit of work representing a user’s intended objective.
+[#S3.T1.5.4]
+[#S3.T1.5.4.1] [#S3.T1.5.4.1.1] Run
+[#S3.T1.5.4.2] A concrete execution instance of a task.
+[#S3.T1.5.5]
+[#S3.T1.5.5.1] [#S3.T1.5.5.1.1] WorkerEvent
+[#S3.T1.5.5.2] An event emitted by a worker during task execution.
+[#S3.T1.5.6]
+[#S3.T1.5.6.1] [#S3.T1.5.6.1.1] Delivery
+[#S3.T1.5.6.2] The mechanism and record through which task results are delivered to the user.
+[#S3.SS2.SSS3]
+3.2.3 Training Free Back Brain
+[#S3.SS2.SSS3.p1]
+[#S3.SS2.SSS3.p1.1] The back brain is a training free and general purpose task execution agent, instantiated by systems such as Codex or Claude Code. It is responsible for long horizon reasoning and sustained task execution, including information retrieval, code and file manipulation, document processing, and other tool mediated workflows. In addition to its native file, command line, and retrieval tools, the back brain can invoke three runtime specific interfaces: 1) [#S3.SS2.SSS3.p1.1.1] context [#S3.SS2.SSS3.p1.m1] _\_fetch, which retrieves realtime task context, events, and artifacts from the current task lineage based on references, roles, event types, time ranges, and character budgets; 2) [#S3.SS2.SSS3.p1.1.2] memory [#S3.SS2.SSS3.p1.m2] _\_search, which retrieves persistent multimodal memories across sessions; 3) [#S3.SS2.SSS3.p1.1.3] share, which returns verified important findings, intermediate progress, or corrective information to the realtime front cerebellum.
+[#S3.SS3]
+3.3 Streaming Thinker-Talker Architecture
+[#S3.F4] [#S3.F4.g1]
+[#S3.F4.3] Figure 4: [#S3.F4.4]
+Detailed architecture of the front cerebellum. The front cerebellum adopts a classic thinker-talker design that ingests streaming audio-visual input and produces both text and speech. The LLM flattens inputs and outputs into a unified chunk stream, predicting a control token within each chunk to decide its interaction behavior, and maintains a lightweight context via a sliding window.
+[#S3.SS3.p1]
+[#S3.SS3.p1.1] In this section, we detail Gander’s front cerebellum and its omni interaction capabilities. As illustrated in Figure 4, the front cerebellum builds on a thinker-talker architecture (Cui et al., 2026) that receives streaming audio and video input and
+generates both textual and audio output. Building on this design, we introduce a streaming chunk flattening mechanism for end-to-end interaction, which flattens perceptual inputs and generated outputs into a unified chunk stream and enables the model to dynamically determine whether to listen or speak at each chunk.
+[#S3.SS3.SSS1]
+3.3.1 Omni Perception
+[#S3.SS3.SSS1.p1]
+[#S3.SS3.SSS1.p1.1] The front cerebellum senses its environment through two modality encoders that run concurrently, one over the visual stream and one over the acoustic stream, and projects their outputs into the token space of the LLM backbone so that all perceptual evidence is registered on the shared interaction timeline. Neither encoder waits for a complete clip or utterance before yielding representations. Both operate incrementally over fixed duration windows, so that visual and auditory observations are continuously refreshed and exposed to the backbone at every step of the streaming exchange rather than only at turn boundaries. We describe the two perception pathways below.
+[#S3.SS3.SSS1.Px1]
+Visual perception.
+[#S3.SS3.SSS1.Px1.p1]
+[#S3.SS3.SSS1.Px1.p1.1] To ingest frames of arbitrary aspect ratio and resolution while keeping the token budget affordable under realtime constraints, the visual pathway follows an any resolution partitioning scheme (Guo et al., 2024): each frame is first decomposed into a set of slices, every slice is independently encoded by a SigLIP vision transformer (Zhai et al., 2023), and the resulting patch features are then condensed by a query based resampler (Yao et al., 2024) into a small, fixed number of visual tokens per slice. This yields roughly a [#S3.SS3.SSS1.Px1.p1.m1] 16×16\times reduction relative to the raw patch grid, markedly more aggressive than the [#S3.SS3.SSS1.Px1.p1.m2] 4×4\times compression adopted in many prior omni models, and substantially lowers the per-frame cost of continuous perception. Since full-duplex interaction imposes a stringent latency profile in which frames arrive densely and must be consumed within tight time windows, the cerebellum operates at a compact resolution of up to [#S3.SS3.SSS1.Px1.p1.m3] 448×448448\times 448, which keeps the per-frame token count small enough to sustain continuous perception in real time.
+[#S3.SS3.SSS1.Px2]
+Acoustic perception.
+[#S3.SS3.SSS1.Px2.p1]
+[#S3.SS3.SSS1.Px2.p1.1] The acoustic stream, which conveys both the ambient scene and user speech, is processed by a streaming and chunk wise speech encoder (Radford et al., 2023) that emits a dense sequence of frame level features on the order of [#S3.SS3.SSS1.Px2.p1.m1] 5050 frames per second. Passing this rate directly to the backbone would inflate the sequence length and undermine the efficiency that realtime operation demands; we therefore interpose a lightweight MLP projector that applies a [#S3.SS3.SSS1.Px2.p1.m2] 5×5\times temporal downsampling, lowering the effective audio token rate to roughly [#S3.SS3.SSS1.Px2.p1.m3] 1010 tokens per second before the features enter the backbone. This compression retains the phonetic and prosodic cues required for accurate spoken-language understanding while keeping the audio stream commensurate with the backbone’s decoding throughput, so that neither modality monopolizes the shared per window budget.
+[#S3.SS3.SSS1.Px2.p2]
+[#S3.SS3.SSS1.Px2.p2.1] Taken together, the two pathways supply the backbone with a compact, time-synchronized view of the surrounding scene at every window. These aligned visual and audio token streams are subsequently interleaved with the model’s own outputs through the mechanism detailed in Section 3.3.2, which is precisely what enables the front cerebellum to decide, chunk by chunk, whether to continue listening or to begin speaking.
+[#S3.SS3.SSS2]
+3.3.2 Streaming Chunk Flattening
+[#S3.SS3.SSS2.p1]
+[#S3.SS3.SSS2.p1.1] To let the front cerebellum perceive and respond within a single autoregressive process, we adopt a flattened interaction formulation in the spirit of recent interaction models (Lab, 2026), in which all modalities and both input and output are serialized into one causal token stream along a shared temporal axis. Under this view, the user request is no longer a privileged conversational role that gates generation. Instead, incoming speech and vision are treated as part of a continuously observed world state, and the model is situated in an always on environment where [#S3.SS3.SSS2.p1.1.1] it must decide not only what to produce but also whether and when to produce it in every chunk.
+[#S3.SS3.SSS2.p2]
+[#S3.SS3.SSS2.p2.1] Concretely, we partition the continuous interaction into fixed windows of one second and assemble one chunk per window. Each chunk is the flattened concatenation of three time-aligned segments: the encoded audio and visual tokens observed during that one-second window, a predicted control token, and the [#S3.SS3.SSS2.p2.m1] NN text tokens the model chooses to emit in response, where [#S3.SS3.SSS2.p2.m2] NN is determined by the model and may be zero. The interaction is then serialized by concatenating consecutive chunks into a single sequence that is consumed by a standard causal language backbone. Within each chunk, the model first attends to the newly arrived perceptual tokens and only then generates its output, so that every emitted token is conditioned on the most recent observation. Because the model reaches a decision once per window, proactive behavior arises naturally from the same mechanism and no external voice activity detection module is required to trigger responses. Marking the boundaries between the perceptual segment and the generated segment explicitly further helps the model distinguish observed inputs from its own outputs and stabilizes streaming decoding.
+[#S3.SS3.SSS2.p3]
+[#S3.SS3.SSS2.p3.1] We manage context through a fixed budget of [#S3.SS3.SSS2.p3.m1] 128128 chunks, corresponding to a rolling temporal receptive field of roughly two minutes of interaction. As the dialogue proceeds, this window advances in a sliding manner: once the budget is reached, the oldest chunks are evicted as new ones are appended, so the effective context length stays bounded while the model retains the most recent and interactionally relevant history. This keeps per step inference cost stable over arbitrarily long sessions and prevents unbounded growth of the flattened sequence.
+[#S3.SS3.SSS2.p4]
+[#S3.SS3.SSS2.p4.1] The control token predicted at the head of each chunk’s output segment governs the interaction and takes one of three values. 1) A [#S3.SS3.SSS2.p4.1.1] listen token indicates that the model chooses to remain silent for the current window and continue observing, in which case the output segment carries no text and the chunk simply advances perception. 2) A [#S3.SS3.SSS2.p4.1.2] speak token commits the model to generating spoken content in the current window, so that the subsequent [#S3.SS3.SSS2.p4.m1] NN text tokens are produced and passed downstream for speech synthesis. 3) An [#S3.SS3.SSS2.p4.1.3] interrupt token allows the model to halt an ongoing utterance when the evolving context warrants it, for instance when the user begins speaking or the scene changes in a way that makes the in progress response stale. Predicting this discrete control decision before any content is generated decouples the question of whether to speak from the question of what to say, which we find yields more stable full-duplex behavior than entangling the two in a single prediction step.
+[#S3.SS3.SSS3]
+3.3.3 Speech Generation
+[#S3.SS3.SSS3.p1]
+[#S3.SS3.SSS3.p1.1] Rather than having the LLM backbone emit acoustic units directly, the front cerebellum decouples semantic planning from acoustic realization and delegates waveform production to a pair of lightweight speech decoders. Forcing a language backbone to autoregress over speech tokens, which are typically emitted at a far higher frame rate than text, both inflates the number of decoding steps per second and tends to erode the model’s core linguistic competence (Xie and Wu, 2024). By keeping the backbone in the text domain and offloading acoustic modeling to compact downstream modules, the cerebellum sustains realtime spoken interaction at roughly the cadence of human speech while preserving the reasoning and instruction following behavior of the backbone. The generation pipeline proceeds in two stages: a speech token decoder that produces discrete speech units, followed by a streaming flow matching decoder that renders those units into an audio waveform.
+[#S3.SS3.SSS3.Px1]
+Speech token generation.
+[#S3.SS3.SSS3.Px1.p1]
+[#S3.SS3.SSS3.Px1.p1.1] Natural speech requires not only correct pronunciation but also prosody, emphasis, and speaking style that are consistent with the surrounding context and the user’s request. We take the final layer hidden state in the backbone, reshape it through a projection layer, and inject it with text token into a small autoregressive speech token decoder that emits the corresponding discrete speech tokens (Du et al., 2024a). Because prosodic and stylistic decisions are effectively pre-encoded in the backbone’s hidden states, the speech decoder is relieved of high-level planning and can devote its limited capacity to fine-grained acoustic modeling. The discrete units themselves follow the supervised semantic token formulation of recent scalable speech synthesizers (Du et al., 2024b), which yields a single codebook, low bitrate representation that is well matched to autoregressive prediction. To keep the spoken output tightly coupled to the concurrently observed environment, the input text tokens and the output speech tokens are not generated in separate passes but interleaved along the shared timeline, following the time-aligned scheme described in Section 3.3.2.
+[#S3.SS3.SSS3.Px2]
+Waveform synthesis.
+[#S3.SS3.SSS3.Px2.p1]
+[#S3.SS3.SSS3.Px2.p1.1] The discrete speech tokens are converted into a continuous waveform by a streaming flow matching decoder (Du et al., 2024b; Du et al., 2025). Conditioned on the reference audio carried in the multimodal system prompt, the decoder reconstructs the target mel-spectrogram from the semantic tokens through a conditional flow matching objective and then renders it to audio, which also endows the cerebellum with zero-shot voice control: the timbre and vocal identity of the synthesized speech are determined by the reference rather than fixed at training time. Critically, the decoder operates in a chunk-wise, causal manner so that waveform chunks are emitted incrementally as speech tokens arrive, rather than waiting for the full utterance to be decoded. This streaming design keeps the end-to-end latency of speech output low and allows the audio stream to be produced and played back continuously, which is a prerequisite for the full-duplex interaction the front cerebellum is designed to support.
+[#S4]
+4 Data Construction Pipeline
+[#S4.p1]
+[#S4.p1.1] Training Gander requires substantially different data from conventional turn-based omni models. [#S4.p1.1.1] Beyond general speech and multimodal understanding, the model must learn when to listen or speak, how to react to continuously evolving audio-visual context, how to coordinate with the back brain during long horizon agentic tasks, and how to maintain reliable interaction under complex real-world conditions. To this end, we construct a large scale corpus comprising realtime speech interaction, audio-visual interaction, and agentic interaction data. We additionally incorporate robustness oriented and negative supervision data covering challenging acoustic and conversational conditions, multi-party scenarios, and cases where the model should remain silent or suppress unnecessary responses, improving its reliability under realistic interaction settings. The detailed composition and distribution of Gander’s training data are summarized in Table 2. The corpus is organized into four data families: speech interaction data, audio-visual interaction data, agentic interaction data, and robustness and negative data. We describe the composition and construction of each family in turn below.
+[#S4.SS1]
+4.1 Speech Interaction Data
+[#S4.SS1.p1]
+[#S4.SS1.p1.1] Speech interaction data establish the [#S4.SS1.p1.1.1] basic capabilities required for realtime spoken interaction and account for approximately 37% of Gander’s training corpus.
+The corpus spans general dialogue, spoken instruction following and question answering, full-duplex interaction, and simultaneous speech translation.
+Beyond semantic understanding and response generation, it supervises interaction behavior over continuously arriving speech, including turn-taking, interruption, overlapping speech, and response timing, thereby teaching the model when to listen, when to continue speaking, and when to yield the conversational floor as the interaction unfolds.
+The full-duplex portion of this corpus denoted [#S4.SS1.p1.1.2] InteractionSpeech, is produced by a dedicated pipeline that synthesizes interaction behavior explicitly (Chen et al., 2025b), rather than inheriting it from turn-based corpora in which interruption and overlap are absent by construction. This pipeline proceeds in four stages which described in turn below: we first collect dialogue content from two complementary [#S4.SS1.p1.1.3] sources, then annotate the two [#S4.SS1.p1.1.4] interaction events that define duplex behavior, [#S4.SS1.p1.1.5] render the result to audio on an explicit timeline, and finally apply [#S4.SS1.p1.1.6] quality control to the synthesized dialogues.
+[#S4.SS1.p2]
+[#S4.SS1.p2.1] [#S4.SS1.p2.1.1] Dialogue sources. Content is drawn from two complementary sources. 1) The first is synthesis from topic seeds. We curate 11.2K scene and topic seeds spanning 45 everyday and task oriented scenarios, including education, healthcare, travel, financial and public services, and customer support, and expand each seed into a multi turn spoken dialogue with DeepSeek-V4-Pro (Xu et al., 2026a). Generation is constrained to between 8 and 18 turns and at most 96 seconds of aggregate speaking time, which keeps every sequence within the streaming context of the front cerebellum and prevents the model from being trained predominantly on unnaturally long monologues. 2) The second source converts existing multi turn dialogues into duplex form, drawing on both real assistant interaction logs and public conversational corpora. Because such material is written to be read rather than spoken, every candidate first passes a spoken suitability filter that discards turns dominated by markdown structure, code, URLs, or mathematical notation, as well as turns whose length or information density would be implausible in speech. The filter rejects the majority of candidate dialogues; those retained preserve authentic user intent and phrasing, into which interaction events are subsequently injected. Each dialogue is further conditioned on one of five interaction profiles, namely constraint clarification, process control, user correction, failed service entry, and safety or urgency stop, ensuring that interruptions arise from diverse communicative motivations rather than from a single recurring pattern. English data are obtained both by direct generation and by translating validated Chinese dialogues. In the latter case only the marked dialogue text is translated, after which all derived fields are parsed again under English tokenization, so that interruption points are selected according to English word order rather than transferred from Chinese.
+[#S4.T2]
+[#S4.T2.3] Table 2: [#S4.T2.4]
+Detailed distribution of the Gander’s training corpus.
+[#S4.T2.5]
+[#S4.T2.5.1]
+[#S4.T2.5.1.1]
+[#S4.T2.5.1.1.1]
+[#S4.T2.5.1.1.1.1] [#S4.T2.5.1.1.1.1.1] Data family
+[#S4.T2.5.1.2]
+[#S4.T2.5.1.2.1]
+[#S4.T2.5.1.2.1.1] [#S4.T2.5.1.2.1.1.1] Fine-grained category
+[#S4.T2.5.1.3] [#S4.T2.5.1.3.1] Examples
+[#S4.T2.5.1.4] [#S4.T2.5.1.4.1] Fraction
+[#S4.T2.5.1.5]
+[#S4.T2.5.1.5.1]
+[#S4.T2.5.1.5.1.1] [#S4.T2.5.1.5.1.1.1] Main supervision
+[#S4.T2.5.2]
+[#S4.T2.5.2.1]
+[#S4.T2.5.2.1.1]
+[#S4.T2.5.2.1.1.1] [#S4.T2.5.2.1.1.1.1]
+[#S4.T2.5.2.1.1.1.2] Speech Interaction
+[#S4.T2.5.2.2]
+[#S4.T2.5.2.2.1]
+[#S4.T2.5.2.2.1.1] [#S4.T2.5.2.2.1.1.1] Foundational dialogue
+[#S4.T2.5.2.3] [#S4.T2.5.2.3.1] 539.4K
+[#S4.T2.5.2.4] [#S4.T2.5.2.4.1] 20.00%
+[#S4.T2.5.2.5]
+[#S4.T2.5.2.5.1]
+[#S4.T2.5.2.5.1.1] [#S4.T2.5.2.5.1.1.1] General spoken dialogue.
+[#S4.T2.5.3]
+[#S4.T2.5.3.1]
+[#S4.T2.5.3.2]
+[#S4.T2.5.3.2.1]
+[#S4.T2.5.3.2.1.1] [#S4.T2.5.3.2.1.1.1] Basic capabilities
+[#S4.T2.5.3.3] [#S4.T2.5.3.3.1] 26.9K
+[#S4.T2.5.3.4] [#S4.T2.5.3.4.1] 1.00%
+[#S4.T2.5.3.5]
+[#S4.T2.5.3.5.1]
+[#S4.T2.5.3.5.1.1] [#S4.T2.5.3.5.1.1.1] Basic conversational data covering math, instruction following, and logic.
+[#S4.T2.5.4]
+[#S4.T2.5.4.1]
+[#S4.T2.5.4.2]
+[#S4.T2.5.4.2.1]
+[#S4.T2.5.4.2.1.1] [#S4.T2.5.4.2.1.1.1] InteractionSpeech
+[#S4.T2.5.4.3] [#S4.T2.5.4.3.1] 260.8K
+[#S4.T2.5.4.4] [#S4.T2.5.4.4.1] 9.67%
+[#S4.T2.5.4.5]
+[#S4.T2.5.4.5.1]
+[#S4.T2.5.4.5.1.1] [#S4.T2.5.4.5.1.1.1] Full-duplex turn-taking, interruption, and multi turn interaction.
+[#S4.T2.5.5]
+[#S4.T2.5.5.1]
+[#S4.T2.5.5.2]
+[#S4.T2.5.5.2.1]
+[#S4.T2.5.5.2.1.1] [#S4.T2.5.5.2.1.1.1] Spoken question answering
+[#S4.T2.5.5.3] [#S4.T2.5.5.3.1] 165.1K
+[#S4.T2.5.5.4] [#S4.T2.5.5.4.1] 6.12%
+[#S4.T2.5.5.5]
+[#S4.T2.5.5.5.1]
+[#S4.T2.5.5.5.1.1] [#S4.T2.5.5.5.1.1.1] Short form spoken question answering.
+[#S4.T2.5.6]
+[#S4.T2.5.6.1]
+[#S4.T2.5.6.2]
+[#S4.T2.5.6.2.1]
+[#S4.T2.5.6.2.1.1] [#S4.T2.5.6.2.1.1.1] Simultaneous speech translation
+[#S4.T2.5.6.3] [#S4.T2.5.6.3.1] 19.0K
+[#S4.T2.5.6.4] [#S4.T2.5.6.4.1] 0.70%
+[#S4.T2.5.6.5]
+[#S4.T2.5.6.5.1]
+[#S4.T2.5.6.5.1.1] [#S4.T2.5.6.5.1.1.1] Incremental bilingual speech translation.
+[#S4.T2.5.7]
+[#S4.T2.5.7.1]
+[#S4.T2.5.7.1.1]
+[#S4.T2.5.7.1.1.1] [#S4.T2.5.7.1.1.1.1] Audio–Visual Interaction
+[#S4.T2.5.7.2]
+[#S4.T2.5.7.2.1]
+[#S4.T2.5.7.2.1.1]
+[#S4.T2.5.7.2.1.1.1] [#S4.T2.5.7.2.1.1.1.1] Streaming video QA
+[#S4.T2.5.7.2.1.2]
+[#S4.T2.5.7.2.1.2.1] [#S4.T2.5.7.2.1.2.1.1] Streaming video narration
+[#S4.T2.5.7.2.1.3]
+[#S4.T2.5.7.2.1.3.1] [#S4.T2.5.7.2.1.3.1.1] Proactive visual response
+[#S4.T2.5.7.3] [#S4.T2.5.7.3.1] 1.1M
+[#S4.T2.5.7.4] [#S4.T2.5.7.4.1] 40.66%
+[#S4.T2.5.7.5]
+[#S4.T2.5.7.5.1]
+[#S4.T2.5.7.5.1.1] [#S4.T2.5.7.5.1.1.1] Streaming video QA, event grounding, narration,
+and realtime visual interaction.
+[#S4.T2.5.8]
+[#S4.T2.5.8.1]
+[#S4.T2.5.8.1.1]
+[#S4.T2.5.8.1.1.1] [#S4.T2.5.8.1.1.1.1]
+[#S4.T2.5.8.1.1.1.2] Agentic Interaction
+[#S4.T2.5.8.2]
+[#S4.T2.5.8.2.1]
+[#S4.T2.5.8.2.1.1] [#S4.T2.5.8.2.1.1.1] Audio agentic interaction
+[#S4.T2.5.8.3] [#S4.T2.5.8.3.1] 320.2K
+[#S4.T2.5.8.4] [#S4.T2.5.8.4.1] 11.87%
+[#S4.T2.5.8.5]
+[#S4.T2.5.8.5.1]
+[#S4.T2.5.8.5.1.1] [#S4.T2.5.8.5.1.1.1] Speech-driven task delegation and lifecycle interaction.
+[#S4.T2.5.9]
+[#S4.T2.5.9.1]
+[#S4.T2.5.9.2]
+[#S4.T2.5.9.2.1]
+[#S4.T2.5.9.2.1.1] [#S4.T2.5.9.2.1.1.1] Omni agentic interaction
+[#S4.T2.5.9.3] [#S4.T2.5.9.3.1] 36.0K
+[#S4.T2.5.9.4] [#S4.T2.5.9.4.1] 1.33%
+[#S4.T2.5.9.5]
+[#S4.T2.5.9.5.1]
+[#S4.T2.5.9.5.1.1] [#S4.T2.5.9.5.1.1.1] GUI based multimodal agent interaction.
+[#S4.T2.5.10]
+[#S4.T2.5.10.1]
+[#S4.T2.5.10.2]
+[#S4.T2.5.10.2.1]
+[#S4.T2.5.10.2.1.1] [#S4.T2.5.10.2.1.1.1] Tool assisted reasoning
+[#S4.T2.5.10.3] [#S4.T2.5.10.3.1] 3.4K
+[#S4.T2.5.10.4] [#S4.T2.5.10.4.1] 0.13%
+[#S4.T2.5.10.5]
+[#S4.T2.5.10.5.1]
+[#S4.T2.5.10.5.1.1] [#S4.T2.5.10.5.1.1.1] Tool-grounded reasoning over spoken STEM tasks.
+[#S4.T2.5.11]
+[#S4.T2.5.11.1]
+[#S4.T2.5.11.1.1]
+[#S4.T2.5.11.1.1.1] [#S4.T2.5.11.1.1.1.1]
+[#S4.T2.5.11.1.1.1.2] Robustness and Negative Data
+[#S4.T2.5.11.2]
+[#S4.T2.5.11.2.1]
+[#S4.T2.5.11.2.1.1] [#S4.T2.5.11.2.1.1.1] Irrelevant video robustness
+[#S4.T2.5.11.3] [#S4.T2.5.11.3.1] 116.2K
+[#S4.T2.5.11.4] [#S4.T2.5.11.4.1] 4.31%
+[#S4.T2.5.11.5]
+[#S4.T2.5.11.5.1]
+[#S4.T2.5.11.5.1.1] [#S4.T2.5.11.5.1.1.1] Robustness to irrelevant visual context.
+[#S4.T2.5.12]
+[#S4.T2.5.12.1]
+[#S4.T2.5.12.2]
+[#S4.T2.5.12.2.1]
+[#S4.T2.5.12.2.1.1] [#S4.T2.5.12.2.1.1.1] No command environments
+[#S4.T2.5.12.3] [#S4.T2.5.12.3.1] 40.0K
+[#S4.T2.5.12.4] [#S4.T2.5.12.4.1] 1.48%
+[#S4.T2.5.12.5]
+[#S4.T2.5.12.5.1]
+[#S4.T2.5.12.5.1.1] [#S4.T2.5.12.5.1.1.1] Silence under non directed environmental input.
+[#S4.T2.5.13]
+[#S4.T2.5.13.1]
+[#S4.T2.5.13.2]
+[#S4.T2.5.13.2.1]
+[#S4.T2.5.13.2.1.1] [#S4.T2.5.13.2.1.1.1] Anti interference
+[#S4.T2.5.13.3] [#S4.T2.5.13.3.1] 64.7K
+[#S4.T2.5.13.4] [#S4.T2.5.13.4.1] 2.40%
+[#S4.T2.5.13.5]
+[#S4.T2.5.13.5.1]
+[#S4.T2.5.13.5.1.1] [#S4.T2.5.13.5.1.1.1] Robustness to noise and overlapping distractors.
+[#S4.T2.5.14]
+[#S4.T2.5.14.1]
+[#S4.T2.5.14.2]
+[#S4.T2.5.14.2.1]
+[#S4.T2.5.14.2.1.1] [#S4.T2.5.14.2.1.1.1] Multi party interaction
+[#S4.T2.5.14.3] [#S4.T2.5.14.3.1] 8.8K
+[#S4.T2.5.14.4] [#S4.T2.5.14.4.1] 0.33%
+[#S4.T2.5.14.5]
+[#S4.T2.5.14.5.1]
+[#S4.T2.5.14.5.1.1] [#S4.T2.5.14.5.1.1.1] Speaker and addressee tracking.
+[#S4.T2.5.15]
+[#S4.T2.5.15.1] [#S4.T2.5.15.1.1] Total
+[#S4.T2.5.15.2] [#S4.T2.5.15.2.1] 2.7M
+[#S4.T2.5.15.3] [#S4.T2.5.15.3.1] 100.00%
+[#S4.T2.5.15.4]
+[#S4.SS1.p3]
+[#S4.SS1.p3.1] [#S4.SS1.p3.1.1] Interaction events. Two events are annotated. In a [#S4.SS1.p3.1.2] competitive interruption, the user barges in before the assistant finishes, and the assistant’s remaining words form a hidden continuation that temporally overlaps the incoming user speech but is never heard by the user. In a [#S4.SS1.p3.1.3] supportive backchannel, the user emits a brief acknowledgment while the assistant retains the floor and continues without pausing. The hidden continuation is retained as text but excluded from synthesis, so that the model observes exactly the acoustic evidence available to a real listener, and the subsequent user turn is verified not to reuse information it could not have heard. The distinction between the two events is enforced rather than assumed: a turn is accepted as a backchannel only if it is embedded within the interlocutor’s ongoing utterance, falls below a short-length threshold of eight characters in Chinese or six words in English, and either matches the lexicon or is explicitly marked during generation. Candidates carrying interrogative, requestive, or negative-stance cues are demoted to ordinary turns, preventing genuine floor-taking utterances from being mislabeled as acknowledgments. Backchannel realizations are sampled from a bilingual lexicon of 266 Chinese and 170 English expressions, organized into 11 intent categories and conditioned on conversational context, which avoids the repetitive acknowledgments typical of small fixed word lists.
+[#S4.SS1.p4]
+[#S4.SS1.p4.1] [#S4.SS1.p4.1.1] Rendering and timing. Only the user channel is rendered to audio, using voice cloning TTS (Du et al., 2025; Hu et al., 2026) over a pool of speakers, while assistant turns remain textual and occupy the timeline as duration placeholders. Every turn is assigned a global onset, a duration, and an overlap interval, so that the timing of interruptions and backchannels constitutes explicit supervision rather than an incidental artifact of concatenation. To avoid unstable synthesis, we emit no paralinguistic tokens and retain only two markers: the interruption marker, which delimits the overlap region, and the backchannel marker, which is stripped before synthesis.
+[#S4.SS1.p5]
+[#S4.SS1.p5.1] [#S4.SS1.p5.1.1] Quality control. Filtering proceeds in two stages. A rule based gate first discards dialogues whose interruption points are linguistically implausible, whose overlapping segments are degenerate, whose interrupting turns leak content the user could not have heard, or whose interaction is left unresolved. Surviving samples are then rated by an LLM judge along four dimensions, namely naturalness, assistant coherence, interruption plausibility, and backchannel plausibility, and are retained only if they exceed a threshold on every applicable dimension. Dialogues obtained by rewriting undergo a further round of LLM based repair and curation targeting interaction and semantic quality. The resulting 260.8K dialogues distribute interruption onsets broadly across the interrupted turn rather than concentrating them near its end, and the majority of barge-ins begin directly with content rather than with a discourse marker, which prevents the model from associating interruption with a small set of stereotyped lexical cues.
+[#S4.F5] [#S4.F5.g1]
+[#S4.F5.3] Figure 5: [#S4.F5.4] Construction pipelines for agentic interaction data. Agent data are generated from hierarchically sampled task and interaction patterns, while omni-agent data originate from action-aligned video and GUI trajectories with structured descriptions. Both pipelines jointly synthesize user audio queries, front cerebellum responses, and back brain execution trajectories, followed by automatic evaluation and filtering.
+[#S4.SS2]
+4.2 Audio-Visual Interaction Data
+[#S4.SS2.p1]
+[#S4.SS2.p1.1] Audio-visual interaction data extend realtime interaction from speech only conversations to continuously evolving multimodal environments, accounting for approximately 40% of Gander’s training corpus.
+The video interaction data are collected from JoyAI-VL (Yao et al., 2026), LiveCC (Chen et al., 2025a), and Streamo (Xia et al., 2026), and organized into three task categories: streaming video question answering, streaming video narration, and proactive visual response. All samples first undergo quality assessment and filtering, followed by temporal alignment refinement using Qwen3.5-297B-A17B (Qwen Team, 2026) to construct time-aligned targets and correct inaccurate alignments in the original data. This process yields approximately 1.1M high quality audio-visual interaction pairs. The target responses are further rewritten with DeepSeek-V4-Pro (Xu et al., 2026a) to normalize response lengths to an average rate of 8 tokens per second, balancing response informativeness and speech latency, while user utterances are synthesized into speech using Qwen3-TTS (Hu et al., 2026). The resulting data train the model to continuously integrate incoming visual evidence with the ongoing interaction, track evolving events and state changes, and ground its responses in information available up to the current moment, enabling timely responses when relevant visual events emerge.
+[#S4.SS3]
+4.3 Agentic Interaction Data
+[#S4.SS3.p1]
+[#S4.SS3.p1.1] While the preceding data primarily focus on direct user interaction with the front cerebellum, agentic interaction data extend this setting to coordinated interaction among the [#S4.SS3.p1.1.1] user, front cerebellum, and back brain.
+The agentic interaction corpus consists of three categories: audio agentic interaction, omni agentic interaction, and a small set of tool assisted reasoning data. The first two categories focus on long horizon agentic interaction, where the front cerebellum maintains continuous interaction with the user while coordinating with the back brain throughout asynchronous task execution. Tool assisted reasoning provides auxiliary supervision for tool grounded reasoning over spoken tasks. Unlike conventional tool use examples that primarily capture isolated tool invocation or task completion, these interaction trajectories interleave multi-turn user interaction with evolving backend states, execution progress, and intermediate results. They span the full task lifecycle, including task initiation, follow up requests, constraint updates, clarification, progress inquiries, cancellation, and final result delivery. The construction of audio agentic and omni agentic interaction data is described below, with their pipelines illustrated in Figure 5.
+[#S4.SS3.p2]
+[#S4.SS3.p2.1] Audio-agentic interaction data are constructed through a seed-driven trajectory synthesis pipeline. Structured task seeds are first sampled at multiple levels, including task class, domain, category, and task family, together with diverse query and interaction patterns. The task space covers representative backend-agent workflows such as execution, information search, and search-then-execute, while the interaction patterns characterize how users may interact with an ongoing task. The back brain operates as an independent task executor, while the supervision focuses on how the front cerebellum communicates and coordinates around evolving task states.
+Given each seed, spoken user requests and corresponding interaction trajectories among the user, front cerebellum, and back brain are synthesized using DeepSeek-V4-Pro to capture the information exchange throughout task execution.
+The resulting trajectories are evaluated and filtered for task consistency, interaction validity, and overall quality.
+[#S4.SS3.p3]
+[#S4.SS3.p3.1] Omni-agentic interaction extends such coordination to visually grounded tasks, where the front cerebellum must continuously track evolving visual states while interacting with both the user and the back brain. The underlying GUI and video trajectories are assembled from three complementary sources: crawled interaction trajectories, existing GUI datasets (Wang et al., 2026), and GUI trajectories generated with Codex, yielding approximately 36K examples in total. These trajectories contain temporally ordered observations and actions, which are converted by Qwen3.5-297B-A17B into structured descriptions of environment states, task progress, and interaction context. DeepSeek-V4-Pro is used to synthesize spoken user requests and corresponding interactions among the user, front cerebellum, and back brain, grounded in the observed visual states. These trajectories require the front cerebellum to follow evolving interface or scene states, communicate with the user, and remain synchronized with backend actions and intermediate results. Finally, the synthesized trajectories are evaluated and filtered for temporal consistency, task validity, and interaction quality.
+[#S4.SS4]
+4.4 Robustness and Negative Data
+[#S4.SS4.p1]
+[#S4.SS4.p1.1] Reliable realtime interaction requires not only appropriate responses to valid user requests, but also robust response control under irrelevant, noisy, and multi-party conversational conditions.
+Accordingly, robustness-oriented and negative supervision covers four settings: irrelevant visual context, no-command environments, acoustic and conversational interference, and multi-party interaction.
+Irrelevant-video negative samples are constructed by pairing web-crawled videos with unrelated user instructions, while anti-interference and multi-party examples are sourced from high-quality Hy-Realtime production data.
+Irrelevant-video and no-command examples encourage the model to ignore unrelated events and remain silent when no valid user request is present.
+Anti-interference data improve robustness to noise and overlapping distractors, while multi-party interaction data support speaker and addressee tracking to determine whether an utterance is directed toward the assistant.
+Together, these data reduce spurious responses and improve interaction reliability in complex real-world environments.
+[#S5]
+5 Experiments
+[#S5.p1]
+[#S5.p1.1] We evaluate Gander along the three axes that its architecture is designed to serve:
+full-duplex interaction with tool use, spoken conversational ability, and omni understanding
+over audio-visual streams. The three differ in how much of the system they exercise, from
+full-duplex interaction, which engages it completely, to omni understanding, which reduces it
+to the front cerebellum answering in text. Read together they therefore also serve a diagnostic
+purpose: they separate what the interaction-oriented training buys from what it costs, and
+localize the remaining failures to specific components rather than to the architecture as a
+whole. Because the settings differ in scoring protocol and in which components participate,
+their scores are not commensurable and we report them separately.
+[#S5.SS1]
+5.1 Evaluation Setup
+[#S5.SS1.SSS0.Px1]
+Model under evaluation.
+[#S5.SS1.SSS0.Px1.p1]
+[#S5.SS1.SSS0.Px1.p1.1] All results are obtained from a single Gander checkpoint, with the Talker and the streaming
+speech decoder attached wherever speech output is required. Decoding parameters and the streaming
+unit format are identical across evaluations, and the front cerebellum’s system prompt is
+byte-identical to the one used during training, with no benchmark-specific tuning. Where the back
+brain participates, it is instantiated training-free through the Codex worker provider of
+Section 3, driven by GPT-5.6, and may call only the tools the benchmark exposes.
+[#S5.SS1.SSS0.Px2]
+Full-duplex interaction.
+[#S5.SS1.SSS0.Px2.p1]
+[#S5.SS1.SSS0.Px2.p1.1] We use Full-Duplex-Bench v3 (Full-Duplex-Bench Team, 2026), which places a spoken assistant in
+tool-augmented service scenarios containing natural disfluencies, and evaluate all 100
+scenarios. It reports tool-selection F1 (ToolSel), argument correctness (ArgAcc), whether the
+spoken reply satisfies the user’s intent (RespQual), a strict binary Pass@1 requiring the tool
+multiset to be exactly correct with every argument right, and three interaction metrics: the
+fractions of turns taken at an appropriate moment (Take-turn), begun before the user has
+finished (Interrupt), and prefaced by a conversational placeholder (Filler). The last comes from
+the suite’s LLM-based latency analysis and is defined over the 91 of 100 scenarios that take the
+turn without interrupting and for which that analysis returns a verdict. We run the released
+scoring scripts unmodified, with the GPT-4o judge used by the baseline protocol, and evaluate
+the deployed stack end to end: audio enters the Thinker, the Talker and speech decoder
+synthesize a reply, and scoring reads an ASR transcript of that audio, so all reported numbers
+include real speech-synthesis and recognition error. One asymmetry required
+correction. The benchmark’s system prompt instructs baselines to execute tools immediately
+rather than ask clarifying questions, but the back brain, being an external agent, never
+receives it; we therefore place a contract file carrying the same requirement in its working
+directory so that both sides operate under equivalent instructions, leaving the front
+cerebellum’s prompt untouched. To separate the two tiers we additionally report a
+back-brain-only condition that bypasses the front cerebellum and the audio path, driving the
+same agent and tool server from the transcript of the user turn. Lacking an audio timeline, it
+supports none of the three interaction metrics, so we leave those blank rather than report a
+zero or a degenerate one.
+[#S5.SS1.SSS0.Px3]
+Spoken conversation.
+[#S5.SS1.SSS0.Px3.p1]
+[#S5.SS1.SSS0.Px3.p1.1] We evaluate on the SpokenQA subsets Llama Questions and Web Questions and on the VoiceBench
+subsets AlpacaEval and SD-QA (Chen et al., 2024), totalling 2,052 utterances, and adopt
+the baseline table of Audio-Interaction (Xie et al., 2026b) for comparison. Speech
+enters the Thinker directly and the response it produces is scored as text; open-ended
+responses are rated by a GPT-4o judge following the baseline protocol. Since the compared
+systems differ in whether they must commit to their output while the user is still speaking, we
+group them by interaction regime and read the comparison primarily within the full-duplex
+group.
+[#S5.SS1.SSS0.Px4]
+Omni understanding.
+[#S5.SS1.SSS0.Px4.p1]
+[#S5.SS1.SSS0.Px4.p1.1] We evaluate on WorldSense (Hong et al., 2025) and Daily-Omni (Zhou et al., 2025), comprising
+4,369 multiple-choice questions. Prompts and the two-stage answer-extraction procedure
+follow the upstream harnesses, answers are graded by exact letter matching with no LLM judge,
+and questions whose answer cannot be extracted are counted as incorrect rather than discarded.
+Decoding is greedy, so the evaluation is deterministic. This setting is turn-based: the whole
+question is available before decoding begins, no speech is synthesized, and the back
+brain is not involved, so it measures the front cerebellum’s perceptual and reasoning ability
+rather than its interaction behavior. To quantify how much the model actually integrates
+across modalities, we additionally run each question under three input conditions, presenting
+audio and video jointly, video only, and audio only, for 13,107 inferences in total.
+[#S5.SS2]
+5.2 Full-Duplex Interaction
+[#S5.T3]
+[#S5.T3.4] Table 3: [#S5.T3.5]
+Results on Full-Duplex-Bench v3 (100 scenarios). The first four metrics are fractions,
+the last three percentages; baseline numbers are from the benchmark release. Bold marks
+the best value of each column, excluding the last row. [#S5.T3.5.1] [#S5.T3.5.1.1] †Text-driven and
+comparable to the cascaded pipeline rather than to the full-duplex rows; the three
+interaction metrics are not measurable without an audio timeline.
+[#S5.T3.6]
+[#S5.T3.6.1] [#S5.T3.6.1.1]
+[#S5.T3.6.1.1.1]
+[#S5.T3.6.1.1.1.1] [#S5.T3.6.1.1.1.1.1]
+[#S5.T3.6.1.1.1.1.1.1]
+[#S5.T3.6.1.1.1.1.1.1.1]
+[#S5.T3.6.1.1.1.1.1.1.1.1] [#S5.T3.6.1.1.1.1.1.1.1.1.1] Model
+[#S5.T3.6.1.1.1.1.1.1.1.2] [#S5.T3.6.1.1.1.1.1.1.1.2.1] ToolSel [#S5.T3.m3] ↑\uparrow
+[#S5.T3.6.1.1.1.1.1.1.1.3] [#S5.T3.6.1.1.1.1.1.1.1.3.1] ArgAcc [#S5.T3.m4] ↑\uparrow
+[#S5.T3.6.1.1.1.1.1.1.1.4] [#S5.T3.6.1.1.1.1.1.1.1.4.1] RespQual [#S5.T3.m5] ↑\uparrow
+[#S5.T3.6.1.1.1.1.1.1.1.5] [#S5.T3.6.1.1.1.1.1.1.1.5.1] Pass@1 [#S5.T3.m6] ↑\uparrow
+[#S5.T3.6.1.1.1.1.1.1.1.6] [#S5.T3.6.1.1.1.1.1.1.1.6.1] Take-turn [#S5.T3.m7] ↑\uparrow
+[#S5.T3.6.1.1.1.1.1.1.1.7] [#S5.T3.6.1.1.1.1.1.1.1.7.1] Interrupt [#S5.T3.m8] ↓\downarrow
+[#S5.T3.6.1.1.1.1.1.1.1.8] [#S5.T3.6.1.1.1.1.1.1.1.8.1] Filler [#S5.T3.m9] ↓\downarrow
+[#S5.T3.6.1.1.1.1.1.1.2]
+[#S5.T3.6.1.1.1.1.1.1.2.1] GPT-Realtime (OpenAI, 2026)
+[#S5.T3.6.1.1.1.1.1.1.2.2] [#S5.T3.6.1.1.1.1.1.1.2.2.1] 0.876
+[#S5.T3.6.1.1.1.1.1.1.2.3] [#S5.T3.6.1.1.1.1.1.1.2.3.1] 0.680
+[#S5.T3.6.1.1.1.1.1.1.2.4] [#S5.T3.6.1.1.1.1.1.1.2.4.1] 0.792
+[#S5.T3.6.1.1.1.1.1.1.2.5] [#S5.T3.6.1.1.1.1.1.1.2.5.1] 0.600
+[#S5.T3.6.1.1.1.1.1.1.2.6] 96.0
+[#S5.T3.6.1.1.1.1.1.1.2.7] 13.5
+[#S5.T3.6.1.1.1.1.1.1.2.8] 16.9
+[#S5.T3.6.1.1.1.1.1.1.3]
+[#S5.T3.6.1.1.1.1.1.1.3.1] Gemini Live 3.1 (Google DeepMind, 2026)
+[#S5.T3.6.1.1.1.1.1.1.3.2] 0.817
+[#S5.T3.6.1.1.1.1.1.1.3.3] 0.588
+[#S5.T3.6.1.1.1.1.1.1.3.4] 0.718
+[#S5.T3.6.1.1.1.1.1.1.3.5] 0.540
+[#S5.T3.6.1.1.1.1.1.1.3.6] 78.0
+[#S5.T3.6.1.1.1.1.1.1.3.7] 19.2
+[#S5.T3.6.1.1.1.1.1.1.3.8] 31.7
+[#S5.T3.6.1.1.1.1.1.1.4]
+[#S5.T3.6.1.1.1.1.1.1.4.1] Cascaded (Whisper [#S5.T3.m10] →\rightarrow GPT-4o [#S5.T3.m11] →\rightarrow TTS) (Radford et al., 2023)
+[#S5.T3.6.1.1.1.1.1.1.4.2] 0.803
+[#S5.T3.6.1.1.1.1.1.1.4.3] 0.562
+[#S5.T3.6.1.1.1.1.1.1.4.4] 0.600
+[#S5.T3.6.1.1.1.1.1.1.4.5] 0.450
+[#S5.T3.6.1.1.1.1.1.1.4.6] [#S5.T3.6.1.1.1.1.1.1.4.6.1] 100.0
+[#S5.T3.6.1.1.1.1.1.1.4.7] 33.0
+[#S5.T3.6.1.1.1.1.1.1.4.8] 26.9
+[#S5.T3.6.1.1.1.1.1.1.5]
+[#S5.T3.6.1.1.1.1.1.1.5.1] Grok (xAI, 2026)
+[#S5.T3.6.1.1.1.1.1.1.5.2] 0.797
+[#S5.T3.6.1.1.1.1.1.1.5.3] 0.542
+[#S5.T3.6.1.1.1.1.1.1.5.4] 0.617
+[#S5.T3.6.1.1.1.1.1.1.5.5] 0.430
+[#S5.T3.6.1.1.1.1.1.1.5.6] 94.0
+[#S5.T3.6.1.1.1.1.1.1.5.7] 25.5
+[#S5.T3.6.1.1.1.1.1.1.5.8] 44.3
+[#S5.T3.6.1.1.1.1.1.1.6]
+[#S5.T3.6.1.1.1.1.1.1.6.1] Ultravox v0.7 (Fixie AI, 2026)
+[#S5.T3.6.1.1.1.1.1.1.6.2] 0.794
+[#S5.T3.6.1.1.1.1.1.1.6.3] 0.513
+[#S5.T3.6.1.1.1.1.1.1.6.4] 0.510
+[#S5.T3.6.1.1.1.1.1.1.6.5] 0.410
+[#S5.T3.6.1.1.1.1.1.1.6.6] 96.0
+[#S5.T3.6.1.1.1.1.1.1.6.7] 47.9
+[#S5.T3.6.1.1.1.1.1.1.6.8] 88.0
+[#S5.T3.6.1.1.1.1.1.1.7]
+[#S5.T3.6.1.1.1.1.1.1.7.1] Gemini Live 2.5 (Google DeepMind, 2026)
+[#S5.T3.6.1.1.1.1.1.1.7.2] 0.786
+[#S5.T3.6.1.1.1.1.1.1.7.3] 0.593
+[#S5.T3.6.1.1.1.1.1.1.7.4] 0.554
+[#S5.T3.6.1.1.1.1.1.1.7.5] 0.490
+[#S5.T3.6.1.1.1.1.1.1.7.6] 92.0
+[#S5.T3.6.1.1.1.1.1.1.7.7] 14.1
+[#S5.T3.6.1.1.1.1.1.1.7.8] [#S5.T3.6.1.1.1.1.1.1.7.8.1] 8.9
+[#S5.T3.6.1.1.1.1.1.1.8]
+[#S5.T3.6.1.1.1.1.1.1.8.1] [#S5.T3.6.1.1.1.1.1.1.8.1.1] Gander
+[#S5.T3.6.1.1.1.1.1.1.8.2] 0.759
+[#S5.T3.6.1.1.1.1.1.1.8.3] 0.503
+[#S5.T3.6.1.1.1.1.1.1.8.4] 0.490
+[#S5.T3.6.1.1.1.1.1.1.8.5] 0.400
+[#S5.T3.6.1.1.1.1.1.1.8.6] [#S5.T3.6.1.1.1.1.1.1.8.6.1] 100.0
+[#S5.T3.6.1.1.1.1.1.1.8.7] [#S5.T3.6.1.1.1.1.1.1.8.7.1] 8.0
+[#S5.T3.6.1.1.1.1.1.1.8.8] 51.6
+[#S5.T3.6.1.1.1.1.1.1.9]
+[#S5.T3.6.1.1.1.1.1.1.9.1] [#S5.T3.6.1.1.1.1.1.1.9.1.1] Gander, back brain only [#S5.T3.6.1.1.1.1.1.1.9.1.1.1] [#S5.T3.6.1.1.1.1.1.1.9.1.1.1.1] †
+[#S5.T3.6.1.1.1.1.1.1.9.2] [#S5.T3.6.1.1.1.1.1.1.9.2.1] 0.934
+[#S5.T3.6.1.1.1.1.1.1.9.3] [#S5.T3.6.1.1.1.1.1.1.9.3.1] 0.590
+[#S5.T3.6.1.1.1.1.1.1.9.4] [#S5.T3.6.1.1.1.1.1.1.9.4.1] 0.740
+[#S5.T3.6.1.1.1.1.1.1.9.5] [#S5.T3.6.1.1.1.1.1.1.9.5.1] 0.520
+[#S5.T3.6.1.1.1.1.1.1.9.6] —
+[#S5.T3.6.1.1.1.1.1.1.9.7] —
+[#S5.T3.6.1.1.1.1.1.1.9.8] —
+[#S5.SS2.p1]
+[#S5.SS2.p1.1] Gander sets the best turn-taking behavior in the table. It takes the floor at an appropriate
+moment in all 100 scenarios, matched only by the cascaded pipeline, and begins speaking
+prematurely in just 8.0% of turns, against 13.5% for GPT-Realtime and 47.9% for the weakest
+baseline. This is the axis a full-duplex architecture exists to win, and Gander wins it outright
+against six commercial and open systems while running a 9B model. On the four task-accuracy
+metrics it trails, though by a narrow margin at the lower end of the table: Pass@1 is 0.400
+against 0.410 for the weakest baseline and 0.600 for the strongest, with ToolSel and ArgAcc at
+0.759 and 0.503 against that same baseline’s 0.794 and 0.513.
+[#S5.SS2.p2]
+[#S5.SS2.p2.1] The two timing metrics must be read jointly, because a system can trivially suppress
+interruptions by waiting longer, at the cost of missing its turn altogether. Both failure modes
+appear in the table: Gemini Live 3.1 keeps interruptions to 19.2% but answers in only 78.0% of
+scenarios, while the cascaded pipeline buys a perfect turn-take rate with a 33.0% interruption
+rate, the signature of an external endpointer committing to an utterance boundary from acoustics
+alone, before the semantics that would reveal the user is mid-thought are available. Gander
+concedes neither, which supports predicting the interaction decision before any content is
+generated: the decision is conditioned on the same evolving representation that will produce the
+response, so it can be deferred until the utterance is semantically complete rather than merely
+acoustically quiet. Its 51.6% filler rate is the one interaction metric on which it does not
+lead. Filler marks the interval between taking the floor and delivering the answer, so unlike the
+other two it does not describe when the model chooses to speak; for a system that cannot fall
+silent while a delegated task runs, holding the floor is the appropriate behavior, and the rate
+reflects how often work is handed to the back brain rather than a defect in interaction timing.
+[#S5.SS2.p3]
+[#S5.SS2.p3.1] The accuracy gap is best read against the last row, which reports the back brain driven directly
+from the user transcript. In that text-mediated regime, where the cascaded pipeline is the
+appropriate comparison, it reaches Pass@1 0.520 against 0.450 and RespQual 0.740 against 0.600,
+while its ToolSel of 0.934 exceeds every other system in the table, GPT-Realtime’s 0.876
+included. The execution tier is therefore not the limiting factor: the same agent and the same
+tool set score above every baseline on tool selection once the front cerebellum and the speech
+channel are removed from the path. Two effects separate that row from the end-to-end system.
+The composite must decide for itself when to delegate, and it is scored on an ASR transcript of
+synthesized speech rather than on text, which the RespQual drop from 0.740 to 0.490 is consistent
+with. These runs do not separate the two, but both are properties of the training format and the
+deployment path rather than of the architecture, and so are addressable by revising the recipe
+rather than the system design.
+[#S5.SS3]
+5.3 Spoken Conversation
+[#S5.T4]
+[#S5.T4.5] Table 4: [#S5.T4.6]
+Results on SpokenQA and VoiceBench, with systems grouped by interaction regime.
+Baseline numbers are taken from Audio-Interaction (Xie et al., 2026b).
+SpokenQA columns and SD-QA report accuracy (%); AlpacaEval is rated on a 1–5 scale,
+and higher is better throughout. Within each group, [#S5.T4.6.1] bold marks the best and
+[#S5.T4.6.2] underline the second-best value of each column.
+[#S5.T4.7]
+[#S5.T4.7.1] [#S5.T4.7.1.1]
+[#S5.T4.7.1.1.1]
+[#S5.T4.7.1.1.1.1] [#S5.T4.7.1.1.1.1.1]
+[#S5.T4.7.1.1.1.1.1.1]
+[#S5.T4.7.1.1.1.1.1.1.1]
+[#S5.T4.7.1.1.1.1.1.1.1.1] [#S5.T4.7.1.1.1.1.1.1.1.1.1] Model
+[#S5.T4.7.1.1.1.1.1.1.1.2] [#S5.T4.7.1.1.1.1.1.1.1.2.1] Size
+[#S5.T4.7.1.1.1.1.1.1.1.3] [#S5.T4.7.1.1.1.1.1.1.1.3.1] SpokenQA
+[#S5.T4.7.1.1.1.1.1.1.1.4] [#S5.T4.7.1.1.1.1.1.1.1.4.1] VoiceBench
+[#S5.T4.7.1.1.1.1.1.1.2]
+[#S5.T4.7.1.1.1.1.1.1.2.1] Llama Q.
+[#S5.T4.7.1.1.1.1.1.1.2.2] Web Q.
+[#S5.T4.7.1.1.1.1.1.1.2.3] AlpacaEval
+[#S5.T4.7.1.1.1.1.1.1.2.4] SD-QA
+[#S5.T4.7.1.1.1.1.1.1.3]
+[#S5.T4.7.1.1.1.1.1.1.3.1] [#S5.T4.7.1.1.1.1.1.1.3.1.1] Turn-based models
+[#S5.T4.7.1.1.1.1.1.1.4]
+[#S5.T4.7.1.1.1.1.1.1.4.1] Freeze-Omni (Wang et al., 2024)
+[#S5.T4.7.1.1.1.1.1.1.4.2] 7B
+[#S5.T4.7.1.1.1.1.1.1.4.3] 72.00
+[#S5.T4.7.1.1.1.1.1.1.4.4] 44.73
+[#S5.T4.7.1.1.1.1.1.1.4.5] 4.14
+[#S5.T4.7.1.1.1.1.1.1.4.6] [#S5.T4.7.1.1.1.1.1.1.4.6.1] 50.16
+[#S5.T4.7.1.1.1.1.1.1.5]
+[#S5.T4.7.1.1.1.1.1.1.5.1] Baichuan-Omni-1.5 (Li et al., 2025)
+[#S5.T4.7.1.1.1.1.1.1.5.2] 7B
+[#S5.T4.7.1.1.1.1.1.1.5.3] [#S5.T4.7.1.1.1.1.1.1.5.3.1] 78.50
+[#S5.T4.7.1.1.1.1.1.1.5.4] [#S5.T4.7.1.1.1.1.1.1.5.4.1] 59.10
+[#S5.T4.7.1.1.1.1.1.1.5.5] [#S5.T4.7.1.1.1.1.1.1.5.5.1] 4.50
+[#S5.T4.7.1.1.1.1.1.1.5.6] 43.40
+[#S5.T4.7.1.1.1.1.1.1.6]
+[#S5.T4.7.1.1.1.1.1.1.6.1] Qwen2-Audio (Chu et al., 2024)
+[#S5.T4.7.1.1.1.1.1.1.6.2] 7B
+[#S5.T4.7.1.1.1.1.1.1.6.3] 69.67
+[#S5.T4.7.1.1.1.1.1.1.6.4] 45.20
+[#S5.T4.7.1.1.1.1.1.1.6.5] 3.74
+[#S5.T4.7.1.1.1.1.1.1.6.6] 35.71
+[#S5.T4.7.1.1.1.1.1.1.7]
+[#S5.T4.7.1.1.1.1.1.1.7.1] Qwen2.5-Omni (Xu et al., 2025a)
+[#S5.T4.7.1.1.1.1.1.1.7.2] 3B
+[#S5.T4.7.1.1.1.1.1.1.7.3] 66.00
+[#S5.T4.7.1.1.1.1.1.1.7.4] 27.95
+[#S5.T4.7.1.1.1.1.1.1.7.5] 4.32
+[#S5.T4.7.1.1.1.1.1.1.7.6] 49.37
+[#S5.T4.7.1.1.1.1.1.1.8]
+[#S5.T4.7.1.1.1.1.1.1.8.1] Qwen2.5-Omni (Xu et al., 2025a)
+[#S5.T4.7.1.1.1.1.1.1.8.2] 7B
+[#S5.T4.7.1.1.1.1.1.1.8.3] [#S5.T4.7.1.1.1.1.1.1.8.3.1] 75.33
+[#S5.T4.7.1.1.1.1.1.1.8.4] [#S5.T4.7.1.1.1.1.1.1.8.4.1] 62.80
+[#S5.T4.7.1.1.1.1.1.1.8.5] [#S5.T4.7.1.1.1.1.1.1.8.5.1] 4.49
+[#S5.T4.7.1.1.1.1.1.1.8.6] [#S5.T4.7.1.1.1.1.1.1.8.6.1] 55.71
+[#S5.T4.7.1.1.1.1.1.1.9]
+[#S5.T4.7.1.1.1.1.1.1.9.1] Phi-4-multimodal (Microsoft, 2025)
+[#S5.T4.7.1.1.1.1.1.1.9.2] 5.6B
+[#S5.T4.7.1.1.1.1.1.1.9.3] 60.20
+[#S5.T4.7.1.1.1.1.1.1.9.4] 26.60
+[#S5.T4.7.1.1.1.1.1.1.9.5] 3.81
+[#S5.T4.7.1.1.1.1.1.1.9.6] 39.78
+[#S5.T4.7.1.1.1.1.1.1.10]
+[#S5.T4.7.1.1.1.1.1.1.10.1] [#S5.T4.7.1.1.1.1.1.1.10.1.1] Full-duplex streaming models
+[#S5.T4.7.1.1.1.1.1.1.11]
+[#S5.T4.7.1.1.1.1.1.1.11.1] Moshi (Défossez et al., 2024)
+[#S5.T4.7.1.1.1.1.1.1.11.2] 7B
+[#S5.T4.7.1.1.1.1.1.1.11.3] 62.20
+[#S5.T4.7.1.1.1.1.1.1.11.4] 26.30
+[#S5.T4.7.1.1.1.1.1.1.11.5] 2.01
+[#S5.T4.7.1.1.1.1.1.1.11.6] 15.01
+[#S5.T4.7.1.1.1.1.1.1.12]
+[#S5.T4.7.1.1.1.1.1.1.12.1] Audio-Interaction (Xie et al., 2026b)
+[#S5.T4.7.1.1.1.1.1.1.12.2] 3B
+[#S5.T4.7.1.1.1.1.1.1.12.3] [#S5.T4.7.1.1.1.1.1.1.12.3.1] 67.31
+[#S5.T4.7.1.1.1.1.1.1.12.4] [#S5.T4.7.1.1.1.1.1.1.12.4.1] 54.34
+[#S5.T4.7.1.1.1.1.1.1.12.5] [#S5.T4.7.1.1.1.1.1.1.12.5.1] 4.28
+[#S5.T4.7.1.1.1.1.1.1.12.6] [#S5.T4.7.1.1.1.1.1.1.12.6.1] 52.14
+[#S5.T4.7.1.1.1.1.1.1.13]
+[#S5.T4.7.1.1.1.1.1.1.13.1] [#S5.T4.7.1.1.1.1.1.1.13.1.1] Gander
+[#S5.T4.7.1.1.1.1.1.1.13.2] 9B
+[#S5.T4.7.1.1.1.1.1.1.13.3] [#S5.T4.7.1.1.1.1.1.1.13.3.1] 75.60
+[#S5.T4.7.1.1.1.1.1.1.13.4] [#S5.T4.7.1.1.1.1.1.1.13.4.1] 59.30
+[#S5.T4.7.1.1.1.1.1.1.13.5] [#S5.T4.7.1.1.1.1.1.1.13.5.1] 3.96
+[#S5.T4.7.1.1.1.1.1.1.13.6] [#S5.T4.7.1.1.1.1.1.1.13.6.1] 46.84
+[#S5.SS3.p1]
+[#S5.SS3.p1.1] Gander leads the full-duplex group on both knowledge-oriented subsets of
+Table 4, reaching 75.60 and 59.30 on SpokenQA, ahead of Audio-Interaction
+by 8.29 and 4.96 points and of Moshi by more than thirteen and thirty-three, and places second in
+the group on the two VoiceBench subsets, 0.32 below Audio-Interaction on AlpacaEval and 5.30 below
+it on SD-QA. We read the comparison within groups because the regimes are not equally
+constrained: a turn-based model receives the utterance in full and may allocate arbitrary
+computation before emitting anything, whereas a full-duplex model consumes it on a fixed
+frame-level schedule and must additionally judge, at every step, whether the utterance is
+finished. No metric here exercises that extra decision, which the preceding subsection measures
+directly.
+[#S5.SS3.p2]
+[#S5.SS3.p2.1] The result also holds against the turn-based systems. Across the full field of nine, none of
+which operates under the streaming constraint, Gander’s SpokenQA scores still place second on
+both subsets, 2.90 points behind Baichuan-Omni-1.5 on Llama Questions and 3.50 behind
+Qwen2.5-Omni-7B on Web Questions, while AlpacaEval and SD-QA place sixth and fifth. That a
+frame-synchronous model matches turn-based ones on spoken factual question answering is the main
+point of the table: the streaming formulation does not by itself cost the knowledge retained in
+the language backbone. The two weaker columns indicate what interaction training does not supply,
+being an open-ended generation task rated for overall response quality and a subset stressing
+accented speech. Interaction supervision consists overwhelmingly of short conversational turns
+emitted a few tokens at a time, so it neither rewards extended discursive composition nor
+broadens acoustic coverage beyond the base model’s; the first is addressable by adding long-form
+response supervision, the second by widening the accent distribution of the speech data.
+[#S5.SS3.p3]
+[#S5.SS3.p3.1] The back brain remained available throughout this evaluation but was never invoked on any of the
+2,052 samples, so every score in Table 4 is the front cerebellum acting
+alone. That is the intended behavior: the routing policy escalates long-horizon tool work, which
+the preceding subsection exercises, and not self-contained question answering. Such selectivity is
+what makes a two-tier design more than an added latency cost, since indiscriminate escalation
+would forfeit the compact tier’s latency advantage. The corollary is that this table says nothing
+about back-brain execution quality.
+[#S5.SS4]
+5.4 Omni Understanding
+[#S5.T5]
+[#S5.T5.3] Table 5: [#S5.T5.4]
+Omni understanding accuracy (%) on WorldSense ( [#S5.T5.m3] nn=3,172) and Daily-Omni
+( [#S5.T5.m4] nn=1,197). Baseline numbers are the officially reported
+ones (Cui et al., 2026); MiniCPM-o 4.5 is Gander’s base model. Gander is evaluated
+in the audio-visual condition.
+[#S5.T5.5]
+[#S5.T5.5.1]
+[#S5.T5.5.1.1] [#S5.T5.5.1.1.1] Model
+[#S5.T5.5.1.2] [#S5.T5.5.1.2.1] WorldSense
+[#S5.T5.5.1.3] [#S5.T5.5.1.3.1] Daily-Omni
+[#S5.T5.5.2]
+[#S5.T5.5.2.1] [#S5.T5.5.2.1.1] Gemini 2.5 Flash
+[#S5.T5.5.2.2] [#S5.T5.5.2.2.1] 52.60
+[#S5.T5.5.2.3] [#S5.T5.5.2.3.1] 79.30
+[#S5.T5.5.3]
+[#S5.T5.5.3.1] [#S5.T5.5.3.1.1] Qwen3-Omni
+[#S5.T5.5.3.2] [#S5.T5.5.3.2.1] 54.00
+[#S5.T5.5.3.3] [#S5.T5.5.3.3.1] 70.70
+[#S5.T5.5.4]
+[#S5.T5.5.4.1] [#S5.T5.5.4.1.1] MiniCPM-o 4.5
+[#S5.T5.5.4.2] [#S5.T5.5.4.2.1] 55.70
+[#S5.T5.5.4.3] [#S5.T5.5.4.3.1] 80.20
+[#S5.T5.5.5]
+[#S5.T5.5.5.1] [#S5.T5.5.5.1.1] Gander
+[#S5.T5.5.5.2] [#S5.T5.5.5.2.1] 49.62
+[#S5.T5.5.5.3] [#S5.T5.5.5.3.1] 78.53
+[#S5.T6]
+[#S5.T6.3] Table 6: [#S5.T6.4]
+Modality ablation on the same question sets, each condition presenting only the
+indicated input streams. Fusion gain is
+[#S5.T6.m2] AV−max⁡(Video,Audio)\text{AV}-\max(\text{Video},\text{Audio}).
+[#S5.T6.5]
+[#S5.T6.5.1]
+[#S5.T6.5.1.1] [#S5.T6.5.1.1.1] Benchmark
+[#S5.T6.5.1.2] [#S5.T6.5.1.2.1] AV
+[#S5.T6.5.1.3] [#S5.T6.5.1.3.1] Video
+[#S5.T6.5.1.4] [#S5.T6.5.1.4.1] Audio
+[#S5.T6.5.1.5] [#S5.T6.5.1.5.1] Fusion gain
+[#S5.T6.5.2]
+[#S5.T6.5.2.1] [#S5.T6.5.2.1.1] WorldSense
+[#S5.T6.5.2.2] [#S5.T6.5.2.2.1] 49.62
+[#S5.T6.5.2.3] [#S5.T6.5.2.3.1] 44.61
+[#S5.T6.5.2.4] [#S5.T6.5.2.4.1] 43.32
+[#S5.T6.5.2.5] [#S5.T6.m3] +5.01+5.01
+[#S5.T6.5.3]
+[#S5.T6.5.3.1] [#S5.T6.5.3.1.1] Daily-Omni
+[#S5.T6.5.3.2] [#S5.T6.5.3.2.1] 78.53
+[#S5.T6.5.3.3] [#S5.T6.5.3.3.1] 59.40
+[#S5.T6.5.3.4] [#S5.T6.5.3.4.1] 57.81
+[#S5.T6.5.3.5] [#S5.T6.m4] +19.13+19.13
+[#S5.T6.5.4]
+[#S5.T6.5.4.1] [#S5.T6.5.4.1.1] Overall
+[#S5.T6.5.4.2] [#S5.T6.5.4.2.1] 57.54
+[#S5.T6.5.4.3] [#S5.T6.5.4.3.1] 48.66
+[#S5.T6.5.4.4] [#S5.T6.5.4.4.1] 47.29
+[#S5.T6.5.4.5] [#S5.T6.m5] +8.88+8.88
+[#S5.SS4.p1]
+[#S5.SS4.p1.1] Gander retains competitive omni understanding despite training exclusively for interaction,
+reaching 49.62 on WorldSense and 78.53 on Daily-Omni in Table 5. On Daily-Omni
+it stays within 1.67 points of its MiniCPM-o 4.5 initialization while remaining ahead of
+Qwen3-Omni’s 70.70. Since that initialization is itself the strongest of the three published
+systems on both benchmarks, the comparison functions as a regression test against the model we
+started from rather than a ranking against external baselines, and the retention is the notable
+part, given that no part of the interaction corpus is video question-answering supervision. Two
+facts bound the WorldSense regression of 6.08 points. The vision tower is bit-for-bit unchanged,
+frozen throughout training and absent from the resulting checkpoint, so none of the regression can
+be attributed to degraded visual encoding; and the video material in the interaction corpus
+consists largely of irrelevant-context distractors that teach the model to ignore unrelated visual
+events. What the table measures is therefore the base model’s visual representation combined with
+Gander’s post-training answering behavior.
+[#S5.SS4.p2]
+[#S5.SS4.p2.1] The asymmetry between the two benchmarks shows that interaction training preserves precisely the
+capability it exercises. A uniform loss of language ability would depress both scores similarly;
+instead Daily-Omni falls by less than two points while WorldSense falls by more than six, and the
+two differ in what they demand, Daily-Omni testing temporal reasoning over audio-visual alignment
+and WorldSense probing fine-grained perceptual attributes such as counting and localization. What
+the corpus rewards, reasoning over a jointly evolving stream, is retained almost in full; what it
+never rewards, attribute-level inspection of a static clip, is where the cost falls. We state this
+as the present trade-off rather than explain it away.
+[#S5.SS4.p3]
+[#S5.SS4.p3.1] The ablation in Table 6 confirms that the model genuinely fuses the two
+streams rather than leaning on a dominant one. Presenting both together outperforms the better
+single stream by 5.01 points on WorldSense and 19.13 on Daily-Omni, and neither benchmark is
+carried by one modality: video and audio alone land within 1.3 points of each other on WorldSense
+and within 1.6 on Daily-Omni, so the joint condition is not simply tracking whichever stream is
+stronger. The size of the gain follows what each benchmark demands. Daily-Omni tests temporal
+reasoning over audio-visual alignment, where neither stream is sufficient alone, and gains 19.13
+points; WorldSense probes fine-grained perceptual attributes that are often available from a single
+modality, and gains 5.01. A model merely concatenating features would show no such dependence on
+the task’s alignment demands.
+[#S6]
+6 Conclusion and Future Work
+[#S6.p1]
+[#S6.p1.1] In this work, we present Gander, a fully [#S6.p1.1.1] end-to-end and [#S6.p1.1.2] scalable architecture built upon a Brain–Cerebellum framework and a streaming chunk-based paradigm. Gander natively unifies Omni understanding, realtime interaction, and long horizon agentic execution. As an early exploration of this paradigm, Gander highlights several open challenges for future research.
+[#S6.p2]
+[#S6.I1]
+[#S6.I1.i1] •
+[#S6.I1.i1.p1]
+[#S6.I1.i1.p1.1] [#S6.I1.i1.p1.1.1] Data and Model Scaling. Our experiments show that agent invocation and conversational behavior remain sensitive to training data distribution, especially in complex omni scenarios. [#S6.I1.i1.p1.1.2] Scaling data and model capacity is critical to improving the robustness and generalization of interactive and agentic capabilities. We will further study systematic scaling in our industrial foundation model Hy-Realtime.
+[#S6.I1.i2] •
+[#S6.I1.i2.p1]
+[#S6.I1.i2.p1.1] [#S6.I1.i2.p1.1.1] Stable Post Training. The current Gander model has not yet been extensively optimized with on-policy distillation (Cao et al., 2026; Fu et al., 2026) (OPD) or reinforcement learning (Shao et al., 2024; Chen et al., 2026; Ji et al., 2025d; Li et al., 2026) (RL) for long horizon Omni Interaction Agent scenarios. Effective reward design, credit assignment, and optimization stability remain open challenges, particularly under joint multimodal interaction and agentic execution. The Brain–Cerebellum architecture further introduces new considerations for coordinating local interaction quality with global task objectives, motivating the development of more stable and scalable post-training methods.
+[#S6.I1.i3] •
+[#S6.I1.i3.p1]
+[#S6.I1.i3.p1.1] [#S6.I1.i3.p1.1.1] Brain–Cerebellum Architectural Exploration. The Brain–Cerebellum framework enables low latency streaming interaction and long horizon reasoning. The current design primarily relies on ASR derived signals for communication between the two components. Future work should explore richer and more structured bidirectional communication, including improved information transfer from the Brain to the Cerebellum and more effective feedback from the Cerebellum to the Brain, to better coordinate realtime interaction and long horizon reasoning.
+[#S6.I1.i4] •
+[#S6.I1.i4.p1]
+[#S6.I1.i4.p1.1] [#S6.I1.i4.p1.1.1] Memory and Long Context Management. Omni agentic interaction involves long multimodal histories, tool calls, and evolving task states, posing challenges for long horizon context and memory management (Xie et al., 2026a). Developing efficient mechanisms for retaining and retrieving task-relevant information over extended interactions is an important direction for future work.
+[#S6.I1.i5] •
+[#S6.I1.i5.p1]
+[#S6.I1.i5.p1.1] [#S6.I1.i5.p1.1.1] Evaluation. Existing benchmarks largely evaluate omni understanding, duplex interaction, and agentic execution in isolation, leaving the unified omni interaction agent setting insufficiently evaluated. In addition, existing benchmarks do not adequately capture Brain–Cerebellum collaboration, including inter component communication and coordination. A unified evaluation framework for omni interaction agents is still largely missing.
+[#S6.p3]
+[#S6.p3.1] Overall, Gander provides an initial foundation for a unified omni interaction agent architecture. Further progress toward reliable long horizon deployment depends on advances in scaling, post training, Brain–Cerebellum coordination, memory, and evaluation, especially for sustained realtime interaction and complex task execution.
+[#bib]
+References
+[#bib.bib1] An et al. (2024)
+Keyu An, Qian Chen, Chong Deng, Zhihao Du, Changfeng Gao, Zhifu Gao, Yue Gu, Ting He, Hangrui Hu, Kai Hu, et al.
+Funaudiollm: Voice understanding and generation foundation models for natural interaction between humans and llms.
+[#bib.bib1.1] arXiv preprint arXiv:2407.04051, 2024.
+[#bib.bib2] An et al. (2025)
+Keyu An, Yanni Chen, Zhigao Chen, Chong Deng, Zhihao Du, Changfeng Gao, Zhifu Gao, Bo Gong, Xiangang Li, Yabin Li, et al.
+Fun-asr technical report.
+[#bib.bib2.1] arXiv preprint arXiv:2509.12508, 2025.
+[#bib.bib3] Anthropic (2024)
+Anthropic.
+The claude 3 model family: A new standard for intelligence.
+https://www.anthropic.com/news/claude-3-family, 2024.
+[#bib.bib4] ByteDance Seed Team (2026a)
+ByteDance Seed Team.
+Seedrealtime audio-visual full-duplex llm released: Toward omni-modal natural interaction.
+https://seed.bytedance.com/en/models, August 2026a.
+[#bib.bib5] ByteDance Seed Team (2026b)
+ByteDance Seed Team.
+Seeduplex: Native full-duplex speech llm.
+https://research.doubao.com/en/seeduplex, 2026b.
+ByteDance Seed.
+[#bib.bib6] Cao et al. (2026)
+Di Cao, Dongjie Fu, Hai Yu, Siqi Zheng, Xu Tan, and Tao Jin.
+X-opd: Cross-modal on-policy distillation for capability alignment in speech llms.
+[#bib.bib6.1] arXiv preprint arXiv:2603.24596, 2026.
+[#bib.bib7] Chen et al. (2025a)
+Joya Chen, Ziyun Zeng, Yiqi Lin, Wei Li, Zejun Ma, and Mike Zheng Shou.
+Live: Learning video llm with streaming speech transcription at scale.
+In [#bib.bib7.1] 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 29083–29095. IEEE, 2025a.
+[#bib.bib8] Chen et al. (2025b)
+Yifu Chen, Shengpeng Ji, Ziqing Wang, Hanting Wang, and Zhou Zhao.
+Interactspeech: A speech dialogue interaction corpus for spoken dialogue model.
+In [#bib.bib8.1] EMNLP (Findings), pages 8024–8033, 2025b.
+[#bib.bib9] Chen et al. (2026)
+Yifu Chen, Shengpeng Ji, Qian Chen, Tianle Liang, Yangzhuo Li, Ziqing Wang, Wen Wang, Jingyu Lu, Haoxiao Wang, Xueyi Pu, et al.
+Wavalign: Enhancing intelligence and expressiveness in spoken dialogue models via adaptive hybrid post-training.
+In [#bib.bib9.1] Findings of the Association for Computational Linguistics: ACL 2026, pages 2421–2444, 2026.
+[#bib.bib10] Chen et al. (2024)
+Yiming Chen, Xianghu Yue, Chen Zhang, Xiaoxue Gao, Robby T Tan, and Haizhou Li.
+Voicebench: Benchmarking llm-based voice assistants.
+[#bib.bib10.1] arXiv preprint arXiv:2410.17196, 2024.
+[#bib.bib11] Chu et al. (2023)
+Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou.
+Qwen-audio: Advancing universal audio understanding via unified large-scale audio-language models.
+[#bib.bib11.1] arXiv preprint arXiv:2311.07919, 2023.
+[#bib.bib12] Chu et al. (2024)
+Yunfei Chu, Jin Xu, Qian Yang, Haojie Wei, Xipin Wei, Zhifang Guo, Yichong Leng, Yuanjun Lv, Jinzheng He, Junyang Lin, et al.
+Qwen2-audio technical report.
+[#bib.bib12.1] arXiv preprint arXiv:2407.10759, 2024.
+[#bib.bib13] Cui et al. (2026)
+Junbo Cui, Bokai Xu, Chongyi Wang, Tianyu Yu, Weiyue Sun, Yingjing Xu, Tianran Wang, Zhihui He, Wenshuo Ma, Tianchi Cai, et al.
+Minicpm-o 4.5: Towards real-time full-duplex omni-modal interaction.
+[#bib.bib13.1] arXiv preprint arXiv:2604.27393, 2026.
+[#bib.bib14] Défossez et al. (2024)
+Alexandre Défossez, Laurent Mazaré, Manu Orsini, Amélie Royer, Patrick Pérez, Hervé Jégou, Edouard Grave, and Neil Zeghidour.
+Moshi: a speech-text foundation model for real-time dialogue.
+[#bib.bib14.1] arXiv preprint arXiv:2410.00037, 2024.
+[#bib.bib15] Ding et al. (2025)
+Ding Ding, Zeqian Ju, Yichong Leng, Songxiang Liu, Tong Liu, Zeyu Shang, Kai Shen, Wei Song, Xu Tan, Heyi Tang, et al.
+Kimi-audio technical report.
+[#bib.bib15.1] arXiv preprint arXiv:2504.18425, 2025.
+[#bib.bib16] Du et al. (2024a)
+Zhihao Du, Qian Chen, Shiliang Zhang, Kai Hu, Heng Lu, Yexin Yang, Hangrui Hu, Siqi Zheng, Yue Gu, Ziyang Ma, et al.
+Cosyvoice: A scalable multilingual zero-shot text-to-speech synthesizer based on supervised semantic tokens.
+[#bib.bib16.1] arXiv preprint arXiv:2407.05407, 2024a.
+[#bib.bib17] Du et al. (2024b)
+Zhihao Du, Qian Chen, Shiliang Zhang, Kai Hu, Heng Lu, Yexin Yang, Hangrui Hu, Siqi Zheng, Yue Gu, Ziyang Ma, et al.
+Cosyvoice: A scalable multilingual zero-shot text-to-speech synthesizer based on supervised semantic tokens.
+[#bib.bib17.1] arXiv preprint arXiv:2407.05407, 2024b.
+[#bib.bib18] Du et al. (2025)
+Zhihao Du, Changfeng Gao, Yuxuan Wang, Fan Yu, Tianyu Zhao, Hao Wang, Xiang Lv, Hui Wang, Chongjia Ni, Xian Shi, et al.
+Cosyvoice 3: Towards in-the-wild speech generation via scaling-up and post-training.
+[#bib.bib18.1] arXiv preprint arXiv:2505.17589, 2025.
+[#bib.bib19] Fang et al. (2026)
+Qingkai Fang, Shoutao Guo, and Yang Feng.
+Bayling-duplex: Native full-duplex speech dialogue with a single autoregressive llm.
+[#bib.bib19.1] arXiv preprint arXiv:2606.14528, 2026.
+[#bib.bib20] Fixie AI (2026)
+Fixie AI.
+Ultravox: A fast multimodal large language model for real-time voice.
+https://github.com/fixie-ai/ultravox, 2026.
+[#bib.bib21] Fu et al. (2026)
+Dongjie Fu, Di Cao, Xize Cheng, Zihan Zhang, Wenxu Jia, Yifu Chen, Shengpeng Ji, Yu Zhang, and Tao Jin.
+X3-opd: Distilling reasoning into large audio-language models via on-policy alignment.
+[#bib.bib21.1] arXiv preprint arXiv:2607.21550, 2026.
+[#bib.bib22] Full-Duplex-Bench Team (2026)
+Full-Duplex-Bench Team.
+Full-duplex-bench v3: Evaluating tool-augmented full-duplex spoken interaction.
+https://github.com/DanielLin94144/Full-Duplex-Bench, 2026.
+[#bib.bib23] Google DeepMind (2026)
+Google DeepMind.
+Gemini live api: Native audio dialogue models.
+https://ai.google.dev/gemini-api/docs/live, 2026.
+[#bib.bib24] Guo et al. (2024)
+Zonghao Guo, Ruyi Xu, Yuan Yao, Junbo Cui, Zanlin Ni, Chunjiang Ge, Tat-Seng Chua, Zhiyuan Liu, and Gao Huang.
+Llava-uhd: an lmm perceiving any aspect ratio and high-resolution images.
+In [#bib.bib24.1] European Conference on Computer Vision, pages 390–406. Springer, 2024.
+[#bib.bib25] Hong et al. (2025)
+Jack Hong, Shilin Yan, Jiahao Cai, Xiaolong Jiang, Yao Yu, Kaixiong Zhou, and Weidi Xie.
+Worldsense: Evaluating real-world omnimodal understanding for multimodal llms.
+[#bib.bib25.1] arXiv preprint arXiv:2502.04326, 2025.
+[#bib.bib26] Hu et al. (2026)
+Hangrui Hu, Xinfa Zhu, Ting He, Dake Guo, Bin Zhang, Xiong Wang, Zhifang Guo, Ziyue Jiang, Hongkun Hao, Zishan Guo, et al.
+Qwen3-tts technical report.
+[#bib.bib26.1] arXiv preprint arXiv:2601.15621, 2026.
+[#bib.bib27] Huang et al. (2025)
+Ailin Huang, Boyong Wu, Bruce Wang, Chao Yan, Chen Hu, Chengli Feng, Fei Tian, Feiyu Shen, Jingbei Li, Mingrui Chen, et al.
+Step-audio: Unified understanding and generation in intelligent speech interaction.
+[#bib.bib27.1] arXiv preprint arXiv:2502.11946, 2025.
+[#bib.bib28] Huang et al. (2026)
+Muye Huang, Lingling Zhang, Xingyu Yu, Lei Shi, Zhanyu Ma, Jun Xu, Jiuchong Gao, Jinghua Hao, Renqing He, and Jun Liu.
+Duplexomni: Real-time listening, seeing, thinking, and speaking for full-duplex interaction.
+[#bib.bib28.1] arXiv preprint arXiv:2606.09186, 2026.
+[#bib.bib29] Hurst et al. (2024)
+Aaron Hurst, Adam Lerer, Adam P Goucher, Adam Perelman, Aditya Ramesh, Aidan Clark, AJ Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, et al.
+Gpt-4o system card.
+[#bib.bib29.1] arXiv preprint arXiv:2410.21276, 2024.
+[#bib.bib30] Ji et al. (2024a)
+Shengpeng Ji, Yifu Chen, Minghui Fang, Jialong Zuo, Jingyu Lu, Hanting Wang, Ziyue Jiang, Long Zhou, Shujie Liu, Xize Cheng, et al.
+Wavchat: A survey of spoken dialogue models.
+[#bib.bib30.1] arXiv preprint arXiv:2411.13577, 2024a.
+[#bib.bib31] Ji et al. (2024b)
+Shengpeng Ji, Ziyue Jiang, Hanting Wang, Jialong Zuo, and Zhou Zhao.
+Mobilespeech: A fast and high-fidelity framework for mobile zero-shot text-to-speech.
+In [#bib.bib31.1] Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 13588–13600, 2024b.
+[#bib.bib32] Ji et al. (2025a)
+Shengpeng Ji, Qian Chen, Wen Wang, Jialong Zuo, Minghui Fang, Ziyue Jiang, Hai Huang, Zehan Wang, Xize Cheng, Siqi Zheng, et al.
+Controlspeech: Towards simultaneous and independent zero-shot speaker cloning and zero-shot language style control.
+In [#bib.bib32.1] Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 6966–6981, 2025a.
+[#bib.bib33] Ji et al. (2025b)
+Shengpeng Ji, Minghui Fang, Jialong Zuo, Ziyue Jiang, Dingdong Wang, Hanting Wang, Hai Huang, and Zhou Zhao.
+Language-codec: bridging discrete codec representations and speech language models.
+In [#bib.bib33.1] Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 13332–13345, 2025b.
+[#bib.bib34] Ji et al. (2025c)
+Shengpeng Ji, Ziyue Jiang, Wen Wang, Yifu Chen, Minghui Fang, Jialong Zuo, Qian Yang, Xize Cheng, Ruiqi Li, Ziang Zhang, et al.
+Wavtokenizer: an efficient acoustic discrete codec tokenizer for audio language modeling.
+In [#bib.bib34.1] International Conference on Learning Representations, volume 2025, pages 93809–93826, 2025c.
+[#bib.bib35] Ji et al. (2025d)
+Shengpeng Ji, Tianle Liang, Yangzhuo Li, Jialong Zuo, Minghui Fang, Jinzheng He, Yifu Chen, Zhengqing Liu, Ziyue Jiang, Xize Cheng, et al.
+Wavreward: Spoken dialogue models with generalist reward evaluators.
+[#bib.bib35.1] arXiv preprint arXiv:2505.09558, 2025d.
+[#bib.bib36] Lab (2026)
+Thinking Machines Lab.
+Interaction models: A scalable approach to human-ai collaboration.
+[#bib.bib36.1] Thinking Machines Lab: Connectionism, May 2026.
+10.64434/tml.20260511.
+https://thinkingmachines.ai/blog/interaction-models/.
+[#bib.bib37] Li et al. (2025)
+Yadong Li, Jun Liu, Tao Zhang, Song Zhang, Tianpeng Chen, et al.
+Baichuan-omni-1.5 technical report.
+[#bib.bib37.1] arXiv preprint arXiv:2501.15368, 2025.
+[#bib.bib38] Li et al. (2026)
+Yangzhuo Li, Shengpeng Ji, Yifu Chen, Tianle Liang, Haoyu Yang, Jun Fang, Lin Li, Qingyang Hong, et al.
+Dual-reasoner: Bridging interleaved atomicity and streaming latency via thinking-while-talking.
+In [#bib.bib38.1] Findings of the Association for Computational Linguistics: ACL 2026, pages 4081–4105, 2026.
+[#bib.bib39] Liang et al. (2026)
+Tianle Liang, Yifu Chen, Shengpeng Ji, Yijun Chen, Zhiyang Jia, Jingyu Lu, Fan Zhuo, Xueyi Pu, Yangzhuo Li, and Zhou Zhao.
+Voxmind: An end-to-end agentic spoken dialogue system.
+In [#bib.bib39.1] Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 10117–10139, 2026.
+[#bib.bib40] Lu et al. (2026)
+Jingyu Lu, Yuhan Wang, Jianming Luo, Yifu Chen, Tianle Liang, Shengpeng Ji, Ziyue Jiang, Xiaoda Yang, Yu Zhang, Xize Cheng, et al.
+A survey of full-duplex spoken dialogue systems: Architectural hierarchy, interaction ontology, and decision state machine.
+[#bib.bib40.1] arXiv preprint arXiv:2606.19453, 2026.
+[#bib.bib41] Microsoft (2025)
+Microsoft.
+Phi-4-mini technical report: Compact yet powerful multimodal language models via mixture-of-loras.
+[#bib.bib41.1] arXiv preprint arXiv:2503.01743, 2025.
+[#bib.bib42] OpenAI (2026)
+OpenAI.
+Gpt-live system card.
+https://deploymentsafety.openai.com/gpt-live, July 2026.
+[#bib.bib43] Qwen Team (2026)
+Qwen Team.
+Qwen3.5: Towards native multimodal agents.
+https://qwen.ai/blog?id=qwen3.5, February 2026.
+[#bib.bib44] QwenAudio Team (2026a)
+QwenAudio Team.
+Qwen audio agent: A realtime voice runtime for ai agents.
+https://github.com/QwenAudio/qwen-audio-agent, 2026a.
+GitHub repository.
+[#bib.bib45] QwenAudio Team (2026b)
+QwenAudio Team.
+Qwen-audio-3.0-realtime.
+https://www.alibabacloud.com/help/en/model-studio/fun-audiochat-realtime, 2026b.
+Alibaba Cloud Model Studio.
+[#bib.bib46] Radford et al. (2023)
+Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, and Ilya Sutskever.
+Robust speech recognition via large-scale weak supervision.
+In [#bib.bib46.1] International conference on machine learning, pages 28492–28518. PMLR, 2023.
+[#bib.bib47] Shao et al. (2024)
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK Li, Yang Wu, et al.
+Deepseekmath: Pushing the limits of mathematical reasoning in open language models.
+[#bib.bib47.1] arXiv preprint arXiv:2402.03300, 2024.
+[#bib.bib48] Silero (2024)
+Silero.
+Silero vad: pre-trained enterprise-grade voice activity detector (vad), number detector and language classifier.
+https://github.com/snakers4/silero-vad, 2024.
+[#bib.bib49] Singh et al. (2025)
+Aaditya Singh, Adam Fry, Adam Perelman, Adam Tart, Adi Ganesh, Ahmed El-Kishky, Aidan McLaughlin, Aiden Low, AJ Ostrow, Akhila Ananthram, et al.
+Openai gpt-5 system card.
+[#bib.bib49.1] arXiv preprint arXiv:2601.03267, 2025.
+[#bib.bib50] Team et al. (2026)
+Kimi Team, Tongtong Bai, Yifan Bai, Yiping Bao, Jianfeng Cai, Xinyuan Cai, Peizhou Cao, Yuxuan Cao, Ziwei Chai, Y Charles, et al.
+Kimi k3: Open frontier intelligence.
+[#bib.bib50.1] arXiv preprint arXiv:2607.24653, 2026.
+[#bib.bib51] Team (2026)
+Qwen Team.
+Qwen3. 5-omni technical report.
+[#bib.bib51.1] arXiv preprint arXiv:2604.15804, 2026.
+[#bib.bib52] Wang et al. (2026)
+Xinyuan Wang, Bowen Wang, Dunjie Lu, Junlin Yang, Tianbao Xie, Junli Wang, Jiaqi Deng, Xiaole Guo, Yiheng Xu, Chen Wu, et al.
+Opencua: Open foundations for computer-use agents.
+[#bib.bib52.1] Advances in Neural Information Processing Systems, 38:139756–139806, 2026.
+[#bib.bib53] Wang et al. (2024)
+Xiong Wang, Yangze Li, Chaoyou Fu, Yunhang Shen, Lei Xie, Ke Li, Xing Sun, and Long Ma.
+Freeze-omni: A smart and low latency speech-to-speech dialogue model with frozen llm.
+[#bib.bib53.1] arXiv preprint arXiv:2411.00774, 2024.
+[#bib.bib54] Wu et al. (2025)
+Donghang Wu, Haoyang Zhang, Jun Chen, Hexin Liu, Eng Siong Chng, Fei Tian, Xuerui Yang, Xiangyu Zhang, Daxin Jiang, Gang Yu, et al.
+Mind-paced speaking: A dual-brain approach to real-time reasoning in spoken language models.
+[#bib.bib54.1] arXiv preprint arXiv:2510.09592, 2025.
+[#bib.bib55] xAI (2026)
+xAI.
+Grok voice mode.
+https://x.ai/, 2026.
+[#bib.bib56] Xia et al. (2026)
+Jiaer Xia, Peixian Chen, Mengdan Zhang, Xing Sun, and Kaiyang Zhou.
+Streaming video instruction tuning.
+In [#bib.bib56.1] Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 31219–31229, 2026.
+[#bib.bib57] Xie and Wu (2024)
+Zhifei Xie and Changqiao Wu.
+Mini-omni2: Towards open-source gpt-4o with vision, speech and duplex capabilities.
+[#bib.bib57.1] arXiv preprint arXiv:2410.11190, 2024.
+[#bib.bib58] Xie et al. (2026a)
+Zhifei Xie, Jiaqi Lang, Ze An, Yifan Zhao, Dongchao Yang, Kai Li, Ziyang Ma, Mingbao Lin, Chunyan Miao, and Shuicheng Yan.
+Voicemem: Streaming dual-brain memory for real-time interaction.
+[#bib.bib58.1] arXiv preprint arXiv:2608.26005, 2026a.
+[#bib.bib59] Xie et al. (2026b)
+Zhifei Xie, Zihang Liu, Ze An, Xiaobin Hu, Yue Liao, Ziyang Ma, Dongchao Yang, Mingbao Lin, Deheng Ye, Shuicheng Yan, et al.
+Audio interaction model.
+[#bib.bib59.1] arXiv preprint arXiv:2606.05121, 2026b.
+[#bib.bib60] Xu et al. (2026a)
+Anyi Xu, Bangcai Lin, Bing Xue, Bingxuan Wang, Bingzheng Xu, Bochao Wu, Bowei Zhang, Chaofan Lin, Chen Dong, Chenchen Ling, et al.
+Deepseek-v4: Towards highly efficient million-token context intelligence.
+[#bib.bib60.1] arXiv preprint arXiv:2606.19348, 2026a.
+[#bib.bib61] Xu et al. (2025a)
+Jin Xu, Zhifang Guo, Jinzheng He, Hangrui Hu, Ting He, et al.
+Qwen2.5-omni technical report.
+[#bib.bib61.1] arXiv preprint arXiv:2503.20215, 2025a.
+[#bib.bib62] Xu et al. (2025b)
+Jin Xu, Zhifang Guo, Hangrui Hu, Yunfei Chu, Xiong Wang, Jinzheng He, Yuxuan Wang, Xian Shi, Ting He, Xinfa Zhu, et al.
+Qwen3-omni technical report.
+[#bib.bib62.1] arXiv preprint arXiv:2509.17765, 2025b.
+[#bib.bib63] Xu et al. (2026b)
+Kaituo Xu, Yan Jia, Kai Huang, Junjie Chen, Wenpeng Li, Kun Liu, Feng-Long Xie, Xu Tang, and Yao Hu.
+Fireredasr2s: A state-of-the-art industrial-grade all-in-one automatic speech recognition system.
+[#bib.bib63.1] arXiv preprint arXiv:2603.10420, 2026b.
+[#bib.bib64] Yang et al. (2025)
+An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, et al.
+Qwen3 technical report.
+[#bib.bib64.1] arXiv preprint arXiv:2505.09388, 2025.
+[#bib.bib65] Yao et al. (2026)
+Dingyu Yao, Junhao Zhou, Chenxu Yang, Chuanyu Qin, Haowen Hou, Zheming Liang, Congcong Wang, Yuhang Cao, Shenglong Ye, Shuai Xie, et al.
+Joyai-vl-interaction: Real-time vision-language interaction intelligence.
+[#bib.bib65.1] arXiv preprint arXiv:2606.14777, 2026.
+[#bib.bib66] Yao et al. (2022)
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik R Narasimhan, and Yuan Cao.
+React: Synergizing reasoning and acting in language models.
+In [#bib.bib66.1] The eleventh international conference on learning representations, 2022.
+[#bib.bib67] Yao et al. (2024)
+Yuan Yao, Tianyu Yu, Ao Zhang, Chongyi Wang, Junbo Cui, Hongji Zhu, Tianchi Cai, Haoyu Li, Weilin Zhao, Zhihui He, et al.
+Minicpm-v: A gpt-4v level mllm on your phone.
+[#bib.bib67.1] arXiv preprint arXiv:2408.01800, 2024.
+[#bib.bib68] Zeng et al. (2026)
+Aohan Zeng, Xin Lv, Zhenyu Hou, Zhengxiao Du, Qinkai Zheng, Bin Chen, Da Yin, Chendi Ge, Chenghua Huang, Chengxing Xie, et al.
+Glm-5: from vibe coding to agentic engineering.
+[#bib.bib68.1] arXiv preprint arXiv:2602.15763, 2026.
+[#bib.bib69] Zhai et al. (2023)
+Xiaohua Zhai, Basil Mustafa, Alexander Kolesnikov, and Lucas Beyer.
+Sigmoid loss for language image pre-training.
+In [#bib.bib69.1] 2023 IEEE/CVF International Conference on Computer Vision (ICCV), pages 11941–11952. IEEE, 2023.
+[#bib.bib70] Zhou et al. (2025)
+Ziwei Zhou, Rui Li, Ao Sun, Jingyi Wang, Yuxuan Zhang, and Xiaoyu Hu.
+Daily-omni: Towards audio-visual reasoning with temporal alignment across modalities.
+[#bib.bib70.1] arXiv preprint arXiv:2505.17862, 2025.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from
+[#fixed-buttons-container]
+[#disable-reading-mode-btn]

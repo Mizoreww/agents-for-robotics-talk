@@ -1,0 +1,13 @@
+{
+  "previous": true,
+  "next": true,
+  "keyboard": true,
+  "fullscreenEntered": false,
+  "fullscreenExited": true,
+  "fullScript": true,
+  "figureOpened": true,
+  "figureClosed": true,
+  "focusView": true,
+  "focusExited": true,
+  "currentScript": true
+}

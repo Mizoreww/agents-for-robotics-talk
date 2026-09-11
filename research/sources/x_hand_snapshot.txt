@@ -1,0 +1,198 @@
+- banner:
+  - link "X":
+    - /url: /
+- main:
+  - button "Back":
+  - heading "Post" [level=2]
+  - 'heading "Jake Fitzgerald on X: \"Astra designed a tendon-driven robot hand\"" [level=1]'
+  - list:
+    - article:
+      - link "@earthtojake":
+        - /url: /earthtojake
+        - img "@earthtojake"
+      - link "Jake Fitzgerald":
+        - /url: https://x.com/earthtojake
+      - button "Verified account":
+      - link "@earthtojake":
+        - /url: https://x.com/earthtojake
+      - button "More":
+      - generic: Astra designed a tendon-driven robot hand
+      - button "Pause"
+      - generic: 00:16
+      - link "View media":
+        - /url: /earthtojake/status/2097789988670709821/video/1
+      - link "4:51 · 2026年9月10日":
+        - /url: /earthtojake/status/2097789988670709821
+      - text: ·
+      - link "10.8万 Views":
+        - /url: /earthtojake/status/2097789988670709821
+        - generic: 10.8万
+        - generic: Views
+      - link "Reply":
+        - /url: /i/status/2097789988670709821
+        - generic: "72"
+      - button "Repost":
+        - generic: "197"
+      - button "Like":
+        - generic: "2397"
+      - button "Bookmark":
+        - generic: "663"
+      - button "Share":
+    - link:
+      - article:
+        - link "@earthtojake":
+          - /url: /earthtojake
+          - img "@earthtojake"
+        - link "Jake Fitzgerald":
+          - /url: https://x.com/earthtojake
+        - button "Verified account":
+        - link "@earthtojake":
+          - /url: https://x.com/earthtojake
+        - text: ·
+        - link "7h":
+          - /url: /earthtojake/status/2097789990092546356
+        - button "More":
+        - generic: "This is extremely impressive for two reasons: 1. Robot hands are a difficult and arguably unsolved design challenge in robotics, so Astra is working well out of distribution here 2. Modelling tendons and deformable objects is a very challenging spatial reasoning task"
+        - link "Reply":
+          - /url: /i/status/2097789990092546356
+          - generic: "1"
+        - button "Repost":
+        - button "Like":
+          - generic: "40"
+        - button "View count":
+          - generic: "2891"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@earthtojake":
+          - /url: /earthtojake
+          - img "@earthtojake"
+        - link "Jake Fitzgerald":
+          - /url: https://x.com/earthtojake
+        - button "Verified account":
+        - link "@earthtojake":
+          - /url: https://x.com/earthtojake
+        - text: ·
+        - link "7h":
+          - /url: /earthtojake/status/2097789991426335015
+        - button "More":
+        - generic: The task took ~48 hours (and 3 usage resets lol) on Astra High It wrote ~50k lines of code to generate 190 STEP files with build123d, animated with javascript, exported to GLB and rendered in a gui.
+        - link "Reply":
+          - /url: /i/status/2097789991426335015
+          - generic: "2"
+        - button "Repost":
+        - button "Like":
+          - generic: "33"
+        - button "View count":
+          - generic: "2445"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@earthtojake":
+          - /url: /earthtojake
+          - img "@earthtojake"
+        - link "Jake Fitzgerald":
+          - /url: https://x.com/earthtojake
+        - button "Verified account":
+        - link "@earthtojake":
+          - /url: https://x.com/earthtojake
+        - text: ·
+        - link "6h":
+          - /url: /earthtojake/status/2097801101890207893
+        - button "More":
+        - generic: Would this model work irl? Def not. Is it extremely impressive regardless? Yes.
+        - link "Reply":
+          - /url: /i/status/2097801101890207893
+        - button "Repost":
+        - button "Like":
+          - generic: "18"
+        - button "View count":
+          - generic: "2039"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@_0xPhi":
+          - /url: /_0xPhi
+          - img "@_0xPhi"
+        - link "Alex Tatley":
+          - /url: https://x.com/_0xPhi
+        - button "Verified account":
+        - link "@_0xPhi":
+          - /url: https://x.com/_0xPhi
+        - text: ·
+        - link "6h":
+          - /url: /_0xPhi/status/2097798441342554285
+        - button "More":
+        - generic: Is that actually tendon driven, or is that astra's best guess of the kinematics here? The actuation mechanics seem way too fast even via gpu to be genuinely driven by real tendon pulleys here.
+        - link "Reply":
+          - /url: /i/status/2097798441342554285
+        - button "Repost":
+        - button "Like":
+          - generic: "5"
+        - button "View count":
+          - generic: "777"
+        - button "Bookmark":
+        - button "Share":
+  - status
+  - status
+  - complementary:
+    - heading "See all the replies" [level=2]
+    - link "Continue to X":
+      - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fearthtojake%2Fstatus%2F2097789988670709821
+- complementary:
+  - heading "Log in or sign up for X" [level=2]
+  - paragraph: See what’s happening and join the conversation
+  - link "Continue with phone":
+    - /url: /i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fearthtojake%2Fstatus%2F2097789988670709821
+    - text: Continue with phone
+  - button "Continue with Apple":
+    - text: Continue with Apple
+  - text: Continue with Google
+  - button "通过 Google 继续操作。在新标签页中打开":
+    - generic: 通过 Google 继续操作
+  - iframe:
+    - button "通过 Google 继续操作。在新标签页中打开":
+      - generic: 通过 Google 继续操作
+  - generic: or
+  - link "Log in with username or email":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fearthtojake%2Fstatus%2F2097789988670709821
+    - text: Log in with username or email
+  - heading "Relevant people" [level=2]
+  - link "Jake Fitzgerald":
+    - /url: /earthtojake
+    - img "Avatar"
+  - link "Jake Fitzgerald @earthtojake":
+    - /url: /earthtojake
+    - generic: Jake Fitzgerald
+    - generic: "@earthtojake"
+  - link "Follow":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fearthtojake
+  - navigation "Footer":
+    - link "Terms":
+      - /url: https://x.com/tos
+    - generic: ·
+    - link "Privacy":
+      - /url: https://x.com/privacy
+    - generic: ·
+    - link "Cookies":
+      - /url: https://support.x.com/articles/20170514
+    - generic: ·
+    - link "Accessibility":
+      - /url: https://help.x.com/resources/accessibility
+    - generic: ·
+    - link "US TIDA":
+      - /url: https://help.x.com/en/rules-and-policies/us-tida
+    - generic: ·
+    - link "Ads Info":
+      - /url: https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo
+    - generic: ·
+    - button "More":
+      - text: More
+    - generic: © 2026 X Corp.
+- button "Scan to get the app":
+  - generic: Scan to get the app
+- region "Notifications alt+T"
+- region "Notifications alt+T"

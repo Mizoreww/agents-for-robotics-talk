@@ -1,0 +1,88 @@
+# Repository policy
+#
+# Committed: build scripts, documentation, research provenance (source snapshots and
+# metadata), and the media the build actually consumes (.build/clips/*.mp4 + posters).
+# Excluded: the large rendered deliverables, raw download staging, vendored Python/Node
+# dependencies, and regenerable render output. See README.md for how to rebuild them.
+
+# ---------------------------------------------------------------------------
+# Rendered deliverables — rebuild with .build/build_selfcontained.py
+# The self-contained deck is ~132 MB, above GitHub's 100 MB per-file limit.
+# ---------------------------------------------------------------------------
+Agents_for_Robotics_Self_Contained.html
+output/Agents_for_Robotics_Focused.pptx
+output/Agents_for_Robotics_Offline_Player.zip
+output/Agents_for_Robotics_Static_Preview.pdf
+.build/standalone_isolation/
+.build/draft.pptx
+.build/focus_media.pptx
+.build/*.pdf
+
+# Offline player bundle (historical 22-slide deliverable). Only media_credits.json is
+# kept, because build_selfcontained.py reads it as a build input.
+output/offline_player/media/
+output/offline_player/posters/
+output/offline_player/slides/
+
+# ---------------------------------------------------------------------------
+# Vendored third-party dependencies — reinstall, do not version
+# ---------------------------------------------------------------------------
+.build/font_deps/
+.build/static_render_deps/
+.build/qa_deps/
+.build/node_modules
+node_modules/
+
+# ---------------------------------------------------------------------------
+# Raw download staging. Source URLs and SHA-256 for every file are recorded in
+# .build/media_downloads.json, .build/continuation_downloads.json and
+# .build/community_downloads.json; .build/clips/ holds the encoded clips the
+# build actually embeds and those ARE committed.
+# ---------------------------------------------------------------------------
+.build/assets/*.mp4
+.build/assets/*.gif
+.build/assets/*.png
+.build/assets/*.svg
+.build/assets/*.webp
+.build/assets/*.partial
+.build/previews/
+
+# ---------------------------------------------------------------------------
+# Regenerable renders and scratch state
+# ---------------------------------------------------------------------------
+.build/rendered/
+.build/focus_rendered/*.png
+.build/final_artifact_rendered/
+.build/final_pdf_rendered/
+.build/standalone_rendered/
+.build/direct_first_static_rendered/
+.build/three_parts_static_rendered/
+.build/lo-preview/
+.build/final-lo-preview/
+.build/lo-profile/
+.build/lo-final-profile/
+.build/*.log
+
+# Superseded revision backups: the source files are kept, the 110 MB rendered deck
+# from each backup is not.
+.build/prior_*/**/Agents_for_Robotics_Self_Contained.html
+
+# ---------------------------------------------------------------------------
+# Not part of this talk
+# ---------------------------------------------------------------------------
+# Rendered pages of a different presentation, kept locally only as a typography
+# reference. Nothing in the build reads them.
+.build/reference/
+.build/reference_review.html
+
+# GitHub code-search results for the query "empire", which collided with the ENPIRE
+# paper name and returned unrelated third-party repositories. No research value.
+research/searches/github_empire.json
+
+# ---------------------------------------------------------------------------
+# OS and editor noise
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

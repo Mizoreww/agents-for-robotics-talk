@@ -1,0 +1,589 @@
+{
+  "key": "gemini_current",
+  "url": "https://deepmind.google/models/gemini-robotics/",
+  "final_url": "https://deepmind.google/models/gemini-robotics/",
+  "accessed": "2026-09-10",
+  "sha256": "9aa06f47fc3842197f28adcdd450da9b7fccbfd3785a5a3adf3a0e2dc8a83471",
+  "chars": 12118,
+  "links": [
+    "https://deepmind.google/models/gemini-robotics/#page-content",
+    "https://deepmind.google/models/",
+    "https://deepmind.google/models/gemini/",
+    "https://deepmind.google/models/gemini-omni/",
+    "https://deepmind.google/models/gemini-image/",
+    "https://deepmind.google/models/gemini-audio/",
+    "https://deepmind.google/models/veo/",
+    "https://deepmind.google/models/imagen/",
+    "https://deepmind.google/models/lyria/",
+    "https://deepmind.google/models/genie/",
+    "https://deepmind.google/models/gemini-robotics/",
+    "https://deepmind.google/models/gemma/",
+    "https://deepmind.google/research/",
+    "https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/",
+    "https://deepmind.google/research/alphago/",
+    "https://deepmind.google/research/evals/",
+    "https://deepmind.google/research/publications/",
+    "https://deepmind.google/responsibility-and-safety/",
+    "https://deepmind.google/frontier-safety/",
+    "https://deepmind.google/science/",
+    "https://deepmind.google/science/alphafold/",
+    "https://deepmind.google/science/alphagenome/",
+    "https://deepmind.google/science/weathernext/",
+    "https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/",
+    "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+    "https://ai.google/gemini-for-science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/use-cases/science?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/about/",
+    "https://deepmind.google/blog/",
+    "https://deepmind.google/careers/",
+    "https://deepmind.google/education/",
+    "https://deepmind.google/national-partnerships-for-ai/",
+    "https://deepmind.google/accelerators/",
+    "https://deepmind.google/the-podcast/",
+    "https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://gemini.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/",
+    "https://ai.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://labs.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://research.google?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://antigravity.google/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://aistudio.google.com/prompts/new_chat?model=gemini-robotics-er-2-preview&utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://deepmind.google/models/gemini-robotics/vla/",
+    "https://deepmind.google/models/gemini-robotics/embodied-reasoning/",
+    "https://deepmind.google/models/gemini-robotics/on-device/",
+    "https://deepmind.google/models/gemini-robotics/#models",
+    "https://deepmind.google/models/gemini-robotics/#capabilities",
+    "https://deepmind.google/models/gemini-robotics/#hands-on",
+    "https://deepmind.google/models/gemini-robotics/#partners",
+    "https://deepmind.google/models/gemini-robotics/#responsibility",
+    "https://www.agile-robots.com/en/",
+    "https://apptronik.com/",
+    "https://bostondynamics.com/",
+    "https://docs.google.com/forms/d/1sM5GqcVMWv-KmKY3TOMpVtQ-lDFeAftQ-d9xQn92jCE/viewform?ts=67cef986&edit_requested=true",
+    "https://deepmind.google/models/gemini-robotics/responsibly-advancing-ai-and-robotics/",
+    "https://deepmind.google/accelerators/robotics/",
+    "https://x.com/googledeepmind",
+    "https://www.instagram.com/googledeepmind",
+    "https://www.youtube.com/@googledeepmind",
+    "https://www.linkedin.com/company/googledeepmind/",
+    "https://github.com/google-deepmind",
+    "https://policies.google.com/privacy",
+    "https://deepmind.google/research/projects/",
+    "https://aistudio.google.com/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+    "https://www.google.com/?utm_source=ai.google&utm_medium=referral",
+    "https://about.google/",
+    "https://about.google/products/",
+    "https://policies.google.com/terms"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/KmpjWlhFA-6wtqBm/nav__dm__gemini-omni__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__nano-banana__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-audio__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__veo__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__imagen__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__lyria__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__sima-2__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__genie-3__large_OKty371.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphago__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemini-robotics__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphafold__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/4tfPUEsyxOPhmrk6/nav__alphagenome_bNSjpuc.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__weathernext__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__alphaearth__large.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/P2_ApBXR8azw8BBn/nav__dm__alphaevolve__large_YxQUEj6.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__light.height-25.svg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/0xBk-c8kzB5UTrWs/nav__gdm-lockup__dark.height-25.svg"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/fOGx4E2i7mgcHrRbNvVYjkfQIrU1Wy9_HHmHeTDTPY9xZ_4BWdhuoEsHiV1HvQQD42qeP9o8whhoAxmqZNDVUBBsJ7zewDsEwk7S3Stl_CEKSR7DOg=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/fOGx4E2i7mgcHrRbNvVYjkfQIrU1Wy9_HHmHeTDTPY9xZ_4BWdhuoEsHiV1HvQQD42qeP9o8whhoAxmqZNDVUBBsJ7zewDsEwk7S3Stl_CEKSR7DOg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/mWKuxNu0Ecmt2mgrcNrbL6U5vNI9-H87ra9VUMd_baMkwnXy6L5Fwxu-1RtXhZ8cnpMXWeWSMUNMtwtMSMMqEAQ70nJ5G_EGRnirjEP6Dg58xQO5BA=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/mWKuxNu0Ecmt2mgrcNrbL6U5vNI9-H87ra9VUMd_baMkwnXy6L5Fwxu-1RtXhZ8cnpMXWeWSMUNMtwtMSMMqEAQ70nJ5G_EGRnirjEP6Dg58xQO5BA"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/9zg2J_n0cld-LnixaQiHRjA8bORzbUjRFXi3lSx_akPTXqgF6PR1vX2935QjiTC48HP7Zc62zES-9y6sZjTEGdRrxMm6iJIWjFK4y_5yl8u1ABuG=w1440-h810-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "video",
+      "poster": "https://lh3.googleusercontent.com/9zg2J_n0cld-LnixaQiHRjA8bORzbUjRFXi3lSx_akPTXqgF6PR1vX2935QjiTC48HP7Zc62zES-9y6sZjTEGdRrxMm6iJIWjFK4y_5yl8u1ABuG"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": null,
+      "src": "https://deepmind.google/static/images/fallback/video_poster_fallback_dark.4d55bc99efa6.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://deepmind.google/static/images/fallback/video_poster_fallback_light.57b61d57842a.jpg"
+    },
+    {
+      "tag": "source",
+      "type": "video/webm"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/Sjv9yy5JBLju3Ghc/gemini-robotics-2__hero__poster.webm",
+      "type": "video/webm"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/4lSQnrMC6nY?enablejsapi=1&rel=0&origin=https%3A%2F%2Fdeepmind.google"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract hand formed by multicolored digital particles on a white background, representing the robotic dexterity of Gemini Robotics 2.",
+      "src": "https://lh3.googleusercontent.com/EkaS1Hz__U5f74EDdOAtamK_AgXZIla74TjVBaB5C0JIrycOCP5S3pZOKR-aE3mdaMCak2NSbIYYCpZA8cWjcz1FO7vOhxnqyPwZ8yZtmyEhw6VNtg=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract hand formed by multicolored digital particles on a dark navy background, representing the robotic dexterity of Gemini Robotics 2.",
+      "src": "https://lh3.googleusercontent.com/0aONcBY1TI7mtyMtorgi-Hb1GiXjjmeGa809kd7p6ERD4Lqtbp0jOXMJ5BX8-_9UBhBjHpuwb1BhD9JWfaIk-jnX6VKQvZrgX4MvlYJt_WvdxG76SA=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract head formed by multicolored digital particles on a white background, representing the embodied reasoning of Gemini Robotics ER 2.",
+      "src": "https://lh3.googleusercontent.com/cbicOBmfuGsdkHzNl8wJr-Y-iVC3b3ren6QMopQBBy3fo8JEIBF_n6PTVM40NYw4XZqgoglbi9v_I8jIKf0ziHUn_UZC_y24lJF4FDVVNYLIa1SR=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract head formed by multicolored digital particles on a dark navy background, representing the embodied reasoning of Gemini Robotics ER 2.",
+      "src": "https://lh3.googleusercontent.com/Tg9g3oCuEJ7Oy2vJgCf91593qbjRfNVzNoiROLQc0HxPQQN0lPkkY6_7x3V5TaGi6un3t5MiC93Lm4cNuG86_tMxYxkmVHCfen6leUfo7wfZdpPZfCE=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a white background, representing Gemini Robotics On-Device 2.",
+      "src": "https://lh3.googleusercontent.com/RgROikj842F9I9max7Co80C_KtuJdskgnjZ_qSJtPmgjpTs067GfHJgRouR6T336_Xhe03NjKMP9jOmG72XptVl0DJ8lJvD5IBGeAvNMETuX3Ls2sA=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a dark navy background, representing Gemini Robotics On-Device 2.",
+      "src": "https://lh3.googleusercontent.com/c4nJxMkXt6Cbu6-fARTpVk3x7BRPkV33hEB0qDxsBSql1YUOY6AJhz6BPRZ-M5rm75ofVxAw-uR7_DkhY2cE4ReZtg9C4ynYjVjf7SZ_vnDgcefDpg=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract hand formed by multicolored digital particles on a white background, representing the robotic dexterity of Gemini Robotics 2.",
+      "src": "https://lh3.googleusercontent.com/EkaS1Hz__U5f74EDdOAtamK_AgXZIla74TjVBaB5C0JIrycOCP5S3pZOKR-aE3mdaMCak2NSbIYYCpZA8cWjcz1FO7vOhxnqyPwZ8yZtmyEhw6VNtg=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract hand formed by multicolored digital particles on a dark navy background, representing the robotic dexterity of Gemini Robotics 2.",
+      "src": "https://lh3.googleusercontent.com/0aONcBY1TI7mtyMtorgi-Hb1GiXjjmeGa809kd7p6ERD4Lqtbp0jOXMJ5BX8-_9UBhBjHpuwb1BhD9JWfaIk-jnX6VKQvZrgX4MvlYJt_WvdxG76SA=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract head formed by multicolored digital particles on a white background, representing the embodied reasoning of Gemini Robotics ER 2.",
+      "src": "https://lh3.googleusercontent.com/cbicOBmfuGsdkHzNl8wJr-Y-iVC3b3ren6QMopQBBy3fo8JEIBF_n6PTVM40NYw4XZqgoglbi9v_I8jIKf0ziHUn_UZC_y24lJF4FDVVNYLIa1SR=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract head formed by multicolored digital particles on a dark navy background, representing the embodied reasoning of Gemini Robotics ER 2.",
+      "src": "https://lh3.googleusercontent.com/Tg9g3oCuEJ7Oy2vJgCf91593qbjRfNVzNoiROLQc0HxPQQN0lPkkY6_7x3V5TaGi6un3t5MiC93Lm4cNuG86_tMxYxkmVHCfen6leUfo7wfZdpPZfCE=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a white background, representing Gemini Robotics On-Device 2.",
+      "src": "https://lh3.googleusercontent.com/RgROikj842F9I9max7Co80C_KtuJdskgnjZ_qSJtPmgjpTs067GfHJgRouR6T336_Xhe03NjKMP9jOmG72XptVl0DJ8lJvD5IBGeAvNMETuX3Ls2sA=w1440"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a dark navy background, representing Gemini Robotics On-Device 2.",
+      "src": "https://lh3.googleusercontent.com/c4nJxMkXt6Cbu6-fARTpVk3x7BRPkV33hEB0qDxsBSql1YUOY6AJhz6BPRZ-M5rm75ofVxAw-uR7_DkhY2cE4ReZtg9C4ynYjVjf7SZ_vnDgcefDpg=w1440"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/rC8sZkug1fhkL2as/gemini-robotics-2__hands-on__whole-body.webm",
+      "type": "video/webm"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/9MNLEAzA59o?enablejsapi=1&rel=0&origin=https%3A%2F%2Fdeepmind.google"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/rC8sZkug1fhkL2as/gemini-robotics-2__hands-on__dexterity.webm",
+      "type": "video/webm"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/O9-650iHAls?enablejsapi=1&rel=0&origin=https%3A%2F%2Fdeepmind.google"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/MVCfTE-4h3AwDVPZ/gemini-robotics-2__hands-on__multi-robot.webm",
+      "type": "video/webm"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/CiTPDm7PKW0?enablejsapi=1&rel=0&origin=https%3A%2F%2Fdeepmind.google"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/6FjZejjPEiJZrlTrqXDdBflMriByyqS1rifOzDpfl3RAB7OAi6V_5TkLAvWYySHVs8SZpe2CH_KDB8nHpvwxysWPpwwUGjOnregwdgvvrfFpPWzWCw=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/cbJttnFMyfxTjC_K_UDr57sOnT9j6JuDrVY64Vx8WK6J8xREBCusX99l_7ZSDyVg5NQhOjRmjdKYDoj6vURNZCeX55ABt85o5ktvIXORU1Pwbppz=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/N-vvS26IEnwc55DxxVewQHHhxJeaU6IMJTn6-0tL49Q3LmR9RChpgkA8pWlAmqMRTKdN_xrrb3v8_rtC9QfOBM3xG-ZNdpk4Nl9hKdigKkS62oNfWbE=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/6_4NZfBrS1X3UoFPMFQvIT_NtmRZgpn4L3PsC--fOg3b5jK6UQdVomKDeYzBHG4PSUtUwalJZGEkR0ahJfOh_2c7qYkFcXdciA7k9pGmaiXZxnsO=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/WnSZMS_Lpyk3kabgnu7BqIlOs9r3Nd0iEnJazm_g4DlBahTUwl2I0SrMw1YcZDGsql3UQ4D-yeub6dn5imVKQpas73njfVC4HsPuQ1cpsJGtWxWqdw=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "src": "https://lh3.googleusercontent.com/W1j6Fcu4yrohzVRyZ89cCycYrP6G8ZFLRMX8OBomFEfP76aBwiU1f5TA08TCpsaL4wAhLSDi2DrUw9I-EsAHYrsdlEuep7iXAcDniFPHtYnWcpfrDn8=w1440-h1080-n-nu",
+      "alt": null
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a white background.",
+      "src": "https://lh3.googleusercontent.com/y6Cw0TMRFOPnBk3YalFNYaldswHjBPd4KvYfikdTyQOmLwK6sMUWQMIWXWtoUv6ZcLretItipjTKs_ye23NbYzcRqEPWvsULyV0Rm3U4ajiushWJHi8=w1440-h1440-n-nu"
+    },
+    {
+      "tag": "source",
+      "type": "image/webp"
+    },
+    {
+      "tag": "img",
+      "alt": "An abstract robotic arm formed by multicolored digital particles on a dark navy background.",
+      "src": "https://lh3.googleusercontent.com/sWZN84CvimlQdBIcNKf9PqtcxD-jiFcsoA7vpw7pkLQ7y43EjnwsMq8Cg684MKVHCAlEWvwo7zcoj1wuROf0jMCwAh6Gfkaoo-iWGiDEovgLr6XKbQ=w1440-h1440-n-nu"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__light",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__light_j46lu5D_ChuL4ZZ.max-24x24.svg"
+    },
+    {
+      "tag": "img",
+      "alt": "footer_gemma__dark",
+      "src": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/images/footer_gemma__dark_NkmSuN7_L3lpSMo.max-24x24.svg"
+    }
+  ]
+}

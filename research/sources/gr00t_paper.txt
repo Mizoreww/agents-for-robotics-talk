@@ -1,0 +1,2377 @@
+GR00T N1: An Open Foundation Model for Generalist Humanoid Robots
+[#modal-form]
+[#modal-form-content]
+[#modal-title] Report GitHub Issue
+×
+Title:
+[#form_title]
+[#selectedTextModalDescription] Content selection saved. Describe the issue below:
+Description:
+[#description]
+Submit without GitHub
+Submit in GitHub
+[#announcement-banner]
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract
+1 Introduction
+2 GR00T N1 Foundation Model
+2.1 Model Architecture
+State and Action Encoders
+Vision-Language Module (System 2)
+Diffusion Transformer Module (System 1)
+2.2 Training Data Generation
+Latent Actions
+Neural Trajectories
+Simulation Trajectories
+2.3 Training Details
+Pre-training
+Post-training
+Post-training with Neural Trajectories
+Training Infrastructure
+3 Pre-Training Datasets
+3.1 Real-World Datasets
+3.2 Synthetic Datasets
+Simulation Trajectories
+Neural Trajectories
+3.3 Human Video Datasets
+4 Evaluation
+4.1 Simulation Benchmarks
+4.2 Real-World Benchmarks
+4.3 Experiment Setup
+Baselines
+Evaluation Protocol
+4.4 Quantitative Results
+Pre-training Evaluations
+Post-training Evaluations
+Post-training w/ Neural Trajectories Evaluations
+4.5 Qualitative Results
+4.6 Limitations
+5 Related Work
+6 Conclusions
+A Contributors and Acknowledgments
+A.1 Core Contributors
+Model Training
+Real-Robot and Teleoperation Infrastructure
+Real-Robot Experiments
+Simulation Infrastructure
+Simulation Experiments
+Video Generation Models and Latent Actions
+Data Infrastructure and Curation
+Compute Infrastructure and Open-Sourcing
+Program Management and Operations
+Product Lead
+Research Leads
+A.2 Contributors
+A.3 Acknowledgments
+B Detailed Experiment Results
+C Additional Qualitative Results
+D Hyperparameters
+E System Design
+E.1 Dataset Formats
+E.2 Standardized Action Spaces
+F Additional Training Details
+Auxiliary Object Detection Loss
+Neural Trajectory Generation
+IDM Model Training
+References
+[#infobox]
+[#license-tr]
+License: CC BY 4.0
+[#watermark-tr]
+arXiv:2503.14734v2 [cs.RO] 27 Mar 2025
+GR00T N1: An Open Foundation Model for Generalist Humanoid Robots
+NVIDIA
+Note: A detailed list of contributors and acknowledgments can be found in˜App. A of this paper.
+[#abstract1]
+Abstract
+[#abstract1.1] General-purpose robots need a versatile body and an intelligent mind. Recent advancements in humanoid robots have shown great promise as a hardware platform for building generalist autonomy in the human world. A robot foundation model, trained on massive and diverse data sources, is essential for enabling the robots to reason about novel situations, robustly handle real-world variability, and rapidly learn new tasks. To this end, we introduce GR00T N1, an open foundation model for humanoid robots. GR00T N1 is a Vision-Language-Action (VLA) model with a dual-system architecture. The vision-language module (System 2) interprets the environment through vision and language instructions. The subsequent diffusion transformer module (System 1) generates fluid motor actions in real time. Both modules are tightly coupled and jointly trained end-to-end. We train GR00T N1 with a heterogeneous mixture of real-robot trajectories, human videos, and synthetically generated datasets.
+We show that our generalist robot model GR00T N1 outperforms the state-of-the-art imitation learning baselines on standard simulation benchmarks across multiple robot embodiments. Furthermore, we deploy our model on the Fourier GR-1 humanoid robot for language-conditioned bimanual manipulation tasks, achieving strong performance with high data efficiency.
+[#p1] [#p1.1] \abscontent
+[#S1]
+1 Introduction
+[#S1.p1]
+[#S1.p1.1] Creating autonomous robots to perform everyday tasks in the human world has long been a fascinating goal and, at the same time, a significant technical undertaking. Recent progress in robotic hardware, artificial intelligence, and accelerated computing has collectively paved the ground for developing general-purpose robot autonomy. To march toward human-level physical intelligence, we advocate for a full-stack solution that integrates the three key ingredients: hardware, models, and data. First and foremost, robots are embodied physical agents, and their hardware determines their capability envelope. It makes [#S1.p1.1.1] humanoid robots a compelling form factor to build robot intelligence due to their human-like physique and versatility. Second, the diversity and variability of the real world demands that the robots operate on open-ended objectives and perform a wide range of tasks. Achieving this requires a [#S1.p1.1.2] generalist robot model sufficiently expressive and capable of handling various tasks. Third, real-world humanoid data are costly and time-consuming to acquire at scale. We need an effective data strategy to train large-scale robotic models.
+[#S1.p2]
+[#S1.p2.1] In recent years, foundation models
+(
+)
+have brought forth dramatic breakthroughs in understanding and generating visual and text data. They demonstrate the effectiveness of training generalist models on web-scale data to enable strong generalization and fast adaptation to downstream tasks. The successes of foundation models in neighboring fields of AI have depicted a promising roadmap for building the “backbone” of intelligence for generalist robots, endowing them with a set of core competencies and enabling them to rapidly learn and adapt in the real world.
+However, unlike the digital realms of words and pixels, no Internet of humanoid robot datasets exist for large-scale pre-training. The data available for any single humanoid hardware would be orders of magnitude too small. Recent efforts in the robot learning community (Open X-Embodiment Collaboration
+et al., 2024) have explored cross-embodied learning to enlarge the dataset by pooling training data from many different robots. However, the great variability in robot embodiments, sensors, actuator degrees of freedom, control modes, and other factors result in an archipelago of “data islands” rather than a coherent, Internet-scale dataset needed for training a true generalist model.
+[#S1.F1] [#S1.F1.g1]
+[#S1.F1.4] Figure 1: [#S1.F1.5] Data Pyramid for Robot Foundation Model Training. [#S1.F1.5.1] GR00T N1’s heterogeneous training corpora can be represented as a pyramid: data quantity decreases, and embodiment-specificity increases, moving from the bottom to the top.
+[#S1.p3]
+[#S1.p3.1] We introduce GR00T N1, an open foundation model for generalist humanoid robots. The GR00T N1 model is a Vision-Language-Action (VLA) model, which generates actions from image and language instruction input. It has cross-embodiment support from tabletop robot arms to dexterous humanoid robots. It adopts a [#S1.p3.1.1] dual-system compositional architecture, inspired by human cognitive processing (Kahneman, 2011). The System 2 reasoning module is a pre-trained Vision-Language Model (VLM) that runs at 10Hz on an NVIDIA L40 GPU. It processes the robot’s visual perception and language instruction to interpret the environment and understand the task goal. Subsequently, a Diffusion Transformer, trained with action flow-matching, serves as the System 1 action module. It cross-attends to the VLM output tokens and employs embodiment-specific encoders and decoders to handle variable state and action dimensions for motion generation. It generates closed-loop motor actions at a higher frequency (120Hz). Both the System 1 and System 2 modules are implemented as Transformer-based neural networks, tightly coupled and jointly optimized during training to facilitate coordination between reasoning and actuation.
+[#S1.p4]
+[#S1.p4.1] To mitigate the “data island” problem mentioned earlier, we structure the VLA training corpora as a [#S1.p4.1.1] data pyramid, illustrated in Fig. 1. Rather than treating the training datasets as a homogeneous pool, we organize heterogeneous sources by scale: large quantities of web data and human videos lay the base of the pyramid; synthetic data generated with physics simulations and/or augmented by off-the-shelf neural models form the middle layer, and real-world data collected on the physical robot hardware complete the top. The lower layers of the pyramid provide broad visual and behavioral priors, while the upper layers ensure grounding in embodied, real-robot execution.
+[#S1.p5]
+[#S1.p5.1] We develop an effective [#S1.p5.1.1] co-training strategy to learn across the entire data pyramid in both pre- and post-training phases. To train our model with action-less data sources, such as human videos and neural-generated videos, we learn a latent-action codebook (Ye et al., 2025) and also use a trained inverse dynamics model (IDM) to infer pseudo-actions. These techniques enable us to annotate actions on action-less videos so we can effectively treat them as additional robot embodiments for model training. By unifying all data sources across the data pyramid, we construct a consistent dataset where the input consists of the robot state, visual observations, and language instruction, and the output is the corresponding motor action. We pre-train our model end-to-end across the three data layers, spanning (annotated) video datasets, synthetically generated datasets, and real-robot trajectories — by sampling training batches across this heterogeneous data mixture.
+[#S1.p6]
+[#S1.p6.1] With a unified model and single set of weights, GR00T N1 can generate diverse manipulation behaviors using single-arm, bimanual, and humanoid embodiments.
+Evaluated on standard simulation benchmark environments, GR00T N1 achieves superior results compared to state-of-the-art imitation learning baselines. We also demonstrate GR00T N1’s strong performance in real-world experiments with GR-1 humanoid robots. Our GR00T-N1-2B model checkpoint, training data, and simulation benchmarks are publicly available here: GitHub and HuggingFace Datasets.
+[#S2]
+2 GR00T N1 Foundation Model
+[#S2.F2] [#S2.F2.g1]
+[#S2.F2.4] Figure 2: [#S2.F2.5] GR00T N1 Model Overview. [#S2.F2.5.1] Our model is a Vision-Language-Action (VLA) model that adopts a dual-system design. We convert the image observation and language instruction into a sequence of tokens to be processed by the Vision-Language Model (VLM) backbone. The VLM outputs, together with robot state and action encodings, are passed to the Diffusion Transformer module to generate motor actions.
+[#S2.p1]
+[#S2.p1.1] GR00T N1 is a Vision-Language-Action (VLA) model for humanoid robots trained on diverse data sources.
+The model contains a vision-language backbone that encodes language and image input and a DiT-based flow-matching policy that outputs high-frequency actions.
+We use the NVIDIA Eagle-2 VLM (Li et al., 2025) as the vision-language backbone.
+Specifically, our publicly released GR00T-N1-2B model has 2.2B parameters in total, with 1.34B in the VLM.
+The inference time for sampling a chunk of 16 actions is 63.9ms on an L40 GPU using bf16.
+Fig. 2 provides a high-level overview of our model design. We highlight three key features of GR00T N1:
+[#S2.p2]
+[#S2.I1]
+[#S2.I1.i1] •
+[#S2.I1.i1.p1]
+[#S2.I1.i1.p1.1] We design a compositional model that integrates Vision-Language Model (VLM)-based reasoning module (System 2) and Diffusion Transformer (DiT)-based action module (System 1) in a unified learning framework;
+[#S2.I1.i2] •
+[#S2.I1.i2.p1]
+[#S2.I1.i2.p1.1] We develop an effective pre-training strategy using a mixture of human videos, simulation and neural-generated data, and real robot demonstrations (see Fig. 1) for generalization and robustness;
+[#S2.I1.i3] •
+[#S2.I1.i3.p1]
+[#S2.I1.i3.p1.1] We train a massively multi-task, language-conditioned policy that supports a wide range of robot embodiments and enables rapid adaptation to new tasks through data-efficient post-training.
+[#S2.SS1]
+2.1 Model Architecture
+[#S2.SS1.p1]
+[#S2.SS1.p1.1] In this section, we describe the GR00T N1 model architecture, illustrated in Fig. 3.
+GR00T N1 uses flow-matching (Lipman et al., ) to learn action generation.
+A diffusion transformer (DiT) processes the robot’s proprioceptive state and action, which are then cross-attended with image and text tokens from the Eagle-2 VLM backbone to output the denoised motor actions. Below, we elaborate on each module in detail.
+[#S2.SS1.SSS0.Px1]
+State and Action Encoders
+[#S2.SS1.SSS0.Px1.p1]
+[#S2.SS1.SSS0.Px1.p1.1] To process states and actions of varying dimensions across different robot embodiments, we use an MLP per embodiment to project them to a shared embedding dimension as input to the DiT.
+As in Black et al. (2024), the Action Encoder MLP also encodes the diffusion timestep together with the noised action vector.
+[#S2.SS1.SSS0.Px1.p2]
+[#S2.SS1.SSS0.Px1.p2.1] We use action flow matching, which samples actions through iterative denoising. The model takes as input noised actions in addition to encodings of the robot’s proprioceptive state, image tokens, and text tokens.
+The actions are processed in chunks as in Zhao et al. (2023), meaning that at any given time [#S2.SS1.SSS0.Px1.p2.m1] tt the model uses [#S2.SS1.SSS0.Px1.p2.m2] At=[at,at+1,…,at+H−1]A_{t}=[a_{t},a_{t+1},\ldots,a_{t+H-1}] which contains the action vectors of timesteps [#S2.SS1.SSS0.Px1.p2.m3] tt through [#S2.SS1.SSS0.Px1.p2.m4] t+H−1t+H-1.
+We set [#S2.SS1.SSS0.Px1.p2.m5] H=16H=16 in our implementation.
+[#S2.SS1.SSS0.Px2]
+Vision-Language Module (System 2)
+[#S2.SS1.SSS0.Px2.p1]
+[#S2.SS1.SSS0.Px2.p1.1] For encoding vision and language inputs, GR00T N1 uses the Eagle-2 (Li et al., 2025) vision-language model (VLM) pretrained on Internet-scale data.
+Eagle-2 is finetuned from a SmolLM2 (Allal et al., 2025) LLM and a SigLIP-2 (Tschannen et al., 2025) image encoder.
+Images are encoded at resolution [#S2.SS1.SSS0.Px2.p1.m1] 224×224224\times 224 followed by pixel shuffle (Shi et al., 2016), resulting in 64 image token embeddings per frame. These embeddings are then further encoded together with text by the LLM component of the Eagle-2 VLM.
+The LLM and image encoder are aligned over a broad set of vision-language tasks following the general recipe of Li et al. (2025).
+[#S2.SS1.SSS0.Px2.p2]
+[#S2.SS1.SSS0.Px2.p2.1] During policy training, a text description of the task, as well as (possibly multiple) images, are passed to the VLM in the chat format used during vision-language training. We then extract vision-language features of shape (batch size [#S2.SS1.SSS0.Px2.p2.m1] ×\times sequence length [#S2.SS1.SSS0.Px2.p2.m2] ×\times hidden dimension) from the LLM.
+We found that using middle-layer instead of final-layer LLM embeddings resulted in both faster inference speed and higher downstream policy success rate.
+For GR00T-N1-2B, we use the representations from the 12th layer.
+[#S2.F3] [#S2.F3.g1]
+[#S2.F3.4] Figure 3: [#S2.F3.5] GR00T N1 Model Architecture. [#S2.F3.5.1] GR00T N1 is trained on a diverse set of embodiments ranging from single-arm robot arms to bimanual humanoid dexterous hands.
+To deal with different robot embodiment’s state observation and action, we use DiT blocks with an embodiment-aware state and action encoder to embed the robot’s state and action inputs.
+GR00T N1 model leverages latent embeddings of the Eagle-2 model to incorporate the robot’s visual observation and language instructions. The vision language tokens will then be fed into the DiT blocks through cross-attention layers.
+[#S2.SS1.SSS0.Px3]
+Diffusion Transformer Module (System 1)
+[#S2.SS1.SSS0.Px3.p1]
+[#S2.SS1.SSS0.Px3.p1.1] For modeling actions, GR00T N1 uses a variant of DiT (Peebles and Xie, 2023), which is a transformer with denoising step conditioning via adaptive layer normalization, denoted as [#S2.SS1.SSS0.Px3.p1.m1] VθV_{\theta}.
+As shown in Fig. 3, [#S2.SS1.SSS0.Px3.p1.m2] VθV_{\theta} consists of alternating cross-attention and self-attention blocks, similar to Flamingo (Alayrac et al., 2022) and VIMA (Jiang et al., 2023).
+The self-attention blocks operate on noised action token embeddings [#S2.SS1.SSS0.Px3.p1.m3] AtτA_{t}^{\tau} together with state embeddings [#S2.SS1.SSS0.Px3.p1.m4] qtq_{t}, while cross-attention blocks allow conditioning on the vision-language token embeddings [#S2.SS1.SSS0.Px3.p1.m5] ϕt\phi_{t} output by VLM.
+After the final DiT block, we apply an embodiment-specific Action Decoder, another MLP, to the final [#S2.SS1.SSS0.Px3.p1.m6] HH tokens to predict the actions.
+[#S2.SS1.SSS0.Px3.p2]
+[#S2.SS1.SSS0.Px3.p2.1] Given a ground-truth action chunk [#S2.SS1.SSS0.Px3.p2.m1] AtA_{t}, a flow-matching timestep [#S2.SS1.SSS0.Px3.p2.m2] τ∈[0,1]\tau\in[0,1] and sampled noise [#S2.SS1.SSS0.Px3.p2.m3] ϵ∼𝒩⁡(𝟎,𝐈)\epsilon\sim\mathcal{N}(\mathbf{0},\mathbf{I}), the noised action chunk [#S2.SS1.SSS0.Px3.p2.m4] AtτA_{t}^{\tau} is computed as [#S2.SS1.SSS0.Px3.p2.m5] Atτ=τ​At+(1−τ)​ϵA_{t}^{\tau}=\tau A_{t}+(1-\tau)\epsilon.
+The model prediction [#S2.SS1.SSS0.Px3.p2.m6] Vθ​(ϕt,Atτ,qt)V_{\theta}(\phi_{t},A_{t}^{\tau},q_{t}) aims to approximate the denoising vector field [#S2.SS1.SSS0.Px3.p2.m7] ϵ−At\epsilon-A_{t} by minimizing the following loss:
+[#S2.E1]
+[#S2.E1.m1] ℒfm​(θ)=𝔼τ​[‖Vθ​(ϕt,Atτ,qt)−(ϵ−At)‖2].\mathcal{L}_{\textit{fm}}(\theta)=\mathbb{E}_{\tau}\left[\|V_{\theta}(\phi_{t},A_{t}^{\tau},q_{t})-(\epsilon-A_{t})\|^{2}\right].
+(1)
+[#S2.SS1.SSS0.Px3.p2.2] As in Black et al. (2024), we use [#S2.SS1.SSS0.Px3.p2.m8] p​(τ)=Beta​(s−τs,1.5,1)p(\tau)=\text{Beta}(\frac{s-\tau}{s};1.5,1), [#S2.SS1.SSS0.Px3.p2.m9] s=0.999s=0.999.
+During inference, we generate action chunks with [#S2.SS1.SSS0.Px3.p2.m10] KK-step denoising.
+First, randomly sample [#S2.SS1.SSS0.Px3.p2.m11] At0∼𝒩⁡(𝟎,𝐈)A_{t}^{0}\sim\mathcal{N}(\mathbf{0},\mathbf{I}) and then use forward Euler integration to iteratively generate the action chunk, updating as follows:
+[#S2.Ex1]
+[#S2.Ex1.m1] Atτ+1/K=Atτ+1K​Vθ​(ϕt,Atτ,qt).A_{t}^{\tau+1/K}=A_{t}^{\tau}+\frac{1}{K}V_{\theta}(\phi_{t},A_{t}^{\tau},q_{t}).
+[#S2.SS1.SSS0.Px3.p2.3] In practice, we found [#S2.SS1.SSS0.Px3.p2.m12] K=4K=4 inference steps to work well across all embodiments.
+[#S2.SS2]
+2.2 Training Data Generation
+[#S2.SS2.p1]
+[#S2.SS2.p1.1] To train GR00T N1, we use a diverse set of data sources and objectives to construct the data pyramid (Fig. 1).
+We first source diverse human egocentric video data from open datasets, which forms the base, together with the web data used in VLM pretraining.
+Next, we generate synthetic [#S2.SS2.p1.1.1] neural trajectories using pre-trained video generation models.
+In this way, we [#S2.SS2.p1.m1] ∼\sim10 [#S2.SS2.p1.m2] ×\times our in-house collected teleoperation trajectories — the “peak” of the data pyramid — from 88 hours to 827 hours, using diverse counterfactual robot trajectories with novel language instructions (see Fig. 5 for examples). We additionally generate diverse simulation trajectories, which also expand the middle part of the data pyramid.
+[#S2.SS2.p2]
+[#S2.SS2.p2.1] In the next paragraph, we first describe how we extract [#S2.SS2.p2.1.1] latent actions from videos, which we use to extract labels for web-scaled human egocentric datasets. Next, we describe how we generate [#S2.SS2.p2.1.2] neural and [#S2.SS2.p2.1.3] simulated robot trajectories, and how we obtain actions for each of these data sources.
+[#S2.SS2.SSS0.Px1]
+Latent Actions
+[#S2.SS2.SSS0.Px1.p1]
+[#S2.SS2.SSS0.Px1.p1.1] For human egocentric videos and neural trajectories, we do not have any actions that we can directly use to train GR00T N1.
+For these data, we instead generate latent actions by training a VQ-VAE model to extract features from consecutive image frames from videos (Ye et al., 2025).
+The encoder takes the current frame [#S2.SS2.SSS0.Px1.p1.m1] xtx_{t} and the future frame [#S2.SS2.SSS0.Px1.p1.m2] xt+Hx_{t+H} of a video with a fixed window size [#S2.SS2.SSS0.Px1.p1.m3] HH and outputs the latent action [#S2.SS2.SSS0.Px1.p1.m4] ztz_{t}.
+The decoder is trained to take the latent action [#S2.SS2.SSS0.Px1.p1.m5] ztz_{t} and [#S2.SS2.SSS0.Px1.p1.m6] xtx_{t} and reconstruct [#S2.SS2.SSS0.Px1.p1.m7] xt+Hx_{t+H}. This model is trained with a VQ-VAE objective, where the continuous embedding from the encoder is mapped to the nearest embedding from the codebook.
+After training, we take the encoder and use it as an inverse dynamics model; given an [#S2.SS2.SSS0.Px1.p1.m8] xtx_{t} and [#S2.SS2.SSS0.Px1.p1.m9] xt+Hx_{t+H} pair, we extract the continuous pre-quantized embedding and use this as the latent action label during pre-training, with the same flow-matching loss, but treat it as a distinct “LAPA” embodiment.
+Training the VQ-VAE model on all heterogeneous data together allows us to unify all of the data to share the same learned latent action space, potentially improving cross-embodiment generalization. Fig. 4 shows [#S2.SS2.SSS0.Px1.p1.m10] xtx_{t} and [#S2.SS2.SSS0.Px1.p1.m11] xt+Hx_{t+H} pairs from 8 distinct embodiments including both robot and human embodiment, all retrieved from similar latent actions; the first latent action shows all embodiments [#S2.SS2.SSS0.Px1.p1.1.1] moving right arm to the left and the second latent action shows [#S2.SS2.SSS0.Px1.p1.1.2] moving right arm to the right.
+[#S2.F4] [#S2.F4.g1]
+[#S2.F4.4] Figure 4: [#S2.F4.5] Latent Actions. [#S2.F4.5.1] We retrieve similar latent embeddings across various embodiments. The left images illustrate the latent action that corresponds to moving the right arm (or hand) to the left, while the right images illustrate the latent action that corresponds to moving the right arm (or hand) to the right. Note that this general latent action is not only consistent in different robot embodiments, but also in human embodiment.
+[#S2.SS2.SSS0.Px2]
+Neural Trajectories
+[#S2.SS2.SSS0.Px2.p1]
+[#S2.SS2.SSS0.Px2.p1.1] Robot data scales linearly with human labor, since it typically requires a human operator to teleoperate the robot to produce each trajectory.
+Recently, [#S2.SS2.SSS0.Px2.p1.1.1] video generation models have demonstrated significant potential for high-quality controllable video generation (Brooks et al., 2024; Yang et al., 2024; Xiang et al., 2024; Lin et al., 2024; Wan Team, 2025; Ren et al., 2025b), which paves the way for building world models in the robotic domain.
+To harness these models, we fine-tune image-to-video generation models (Agarwal et al., 2025; Yang et al., 2024; Wan Team, 2025) on all of our 88 hours of in-house collected teleoperation data and generate 827 hours of video data given the existing initial frames with novel language prompts, augmenting it by around 10 [#S2.SS2.SSS0.Px2.p1.m1] ×\times.
+This enables generating training data that captures many more counterfactual scenarios in the real world without actually collecting teleoperation data for each of these cases (examples shown in Fig. 5; more examples of dream generations in Fig. 13).
+[#S2.SS2.SSS0.Px2.p2]
+[#S2.SS2.SSS0.Px2.p2.1] To increase the diversity of our neural trajectories, we first use a commercial-grade multimodal LLM to detect the objects given initial frames and generate many more possible combinations of “ [#S2.SS2.SSS0.Px2.p2.1.1] pick up { [#S2.SS2.SSS0.Px2.p2.1.2] object} [#S2.SS2.SSS0.Px2.p2.1.3] from { [#S2.SS2.SSS0.Px2.p2.1.4] location A} [#S2.SS2.SSS0.Px2.p2.1.5] to { [#S2.SS2.SSS0.Px2.p2.1.6] location B}", while instructing the model to only consider the physically feasible combinations.
+We also apply post-processing mechanisms, including filtering and re-captioning, to the generated videos.
+For this, we also use a commercial-grade multimodal LLM as a judge and feed the downsampled 8 frames to filter out neural trajectories that do not follow the language instruction precisely.
+We then caption the filtered-out videos. (More details can be found in Appendix F).
+[#S2.F5] [#S2.F5.g1]
+[#S2.F5.4] Figure 5: [#S2.F5.5] Synthetically Generated Videos. [#S2.F5.5.1] We leverage off-the-shelf video generation models to create neural trajectories to increase the quantity and diversity of our training datasets. These generated data can be used for both pre- and post-training of our GR00T N1. (1) The first three rows are generated from the same initial frames but with different prompts (change left or right, the location to place the object), (2) the following two are from the same initial frames but replace the object to pick up, (3) the next row showcases the video model generating a robot trajectory which is very challenging to generate in simulation (spilling contents inside a mesh cup into a bin), and (4) the last row is generated from an initial frame from simulation data. We use the red rectangles to indicate the initial frames.
+[#S2.SS2.SSS0.Px3]
+Simulation Trajectories
+[#S2.SS2.SSS0.Px3.p1]
+[#S2.SS2.SSS0.Px3.p1.1] Scaling up real-world data collection for humanoid robots is highly expensive due to the challenge of simultaneously controlling both arms and dexterous hands.
+Recent research (Wang et al., 2024; Mandlekar et al., 2023; Jiang et al., 2024) has demonstrated that generating training data in simulation is a practical alternative.
+We use DexMimicGen (Jiang et al., 2024) to synthesize large-scale robot manipulation trajectories.
+[#S2.SS2.SSS0.Px3.p2]
+[#S2.SS2.SSS0.Px3.p2.1] Starting with a small set of human demonstrations, DexMimicGen applies demonstration transformation and replay in simulation to expand the dataset automatically.
+Each task is decomposed into a sequence of object-centric subtasks.
+The initial human demonstrations are segmented into smaller manipulation sequences, each corresponding to a subtask involving a single object.
+These segments are then adapted to new environments by aligning them with the object’s position, preserving the relative poses between the robot’s end effector and the object.
+To ensure smooth execution, the system interpolates movements between the robot’s current state and the transformed segment.
+The robot then follows the full sequence step by step, verifying task success at the end. Only successful demonstrations are retained, ensuring high-quality data. Using DexMimicGen, we scale a limited set of human demonstrations into a large-scale humanoid manipulation dataset. Considering the pre- and post-training datasets, we have generated 780,000 simulation trajectories — equivalent to 6,500 hours, or nine continuous months, of human demonstration data — in just 11 hours. These simulation data significantly supplement the real-robot data with minimal human costs.
+[#S2.SS3]
+2.3 Training Details
+[#S2.SS3.SSS0.Px1]
+Pre-training
+[#S2.SS3.SSS0.Px1.p1]
+[#S2.SS3.SSS0.Px1.p1.1] During the pre-training phase, GR00T N1 is trained via flow-matching loss (Equation 1) on a diverse collection of embodiments and data sources, encompassing various real and synthetic robot datasets as well as human motion data.
+We refer readers to Sec. 3 for a detailed description of the datasets.
+[#S2.SS3.SSS0.Px1.p2]
+[#S2.SS3.SSS0.Px1.p2.1] For human videos, in the absence of ground-truth actions, we extract learned latent actions and use them as flow-matching targets (see Sec. 2.2).
+For robot datasets such as our GR-1 humanoid data or Open X-Embodiment data, we use both ground-truth robot actions as well as learned latent actions as flow-matching targets.
+In the case of neural trajectories (Sec. 2.2) used to augment our robot datasets, we use both latent actions as well as predicted actions from an inverse-dynamics model trained on the real robot data.
+Pre-training hyper-parameters are listed in Table 6 in the Appendix.
+[#S2.SS3.SSS0.Px2]
+Post-training
+[#S2.SS3.SSS0.Px2.p1]
+[#S2.SS3.SSS0.Px2.p1.1] In the post-training phase, we fine-tune our pre-trained model on datasets corresponding to each single embodiment.
+As in pretraining, we keep the language component of the VL backbone frozen and fine-tune the rest of the model.
+Post-training hyperparameters are given in Table 6 in the Appendix.
+[#S2.SS3.SSS0.Px3]
+Post-training with Neural Trajectories
+[#S2.SS3.SSS0.Px3.p1]
+[#S2.SS3.SSS0.Px3.p1.1] To overcome the challenge of data scarcity during post-training, we explore augmenting the data for each downstream task by generating neural trajectories, similar to the procedure described in Sec. 2.2.
+For downstream tasks that are conditioned on multiple views, we finetune the video model to generate multiple subimages in a grid (Fig. 13).
+For simulation tasks, we collect diverse initial frames from the randomly initialized environment.
+For real robot tasks, we randomly initialize object poses manually and record the robot’s initial observation.
+Novel initial frames could also be created automatically using img2img diffusion (example shown in Fig. 13), but we leave further exploration for future work.
+We also demonstrate examples of (1) multi-round video generation for generating long-horizon trajectories composed of atomic tasks and (2) neural trajectories of liquids and articulated objects, known to be extremely challenging to simulate, though we leave quantitative evaluation of downstream tasks for future work.
+[#S2.SS3.SSS0.Px3.p2]
+[#S2.SS3.SSS0.Px3.p2.1] For our post-training pipeline with neural trajectories, we restrict ourselves to fine-tuning the video generation model [#S2.SS3.SSS0.Px3.p2.1.1] only on the human-collected trajectories for simulation tasks and only 10% of the data from the real-world benchmark collected for post-training, to match the realistic scenario that we only have access to limited number of teleoperation data.
+Since the generated videos do not have action labels, we use either latent or inverse dynamics models (IDM) labeled actions (Baker et al., 2022) and train the policy model to treat these pseudo-actions as action labels for a different embodiment. In low-data regime scenarios, we also restrict ourselves on training the IDM models only on the low-data, to facilitate realistic scenarios. Details of how we train the IDM models are provided in Appendix F. Some empirical comparisons between latent and IDM-labeled actions are made in Sec. 4.4.
+During post-training, we co-train the policy with real-world trajectories with neural trajectories with a 1:1 sampling ratio.
+[#S2.SS3.SSS0.Px4]
+Training Infrastructure
+[#S2.SS3.SSS0.Px4.p1]
+[#S2.SS3.SSS0.Px4.p1.1] We train GR00T N1 on a cluster managed via NVIDIA OSMO (NVIDIA, 2025), an orchestration platform for scaling complex robotics workloads. The training cluster is equipped with H100 NVIDIA GPUs connected via NVIDIA Quantum-2 InfiniBand in a fat-tree topology. We facilitate fault-tolerant multi-node training and data ingestion via a custom library built on top of the Ray distributed computing library (Moritz et al., 2018). We use up to 1024 GPUs for a single model. GR00T-N1-2B used roughly 50,000 H100 GPU hours for pretraining.
+[#S2.SS3.SSS0.Px4.p2]
+[#S2.SS3.SSS0.Px4.p2.1] Compute-constrained finetuning was tested in the context of a single A6000 GPU.
+If only tuning the adapter layers (action and state encoders + action decoder) and DiT, a batch size up to 200 can be used.
+When tuning the vision encoder, a batch size of up to 16 can be used.
+[#S3]
+3 Pre-Training Datasets
+[#S3.p1]
+[#S3.p1.1] We structure our pre-training corpus into three main categories: real-robot datasets (Sec. 3.1), synthetic datasets (Sec. 3.2), and human video datasets (Sec. 3.3).
+These roughly correspond to the peak, middle, and base of the data pyramid (Fig. 1), respectively. The synthetic datasets consist of both simulation trajectories and neural trajectories. Table 1 summarizes our training data generation strategies in Sec. 2.2 and their applicable data sources correspondingly. We provide the full statistics (# of frames, hours, and camera views) of our pretraining datasets in Table 7.
+[#S3.T1]
+[#S3.T1.4] Table 1: [#S3.T1.5] Training Data Generation. [#S3.T1.5.1] Our data generation strategies leverage different data sources. The latent-action learning technique is broadly applied to diverse video datasets. Neural trajectories can be generated from datasets containing robot actions, while simulation trajectories rely on a physics simulator and utilize our DexMimicGen-based automated data generation system.
+[#S3.T1.6]
+[#S3.T1.6.1]
+[#S3.T1.6.1.1]
+[#S3.T1.6.1.2] Latent Actions
+[#S3.T1.6.1.3] Neural Trajectories
+[#S3.T1.6.1.4] Simulation Trajectories
+[#S3.T1.6.2]
+[#S3.T1.6.2.1] Real-Robot Datasets
+[#S3.T1.6.2.2] ✓
+[#S3.T1.6.2.3] ✓
+[#S3.T1.6.2.4] ✓
+[#S3.T1.6.3]
+[#S3.T1.6.3.1] Simulated Robot Datasets
+[#S3.T1.6.3.2] ✓
+[#S3.T1.6.3.3] ✓
+[#S3.T1.6.3.4]
+[#S3.T1.6.4]
+[#S3.T1.6.4.1] Human Video Datasets
+[#S3.T1.6.4.2] ✓
+[#S3.T1.6.4.3]
+[#S3.T1.6.4.4]
+[#S3.SS1]
+3.1 Real-World Datasets
+[#S3.SS1.p1]
+[#S3.SS1.p1.1] We use the following real-world robot datasets:
+[#S3.I1]
+[#S3.I1.i1] 1.
+[#S3.I1.i1.p1]
+[#S3.I1.i1.p1.1] [#S3.I1.i1.p1.1.1] GR00T N1 Humanoid Pre-Training Dataset. Our internally collected dataset covers a broad range of general manipulation tasks, focused on Fourier GR1 through teleoperation. We leverage the VIVE Ultimate Tracker to capture the teleoperator’s wrist poses while Xsens Metagloves track finger movements. We also explored other teleoperation hardware options, including Apple Vision Pro and Leap Motion (see Fig. 6).
+The recorded human movements are then retargeted to humanoid actions via inverse kinematics. The real-time teleoperation operates at a control frequency of 20Hz. Alongside the robot’s actions, we capture images from a head-mounted camera at each step, as well as the human’s low-dimensional proprioception and actions. The dataset includes fine-grained annotations, which detail atomic actions such as grasping, moving, and placing, and coarse-grained annotations, which aggregate sequences of fine-grained actions into higher-level task representations. This hierarchical structure supports learning both precise motion control and high-level task reasoning.
+[#S3.I1.i2] 2.
+[#S3.I1.i2.p1]
+[#S3.I1.i2.p1.1] [#S3.I1.i2.p1.1.1] Open X-Embodiment. Open X-Embodiment Collaboration
+et al. (2024) is a widely used cross-embodiment dataset for robot manipulation.
+We include the RT-1 (Brohan et al., 2022a), Bridge-v2 (Walke et al., 2023), Language Table (Lynch et al., 2022), DROID (Khazatsky et al., 2024), MUTEX (Shah et al., 2023), RoboSet (Bharadhwaj et al., 2024c) and Plex (Thomas et al., 2023), providing diverse datasets covering various manipulation tasks, language-conditioned control, and robot-environment interactions.
+[#S3.I1.i3] 3.
+[#S3.I1.i3.p1]
+[#S3.I1.i3.p1.1] [#S3.I1.i3.p1.1.1] AgiBot-Alpha. AgiBot-World-Contributors et al. (2025) is a large-scale dataset of trajectories from 100 robots. We used the 140,000 trajectories available at the time of launching our training run. The dataset covers fine-grained manipulation, tool usage, and multi-robot collaboration.
+[#S3.F6] [#S3.F6.g1]
+[#S3.F6.4] Figure 6: [#S3.F6.5] Data Collection via Teleoperation. [#S3.F6.5.1] Our teleoperation infrastructure supports multiple devices to capture human hand motion, including 6-DoF wrist poses and hand skeletons. Robot actions are produced through retargeting and executed on robots in real and simulation environments.
+[#S3.SS2]
+3.2 Synthetic Datasets
+[#S3.SS2.p1]
+[#S3.SS2.p1.1] Our synthetic datasets include 1) simulation trajectories automatically multiplied from a small number of human demonstrations within physics simulators and 2) neural trajectories derived from videos produced by off-the-shelf neural generation models.
+[#S3.SS2.SSS0.Px1]
+Simulation Trajectories
+[#S3.SS2.SSS0.Px1.p1]
+[#S3.SS2.SSS0.Px1.p1.1] In addition to real-world datasets, we feature large-scale synthetic datasets generated in simulation as described in Sec. 2.2.
+Our simulation tasks comprise humanoid robots performing a broad range of tabletop rearrangement tasks and feature a large array of realistic 3D assets.
+We build these tasks under the RoboCasa simulation framework (Nasiriany et al., 2024).
+Broadly, our tasks follow the behavior “rearrange A from B to C”, where A corresponds to an object, and B and C represent the source and target locations in the environment.
+The source and target locations are receptacles such as plates, baskets, placemats, and shelves, and the robot must rearrange objects across different combinations of source and target receptacles.
+Overall, our pre-training simulation datasets feature 54 unique combinations of source and target receptacle categories.
+We place the objects and receptacles in randomized locations throughout the table and additionally incorporate distractor objects and receptacles in the scene.
+The distractors require the model to pay attention to the task language to perform the desired behavior.
+[#S3.SS2.SSS0.Px1.p2]
+[#S3.SS2.SSS0.Px1.p2.1] We generate diverse, high-quality training datasets at a massive scale using DexMimicGen.
+Our datasets feature the GR-1 humanoid robot, but we can adopt the system for a wide range of robots.
+We begin by collecting a few dozen source demonstrations via teleoperation using the Leap Motion device.
+The Leap Motion device tracks the 6-DoF wrist poses and finger poses, and we retarget these values and send them to the whole-body IK controller based on mink (Zakka, 2024).
+Given human demonstrations, DexMimicGen processes the demonstrations into object-centric segments and then transforms and combines these segments to generate new demonstrations.
+Using this system, we generate 10,000 new demonstrations for each (source, target) receptacle pair in our pre-training task regime, resulting in 540k total demonstrations.
+[#S3.SS2.SSS0.Px2]
+Neural Trajectories
+[#S3.SS2.SSS0.Px2.p1]
+[#S3.SS2.SSS0.Px2.p1.1] To generate neural trajectories, we fine-tune open-source image-to-video models on our real-world GR00T N1 Humanoid Pre-Training dataset, as described in Sec. 2.2.
+We trained the models for 100 epochs on a dataset comprising 3,000 real-world robot data samples with language annotations, each recorded at 480P resolution and consisting of 81 frames.
+As illustrated in Fig. 5, our model can generate high-quality counterfactual trajectories given novel language prompts.
+Moreover, the model, trained on Internet-scale video data, demonstrates strong generalization capabilities in handling unseen initial frames, novel objects, and new motion patterns.
+These videos are further labeled with latent actions and IDM-based pseudo-actions for model training.
+We generate a total of around 827 hours of videos; it takes 2 minutes to generate a one-second video on an L40 GPU, and required approximately 105k L40 GPU hours ( [#S3.SS2.SSS0.Px2.p1.m1] ∼\sim1.5 days) on 3,600 L40 GPUs.
+[#S3.SS3]
+3.3 Human Video Datasets
+[#S3.SS3.p1]
+[#S3.SS3.p1.1] We include a diverse set of human video datasets.
+These do not include explicit action labels but contain extensive sequences of human-object interactions, capturing affordances, task semantics, and natural motion patterns.
+These datasets cover a wide range of real-world human behaviors, including grasping, tool use, cooking, assembly, and other task-oriented activities performed in natural environments, and provide detailed first-person perspectives of hand-object interactions (examples shown in Figure 14). Our video datasets include the following:
+[#S3.SS3.p2]
+[#S3.I2]
+[#S3.I2.i1] •
+[#S3.I2.i1.p1]
+[#S3.I2.i1.p1.1] [#S3.I2.i1.p1.1.1] Ego4D is a large-scale egocentric video dataset that includes diverse recordings of everyday activities (Grauman et al., 2022);
+[#S3.I2.i2] •
+[#S3.I2.i2.p1]
+[#S3.I2.i2.p1.1] [#S3.I2.i2.p1.1.1] Ego-Exo4D adds complementary exocentric (third-person) views alongside first-person recordings (Grauman et al., 2024);
+[#S3.I2.i3] •
+[#S3.I2.i3.p1]
+[#S3.I2.i3.p1.1] [#S3.I2.i3.p1.1.1] Assembly-101 focuses on complex assembly tasks by providing detailed videos of step-by-step object assembly (Sener et al., 2022);
+[#S3.I2.i4] •
+[#S3.I2.i4.p1]
+[#S3.I2.i4.p1.1] [#S3.I2.i4.p1.1.1] EPIC-KITCHENS includes first-person footage of culinary activities (Damen et al., 2018);
+[#S3.I2.i5] •
+[#S3.I2.i5.p1]
+[#S3.I2.i5.p1.1] [#S3.I2.i5.p1.1.1] HOI4D captures human-object interactions with frame-wise annotations for segmentation, hand and object poses, and actions (Liu et al., 2022b);
+[#S3.I2.i6] •
+[#S3.I2.i6.p1]
+[#S3.I2.i6.p1.1] [#S3.I2.i6.p1.1.1] HoloAssist captures collaborative and assistive tasks within augmented reality environments (Wang et al., 2023);
+[#S3.I2.i7] •
+[#S3.I2.i7.p1]
+[#S3.I2.i7.p1.1] [#S3.I2.i7.p1.1.1] RH20T-Human includes recordings of fine-grained manipulation tasks with an emphasis on natural hand-object interactions across diverse real-world scenarios (Fang et al., 2023).
+[#S4]
+4 Evaluation
+[#S4.p1]
+[#S4.p1.1] We evaluate our GR00T N1 models in a diverse set of simulated and real-world benchmarks. Our simulation experiments are conducted on three distinct benchmarks designed to systematically assess the effectiveness of our model across various robot embodiments and manipulation tasks. In our real-world experiments, we investigate the model’s capability on a suite of tabletop manipulation tasks with the GR-1 humanoid robot. These experiments aim to demonstrate GR00T N1’s ability to acquire new skills from a limited number of human demonstrations.
+[#S4.F7] [#S4.F7.g1]
+[#S4.F7.4] Figure 7: [#S4.F7.5] Simulation Tasks. [#S4.F7.5.1] Our simulation experiments use tasks from two open-source benchmarks (RoboCasa (Nasiriany et al., 2024) in the top row and DexMimicGen (Jiang et al., 2024) in the middle row) and a newly developed suite of tabletop manipulation tasks that closely resemble our real-world tasks (bottom row). We provide Omniverse renderings of the tasks above.
+[#S4.SS1]
+4.1 Simulation Benchmarks
+[#S4.SS1.p1]
+[#S4.SS1.p1.1] Our simulation experiments comprise two open-source benchmarks from prior work (Nasiriany et al., 2024; Jiang et al., 2024), as well as a newly developed suite of tabletop manipulation tasks designed to closely mirror our real-world task settings. We meticulously choose these benchmarks for evaluating our models across different robot embodiments and diverse manipulation tasks. Our model checkpoints, together with the publicly available simulation environments and datasets, ensure the reproducibility of our key results. Fig. 7 illustrates some example tasks from these three benchmarks.
+[#S4.SS1.p2]
+[#S4.I1]
+[#S4.I1.i1] •
+[#S4.I1.i1.p1]
+[#S4.I1.i1.p1.1] [#S4.I1.i1.p1.1.1] RoboCasa Kitchen (24 tasks, RoboCasa)
+[#S4.I1.i1.p2]
+[#S4.I1.i1.p2.1] RoboCasa (Nasiriany et al., 2024) features a collection of tasks in simulated kitchen environments. We focus on 24 “atomic” tasks that involve foundational sensorimotor skills such as pick-and-place, door opening and closing, pressing buttons, turning faucets, and more. For each task, we use the publicly available dataset of 3000 demonstrations featuring the Franka Emika Panda arm, all generated with MimicGen (Mandlekar et al., 2023).
+The observation space includes three RGB images captured from cameras positioned on the left, right, and at the wrist. The state representation comprises the position and rotation of both the end-effector and the robot base, as well as the gripper’s state. The action space is defined by the relative position and rotation of the end-effector along with the gripper state.
+We follow the same training and evaluation protocol outlined by Nasiriany et al. (2024).
+[#S4.I1.i2] •
+[#S4.I1.i2.p1]
+[#S4.I1.i2.p1.1] [#S4.I1.i2.p1.1.1] DexMimicGen Cross-Embodiment Suite (9 tasks, DexMG)
+[#S4.I1.i2.p2]
+[#S4.I1.i2.p2.1] DexMimicGen (Jiang et al., 2024) includes an array of nine bimanual dexterous manipulation tasks requiring precise two-arm coordination. Together, these tasks cover three bi-manual robot embodiments: (1) [#S4.I1.i2.p2.1.1] Bimanual Panda Arms with Parallel-Jaw Grippers: tasks include threading, piece assembly, and transport. The state/action space consists of the end-effector position and rotation of both arms, as well as the gripper states; (2) [#S4.I1.i2.p2.1.2] Bimanual Panda Arms with Dexterous Hands: tasks include box cleanup, drawer cleanup, and tray lifting. The state/action space consists of the end-effector position and rotation of both arms and hands; (3) [#S4.I1.i2.p2.1.3] GR-1 Humanoid with Dexterous Hands: tasks include pouring, coffee preparation, and can sorting. The state/action space consists of the joint position and rotation of both arms and hands, along with the waist and neck.
+We generate 1000 demonstrations for each task using the DexMimicGen data generation system and evaluate the model’s ability to generalize to novel object configurations.
+[#S4.I1.i3] •
+[#S4.I1.i3.p1]
+[#S4.I1.i3.p1.1] [#S4.I1.i3.p1.1.1] GR-1 Tabletop Tasks (24 tasks, GR-1)
+[#S4.I1.i3.p2]
+[#S4.I1.i3.p2.1] This dataset serves as a digital counterpart to real-world humanoid datasets, enabling systematic evaluations that inform the performance of real-robot deployment. This benchmark focuses on dexterous hand control using the GR-1 humanoid robot equipped with Fourier dexterous hands. Compared to DexMG, this benchmark features a significantly larger variety of objects with diverse placements. We model a total of 18 rearrangement tasks, which have a similar structure to the pre-training tasks outlined in
+Sec. 3.2, [#S4.I1.i3.p2.1.1] \ie, rearranging objects from a source to a target receptacle. Each task involves a unique combination of receptacles, and these combinations are unseen in our pre-training data.
+Like the pre-training tasks, most tasks involve distractor objects and receptacles that require the model to pay attention to the task language.
+We additionally feature six tasks that involve placing objects into articulated objects ( [#S4.I1.i3.p2.1.2] \ie, cabinets, drawers, and microwaves) and closing them.
+The observation space includes one RGB image captured from an egocentric camera positioned on the robot’s head.
+The state/action space consists of the joint position and rotation of both arms and hands, along with the waist and neck.
+We optionally include in our datasets the end effector-based actions for controlling the arms, as the native action space for controlling the whole-body IK controller is end effector-based.
+We generate 1000 demonstrations for each task using the DexMimicGen system.
+[#S4.SS2]
+4.2 Real-World Benchmarks
+[#S4.F8] [#S4.F8.g1]
+[#S4.F8.6] Figure 8: [#S4.F8.7] Real-World Tasks. [#S4.F8.7.1] All images are captured from policy rollouts of GR00T-N1-2B and models post-trained from GR00T-N1-2B. (Top) Pre-training evaluations. [#S4.F8.7.2] We design two manipulation tasks to assess our pretrained models. The left image shows a left-to-right handover, while the right image illustrates the placement of novel objects into an unseen target container.
+(Bottom) Post-training evaluations. [#S4.F8.7.3] We introduce four distinct task categories. From top to bottom, we present examples of object-to-container pick-and-place, articulated object manipulation, industrial object manipulation, and multi-agent coordination.
+[#S4.SS2.p1]
+[#S4.SS2.p1.1] We introduce a diverse and meticulously designed set of tabletop manipulation tasks, aimed at evaluating and post-training our models on human demonstrations. These tasks emphasize critical aspects of real-world dexterity, including precise object manipulation, spatial reasoning, bimanual coordination, and multi-agent collaboration. We carefully categorize our benchmarks into four distinct types, ensuring a rigorous evaluation of model performance. We show some example tasks from our real-world benchmarks in Fig. 8.
+[#S4.SS2.p2]
+[#S4.I2]
+[#S4.I2.i1] •
+[#S4.I2.i1.p1]
+[#S4.I2.i1.p1.1] [#S4.I2.i1.p1.1.1] Object-to-Container Pick-and-Place (5 tasks, Pick-and-Place)
+[#S4.I2.i1.p2]
+[#S4.I2.i1.p2.1] This category evaluates the model’s ability to grasp objects and place them into designated containers, a fundamental capability for robotic manipulation. Tasks include transferring objects between common household containers such as trays, plates, cutting boards, baskets, placemats, bowls, and pans. These scenarios test fine motor skills, spatial alignment, and adaptability to different object geometries. To rigorously assess generalization, we evaluate models on both seen and unseen objects.
+[#S4.I2.i2] •
+[#S4.I2.i2.p1]
+[#S4.I2.i2.p1.1] [#S4.I2.i2.p1.1.1] Articulated Object Manipulation (3 tasks, Articulated)
+[#S4.I2.i2.p2]
+[#S4.I2.i2.p2.1] These tasks assess the model’s ability to manipulate articulated storage compartments. The model must grasp an object, place it into a storage unit such as a wooden chest, dark cabinet, or white drawer, and then close the compartment. These tasks introduce challenges in constrained motion control and precise placement within limited spaces. Generalization is tested with both seen and unseen objects.
+[#S4.I2.i3] •
+[#S4.I2.i3.p1]
+[#S4.I2.i3.p1.1] [#S4.I2.i3.p1.1.1] Industrial Object Manipulation (3 tasks, Industrial)
+[#S4.I2.i3.p2]
+[#S4.I2.i3.p2.1] We design this category for industrial scenarios, which involve three structured workflows and tool-based interactions: 1) [#S4.I2.i3.p2.1.1] Machinery Packing: Pick up various machinery parts and tools and place them into a designated yellow bin; 2) [#S4.I2.i3.p2.1.2] Mesh Cup Pouring: Grasp a mesh cup containing small industrial components ( [#S4.I2.i3.p2.1.3] \eg, screws and bolts) and pour its contents into a plastic bin; and 3) [#S4.I2.i3.p2.1.4] Cylinder Handover: Pick up a cylindrical object, transfer it from one hand to the other, and place it into a yellow bin.
+These tasks closely mirror real-world industrial applications, making them highly relevant benchmarks for assessing dexterity in structured environments.
+[#S4.I2.i4] •
+[#S4.I2.i4.p1]
+[#S4.I2.i4.p1.1] [#S4.I2.i4.p1.1.1] Multi-Agent Coordination (2 tasks, Coordination)
+[#S4.I2.i4.p2]
+[#S4.I2.i4.p2.1] Collaborative tasks require synchronization between multiple agents, emphasizing role coordination and adaptive decision-making:
+1) [#S4.I2.i4.p2.1.1] Coordination Part 1: Pick up a cylinder, place it into a mesh cup, and hand it over to another robot; and 2) [#S4.I2.i4.p2.1.2] Coordination Part 2: The receiving robot places the cylinder into one yellow bin, then pours the remaining contents of the mesh cup into another yellow bin.
+[#S4.SS2.p3]
+[#S4.SS2.p3.1] These carefully designed benchmarks introduce structured, goal-driven interactions to test whether a model can seamlessly adapt to real-world applications. To build a high-quality post-training dataset, we let human operators collect task-specific data for durations ranging from 15 minutes to 3 hours, depending on task complexity. We then filter out low-quality trajectories to maintain data integrity. By incorporating a diverse set of task requirements — spanning precise single-agent manipulation to complex multi-agent coordination—our benchmark provides a rigorous testbed for evaluating generalization, adaptability, and fine-tuned control in human-like manipulation tasks.
+[#S4.SS3]
+4.3 Experiment Setup
+[#S4.SS3.p1]
+[#S4.SS3.p1.1] Our evaluation experiment consists of post-training GR00T N1 and baseline models as described in Sec. 2.3 in a data-limited setting and evaluating the policy success rate in our simulated and real benchmarks described in Sections 4.1 and 4.2, respectively.
+By default we use a global batch size of 1024 and train for 60k steps.
+For the DexMimicGen Cross-Embodiment Suite, where each embodiment contains relatively few tasks and the overall training data is limited, we used a smaller batch size of 128 for GR00T-N1-2B.
+[#S4.SS3.SSS0.Px1]
+Baselines
+[#S4.SS3.SSS0.Px1.p1]
+[#S4.SS3.SSS0.Px1.p1.1] To demonstrate the effectiveness of diverse pretraining of GR00T N1, we compare with two established baselines, BC-Transformer (Mandlekar et al., 2021) and Diffusion Policy (Chi et al., 2024a). We describe the details of these two methods below:
+[#S4.I3]
+[#S4.I3.i1] •
+[#S4.I3.i1.p1]
+[#S4.I3.i1.p1.1] [#S4.I3.i1.p1.1.1] BC-Transformer is a Transformer-based behavior cloning policy in RoboMimic (Mandlekar et al., 2021). It consists of a Transformer architecture for processing observation sequences and a Gaussian Mixture Model (GMM) module for modeling action distributions. The policy takes 10 observation frames as input and predicts the next 10 actions.
+[#S4.I3.i2] •
+[#S4.I3.i2.p1]
+[#S4.I3.i2.p1.1] [#S4.I3.i2.p1.1.1] Diffusion Policy (Chi et al., 2024a) models action distributions through a diffusion-based generative process. It employs a U-Net architecture that progressively removes noise from random samples to generate precise robot actions conditioned on observation sequences. It takes a single frame of observations as input and produces 16 action steps in one inference pass.
+[#S4.SS3.SSS0.Px2]
+Evaluation Protocol
+[#S4.SS3.SSS0.Px2.p1]
+[#S4.SS3.SSS0.Px2.p1.1] For simulated benchmark evaluation, we report the average success rate over 100 trials, taking the maximum score of the last 5 checkpoints, where checkpoints are written every 500 training steps, following the protocol from RoboCasa (Nasiriany et al., 2024).
+[#S4.SS3.SSS0.Px2.p2]
+[#S4.SS3.SSS0.Px2.p2.1] For real robot evaluation, we employ a partial scoring system to capture model behavior across different execution phases, ensuring a fine-grained assessment of performance. We report the average success rate over 10 trials for each task, except for the task of [#S4.SS3.SSS0.Px2.p2.1.1] Pack Machinery; for this task, we report the success rate of how many objects out of the 5 machinery parts and tools are placed into the bin, given a time-limit of 30 seconds. We conduct only 5 trials due to the time constraint. Additionally, to assess the model’s efficiency in a low-data regime, we subsample 10% of the full dataset for each task and evaluate whether the model can still learn effective behaviors.
+[#S4.SS4]
+4.4 Quantitative Results
+[#S4.SS4.SSS0.Px1]
+Pre-training Evaluations
+[#S4.SS4.SSS0.Px1.p1]
+[#S4.SS4.SSS0.Px1.p1.1] To evaluate the generalization capabilities of our pretrained checkpoint, we design two tasks on the real GR-1 humanoid robot (Fig. 8). In the first task, the robot is instructed to place an object on the bottom shelf. However, the object is intentionally positioned to the left of its left hand, requiring a coordinated bimanual strategy. The robot must first grasp the object with its left hand, transfer it within reach of the right hand, and then complete the placement onto the shelf.
+In the second task, the robot is instructed to place a novel object into an unseen target container. For each task, we evaluate the pretrained GR00T-N1-2B model using five different objects, with three trials per object. GR00T-N1-2B achieves a success rate of 76.6% (11.5/15) in the first coordinated setting and 73.3% (11/15) in the second setting involving novel object manipulation. 0.5 stands for grasping the object correctly but failing to place the object into the container. The high performance under these two evaluation settings illustrates the effectiveness of large-scale pre-training.
+[#S4.SS4.SSS0.Px2]
+Post-training Evaluations
+[#S4.SS4.SSS0.Px2.p1]
+[#S4.SS4.SSS0.Px2.p1.1] In simulation, we compare the quantitative results for our post-trained GR00T N1 models against from-scratch baselines in the three simulation benchmarks (Table 2).
+For each benchmark, we post-train using 30, 100, and 300 demonstrations per task (24 tasks for RoboCasa, 9 tasks for DexMG, and 24 tasks for GR-1).
+We observe that GR00T N1 consistently outperforms the baseline models across benchmark tasks and dataset sizes.
+In Appendix B, we include the full results and a bar plot (Fig. 10) for comparison.
+[#S4.T2]
+[#S4.T2.4] Table 2: [#S4.T2.5] Simulation Results. [#S4.T2.5.1] Average success rate across three simulation benchmarks, using 100 demonstrations per task. GR00T N1 outperforms both baselines, especially on the GR-1 task where it outperforms by more than 17 %.
+[#S4.T2.6]
+[#S4.T2.6.1]
+[#S4.T2.6.1.1]
+[#S4.T2.6.1.2] RoboCasa
+[#S4.T2.6.1.3] DexMG
+[#S4.T2.6.1.4] GR-1
+[#S4.T2.6.1.5] Average
+[#S4.T2.6.2]
+[#S4.T2.6.2.1] BC Transformer
+[#S4.T2.6.2.2] 26.3%
+[#S4.T2.6.2.3] 53.9%
+[#S4.T2.6.2.4] 16.1%
+[#S4.T2.6.2.5] 26.4%
+[#S4.T2.6.3]
+[#S4.T2.6.3.1] Diffusion Policy
+[#S4.T2.6.3.2] 25.6%
+[#S4.T2.6.3.3] 56.1%
+[#S4.T2.6.3.4] 32.7%
+[#S4.T2.6.3.5] 33.4%
+[#S4.T2.6.4]
+[#S4.T2.6.4.1] GR00T-N1-2B
+[#S4.T2.6.4.2] [#S4.T2.6.4.2.1] 32.1%
+[#S4.T2.6.4.3] [#S4.T2.6.4.3.1] 66.5%
+[#S4.T2.6.4.4] [#S4.T2.6.4.4.1] 50.0%
+[#S4.T2.6.4.5] [#S4.T2.6.4.5.1] 45.0%
+[#S4.SS4.SSS0.Px2.p2]
+[#S4.SS4.SSS0.Px2.p2.1] On the real robot, we compare GR00T-N1-2B against Diffusion Policy, training on 10% of the human teleoperation dataset and the full dataset (Table 3 and Fig. 9).
+GR00T-N1-2B, achieves a significantly higher success rate across all tasks, outperforming Diffusion Policy by 32.4% in the 10% Data setting and by 30.4% in the Full Data setting. Notably, GR00T-N1-2B trained on just 10% of the data performs only 3.8% lower than Diffusion Policy trained on the full dataset, highlighting its data efficiency.
+[#S4.T3]
+[#S4.T3.4] Table 3: [#S4.T3.5] Real-World Results. [#S4.T3.5.1] Average policy success rate on real-world tasks with the GR-1 humanoid robots. GR00T N1 beats the diffusion policy baseline and shows strong results even with very little data.
+[#S4.T3.6]
+[#S4.T3.6.1]
+[#S4.T3.6.1.1]
+[#S4.T3.6.1.2] Pick-and-Place
+[#S4.T3.6.1.3] Articulated
+[#S4.T3.6.1.4] Industrial
+[#S4.T3.6.1.5] Coordination
+[#S4.T3.6.1.6] Average
+[#S4.T3.6.2]
+[#S4.T3.6.2.1] Diffusion Policy (10% Data)
+[#S4.T3.6.2.2] 3.0%
+[#S4.T3.6.2.3] 14.3%
+[#S4.T3.6.2.4] 6.7%
+[#S4.T3.6.2.5] 27.5%
+[#S4.T3.6.2.6] 10.2%
+[#S4.T3.6.3]
+[#S4.T3.6.3.1] Diffusion Policy (Full Data)
+[#S4.T3.6.3.2] 36.0%
+[#S4.T3.6.3.3] 38.6%
+[#S4.T3.6.3.4] 61.0%
+[#S4.T3.6.3.5] 62.5%
+[#S4.T3.6.3.6] 46.4%
+[#S4.T3.6.4]
+[#S4.T3.6.4.1] GR00T-N1-2B (10% Data)
+[#S4.T3.6.4.2] 35.0%
+[#S4.T3.6.4.3] 62.0%
+[#S4.T3.6.4.4] 31.0%
+[#S4.T3.6.4.5] 50.0%
+[#S4.T3.6.4.6] 42.6%
+[#S4.T3.6.5]
+[#S4.T3.6.5.1] GR00T-N1-2B (Full Data)
+[#S4.T3.6.5.2] [#S4.T3.6.5.2.1] 82.0%
+[#S4.T3.6.5.3] [#S4.T3.6.5.3.1] 70.9%
+[#S4.T3.6.5.4] [#S4.T3.6.5.4.1] 70.0%
+[#S4.T3.6.5.5] [#S4.T3.6.5.5.1] 82.5%
+[#S4.T3.6.5.6] [#S4.T3.6.5.6.1] 76.8%
+[#S4.SS4.SSS0.Px3]
+Post-training w/ Neural Trajectories Evaluations
+[#S4.F9] [#S4.F9.g1]
+[#S4.F9.4] Figure 9: [#S4.F9.5] Neural Trajectories Ablations [#S4.F9.5.1] . In the RoboCasa simulation, we show using neural trajectories for post-training across 3 data regimes (30, 100, and 300 per task). In the real world, we show results only on the low-data regime (10% of the demonstrations). We co-train with 3k neural trajectories per task for RoboCasa and 100 neural trajectories per task for real-world tasks. We explore using both latent and IDM-labeled actions in simulation and only IDM-labeled actions for the real robot.
+[#S4.SS4.SSS0.Px3.p1]
+[#S4.SS4.SSS0.Px3.p1.1] We show some preliminary results of using neural trajectories during post-training for the RoboCasa benchmark for simulation evaluation and Pick-and-Place (seen) and Industrial for the real-world evaluation in Figure 9. We observe that GR00T N1 co-trained with neural trajectories consistently results in substantial gains compared to GR00T N1 only trained on real-world trajectories: +4.2%, +8.8%, +6.8% on average for 30, 100, and 300 data-regimes, respectively, for RoboCasa and +5.8% on average across the 8 tasks with the GR-1 Humanoid.
+[#S4.SS4.SSS0.Px3.p2]
+[#S4.SS4.SSS0.Px3.p2.1] When comparing LAPA and IDM labels in RoboCasa, an interesting pattern emerges: LAPA slightly outperforms IDM in the relatively low-data regime (30), but as more data becomes available (100 and 300), the performance gap between LAPA and IDM widens. This trend is intuitive— with more data for IDM training, the pseudo-action labels become increasingly aligned with real-world actions, leading to stronger positive transfer. Since GR-1 Humanoid is a relatively “high-data” regime for us, we only utilize IDM actions for neural trajectory co-training in the real world.
+[#S4.SS5]
+4.5 Qualitative Results
+[#S4.SS5.p1]
+[#S4.SS5.p1.1] How does this behavior look qualitatively? To answer this, we consider the task “Turn Sink Spout” in RoboCasa — in the 100 sample regime, the DP baseline gets 11.8% success rate whereas GR00T N1 gets 42.2%. The DP baseline often gets confused about the semantics of the tasks.
+From Table 2, we see that GR00T N1 has strong results in the low-data regime. It is natural, in the limit of large fine-tuning datasets, that the effect of pre-training dwindles.
+[#S4.SS5.p2]
+[#S4.SS5.p2.1] When prompting the pre-trained GR00T N1 model with the task instruction “Pick up the red apple and place it in the basket,” one of the tasks in our post-training benchmark, we observe interesting behavioral patterns. In this scenario, we intentionally position the apple to the left of the humanoid hand. Despite seeing few similar tasks during pretraining and exhibiting jerkier motions, the pretrained checkpoint uses its left hand to grasp the apple, hands it over to the right hand, and then places it into the basket. We provide the visualization of this behavior in Fig. 11. In contrast, the post-trained checkpoint fails in this scenario. Since all post-training data exclusively involve the right hand without any inter-hand transfer, the post-trained policy loses the capability to perform this behavior.
+[#S4.SS5.p3]
+[#S4.SS5.p3.1] For post-trained GR00T N1, we observed that, compared to the baseline Diffusion Policy, its motion is generally much smoother, and its grasping accuracy is significantly higher.
+In contrast, the Diffusion Policy baseline suffers from immobility during the initial frames and frequently exhibits inaccurate grasping, resulting in a low success rate in our real-world benchmarks. We provide visualizations of two policy rollout examples in Fig. 12.
+[#S4.SS6]
+4.6 Limitations
+[#S4.SS6.p1]
+[#S4.SS6.p1.1] Currently, our GR00T N1 model focuses primarily on short-horizon tabletop manipulation tasks. In future work, we aim to extend its capabilities to tackle long-horizon loco-manipulation, which will require advancements in humanoid hardware, model architecture, and training corpora. We anticipate a stronger vision-language backbone will enhance the model’s spatial reasoning, language understanding, and adaptability. Our synthetic data generation techniques — leveraging video generation models and automated trajectory synthesis systems — have shown great promise. However, existing methods still face challenges in generating diverse and counterfactual data, while adhering to the laws of physics, limiting the quality and variability of synthetic datasets. We aim to enhance our synthetic data generation techniques to further enrich our data pyramid for model training. Furthermore, we plan to explore novel model architectures and pre-training strategies to improve the robustness and generalization capabilities of our generalist robot models.
+[#S5]
+5 Related Work
+[#S5.p1]
+[#S5.p1.1] [#S5.p1.1.1] Foundation Models in Robotics.
+Developing and using foundation models (Bommasani et al., 2021) for robotics has been of great interest recently.
+One common approach is to leverage existing pre-trained foundation models as high-level black-box reasoning modules in conjunction with low-level robot-specific policies (Brohan et al., 2023c; Huang et al., ; Singh et al., 2023; Driess et al., 2023; Liang et al., 2023; Lin et al., 2023; Huang et al., 2023). This approach allows the robot to plan sequences of low-level skills or motions using the pre-trained foundation model. However, it assumes the availability of these low-level policies and a sufficient interface to connect them to the black-box foundation models.
+An alternative approach is to finetune pre-trained foundation models on robotics data to build Vision-Language-Action (VLA) models (Brohan et al., 2022a; Brohan et al., 2023a; Black et al., 2024; Kim et al., 2024; Zheng et al., 2025; Wen et al., 2024; Cheang et al., 2024; Li et al., 2023; Zhen et al., 2024; Huang et al., 2024; Ye et al., 2025; Yang et al., 2025a). Instead of enforcing a rigid hierarchy between high-level VLM planning and low-level control, these VLA models allow for end-to-end optimization toward the downstream deployment tasks. We take a similar approach to train GR00T N1 and use the Eagle-2 model (Li et al., 2025) as our base Vision Language Model (VLM). We fine-tune our VLM together with a flow-matching (Lipman et al., ; Liu et al., 2022a; Hu et al., 2024) action generation model with action chunking (Zhao et al., 2023). In contrast to prior VLA models (Black et al., 2024) that use a mixture-of-experts architecture to bridge the base VLM model with the action generation model, we use a simple cross-attention mechanism. This approach provides flexibility regarding the exact architecture of the VLM model and the action generation model we can use. Furthermore, we use embodiment-specific state and action projector modules, which support different robot embodiments, including latent (Ye et al., 2025) and IDM-based (Baker et al., 2022) actions. The use of these projectors is similar to those in Octo Model Team et al. (2024), though that work did not fine-tune the VLM models.
+[#S5.p2]
+[#S5.p2.1] [#S5.p2.1.1] Datasets for Robot Learning.
+A core challenge in robot learning is the scarcity of large-scale, diverse, and embodied datasets necessary to train generalist robots.
+One common approach is to use robot teleoperation (Zhang et al., 2018; Mandlekar et al., 2018; Mandlekar et al., 2019; Mandlekar et al., 2020; Wu et al., 2023b; Zhao et al., 2023; Aldaco et al., 2024; Fu et al., 2024; Iyer et al., ; Dass et al., 2024), where a human uses a device such as a smartphone or Virtual Reality (VR) controller, to control a robot to perform tasks of interest.
+The robot sensor streams and robot controls during operation are logged to a dataset, allowing for high-quality task demonstrations to be collected.
+Recently, this approach has been scaled by utilizing large teams of human operators and robot fleets over extended periods of time ( [#S5.p2.1.2] \eg, months), resulting in large-scale robot manipulation datasets with thousands of hours of demonstrations (Ebert et al., 2022; Brohan et al., 2022b; Brohan et al., 2023b; Lynch et al., 2023; O’Neill et al., 2024; AgiBot-World-Contributors et al., 2025; Black et al., 2024).
+However, collecting data this way requires extensive cost and human effort.
+Another line of work, instrumented human demonstrations, uses special hardware to capture robot-relevant observation and action data without explicitly teleoperating the target robot. For example, Chi et al. (2024b); Seo et al. (2025) use hand-held robot grippers, Fang et al. (2024) uses a robot-like exoskeleton, and Kareer et al. (2024) uses special glasses to capture human hand motions, which are retargeted to robot action data. These approaches tend to result in faster data collection, though they have a mismatch with the downstream robot compared to direct robot teleoperation.
+A separate line of work makes use of human video datasets (Grauman et al., 2024; Grauman et al., 2022; Goyal et al., 2017; Damen et al., 2018; Miech et al., 2019), which are plentiful and substantially easier to collect than on-robot data, as a source of training data for robots.
+Some works (Nair et al., 2022; Wu et al., 2023a; Karamcheti et al., 2023) use human video datasets to pre-train representations that are then used as a feature space for training policies on downstream robot datasets. Other works Bharadhwaj et al. (2024a); Bharadhwaj et al. (2024b); Ren et al. (2025a) try to jointly use human video data and robot data through intermediate representations for the motions in the video. Ye et al. (2025) shows that pretraining VLAs with [#S5.p2.1.3] latent actions only on human videos yields positive transfer to downstream robotic tasks.
+Rather than relying on a single type of training data, we developed techniques to effectively learn from a diverse assortment of real-world robot data, human video data, and synthetic data.
+[#S5.p3]
+[#S5.p3.1] [#S5.p3.1.1] Synthetic Data Generation in Robotics.
+Real-world robot data collection requires large amounts of time and considerable human cost. By contrast, data collection in simulation can be substantially more efficient and less painful, making it a compelling alternative.
+Recently, several works (Mandlekar et al., 2023; James et al., 2020; Dalal et al., 2023; Gu et al., 2023; Ha et al., 2023; Nasiriany et al., 2024; Jiang et al., 2024; Wang et al., 2024; Garrett et al., 2024; Yang et al., 2025b) have proposed automated data generation pipelines that can leverage simulation to produce thousands of task demonstrations with minimal human effort.
+This makes it easy to generate large-scale datasets; however, utilizing these datasets can be challenging due to the simulation-to-reality gap.
+[#S5.p4]
+[#S5.p4.1] Another promising avenue has been using neural generative models to augment existing sets of robot demonstrations (Mandi et al., 2022; Yu et al., 2023; Chen et al., 2023). However, previous work have been limited to utilizing in-painting or text-to-image diffusion models to augment the training data. In our work, we leverage the recent advancements in video generative models (Agarwal et al., 2025; Wan Team, 2025) to create entire neural trajectories, at a scale that has never been explored before: [#S5.p4.m1] ∼\sim300k neural trajectories which amounts to 827 hours of robot trajectories.
+[#S5.p5]
+[#S5.p5.1] In our model, we make use of large synthetic simulation datasets generated by MimicGen (Mandlekar et al., 2023) and DexMimicGen (Jiang et al., 2024), as well as neural-generated video datasets with state-of-the-art video generation models. Our way of co-training with synthetically generated and real-world data sets us from other large-scale VLA efforts.
+[#S6]
+6 Conclusions
+[#S6.p1]
+[#S6.p1.1] We have presented GR00T N1, an open foundation model for generalist humanoid robots. GR00T N1 features a dual-system model design, leverages heterogeneous training data, and supports multiple robot embodiments. We systematically evaluate it as a generalist policy across simulation benchmarks and on the real GR-1 humanoid robot. Our experiments demonstrate its strong generalization capabilities, enabling robots to learn diverse manipulation skills with high data efficiency. We hope that our open GR00T-N1-2B model, alongside its training datasets and simulation environments, will accelerate the community’s progress toward building and deploying generally capable humanoid robots in the wild.
+[#A1]
+Appendix A Contributors and Acknowledgments
+[#A1.SS1]
+A.1 Core Contributors
+[#A1.SS1.SSS0.Px1]
+Model Training
+[#A1.SS1.SSS0.Px1.p1]
+[#A1.SS1.SSS0.Px1.p1.1] Scott Reed, Ruijie Zheng, Guanzhi Wang, Johan Bjorck, Joel Jang, Ao Zhang, Jing Wang, Yinzhen Xu, Fengyuan Hu, Seonghyeon Ye, Zongyu Lin, Jiannan Xiang, Loic Magne, Zhiding Yu, Zhiqi Li
+[#A1.SS1.SSS0.Px2]
+Real-Robot and Teleoperation Infrastructure
+[#A1.SS1.SSS0.Px2.p1]
+[#A1.SS1.SSS0.Px2.p1.1] Zhenjia Xu, Zu Wang, Xinye (Dennis) Da, Fernando Castañeda, Yizhou Zhao
+[#A1.SS1.SSS0.Px3]
+Real-Robot Experiments
+[#A1.SS1.SSS0.Px3.p1]
+[#A1.SS1.SSS0.Px3.p1.1] Guanzhi Wang, Yinzhen Xu, Joel Jang, You Liang Tan, Ruijie Zheng
+[#A1.SS1.SSS0.Px4]
+Simulation Infrastructure
+[#A1.SS1.SSS0.Px4.p1]
+[#A1.SS1.SSS0.Px4.p1.1] Yu Fang, Nikita Cherniadev, Runyu Ding, Soroush Nasiriany, Zhenyu Jiang, Kevin Lin, Yuqi Xie
+[#A1.SS1.SSS0.Px5]
+Simulation Experiments
+[#A1.SS1.SSS0.Px5.p1]
+[#A1.SS1.SSS0.Px5.p1.1] Soroush Nasiriany, Zhenyu Jiang, Yuqi Xie, Kevin Lin, Yu Fang, Runyu Ding, Nikita Cherniadev, Johan Bjorck, Jing Wang
+[#A1.SS1.SSS0.Px6]
+Video Generation Models and Latent Actions
+[#A1.SS1.SSS0.Px6.p1]
+[#A1.SS1.SSS0.Px6.p1.1] Joel Jang, Seonghyeon Ye, Zongyu Lin, Jiannan Xiang
+[#A1.SS1.SSS0.Px7]
+Data Infrastructure and Curation
+[#A1.SS1.SSS0.Px7.p1]
+[#A1.SS1.SSS0.Px7.p1.1] Fengyuan Hu, Yinzhen Xu, Avnish Narayan, Loic Magne
+[#A1.SS1.SSS0.Px8]
+Compute Infrastructure and Open-Sourcing
+[#A1.SS1.SSS0.Px8.p1]
+[#A1.SS1.SSS0.Px8.p1.1] Avnish Narayan, You Liang Tan, Kaushil Kundalia, Fengyuan Hu
+[#A1.SS1.SSS0.Px9]
+Program Management and Operations
+[#A1.SS1.SSS0.Px9.p1]
+[#A1.SS1.SSS0.Px9.p1.1] Qi Wang, Lawrence Lao
+[#A1.SS1.SSS0.Px10]
+Product Lead
+[#A1.SS1.SSS0.Px10.p1]
+[#A1.SS1.SSS0.Px10.p1.1] Spencer Huang
+[#A1.SS1.SSS0.Px11]
+Research Leads
+[#A1.SS1.SSS0.Px11.p1]
+[#A1.SS1.SSS0.Px11.p1.1] Linxi “Jim” Fan, Yuke Zhu
+[#A1.SS2]
+A.2 Contributors
+[#A1.SS2.p1]
+[#A1.SS2.p1.1] Ajay Mandlekar, Jan Kautz, Dieter Fox, Edith Llontop, Hao Zhang, Guilin Liu
+[#A1.SS3]
+A.3 Acknowledgments
+[#A1.SS3.p1]
+[#A1.SS3.p1.1] We thank the 1X team, including Bernt Børnich, Eric Jang, Jorge Milburn, Darien Sleeper, Ralf Mayet, Mohi Khansari, Austin Wang, Vlad Lialin, George Joseph, and Turing Zelsnack for providing support with their humanoid robot hardware and technical support. We thank the Fourier team, including Jie Gu, Roger Cai, Yuxiang Gao, Victor Suen, Hengxin Chen, and Fangzhou Shi, for the hardware support and maintenance of the Fourier GR-1 robots.
+[#A1.SS3.p2]
+[#A1.SS3.p2.1] We thank Max Fu, Zhengyi Luo, Annika Brundyn, Aastha Jhunjhunwala, Jeff Smith, Yunze Man, Guo Chen, De-An Huang and Xin Dong for their technical discussion and assistance, and Marco Pavone, Soha Pouya, Shiwei Sheng, Di Zeng, Yan Chang, Chirag Majithia, John Welsh, Stephan Pleines, Joydeep Biswas for their feedback on our paper draft.
+[#A1.SS3.p3]
+[#A1.SS3.p3.1] We thank Erwin Coumans, Billy Okal, John Welsh, Pulkit Goyal, Stephan Pleines, Vishal Kulkarni, Chirag Majithia, Di Zeng, Yan Chang, Soha Pouya, Wei Liu, Rushane Hua, Benjamin Butin, Lionel Gulich, Lakshmi Ramesh, Peter Mcaughan, Piyush Medikeri for internal codebase review and testing.
+[#A1.SS3.p4]
+[#A1.SS3.p4.1] We thank Kyle Yumen, Jeremy Chimienti, Gianna Calderon, Isabel Zuluaga, Juan Zuluaga, Ivy Tam, Jazmin Sanchez, Jesse Yang, Leilee Naderi, Patrick Lee, Tri Cao, Jenna Diamond, Andrew Mathau, Marina Davila, and Sarah Stoddard for working with us on robot teleoperation data collection and annotation.
+[#A1.SS3.p5]
+[#A1.SS3.p5.1] We thank Andrew Tao, Padmavathy Subramanian, Bryan Catanzaro and Kari Briski for the support and guidance on commercial VLM training, and Yao Lu, Sean Cha, Zaid Pervaiz Bhat, Subhashree Radhakrishnan, Yilin Zhao, Paris Zhang, Ratnesh Kumar, Vidya Murali, Yao Xu, Osvald Nitski, Dmitry Chichkov, Qing Miao, Elena Lantz, and Jane Polak Scowcroft for their contributions to the commercial VLM data curation.
+[#A1.SS3.p6]
+[#A1.SS3.p6.1] We thank Arun Shamanna Lakshmi, Eric Colter, Ryan Li, Trasha Dewan, Ethan Yu, Xutong Ren, Fernando Luo, for the OSMO compute infrastructure support, Zhe Zhang for training infrastructure support, Alexis Bjorlin for compute resource support, Amit Goel, Amit, Sandra, Leela Karumbunathan for humanoid robot ecosystem support. We thank Ming-Yu Liu, Yen-Chen Lin, Jinwei Gu, Lyne Tchapmi, Qinsheng Zhang for Cosmos technical support, Madison Huang, Douglas Chang, Kalyan Vadrevu, Oyindamola Omotuyi for marketing support, Sangeeta Subramanian, Shri Sundaram, Vishal Kulkarni for Isaac product support, and Bill Dally and Jensen Huang for their leadership, vision, and guidance.
+[#A2]
+Appendix B Detailed Experiment Results
+[#A2.p1]
+[#A2.p1.1] Table 4 and Table 5 present a detailed per-task comparison of our GR00T-N1-2B and the Diffusion Policy baseline across our simulation benchmarks and real-world benchmarks, respectively. We train both models on datasets of varying sizes — 30, 100, and 300 demonstrations for simulation benchmarks, and 10% and full data for real-world benchmarks. As expected, performance improves steadily for both models with increasing dataset sizes. Meanwhile, our model consistently outperforms the baseline across all benchmarks and dataset sizes, indicating better generalization and sample efficiency.
+[#A2.F10] [#A2.F10.g1]
+[#A2.F10.3] Figure 10: [#A2.F10.4] Average policy success rate on simulated manipulation tasks with varying numbers of demonstrations.
+[#A2.T4]
+[#A2.T4.5] Table 4: [#A2.T4.6] Simulation Evaluation Results with Models Trained with Different Dataset Sizes.
+[#A2.T4.7]
+[#A2.T4.7.1]
+[#A2.T4.7.1.1] [#A2.T4.7.1.1.1] Task
+[#A2.T4.7.1.2] [#A2.T4.7.1.2.1] Diffusion Policy
+[#A2.T4.7.1.3] [#A2.T4.7.1.3.1] GR00T-N1-2B
+[#A2.T4.7.2]
+[#A2.T4.7.2.1] [#A2.T4.7.2.1.1] 30 demos
+[#A2.T4.7.2.2] [#A2.T4.7.2.2.1] 100 demos
+[#A2.T4.7.2.3] [#A2.T4.7.2.3.1] 300 demos
+[#A2.T4.7.2.4] [#A2.T4.7.2.4.1] 30 demos
+[#A2.T4.7.2.5] [#A2.T4.7.2.5.1] 100 demos
+[#A2.T4.7.2.6] [#A2.T4.7.2.6.1] 300 demos
+[#A2.T4.7.3]
+[#A2.T4.7.3.1] [#A2.T4.7.3.1.1] RoboCasa Kitchen (24 tasks, PnP = Pick-and-Place)
+[#A2.T4.7.4]
+[#A2.T4.7.4.1] [#A2.T4.7.4.1.1] Close Double Door
+[#A2.T4.7.4.2] [#A2.T4.7.4.2.1] 1.7
+[#A2.T4.7.4.3] [#A2.T4.7.4.3.1] 26.5
+[#A2.T4.7.4.4] [#A2.T4.7.4.4.1] 60.8
+[#A2.T4.7.4.5] [#A2.T4.7.4.5.1] 0.0
+[#A2.T4.7.4.6] [#A2.T4.7.4.6.1] 43.1
+[#A2.T4.7.4.7] [#A2.T4.7.4.7.1] 74.5
+[#A2.T4.7.5]
+[#A2.T4.7.5.1] [#A2.T4.7.5.1.1] Close Drawer
+[#A2.T4.7.5.2] [#A2.T4.7.5.2.1] 57.5
+[#A2.T4.7.5.3] [#A2.T4.7.5.3.1] 88.2
+[#A2.T4.7.5.4] [#A2.T4.7.5.4.1] 94.1
+[#A2.T4.7.5.5] [#A2.T4.7.5.5.1] 76.9
+[#A2.T4.7.5.6] [#A2.T4.7.5.6.1] 96.1
+[#A2.T4.7.5.7] [#A2.T4.7.5.7.1] 99.0
+[#A2.T4.7.6]
+[#A2.T4.7.6.1] [#A2.T4.7.6.1.1] Close Single Door
+[#A2.T4.7.6.2] [#A2.T4.7.6.2.1] 21.7
+[#A2.T4.7.6.3] [#A2.T4.7.6.3.1] 46.1
+[#A2.T4.7.6.4] [#A2.T4.7.6.4.1] 72.6
+[#A2.T4.7.6.5] [#A2.T4.7.6.5.1] 49.1
+[#A2.T4.7.6.6] [#A2.T4.7.6.6.1] 67.7
+[#A2.T4.7.6.7] [#A2.T4.7.6.7.1] 83.3
+[#A2.T4.7.7]
+[#A2.T4.7.7.1] [#A2.T4.7.7.1.1] Coffee Press Button
+[#A2.T4.7.7.2] [#A2.T4.7.7.2.1] 32.5
+[#A2.T4.7.7.3] [#A2.T4.7.7.3.1] 46.1
+[#A2.T4.7.7.4] [#A2.T4.7.7.4.1] 91.2
+[#A2.T4.7.7.5] [#A2.T4.7.7.5.1] 27.8
+[#A2.T4.7.7.6] [#A2.T4.7.7.6.1] 56.9
+[#A2.T4.7.7.7] [#A2.T4.7.7.7.1] 85.3
+[#A2.T4.7.8]
+[#A2.T4.7.8.1] [#A2.T4.7.8.1.1] Coffee Serve Mug
+[#A2.T4.7.8.2] [#A2.T4.7.8.2.1] 6.7
+[#A2.T4.7.8.3] [#A2.T4.7.8.3.1] 28.4
+[#A2.T4.7.8.4] [#A2.T4.7.8.4.1] 66.7
+[#A2.T4.7.8.5] [#A2.T4.7.8.5.1] 3.7
+[#A2.T4.7.8.6] [#A2.T4.7.8.6.1] 34.3
+[#A2.T4.7.8.7] [#A2.T4.7.8.7.1] 72.6
+[#A2.T4.7.9]
+[#A2.T4.7.9.1] [#A2.T4.7.9.1.1] Coffee Setup Mug
+[#A2.T4.7.9.2] [#A2.T4.7.9.2.1] 0.0
+[#A2.T4.7.9.3] [#A2.T4.7.9.3.1] 19.6
+[#A2.T4.7.9.4] [#A2.T4.7.9.4.1] 32.4
+[#A2.T4.7.9.5] [#A2.T4.7.9.5.1] 0.0
+[#A2.T4.7.9.6] [#A2.T4.7.9.6.1] 2.0
+[#A2.T4.7.9.7] [#A2.T4.7.9.7.1] 22.6
+[#A2.T4.7.10]
+[#A2.T4.7.10.1] [#A2.T4.7.10.1.1] Open Double Door
+[#A2.T4.7.10.2] [#A2.T4.7.10.2.1] 0.0
+[#A2.T4.7.10.3] [#A2.T4.7.10.3.1] 9.8
+[#A2.T4.7.10.4] [#A2.T4.7.10.4.1] 18.6
+[#A2.T4.7.10.5] [#A2.T4.7.10.5.1] 0.0
+[#A2.T4.7.10.6] [#A2.T4.7.10.6.1] 12.8
+[#A2.T4.7.10.7] [#A2.T4.7.10.7.1] 14.7
+[#A2.T4.7.11]
+[#A2.T4.7.11.1] [#A2.T4.7.11.1.1] Open Drawer
+[#A2.T4.7.11.2] [#A2.T4.7.11.2.1] 15.8
+[#A2.T4.7.11.3] [#A2.T4.7.11.3.1] 42.2
+[#A2.T4.7.11.4] [#A2.T4.7.11.4.1] 61.8
+[#A2.T4.7.11.5] [#A2.T4.7.11.5.1] 9.3
+[#A2.T4.7.11.6] [#A2.T4.7.11.6.1] 42.2
+[#A2.T4.7.11.7] [#A2.T4.7.11.7.1] 79.4
+[#A2.T4.7.12]
+[#A2.T4.7.12.1] [#A2.T4.7.12.1.1] Open Single Door
+[#A2.T4.7.12.2] [#A2.T4.7.12.2.1] 36.7
+[#A2.T4.7.12.3] [#A2.T4.7.12.3.1] 42.2
+[#A2.T4.7.12.4] [#A2.T4.7.12.4.1] 57.8
+[#A2.T4.7.12.5] [#A2.T4.7.12.5.1] 20.4
+[#A2.T4.7.12.6] [#A2.T4.7.12.6.1] 54.9
+[#A2.T4.7.12.7] [#A2.T4.7.12.7.1] 58.8
+[#A2.T4.7.13]
+[#A2.T4.7.13.1] [#A2.T4.7.13.1.1] PnP from Cab to Counter
+[#A2.T4.7.13.2] [#A2.T4.7.13.2.1] 2.5
+[#A2.T4.7.13.3] [#A2.T4.7.13.3.1] 4.9
+[#A2.T4.7.13.4] [#A2.T4.7.13.4.1] 9.8
+[#A2.T4.7.13.5] [#A2.T4.7.13.5.1] 0.9
+[#A2.T4.7.13.6] [#A2.T4.7.13.6.1] 3.9
+[#A2.T4.7.13.7] [#A2.T4.7.13.7.1] 19.6
+[#A2.T4.7.14]
+[#A2.T4.7.14.1] [#A2.T4.7.14.1.1] PnP from Counter to Cab
+[#A2.T4.7.14.2] [#A2.T4.7.14.2.1] 0.0
+[#A2.T4.7.14.3] [#A2.T4.7.14.3.1] 2.9
+[#A2.T4.7.14.4] [#A2.T4.7.14.4.1] 10.8
+[#A2.T4.7.14.5] [#A2.T4.7.14.5.1] 1.9
+[#A2.T4.7.14.6] [#A2.T4.7.14.6.1] 6.9
+[#A2.T4.7.14.7] [#A2.T4.7.14.7.1] 36.3
+[#A2.T4.7.15]
+[#A2.T4.7.15.1] [#A2.T4.7.15.1.1] PnP from Counter to Microwave
+[#A2.T4.7.15.2] [#A2.T4.7.15.2.1] 0.0
+[#A2.T4.7.15.3] [#A2.T4.7.15.3.1] 2.0
+[#A2.T4.7.15.4] [#A2.T4.7.15.4.1] 8.8
+[#A2.T4.7.15.5] [#A2.T4.7.15.5.1] 0.0
+[#A2.T4.7.15.6] [#A2.T4.7.15.6.1] 0.0
+[#A2.T4.7.15.7] [#A2.T4.7.15.7.1] 12.8
+[#A2.T4.7.16]
+[#A2.T4.7.16.1] [#A2.T4.7.16.1.1] PnP from Counter to Sink
+[#A2.T4.7.16.2] [#A2.T4.7.16.2.1] 0.0
+[#A2.T4.7.16.3] [#A2.T4.7.16.3.1] 0.0
+[#A2.T4.7.16.4] [#A2.T4.7.16.4.1] 13.7
+[#A2.T4.7.16.5] [#A2.T4.7.16.5.1] 0.0
+[#A2.T4.7.16.6] [#A2.T4.7.16.6.1] 1.0
+[#A2.T4.7.16.7] [#A2.T4.7.16.7.1] 9.8
+[#A2.T4.7.17]
+[#A2.T4.7.17.1] [#A2.T4.7.17.1.1] PnP from Counter to Stove
+[#A2.T4.7.17.2] [#A2.T4.7.17.2.1] 0.0
+[#A2.T4.7.17.3] [#A2.T4.7.17.3.1] 1.0
+[#A2.T4.7.17.4] [#A2.T4.7.17.4.1] 17.7
+[#A2.T4.7.17.5] [#A2.T4.7.17.5.1] 0.0
+[#A2.T4.7.17.6] [#A2.T4.7.17.6.1] 0.0
+[#A2.T4.7.17.7] [#A2.T4.7.17.7.1] 23.5
+[#A2.T4.7.18]
+[#A2.T4.7.18.1] [#A2.T4.7.18.1.1] PnP from Microwave to Counter
+[#A2.T4.7.18.2] [#A2.T4.7.18.2.1] 0.0
+[#A2.T4.7.18.3] [#A2.T4.7.18.3.1] 2.0
+[#A2.T4.7.18.4] [#A2.T4.7.18.4.1] 11.8
+[#A2.T4.7.18.5] [#A2.T4.7.18.5.1] 0.0
+[#A2.T4.7.18.6] [#A2.T4.7.18.6.1] 0.0
+[#A2.T4.7.18.7] [#A2.T4.7.18.7.1] 15.7
+[#A2.T4.7.19]
+[#A2.T4.7.19.1] [#A2.T4.7.19.1.1] PnP from Sink to Counter
+[#A2.T4.7.19.2] [#A2.T4.7.19.2.1] 4.2
+[#A2.T4.7.19.3] [#A2.T4.7.19.3.1] 8.8
+[#A2.T4.7.19.4] [#A2.T4.7.19.4.1] 42.2
+[#A2.T4.7.19.5] [#A2.T4.7.19.5.1] 0.0
+[#A2.T4.7.19.6] [#A2.T4.7.19.6.1] 5.9
+[#A2.T4.7.19.7] [#A2.T4.7.19.7.1] 33.3
+[#A2.T4.7.20]
+[#A2.T4.7.20.1] [#A2.T4.7.20.1.1] PnP from Stove to Counter
+[#A2.T4.7.20.2] [#A2.T4.7.20.2.1] 1.7
+[#A2.T4.7.20.3] [#A2.T4.7.20.3.1] 2.9
+[#A2.T4.7.20.4] [#A2.T4.7.20.4.1] 23.5
+[#A2.T4.7.20.5] [#A2.T4.7.20.5.1] 0.0
+[#A2.T4.7.20.6] [#A2.T4.7.20.6.1] 0.0
+[#A2.T4.7.20.7] [#A2.T4.7.20.7.1] 29.4
+[#A2.T4.7.21]
+[#A2.T4.7.21.1] [#A2.T4.7.21.1.1] Turn Off Microwave
+[#A2.T4.7.21.2] [#A2.T4.7.21.2.1] 63.3
+[#A2.T4.7.21.3] [#A2.T4.7.21.3.1] 53.9
+[#A2.T4.7.21.4] [#A2.T4.7.21.4.1] 52.0
+[#A2.T4.7.21.5] [#A2.T4.7.21.5.1] 47.2
+[#A2.T4.7.21.6] [#A2.T4.7.21.6.1] 57.8
+[#A2.T4.7.21.7] [#A2.T4.7.21.7.1] 70.6
+[#A2.T4.7.22]
+[#A2.T4.7.22.1] [#A2.T4.7.22.1.1] Turn Off Sink Faucet
+[#A2.T4.7.22.2] [#A2.T4.7.22.2.1] 21.7
+[#A2.T4.7.22.3] [#A2.T4.7.22.3.1] 63.7
+[#A2.T4.7.22.4] [#A2.T4.7.22.4.1] 72.6
+[#A2.T4.7.22.5] [#A2.T4.7.22.5.1] 49.1
+[#A2.T4.7.22.6] [#A2.T4.7.22.6.1] 67.7
+[#A2.T4.7.22.7] [#A2.T4.7.22.7.1] 72.6
+[#A2.T4.7.23]
+[#A2.T4.7.23.1] [#A2.T4.7.23.1.1] Turn Off Stove
+[#A2.T4.7.23.2] [#A2.T4.7.23.2.1] 5.0
+[#A2.T4.7.23.3] [#A2.T4.7.23.3.1] 10.8
+[#A2.T4.7.23.4] [#A2.T4.7.23.4.1] 19.6
+[#A2.T4.7.23.5] [#A2.T4.7.23.5.1] 4.6
+[#A2.T4.7.23.6] [#A2.T4.7.23.6.1] 15.7
+[#A2.T4.7.23.7] [#A2.T4.7.23.7.1] 26.5
+[#A2.T4.7.24]
+[#A2.T4.7.24.1] [#A2.T4.7.24.1.1] Turn On Microwave
+[#A2.T4.7.24.2] [#A2.T4.7.24.2.1] 30.0
+[#A2.T4.7.24.3] [#A2.T4.7.24.3.1] 51.0
+[#A2.T4.7.24.4] [#A2.T4.7.24.4.1] 75.5
+[#A2.T4.7.24.5] [#A2.T4.7.24.5.1] 55.6
+[#A2.T4.7.24.6] [#A2.T4.7.24.6.1] 73.5
+[#A2.T4.7.24.7] [#A2.T4.7.24.7.1] 78.4
+[#A2.T4.7.25]
+[#A2.T4.7.25.1] [#A2.T4.7.25.1.1] Turn On Sink Faucet
+[#A2.T4.7.25.2] [#A2.T4.7.25.2.1] 31.7
+[#A2.T4.7.25.3] [#A2.T4.7.25.3.1] 27.5
+[#A2.T4.7.25.4] [#A2.T4.7.25.4.1] 63.7
+[#A2.T4.7.25.5] [#A2.T4.7.25.5.1] 33.3
+[#A2.T4.7.25.6] [#A2.T4.7.25.6.1] 59.8
+[#A2.T4.7.25.7] [#A2.T4.7.25.7.1] 62.8
+[#A2.T4.7.26]
+[#A2.T4.7.26.1] [#A2.T4.7.26.1.1] Turn On Stove
+[#A2.T4.7.26.2] [#A2.T4.7.26.2.1] 12.5
+[#A2.T4.7.26.3] [#A2.T4.7.26.3.1] 22.6
+[#A2.T4.7.26.4] [#A2.T4.7.26.4.1] 36.3
+[#A2.T4.7.26.5] [#A2.T4.7.26.5.1] 14.8
+[#A2.T4.7.26.6] [#A2.T4.7.26.6.1] 25.5
+[#A2.T4.7.26.7] [#A2.T4.7.26.7.1] 55.9
+[#A2.T4.7.27]
+[#A2.T4.7.27.1] [#A2.T4.7.27.1.1] Turn Sink Spout
+[#A2.T4.7.27.2] [#A2.T4.7.27.2.1] 8.3
+[#A2.T4.7.27.3] [#A2.T4.7.27.3.1] 11.8
+[#A2.T4.7.27.4] [#A2.T4.7.27.4.1] 23.5
+[#A2.T4.7.27.5] [#A2.T4.7.27.5.1] 24.1
+[#A2.T4.7.27.6] [#A2.T4.7.27.6.1] 42.2
+[#A2.T4.7.27.7] [#A2.T4.7.27.7.1] 52.9
+[#A2.T4.7.28]
+[#A2.T4.7.28.1] [#A2.T4.7.28.1.1] RoboCasa Average
+[#A2.T4.7.28.2] [#A2.T4.7.28.2.1] 14.7
+[#A2.T4.7.28.3] [#A2.T4.7.28.3.1] 25.6
+[#A2.T4.7.28.4] [#A2.T4.7.28.4.1] 43.2
+[#A2.T4.7.28.5] [#A2.T4.7.28.5.1] 17.4
+[#A2.T4.7.28.6] [#A2.T4.7.28.6.1] 32.1
+[#A2.T4.7.28.7] [#A2.T4.7.28.7.1] 49.6
+[#A2.T4.7.29]
+[#A2.T4.7.29.1] [#A2.T4.7.29.1.1] DexMimicGen Cross-Embodiment Suite (9 tasks)
+[#A2.T4.7.30]
+[#A2.T4.7.30.1] [#A2.T4.7.30.1.1] Can Sort
+[#A2.T4.7.30.2] [#A2.T4.7.30.2.1] 82.8
+[#A2.T4.7.30.3] [#A2.T4.7.30.3.1] 93.1
+[#A2.T4.7.30.4] [#A2.T4.7.30.4.1] 99.4
+[#A2.T4.7.30.5] [#A2.T4.7.30.5.1] 94.8
+[#A2.T4.7.30.6] [#A2.T4.7.30.6.1] 98.0
+[#A2.T4.7.30.7] [#A2.T4.7.30.7.1] 98.0
+[#A2.T4.7.31]
+[#A2.T4.7.31.1] [#A2.T4.7.31.1.1] Coffee
+[#A2.T4.7.31.2] [#A2.T4.7.31.2.1] 35.5
+[#A2.T4.7.31.3] [#A2.T4.7.31.3.1] 68.1
+[#A2.T4.7.31.4] [#A2.T4.7.31.4.1] 79.7
+[#A2.T4.7.31.5] [#A2.T4.7.31.5.1] 44.9
+[#A2.T4.7.31.6] [#A2.T4.7.31.6.1] 79.4
+[#A2.T4.7.31.7] [#A2.T4.7.31.7.1] 73.5
+[#A2.T4.7.32]
+[#A2.T4.7.32.1] [#A2.T4.7.32.1.1] Pouring
+[#A2.T4.7.32.2] [#A2.T4.7.32.2.1] 37.0
+[#A2.T4.7.32.3] [#A2.T4.7.32.3.1] 62.3
+[#A2.T4.7.32.4] [#A2.T4.7.32.4.1] 68.8
+[#A2.T4.7.32.5] [#A2.T4.7.32.5.1] 54.4
+[#A2.T4.7.32.6] [#A2.T4.7.32.6.1] 71.6
+[#A2.T4.7.32.7] [#A2.T4.7.32.7.1] 87.3
+[#A2.T4.7.33]
+[#A2.T4.7.33.1] [#A2.T4.7.33.1.1] Threading
+[#A2.T4.7.33.2] [#A2.T4.7.33.2.1] 4.2
+[#A2.T4.7.33.3] [#A2.T4.7.33.3.1] 18.3
+[#A2.T4.7.33.4] [#A2.T4.7.33.4.1] 27.5
+[#A2.T4.7.33.5] [#A2.T4.7.33.5.1] 3.9
+[#A2.T4.7.33.6] [#A2.T4.7.33.6.1] 37.3
+[#A2.T4.7.33.7] [#A2.T4.7.33.7.1] 60.8
+[#A2.T4.7.34]
+[#A2.T4.7.34.1] [#A2.T4.7.34.1.1] Three Piece Assembly
+[#A2.T4.7.34.2] [#A2.T4.7.34.2.1] 10.0
+[#A2.T4.7.34.3] [#A2.T4.7.34.3.1] 32.5
+[#A2.T4.7.34.4] [#A2.T4.7.34.4.1] 63.3
+[#A2.T4.7.34.5] [#A2.T4.7.34.5.1] 10.8
+[#A2.T4.7.34.6] [#A2.T4.7.34.6.1] 43.1
+[#A2.T4.7.34.7] [#A2.T4.7.34.7.1] 69.6
+[#A2.T4.7.35]
+[#A2.T4.7.35.1] [#A2.T4.7.35.1.1] Transport
+[#A2.T4.7.35.2] [#A2.T4.7.35.2.1] 7.5
+[#A2.T4.7.35.3] [#A2.T4.7.35.3.1] 25.0
+[#A2.T4.7.35.4] [#A2.T4.7.35.4.1] 53.3
+[#A2.T4.7.35.5] [#A2.T4.7.35.5.1] 7.8
+[#A2.T4.7.35.6] [#A2.T4.7.35.6.1] 48.0
+[#A2.T4.7.35.7] [#A2.T4.7.35.7.1] 61.8
+[#A2.T4.7.36]
+[#A2.T4.7.36.1] [#A2.T4.7.36.1.1] Box Cleanup
+[#A2.T4.7.36.2] [#A2.T4.7.36.2.1] 30.0
+[#A2.T4.7.36.3] [#A2.T4.7.36.3.1] 80.8
+[#A2.T4.7.36.4] [#A2.T4.7.36.4.1] 97.5
+[#A2.T4.7.36.5] [#A2.T4.7.36.5.1] 33.3
+[#A2.T4.7.36.6] [#A2.T4.7.36.6.1] 29.4
+[#A2.T4.7.36.7] [#A2.T4.7.36.7.1] 95.1
+[#A2.T4.7.37]
+[#A2.T4.7.37.1] [#A2.T4.7.37.1.1] Drawer Cleanup
+[#A2.T4.7.37.2] [#A2.T4.7.37.2.1] 1.7
+[#A2.T4.7.37.3] [#A2.T4.7.37.3.1] 16.7
+[#A2.T4.7.37.4] [#A2.T4.7.37.4.1] 52.5
+[#A2.T4.7.37.5] [#A2.T4.7.37.5.1] 10.8
+[#A2.T4.7.37.6] [#A2.T4.7.37.6.1] 42.2
+[#A2.T4.7.37.7] [#A2.T4.7.37.7.1] 55.9
+[#A2.T4.7.38]
+[#A2.T4.7.38.1] [#A2.T4.7.38.1.1] Lift Tray
+[#A2.T4.7.38.2] [#A2.T4.7.38.2.1] 5.0
+[#A2.T4.7.38.3] [#A2.T4.7.38.3.1] 25.0
+[#A2.T4.7.38.4] [#A2.T4.7.38.4.1] 73.3
+[#A2.T4.7.38.5] [#A2.T4.7.38.5.1] 5.8
+[#A2.T4.7.38.6] [#A2.T4.7.38.6.1] 77.5
+[#A2.T4.7.38.7] [#A2.T4.7.38.7.1] 65.7
+[#A2.T4.7.39]
+[#A2.T4.7.39.1] [#A2.T4.7.39.1.1] DexMG Average
+[#A2.T4.7.39.2] [#A2.T4.7.39.2.1] 23.7
+[#A2.T4.7.39.3] [#A2.T4.7.39.3.1] 46.9
+[#A2.T4.7.39.4] [#A2.T4.7.39.4.1] 68.4
+[#A2.T4.7.39.5] [#A2.T4.7.39.5.1] 29.6
+[#A2.T4.7.39.6] [#A2.T4.7.39.6.1] 58.5
+[#A2.T4.7.39.7] [#A2.T4.7.39.7.1] 74.2
+[#A2.T4.7.40]
+[#A2.T4.7.40.1] [#A2.T4.7.40.1.1] GR-1 Tabletop (24 Tasks)
+[#A2.T4.7.41]
+[#A2.T4.7.41.1] [#A2.T4.7.41.1.1] Cutting Board to Pot
+[#A2.T4.7.41.2] [#A2.T4.7.41.2.1] 22.6
+[#A2.T4.7.41.3] [#A2.T4.7.41.3.1] 37.3
+[#A2.T4.7.41.4] [#A2.T4.7.41.4.1] 48.0
+[#A2.T4.7.41.5] [#A2.T4.7.41.5.1] 58.8
+[#A2.T4.7.41.6] [#A2.T4.7.41.6.1] 57.8
+[#A2.T4.7.41.7] [#A2.T4.7.41.7.1] 57.8
+[#A2.T4.7.42]
+[#A2.T4.7.42.1] [#A2.T4.7.42.1.1] Cutting Board to Basket
+[#A2.T4.7.42.2] [#A2.T4.7.42.2.1] 19.6
+[#A2.T4.7.42.3] [#A2.T4.7.42.3.1] 42.2
+[#A2.T4.7.42.4] [#A2.T4.7.42.4.1] 29.4
+[#A2.T4.7.42.5] [#A2.T4.7.42.5.1] 43.1
+[#A2.T4.7.42.6] [#A2.T4.7.42.6.1] 61.8
+[#A2.T4.7.42.7] [#A2.T4.7.42.7.1] 56.9
+[#A2.T4.7.43]
+[#A2.T4.7.43.1] [#A2.T4.7.43.1.1] Cutting Board to Tiered Basket
+[#A2.T4.7.43.2] [#A2.T4.7.43.2.1] 13.7
+[#A2.T4.7.43.3] [#A2.T4.7.43.3.1] 13.7
+[#A2.T4.7.43.4] [#A2.T4.7.43.4.1] 18.6
+[#A2.T4.7.43.5] [#A2.T4.7.43.5.1] 13.7
+[#A2.T4.7.43.6] [#A2.T4.7.43.6.1] 23.5
+[#A2.T4.7.43.7] [#A2.T4.7.43.7.1] 34.3
+[#A2.T4.7.44]
+[#A2.T4.7.44.1] [#A2.T4.7.44.1.1] Cutting Board to Pan
+[#A2.T4.7.44.2] [#A2.T4.7.44.2.1] 28.4
+[#A2.T4.7.44.3] [#A2.T4.7.44.3.1] 48.0
+[#A2.T4.7.44.4] [#A2.T4.7.44.4.1] 57.8
+[#A2.T4.7.44.5] [#A2.T4.7.44.5.1] 67.7
+[#A2.T4.7.44.6] [#A2.T4.7.44.6.1] 65.7
+[#A2.T4.7.44.7] [#A2.T4.7.44.7.1] 68.6
+[#A2.T4.7.45]
+[#A2.T4.7.45.1] [#A2.T4.7.45.1.1] Cutting Board to Cardboard Box
+[#A2.T4.7.45.2] [#A2.T4.7.45.2.1] 11.8
+[#A2.T4.7.45.3] [#A2.T4.7.45.3.1] 15.7
+[#A2.T4.7.45.4] [#A2.T4.7.45.4.1] 22.6
+[#A2.T4.7.45.5] [#A2.T4.7.45.5.1] 31.4
+[#A2.T4.7.45.6] [#A2.T4.7.45.6.1] 30.4
+[#A2.T4.7.45.7] [#A2.T4.7.45.7.1] 33.3
+[#A2.T4.7.46]
+[#A2.T4.7.46.1] [#A2.T4.7.46.1.1] Placemat to Bowl
+[#A2.T4.7.46.2] [#A2.T4.7.46.2.1] 14.7
+[#A2.T4.7.46.3] [#A2.T4.7.46.3.1] 18.6
+[#A2.T4.7.46.4] [#A2.T4.7.46.4.1] 23.5
+[#A2.T4.7.46.5] [#A2.T4.7.46.5.1] 31.4
+[#A2.T4.7.46.6] [#A2.T4.7.46.6.1] 39.2
+[#A2.T4.7.46.7] [#A2.T4.7.46.7.1] 39.2
+[#A2.T4.7.47]
+[#A2.T4.7.47.1] [#A2.T4.7.47.1.1] Placemat to Plate
+[#A2.T4.7.47.2] [#A2.T4.7.47.2.1] 15.7
+[#A2.T4.7.47.3] [#A2.T4.7.47.3.1] 23.5
+[#A2.T4.7.47.4] [#A2.T4.7.47.4.1] 37.3
+[#A2.T4.7.47.5] [#A2.T4.7.47.5.1] 33.3
+[#A2.T4.7.47.6] [#A2.T4.7.47.6.1] 37.3
+[#A2.T4.7.47.7] [#A2.T4.7.47.7.1] 49.0
+[#A2.T4.7.48]
+[#A2.T4.7.48.1] [#A2.T4.7.48.1.1] Placemat to Basket
+[#A2.T4.7.48.2] [#A2.T4.7.48.2.1] 15.7
+[#A2.T4.7.48.3] [#A2.T4.7.48.3.1] 25.5
+[#A2.T4.7.48.4] [#A2.T4.7.48.4.1] 41.2
+[#A2.T4.7.48.5] [#A2.T4.7.48.5.1] 50.0
+[#A2.T4.7.48.6] [#A2.T4.7.48.6.1] 46.1
+[#A2.T4.7.48.7] [#A2.T4.7.48.7.1] 55.9
+[#A2.T4.7.49]
+[#A2.T4.7.49.1] [#A2.T4.7.49.1.1] Placemat to Tiered Shelf
+[#A2.T4.7.49.2] [#A2.T4.7.49.2.1] 6.9
+[#A2.T4.7.49.3] [#A2.T4.7.49.3.1] 5.9
+[#A2.T4.7.49.4] [#A2.T4.7.49.4.1] 11.8
+[#A2.T4.7.49.5] [#A2.T4.7.49.5.1] 11.8
+[#A2.T4.7.49.6] [#A2.T4.7.49.6.1] 21.6
+[#A2.T4.7.49.7] [#A2.T4.7.49.7.1] 19.6
+[#A2.T4.7.50]
+[#A2.T4.7.50.1] [#A2.T4.7.50.1.1] Plate to Pan
+[#A2.T4.7.50.2] [#A2.T4.7.50.2.1] 13.7
+[#A2.T4.7.50.3] [#A2.T4.7.50.3.1] 17.7
+[#A2.T4.7.50.4] [#A2.T4.7.50.4.1] 35.3
+[#A2.T4.7.50.5] [#A2.T4.7.50.5.1] 35.3
+[#A2.T4.7.50.6] [#A2.T4.7.50.6.1] 48.0
+[#A2.T4.7.50.7] [#A2.T4.7.50.7.1] 52.9
+[#A2.T4.7.51]
+[#A2.T4.7.51.1] [#A2.T4.7.51.1.1] Plate to Cardboard Box
+[#A2.T4.7.51.2] [#A2.T4.7.51.2.1] 12.8
+[#A2.T4.7.51.3] [#A2.T4.7.51.3.1] 13.7
+[#A2.T4.7.51.4] [#A2.T4.7.51.4.1] 27.5
+[#A2.T4.7.51.5] [#A2.T4.7.51.5.1] 34.3
+[#A2.T4.7.51.6] [#A2.T4.7.51.6.1] 38.2
+[#A2.T4.7.51.7] [#A2.T4.7.51.7.1] 32.4
+[#A2.T4.7.52]
+[#A2.T4.7.52.1] [#A2.T4.7.52.1.1] Plate to Bowl
+[#A2.T4.7.52.2] [#A2.T4.7.52.2.1] 15.7
+[#A2.T4.7.52.3] [#A2.T4.7.52.3.1] 18.6
+[#A2.T4.7.52.4] [#A2.T4.7.52.4.1] 31.4
+[#A2.T4.7.52.5] [#A2.T4.7.52.5.1] 41.2
+[#A2.T4.7.52.6] [#A2.T4.7.52.6.1] 42.2
+[#A2.T4.7.52.7] [#A2.T4.7.52.7.1] 34.3
+[#A2.T4.7.53]
+[#A2.T4.7.53.1] [#A2.T4.7.53.1.1] Plate to Plate
+[#A2.T4.7.53.2] [#A2.T4.7.53.2.1] 25.5
+[#A2.T4.7.53.3] [#A2.T4.7.53.3.1] 39.2
+[#A2.T4.7.53.4] [#A2.T4.7.53.4.1] 61.8
+[#A2.T4.7.53.5] [#A2.T4.7.53.5.1] 72.6
+[#A2.T4.7.53.6] [#A2.T4.7.53.6.1] 85.3
+[#A2.T4.7.53.7] [#A2.T4.7.53.7.1] 68.6
+[#A2.T4.7.54]
+[#A2.T4.7.54.1] [#A2.T4.7.54.1.1] Tray to Tiered Shelf
+[#A2.T4.7.54.2] [#A2.T4.7.54.2.1] 2.0
+[#A2.T4.7.54.3] [#A2.T4.7.54.3.1] 6.9
+[#A2.T4.7.54.4] [#A2.T4.7.54.4.1] 15.7
+[#A2.T4.7.54.5] [#A2.T4.7.54.5.1] 17.7
+[#A2.T4.7.54.6] [#A2.T4.7.54.6.1] 27.5
+[#A2.T4.7.54.7] [#A2.T4.7.54.7.1] 14.7
+[#A2.T4.7.55]
+[#A2.T4.7.55.1] [#A2.T4.7.55.1.1] Tray to Tiered Basket
+[#A2.T4.7.55.2] [#A2.T4.7.55.2.1] 12.8
+[#A2.T4.7.55.3] [#A2.T4.7.55.3.1] 34.3
+[#A2.T4.7.55.4] [#A2.T4.7.55.4.1] 39.2
+[#A2.T4.7.55.5] [#A2.T4.7.55.5.1] 33.3
+[#A2.T4.7.55.6] [#A2.T4.7.55.6.1] 49.0
+[#A2.T4.7.55.7] [#A2.T4.7.55.7.1] 45.1
+[#A2.T4.7.56]
+[#A2.T4.7.56.1] [#A2.T4.7.56.1.1] Tray to Plate
+[#A2.T4.7.56.2] [#A2.T4.7.56.2.1] 26.5
+[#A2.T4.7.56.3] [#A2.T4.7.56.3.1] 41.2
+[#A2.T4.7.56.4] [#A2.T4.7.56.4.1] 49.0
+[#A2.T4.7.56.5] [#A2.T4.7.56.5.1] 53.9
+[#A2.T4.7.56.6] [#A2.T4.7.56.6.1] 68.6
+[#A2.T4.7.56.7] [#A2.T4.7.56.7.1] 62.8
+[#A2.T4.7.57]
+[#A2.T4.7.57.1] [#A2.T4.7.57.1.1] Tray to Cardboard Box
+[#A2.T4.7.57.2] [#A2.T4.7.57.2.1] 21.6
+[#A2.T4.7.57.3] [#A2.T4.7.57.3.1] 37.3
+[#A2.T4.7.57.4] [#A2.T4.7.57.4.1] 40.2
+[#A2.T4.7.57.5] [#A2.T4.7.57.5.1] 51.0
+[#A2.T4.7.57.6] [#A2.T4.7.57.6.1] 55.9
+[#A2.T4.7.57.7] [#A2.T4.7.57.7.1] 54.9
+[#A2.T4.7.58]
+[#A2.T4.7.58.1] [#A2.T4.7.58.1.1] Tray to Pot
+[#A2.T4.7.58.2] [#A2.T4.7.58.2.1] 21.6
+[#A2.T4.7.58.3] [#A2.T4.7.58.3.1] 48.0
+[#A2.T4.7.58.4] [#A2.T4.7.58.4.1] 52.9
+[#A2.T4.7.58.5] [#A2.T4.7.58.5.1] 52.0
+[#A2.T4.7.58.6] [#A2.T4.7.58.6.1] 59.8
+[#A2.T4.7.58.7] [#A2.T4.7.58.7.1] 65.7
+[#A2.T4.7.59]
+[#A2.T4.7.59.1] [#A2.T4.7.59.1.1] Wine to Cabinet
+[#A2.T4.7.59.2] [#A2.T4.7.59.2.1] 43.1
+[#A2.T4.7.59.3] [#A2.T4.7.59.3.1] 55.9
+[#A2.T4.7.59.4] [#A2.T4.7.59.4.1] 60.8
+[#A2.T4.7.59.5] [#A2.T4.7.59.5.1] 57.8
+[#A2.T4.7.59.6] [#A2.T4.7.59.6.1] 53.9
+[#A2.T4.7.59.7] [#A2.T4.7.59.7.1] 62.8
+[#A2.T4.7.60]
+[#A2.T4.7.60.1] [#A2.T4.7.60.1.1] Place Bottle to Cabinet
+[#A2.T4.7.60.2] [#A2.T4.7.60.2.1] 40.2
+[#A2.T4.7.60.3] [#A2.T4.7.60.3.1] 62.8
+[#A2.T4.7.60.4] [#A2.T4.7.60.4.1] 60.8
+[#A2.T4.7.60.5] [#A2.T4.7.60.5.1] 60.8
+[#A2.T4.7.60.6] [#A2.T4.7.60.6.1] 81.4
+[#A2.T4.7.60.7] [#A2.T4.7.60.7.1] 74.5
+[#A2.T4.7.61]
+[#A2.T4.7.61.1] [#A2.T4.7.61.1.1] Place Milk to Microwave
+[#A2.T4.7.61.2] [#A2.T4.7.61.2.1] 37.3
+[#A2.T4.7.61.3] [#A2.T4.7.61.3.1] 41.2
+[#A2.T4.7.61.4] [#A2.T4.7.61.4.1] 51.0
+[#A2.T4.7.61.5] [#A2.T4.7.61.5.1] 42.2
+[#A2.T4.7.61.6] [#A2.T4.7.61.6.1] 58.8
+[#A2.T4.7.61.7] [#A2.T4.7.61.7.1] 49.0
+[#A2.T4.7.62]
+[#A2.T4.7.62.1] [#A2.T4.7.62.1.1] Potato to Microwave
+[#A2.T4.7.62.2] [#A2.T4.7.62.2.1] 17.7
+[#A2.T4.7.62.3] [#A2.T4.7.62.3.1] 30.4
+[#A2.T4.7.62.4] [#A2.T4.7.62.4.1] 41.2
+[#A2.T4.7.62.5] [#A2.T4.7.62.5.1] 30.4
+[#A2.T4.7.62.6] [#A2.T4.7.62.6.1] 26.5
+[#A2.T4.7.62.7] [#A2.T4.7.62.7.1] 34.3
+[#A2.T4.7.63]
+[#A2.T4.7.63.1] [#A2.T4.7.63.1.1] Cup to Drawer
+[#A2.T4.7.63.2] [#A2.T4.7.63.2.1] 24.5
+[#A2.T4.7.63.3] [#A2.T4.7.63.3.1] 32.4
+[#A2.T4.7.63.4] [#A2.T4.7.63.4.1] 36.3
+[#A2.T4.7.63.5] [#A2.T4.7.63.5.1] 36.3
+[#A2.T4.7.63.6] [#A2.T4.7.63.6.1] 44.1
+[#A2.T4.7.63.7] [#A2.T4.7.63.7.1] 40.2
+[#A2.T4.7.64]
+[#A2.T4.7.64.1] [#A2.T4.7.64.1.1] Can to Drawer
+[#A2.T4.7.64.2] [#A2.T4.7.64.2.1] 48.0
+[#A2.T4.7.64.3] [#A2.T4.7.64.3.1] 74.5
+[#A2.T4.7.64.4] [#A2.T4.7.64.4.1] 75.5
+[#A2.T4.7.64.5] [#A2.T4.7.64.5.1] 77.5
+[#A2.T4.7.64.6] [#A2.T4.7.64.6.1] 76.5
+[#A2.T4.7.64.7] [#A2.T4.7.64.7.1] 75.5
+[#A2.T4.7.65]
+[#A2.T4.7.65.1] [#A2.T4.7.65.1.1] GR-1 Average
+[#A2.T4.7.65.2] [#A2.T4.7.65.2.1] 21.3
+[#A2.T4.7.65.3] [#A2.T4.7.65.3.1] 32.7
+[#A2.T4.7.65.4] [#A2.T4.7.65.4.1] 40.4
+[#A2.T4.7.65.5] [#A2.T4.7.65.5.1] 43.2
+[#A2.T4.7.65.6] [#A2.T4.7.65.6.1] 50.0
+[#A2.T4.7.65.7] [#A2.T4.7.65.7.1] 49.3
+[#A2.T5]
+[#A2.T5.5] Table 5: [#A2.T5.6] Success rate on real-world tasks with the GR-1 humanoid robot.
+[#A2.T5.7]
+[#A2.T5.7.1]
+[#A2.T5.7.1.1] [#A2.T5.7.1.1.1] Task
+[#A2.T5.7.1.2] [#A2.T5.7.1.2.1] Diffusion Policy
+[#A2.T5.7.1.3] [#A2.T5.7.1.3.1] GR00T-N1-2B
+[#A2.T5.7.2]
+[#A2.T5.7.2.1] [#A2.T5.7.2.1.1] 10% Data
+[#A2.T5.7.2.2] [#A2.T5.7.2.2.1] Full Data
+[#A2.T5.7.2.3] [#A2.T5.7.2.3.1] 10% Data
+[#A2.T5.7.2.4] [#A2.T5.7.2.4.1] Full Data
+[#A2.T5.7.3]
+[#A2.T5.7.3.1] [#A2.T5.7.3.1.1] Tray to Plate
+[#A2.T5.7.3.2] [#A2.T5.7.3.2.1] 0.0%
+[#A2.T5.7.3.3] [#A2.T5.7.3.3.1] 20.0%
+[#A2.T5.7.3.4] [#A2.T5.7.3.4.1] 40.0%
+[#A2.T5.7.3.5] [#A2.T5.7.3.5.1] 100.0%
+[#A2.T5.7.4]
+[#A2.T5.7.4.1] [#A2.T5.7.4.1.1] Cutting Board to Basket
+[#A2.T5.7.4.2] [#A2.T5.7.4.2.1] 0.0%
+[#A2.T5.7.4.3] [#A2.T5.7.4.3.1] 30.0%
+[#A2.T5.7.4.4] [#A2.T5.7.4.4.1] 10.0%
+[#A2.T5.7.4.5] [#A2.T5.7.4.5.1] 100.0%
+[#A2.T5.7.5]
+[#A2.T5.7.5.1] [#A2.T5.7.5.1.1] Cutting Board to Pan
+[#A2.T5.7.5.2] [#A2.T5.7.5.2.1] 0.0%
+[#A2.T5.7.5.3] [#A2.T5.7.5.3.1] 60.0%
+[#A2.T5.7.5.4] [#A2.T5.7.5.4.1] 60.0%
+[#A2.T5.7.5.5] [#A2.T5.7.5.5.1] 80.0%
+[#A2.T5.7.6]
+[#A2.T5.7.6.1] [#A2.T5.7.6.1.1] Plate to Bowl
+[#A2.T5.7.6.2] [#A2.T5.7.6.2.1] 0.0%
+[#A2.T5.7.6.3] [#A2.T5.7.6.3.1] 40.0%
+[#A2.T5.7.6.4] [#A2.T5.7.6.4.1] 30.0%
+[#A2.T5.7.6.5] [#A2.T5.7.6.5.1] 100.0%
+[#A2.T5.7.7]
+[#A2.T5.7.7.1] [#A2.T5.7.7.1.1] Placemat to Basket
+[#A2.T5.7.7.2] [#A2.T5.7.7.2.1] 10.0%
+[#A2.T5.7.7.3] [#A2.T5.7.7.3.1] 60.0%
+[#A2.T5.7.7.4] [#A2.T5.7.7.4.1] 40.0%
+[#A2.T5.7.7.5] [#A2.T5.7.7.5.1] 80.0%
+[#A2.T5.7.8]
+[#A2.T5.7.8.1] [#A2.T5.7.8.1.1] Pick-and-Place Seen Object Average
+[#A2.T5.7.8.2] [#A2.T5.7.8.2.1] 2.0%
+[#A2.T5.7.8.3] [#A2.T5.7.8.3.1] 42.0%
+[#A2.T5.7.8.4] [#A2.T5.7.8.4.1] 36.0%
+[#A2.T5.7.8.5] [#A2.T5.7.8.5.1] 92.0%
+[#A2.T5.7.9]
+[#A2.T5.7.9.1] [#A2.T5.7.9.1.1] Tray to Plate
+[#A2.T5.7.9.2] [#A2.T5.7.9.2.1] 0.0%
+[#A2.T5.7.9.3] [#A2.T5.7.9.3.1] 20.0%
+[#A2.T5.7.9.4] [#A2.T5.7.9.4.1] 30.0%
+[#A2.T5.7.9.5] [#A2.T5.7.9.5.1] 80.0%
+[#A2.T5.7.10]
+[#A2.T5.7.10.1] [#A2.T5.7.10.1.1] Cutting Board to Basket
+[#A2.T5.7.10.2] [#A2.T5.7.10.2.1] 10.0%
+[#A2.T5.7.10.3] [#A2.T5.7.10.3.1] 20.0%
+[#A2.T5.7.10.4] [#A2.T5.7.10.4.1] 60.0%
+[#A2.T5.7.10.5] [#A2.T5.7.10.5.1] 60.0%
+[#A2.T5.7.11]
+[#A2.T5.7.11.1] [#A2.T5.7.11.1.1] Cutting Board to Pan
+[#A2.T5.7.11.2] [#A2.T5.7.11.2.1] 0.0%
+[#A2.T5.7.11.3] [#A2.T5.7.11.3.1] 40.0%
+[#A2.T5.7.11.4] [#A2.T5.7.11.4.1] 40.0%
+[#A2.T5.7.11.5] [#A2.T5.7.11.5.1] 80.0%
+[#A2.T5.7.12]
+[#A2.T5.7.12.1] [#A2.T5.7.12.1.1] Plate to Bowl
+[#A2.T5.7.12.2] [#A2.T5.7.12.2.1] 0.0%
+[#A2.T5.7.12.3] [#A2.T5.7.12.3.1] 20.0%
+[#A2.T5.7.12.4] [#A2.T5.7.12.4.1] 10.0%
+[#A2.T5.7.12.5] [#A2.T5.7.12.5.1] 40.0%
+[#A2.T5.7.13]
+[#A2.T5.7.13.1] [#A2.T5.7.13.1.1] Placemat to Basket
+[#A2.T5.7.13.2] [#A2.T5.7.13.2.1] 10.0%
+[#A2.T5.7.13.3] [#A2.T5.7.13.3.1] 50.0%
+[#A2.T5.7.13.4] [#A2.T5.7.13.4.1] 30.0%
+[#A2.T5.7.13.5] [#A2.T5.7.13.5.1] 100.0%
+[#A2.T5.7.14]
+[#A2.T5.7.14.1] [#A2.T5.7.14.1.1] Pick-and-Place Unseen Object Average
+[#A2.T5.7.14.2] [#A2.T5.7.14.2.1] 4.0%
+[#A2.T5.7.14.3] [#A2.T5.7.14.3.1] 30.0%
+[#A2.T5.7.14.4] [#A2.T5.7.14.4.1] 34.0%
+[#A2.T5.7.14.5] [#A2.T5.7.14.5.1] 72.0%
+[#A2.T5.7.15]
+[#A2.T5.7.15.1] [#A2.T5.7.15.1.1] Pick-and-Place Average
+[#A2.T5.7.15.2] [#A2.T5.7.15.2.1] 3.0%
+[#A2.T5.7.15.3] [#A2.T5.7.15.3.1] 36.0%
+[#A2.T5.7.15.4] [#A2.T5.7.15.4.1] 35.0%
+[#A2.T5.7.15.5] [#A2.T5.7.15.5.1] 82.0%
+[#A2.T5.7.16]
+[#A2.T5.7.16.1] [#A2.T5.7.16.1.1] White Drawer
+[#A2.T5.7.16.2] [#A2.T5.7.16.2.1] 6.6%
+[#A2.T5.7.16.3] [#A2.T5.7.16.3.1] 36.4%
+[#A2.T5.7.16.4] [#A2.T5.7.16.4.1] 26.4%
+[#A2.T5.7.16.5] [#A2.T5.7.16.5.1] 79.9%
+[#A2.T5.7.17]
+[#A2.T5.7.17.1] [#A2.T5.7.17.1.1] Dark Cabinet
+[#A2.T5.7.17.2] [#A2.T5.7.17.2.1] 0.0%
+[#A2.T5.7.17.3] [#A2.T5.7.17.3.1] 46.2%
+[#A2.T5.7.17.4] [#A2.T5.7.17.4.1] 86.6%
+[#A2.T5.7.17.5] [#A2.T5.7.17.5.1] 69.7%
+[#A2.T5.7.18]
+[#A2.T5.7.18.1] [#A2.T5.7.18.1.1] Wooden Chest
+[#A2.T5.7.18.2] [#A2.T5.7.18.2.1] 36.4%
+[#A2.T5.7.18.3] [#A2.T5.7.18.3.1] 33.2%
+[#A2.T5.7.18.4] [#A2.T5.7.18.4.1] 72.9%
+[#A2.T5.7.18.5] [#A2.T5.7.18.5.1] 63.2%
+[#A2.T5.7.19]
+[#A2.T5.7.19.1] [#A2.T5.7.19.1.1] Articulated Average
+[#A2.T5.7.19.2] [#A2.T5.7.19.2.1] 14.3%
+[#A2.T5.7.19.3] [#A2.T5.7.19.3.1] 38.6%
+[#A2.T5.7.19.4] [#A2.T5.7.19.4.1] 62.0%
+[#A2.T5.7.19.5] [#A2.T5.7.19.5.1] 70.9%
+[#A2.T5.7.20]
+[#A2.T5.7.20.1] [#A2.T5.7.20.1.1] Machinery Packing
+[#A2.T5.7.20.2] [#A2.T5.7.20.2.1] 20.0%
+[#A2.T5.7.20.3] [#A2.T5.7.20.3.1] 44.0%
+[#A2.T5.7.20.4] [#A2.T5.7.20.4.1] 8.0%
+[#A2.T5.7.20.5] [#A2.T5.7.20.5.1] 56.0%
+[#A2.T5.7.21]
+[#A2.T5.7.21.1] [#A2.T5.7.21.1.1] Mesh Cup Pouring
+[#A2.T5.7.21.2] [#A2.T5.7.21.2.1] 0.0%
+[#A2.T5.7.21.3] [#A2.T5.7.21.3.1] 62.5%
+[#A2.T5.7.21.4] [#A2.T5.7.21.4.1] 65.0%
+[#A2.T5.7.21.5] [#A2.T5.7.21.5.1] 67.5%
+[#A2.T5.7.22]
+[#A2.T5.7.22.1] [#A2.T5.7.22.1.1] Cylinder Handover
+[#A2.T5.7.22.2] [#A2.T5.7.22.2.1] 0.0%
+[#A2.T5.7.22.3] [#A2.T5.7.22.3.1] 76.5%
+[#A2.T5.7.22.4] [#A2.T5.7.22.4.1] 20.0%
+[#A2.T5.7.22.5] [#A2.T5.7.22.5.1] 86.6%
+[#A2.T5.7.23]
+[#A2.T5.7.23.1] [#A2.T5.7.23.1.1] Industrial Average
+[#A2.T5.7.23.2] [#A2.T5.7.23.2.1] 6.7%
+[#A2.T5.7.23.3] [#A2.T5.7.23.3.1] 61.0%
+[#A2.T5.7.23.4] [#A2.T5.7.23.4.1] 31.0%
+[#A2.T5.7.23.5] [#A2.T5.7.23.5.1] 70.0%
+[#A2.T5.7.24]
+[#A2.T5.7.24.1] [#A2.T5.7.24.1.1] Coordination Part 1
+[#A2.T5.7.24.2] [#A2.T5.7.24.2.1] 45.0%
+[#A2.T5.7.24.3] [#A2.T5.7.24.3.1] 65.0%
+[#A2.T5.7.24.4] [#A2.T5.7.24.4.1] 70.0%
+[#A2.T5.7.24.5] [#A2.T5.7.24.5.1] 80.0%
+[#A2.T5.7.25]
+[#A2.T5.7.25.1] [#A2.T5.7.25.1.1] Coordination Part 2
+[#A2.T5.7.25.2] [#A2.T5.7.25.2.1] 10.0%
+[#A2.T5.7.25.3] [#A2.T5.7.25.3.1] 60.0%
+[#A2.T5.7.25.4] [#A2.T5.7.25.4.1] 30.0%
+[#A2.T5.7.25.5] [#A2.T5.7.25.5.1] 85.0%
+[#A2.T5.7.26]
+[#A2.T5.7.26.1] [#A2.T5.7.26.1.1] Coordination Average
+[#A2.T5.7.26.2] [#A2.T5.7.26.2.1] 27.5%
+[#A2.T5.7.26.3] [#A2.T5.7.26.3.1] 62.5%
+[#A2.T5.7.26.4] [#A2.T5.7.26.4.1] 50.0%
+[#A2.T5.7.26.5] [#A2.T5.7.26.5.1] 82.5%
+[#A2.T5.7.27]
+[#A2.T5.7.27.1] [#A2.T5.7.27.1.1] Average
+[#A2.T5.7.27.2] [#A2.T5.7.27.2.1] 10.2%
+[#A2.T5.7.27.3] [#A2.T5.7.27.3.1] 46.4%
+[#A2.T5.7.27.4] [#A2.T5.7.27.4.1] 42.6%
+[#A2.T5.7.27.5] [#A2.T5.7.27.5.1] 76.8%
+[#A3]
+Appendix C Additional Qualitative Results
+[#A3.p1]
+[#A3.p1.1] We provide qualitative rollout examples of our pre-trained and post-trained GR00T-N1-2B model in Fig. 11 and Fig. 12. Our model demonstrates strong language following abilities and generalization to unseen situations in bimanual manipulation tasks.
+[#A3.F11] [#A3.F11.g1]
+[#A3.F11.4] Figure 11: [#A3.F11.5] Pre-training Qualitative Example. [#A3.F11.5.1] While prompting the pretrained GR00T-N1-2B model with a post-training task instruction, we even increase the difficulty by placing the apple to the left of both hands. Despite not having encountered this setup during training, the model successfully places the red apple into the basket via a two-handed handover, albeit with jerkier motion.
+[#A3.F12] [#A3.F12.g1]
+[#A3.F12.4] Figure 12: [#A3.F12.5] Post-training Qualitative Example. [#A3.F12.5.1] (Top) Post-trained GR00T-N1-2B successfully places the cucumber into the basket, whereas the Diffusion Policy fails due to an inaccurate grasp. (Bottom) The post-trained model successfully picks the lemon from the cutting board and puts it into the pan while the Diffusion Policy remains stuck.
+[#A3.F13] [#A3.F13.g1]
+[#A3.F13.4] Figure 13: [#A3.F13.5] More Examples of Neural Generated Trajectories. [#A3.F13.5.1] We highlight 4 key capabilities of neural trajectories: (1) The first three rows shows an example of a multi-view trajectory generated for the post-training in RoboCasa; we achieve this by concatenating the views as a 4-grid video during training. (2) The following two rows show two consecutive sequences, where the initial frame of the latter is from the end of the former, highlighting the possibility of generating trajectories of tasks requiring composition of atomic tasks. (3) The following two rows illustrate the capability of our models to generate trajectories with articulated objects and liquids, which are known to be very challenging in simulation. (4) The last row is generated from an in-painted initial frame, showcasing that we can generate more diverse videos without having to collect novel initial frames in the real-world and be bound by human labor. We use the red rectangles to indicate the initial frames.
+[#A4]
+Appendix D Hyperparameters
+[#A4.p1]
+[#A4.p1.1] We report important hyperparameters used for the pre- and post-training phases in Table 6. Overall, these two phases share the same values for most of the hyperparameters.
+For post-training, we use smaller batch sizes to avoid overfitting when fine-tuning in data-limited settings.
+[#A4.T6]
+[#A4.T6.3] Table 6: [#A4.T6.4] Training hyperparameters. Pre- and post-training use the same hyperparameters unless specified.
+[#A4.T6.5]
+[#A4.T6.5.1]
+[#A4.T6.5.1.1] [#A4.T6.5.1.1.1] Hyperparameter
+[#A4.T6.5.1.2] [#A4.T6.5.1.2.1] Pre-training Value
+[#A4.T6.5.1.3] [#A4.T6.5.1.3.1] Post-training Value
+[#A4.T6.5.2]
+[#A4.T6.5.2.1] Learning rate
+[#A4.T6.5.2.2] 1e-4
+[#A4.T6.5.2.3]
+[#A4.T6.5.3]
+[#A4.T6.5.3.1] Optimizer
+[#A4.T6.5.3.2] AdamW
+[#A4.T6.5.3.3]
+[#A4.T6.5.4]
+[#A4.T6.5.4.1] Adam beta1
+[#A4.T6.5.4.2] 0.95
+[#A4.T6.5.4.3]
+[#A4.T6.5.5]
+[#A4.T6.5.5.1] Adam beta2
+[#A4.T6.5.5.2] 0.999
+[#A4.T6.5.5.3]
+[#A4.T6.5.6]
+[#A4.T6.5.6.1] Adam epsilon
+[#A4.T6.5.6.2] 1e-8
+[#A4.T6.5.6.3]
+[#A4.T6.5.7]
+[#A4.T6.5.7.1] Weight decay
+[#A4.T6.5.7.2] 1e-5
+[#A4.T6.5.7.3]
+[#A4.T6.5.8]
+[#A4.T6.5.8.1] LR scheduler
+[#A4.T6.5.8.2] cosine
+[#A4.T6.5.8.3]
+[#A4.T6.5.9]
+[#A4.T6.5.9.1] Warmup ratio
+[#A4.T6.5.9.2] 0.05
+[#A4.T6.5.9.3]
+[#A4.T6.5.10]
+[#A4.T6.5.10.1] Batch size
+[#A4.T6.5.10.2] 16,384
+[#A4.T6.5.10.3] 128 or 1024
+[#A4.T6.5.11]
+[#A4.T6.5.11.1] Gradient steps
+[#A4.T6.5.11.2] 200,000
+[#A4.T6.5.11.3] 20,000 – 60,000
+[#A4.T6.5.12]
+[#A4.T6.5.12.1] Backbone’s vision encoder
+[#A4.T6.5.12.2] unfrozen
+[#A4.T6.5.12.3]
+[#A4.T6.5.13]
+[#A4.T6.5.13.1] Backbone’s text tokenizer
+[#A4.T6.5.13.2] frozen
+[#A4.T6.5.13.3]
+[#A4.T6.5.14]
+[#A4.T6.5.14.1] DiT
+[#A4.T6.5.14.2] unfrozen
+[#A4.T6.5.14.3]
+[#A5]
+Appendix E System Design
+[#A5.SS1]
+E.1 Dataset Formats
+[#A5.SS1.p1]
+[#A5.SS1.p1.1] Our training corpora build upon the LeRobot dataset format (Cadene et al., 2024), a widely adopted standard in the open-source robotics community. Developed by Hugging Face, LeRobot aims to lower the barrier to entry for robotics research by providing a standardized format for storing, sharing, and utilizing robot demonstration data. The format has gained significant traction due to its flexibility and the extensive collection of pretrained models and datasets available through the Hugging Face hub.
+[#A5.SS1.p2]
+[#A5.SS1.p2.1] At its core, the LeRobot dataset format employs a combination of established file formats for efficient storage and access:
+[#A5.SS1.p3]
+[#A5.I1]
+[#A5.I1.i1] 1.
+[#A5.I1.i1.p1]
+[#A5.I1.i1.p1.1] [#A5.I1.i1.p1.1.1] Tabular Data: Robot states, actions, and metadata are stored in parquet files, which offer efficient columnar storage and fast data retrieval. This format enables quick filtering and slicing operations essential for training deep learning models.
+[#A5.I1.i2] 2.
+[#A5.I1.i2.p1]
+[#A5.I1.i2.p1.1] [#A5.I1.i2.p1.1.1] Image and Video Data: Visual observations are encoded as MP4 video files (or alternatively as PNG image sequences), with references stored in the parquet files. This approach significantly reduces storage requirements while maintaining data accessibility.
+[#A5.I1.i3] 3.
+[#A5.I1.i3.p1]
+[#A5.I1.i3.p1.1] [#A5.I1.i3.p1.1.1] Metadata: Dataset statistics, episode indices, and other metadata are stored in structured JSON files, providing machine-readable information about the dataset’s characteristics.
+[#A5.SS1.p4]
+[#A5.SS1.p4.1] The format organizes demonstration data into episodes, with each frame containing synchronized observation and action pairs. Each observation typically includes camera imagery ( [#A5.SS1.p4.1.1] observation.images.*) and robot state information ( [#A5.SS1.p4.1.2] observation.state), while actions represent the control commands sent to the robot. This organization facilitates both imitation learning, where models learn to predict actions from observations, and reinforcement learning, where models learn to optimize for specific outcomes.
+[#A5.SS1.p5]
+[#A5.SS1.p5.1] While the LeRobot format provides a solid foundation, our work with cross-embodiment data necessitated additional structure to support richer modality information and more sophisticated training regimes. We have extended the LeRobot format with the following constraints:
+[#A5.SS1.p6]
+[#A5.I2]
+[#A5.I2.i1] 1.
+[#A5.I2.i1.p1]
+[#A5.I2.i1.p1.1] [#A5.I2.i1.p1.1.1] Modality configuration file: We require a [#A5.I2.i1.p1.1.2] modality.json configuration file in the [#A5.I2.i1.p1.1.3] meta directory that explicitly defines the structure of state and action vectors, mapping each dimension to a semantic meaning and provides additional modality-specific information.
+[#A5.I2.i2] 2.
+[#A5.I2.i2.p1]
+[#A5.I2.i2.p1.1] [#A5.I2.i2.p1.1.1] Fine-grained modality specification: Unlike the standard LeRobot format, which treats state and action as monolithic vectors, our extension splits these vectors into semantically meaningful fields ( [#A5.I2.i2.p1.1.2] \eg, end-effector position, orientation, gripper state), each with their own metadata including data types, ranges, and transformation specifications.
+[#A5.I2.i3] 3.
+[#A5.I2.i3.p1]
+[#A5.I2.i3.p1.1] [#A5.I2.i3.p1.1.1] Multiple annotation support: We extend the format to support multiple annotation types ( [#A5.I2.i3.p1.1.2] \eg, task descriptions, validity flags, success indicators) within a single dataset, following the LeRobot convention of storing indices in the parquet file with the actual content in separate JSON files.
+[#A5.I2.i4] 4.
+[#A5.I2.i4.p1]
+[#A5.I2.i4.p1.1] [#A5.I2.i4.p1.1.1] Rotation type specification: Our format explicitly specifies the representation used for rotational data ( [#A5.I2.i4.p1.1.2] \eg, quaternions, Euler angles, axis-angle), enabling proper handling of rotational transformations during training.
+[#A5.SS1.p7]
+[#A5.SS1.p7.1] Our extended format offers several key benefits for training VLA models:
+[#A5.SS1.p8]
+[#A5.I3]
+[#A5.I3.i1] 1.
+[#A5.I3.i1.p1]
+[#A5.I3.i1.p1.1] [#A5.I3.i1.p1.1.1] Semantic clarity: By explicitly defining the structure and meaning of each dimension in state and action vectors, our format enhances interpretability and reduces errors during data preprocessing and model training.
+[#A5.I3.i2] 2.
+[#A5.I3.i2.p1]
+[#A5.I3.i2.p1.1] [#A5.I3.i2.p1.1.1] Flexible transformations: The fine-grained modality specification enables sophisticated, field-specific normalization and transformation during training. For example, rotational data can be properly normalized and augmented according to its specific representation.
+[#A5.I3.i3] 3.
+[#A5.I3.i3.p1]
+[#A5.I3.i3.p1.1] [#A5.I3.i3.p1.1.1] Multi-modal learning support: The extended format naturally accommodates the diverse data types required for VLA models, including visual observations, state information, action commands, and language annotations, while maintaining clear relationships between these modalities.
+[#A5.I3.i4] 4.
+[#A5.I3.i4.p1]
+[#A5.I3.i4.p1.1] [#A5.I3.i4.p1.1.1] Improved data validation: The explicit structure enables more thorough validation of datasets, reducing the risk of training with malformed or inconsistent data.
+[#A5.I3.i5] 5.
+[#A5.I3.i5.p1]
+[#A5.I3.i5.p1.1] [#A5.I3.i5.p1.1.1] Enhanced interoperability: While adding constraints, our format maintains backward compatibility with the LeRobot ecosystem, allowing us to leverage existing tools and datasets while enabling more sophisticated modeling approaches.
+[#A5.SS1.p9]
+[#A5.SS1.p9.1] The extended format strikes a balance between standardization and flexibility, providing a clear structure for common robotics data while accommodating the specific needs of VLA models. This approach has proven valuable in our work, enabling more efficient training and improved model performance while maintaining compatibility with the broader robotics research community.
+[#A5.SS2]
+E.2 Standardized Action Spaces
+[#A5.SS2.p1]
+[#A5.SS2.p1.1] For the above datasets, we make a [#A5.SS2.p1.1.1] best-effort unification of action and state spaces to ensure consistency across different embodiments and control modalities. Several key practices are applied to achieve this standardization:
+[#A5.SS2.p2]
+[#A5.I4]
+[#A5.I4.i1] 1.
+[#A5.I4.i1.p1]
+[#A5.I4.i1.p1.1] [#A5.I4.i1.p1.1.1] End-effector rotation state normalization: State end-effector rotations are converted to a [#A5.I4.i1.p1.1.2] 6D rotation representation to avoid singularities and discontinuities in traditional Euler angles.
+[#A5.I4.i2] 2.
+[#A5.I4.i2.p1]
+[#A5.I4.i2.p1.1] [#A5.I4.i2.p1.1.1] End-effector rotation action standardization: End-effector rotation actions are expressed in [#A5.I4.i2.p1.1.2] axis-angle representation, providing a compact and smooth parameterization for rotation control.
+[#A5.I4.i3] 3.
+[#A5.I4.i3.p1]
+[#A5.I4.i3.p1.1] [#A5.I4.i3.p1.1.1] State and action scaling: [#A5.I4.i3.p1.1.2] Min-max normalization is applied to joint states, joint actions, end-effector state positions, and end-effector action positions and rotations, ensuring uniform value ranges across different robots.
+[#A5.I4.i4] 4.
+[#A5.I4.i4.p1]
+[#A5.I4.i4.p1.1] [#A5.I4.i4.p1.1.1] Consistent ordering: The arrangement of state and action vectors follows a standardized sequence: [#A5.I4.i4.p1.1.2] end-effector rotation, end-effector position, and gripper closeness, ordered from the [#A5.I4.i4.p1.1.3] left arm to the right arm (if applicable).
+[#A6]
+Appendix F Additional Training Details
+[#A6.SS0.SSS0.Px1]
+Auxiliary Object Detection Loss
+[#A6.SS0.SSS0.Px1.p1]
+[#A6.SS0.SSS0.Px1.p1.1] To enhance the model’s spatial understanding, we introduce an auxiliary object detection loss during training. In addition to predicting actions, the model must also localize the object of interest based on the given language instruction. Specifically, for each frame in a trajectory segment, we annotate the bounding box of the target object using the OWL-v2 object detector (Minderer et al., 2023). We then compute the normalized center coordinates of the bounding box, [#A6.SS0.SSS0.Px1.p1.m1] xg​tx_{gt}, by dividing its [#A6.SS0.SSS0.Px1.p1.m2] xx and [#A6.SS0.SSS0.Px1.p1.m3] yy coordinates by the image width and height, respectively.
+To predict the 2D coordinates, we append a linear layer atop the final vision-language embedding tokens and optimize using a squared loss: [#A6.SS0.SSS0.Px1.p1.m4] Ld​e​t=‖xp​r​e​d−xg​t‖2L_{det}=\|\textbf{x}_{pred}-\textbf{x}_{gt}\|^{2}.
+Thus, the final loss is given by: [#A6.SS0.SSS0.Px1.p1.m5] L=Lf​m+Ld​e​tL=L_{fm}+L_{det}.
+[#A6.SS0.SSS0.Px2]
+Neural Trajectory Generation
+[#A6.SS0.SSS0.Px2.p1]
+[#A6.SS0.SSS0.Px2.p1.1] We finetune WAN2.1-I2V-14B (Wan Team, 2025) using LoRA (Hu et al., 2022) on collected teleoperation trajectories. The trajectories are uniformly downsampled to 81 frames at 480P resolution for finetuning. The resulting image-to-video model generates neural trajectories that capture all possible “counterfactual scenarios” in the real world. To ensure quality, we filter out generated videos that do not accurately follow the given language instructions. Specifically, we sample 8 frames from each video and prompt a commercial-grade multimodal LLM to assess whether it adheres to the instructions. Videos that fail this criterion undergo re-captioning, with the videos downsampled to 16 frames at 256P resolution for this process.
+[#A6.SS0.SSS0.Px3]
+IDM Model Training
+[#A6.SS0.SSS0.Px3.p1]
+[#A6.SS0.SSS0.Px3.p1.1] We train an inverse dynamics model (IDM) by conditioning on two images (current and the future frame) within a trajectory and train to generate action chunks between the two image frames. From preliminary experiments, we observed that adding state information or more image frames did not significantly improve the action prediction performance on the validation set. For the IDM model architecture, we use the Diffusion Transformer module (System 1) with SigLIP-2 vision embeddings and train with a flow-matching objective. We train the IDM model for each embodiment for 30K or 60K, depending on the size of the training set. After training, we pseudo-label the actions given the two images (with the same action horizon as training) for each step of the neural trajectories.
+[#A6.F14] [#A6.F14.g1]
+[#A6.F14.4] Figure 14: [#A6.F14.5] Human Egocentric Video Dataset Samples. [#A6.F14.5.1] We use seven human video datasets for pre-training. The images above show examples from each of the seven datasets with their corresponding language annotations.
+[#A6.T7]
+[#A6.T7.5] Table 7: [#A6.T7.6] Pre-training Dataset Statistics
+[#A6.T7.7]
+[#A6.T7.7.1]
+[#A6.T7.7.1.1] [#A6.T7.7.1.1.1] Dataset
+[#A6.T7.7.1.2] [#A6.T7.7.1.2.1] Length (Frames)
+[#A6.T7.7.1.3] [#A6.T7.7.1.3.1] Duration (hr)
+[#A6.T7.7.1.4] [#A6.T7.7.1.4.1] FPS
+[#A6.T7.7.1.5] [#A6.T7.7.1.5.1] Camera View
+[#A6.T7.7.1.6] [#A6.T7.7.1.6.1] Category
+[#A6.T7.7.2]
+[#A6.T7.7.2.1] [#A6.T7.7.2.1.1] GR-1 Teleop Pre-Training
+[#A6.T7.7.2.2] [#A6.T7.7.2.2.1] 6.4M
+[#A6.T7.7.2.3] [#A6.T7.7.2.3.1] 88.4
+[#A6.T7.7.2.4] [#A6.T7.7.2.4.1] 20
+[#A6.T7.7.2.5] [#A6.T7.7.2.5.1] Egocentric
+[#A6.T7.7.2.6] [#A6.T7.7.2.6.1] Real robot
+[#A6.T7.7.3]
+[#A6.T7.7.3.1] [#A6.T7.7.3.1.1] DROID (OXE)
+[#A6.T7.7.3.2] [#A6.T7.7.3.2.1] 23.1M
+[#A6.T7.7.3.3] [#A6.T7.7.3.3.1] 428.3
+[#A6.T7.7.3.4] [#A6.T7.7.3.4.1] 15
+[#A6.T7.7.3.5] [#A6.T7.7.3.5.1] Left, Right, Wrist
+[#A6.T7.7.3.6] [#A6.T7.7.3.6.1] Real robot
+[#A6.T7.7.4]
+[#A6.T7.7.4.1] [#A6.T7.7.4.1.1] RT-1 (OXE)
+[#A6.T7.7.4.2] [#A6.T7.7.4.2.1] 3.7M
+[#A6.T7.7.4.3] [#A6.T7.7.4.3.1] 338.4
+[#A6.T7.7.4.4] [#A6.T7.7.4.4.1] 3
+[#A6.T7.7.4.5] [#A6.T7.7.4.5.1] Egocentric
+[#A6.T7.7.4.6] [#A6.T7.7.4.6.1] Real robot
+[#A6.T7.7.5]
+[#A6.T7.7.5.1] [#A6.T7.7.5.1.1] Language Table (OXE)
+[#A6.T7.7.5.2] [#A6.T7.7.5.2.1] 7.0M
+[#A6.T7.7.5.3] [#A6.T7.7.5.3.1] 195.7
+[#A6.T7.7.5.4] [#A6.T7.7.5.4.1] 10
+[#A6.T7.7.5.5] [#A6.T7.7.5.5.1] Front-facing
+[#A6.T7.7.5.6] [#A6.T7.7.5.6.1] Real robot
+[#A6.T7.7.6]
+[#A6.T7.7.6.1] [#A6.T7.7.6.1.1] Bridge-v2 (OXE)
+[#A6.T7.7.6.2] [#A6.T7.7.6.2.1] 2.0M
+[#A6.T7.7.6.3] [#A6.T7.7.6.3.1] 111.1
+[#A6.T7.7.6.4] [#A6.T7.7.6.4.1] 5
+[#A6.T7.7.6.5] [#A6.T7.7.6.5.1] Shoulder, left, right, wrist
+[#A6.T7.7.6.6] [#A6.T7.7.6.6.1] Real robot
+[#A6.T7.7.7]
+[#A6.T7.7.7.1] [#A6.T7.7.7.1.1] MUTEX (OXE)
+[#A6.T7.7.7.2] [#A6.T7.7.7.2.1] 362K
+[#A6.T7.7.7.3] [#A6.T7.7.7.3.1] 5.0
+[#A6.T7.7.7.4] [#A6.T7.7.7.4.1] 20
+[#A6.T7.7.7.5] [#A6.T7.7.7.5.1] Wrist
+[#A6.T7.7.7.6] [#A6.T7.7.7.6.1] Real robot
+[#A6.T7.7.8]
+[#A6.T7.7.8.1] [#A6.T7.7.8.1.1] Plex (OXE)
+[#A6.T7.7.8.2] [#A6.T7.7.8.2.1] 77K
+[#A6.T7.7.8.3] [#A6.T7.7.8.3.1] 1.1
+[#A6.T7.7.8.4] [#A6.T7.7.8.4.1] 20
+[#A6.T7.7.8.5] [#A6.T7.7.8.5.1] Wrist
+[#A6.T7.7.8.6] [#A6.T7.7.8.6.1] Real robot
+[#A6.T7.7.9]
+[#A6.T7.7.9.1] [#A6.T7.7.9.1.1] RoboSet (OXE)
+[#A6.T7.7.9.2] [#A6.T7.7.9.2.1] 1.4M
+[#A6.T7.7.9.3] [#A6.T7.7.9.3.1] 78.9
+[#A6.T7.7.9.4] [#A6.T7.7.9.4.1] 5
+[#A6.T7.7.9.5] [#A6.T7.7.9.5.1] Left, Right, Wrist
+[#A6.T7.7.9.6] [#A6.T7.7.9.6.1] Real robot
+[#A6.T7.7.10]
+[#A6.T7.7.10.1] [#A6.T7.7.10.1.1] Agibot-Alpha
+[#A6.T7.7.10.2] [#A6.T7.7.10.2.1] 213.8M
+[#A6.T7.7.10.3] [#A6.T7.7.10.3.1] 1,979.4
+[#A6.T7.7.10.4] [#A6.T7.7.10.4.1] 30
+[#A6.T7.7.10.5] [#A6.T7.7.10.5.1] Egocentric, left, right
+[#A6.T7.7.10.6] [#A6.T7.7.10.6.1] Real robot
+[#A6.T7.7.11]
+[#A6.T7.7.11.1] [#A6.T7.7.11.1.1] RH20T-Robot
+[#A6.T7.7.11.2] [#A6.T7.7.11.2.1] 4.5M
+[#A6.T7.7.11.3] [#A6.T7.7.11.3.1] 62.5
+[#A6.T7.7.11.4] [#A6.T7.7.11.4.1] 20
+[#A6.T7.7.11.5] [#A6.T7.7.11.5.1] Wrist
+[#A6.T7.7.11.6] [#A6.T7.7.11.6.1] Real robot
+[#A6.T7.7.12]
+[#A6.T7.7.12.1] [#A6.T7.7.12.1.1] Ego4D
+[#A6.T7.7.12.2] [#A6.T7.7.12.2.1] 154.4M
+[#A6.T7.7.12.3] [#A6.T7.7.12.3.1] 2,144.7
+[#A6.T7.7.12.4] [#A6.T7.7.12.4.1] 20
+[#A6.T7.7.12.5] [#A6.T7.7.12.5.1] Egocentric
+[#A6.T7.7.12.6] [#A6.T7.7.12.6.1] Human
+[#A6.T7.7.13]
+[#A6.T7.7.13.1] [#A6.T7.7.13.1.1] Ego-Exo4D
+[#A6.T7.7.13.2] [#A6.T7.7.13.2.1] 8.9M
+[#A6.T7.7.13.3] [#A6.T7.7.13.3.1] 123.0
+[#A6.T7.7.13.4] [#A6.T7.7.13.4.1] 30
+[#A6.T7.7.13.5] [#A6.T7.7.13.5.1] Egocentric
+[#A6.T7.7.13.6] [#A6.T7.7.13.6.1] Human
+[#A6.T7.7.14]
+[#A6.T7.7.14.1] [#A6.T7.7.14.1.1] Assembly-101
+[#A6.T7.7.14.2] [#A6.T7.7.14.2.1] 1.4M
+[#A6.T7.7.14.3] [#A6.T7.7.14.3.1] 19.3
+[#A6.T7.7.14.4] [#A6.T7.7.14.4.1] 20
+[#A6.T7.7.14.5] [#A6.T7.7.14.5.1] Egocentric
+[#A6.T7.7.14.6] [#A6.T7.7.14.6.1] Human
+[#A6.T7.7.15]
+[#A6.T7.7.15.1] [#A6.T7.7.15.1.1] HOI4D
+[#A6.T7.7.15.2] [#A6.T7.7.15.2.1] 892K
+[#A6.T7.7.15.3] [#A6.T7.7.15.3.1] 12.4
+[#A6.T7.7.15.4] [#A6.T7.7.15.4.1] 20
+[#A6.T7.7.15.5] [#A6.T7.7.15.5.1] Egocentric
+[#A6.T7.7.15.6] [#A6.T7.7.15.6.1] Human
+[#A6.T7.7.16]
+[#A6.T7.7.16.1] [#A6.T7.7.16.1.1] HoloAssist
+[#A6.T7.7.16.2] [#A6.T7.7.16.2.1] 12.2M
+[#A6.T7.7.16.3] [#A6.T7.7.16.3.1] 169.6
+[#A6.T7.7.16.4] [#A6.T7.7.16.4.1] 20
+[#A6.T7.7.16.5] [#A6.T7.7.16.5.1] Egocentric
+[#A6.T7.7.16.6] [#A6.T7.7.16.6.1] Human
+[#A6.T7.7.17]
+[#A6.T7.7.17.1] [#A6.T7.7.17.1.1] RH20T-Human
+[#A6.T7.7.17.2] [#A6.T7.7.17.2.1] 1.2M
+[#A6.T7.7.17.3] [#A6.T7.7.17.3.1] 16.3
+[#A6.T7.7.17.4] [#A6.T7.7.17.4.1] 20
+[#A6.T7.7.17.5] [#A6.T7.7.17.5.1] Egocentric
+[#A6.T7.7.17.6] [#A6.T7.7.17.6.1] Human
+[#A6.T7.7.18]
+[#A6.T7.7.18.1] [#A6.T7.7.18.1.1] EPIC-KITCHENS
+[#A6.T7.7.18.2] [#A6.T7.7.18.2.1] 2.3M
+[#A6.T7.7.18.3] [#A6.T7.7.18.3.1] 31.7
+[#A6.T7.7.18.4] [#A6.T7.7.18.4.1] 20
+[#A6.T7.7.18.5] [#A6.T7.7.18.5.1] Egocentric
+[#A6.T7.7.18.6] [#A6.T7.7.18.6.1] Human
+[#A6.T7.7.19]
+[#A6.T7.7.19.1] [#A6.T7.7.19.1.1] GR-1 Simulation Pre-Training
+[#A6.T7.7.19.2] [#A6.T7.7.19.2.1] 125.5M
+[#A6.T7.7.19.3] [#A6.T7.7.19.3.1] 1,742.6
+[#A6.T7.7.19.4] [#A6.T7.7.19.4.1] 20
+[#A6.T7.7.19.5] [#A6.T7.7.19.5.1] Egocentric
+[#A6.T7.7.19.6] [#A6.T7.7.19.6.1] Simulation
+[#A6.T7.7.20]
+[#A6.T7.7.20.1] [#A6.T7.7.20.1.1] GR-1 Neural Videos
+[#A6.T7.7.20.2] [#A6.T7.7.20.2.1] 23.8M
+[#A6.T7.7.20.3] [#A6.T7.7.20.3.1] 827.3
+[#A6.T7.7.20.4] [#A6.T7.7.20.4.1] 8
+[#A6.T7.7.20.5] [#A6.T7.7.20.5.1] Egocentric
+[#A6.T7.7.20.6] [#A6.T7.7.20.6.1] Neural-generated
+[#A6.T7.7.21]
+[#A6.T7.7.21.1] [#A6.T7.7.21.1.1] Total robot data
+[#A6.T7.7.21.2] [#A6.T7.7.21.2.1] 262.3M
+[#A6.T7.7.21.3] [#A6.T7.7.21.3.1] 3,288.8
+[#A6.T7.7.21.4] [#A6.T7.7.21.4.1] –
+[#A6.T7.7.21.5] [#A6.T7.7.21.5.1] –
+[#A6.T7.7.21.6] [#A6.T7.7.21.6.1] –
+[#A6.T7.7.22]
+[#A6.T7.7.22.1] [#A6.T7.7.22.1.1] Total human data
+[#A6.T7.7.22.2] [#A6.T7.7.22.2.1] 181.3M
+[#A6.T7.7.22.3] [#A6.T7.7.22.3.1] 2,517.0
+[#A6.T7.7.22.4] [#A6.T7.7.22.4.1] –
+[#A6.T7.7.22.5] [#A6.T7.7.22.5.1] –
+[#A6.T7.7.22.6] [#A6.T7.7.22.6.1] –
+[#A6.T7.7.23]
+[#A6.T7.7.23.1] [#A6.T7.7.23.1.1] Total simulation data
+[#A6.T7.7.23.2] [#A6.T7.7.23.2.1] 125.5M
+[#A6.T7.7.23.3] [#A6.T7.7.23.3.1] 1,742.6
+[#A6.T7.7.23.4] [#A6.T7.7.23.4.1] –
+[#A6.T7.7.23.5] [#A6.T7.7.23.5.1] –
+[#A6.T7.7.23.6] [#A6.T7.7.23.6.1] –
+[#A6.T7.7.24]
+[#A6.T7.7.24.1] [#A6.T7.7.24.1.1] Total neural data
+[#A6.T7.7.24.2] [#A6.T7.7.24.2.1] 23.8M
+[#A6.T7.7.24.3] [#A6.T7.7.24.3.1] 827.3
+[#A6.T7.7.24.4] [#A6.T7.7.24.4.1] –
+[#A6.T7.7.24.5] [#A6.T7.7.24.5.1] –
+[#A6.T7.7.24.6] [#A6.T7.7.24.6.1] –
+[#A6.T7.7.25]
+[#A6.T7.7.25.1] [#A6.T7.7.25.1.1] Total
+[#A6.T7.7.25.2] [#A6.T7.7.25.2.1] 592.9M
+[#A6.T7.7.25.3] [#A6.T7.7.25.3.1] 8,375.7
+[#A6.T7.7.25.4] [#A6.T7.7.25.4.1] –
+[#A6.T7.7.25.5] [#A6.T7.7.25.5.1] –
+[#A6.T7.7.25.6] [#A6.T7.7.25.6.1] –
+[#bib]
+References
+[#bib.bib1] (1)
+Niket Agarwal, Arslan Ali, Maciej Bala, Yogesh Balaji, Erik Barker, Tiffany
+Cai, Prithvijit Chattopadhyay, Yongxin Chen, Yin Cui, Yifan Ding, et al.
+Cosmos world foundation model platform for physical ai.
+[#bib.bib1.1] arXiv preprint arXiv:2501.03575, 2025.
+[#bib.bib2] (2)
+AgiBot-World-Contributors et al.
+AgiBot World Colosseo: A Large-scale Manipulation Platform for
+Scalable and Intelligent Embodied Systems.
+[#bib.bib2.1] arXiv preprint arXiv:2503.06669, 2025.
+[#bib.bib3] (3)
+Jean-Baptiste Alayrac, Jeff Donahue, Pauline Luc, Antoine Miech, Iain Barr,
+Yana Hasson, Karel Lenc, Arthur Mensch, Katherine Millican, Malcolm Reynolds,
+Roman Ring, Eliza Rutherford, Serkan Cabi, Tengda Han, Zhitao Gong, Sina
+Samangooei, Marianne Monteiro, Jacob L Menick, Sebastian Borgeaud, Andy
+Brock, Aida Nematzadeh, Sahand Sharifzadeh, Mikoł aj Bińkowski, Ricardo
+Barreira, Oriol Vinyals, Andrew Zisserman, and Karén Simonyan.
+Flamingo: a visual language model for few-shot learning.
+In S. Koyejo, S. Mohamed, A. Agarwal, D. Belgrave, K. Cho, and A. Oh,
+editors, [#bib.bib3.1] Advances in Neural Information Processing Systems, 2022.
+[#bib.bib4] (4)
+Jorge Aldaco, Travis Armstrong, Robert Baruch, Jeff Bingham, Sanky Chan,
+Kenneth Draper, Debidatta Dwibedi, Chelsea Finn, Pete Florence, Spencer
+Goodrich, et al.
+Aloha 2: An enhanced low-cost hardware for bimanual teleoperation.
+[#bib.bib4.1] arXiv preprint arXiv:2405.02292, 2024.
+[#bib.bib5] (5)
+Loubna Ben Allal, Anton Lozhkov, Elie Bakouch, Gabriel Martín
+Blázquez, Guilherme Penedo, Lewis Tunstall, Andrés Marafioti, Hynek
+Kydlíček, Agustín Piqueres Lajarín, Vaibhav Srivastav,
+et al.
+Smollm2: When smol goes big–data-centric training of a small
+language model.
+[#bib.bib5.1] arXiv preprint arXiv:2502.02737, 2025.
+[#bib.bib6] (6)
+Bowen Baker, Ilge Akkaya, Peter Zhokov, Joost Huizinga, Jie Tang, Adrien
+Ecoffet, Brandon Houghton, Raul Sampedro, and Jeff Clune.
+Video pretraining (vpt): Learning to act by watching unlabeled online
+videos.
+[#bib.bib6.1] Advances in Neural Information Processing Systems,
+35:24639–24654, 2022.
+[#bib.bib7] (7)
+Homanga Bharadhwaj, Debidatta Dwibedi, Abhinav Gupta, Shubham Tulsiani, Carl
+Doersch, Ted Xiao, Dhruv Shah, Fei Xia, Dorsa Sadigh, and Sean Kirmani.
+Gen2act: Human video generation in novel scenarios enables
+generalizable robot manipulation.
+[#bib.bib7.1] arXiv preprint arXiv:2409.16283, 2024a.
+[#bib.bib8] (8)
+Homanga Bharadhwaj, Roozbeh Mottaghi, Abhinav Gupta, and Shubham Tulsiani.
+Track2act: Predicting point tracks from internet videos enables
+diverse zero-shot robot manipulation.
+[#bib.bib8.1] arXiv e-prints, pages arXiv–2405, 2024b.
+[#bib.bib9] (9)
+Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Shubham Tulsiani,
+and Vikash Kumar.
+Roboagent: Generalization and efficiency in robot manipulation via
+semantic augmentations and action chunking.
+In [#bib.bib9.1] 2024 IEEE International Conference on Robotics and
+Automation (ICRA), 2024c.
+[#bib.bib10] (10)
+Kevin Black, Noah Brown, Danny Driess, Adnan Esmail, Michael Equi, Chelsea
+Finn, Niccolo Fusai, Lachy Groom, Karol Hausman, Brian Ichter, et al.
+[#bib.bib10.m1] π0\pi_{0}: A vision-language-action flow model for general robot
+control.
+[#bib.bib10.1] arXiv preprint arXiv:2410.24164, 2024.
+[#bib.bib11] (11)
+Rishi Bommasani, Drew A Hudson, Ehsan Adeli, Russ Altman, Simran Arora, Sydney
+von Arx, Michael S Bernstein, Jeannette Bohg, Antoine Bosselut, Emma
+Brunskill, et al.
+On the opportunities and risks of foundation models.
+[#bib.bib11.1] arXiv preprint arXiv:2108.07258, 2021.
+[#bib.bib12] (12)
+Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Joseph Dabis,
+Chelsea Finn, Keerthana Gopalakrishnan, Karol Hausman, Alex Herzog, Jasmine
+Hsu, Julian Ibarz, Brian Ichter, Alex Irpan, Tomas Jackson, Sally Jesmonth,
+Nikhil Joshi, Ryan Julian, Dmitry Kalashnikov, Yuheng Kuang, Isabel Leal,
+Kuang-Huei Lee, Sergey Levine, Yao Lu, Utsav Malla, Deeksha Manjunath, Igor
+Mordatch, Ofir Nachum, Carolina Parada, Jodilyn Peralta, Emily Perez, Karl
+Pertsch, Jornell Quiambao, Kanishka Rao, Michael Ryoo, Grecia Salazar, Pannag
+Sanketi, Kevin Sayed, Jaspiar Singh, Sumedh Sontakke, Austin Stone, Clayton
+Tan, Huong Tran, Vincent Vanhoucke, Steve Vega, Quan Vuong, Fei Xia, Ted
+Xiao, Peng Xu, Sichun Xu, Tianhe Yu, and Brianna Zitkovich.
+Rt-1: Robotics transformer for real-world control at scale.
+In [#bib.bib12.1] arXiv preprint arXiv:2212.06817, 2022a.
+[#bib.bib13] (13)
+Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Joseph Dabis,
+Chelsea Finn, Keerthana Gopalakrishnan, Karol Hausman, Alex Herzog, Jasmine
+Hsu, et al.
+Rt-1: Robotics transformer for real-world control at scale.
+[#bib.bib13.1] arXiv preprint arXiv:2212.06817, 2022b.
+[#bib.bib14] (14)
+Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Xi Chen,
+Krzysztof Choromanski, Tianli Ding, Danny Driess, Avinava Dubey, Chelsea
+Finn, Pete Florence, Chuyuan Fu, Montse Gonzalez Arenas, Keerthana
+Gopalakrishnan, Kehang Han, Karol Hausman, Alex Herzog, Jasmine Hsu, Brian
+Ichter, Alex Irpan, Nikhil Joshi, Ryan Julian, Dmitry Kalashnikov, Yuheng
+Kuang, Isabel Leal, Lisa Lee, Tsang-Wei Edward Lee, Sergey Levine, Yao Lu,
+Henryk Michalewski, Igor Mordatch, Karl Pertsch, Kanishka Rao, Krista
+Reymann, Michael Ryoo, Grecia Salazar, Pannag Sanketi, Pierre Sermanet,
+Jaspiar Singh, Anikait Singh, Radu Soricut, Huong Tran, Vincent Vanhoucke,
+Quan Vuong, Ayzaan Wahid, Stefan Welker, Paul Wohlhart, Jialin Wu, Fei Xia,
+Ted Xiao, Peng Xu, Sichun Xu, Tianhe Yu, and Brianna Zitkovich.
+Rt-2: Vision-language-action models transfer web knowledge to robotic
+control.
+In [#bib.bib14.1] arXiv preprint arXiv:2307.15818, 2023a.
+[#bib.bib15] (15)
+Anthony Brohan, Yevgen Chebotar, Chelsea Finn, Karol Hausman, Alexander Herzog,
+Daniel Ho, Julian Ibarz, Alex Irpan, Eric Jang, Ryan Julian, et al.
+Do as i can, not as i say: Grounding language in robotic affordances.
+In [#bib.bib15.1] Conference on Robot Learning, pages 287–318. PMLR,
+2023b.
+[#bib.bib16] (16)
+Anthony Brohan, Yevgen Chebotar, Chelsea Finn, Karol Hausman, Alexander Herzog,
+Daniel Ho, Julian Ibarz, Alex Irpan, Eric Jang, Ryan Julian, et al.
+Do as i can, not as i say: Grounding language in robotic affordances.
+In [#bib.bib16.1] Conference on robot learning, pages 287–318. PMLR,
+2023c.
+[#bib.bib17] (17)
+Tim Brooks, Bill Peebles, Connor Holmes, Will DePue, Yufei Guo, Li Jing, David
+Schnurr, Joe Taylor, Troy Luhman, Eric Luhman, et al.
+Video generation models as world simulators. 2024.
+[#bib.bib17.1] URL https://openai.
+com/research/video-generation-models-as-world-simulators, 3:1,
+2024.
+[#bib.bib18] (18)
+Remi Cadene, Simon Alibert, Alexander Soare, Quentin Gallouedec, Adil Zouitine,
+and Thomas Wolf.
+Lerobot: State-of-the-art machine learning for real-world robotics in
+pytorch.
+https://github.com/huggingface/lerobot, 2024.
+[#bib.bib19] (19)
+Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li, Yifeng Li, Yuxiao
+Liu, Hongtao Wu, Jiafeng Xu, Yichu Yang, Hanbo Zhang, and Minzhao Zhu.
+Gr-2: A generative video-language-action model with web-scale
+knowledge for robot manipulation.
+[#bib.bib19.1] arXiv preprint arXiv:2410.06158, 2024.
+[#bib.bib20] (20)
+Zoey Chen, Sho Kiami, Abhishek Gupta, and Vikash Kumar.
+Genaug: Retargeting behaviors to unseen situations via generative
+augmentation.
+[#bib.bib20.1] arXiv preprint arXiv:2302.06671, 2023.
+[#bib.bib21] (21)
+Cheng Chi, Zhenjia Xu, Siyuan Feng, Eric Cousineau, Yilun Du, Benjamin
+Burchfiel, Russ Tedrake, and Shuran Song.
+Diffusion policy: Visuomotor policy learning via action diffusion.
+[#bib.bib21.1] The International Journal of Robotics Research,
+2024a.
+[#bib.bib22] (22)
+Cheng Chi, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan
+Feng, Russ Tedrake, and Shuran Song.
+Universal manipulation interface: In-the-wild robot teaching without
+in-the-wild robots.
+In [#bib.bib22.1] Proceedings of Robotics: Science and Systems (RSS),
+2024b.
+[#bib.bib23] (23)
+Murtaza Dalal, Ajay Mandlekar, Caelan Reed Garrett, Ankur Handa, Ruslan
+Salakhutdinov, and Dieter Fox.
+Imitating task and motion planning with visuomotor transformers.
+In [#bib.bib23.1] Conference on Robot Learning, pages 2565–2593. PMLR, 2023.
+[#bib.bib24] (24)
+Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino
+Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, Toby Perrett,
+Will Price, et al.
+Scaling egocentric vision: The epic-kitchens dataset.
+In [#bib.bib24.1] Proceedings of the European conference on computer vision
+(ECCV), pages 720–736, 2018.
+[#bib.bib25] (25)
+Shivin Dass, Wensi Ai, Yuqian Jiang, Samik Singh, Jiaheng Hu, Ruohan Zhang,
+Peter Stone, Ben Abbatematteo, and Roberto Martín-Martín.
+Telemoma: A modular and versatile teleoperation system for mobile
+manipulation.
+In [#bib.bib25.1] 2nd Workshop on Mobile Manipulation and Embodied
+Intelligence at ICRA 2024, 2024.
+[#bib.bib26] (26)
+Danny Driess, Fei Xia, Mehdi SM Sajjadi, Corey Lynch, Aakanksha Chowdhery,
+Brian Ichter, Ayzaan Wahid, Jonathan Tompson, Quan Vuong, Tianhe Yu, et al.
+Palm-e: An embodied multimodal language model.
+[#bib.bib26.1] arXiv preprint arXiv:2303.03378, 2023.
+[#bib.bib27] (27)
+Frederik Ebert, Yanlai Yang, Karl Schmeckpeper, Bernadette Bucher, Georgios
+Georgakis, Kostas Daniilidis, Chelsea Finn, and Sergey Levine.
+Bridge Data: Boosting Generalization of Robotic Skills with
+Cross-Domain Datasets.
+In [#bib.bib27.1] Proceedings of Robotics: Science and Systems, New York
+City, NY, USA, June 2022.
+10.15607/RSS.2022.XVIII.063.
+[#bib.bib28] (28)
+Hao-Shu Fang, Hongjie Fang, Zhenyu Tang, Jirong Liu, Junbo Wang, Haoyi Zhu, and
+Cewu Lu.
+Rh20t: A robotic dataset for learning diverse skills in one-shot.
+In [#bib.bib28.1] RSS 2023 Workshop on Learning for Task and Motion Planning,
+2023.
+[#bib.bib29] (29)
+Hongjie Fang, Hao-Shu Fang, Yiming Wang, Jieji Ren, Jingjing Chen, Ruo Zhang,
+Weiming Wang, and Cewu Lu.
+Airexo: Low-cost exoskeletons for learning whole-arm manipulation in
+the wild.
+In [#bib.bib29.1] 2024 IEEE International Conference on Robotics and
+Automation (ICRA), pages 15031–15038. IEEE, 2024.
+[#bib.bib30] (30)
+Zipeng Fu, Tony Z Zhao, and Chelsea Finn.
+Mobile aloha: Learning bimanual mobile manipulation with low-cost
+whole-body teleoperation.
+In [#bib.bib30.1] 2024 IEEE International Conference on Robotics and
+Automation (ICRA), 2024.
+[#bib.bib31] (31)
+Caelan Garrett, Ajay Mandlekar, Bowen Wen, and Dieter Fox.
+Skillmimicgen: Automated demonstration generation for efficient skill
+learning and deployment.
+[#bib.bib31.1] arXiv preprint arXiv:2410.18907, 2024.
+[#bib.bib32] (32)
+Raghav Goyal, Samira Ebrahimi Kahou, Vincent Michalski, Joanna Materzynska,
+Susanne Westphal, Heuna Kim, Valentin Haenel, Ingo Fruend, Peter Yianilos,
+Moritz Mueller-Freitag, et al.
+The" something something" video database for learning and evaluating
+visual common sense.
+In [#bib.bib32.1] Proceedings of the IEEE international conference on computer
+vision, pages 5842–5850, 2017.
+[#bib.bib33] (33)
+Kristen Grauman, Andrew Westbury, Eugene Byrne, Zachary Chavis, Antonino
+Furnari, Rohit Girdhar, Jackson Hamburger, Hao Jiang, Miao Liu, Xingyu Liu,
+et al.
+Ego4d: Around the world in 3,000 hours of egocentric video.
+In [#bib.bib33.1] Proceedings of the IEEE/CVF conference on computer vision
+and pattern recognition, pages 18995–19012, 2022.
+[#bib.bib34] (34)
+Kristen Grauman, Andrew Westbury, Lorenzo Torresani, Kris Kitani, Jitendra
+Malik, Triantafyllos Afouras, Kumar Ashutosh, Vijay Baiyya, Siddhant Bansal,
+Bikram Boote, et al.
+Ego-exo4d: Understanding skilled human activity from first-and
+third-person perspectives.
+In [#bib.bib34.1] Proceedings of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition, pages 19383–19400, 2024.
+[#bib.bib35] (35)
+Jiayuan Gu, Fanbo Xiang, Xuanlin Li, Zhan Ling, Xiqiang Liu, Tongzhou Mu, Yihe
+Tang, Stone Tao, Xinyue Wei, Yunchao Yao, et al.
+Maniskill2: A unified benchmark for generalizable manipulation
+skills.
+In [#bib.bib35.1] The Eleventh International Conference on Learning
+Representations, 2023.
+[#bib.bib36] (36)
+Huy Ha, Pete Florence, and Shuran Song.
+Scaling up and distilling down: Language-guided robot skill
+acquisition.
+In [#bib.bib36.1] Conference on Robot Learning, pages 3766–3777. PMLR, 2023.
+[#bib.bib37] (37)
+Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+Wang, Lu Wang, and Weizhu Chen.
+LoRA: Low-rank adaptation of large language models.
+In [#bib.bib37.1] International Conference on Learning Representations, 2022.
+[#bib.bib38] (38)
+Xixi Hu, Bo Liu, Xingchao Liu, and Qiang Liu.
+Adaflow: Imitation learning with variance-adaptive flow-based
+policies.
+[#bib.bib38.1] arXiv preprint arXiv:2402.04292, 2024.
+[#bib.bib39] (39)
+Jiangyong Huang, Silong Yong, Xiaojian Ma, Xiongkun Linghu, Puhao Li, Yan Wang,
+Qing Li, Song-Chun Zhu, Baoxiong Jia, and Siyuan Huang.
+An embodied generalist agent in 3d world.
+In [#bib.bib39.1] Proceedings of the International Conference on Machine
+Learning (ICML), 2024.
+[#bib.bib40] (40)
+Wenlong Huang, Fei Xia, Ted Xiao, Harris Chan, Jacky Liang, Pete Florence, Andy
+Zeng, Jonathan Tompson, Igor Mordatch, Yevgen Chebotar, et al.
+Inner monologue: Embodied reasoning through planning with language
+models.
+In [#bib.bib40.1] 6th Annual Conference on Robot Learning.
+[#bib.bib41] (41)
+Wenlong Huang, Fei Xia, Dhruv Shah, Danny Driess, Andy Zeng, Yao Lu, Pete
+Florence, Igor Mordatch, Sergey Levine, Karol Hausman, et al.
+Grounded decoding: Guiding text generation with grounded models for
+embodied agents.
+[#bib.bib41.1] Advances in Neural Information Processing Systems,
+36:59636–59661, 2023.
+[#bib.bib42] (42)
+Aadhithya Iyer, Zhuoran Peng, Yinlong Dai, Irmak Guzey, Siddhant Haldar,
+Soumith Chintala, and Lerrel Pinto.
+Open teach: A versatile teleoperation system for robotic
+manipulation.
+In [#bib.bib42.1] CoRL 2024 Workshop on Mastering Robot Manipulation in a
+World of Abundant Data.
+[#bib.bib43] (43)
+Stephen James, Zicong Ma, David Rovick Arrojo, and Andrew J Davison.
+Rlbench: The robot learning benchmark & learning environment.
+[#bib.bib43.1] IEEE Robotics and Automation Letters, 5(2):3019–3026, 2020.
+[#bib.bib44] (44)
+Yunfan Jiang, Agrim Gupta, Zichen Zhang, Guanzhi Wang, Yongqiang Dou, Yanjun
+Chen, Li Fei-Fei, Anima Anandkumar, Yuke Zhu, and Linxi Fan.
+Vima: robot manipulation with multimodal prompts.
+In [#bib.bib44.1] Proceedings of the 40th International Conference on Machine
+Learning, pages 14975–15022, 2023.
+[#bib.bib45] (45)
+Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar,
+Linxi Fan, and Yuke Zhu.
+Dexmimicgen: Automated data generation for bimanual dexterous
+manipulation via imitation learning.
+2024.
+[#bib.bib46] (46)
+Daniel Kahneman.
+[#bib.bib46.1] Thinking, fast and slow.
+2011.
+[#bib.bib47] (47)
+Siddharth Karamcheti, Suraj Nair, Annie S Chen, Thomas Kollar, Chelsea Finn,
+Dorsa Sadigh, and Percy Liang.
+Language-driven representation learning for robotics.
+[#bib.bib47.1] arXiv preprint arXiv:2302.12766, 2023.
+[#bib.bib48] (48)
+Simar Kareer, Dhruv Patel, Ryan Punamiya, Pranay Mathur, Shuo Cheng, Chen Wang,
+Judy Hoffman, and Danfei Xu.
+EgoMimic: Scaling imitation learning via egocentric video, 2024.
+[#bib.bib49] (49)
+Alexander Khazatsky, Karl Pertsch, Suraj Nair, Ashwin Balakrishna, Sudeep
+Dasari, Siddharth Karamcheti, Soroush Nasiriany, Mohan Kumar Srirama,
+Lawrence Yunliang Chen, Kirsty Ellis, Peter David Fagan, Joey Hejna, Masha
+Itkina, Marion Lepert, Yecheng Jason Ma, Patrick Tree Miller, Jimmy Wu,
+Suneel Belkhale, Shivin Dass, Huy Ha, Arhan Jain, Abraham Lee, Youngwoon Lee,
+Marius Memmel, Sungjae Park, Ilija Radosavovic, Kaiyuan Wang, Albert Zhan,
+Kevin Black, Cheng Chi, Kyle Beltran Hatch, Shan Lin, Jingpei Lu, Jean
+Mercat, Abdul Rehman, Pannag R Sanketi, Archit Sharma, Cody Simpson, Quan
+Vuong, Homer Rich Walke, Blake Wulfe, Ted Xiao, Jonathan Heewon Yang, Arefeh
+Yavary, Tony Z. Zhao, Christopher Agia, Rohan Baijal, Mateo Guaman Castro,
+Daphne Chen, Qiuyu Chen, Trinity Chung, Jaimyn Drake, Ethan Paul Foster,
+Jensen Gao, David Antonio Herrera, Minho Heo, Kyle Hsu, Jiaheng Hu, Donovon
+Jackson, Charlotte Le, Yunshuang Li, Kevin Lin, Roy Lin, Zehan Ma, Abhiram
+Maddukuri, Suvir Mirchandani, Daniel Morton, Tony Nguyen, Abigail O’Neill,
+Rosario Scalise, Derick Seale, Victor Son, Stephen Tian, Emi Tran, Andrew E.
+Wang, Yilin Wu, Annie Xie, Jingyun Yang, Patrick Yin, Yunchu Zhang, Osbert
+Bastani, Glen Berseth, Jeannette Bohg, Ken Goldberg, Abhinav Gupta, Abhishek
+Gupta, Dinesh Jayaraman, Joseph J Lim, Jitendra Malik, Roberto
+Martín-Martín, Subramanian Ramamoorthy, Dorsa Sadigh, Shuran Song, Jiajun
+Wu, Michael C. Yip, Yuke Zhu, Thomas Kollar, Sergey Levine, and Chelsea Finn.
+Droid: A large-scale in-the-wild robot manipulation dataset.
+2024.
+[#bib.bib50] (50)
+Moo Jin Kim, Karl Pertsch, Siddharth Karamcheti, Ted Xiao, Ashwin
+Balakrishna, Suraj Nair, Rafael Rafailov, Ethan Foster, Grace Lam, Pannag
+Sanketi, Quan Vuong, Thomas Kollar, Benjamin Burchfiel, Russ Tedrake, Dorsa
+Sadigh, Sergey Levine, Percy Liang, and Chelsea Finn.
+Openvla: An open-source vision-language-action model.
+[#bib.bib50.1] arXiv preprint arXiv:2406.09246, 2024.
+[#bib.bib51] (51)
+Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, Hongtao Wu, Chilam
+Cheang, Ya Jing, Weinan Zhang, Huaping Liu, et al.
+Vision-language foundation models as effective robot imitators.
+[#bib.bib51.1] arXiv preprint arXiv:2311.01378, 2023.
+[#bib.bib52] (52)
+Zhiqi Li, Guo Chen, Shilong Liu, Shihao Wang, Vibashan VS, Yishen Ji, Shiyi
+Lan, Hao Zhang, Yilin Zhao, Subhashree Radhakrishnan, et al.
+Eagle 2: Building post-training data strategies from scratch for
+frontier vision-language models.
+[#bib.bib52.1] arXiv preprint arXiv:2501.14818, 2025.
+[#bib.bib53] (53)
+Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman, Brian Ichter, Pete
+Florence, and Andy Zeng.
+Code as policies: Language model programs for embodied control.
+In [#bib.bib53.1] 2023 IEEE International Conference on Robotics and
+Automation (ICRA), pages 9493–9500. IEEE, 2023.
+[#bib.bib54] (54)
+Kevin Lin, Christopher Agia, Toki Migimatsu, Marco Pavone, and Jeannette Bohg.
+Text2motion: from natural language instructions to feasible plans.
+[#bib.bib54.1] Autonomous Robots, 2023.
+[#bib.bib55] (55)
+Zongyu Lin, Wei Liu, Chen Chen, Jiasen Lu, Wenze Hu, Tsu-Jui Fu, Jesse
+Allardice, Zhengfeng Lai, Liangchen Song, Bowen Zhang, et al.
+Stiv: Scalable text and image conditioned video generation.
+[#bib.bib55.1] arXiv preprint arXiv:2412.07730, 2024.
+[#bib.bib56] (56)
+Yaron Lipman, Ricky TQ Chen, Heli Ben-Hamu, Maximilian Nickel, and Matthew Le.
+Flow matching for generative modeling.
+In [#bib.bib56.1] The Eleventh International Conference on Learning
+Representations.
+[#bib.bib57] (57)
+Xingchao Liu, Chengyue Gong, and Qiang Liu.
+Flow straight and fast: Learning to generate and transfer data with
+rectified flow.
+[#bib.bib57.1] arXiv preprint arXiv:2209.03003, 2022a.
+[#bib.bib58] (58)
+Yunze Liu, Yun Liu, Che Jiang, Kangbo Lyu, Weikang Wan, Hao Shen, Boqiang
+Liang, Zhoujie Fu, He Wang, and Li Yi.
+Hoi4d: A 4d egocentric dataset for category-level human-object
+interaction.
+In [#bib.bib58.1] Proceedings of the IEEE/CVF Conference on Computer Vision
+and Pattern Recognition (CVPR), pages 21013–21022, June 2022b.
+[#bib.bib59] (59)
+Corey Lynch, Ayzaan Wahid, Jonathan Tompson, Tianli Ding, James Betker, Robert
+Baruch, Travis Armstrong, and Pete Florence.
+Interactive language: Talking to robots in real time, 2022.
+[#bib.bib60] (60)
+Corey Lynch, Ayzaan Wahid, Jonathan Tompson, Tianli Ding, James Betker, Robert
+Baruch, Travis Armstrong, and Pete Florence.
+Interactive language: Talking to robots in real time.
+[#bib.bib60.1] IEEE Robotics and Automation Letters, 2023.
+[#bib.bib61] (61)
+Zhao Mandi, Homanga Bharadhwaj, Vincent Moens, Shuran Song, Aravind Rajeswaran,
+and Vikash Kumar.
+Cacti: A framework for scalable multi-task multi-scene visual
+imitation learning.
+[#bib.bib61.1] arXiv preprint arXiv:2212.05711, 2022.
+[#bib.bib62] (62)
+Ajay Mandlekar, Yuke Zhu, Animesh Garg, Jonathan Booher, Max Spero, Albert
+Tung, Julian Gao, John Emmons, Anchit Gupta, Emre Orbay, Silvio Savarese, and
+Li Fei-Fei.
+RoboTurk: A Crowdsourcing Platform for Robotic Skill Learning
+through Imitation.
+In [#bib.bib62.1] Conference on Robot Learning, 2018.
+[#bib.bib63] (63)
+Ajay Mandlekar, Jonathan Booher, Max Spero, Albert Tung, Anchit Gupta, Yuke
+Zhu, Animesh Garg, Silvio Savarese, and Li Fei-Fei.
+Scaling robot supervision to hundreds of hours with roboturk: Robotic
+manipulation dataset through human reasoning and dexterity.
+In [#bib.bib63.1] 2019 IEEE/RSJ International Conference on Intelligent Robots
+and Systems (IROS), pages 1048–1055. IEEE, 2019.
+[#bib.bib64] (64)
+Ajay Mandlekar, Danfei Xu, Roberto Martín-Martín, Yuke Zhu,
+Li Fei-Fei, and Silvio Savarese.
+Human-in-the-loop imitation learning using remote teleoperation.
+[#bib.bib64.1] arXiv preprint arXiv:2012.06733, 2020.
+[#bib.bib65] (65)
+Ajay Mandlekar, Danfei Xu, Josiah Wong, Soroush Nasiriany, Chen Wang, Rohun
+Kulkarni, Li Fei-Fei, Silvio Savarese, Yuke Zhu, and Roberto
+Martín-Martín.
+What matters in learning from offline human demonstrations for robot
+manipulation.
+In [#bib.bib65.1] Conference on Robot Learning (CoRL), 2021.
+[#bib.bib66] (66)
+Ajay Mandlekar, Soroush Nasiriany, Bowen Wen, Iretiayo Akinola, Yashraj Narang,
+Linxi Fan, Yuke Zhu, and Dieter Fox.
+Mimicgen: A data generation system for scalable robot learning using
+human demonstrations.
+In [#bib.bib66.1] Conference on Robot Learning, 2023.
+[#bib.bib67] (67)
+Antoine Miech, Dimitri Zhukov, Jean-Baptiste Alayrac, Makarand Tapaswi, Ivan
+Laptev, and Josef Sivic.
+Howto100m: Learning a text-video embedding by watching hundred
+million narrated video clips.
+In [#bib.bib67.1] Proceedings of the IEEE/CVF international conference on
+computer vision, pages 2630–2640, 2019.
+[#bib.bib68] (68)
+Matthias Minderer, Alexey A. Gritsenko, and Neil Houlsby.
+Scaling open-vocabulary object detection.
+In [#bib.bib68.1] Thirty-seventh Conference on Neural Information Processing
+Systems, 2023.
+[#bib.bib69] (69)
+Philipp Moritz, Robert Nishihara, Stephanie Wang, Alexey Tumanov, Richard Liaw,
+Eric Liang, Melih Elibol, Zongheng Yang, William Paul, Michael I Jordan,
+et al.
+Ray: A distributed framework for emerging [#bib.bib69.m1] {\{AI [#bib.bib69.m2] }\} applications.
+In [#bib.bib69.1] 13th USENIX symposium on operating systems design and
+implementation (OSDI 18), pages 561–577, 2018.
+[#bib.bib70] (70)
+Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn, and Abhinav Gupta.
+R3m: A universal visual representation for robot manipulation.
+[#bib.bib70.1] arXiv preprint arXiv:2203.12601, 2022.
+[#bib.bib71] (71)
+Soroush Nasiriany, Abhiram Maddukuri, Lance Zhang, Adeet Parikh, Aaron Lo,
+Abhishek Joshi, Ajay Mandlekar, and Yuke Zhu.
+Robocasa: Large-scale simulation of everyday tasks for generalist
+robots.
+In [#bib.bib71.1] Robotics: Science and Systems (RSS), 2024.
+[#bib.bib72] (72)
+NVIDIA.
+Osmo platform, 2025.
+URL https://developer.nvidia.com/osmo.
+Accessed: 2025-03-12.
+[#bib.bib73] (73)
+Octo Model Team, Dibya Ghosh, Homer Walke, Karl Pertsch, Kevin Black, Oier
+Mees, Sudeep Dasari, Joey Hejna, Charles Xu, Jianlan Luo, Tobias Kreiman,
+You Liang Tan, Lawrence Yunliang Chen, Pannag Sanketi, Quan Vuong, Ted
+Xiao, Dorsa Sadigh, Chelsea Finn, and Sergey Levine.
+Octo: An open-source generalist robot policy.
+In [#bib.bib73.1] Proceedings of Robotics: Science and Systems, Delft,
+Netherlands, 2024.
+[#bib.bib74] (74)
+Open X-Embodiment Collaboration et al.
+Open X-Embodiment: Robotic learning datasets and RT-X models.
+International Conference on Robotics and Automation, 2024.
+[#bib.bib75] (75)
+Abby O’Neill, Abdul Rehman, Abhiram Maddukuri, Abhishek Gupta, Abhishek
+Padalkar, Abraham Lee, Acorn Pooley, Agrim Gupta, Ajay Mandlekar, Ajinkya
+Jain, et al.
+Open x-embodiment: Robotic learning datasets and rt-x models: Open
+x-embodiment collaboration 0.
+In [#bib.bib75.1] 2024 IEEE International Conference on Robotics and
+Automation (ICRA), 2024.
+[#bib.bib76] (76)
+William Peebles and Saining Xie.
+Scalable diffusion models with transformers.
+In [#bib.bib76.1] Proceedings of the IEEE/CVF international conference on
+computer vision, pages 4195–4205, 2023.
+[#bib.bib77] (77)
+Juntao Ren, Priya Sundaresan, Dorsa Sadigh, Sanjiban Choudhury, and Jeannette
+Bohg.
+Motion tracks: A unified representation for human-robot transfer in
+few-shot imitation learning.
+[#bib.bib77.1] arXiv preprint arXiv:2501.06994, 2025a.
+[#bib.bib78] (78)
+Zhongwei Ren, Yunchao Wei, Xun Guo, Yao Zhao, Bingyi Kang, Jiashi Feng, and
+Xiaojie Jin.
+Videoworld: Exploring knowledge learning from unlabeled videos.
+[#bib.bib78.1] arXiv preprint arXiv:2501.09781, 2025b.
+[#bib.bib79] (79)
+F. Sener, D. Chatterjee, D. Shelepov, K. He, D. Singhania, R. Wang, and A. Yao.
+Assembly101: A large-scale multi-view video dataset for understanding
+procedural activities.
+[#bib.bib79.1] CVPR 2022, 2022.
+[#bib.bib80] (80)
+Mingyo Seo, H. Andy Park, Shenli Yuan, Yuke Zhu, , and Luis Sentis.
+Legato: Cross-embodiment imitation using a grasping tool.
+[#bib.bib80.1] IEEE Robotics and Automation Letters (RA-L), 2025.
+[#bib.bib81] (81)
+Rutav Shah, Roberto Martín-Martín, and Yuke Zhu.
+Mutex: Learning unified policies from multimodal task specifications.
+In [#bib.bib81.1] 7th Annual Conference on Robot Learning, 2023.
+[#bib.bib82] (82)
+Wenzhe Shi, Jose Caballero, Ferenc Huszár, Johannes Totz, Andrew P Aitken,
+Rob Bishop, Daniel Rueckert, and Zehan Wang.
+Real-time single image and video super-resolution using an efficient
+sub-pixel convolutional neural network.
+In [#bib.bib82.1] Proceedings of the IEEE conference on computer vision and
+pattern recognition, 2016.
+[#bib.bib83] (83)
+Ishika Singh, Valts Blukis, Arsalan Mousavian, Ankit Goyal, Danfei Xu, Jonathan
+Tremblay, Dieter Fox, Jesse Thomason, and Animesh Garg.
+Progprompt: Generating situated robot task plans using large language
+models.
+In [#bib.bib83.1] 2023 IEEE International Conference on Robotics and
+Automation (ICRA), 2023.
+[#bib.bib84] (84)
+Garrett Thomas, Ching-An Cheng, Ricky Loynd, Felipe Vieira Frujeri, Vibhav
+Vineet, Mihai Jalobeanu, and Andrey Kolobov.
+Plex: Making the most of the available data for robotic manipulation
+pretraining.
+In [#bib.bib84.1] CoRL, 2023.
+[#bib.bib85] (85)
+Michael Tschannen, Alexey Gritsenko, Xiao Wang, Muhammad Ferjad Naeem, Ibrahim
+Alabdulmohsin, Nikhil Parthasarathy, Talfan Evans, Lucas Beyer, Ye Xia, Basil
+Mustafa, et al.
+SigLIP 2: Multilingual vision-language encoders with improved
+semantic understanding, localization, and dense features.
+[#bib.bib85.1] arXiv preprint arXiv:2502.14786, 2025.
+[#bib.bib86] (86)
+Homer Walke, Kevin Black, Abraham Lee, Moo Jin Kim, Max Du, Chongyi Zheng, Tony
+Zhao, Philippe Hansen-Estruch, Quan Vuong, Andre He, Vivek Myers, Kuan Fang,
+Chelsea Finn, and Sergey Levine.
+Bridgedata v2: A dataset for robot learning at scale.
+In [#bib.bib86.1] Conference on Robot Learning (CoRL), 2023.
+[#bib.bib87] (87)
+Wan Team.
+Wan: Open and advanced large-scale video generative models.
+2025.
+[#bib.bib88] (88)
+Xin Wang, Taein Kwon, Mahdi Rad, Bowen Pan, Ishani Chakraborty, Sean Andrist,
+Dan Bohus, Ashley Feniello, Bugra Tekin, Felipe Vieira Frujeri, Neel Joshi,
+and Marc Pollefeys.
+Holoassist: an egocentric human interaction dataset for interactive
+ai assistants in the real world.
+In [#bib.bib88.1] Proceedings of the IEEE/CVF International Conference on
+Computer Vision (ICCV), 2023.
+[#bib.bib89] (89)
+Yufei Wang, Zhou Xian, Feng Chen, Tsun-Hsuan Wang, Yian Wang, Katerina
+Fragkiadaki, Zackory Erickson, David Held, and Chuang Gan.
+Robogen: Towards unleashing infinite data for automated robot
+learning via generative simulation.
+In [#bib.bib89.1] International Conference on Machine Learning, 2024.
+[#bib.bib90] (90)
+Junjie Wen, Yichen Zhu, Jinming Li, Minjie Zhu, Kun Wu, Zhiyuan Xu, Ran Cheng,
+Chaomin Shen, Yaxin Peng, Feifei Feng, et al.
+Tinyvla: Towards fast, data-efficient vision-language-action models
+for robotic manipulation.
+[#bib.bib90.1] arXiv preprint arXiv:2409.12514, 2024.
+[#bib.bib91] (91)
+Hongtao Wu, Ya Jing, Chilam Cheang, Guangzeng Chen, Jiafeng Xu, Xinghang Li,
+Minghuan Liu, Hang Li, and Tao Kong.
+Unleashing large-scale video generative pre-training for visual robot
+manipulation.
+[#bib.bib91.1] arXiv preprint arXiv:2312.13139, 2023a.
+[#bib.bib92] (92)
+Philipp Wu, Yide Shentu, Zhongke Yi, Xingyu Lin, and Pieter Abbeel.
+Gello: A general, low-cost, and intuitive teleoperation framework for
+robot manipulators, 2023b.
+[#bib.bib93] (93)
+Jiannan Xiang, Guangyi Liu, Yi Gu, Qiyue Gao, Yuting Ning, Yuheng Zha, Zeyu
+Feng, Tianhua Tao, Shibo Hao, Yemin Shi, et al.
+Pandora: Towards general world model with natural language actions
+and video states.
+[#bib.bib93.1] arXiv preprint arXiv:2406.09455, 2024.
+[#bib.bib94] (94)
+Jianwei Yang, Reuben Tan, Qianhui Wu, Ruijie Zheng, Baolin Peng, Yongyuan
+Liang, Yu Gu, Mu Cai, Seonghyeon Ye, Joel Jang, Yuquan Deng, Lars Liden, and
+Jianfeng Gao.
+Magma: A foundation model for multimodal AI agents,
+2025a.
+[#bib.bib95] (95)
+Lujie Yang, HJ Suh, Tong Zhao, Bernhard Paus Graesdal, Tarik Kelestemur,
+Jiuguang Wang, Tao Pang, and Russ Tedrake.
+Physics-driven data generation for contact-rich manipulation via
+trajectory optimization.
+[#bib.bib95.1] arXiv preprint arXiv:2502.20382, 2025b.
+[#bib.bib96] (96)
+Zhuoyi Yang, Jiayan Teng, Wendi Zheng, Ming Ding, Shiyu Huang, Jiazheng Xu,
+Yuanming Yang, Wenyi Hong, Xiaohan Zhang, Guanyu Feng, et al.
+Cogvideox: Text-to-video diffusion models with an expert transformer.
+[#bib.bib96.1] arXiv preprint arXiv:2408.06072, 2024.
+[#bib.bib97] (97)
+Seonghyeon Ye, Joel Jang, Byeongguk Jeon, Se June Joo, Jianwei Yang, Baolin
+Peng, Ajay Mandlekar, Reuben Tan, Yu-Wei Chao, Bill Yuchen Lin, Lars Liden,
+Kimin Lee, Jianfeng Gao, Luke Zettlemoyer, Dieter Fox, and Minjoon Seo.
+Latent action pretraining from videos.
+In [#bib.bib97.1] The Thirteenth International Conference on Learning
+Representations, 2025.
+[#bib.bib98] (98)
+Tianhe Yu, Ted Xiao, Austin Stone, Jonathan Tompson, Anthony Brohan, Su Wang,
+Jaspiar Singh, Clayton Tan, Jodilyn Peralta, Brian Ichter, et al.
+Scaling robot learning with semantically imagined experience.
+[#bib.bib98.1] arXiv preprint arXiv:2302.11550, 2023.
+[#bib.bib99] (99)
+Kevin Zakka.
+Mink: Python inverse kinematics based on MuJoCo, July 2024.
+URL https://github.com/kevinzakka/mink.
+[#bib.bib100] (100)
+Tianhao Zhang, Zoe McCarthy, Owen Jow, Dennis Lee, Ken Goldberg, and Pieter
+Abbeel.
+Deep imitation learning for complex manipulation tasks from virtual
+reality teleoperation.
+In [#bib.bib100.1] 2018 IEEE International Conference on Robotics and
+Automation (ICRA), 2018.
+[#bib.bib101] (101)
+Tony Z. Zhao, Vikash Kumar, Sergey Levine, and Chelsea Finn.
+Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.
+In [#bib.bib101.1] Proceedings of Robotics: Science and Systems, 2023.
+[#bib.bib102] (102)
+Haoyu Zhen, Xiaowen Qiu, Peihao Chen, Jincheng Yang, Xin Yan, Yilun Du, Yining
+Hong, and Chuang Gan.
+3d-vla: 3d vision-language-action generative world model.
+[#bib.bib102.1] arXiv preprint arXiv:2403.09631, 2024.
+[#bib.bib103] (103)
+Ruijie Zheng, Yongyuan Liang, Shuaiyi Huang, Jianfeng Gao, Hal Daumé III,
+Andrey Kolobov, Furong Huang, and Jianwei Yang.
+TraceVLA: Visual trace prompting enhances spatial-temporal
+awareness for generalist robotic policies.
+In [#bib.bib103.1] The Thirteenth International Conference on Learning
+Representations, 2025.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from
+[#fixed-buttons-container]
+[#disable-reading-mode-btn]

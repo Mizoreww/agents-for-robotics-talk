@@ -1,0 +1,148 @@
+[arxiv] HTTP 429; retrying in 3s (attempt 2/4)
+[arxiv] HTTP 429; retrying in 6s (attempt 3/4)
+[arxiv] HTTP 503; retrying in 0s (attempt 4/4)
+[arxiv] Error on query 'robotics language model agent manipulation': 429 Client Error: Unknown Error for url: https://export.arxiv.org/api/query?search_query=%28all%3Arobotics+language+model+agent+manipulation%29+AND+submittedDate%3A%5B202401010000+TO+202612312359%5D&sortBy=relevance&sortOrder=descending&max_results=12
+[dblp] Error on query 'robotics language model agent manipulation': Expecting value: line 1 column 1 (char 0)
+[open_alex] HTTP 504; retrying in 3s (attempt 2/4)
+[openreview] Error on query 'robotics language model agent manipulation': openreview not installed. pip install openreview-py
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/4)
+[semantic_scholar] HTTP 429; retrying in 6s (attempt 3/4)
+[semantic_scholar] HTTP 429; retrying in 12s (attempt 4/4)
+[semantic_scholar] Error on query 'robotics language model agent manipulation': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=robotics+language+model+agent+manipulation&offset=0&limit=12&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026
+
+per-source hits: arxiv=0, dblp=0, open_alex=12, openreview=0, semantic_scholar=0, crossref=12
+unique papers: 22 (2 cross-source duplicate records merged)
+============================================================
+  [1] (score 5) MALMM: Multi-Agent Large Language Models for Zero-Shot Robotics Manipulation
+      Authors: Harsh Singh, Rocktim Jyoti Das, Mingfei Han...
+      Year: 2024  Citations: 1  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2411.17636
+      URL: https://doi.org/10.48550/arxiv.2411.17636
+
+  [2] (score 5) Multi-Agent Large Language Models for Zero-Shot Robotic Manipulation
+      Authors: Singh, Harsh
+      Year: 2025  Citations: 0  Venue: MBZUAI iRep
+      Sources: open_alex  doi:10.82419/213
+      URL: https://doi.org/10.82419/213
+
+  [3] (score 4) RT-Grasp: Reasoning Tuning Robotic Grasping via Multi-modal Large Language Model
+      Authors: Jinxuan Xu, Shiyu Jin, Yutian Lei...
+      Year: 2024  Citations: 14  Venue: 
+      Sources: open_alex  doi:10.1109/iros58592.2024.10801718
+      URL: https://doi.org/10.1109/iros58592.2024.10801718
+
+  [4] (score 4) Large Language Models for Orchestrating Bimanual Robots
+      Authors: Kun Chu, Xufeng Zhao, Cornelius Weber...
+      Year: 2024  Citations: 11  Venue: 
+      Sources: open_alex  doi:10.1109/humanoids58906.2024.10769891
+      URL: https://doi.org/10.1109/humanoids58906.2024.10769891
+
+  [5] (score 4) Advancements in Multi-Agent Large Language Model Systems for Next-Generation AI
+      Authors: Rajeshwari Sissodia, Vinay Dwivedi, TaraChand Verma
+      Year: 2025  Citations: 1  Venue: Advances in Computational Intelligence and Robotics Advancements in Multi-Agent Large Language Model Systems for Next-Generation AI
+      Sources: crossref  doi:10.4018/979-8-3373-1419-8.ch001
+      URL: https://doi.org/10.4018/979-8-3373-1419-8.ch001
+
+  [6] (score 4) Data-Driven Robotics: Vision–Language–Action Learning for Robust Manipulation and Autonomy
+      Authors: Murali Krishna Pasupuleti
+      Year: 2026  Citations: 0  Venue: 
+      Sources: crossref  doi:10.62311/nesx/rb-978-81-999716-2-2
+      URL: https://doi.org/10.62311/nesx/rb-978-81-999716-2-2
+
+  [7] (score 3) SMART-LLM: Smart Multi-Agent Robot Task Planning using Large Language Models
+      Authors: Shyam Sundar Kannan, Vishnunandan L. N. Venkatesh, Byung‐Cheol Min
+      Year: 2024  Citations: 166  Venue: 
+      Sources: open_alex  doi:10.1109/iros58592.2024.10802322
+      URL: https://doi.org/10.1109/iros58592.2024.10802322
+
+  [8] (score 3) Language-Grounded Dynamic Scene Graphs for Interactive Object Search With Mobile Manipulation
+      Authors: Daniel Honerkamp, Martin Büchner, Fabien Despinoy...
+      Year: 2024  Citations: 61  Venue: IEEE Robotics and Automation Letters
+      Sources: open_alex  doi:10.1109/lra.2024.3441495
+      URL: https://doi.org/10.1109/lra.2024.3441495
+
+  [9] (score 3) VLMPC: Vision-Language Model Predictive Control for Robotic Manipulation
+      Authors: Wentao Zhao, Jiaming Chen, Ziyu Meng...
+      Year: 2024  Citations: 18  Venue: Robotics: Science and Systems XX
+      Sources: crossref  doi:10.15607/rss.2024.xx.106
+      URL: https://doi.org/10.15607/rss.2024.xx.106
+
+  [10] (score 3) Patrol Agent: An Autonomous UAV Framework for Urban Patrol Using on Board Vision Language Model and on Cloud Large Language Model
+      Authors: Zihao Yuan, Fangfang Xie, Tingwei Ji
+      Year: 2024  Citations: 9  Venue: 2024 6th International Conference on Robotics and Computer Vision (ICRCV)
+      Sources: crossref  doi:10.1109/icrcv62709.2024.10758606
+      URL: https://doi.org/10.1109/icrcv62709.2024.10758606
+
+  [11] (score 3) Empowering Large Language Models on Robotic Manipulation with Affordance Prompting
+      Authors: Guangran Cheng, Chuheng Zhang, Wenzhe Cai...
+      Year: 2024  Citations: 4  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2404.11027
+      URL: https://doi.org/10.48550/arxiv.2404.11027
+
+  [12] (score 3) Security and Privacy in Multi-Agent LLM Networks
+      Authors: Pawan Kumar Goel, Satya Prakash Yadav, Monika Singh
+      Year: 2025  Citations: 1  Venue: Advances in Computational Intelligence and Robotics Advancements in Multi-Agent Large Language Model Systems for Next-Generation AI
+      Sources: crossref  doi:10.4018/979-8-3373-1419-8.ch009
+      URL: https://doi.org/10.4018/979-8-3373-1419-8.ch009
+
+  [13] (score 3) Security and Privacy Challenges in Multi-Agent Language Model Ecosystems
+      Authors: Pawan Kumar Goel
+      Year: 2025  Citations: 0  Venue: Advances in Computational Intelligence and Robotics Advancements in Multi-Agent Large Language Model Systems for Next-Generation AI
+      Sources: crossref  doi:10.4018/979-8-3373-1419-8.ch008
+      URL: https://doi.org/10.4018/979-8-3373-1419-8.ch008
+
+  [14] (score 3) Mag-VLA: Vision-Language-Action Model for Bimanual Magnetically Actuated Microrobot Manipulation
+      Authors: Yongchen Wang, Kangyi Lu, Lan Wei...
+      Year: 2026  Citations: 0  Venue: 2026 International Conference on Manipulation, Automation and Robotics at Small Scales (MARSS)
+      Sources: crossref  doi:10.1109/marss70227.2026.11655691
+      URL: https://doi.org/10.1109/marss70227.2026.11655691
+
+  [15] (score 3) LLM-Based Multi-Agent Systems
+      Authors: Ravi Sharma, Dinesh Sahu, Rajnish Chaturvedi
+      Year: 2025  Citations: 0  Venue: Advances in Computational Intelligence and Robotics Advancements in Multi-Agent Large Language Model Systems for Next-Generation AI
+      Sources: crossref  doi:10.4018/979-8-3373-1419-8.ch003
+      URL: https://doi.org/10.4018/979-8-3373-1419-8.ch003
+
+  [16] (score 3) Credibility-Based Confidence Strategic Manipulation Classification and Anti-Manipulation Consensus Model for Multi-Agent Decision Making with Self-Confidence
+      Authors: Xia Liu, Xue-e Jiao, Yajing Shan...
+      Year: None  Citations: 0  Venue: 
+      Sources: crossref  doi:10.2139/ssrn.5001801
+      URL: https://doi.org/10.2139/ssrn.5001801
+
+  [17] (score 2) Embodied large language models enable robots to complete complex tasks in unpredictable environments
+      Authors: Ruaridh Mon-Williams, Gen Li, Ran Long...
+      Year: 2025  Citations: 106  Venue: Nature Machine Intelligence
+      Sources: open_alex  doi:10.1038/s42256-025-01005-x
+      URL: https://doi.org/10.1038/s42256-025-01005-x
+
+  [18] (score 2) Human–robot interaction through joint robot planning with large language models
+      Authors: Kosi Asuzu, Harjinder Singh, Moad Idrissi
+      Year: 2025  Citations: 20  Venue: Intelligent Service Robotics
+      Sources: open_alex  doi:10.1007/s11370-024-00570-1
+      URL: https://doi.org/10.1007/s11370-024-00570-1
+
+  [19] (score 2) Ground Manipulator Primitive Tasks to Executable Actions Using Large Language Models
+      Authors: Yue Cao, C. S. George Lee
+      Year: 2024  Citations: 5  Venue: Proceedings of the AAAI Symposium Series
+      Sources: open_alex  doi:10.1609/aaaiss.v2i1.27720
+      URL: https://doi.org/10.1609/aaaiss.v2i1.27720
+
+  [20] (score 4) [survey] Agentic LLM-based robotic systems for real-world applications: a review on their agenticness and ethics
+      Authors: Emmanuel K. Raptis, Athanasios Ch. Kapoutsis, Elias B. Kosmatopoulos
+      Year: 2025  Citations: 31  Venue: Frontiers in Robotics and AI
+      Sources: open_alex  doi:10.3389/frobt.2025.1605405
+      URL: https://doi.org/10.3389/frobt.2025.1605405
+
+  [21] (score 4) [survey] Vision-Language-Action (VLA) Models for Unmanned Aerial Robotics and Bimanual Manipulation: A Review
+      Authors: Inkyu Sa, Chanoh Park, Ho Seok Ahn
+      Year: None  Citations: 1  Venue: 
+      Sources: crossref  doi:10.20944/preprints202604.0664.v1
+      URL: https://doi.org/10.20944/preprints202604.0664.v1
+
+  [22] (score 3) [survey] A survey on integration of large language models with intelligent robots
+      Authors: Yeseung Kim, Dohyun Kim, Jieun Choi...
+      Year: 2024  Citations: 123  Venue: Intelligent Service Robotics
+      Sources: open_alex  doi:10.1007/s11370-024-00550-5
+      URL: https://doi.org/10.1007/s11370-024-00550-5
+
+Total: 22 unique papers (ranked; surveys sunk to the bottom).

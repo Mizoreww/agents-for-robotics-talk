@@ -1,0 +1,42 @@
+[
+  {
+    "name": "enpire_scaling.png",
+    "url": "https://arxiv.org/html/2606.19980v1/auto_env_bench.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 1809454,
+    "sha256": "e700a03681fc7e7d754ed71365633cf36c22b1418fd5943dd80dd099d87f4650"
+  },
+  {
+    "name": "enpire_utilization.svg",
+    "url": "https://arxiv.org/html/2606.19980v1/agent_resource_utilization.svg",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 111294,
+    "sha256": "39afbe81c4c602e57ffde5bc86b689f5595fde77ca5148f99956277abdc1fd17"
+  },
+  {
+    "name": "painting_source.mp4",
+    "url": "https://video.twimg.com/amplify_video/2097210560727437312/vid/avc1/1280x720/0Va8OLI7rDo9JUof.mp4?tag=29",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 16369668,
+    "sha256": "0202612c58f14fccba52d699d29edb98e7017be474b36911e5286341e1d2b895"
+  },
+  {
+    "name": "astra_real2sim_source.mp4",
+    "url": "https://video.twimg.com/amplify_video/2096992032623607809/vid/avc1/720x720/pmkVc55bnUfc_9fp.mp4?tag=16",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 856525,
+    "sha256": "e289eec4fc06da7470b11e575ced81fc3c98993d9761309a0dcbc28fa94027ac"
+  },
+  {
+    "name": "astra_microphone_source.mp4",
+    "url": "https://video.twimg.com/amplify_video/2096992089775190016/vid/avc1/778x720/qAfvNWOrUxU3oe-i.mp4?tag=16",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 6856817,
+    "sha256": "fde579c14e570522e2da496b88404d610bee3cb13d3f5baa598ad25a8fd95502"
+  }
+]

@@ -1,0 +1,42 @@
+GEAR - Generalist Embodied Agent Research
+[#__next]
+GEAR @ NVIDIA ResearchHomePublications
+[#headlessui-menu-button-«R7sm»] Blog
+GEAR
+Generalist Embodied Agent Research
+Building Generally Capable Agents in Many Worlds, Virtual and Real
+Welcome
+Welcome to the NVIDIA GEAR group led by Dr. Jim Fan and Prof. Yuke Zhu. At GEAR, our mission is to build foundation models for embodied agents in virtual and physical worlds. Our research agenda encompasses:
+Multimodal Foundation Models
+LLMs for planning and reasoning, vision-language models, and world models trained on Internet-scale data
+General-Purpose Robots
+Robotic models and systems for locomotion and dexterous manipulation in complex environments
+Foundation Agents
+Large action models that autonomously explore and bootstrap capabilities across games and simulations
+Simulation & Synthetic Data
+Simulation infrastructure and synthetic data pipelines for large-scale learning
+Open Positions
+Join us in shaping the future of embodied AI. We're looking for passionate researchers and engineers who want to work on cutting-edge problems in robotics, foundation models, and simulation.
+View Open Positions →
+Projects
+GR00T
+Foundation Model for Humanoid Robots →
+Eureka
+Human-Level Reward Design via Coding LLMs →
+Voyager
+Open-Ended Embodied Agent with LLMs →
+VIMA
+Robot Manipulation with Multimodal Prompts →
+MineDojo
+Open-Ended Embodied Agents with Internet Knowledge →
+EgoScale
+Scaling Human Video to Unlock Dexterous Robot Intelligence →
+View All Projects
+[#globalFooter] NVIDIA [#nvidia-logo]
+Privacy Policy
+Your Privacy Choices
+Terms of Service
+Accessibility
+Corporate Policies
+Contact
+Copyright © 2026 NVIDIA Corporation

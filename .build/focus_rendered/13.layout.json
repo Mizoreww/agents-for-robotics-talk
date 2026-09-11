@@ -1,0 +1,545 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/khg6uy",
+    "id": "khg6uy",
+    "slide": 13,
+    "layoutId": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Noto Sans",
+      "Noto Serif"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "61fd35cf-1192-43b8-bf7e-f858723f82c9",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "08723ab0-d954-4462-8af8-8dba31132563",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "08723ab0-d954-4462-8af8-8dba31132563",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/vm9ofqts",
+      "id": "1",
+      "bbox": [
+        1087,
+        30,
+        153,
+        38
+      ],
+      "alt": "CLEAR logo",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "59875dd6-5549-4c58-8a54-71f58bda6144",
+        "contentType": "image/png",
+        "byteLength": 70217
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4bilcvu",
+      "id": "2",
+      "name": "Slide 13 title",
+      "bbox": [
+        64,
+        57,
+        1011,
+        48
+      ],
+      "geometry": "rect",
+      "text": "Demo: Real2Sim and a Disclosed Failure",
+      "textPreview": "Demo: Real2Sim and a Disclosed Failure",
+      "resolvedFontSize": 36,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 36,
+        "typeface": "Noto Serif",
+        "color": "#1A1A1A",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Demo: Real2Sim and a Disclosed Failure"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Demo: Real2Sim and a Disclosed Failure",
+          "resolvedTextStyle": {
+            "fontSize": 36,
+            "typeface": "Noto Serif",
+            "color": "#1A1A1A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Demo: Real2Sim and a Disclosed Failure",
+              "fontSize": 36,
+              "typeface": "Noto Serif",
+              "color": "#1A1A1A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o3ihc7e9",
+      "id": "3",
+      "bbox": [
+        64,
+        111,
+        1152,
+        3
+      ],
+      "geometry": "rect",
+      "fillColor": "#2BA39B",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b6t0n2dk",
+      "id": "4",
+      "bbox": [
+        64,
+        679,
+        1090,
+        28
+      ],
+      "geometry": "rect",
+      "text": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)  |  Original X thread, including its limitation",
+      "textPreview": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)  |  Original X thread, including its limitation",
+      "resolvedFontSize": 11,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 11,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)  |  Original X thread, including its limitation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)  |  Original X thread, including its limitation",
+          "resolvedTextStyle": {
+            "fontSize": 11,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)  |  Original X thread, including its limitation",
+              "fontSize": 11,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a5kzehcz",
+      "id": "5",
+      "bbox": [
+        1192,
+        667,
+        46,
+        26
+      ],
+      "geometry": "rect",
+      "text": "13",
+      "textPreview": "13",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 16,
+        "typeface": "Noto Sans",
+        "color": "#96958E",
+        "alignment": "right",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "13"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "13",
+          "resolvedTextStyle": {
+            "fontSize": 16,
+            "typeface": "Noto Sans",
+            "color": "#96958E",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "13",
+              "fontSize": 16,
+              "typeface": "Noto Sans",
+              "color": "#96958E",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/8jy54ba1",
+      "id": "6",
+      "bbox": [
+        143,
+        170,
+        404,
+        404
+      ],
+      "alt": "VIDEO:astra_real2sim",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "33cac297-61b9-4f25-9125-7ae6738f263a",
+        "contentType": "image/png",
+        "byteLength": 531662
+      }
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/c72hg7u5",
+      "id": "7",
+      "bbox": [
+        74,
+        583,
+        542,
+        42
+      ],
+      "geometry": "rect",
+      "text": "▷  Astra-assisted Real2Sim workflow",
+      "textPreview": "▷  Astra-assisted Real2Sim workflow",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17,
+        "typeface": "Noto Sans",
+        "color": "#646464",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "▷  Astra-assisted Real2Sim workflow"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "▷  Astra-assisted Real2Sim workflow",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "typeface": "Noto Sans",
+            "color": "#646464",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "▷  Astra-assisted Real2Sim workflow",
+              "fontSize": 17,
+              "typeface": "Noto Sans",
+              "color": "#646464",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/6tk7e5sf",
+      "id": "8",
+      "bbox": [
+        726.73,
+        170,
+        436.54,
+        404
+      ],
+      "alt": "VIDEO:astra_microphone",
+      "contentType": "image/png",
+      "imageFit": "contain",
+      "asset": {
+        "assetId": "8a2e744f-d9c7-422b-a6e7-276659df3371",
+        "contentType": "image/png",
+        "byteLength": 684295
+      }
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y9kjihcb",
+      "id": "9",
+      "bbox": [
+        674,
+        583,
+        542,
+        42
+      ],
+      "geometry": "rect",
+      "text": "▷  Microphone: kinematic replay",
+      "textPreview": "▷  Microphone: kinematic replay",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17,
+        "typeface": "Noto Sans",
+        "color": "#646464",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "▷  Microphone: kinematic replay"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "▷  Microphone: kinematic replay",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "typeface": "Noto Sans",
+            "color": "#646464",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "▷  Microphone: kinematic replay",
+              "fontSize": 17,
+              "typeface": "Noto Sans",
+              "color": "#646464",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cb654ze9",
+      "id": "10",
+      "bbox": [
+        80,
+        633,
+        1110,
+        44
+      ],
+      "geometry": "rect",
+      "text": "The author reports failed dynamics in the microphone example.",
+      "textPreview": "The author reports failed dynamics in the microphone example.",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 17,
+        "typeface": "Noto Sans",
+        "color": "#646464",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "autoFit": "none",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The author reports failed dynamics in the microphone example."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The author reports failed dynamics in the microphone example.",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "typeface": "Noto Sans",
+            "color": "#646464",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "The author reports failed dynamics in the microphone example.",
+              "fontSize": 17,
+              "typeface": "Noto Sans",
+              "color": "#646464",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

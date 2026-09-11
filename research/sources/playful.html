@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RATs: a Robotics Agent Team that learns reusable robot skills through autonomous play.">
+  <meta property="og:title" content="Playful Agentic Robot Learning">
+  <meta property="og:description" content="RATs learns reusable robot skills through autonomous play.">
+  <meta property="og:image" content="assets/images/rats-teaser.png">
+  <title>Playful Agentic Robot Learning | RATs</title>
+  <link rel="icon" type="image/png" href="assets/images/rats-logo.png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260618-5">
+  <script defer src="assets/js/main.js?v=20260618-3"></script>
+</head>
+<body id="top">
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Playful Agentic<br>Robot Learning</h1>
+      <div class="rule"></div>
+      <div class="authors">
+        <span>
+          <a class="author-link" href="https://junyi42.com/" target="_blank" rel="noopener noreferrer">Junyi Zhang</a><sup class="author-mark">1,*,†</sup>,
+          <a class="author-link" href="https://gejiaxin.org/" target="_blank" rel="noopener noreferrer">Jiaxin Ge</a><sup class="author-mark">1,*,†</sup>,
+          <a class="author-link" href="https://github.com/lukehanjun" target="_blank" rel="noopener noreferrer">Hanjun Yoo</a><sup class="author-mark">1,†</sup>,
+          <a class="author-link" href="https://max-fu.github.io/" target="_blank" rel="noopener noreferrer">Letian Fu</a><sup class="author-mark">1,‡</sup>,
+          <a class="author-link" href="https://smallyang688.github.io/" target="_blank" rel="noopener noreferrer">Zihan Yang</a><sup class="author-mark">2,‡</sup>,
+          <a class="author-link" href="https://openreview.net/profile?id=~Yaowei_Liu3" target="_blank" rel="noopener noreferrer">Yaowei Liu</a><sup class="author-mark">2,‡</sup>,
+          <a class="author-link" href="https://openreview.net/profile?id=~Raj_Saravanan1" target="_blank" rel="noopener noreferrer">Raj Saravanan</a><sup class="author-mark">1,‡</sup>
+        </span>
+        <span>
+          <a class="author-link" href="https://fugtemypt123.github.io/" target="_blank" rel="noopener noreferrer">Shaofeng Yin</a><sup class="author-mark">2</sup>,
+          <a class="author-link" href="https://uynitsuj.github.io/" target="_blank" rel="noopener noreferrer">Justin Yu</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://dantong88.github.io/" target="_blank" rel="noopener noreferrer">Dantong Niu</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://zwcolin.github.io/" target="_blank" rel="noopener noreferrer">Zirui Wang</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://roeiherz.github.io/" target="_blank" rel="noopener noreferrer">Roei Herzig</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://goldberg.berkeley.edu/" target="_blank" rel="noopener noreferrer">Ken Goldberg</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://yutongbai.com/" target="_blank" rel="noopener noreferrer">Yutong Bai</a><sup class="author-mark">1</sup>
+        </span>
+        <span>
+          <a class="author-link" href="https://dchan.cc/" target="_blank" rel="noopener noreferrer">David M. Chan</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener noreferrer">Ion Stoica</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank" rel="noopener noreferrer">Angjoo Kanazawa</a><sup class="author-mark">1</sup>,
+          <a class="author-link" href="https://jiahuilei.com/" target="_blank" rel="noopener noreferrer">Jiahui Lei</a><sup class="author-mark">1,§</sup>,
+          <a class="author-link" href="https://havenfeng.github.io/" target="_blank" rel="noopener noreferrer">Haiwen Feng</a><sup class="author-mark">1,2,§</sup>,
+          <a class="author-link" href="https://people.eecs.berkeley.edu/~trevor/" target="_blank" rel="noopener noreferrer">Trevor Darrell</a><sup class="author-mark">1</sup>
+        </span>
+        <span class="affiliations"><sup>1</sup>University of California, Berkeley <span aria-hidden="true">·</span> <sup>2</sup>Impossible Research</span>
+        <span class="author-note">*: project leads, ordered by coin flip; †,‡,§: equal contribution</span>
+      </div>
+      <nav class="publication-links" aria-label="Publication links">
+        <a class="button" href="https://github.com/Playful-RATs/rats">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 18c-4 1-4-2-5-2m10 4v-3c0-1 .1-1.5-.5-2 2 0 4-.5 4-4 0-1-.4-2-1-2.5.1-.5.5-2-.1-2.5 0 0-1-.3-3 1a10 10 0 0 0-5 0c-2-1.3-3-1-3-1-.6 1.5-.2 2-.1 2.5C3.4 9 3 10 3 11c0 3.5 2 4 4 4-.5.4-.6 1-.5 2v3"/></svg>
+          Code
+        </a>
+        <a class="button" href="assets/papers/rats-paper.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></svg>
+          Paper
+        </a>
+        <a class="button" href="https://arxiv.org/abs/2606.19419" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l7 16M19 4l-7 16M8 10h8M7 14h10"/></svg>
+          arXiv
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section demo-lead" aria-label="Pipeline video">
+      <div class="narrow">
+        <video class="pipeline-video" controls autoplay loop muted playsinline preload="metadata" poster="assets/images/pipeline-overview-poster.jpg" aria-label="RATs pipeline overview">
+          <source src="assets/videos/pipeline-overview-v9.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+      </div>
+    </section>
+
+    <section class="section intro-section" id="overview">
+      <div class="content-grid">
+        <aside class="contents" aria-label="Page contents">
+          <strong>Contents</strong>
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#deep-dive">Team</a>
+          <a href="#results">Results</a>
+          <a href="#analysis">Analysis</a>
+          <a href="#bibtex">BibTeX</a>
+        </aside>
+        <div class="prose">
+          <p class="lead">
+            <mark>RATs learns before it is asked.</mark> The system uses self-directed play to
+            propose useful manipulation tasks, solve them with a specialized robot-agent team,
+            and distill successful behavior into callable code skills.
+          </p>
+          <figure class="wide-figure">
+            <img src="assets/images/rats-teaser.png" alt="Overview of RATs learning reusable robot skills through play">
+            <figcaption>Before downstream tasks arrive, RATs practices, diagnoses, and accumulates reusable skills.</figcaption>
+          </figure>
+
+          <h2 id="abstract">Abstract</h2>
+          <div class="heading-rule"></div>
+          <p>
+            Current agentic robot systems can write executable Code-as-Policy programs, observe
+            feedback, and revise behavior across attempts, but they remain largely task-driven.
+            RATs studies <em>Playful Agentic Robot Learning</em>, where an embodied coding agent
+            uses self-directed play as a continual skill-learning stage before downstream tasks
+            arrive.
+          </p>
+          <p>
+            During play, RATs proposes novel yet learnable tasks, plans and executes robot-code
+            policies, verifies intermediate progress, diagnoses failures, retries with feedback,
+            and distills successful executions into a persistent code skill library. The resulting
+            skills improve held-out downstream tasks and can be plugged into other inference-time
+            Code-as-Policy agents without model finetuning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method">
+      <div class="narrow">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>Learning through purposeful play</h2>
+          <p>RATs turns autonomous interaction into a persistent, reusable skill library.</p>
+        </div>
+        <figure class="method-propose-figure">
+          <img src="assets/images/task-proposal.png" alt="Examples of RATs play task proposals">
+        </figure>
+        <div class="method-grid">
+          <article class="method-stage">
+            <div>
+              <p class="panel-number">01</p>
+              <h3>Find the competence frontier</h3>
+              <p>The task proposer favors rarely tried object-skill combinations that remain learnable: neither trivial nor impossible.</p>
+            </div>
+          </article>
+          <article class="method-stage">
+            <div>
+              <p class="panel-number">02</p>
+              <h3>Plan and write robot code</h3>
+              <p>A planning agent retrieves relevant skills, while execution agents turn the grounded plan into a robot-control program.</p>
+            </div>
+          </article>
+          <article class="method-stage">
+            <div>
+              <p class="panel-number">03</p>
+              <h3>Turn failures into feedback</h3>
+              <p>Goal and per-step verifiers localize failures. A diagnoser routes concrete feedback into retries or isolated SubAgent practice.</p>
+            </div>
+          </article>
+          <article class="method-stage">
+            <div>
+              <p class="panel-number">04</p>
+              <h3>Carry skills into future tasks</h3>
+              <p>Successful routines become named code skills that can be retrieved, composed, and transferred to unseen environments.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deep-dive-section" id="deep-dive">
+      <div class="wide">
+        <div class="section-heading">
+          <h2>A team built around useful feedback</h2>
+        </div>
+        <figure class="wide-figure team-figure">
+          <div class="team-diagram">
+            <img src="assets/images/rats-method.png" alt="Detailed RATs method diagram">
+            <span class="team-highlight team-highlight-primary" aria-hidden="true"></span>
+            <span class="team-highlight team-highlight-secondary" aria-hidden="true"></span>
+          </div>
+          <figcaption>RATs couples task proposal, team execution, verification, diagnosis, and memory updates.</figcaption>
+        </figure>
+        <div class="team-cycle">
+          <div class="team-cycle-return" aria-hidden="true">
+            <span>Next iteration</span>
+            <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
+              <defs>
+                <marker id="team-cycle-arrowhead" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                  <path class="team-cycle-arrowhead" d="M0,0 L7,3.5 L0,7 Z"></path>
+                </marker>
+              </defs>
+              <path class="team-cycle-path" d="M990,43 C990,11 960,4 920,4 H80 C40,4 10,11 10,43" marker-end="url(#team-cycle-arrowhead)"></path>
+            </svg>
+          </div>
+          <div class="detail-grid">
+            <article data-team-step="proposal"><span class="team-step-number">01</span><b>Proposal</b><h3>Choose what to practice</h3><p>The Task Proposer finds novel, learnable objectives grounded in the current scene and prior experience.</p></article>
+            <article data-team-step="planning"><span class="team-step-number">02</span><b>Planning</b><h3>Ground the attempt</h3><p>The planner turns each proposed task into ordered steps and retrieves only the skills relevant to those steps.</p></article>
+            <article data-team-step="execution"><span class="team-step-number">03</span><b>Execution</b><h3>Write and run code</h3><p>The Policy Writer generates executable robot-control programs. A SubAgent isolates persistent local bottlenecks.</p></article>
+            <article data-team-step="verification"><span class="team-step-number">04</span><b>Verification</b><h3>See what worked</h3><p>Goal and per-step verifiers separate final success from intermediate progress and make retries more targeted.</p></article>
+            <article data-team-step="memory"><span class="team-step-number">05</span><b>Memory</b><h3>Keep the useful parts</h3><p>Successful behavior becomes reusable code; failures become compact lessons that shape future practice.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results">
+      <div class="wide">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Play pays off downstream</h2>
+        </div>
+        <div class="result-groups" aria-label="Headline results">
+          <section class="result-group" aria-labelledby="in-domain-heading">
+            <div class="result-group-heading">
+              <h3 id="in-domain-heading">In-domain improvement</h3>
+              <p>Skills improve downstream performance.</p>
+            </div>
+            <div class="metrics">
+              <article><span>+20.6</span><strong>pp</strong><p>LIBERO-PRO</p></article>
+              <article><span>+17.0</span><strong>pp</strong><p>MolmoSpaces</p></article>
+            </div>
+          </section>
+          <section class="result-group" aria-labelledby="generalization-heading">
+            <div class="result-group-heading">
+              <h3 id="generalization-heading">Cross-environment / sim-to-real generalization</h3>
+              <p>RATs skills plug into different simulation environments and real-world settings without task-specific model finetuning.</p>
+            </div>
+            <div class="metrics">
+              <article><span>+8.9</span><strong>pp</strong><p>RoboSuite cross-environment transfer</p></article>
+              <article><span>+8.8</span><strong>pp</strong><p>Real-world transfer</p></article>
+            </div>
+          </section>
+        </div>
+        <div class="result-gallery-heading">
+          <h3>Result videos</h3>
+          <div class="filters" aria-label="Filter result videos">
+            <button class="filter active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="real">Real world</button>
+            <button class="filter" type="button" data-filter="sim">Simulation</button>
+          </div>
+        </div>
+        <div class="video-grid">
+          <article class="result-video" data-kind="real">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/close_drawer.mp4" type="video/mp4">
+            </video>
+            <h4>Close drawer</h4><p>Real-world manipulation with reusable robot skills.</p>
+          </article>
+          <article class="result-video" data-kind="real">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/cube_transfer.mp4" type="video/mp4">
+            </video>
+            <h4>Cube transfer</h4><p>Real-world transfer of learned localization and transport routines.</p>
+          </article>
+          <article class="result-video" data-kind="real">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/open_drawer.mp4" type="video/mp4">
+            </video>
+            <h4>Open drawer</h4><p>Real-world manipulation with learned grasping and pulling routines.</p>
+          </article>
+          <article class="result-video" data-kind="real">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/wipe_final.mp4" type="video/mp4">
+            </video>
+            <h4>Wipe plate</h4><p>Real-world plate wiping with reusable robot skills.</p>
+          </article>
+          <article class="result-video" data-kind="sim">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/libero.mp4" type="video/mp4">
+            </video>
+            <h4>LIBERO</h4><p>Reusing learned skills across downstream simulation tasks.</p>
+          </article>
+          <article class="result-video" data-kind="sim">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/molmospaces.mp4" type="video/mp4">
+            </video>
+            <h4>MolmoSpaces</h4><p>Composing learned skills for diverse articulated-object tasks.</p>
+          </article>
+          <article class="result-video" data-kind="sim">
+            <video controls autoplay loop muted playsinline preload="metadata">
+              <source src="assets/videos/robosuite.mp4" type="video/mp4">
+            </video>
+            <h4>RoboSuite</h4><p>Transferring the learned skill library across simulation environments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section analysis-section" id="analysis">
+      <div class="wide">
+        <div class="section-heading">
+          <p class="eyebrow">Analysis</p>
+          <h2>What the robot learns while playing</h2>
+        </div>
+        <div class="analysis-row">
+          <div class="analysis-copy">
+            <span class="analysis-index">A</span>
+            <h3>Play broadens the practiced objective set</h3>
+            <p>Across iterations, the proposer explores object-skill combinations rather than repeatedly sampling the same easy behavior.</p>
+          </div>
+          <figure><img src="assets/images/play-objective-distribution.png" alt="Distribution of play objectives"><figcaption>Distribution of proposed play objectives.</figcaption></figure>
+        </div>
+        <div class="analysis-row reverse">
+          <div class="analysis-copy">
+            <span class="analysis-index">B</span>
+            <h3>Knowledge accumulates across play</h3>
+            <p>The persistent skill library lets useful routines survive beyond a single episode and become ingredients for later tasks.</p>
+          </div>
+          <figure><img src="assets/images/play-knowledge-growth.png" alt="Growth of knowledge during play"><figcaption>Growth of the learned library through play.</figcaption></figure>
+        </div>
+        <div class="analysis-row">
+          <div class="analysis-copy">
+            <span class="analysis-index">C</span>
+            <h3>Skills compose differently by task</h3>
+            <p>Opening, closing, picking, and placement tasks retrieve distinct mixtures of learned perception, geometry, grasping, and motion helpers.</p>
+          </div>
+          <figure><img src="assets/images/eval-skill-category-heatmap.png" alt="Learned skill categories used during evaluation"><figcaption>Learned skill calls during MolmoSpaces evaluation.</figcaption></figure>
+        </div>
+        <div class="analysis-row reverse">
+          <div class="analysis-copy">
+            <span class="analysis-index">D</span>
+            <h3>Verification turns failures into reusable feedback</h3>
+            <p>Step-level checks expose where direct synthesis fails and give the agent concrete evidence for targeted retries and skill refinement.</p>
+          </div>
+          <figure><img src="assets/images/code-comparison.png" alt="Comparison between direct code synthesis and learned skills"><figcaption>Verification and learned skills reduce repeated low-level synthesis failures.</figcaption></figure>
+        </div>
+        <div class="analysis-row">
+          <div class="analysis-copy">
+            <span class="analysis-index">E</span>
+            <h3>Successful skills transfer beyond play</h3>
+            <p>Verified routines become persistent tools that can be retrieved and composed for downstream evaluation tasks.</p>
+          </div>
+          <figure><img src="assets/images/skill-transfer.png" alt="Play-to-evaluation skill transfer lineage"><figcaption>Skill lineage from autonomous play to downstream reuse.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section citation-section" id="bibtex">
+      <div class="narrow">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>BibTeX</h2>
+        </div>
+        <div class="citation-box">
+          <pre><code>@article{rats2026playful,
+  title   = {Playful Agentic Robot Learning},
+  author  = {Zhang, Junyi and Ge, Jiaxin and Yoo, Hanjun and Fu, Letian and Yang, Zihan and Liu, Yaowei and Saravanan, Raj and Yin, Shaofeng and Yu, Justin and Niu, Dantong and Wang, Zirui and Herzig, Roei and Goldberg, Ken and Bai, Yutong and Chan, David M. and Stoica, Ion and Kanazawa, Angjoo and Lei, Jiahui and Feng, Haiwen and Darrell, Trevor},
+  journal = {arXiv preprint arXiv:2606.19419},
+  year    = {2026}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="back-to-top" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </a>
+
+  <footer>
+    <div>
+      <strong>RATs</strong>
+      <span>Playful Agentic Robot Learning</span>
+    </div>
+    <p>
+      Website design inspired by the
+      <a href="https://echo-bench.github.io/">ECHO project page</a>,
+      which is modified from <a href="https://nerfies.github.io/">Nerfies</a>.
+    </p>
+  </footer>
+</body>
+</html>

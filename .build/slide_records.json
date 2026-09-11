@@ -1,0 +1,403 @@
+[
+  {
+    "number": 1,
+    "title": "Agents for Robotics",
+    "section": "",
+    "ids": [],
+    "notes": "TIME: 0.5 minutes\n\nThis talk asks how general-purpose agents acquire reliable robot capabilities. We will examine both robot execution and the engineering process behind it. Recent demonstrations motivate the question, but the organizing structure is the gap between a plausible plan, a successful physical action, and a reusable capability. The evidence includes foundational papers, industrial reports, independent evaluations and original author demonstrations. These source types carry different evidential weight.\n\nSOURCES\n\n",
+    "minutes": 0.5
+  },
+  {
+    "number": 2,
+    "title": "Outline",
+    "section": "",
+    "ids": [],
+    "notes": "TIME: 0.5 minutes\n\nThe structure follows a problem-driven technical talk. First, define the desired capability and the current execution and development workflow. Next derive three distinct gaps. Each method section then gives a big picture, the key mechanism, quantitative or qualitative evidence, and the limitations of that evidence. The three routes can be combined, but they are not mandatory sequential stages. ENPIRE, for example, can improve policies directly on hardware without first constructing a digital twin.\n\nSOURCES\n\n",
+    "minutes": 0.5
+  },
+  {
+    "number": 3,
+    "title": "Our Ultimate Goal",
+    "section": "1",
+    "ids": [],
+    "notes": "TIME: 1.5 minutes\n\nStart with the desired capability rather than the latest model name. A person should be able to state an intent, while the robot grounds that intent in the current scene, acts safely, detects when its plan is wrong, and still completes the task. A stronger requirement is that useful experience survives the current interaction. These are two distinct time horizons: adaptation within a task, and capability improvement across tasks. Neither is established by a single impressive video. The rest of the talk asks which parts of this target current systems actually address. This is our analytical target, not a claim attributed to any one paper.\n\nSOURCES\n\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 4,
+    "title": "Execution and Development Are Different Loops",
+    "section": "1",
+    "ids": [
+      "S08",
+      "S15"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nSeparate the execution loop from the development loop. A deployed policy already handles a substantial part of perception-to-action mapping. Robotics engineers still configure coordinate systems, sensing, reset procedures, datasets, reward definitions, training schedules and success tests. AutoRT is an early example of foundation models organizing the real data-collection workflow rather than replacing every controller. ENPIRE later makes real experiments part of an improvement workflow. This framing avoids blaming every engineering limitation on VLAs. Ask the audience where most of their own time is spent: running a trained policy, or making the surrounding experiment reliable? The image is the original AutoRT system illustration; the execution chain is a synthesis, not its exact architecture.\n\nSOURCES\nS08: AutoRT (2024)\nhttps://auto-rt.github.io/\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 5,
+    "title": "General Agents Now Enter Both Loops",
+    "section": "1",
+    "ids": [
+      "S10",
+      "S13",
+      "S15"
+    ],
+    "notes": "TIME: 2 minutes\n\nPlay the three clips sequentially, not simultaneously. First, Astra chooses placement actions through a robot interface; the author video compares model runs and is edited, so its apparent speed is not model response latency. Second, Agentic Real2Sim converts a recorded interaction into a simulator episode; matching a recording is not yet evidence for new actions. Third, the ENPIRE clip exposes a visual verification signal for zip-tie insertion. A check that reliably identifies task completion is part of the experimental infrastructure. Do not present these examples as three stages every robot must pass through. They establish three opportunities: action decisions, world construction, and experimental improvement. The next section derives what is still missing in each.\n\nSOURCES\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n",
+    "minutes": 2
+  },
+  {
+    "number": 6,
+    "title": "The First Step: Connect a Model to the Robot",
+    "section": "2",
+    "ids": [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nThe natural first step is to connect a general model to existing robot capabilities. SayCan combines linguistic usefulness with an affordance estimate so the planner selects skills the robot can execute. Inner Monologue returns environmental feedback to the planner instead of committing to one open-loop plan. Code as Policies expresses behavior as programs that compose perception and control APIs, enabling loops, geometry calculations and reuse. These foundational works already contain much of the conceptual structure behind current agent demos. Their limitation is not that language is useless, but that the interface determines what the language model can actually do. We will now examine the execution, world-model and improvement gaps left after making this connection.\n\nSOURCES\nS01: SayCan (2022)\nhttps://say-can.github.io/\n\nS02: Inner Monologue (2022)\nhttps://innermonologue.github.io/\n\nS03: Code as Policies (2022)\nhttps://code-as-policies.github.io/\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 7,
+    "title": "Problem 1: A Plausible Plan Can Still Fail",
+    "section": "2",
+    "ids": [
+      "S09",
+      "S10"
+    ],
+    "notes": "TIME: 2 minutes\n\nUse the failed insertion frame as a concrete example. The semantic instruction is easy to understand; the robot still needs the correct position, orientation, approach direction, contact behavior and recovery strategy. A model may recognize what should happen without estimating these quantities accurately enough. It can also be too slow to correct a transient contact error. Claude Plays Robotics separates interfaces and exposes these differences; Robocurve records a real fine-insertion task where completion remains rare. This frame comes from an explicitly failed run in the published trial table, not from a success video relabeled as a failure. Do not generalize its appearance into a force-control diagnosis: the available evidence supports a fine-manipulation difficulty, not a measured decomposition of all causes.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n",
+    "minutes": 2
+  },
+  {
+    "number": 8,
+    "title": "Problem 2: A Recording Is Not a Predictive World",
+    "section": "2",
+    "ids": [
+      "S12",
+      "S13"
+    ],
+    "notes": "TIME: 2 minutes\n\nThe paired images are an original real episode and the published simulated version. They are illustrative frames, not a synchronized error measurement. A visually plausible reconstruction may have incorrect collision geometry, friction, stiffness or camera pose. Several wrong parameters can compensate for one another on the single recorded trajectory. The scientific question is whether the reconstruction predicts a different action, speed, contact point or initial condition. That requires held-out interventions, not merely a good replay. The Astra microphone example later makes this distinction explicit: the author reports failed dynamics and shows a kinematic replay instead. Scene construction, system identification and downstream policy usefulness should therefore be evaluated separately.\n\nSOURCES\nS12: @Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)\nhttps://x.com/Lingxiao234/status/2096992059731443923\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n",
+    "minutes": 2
+  },
+  {
+    "number": 9,
+    "title": "Problem 3: Feedback Does Not Automatically Become Skill",
+    "section": "2",
+    "ids": [
+      "S15",
+      "S17",
+      "S18"
+    ],
+    "notes": "TIME: 2 minutes\n\nA model can read a failure message, change its next command and succeed later in the same conversation. That is valuable but not necessarily lasting learning. If the context is discarded, the next task may start from the same capability level. To obtain accumulation, the system must specify what changes and persists: a reusable program, a retrieval library, environment parameters, a task policy or the general model weights. It also needs repeatable experiments and an evaluation that does not merely reward overfitting to the current setup. ENPIRE, ASPIRE and RATs make different choices about this update target. Their shared theme is not an unspecified arrow labeled self-improvement, but a concrete artifact produced by a feedback loop.\n\nSOURCES\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n\nS18: Playful Agentic Robot Learning, arXiv:2606.19419v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19419v1\n",
+    "minutes": 2
+  },
+  {
+    "number": 10,
+    "title": "Three Places to Design the System",
+    "section": "2",
+    "ids": [
+      "S03",
+      "S13",
+      "S15",
+      "S17"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nThese are design locations, not mutually exclusive model categories. Route A concerns the contract between reasoning and physical execution. Route B concerns an executable model of a scene or interaction, and the evidence needed to trust it. Route C concerns experiment selection, iteration, verification and persistence. One system may occupy multiple locations, but these routes do not require a fixed order. In particular, direct real-world policy improvement can proceed without first building a simulator. Maintaining these distinctions also clarifies evaluation: task completion, replay acceptance and improvement rate are not interchangeable metrics. The next slide places the selected works under the question each one helps answer.\n\nSOURCES\nS03: Code as Policies (2022)\nhttps://code-as-policies.github.io/\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 11,
+    "title": "Methods Organized by the Missing Capability",
+    "section": "2",
+    "ids": [
+      "S09",
+      "S10",
+      "S13",
+      "S15",
+      "S16",
+      "S17"
+    ],
+    "notes": "TIME: 1 minutes\n\nExplain why each selected work is present. Claude provides interface-controlled evaluation; Astra provides recent concrete hardware examples; CaP-X exposes the computation hidden inside robot APIs. Agentic Real2Sim turns an engineering demo into an episode-conversion workflow with reported acceptance results. ENPIRE is the main example of real experimental improvement, while ASPIRE and CaP-RL distinguish external skill accumulation from weight updates. Supporting foundations and industrial reports are introduced only where they explain a mechanism or boundary. We will not rank all these systems using their headline percentages because their tasks, budgets and success definitions differ.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n",
+    "minutes": 1
+  },
+  {
+    "number": 12,
+    "title": "A · Big Picture: Reasoning Meets Fast Control",
+    "section": "3",
+    "ids": [
+      "S03",
+      "S09",
+      "S10"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nWalk through the contract rather than attributing everything to the language model. The agent receives images and robot state and proposes a program, subtask or pose. Tools may perform target detection, coordinate conversion, inverse kinematics, trajectory generation and safety checks. A faster controller executes the resulting command. Feedback returns at the level the interface exposes. These clocks can differ by orders of magnitude: a model call is not a servo cycle. The horizontal feedback line summarizes outcome feedback; it is not intended as a claim that every listed system uses identical timing. This distinction matters when evaluating statements such as no policy training or direct manipulation. They can be true while substantial pretrained perception and classical control remain essential.\n\nSOURCES\nS03: Code as Policies (2022)\nhttps://code-as-policies.github.io/\n\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 13,
+    "title": "A · How Much Robotics Is Hidden in One API?",
+    "section": "3",
+    "ids": [
+      "S03",
+      "S04",
+      "S16"
+    ],
+    "notes": "TIME: 2 minutes\n\nRead the original CaP-X figure from high-level to low-level API. A short grasp call can hide object localization, coordinate transforms, motion planning and gripper control. Asking a model to implement the lower-level equivalent is a substantially different problem, even if the natural-language task is unchanged. Code as Policies supplies the program-composition idea. VoxPoser supplies a complementary example where language produces spatial value maps and a planner executes the constraints. CaP-X explicitly analyzes primitive abstraction, iteration and perceptual grounding. The takeaway is a controlled-comparison principle: hold the API fixed when comparing model ability, and hold the model fixed when comparing interfaces. This figure demonstrates interface content; it is not itself a quantitative performance plot.\n\nSOURCES\nS03: Code as Policies (2022)\nhttps://code-as-policies.github.io/\n\nS04: VoxPoser (2023)\nhttps://voxposer.github.io/\n\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\n",
+    "minutes": 2
+  },
+  {
+    "number": 14,
+    "title": "A · Claude: Capability Depends on the Interface",
+    "section": "3",
+    "ids": [
+      "S09"
+    ],
+    "notes": "TIME: 2.5 minutes\n\nThe main figure preserves the report’s interface grouping and score definition. Do not compare its aggregate score with a real-world task percentage elsewhere in this talk. In the direct-manipulation experiments, complete task success is approximately zero to 5.5 percent. A VLA scaffold changes the task the model must solve and often improves performance. The report also pauses simulation during some low-level locomotion model calls. It discusses roughly 83 Hz control needs versus approximately 0.2–0.4 Hz model calls; success in that paused setting does not establish real-time feedback control. The manipulation evaluation includes LIBERO-40 with 40 tasks and five seeds, a different denominator from the two-task Robocurve hardware evaluation. These protocol details are central to interpreting the result, not footnote trivia.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n",
+    "minutes": 2.5
+  },
+  {
+    "number": 15,
+    "title": "A · Astra on Hardware: The Actual Action Contract",
+    "section": "3",
+    "ids": [
+      "S10"
+    ],
+    "notes": "TIME: 2 minutes\n\nDescribe the interface precisely. The published Robocurve evaluation uses a YAM dual-arm robot, three image views and proprioceptive state. The model calls move_to to specify an absolute end-effector pose; inverse kinematics produces the joint command. It operates with medium reasoning, a twenty-call budget, a twenty-five-percent speed limit and additional safety constraints. These choices define what direct means in this experiment. They do not amount to torque control at servo frequency. The page is an independent Robocurve evaluation, not an OpenAI research report despite the hostname. The image is a frame from the author’s edited comparison video, so it does not establish synchronized trial timing or end-to-end latency. The next slide uses the published trial counts rather than impressions from the video.\n\nSOURCES\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n",
+    "minutes": 2
+  },
+  {
+    "number": 16,
+    "title": "A · Placement Improves; Insertion Remains Hard",
+    "section": "3",
+    "ids": [
+      "S10"
+    ],
+    "notes": "TIME: 2.5 minutes\n\nThe chart reconstructs the exact reported counts, with a common denominator of twenty trials per model and task. Astra completes nineteen bowl-placement trials, compared with eight for Fable 5.1. On puzzle insertion, both complete only two trials. Play the failed insertion clip to focus discussion on the gap between approaching the object and satisfying the final contact constraint. The baseline also includes Fable 5 at one out of twenty for placement, omitted from the chart to keep the two-task comparison legible. Treat the difference as an observed result under the author’s setup: placement comparisons involve different rigs, trials were not interleaved, resets were manual and human scoring was not blinded. These limitations prevent a clean causal attribution of the entire gap to the model. The footage is edited and cannot be used to infer inference latency.\n\nSOURCES\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n",
+    "minutes": 2.5
+  },
+  {
+    "number": 17,
+    "title": "A · Painting: Planning, Calibration and Human Feedback",
+    "section": "3",
+    "ids": [
+      "S11",
+      "S23"
+    ],
+    "notes": "TIME: 2 minutes\n\nThis original-author demonstration is useful because the method thread explains what sits around the video. The robot is an SO-101 arm. The author describes planning roughly a minute of actions, monitoring the execution, using initial anchor points and supplying human feedback between runs and sometimes during a run. The agent modifies instructions and calibration. None of these statements imply online weight training or a fully autonomous high-frequency contact controller. The excerpt preserves the published playback speed; the original presentation may itself be edited. Ask the audience which parts of a drawing error would come from global geometry, calibration, contact or timing. The separate wiping post broadens the set of demonstrated behaviors, but provides insufficient repeated evaluation or contact-force measurements to support a stronger reliability claim.\n\nSOURCES\nS11: @cdngdev, X demo and method thread (8 Sep 2026)\nhttps://x.com/cdngdev/status/2097339677128982873\n\nS23: @k7agar, X wiping demo (6 Sep 2026)\nhttps://x.com/k7agar/status/2096593654320341027\nhttps://x.com/cdngdev/status/2097339677745516710",
+    "minutes": 2
+  },
+  {
+    "number": 18,
+    "title": "A · A Supervisor Can Help — or Disrupt a Good Policy",
+    "section": "3",
+    "ids": [
+      "S09",
+      "S19",
+      "S20"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nThe original report compares VLA supervision with the VLA acting alone. On some familiar tasks, adding a supervisor performs worse than the standalone policy; on tasks beyond the original policy’s capability, supervision can help. This makes intervention policy itself a research question. Google’s current Gemini Robotics ER 2 and Robotics 2 pages explicitly separate reasoning and action execution. Physical Intelligence’s pi-zero-point-seven provides another reference for a steerable action policy, using multimodal guidance and an action expert. These industry pages are architectural context, not additional measurements on this figure. Do not transfer results from the 2025 first-generation Gemini report to newer product names. Route A has made interfaces more flexible, but grounding, contact, timing and safe handoff remain open.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS19: Google DeepMind, Gemini Robotics ER 2 / Robotics 2 (accessed 10 Sep 2026)\nhttps://deepmind.google/models/gemini-robotics/embodied-reasoning/\n\nS20: Physical Intelligence, π0.7 (16 Apr 2026)\nhttps://www.pi.website/blog/pi07\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 19,
+    "title": "B · Big Picture: Build, Replay, Compare, Revise",
+    "section": "3",
+    "ids": [
+      "S12",
+      "S13"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nA Real2Sim system takes observations and known actions and proposes an executable scene. The simulator runs those actions, allowing the system to compare the resulting interaction with the recorded one. The agent may revise cameras, assets, poses or physical parameters, but these are distinct estimation problems. Better camera alignment can improve video similarity without fixing contact. Better geometry can still coexist with incorrect friction. The feedback loop is only as informative as its observable comparisons and as expressive as the simulator’s model family. This diagram is a synthesis of the workflow, not an exact replication of one implementation. Route B asks what the loop actually validates and where it needs stronger held-out tests.\n\nSOURCES\nS12: @Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)\nhttps://x.com/Lingxiao234/status/2096992059731443923\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 20,
+    "title": "B · Astra Real2Sim: Demo and Dynamics Failure",
+    "section": "3",
+    "ids": [
+      "S12"
+    ],
+    "notes": "TIME: 2 minutes\n\nThe original thread supplies multiview RGB and robot actions, then describes calibration, asset construction, system identification, MuJoCo execution and Blender rendering. It demonstrates broad tool orchestration rather than a controlled benchmark. Play the short overview, then the microphone excerpt. The author explicitly states that the microphone dynamics failed and the shown result is kinematic replay. A rigid-body proxy could not capture the compliant snap-fit interaction. This is not evidence that all Real2Sim is impossible; it identifies a model-class limitation in a particular example. A better optimizer cannot identify dynamics outside the simulator’s representational family. Both excerpts retain the author’s video speed. No new dynamics test or robot experiment was run for this survey.\n\nSOURCES\nS12: @Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)\nhttps://x.com/Lingxiao234/status/2096992059731443923\nhttps://x.com/Lingxiao234/status/2096992132527702382",
+    "minutes": 2
+  },
+  {
+    "number": 21,
+    "title": "B · Agentic Real2Sim and Its Specialized Tools",
+    "section": "3",
+    "ids": [
+      "S13"
+    ],
+    "notes": "TIME: 2 minutes\n\nThe paper processes a recorded episode rather than only a static room. Visual processing extracts masks, depth, geometry and object poses using specialized backends including SAM3, SAM3D, FoundationStereo and FoundationPose. A physical-prior stage supplies identity, material class and mass hints. Scene preparation assembles the robot, cameras and reconstructed objects. Simulator-in-the-loop refinement uses deterministic optimization or search to improve placements and grasp execution. The distinction between tool and agent matters: the VLM is not independently solving every geometric subproblem. Table 1 of the paper lists the tools and schema-constrained skills by stage. The original teaser preserves real-versus-sim examples, while the labels here summarize their computational roles. Next, inspect the acceptance rule before interpreting the reported success rate.\n\nSOURCES\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\nhttps://arxiv.org/html/2607.19190v3#S3.T1",
+    "minutes": 2
+  },
+  {
+    "number": 22,
+    "title": "B · What Does 48/100 Actually Measure?",
+    "section": "3",
+    "ids": [
+      "S13"
+    ],
+    "notes": "TIME: 2 minutes\n\nThe figure retains all one hundred attempted DROID episodes and the logarithmic cost axis. For the best backend, Gemma 4 31B, forty-eight are accepted as success, eight as partial and forty-four as failures. The acceptance procedure first filters candidates using grasp, video and motion information, then evaluates up to five candidates. Three VLM judges score candidates separately and choose their own best one. If any judge’s best score reaches eight out of ten, the episode is accepted. This is not majority voting or an average-score threshold. The rubric emphasizes identity, final location, action similarity and end-effector position. It measures replay acceptance, not ground-truth physical-parameter accuracy or counterfactual prediction. Likewise the low dollar value in the figure is model-call cost, not the total cost of perception, simulation, compute and labor.\n\nSOURCES\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\nhttps://arxiv.org/html/2607.19190v3#S4.F3",
+    "minutes": 2
+  },
+  {
+    "number": 23,
+    "title": "B · SceneMosaic: Improve the Scene Locally",
+    "section": "3",
+    "ids": [
+      "S14"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nSceneMosaic starts from a reference signal, reconstructs a scene and decomposes it into object-centric local units. Physics-based layout stabilization addresses implausible placements. Critic–Actor iterations edit local units, then combine selected variants to generate diverse scenes. The important design idea is to make the agent solve a smaller, checkable local problem rather than repeatedly rebuilding the full scene. On SceneEval-100 the authors report approximately twenty-four times faster generation relative to their stated agentic baseline, together with layout quality, physical violation and human-evaluation measures. This is not a twenty-four-fold speedup for full contact-dynamics identification or robot learning. Its room-scale layout scope and the distinction between static plausibility and dynamic prediction must remain visible.\n\nSOURCES\nS14: SceneMosaic, arXiv:2609.05594v1 (Sep 2026)\nhttps://arxiv.org/html/2609.05594v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 24,
+    "title": "B · Four Different Tests of a Reconstructed World",
+    "section": "3",
+    "ids": [
+      "S12",
+      "S13",
+      "S14"
+    ],
+    "notes": "TIME: 1 minutes\n\nConclude Route B by separating the evaluation targets. Appearance checks whether a reconstruction looks right. Replay checks whether known actions resemble a recording. New-interaction tests vary the action or state to assess prediction. Policy-utility tests ask whether the model helps select actions, train policies or transfer to reality. These form a useful analytical progression, not a formal theorem or a metric introduced by the cited papers. Current results are strongest on scene generation and recorded-episode replay. Stronger counterfactual and downstream tests would be required before claiming a reliable training world. A failure at a later level does not erase progress at an earlier one, but it limits what the result establishes.\n\nSOURCES\nS12: @Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)\nhttps://x.com/Lingxiao234/status/2096992059731443923\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS14: SceneMosaic, arXiv:2609.05594v1 (Sep 2026)\nhttps://arxiv.org/html/2609.05594v1\n",
+    "minutes": 1
+  },
+  {
+    "number": 25,
+    "title": "C · Automation Still Needs an Experimental Loop",
+    "section": "3",
+    "ids": [
+      "S05",
+      "S06",
+      "S07",
+      "S08"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nBefore presenting ENPIRE, locate four existing automation components in the development workflow. Eureka searches over reward programs, uses reinforcement learning to train policies and reflects on results. DrEureka extends language-model involvement to domain randomization and sim-to-real recipe design. RoboGen generates tasks, scenes and skill-learning processes. AutoRT organizes real robot tasks and data collection with foundation models. These are important precursors, not four unrelated papers to memorize. They also clarify that the agent’s output is often not a robot action: it may be a reward, dataset or experiment configuration. The remaining systems question is how to connect proposal, execution, validation and persistence into a repeatable loop on actual hardware.\n\nSOURCES\nS05: Eureka (2023)\nhttps://eureka-research.github.io/\n\nS06: DrEureka (2024)\nhttps://eureka-research.github.io/dr-eureka/\n\nS07: RoboGen (2024)\nhttps://robogen-ai.github.io/\n\nS08: AutoRT (2024)\nhttps://auto-rt.github.io/\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 26,
+    "title": "C · ENPIRE: Real Experiments in the Agent Loop",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "notes": "TIME: 2 minutes\n\nUse the full original framework so the environment and human-feedback components remain visible. EN denotes the environment contract: hard safety limits, automatic reset and success verification. PI is the policy-improvement space, which can include heuristic programs, behavior cloning, online or offline reinforcement learning, and combinations with VLAs. R executes rollouts on real hardware. E analyzes the results and informs the next change. The source resolves the user’s EMPIRE reference to ENPIRE, Agentic Robot Policy Self-Improvement in the Real World. The key advance is not simply a language model suggesting an action, but coding agents conducting experiments and modifying candidate policies against a repeatable real environment. More compute or more robot stations changes how quickly that loop can acquire evidence.\n\nSOURCES\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\nhttps://arxiv.org/html/2606.19980v1#S2",
+    "minutes": 2
+  },
+  {
+    "number": 27,
+    "title": "C · Reliable Reset and Verification Come First",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "notes": "TIME: 2 minutes\n\nThis figure shows why real experimental autonomy depends on instrumentation. Zip-tie verification uses crops and image segmentation from two cameras to check whether the strap passes through the head, reducing false positives from a single view. The first phase of ENPIRE uses human feedback to construct safety, reset and verification procedures. During autonomous policy improvement, the environment API is then fixed. Some tasks reset directly to the beginning of a difficult substage rather than to an arbitrary full-task initial state. These choices make high-throughput experiments possible, but they define the scope of the final success claim. Ask what would happen if the agent could freely rewrite the success test while optimizing the policy: an apparently improving curve might no longer represent physical progress. Independent validation remains important even with a fixed environment API.\n\nSOURCES\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\nhttps://arxiv.org/html/2606.19980v1#S2.SS1\nhttps://arxiv.org/html/2606.19980v1#S2.F4",
+    "minutes": 2
+  },
+  {
+    "number": 28,
+    "title": "C · ENPIRE: Improvement Under a Recovery Budget",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "notes": "TIME: 2 minutes\n\nRead the original plots with their task-specific axes intact: the Push-T row reports a normalized score, while insertion uses success rate. The paper reports very high completion, including roughly ninety-nine percent, under its defined rollout protocol. That protocol includes up to eight conditional retries: later attempts can use information from earlier failures. It is therefore incorrect to interpret the result as one-shot insertion precision or as eight independent draws from a fixed Bernoulli probability. Do not use an independence formula to back-calculate a one-attempt rate. Recovery is a legitimate capability and part of the result, but it must be visible. Also retain the reset scope: some environments start at the hardest substage. The plots show progress under these operational conditions, not unrestricted deployment success.\n\nSOURCES\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\nhttps://arxiv.org/html/2606.19980v1#S3\nhttps://arxiv.org/html/2606.19980v1#S1.F3",
+    "minutes": 2
+  },
+  {
+    "number": 29,
+    "title": "C · More Robots: Faster Results, Different Costs",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nThe original three-panel figure compares one, four and eight agents or robot stations. The left panel distinguishes robot and GPU utilization. The middle panel reports mean token utilization and an explicit linear projection. The right panel places tokens to success and time to success on different axes. More stations can reduce time to a target performance while increasing token consumption and reducing per-robot utilization. Do not collapse these into a single statement that scaling is more efficient. It may be the right choice when wall-clock time is the priority, but a different conclusion follows when cost or hardware utilization matters. MRU and MTU provide separate views of the physical and inference resources. The error bars and full axes are retained from the paper rather than replaced with a decorative scaling curve.\n\nSOURCES\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\nhttps://arxiv.org/html/2606.19980v1#S3.F7",
+    "minutes": 1.5
+  },
+  {
+    "number": 30,
+    "title": "C · ASPIRE: Persist Skills Beyond the Conversation",
+    "section": "3",
+    "ids": [
+      "S17"
+    ],
+    "notes": "TIME: 2 minutes\n\nASPIRE records multimodal execution traces, localizes failures, repairs code, stores reusable skills and expands that library through exploration. The video exposes the execution trace interface, so use it to explain what feedback is available to a debugging agent. Its reported zero-shot transfer on LIBERO-Pro Long is thirty-one percent, compared with approximately four percent for the referenced prior methods under that evaluation. This number does not describe unrestricted real-world reliability. The real bimanual study transfers three selected simulation skills as context; one can-lift case improves from thirteen of twenty to nineteen of twenty trials while reducing debugging tokens. The persistent object is an external skill library, not automatically the foundation model’s weights. Both the discovery/test split and the retrieval policy determine whether that memory helps on a new task.\n\nSOURCES\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\nhttps://arxiv.org/html/2607.00272v1#S3",
+    "minutes": 2
+  },
+  {
+    "number": 31,
+    "title": "C · CaP-X: Test-Time Repair or Weight Training?",
+    "section": "3",
+    "ids": [
+      "S16"
+    ],
+    "notes": "TIME: 2 minutes\n\nCaP-X separates a benchmark and environment framework from two improvement mechanisms. CaP-Agent0 improves test-time execution through visual feedback, skill synthesis and additional reasoning or search. CaP-RL changes model weights through GRPO post-training of Qwen2.5-Coder-7B using code as the action representation. Table 4 reports eighty-four percent real lift success and seventy-six percent real stack success, with twenty-five trials per task: these correspond to twenty-one and nineteen successful trials. The chart shows the trained arm’s reported results, not a claim that all CaP-X components achieve those values or a comparison with Astra’s tasks. Another protocol trap is pass-at-one: in this benchmark one trial may contain multiple interactive turns without resetting the environment. It does not mean only one language-model call.\n\nSOURCES\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\nhttps://arxiv.org/html/2603.22435v2#S5.T4",
+    "minutes": 2
+  },
+  {
+    "number": 32,
+    "title": "C · RATs: Acquire Skills Before the Task Arrives",
+    "section": "3",
+    "ids": [
+      "S18"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nRATs shifts skill acquisition to a play phase before a particular downstream task is known. The agent proposes tasks, plans code, executes it, verifies results, diagnoses failures and stores useful skills. At downstream test time the skill library is frozen, separating exploration from evaluation. That is a different experimental question from fixing the current task while observing its outcome. The original method figure includes both the environment and memory components; the two labels below summarize the split rather than replace it. Most evidence is in simulation. Retrieval can also hurt when a skill or memory is inappropriate, so more stored experience is not monotonically better. The validator’s errors and the cost of play are part of the full accounting.\n\nSOURCES\nS18: Playful Agentic Robot Learning, arXiv:2606.19419v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19419v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 33,
+    "title": "C · What Actually Persists After Improvement?",
+    "section": "3",
+    "ids": [
+      "S13",
+      "S15",
+      "S16",
+      "S17",
+      "S18"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nBring the third route back to the original improvement gap. A program can persist and still overfit to the current reset. A skill library can transfer useful procedures but also retrieve harmful ones. New weights can reduce test-time search but require controlled comparisons that include training and inference budgets. A fitted world can be reusable while failing outside the recorded actions. These are different carriers of experience, with different failure modes and tests. For all of them, report reset cost, human interventions, unsuccessful trials, validator errors and the total resource budget. Process activity, more generated code or more stored skills is not itself evidence that the robot has become more capable. Route C has made parts of the development loop executable; reliable lifelong improvement remains a stronger claim.\n\nSOURCES\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n\nS18: Playful Agentic Robot Learning, arXiv:2606.19419v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19419v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 34,
+    "title": "What the Three Routes Establish",
+    "section": "4",
+    "ids": [
+      "S09",
+      "S10",
+      "S13",
+      "S15",
+      "S16",
+      "S17"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nReturn to the three gaps rather than ranking headline results. Action systems show that general reasoning can enter robot execution through flexible interfaces, but precision, contact, grounding and timing remain limiting. World-building systems automate complex scene and episode pipelines, yet replay acceptance does not establish counterfactual dynamics or downstream learning value. Improvement systems can run experiments and retain programs, skills or weights, while reliable transfer and total cost remain unresolved. These are meaningful advances even when the strongest general claim fails. The comparison is an analytical synthesis across heterogeneous primary sources; it is not a joint benchmark. Ask for the exact capability, interface, update target, evaluation distribution and budget whenever a system is described as autonomous or self-improving.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS10: Robocurve, GPT-6 Astra on robotic manipulation (4 Sep 2026)\nhttps://openai.robocurve.org/gpt-6-astra/\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 35,
+    "title": "Open Questions That Need Better Experiments",
+    "section": "4",
+    "ids": [
+      "S09",
+      "S13",
+      "S15",
+      "S16",
+      "S17",
+      "S18"
+    ],
+    "notes": "TIME: 1.5 minutes\n\nThese questions are synthesis, not claims of a new method or completed novelty review. First, use a fixed low-level policy to measure both rescue of failed tasks and damage to previously successful tasks, including latency and contact risk. Second, hold out interventions to test whether a reconstructed world predicts beyond its fitting trajectory. Third, compare skill libraries, reusable code and weight updates under matched total budgets, including exploration and later execution. Fourth, separate the reward used for search from the evaluator used to report success where possible. Record reset failures, human takeovers and false positives instead of dropping them from the denominator. These experiments would turn compelling systems demonstrations into more defensible statements about generalizable capability.\n\nSOURCES\nS09: Anthropic, Claude Plays Robotics (9 Jul 2026)\nhttps://www.anthropic.com/research/claude-plays-robotics\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS16: CaP-X, arXiv:2603.22435v2 (Jul 2026)\nhttps://arxiv.org/html/2603.22435v2\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n\nS18: Playful Agentic Robot Learning, arXiv:2606.19419v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19419v1\n",
+    "minutes": 1.5
+  },
+  {
+    "number": 36,
+    "title": "Conclusion",
+    "section": "4",
+    "ids": [
+      "S03",
+      "S13",
+      "S15",
+      "S17"
+    ],
+    "notes": "TIME: 1 minutes\n\nClose with three points. General agents are entering several layers of robotics, not just high-level planning. Their contributions range from action decisions to simulator construction and real experimental development. Second, the interface and the verification infrastructure remain central sources of capability: they determine what actions are feasible and what apparent progress means. Third, the target is not simply an impressive run but reusable capability that transfers and remains economical. The surveyed work gives concrete mechanisms and important evidence, while leaving precise contact, predictive worlds and reliable cumulative improvement open. Return to the opening goal: can the robot finish the job now, and will the next job become easier for a reason we can measure?\n\nSOURCES\nS03: Code as Policies (2022)\nhttps://code-as-policies.github.io/\n\nS13: Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)\nhttps://arxiv.org/html/2607.19190v3\n\nS15: ENPIRE, arXiv:2606.19980v1 (Jun 2026)\nhttps://arxiv.org/html/2606.19980v1\n\nS17: ASPIRE, arXiv:2607.00272v1 (Jun 2026)\nhttps://arxiv.org/html/2607.00272v1\n",
+    "minutes": 1
+  }
+]

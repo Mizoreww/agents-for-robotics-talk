@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents</title>
+
+  <!-- TODO: Global site tag (gtag.js) - Google Analytics -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents</h1>
+          <div class="is-size-5 publication-authors">
+      <span class="author-block">
+      Michael Ahn<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Debidatta Dwibedi<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Chelsea Finn<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Montse Gonzalez Arenas<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Keerthana Gopalakrishnan<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Karol Hausman<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Brian Ichter<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Alex Irpan<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Nikhil Joshi<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Ryan Julian<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Sean Kirmani<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Isabel Leal<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Edward Lee<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Sergey Levine<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Yao Lu<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Sharath Maddineni<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Kanishka Rao<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Dorsa Sadigh<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Pannag Sanketi<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Pierre Sermanet<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Quan Vuong<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Stefan Welker<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Fei Xia<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Ted Xiao<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Peng Xu<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Steve Xu<sup>1</sup>,
+      </span>
+      <span class="author-block">
+      Zhuo Xu<sup>1</sup>
+      </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Google DeepMind</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdf/AutoRT.pdf"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2401.12963"
+                   target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <p style="text-align:center;">
+      <!-- Hero diagram -->
+      <img src="./static/images/AutoRT_viz.gif" class="img-responsive" />
+      <!--/ Hero diagram -->
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Foundation models that incorporate language, vision, and more recently actions have revolutionized the ability to harness internet scale data to reason about useful tasks. However, one of the key challenges of training embodied foundation models is the lack of data grounded in the physical world. In this paper, we propose AutoRT, a system that leverages existing foundation models to scale up the deployment of operational robots in completely unseen scenarios with minimal human supervision. AutoRT leverages vision-language models (VLMs) for scene understanding and grounding, and further uses large language models (LLMs) for proposing diverse and novel instructions to be performed by a fleet of robots. Guiding data collection by tapping into the knowledge of foundation models enables AutoRT to effectively reason about autonomy tradeoffs and safety while significantly scaling up data collection for robot learning. We demonstrate AutoRT proposing instructions to over 20 robots across multiple buildings and collecting 77k real robot episodes via both teleoperation and autonomous robot policies. We experimentally show that such “in-the-wild” data collected by AutoRT is significantly more diverse, and that AutoRT’s use of LLMs allows for instruction following data collection robots that are aligned with human preferences.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Overview -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified">
+          <p style="text-align:center;">
+            <img style="max-width:75%" src="./static/images/Auto-RT.png" class="img-reponsive" />
+          </p>
+          AutoRT is an exploration into scaling up robots to unstructured "in the wild" settings. We use VLMs to do open-vocab description of what the robot sees, then pass that description to an LLM which proposes natural language instructions. The proposals are then critiqued by another LLM using
+          what we call a <i>robot constitution</i>, to refine instructions towards safer completable behavior.
+          This lets us run robots in more diverse environments where we do not know the objects the robot will encounter ahead of time, collecting data on self-generated tasks.
+        </div>
+        <div class="columns is-centered">
+          <div class="column">
+              <img src="./static/images/env1.jpg" class="img-reponsive" />
+              <br/>
+              <img src="./static/images/env2.jpg" class="img-reponsive" />
+          </div>
+          <div class="column">
+              <img src="./static/images/env3.jpg" class="img-reponsive" />
+              <br/>
+              <img src="./static/images/env4.jpg" class="img-reponsive" />
+          </div>
+          <div class="column">
+              <img src="./static/images/env5.jpg" class="img-reponsive" />
+              <br/>
+              <img src="./static/images/env6.jpg" class="img-reponsive" />
+          </div>
+        </div>
+        <div class="content">
+          <p style="text-align:center;">
+            Example environments where AutoRT was run
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            To collect a robot episode, AutoRT proceeds in five stages.
+          </p>
+          <ol>
+            <li>The robot maps the environment to generate points of interest, then samples one and drives to that point.</li>
+            <li>Given an image from the robot camera, a VLM outputs text describing the
+              scene the robot observes, and objects that exist in that scene. The output is forwarded to an LLM to generate tasks the robot could attempt.</li>
+            <li>Tasks are filtered via self-reflection to reject tasks and categorize them into ones that need human assistance, and ones that do not.</li>
+            <li>A valid task is sampled from the filtered list, and the robot attempts it.</li>
+            <li>The attempt is scored on how diverse the task and video is compared to prior data, and we repeat.</li>
+          </ol>
+          <p>
+            We assume AutoRT is run on a <i>fleet</i> of many robots supervised by a smaller number of humans. The system supports defining the desired fraction of human demonstration, which we used to adjust data collection based on how autonomous we want the robots to be. Up to 20 robots were used at once, collecting over 77,000 episodes covering 6,650 unique language instructions.
+          </p>
+          <div class="columns is-centered">
+            <div style="width:50%">
+              <img src="./static/images/fleetfraction.png" class="img-reponsive" />
+              <br/>
+              <img src="./static/images/total_robots.png" class="img-reponsive" />
+              <p style="text-align:center;">
+                Number of robots running AutoRT
+              </p>
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column">
+              <img src="./static/images/autort_episodes.png" class="img-reponsive" />
+              <p style="text-align:center;">
+                Total episodes collected by AutoRT
+              </p>
+            </div>
+            <div class="column">
+              <img src="./static/images/unique_tasks.png" class="img-reponsive" />
+              <p style="text-align:center;">
+                Total unique language instructions generated over time
+              </p>
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>Below is a time lapse of AutoRT running on 8 robots.</p>
+            <video autoplay="" loop="" muted="" playsinline="" controls="" style="width:100%">
+              <source src="./static/videos/autort_time_lapse.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+    <!-- Example Tasks -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Example Generated Tasks</h2>
+        <div class="content has-text-justified">
+          <p>
+            The following are human demonstrations of tasks generated by AutoRT, showing the creativity of the LLM. Videos are 2x speed.
+          </p>
+          <div class="columns is-centered">
+            <div class="column is-5">
+              <img src="./static/images/arrangecups2x.gif">
+              <div class="content">arrange the cups into a circle</div>
+              <img src="./static/images/fluffpillows2x.gif">
+              <div class="content">fluff the pillows on the couch</div>
+            </div>
+            <div class="column is-5">
+              <img src="./static/images/countobjects2x.gif">
+              <div class="content">count the objects on the table</div>
+              <img src="./static/images/stackboxes2x.gif">
+              <div class="content">stack the boxes on top of each other</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Example Tasks -->
+    <!-- Task Generation -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Affordance and Robot Constitution</h2>
+        <div class="content has-text-justified">
+          <p>
+            The benefit of using LLMs is that it easily generates diverse tasks for robots to perform. The danger of using LLMs is that these tasks may be unsafe or outside the robot's affordance (the range of its capabilities in the environment). In this work, we do not finetune the language model, and instead use prompting to guide the task generation. We call this prompt the <i>robot constitution</i>, since it is made of rules that describe desired robot behavior.
+          </p>
+          <p>
+            The rules are divided into three categories:
+          </p>
+          <ol>
+            <li><i>Foundational rules</i>, heavily inspired by <a href="https://en.wikipedia.org/wiki/Three_Laws_of_Robotics">Asimov’s laws</a>.</li>
+            <pre style="white-space: pre-wrap;">A robot may not injure a human being.</pre>
+            <li><i>Safety rules</i>, describing what tasks are considered unsafe or undesired based on current capabilities in deployment.</li>
+            <pre style="white-space: pre-wrap;">This robot shall not attempt tasks involving humans, animals or living things.
+This robot shall not interact with objects that are sharp, such as a knife</pre>
+            <li><i>Embodiment rules</i>, describing limitations of the robot’s embodiment, such as its maximum payload.</li>
+            <pre style="white-space: pre-wrap;">This robot only has one arm, and thus cannot perform tasks requiring two arms. For example, it cannot open a bottle.</pre>
+          </ol>
+          <p>
+            See the paper for the full prompts.
+            Including this robot constitution when generating and critiquing tasks is critical to making the system usable. We found that with the constitution, 88% of initially generated tasks are valid, increasing to 93% valid tasks after one round of task filtering. In testing with adversarial scenes designed to encourage bad tasks (i.e. scenes with multiple sharp objects), the constitutional robot generates valid tasks 83% of the time, compared to just 18% of the time without it.
+          </p>
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Task Generation -->
+    <!-- Experiments. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+            <h3 class="title is-4">Data Diversity</h3>
+            <p style="text-align:center;">
+              <img src="./static/images/diversity.png" class="img-reponsive" />
+            </p>
+            <p>
+              We score the visual diversity of data based on distance in embedding space, with higher distances better, and find that AutoRT is consistently more visually diverse than RT-1 data. Highest diversity comes from episodes collected with human assistance.
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Collect Method</th>
+                        <th>Language L2 Dist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://interactive-language.github.io/">Language Table</a></td>
+                        <td>0.988</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://sites.google.com/view/bc-z/home">BC-Z</a></td>
+                        <td>1.070</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://blog.research.google/2022/12/rt-1-robotics-transformer-for-real.html">RT-1</a></td>
+                        <td>1.073</td>
+                    </tr>
+                    <tr>
+                        <td>AutoRT w/PaLI</td>
+                        <td>1.100</td>
+                    </tr>
+                    <tr>
+                        <td>AutoRT w/FlexCap</td>
+                        <td>1.137</td>
+                    </tr>
+                </tbody>
+            </table>
+          <p>
+            We score language instruction diversity similarly, and find AutoRT data has higher average distance between language embeddings than previous robotics datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+        <h3 class="title is-4">Affordance and Robot Constitution</h3>
+        <p>
+          To measure the effect of the robot constitution, we set up deliberately adversarial scenes that included lifelike toy animals or sharp items. We then compare the following
+          setups:
+        </p>
+        <ul>
+            <li>Task Generation: no constitution vs constitution</li>
+            <li>Filtering: no filter vs minimal filter vs constitutional filter</li>
+        </ul>
+        <p>
+          Using the robot constitution at both generation time and filtering time leads to the highest fraction of valid tasks.
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="has-text-centered">No Constitution</th>
+                    <th class="has-text-centered">Constitution</th>
+                </tr>
+                <tr>
+                    <th>Filter</th>
+                    <th>% Valid</th>
+                    <th>% Valid</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>None</td>
+                    <td>18%</td>
+                    <td>70%</td>
+                </tr>
+                <tr>
+                    <td>Minimal</td>
+                    <td>15%</td>
+                    <td>67%</td>
+                </tr>
+                <tr>
+                    <td>Constitutional</td>
+                    <td>57%</td>
+                    <td>83%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4">Learned Policy Samples</h3>
+        <div class="content has-text-justified">
+          <p>
+            To sanity check the data, we finetune an RT-1 checkpoint on data collected by AutoRT. RT-1
+            is used instead of <a href="https://robotics-transformer2.github.io/">RT-2</a> since it trained
+            more quickly and cheaply. Videos below are from the finetuned policy running at 1x.
+          </p>
+          <div class="columns is-centered">
+            <div class="column is-5">
+              <img src="./static/images/picktable.gif">
+              <div class="content">pick white bag</div>
+              <img src="./static/images/wipecloth.gif">
+              <div class="content">wipe the table with the cloth</div>
+            </div>
+            <div class="column is-5">
+              <img src="./static/images/pickfloor.gif">
+              <div class="content">pick chip bag</div>
+              <img src="./static/images/fold.gif">
+              <div class="content">fold the cloth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Experiments. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Next Steps</h2>
+    <p>
+      AutoRT is a promising step towards embodied AI that can run anywhere, but
+      we emphasize that it is still a research proof-of-concept. Future work will
+      be directed towards creating more robust and diverse learned policies,
+      integrating larger multimodal models, studying learning methods that can
+      better leverage AutoRT data, and improving the safety of generated tasks.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <p>
+    We thank
+Celeste Barajas,
+Joseph Dabis,
+Gavin Gonzalez,
+Tomas Jackson,
+Alex Luong,
+Utsav Malla,
+Emily Perez,
+Elio Prado,
+Jornell Quiambao,
+Sangeetha Ramesh,
+Jaspiar Singh,
+Clayton Tan,
+Jodexty Therlonge,
+Eric Tran,
+Steven Vega,
+and Samuel Wan
+for assistance on data collection, model evaluation, and AutoRT supervision. We thank Anthony Brohan and Noah Brown for assistance on data analysis. We thank
+David DoVo,
+Regine Firmeza,
+Tad Koch,
+Gus Kouretas,
+Jessica Lam,
+Thien Nguyen,
+and Eric Zankiewicz
+for robot setup and maintenance.
+We thank Nicolas Heess, Jacky Liang, Vincent Vanhoucke, and Andy Zeng for providing feedback on paper drafts.
+    </p>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{gdm2024autort,
+      title={AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents}, 
+      author={Michael Ahn and Debidatta Dwibedi and Chelsea Finn and Montse Gonzalez Arenas and Keerthana Gopalakrishnan and Karol Hausman and Brian Ichter and Alex Irpan and Nikhil Joshi and Ryan Julian and Sean Kirmani and Isabel Leal and Edward Lee and Sergey Levine and Yao Lu and Isabel Leal and Sharath Maddineni and Kanishka Rao and Dorsa Sadigh and Pannag Sanketi and Pierre Sermanet and Quan Vuong and Stefan Welker and Fei Xia and Ted Xiao and Peng Xu and Steve Xu and Zhuo Xu},
+      year={2024},
+      eprint={2401.12963},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         target="_blank"
+         href="./static/pdf/AutoRT.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>This website is borrowed from <a href="https://nerfies.github.io/">nerfies</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

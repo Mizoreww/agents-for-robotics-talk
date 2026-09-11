@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Inner Monologue: Embodied Reasoning through Planning with Language Models. Robotics at Google.</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta name="og:image" content="https://innermonologue.github.io/img/teaser.png" />
+    <meta property="og:image" content="https://innermonologue.github.io/img/teaser.png" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="900">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://inner-monologue.github.io/"/>
+    <meta property="og:title" content="Inner Monologue: Embodied Reasoning through Planning with Language Models." />
+    <meta property="og:description" content="Project page for Inner Monologue: Embodied Reasoning through Planning with Language Models" />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Inner Monologue: Embodied Reasoning through Planning with Language Models." />
+    <meta name="twitter:description" content="Project page for Project page for Inner Monologue: Embodied Reasoning through Planning with Language Models" />
+    <meta name="twitter:image" content="https://innermonologue.github.io/img/teaser.png" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <font size="+4"><b>Inner Monologue</b>:</font> </br> Embodied Reasoning through Planning with Language Models</br> 
+                <!--<small>
+                    CoRL 2021
+                </small>-->
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+               <ul class="list-inline">
+                <br>
+
+<li>Wenlong Huang*</li> <li>Fei Xia*</li> <li>Ted Xiao*</li> <li>Harris Chan</li> <li>Jacky Liang</li> <li>Pete Florence</li> <br><br><li>Andy Zeng</li> <li>Jonathan Tompson</li> <li>Igor Mordatch</li> <li>Yevgen Chebotar</li> <li>Pierre Sermanet</li> <br><br><li>Noah Brown</li><li>Tomas Jackson</li> <li>Linda Luu</li> <li>Sergey Levine</li> <li>Karol Hausman</li> <li>Brian Ichter</li>
+
+              
+                <br><br>
+                    <a href="http://g.co/robotics">
+                    <img src="img/robotics-at-google.png" height="40px"> Robotics at Google</a> <br>
+                    <h5> * Equal contribution and listed in alphabetical order. </h5>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/abs/2207.05608">
+                            <image src="img/paper_icon.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/0sJjdxn5kcI">
+                                <image src="img/youtube_icon.png" height="60px">
+                                    <h4><strong>Video</strong></h4>
+                                </a>
+                            </li>
+                            <!-- li>
+                                <a href="https://ai.googleblog.com/2021/04/multi-task-robotic-reinforcement.html">
+                                    <image src="img/google-ai-blog-small.png" height="60px">
+                                        <h4><strong>Blogpost</strong></h4>
+                                    </a>
+                                </li -->
+                                <!-- <li>
+                                    <a href="https://github.com/">
+                                        <image src="img/github.png" height="60px">
+                                            <h4><strong>Code</strong></h4>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls muted autoplay>
+                        <source src="img/im_teaser_compressed.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                                
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+Recent works have shown how the reasoning capabilities of Large Language Models (LLMs) can be applied to domains beyond natural language processing, such as planning and interaction for robotics. These embodied problems require an agent to understand many semantic aspects of the world: the repertoire of skills available, how these skills influence the world, and how changes to the world map back to language. LLMs planning in embodied environments need to consider not just what skills to do, but also how and when to do them - answers that change over time in response to the agent’s own choices. 
+
+In this work, we investigate to what extent LLMs used in such embodied contexts can reason over sources of feedback provided through natural language, without any additional training. We propose that by leveraging environment feedback, LLMs are able to form an inner monologue that allows them to more richly process and plan in robotic control scenarios. We investigate a variety of sources of feedback, such as success detection, object recognition, scene description, and human interaction. We find that closed-loop language feedback significantly improves high level instruction completion on three domains, including simulated and real table top rearrangement tasks and long-horizon mobile manipulation tasks in a real kitchen environment.
+                </p>
+
+                <!-- <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls muted autoplay>
+                        <source src="img/im_teaser_compressed.mp4" type="video/mp4">
+                   </video>
+                </div> -->
+            
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+               
+                <h3>
+                    Video Walkthrough
+                </h3>
+                  <div class="text-center">
+                    <!-- <video id="v0" width="100%" playsinline loop controls>
+                        <source src="img/im_supp_video_compressed.mp4" type="video/mp4">
+                   </video> -->
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/0sJjdxn5kcI" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+                </div>
+            
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            	<br>
+                <h3>
+                    Approach
+                </h3>
+                <p class="text-justify">
+               Prior works have shown large language models (LLMs) demonstrate impressive planning capabilities for long-horizon embodied tasks,
+               given arbitrary language instructions. However, it has remained one-directional - the LLM blindly influences the agent and the
+               environment, but no feedback is routed back to the LLM. This issue is particularly prominent when an intermediate action fails
+               during execution, because the LLM is not informed with any feedback. In this work, formulate an <b>inner monologue</b> by continually
+               adding information from various sources of feedback into the language model prompts. While any textual feedback can be incorporated,
+               we focus our studies on three types of feedback: passive scene description, active scene description, and success detection. Passive
+               scene description describes any feedback that is consistently provided in a structured form, such as object recognition results.
+               Active scene description, on the other hand, describes any free-form questions that LLMs may ask and the corresponding unstructured answers provided by
+               a learned model (e.g. a VQA model) or a person. This can also be repurposed to inject human preference during plan generation. Success detection
+               refers to a binary feedback that indicates if the last action was successful, which is particularly useful in many long-horizon settings.
+
+              <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls muted autoplay>
+                        <source src="img/method.mp4" type="video/mp4">
+                   </video>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results
+                </h3>
+		<p class="text-justify">
+	In order to study how different sources of environment feedback can support a rich inner monologue that enables complex robotic control, we analyze diverse long-horizon manipulation and navigation tasks in simulation and in the real world. As Inner Monologue is not dependent on a specific LLM or a type of grounding feedback,
+we study different Inner Monologue implementations in three environments with different LLM planning methods and different sources of feedback from the environment. For more details about experiments, implementations, and the prompts used for LLM for each domain, please refer to the paper and the appendix.
+		</p>
+
+        <h4>
+            Simulated Tabletop Rearrangement
+        </h4>
+        <p class="text-justify">
+            Given an unseen task instruction, we show that LLMs can not only generate sensible action plans as observed in previous works, but can also incorporate injected textual feedback of success detection and passive scene description. The video below shows one instantiation of using passive scene description as feedback (<i>Scene</i>). Specifically, the LLM first infers desired sub-tasks given the high-level instruction. Then, the scene description keeps track of the achieved sub-tasks after each step. Additionally, the LLM also generates chain-of-thought text about what remains to be achieved after each step. We demonstrate this can elicit complex replanning behaviors in tasks that require combinatorial state spaces (e.g., "put all blocks in bowls with matching colors", "stack all the blocks").
+        </p>
+
+        <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                       <source src="img/im_demo1_an.mp4" type="video/mp4">
+                   </video>
+                </div>
+
+
+        <h4>
+            Real-World Tabletop Rearrangement
+        </h4>
+         <p class="text-justify">
+            We demonstrate another implementation of Inner Monologue in a real-world tabletop environment, where perceptual models may be subject to occlusions.
+            We leverage passive scene description (implemented as object recognition) and success detection feedbacks.
+            Given the list of visible and occluded objects and success detection results, we show this enables Inner Monologue to complete tasks like "stack all the blocks" and "put bottles and fruits in different plates", even under considerable perturbations to the primitive policy.
+        </p>
+
+        <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                       <source src="img/im_demo2_an.mp4" type="video/mp4">
+                   </video>
+                </div>
+
+        <h4>
+            Real-World Mobile Manipulation
+        </h4>
+        <p class="text-justify">
+            <!-- In the real kitchen mobile manipulation rearrangement domain, we show that the robot is also successful replan based on success detection results, despite adversarial human intervention. -->
+            The method is also amenable to complex realistic household tasks given wide range of skills outside of pick-and-place. In the video below, we leverage success detection feedback. Although natural failures are already prone to occur in such settings, we use adversarial human interventions to force policy failures in order to demonstrate the replanning capability of Inner Monologue. We show that LLMs can effectively replan if the current or previous plan steps failed. This allows the robot to recover from failures and complete complex tasks like "put a coke in the top drawer", as shown in the video below.
+        </p>
+
+        <div class="text-center">
+                    <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                       <source src="img/im_demo3_an.mp4" type="video/mp4">
+                   </video>
+                </div>
+
+        <h3>
+            Emergent Capabilities
+        </h3>
+        <p class="text-justify">
+            Although LLMs can generate fluent continuations from the prompted examples, we surprisingly find that when informed with environment feedback, Inner Monologue demonstrates many impressive reasoning and replanning behaviors beyond the examples given in the prompt. Using a pre-trained LLM as the backbone, the method also inherits many of the appealing properties from its versatility and general-purpose languageunderstanding. In this section, we demonstrate a few of these emergent capabilities.
+        </p>
+        
+        <h4>Continued Adaptation to New Instructions</h4>
+        <p class="text-justify">
+            Although not explicitly prompted, the LLM planner can react to human interaction that changes the high-level goal mid-task.  Below we show a challenging case, where <i>Human</i> feedback changes the goal during the plan execution, and then changes the goal yet again by saying “finish the previous task”. We can see that the planner incorporates the feedback correctly by switching tasks twice.  In another instance, despite not being explicitly prompted to terminate after a human says “please stop”, the LLM planner generalizes to this scenario and predicts a “done” action.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/im_demo4_an.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h4>Self-Proposing Goals under Infeasibility</h4>
+        <p class="text-justify">
+            Instead of mindlessly following human-given instructions, Inner Monologue can also act as an interactive problem solver by proposing alternative goals to atempt when the previous goal becomes infeasible.  Below, to solve the task “put any two blocks inside the purple bowl”, Inner Monologue first attempts an action of picking up the purple block – the action fails as the purple block is intentionally made to be too heavy for the robot. After a hint “the purple block is too heavy”, it proposes to “find a lighter block” and successfully solves the task in the end.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/emergent_spontaneous.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h4>Multilingual Interaction</h4>
+        <p class="text-justify">
+            Pre-trained LLMs are known to be able to translate from one language to another, without any finetuning. We observe that such multilingual understanding also transfers to the embodied settings considered in this work. Specifically, the human-provided new instruction is written in Chinese, but the LLM can correctly interpret it, re-narrate it as a concrete goal to execute in English, and accordingly replan its future actions. Occasionally, we find that this capability even extends to symbols and emojis.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/emergent_multilingual.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h4>Interactive Scene Understanding</h4>
+        <p class="text-justify">
+            We also observe that Inner Monologue demonstrates interactive understanding of the scene using the past actions and environment feedback as context.  Below, after a task instruction has been executed, we turn to ask questions about the scene, again a structure that has not appeared in the prompt.  Surprisingly, we find that it can often correctly answer these questions that require temporal and embodied reasoning.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/emergent_scene.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h4>Robustness to Feedback Order</h4>
+        <p class="text-justify">
+            So far we prompted the language model following certain conventions. For instance, in the simulated tabletop domain, the convention is [Robot action, Scene, and Robot thought]. In practice, we find that the LLM planner is robust to occasionallys wapping the order of feedback.  In one example, a new human instruction is injected in the middle of plan execution, but this structure has not been seen in the example prompts. Nonetheless, the planner recognizes the change and generates a new “Robot thought: Goal state is. . . ” statement allowing it to solve the new task.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/emergent_feedback_order.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <h4>Robustness to Typos</h4>
+        <p class="text-justify">
+            Inherited from the LLM backbone, our approach is also robust to typos in human instruction.
+        </p>
+        <div class="text-center">
+            <video id="v0" width="100%" playsinline loop controls autoplay muted>
+                <source src="img/emergent_typos.mp4" type="video/mp4">
+            </video>
+        </div>
+
+	    </div>
+        </div>
+            
+     <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly="" style="display: none;">@inproceedings{huang2022inner,
+    title={Inner Monologue: Embodied Reasoning through Planning with Language Models},
+    author={Wenlong Huang and Fei Xia and Ted Xiao and Harris Chan and Jacky Liang and Pete Florence and Andy Zeng and Jonathan Tompson and Igor Mordatch and Yevgen Chebotar and Pierre Sermanet and Noah Brown and Tomas Jackson and Linda Luu and Sergey Levine and Karol Hausman and Brian Ichter},
+    booktitle={arXiv preprint arXiv:2207.05608},
+    year={2022}
+}</textarea>
+            </div>
+     </div>
+
+     <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+The authors would like to thank Kanishka Rao and Vincent Vanhoucke for valuable feedback and discussions. In addition, the authors would like to acknowledge the large team who built SayCan, upon which we construct our Kitchen Mobile Manipulation experiments.
+                    <br><br>
+                The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
+                </p>
+            </div>
+
+    </div>
+</body>
+</html>

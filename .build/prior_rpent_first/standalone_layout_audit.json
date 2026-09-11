@@ -1,0 +1,378 @@
+{
+  "html_sha256": "8ddf12abb83477554c3f40cb7abd49145c48904ec84c1cdcdc7705f1f180b55b",
+  "slides": [
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "SUSTech logo",
+          "loaded": true
+        }
+      ],
+      "number": 1,
+      "overflow": [],
+      "title": "Slide 1: Agents for Robotics",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 2,
+      "overflow": [],
+      "title": "Slide 2: Demo: A Robot Paints with Feedback",
+      "videoClips": [
+        "painting"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 3,
+      "overflow": [],
+      "title": "Slide 3: Our Ultimate Goal",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 4,
+      "overflow": [],
+      "title": "Slide 4: Three Core Roles, Broader Applications",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 5,
+      "overflow": [],
+      "title": "Slide 5: Execution: An Agent with Many Tools",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Official RPent service-oriented framework",
+          "loaded": true
+        }
+      ],
+      "number": 6,
+      "overflow": [],
+      "title": "Slide 6: RPent: Packaging Robotics as Agent Tools",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original Claude Plays Robotics interface-level results",
+          "loaded": true
+        }
+      ],
+      "number": 7,
+      "overflow": [],
+      "title": "Slide 7: Claude Plays Robotics",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 8,
+      "overflow": [],
+      "title": "Slide 8: Direct Actions and Controller Code",
+      "videoClips": [
+        "claude_humanoid",
+        "claude_manip"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report VLA supervision results on familiar LIBERO-40 tasks",
+          "loaded": true
+        }
+      ],
+      "number": 9,
+      "overflow": [],
+      "title": "Slide 9: VLA Tools: Grounding and Supervision",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 10,
+      "overflow": [],
+      "title": "Slide 10: Demo: Placement and Fine Insertion",
+      "videoClips": [
+        "astra_bowl",
+        "astra_insertion"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 11,
+      "overflow": [],
+      "title": "Slide 11: Demo: Wiping a Table",
+      "videoClips": [
+        "wiping"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 12,
+      "overflow": [],
+      "title": "Slide 12: World Building: Replay and Prediction",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 13,
+      "overflow": [],
+      "title": "Slide 13: Agentic Real2Sim: A Real Episode and Its Twin",
+      "videoClips": [
+        "ar2s_real",
+        "ar2s_sim"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
+          "loaded": true
+        }
+      ],
+      "number": 14,
+      "overflow": [],
+      "title": "Slide 14: Agentic Real2Sim: The Conversion Pipeline",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
+          "loaded": true
+        }
+      ],
+      "number": 15,
+      "overflow": [],
+      "title": "Slide 15: Replay Acceptance on DROID-100",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 16,
+      "overflow": [],
+      "title": "Slide 16: Demo: Real2Sim and a Disclosed Failure",
+      "videoClips": [
+        "astra_real2sim",
+        "astra_microphone"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 17,
+      "overflow": [],
+      "title": "Slide 17: Improvement: A Repeatable Real Experiment",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 18,
+      "overflow": [],
+      "title": "Slide 18: ENPIRE: Real Experiments Inside the Loop",
+      "videoClips": [
+        "enpire_task"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE original framework, including human-assisted environment construction",
+          "loaded": true
+        }
+      ],
+      "number": 19,
+      "overflow": [],
+      "title": "Slide 19: ENPIRE: Environment and Improvement",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 20,
+      "overflow": [],
+      "title": "Slide 20: ENPIRE: Reset and Verification",
+      "videoClips": [
+        "enpire_reset",
+        "enpire_verify"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+          "loaded": true
+        }
+      ],
+      "number": 21,
+      "overflow": [],
+      "title": "Slide 21: ENPIRE: Improvement on Pin Insertion",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+          "loaded": true
+        }
+      ],
+      "number": 22,
+      "overflow": [],
+      "title": "Slide 22: Faster Research, Higher Token Use",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 23,
+      "overflow": [],
+      "title": "Slide 23: Other Applications: Design and Engineering",
+      "videoClips": []
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 24,
+      "overflow": [],
+      "title": "Slide 24: Demo: Structural Design of a Robot Hand",
+      "videoClips": [
+        "hand"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 25,
+      "overflow": [],
+      "title": "Slide 25: Demo: Inspecting and Repairing an Execution",
+      "videoClips": [
+        "aspire_trace"
+      ]
+    },
+    {
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "number": 26,
+      "overflow": [],
+      "title": "Slide 26: Conclusion",
+      "videoClips": []
+    }
+  ]
+}

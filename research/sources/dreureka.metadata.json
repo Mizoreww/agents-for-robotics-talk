@@ -1,0 +1,236 @@
+{
+  "key": "dreureka",
+  "url": "https://eureka-research.github.io/dr-eureka/",
+  "final_url": "https://eureka-research.github.io/dr-eureka/",
+  "accessed": "2026-09-10",
+  "sha256": "a617b1d5fcb6c763abd9a77524d27750179dad66b1e127ee11592036f7b25c8b",
+  "chars": 5460,
+  "links": [
+    "https://jasonma2016.github.io/",
+    "mailto:jasonyma@seas.upenn.edu",
+    "https://www.seas.upenn.edu/~wjhliang/",
+    "https://www.linkedin.com/in/hungju-wang",
+    "https://www.linkedin.com/in/sam-wang-penn/",
+    "https://www.cs.utexas.edu/~yukez/",
+    "https://jimfan.me/",
+    "https://obastani.github.io/",
+    "https://www.seas.upenn.edu/~dineshj/",
+    "https://arxiv.org/abs/2406.01967",
+    "https://eureka-research.github.io/dr-eureka/assets/dreureka-paper.pdf",
+    "https://github.com/eureka-research/DrEureka",
+    "https://github.com/nerfies/nerfies.github.io",
+    "https://eureka-research.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/dreureka_teaser.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/concept.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/kRj3crlFdOU"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_walk_sideway.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_walk_sideway_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_height_obstacle.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_height_obstacle_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_bridge.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0014_bridge_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0015_crossroad.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0015_crossroad_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0013_upenn_grass_to_road2.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/gallery/C0013_upenn_grass_to_road2_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/kick/C0020_clip1.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/kick/C0020_clip1_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/kick/C0021_clip2.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/kick/C0021_clip2_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/kick/C0021_clip1.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/kick/C0021_clip1_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/kick/C0020_clip2.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/kick/C0020_clip2_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/eECuJUuSt5c"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/tasks/walking_globe.png",
+      "alt": "<b>Walking Globe</b>, best DrEureka reward and DR parameters:\n                        [sep]\n                        assets/reward_functions/walking_globe.txt [sep] assets/domain_randomizations/walking_globe.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/tasks/cube_rotation.png",
+      "alt": "<b>Cube Rotation</b>, best DrEureka reward and DR parameters:\n                        [sep]\n                        assets/reward_functions/cube_rotation.txt [sep] assets/domain_randomizations/cube_rotation.txt"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/tasks/forward_locomotion.png",
+      "alt": "<b>Forward Locomotion</b>, best DrEureka reward and DR parameters:\n                        [sep]\n                        assets/reward_functions/forward_locomotion.txt [sep] assets/domain_randomizations/forward_locomotion.txt"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/placeholder.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/dr-eureka/figures/quadruped_terrains.png",
+      "alt": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://eureka-research.github.io/dr-eureka/figures/real_world_robustness.png",
+      "alt": ""
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_terrains.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_terrains.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_safety.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_safety.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_ablations.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/comparisons/dr_eureka_ablations.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/failures/C0005_clip.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/failures/C0005_clip_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/failures/C0019_clip.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/failures/C0019_clip_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/failures/IMG_1575_clip.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/failures/IMG_1575_clip_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://eureka-research.github.io/dr-eureka/videos/failures/C0013_clip.png"
+    },
+    {
+      "tag": "source",
+      "src": "https://eureka-research.github.io/dr-eureka/videos/failures/C0013_clip_compressed.mp4",
+      "type": "video/mp4"
+    }
+  ]
+}

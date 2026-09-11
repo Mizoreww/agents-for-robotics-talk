@@ -1,0 +1,79 @@
+{
+  "buttons": [
+    {
+      "label": "Previous slide",
+      "rect": {
+        "height": 40,
+        "left": 13.800000190734863,
+        "right": 100.52499866485596,
+        "width": 86.7249984741211
+      }
+    },
+    {
+      "label": "Slide",
+      "rect": {
+        "height": 40,
+        "left": 103.5250015258789,
+        "right": 308.6624984741211,
+        "width": 205.1374969482422
+      }
+    },
+    {
+      "label": "Next slide",
+      "rect": {
+        "height": 40,
+        "left": 311.6625061035156,
+        "right": 376.6000061035156,
+        "width": 64.9375
+      }
+    },
+    {
+      "label": "Play videos",
+      "rect": {
+        "height": 40,
+        "left": 62.82500076293945,
+        "right": 166.11249923706055,
+        "width": 103.2874984741211
+      }
+    },
+    {
+      "label": "Pause",
+      "rect": {
+        "height": 40,
+        "left": 169.1125030517578,
+        "right": 243.63750457763672,
+        "width": 74.5250015258789
+      }
+    },
+    {
+      "label": "Restart",
+      "rect": {
+        "height": 40,
+        "left": 246.6374969482422,
+        "right": 327.5749969482422,
+        "width": 80.9375
+      }
+    },
+    {
+      "label": "Speaker script",
+      "rect": {
+        "height": 40,
+        "left": 88.5875015258789,
+        "right": 205.1875,
+        "width": 116.5999984741211
+      }
+    },
+    {
+      "label": "Fullscreen",
+      "rect": {
+        "height": 40,
+        "left": 208.1875,
+        "right": 301.8000030517578,
+        "width": 93.61250305175781
+      }
+    }
+  ],
+  "documentWidth": 390,
+  "viewport": 390,
+  "html_sha256": "3a433d0367c46be254994bdfabcf4f685cadfdaf3aab0745c0804a97801f0f22"
+}

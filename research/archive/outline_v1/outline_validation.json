@@ -1,0 +1,23 @@
+{
+  "outline_slides": 36,
+  "outline_minutes": 60.0,
+  "chapter_minutes": [
+    5,
+    6,
+    9,
+    13,
+    9,
+    12,
+    6
+  ],
+  "curated_source_records": 24,
+  "planned_video_sequences": 7,
+  "planned_video_seconds": 185,
+  "downloaded_inspected_original_figures": 6,
+  "local_reference_check": "passed",
+  "snapshot_hash_check": "passed",
+  "source_id_check": "passed",
+  "pptx_created": false,
+  "video_visual_audit": "not complete",
+  "status": "outline package ready for feedback"
+}

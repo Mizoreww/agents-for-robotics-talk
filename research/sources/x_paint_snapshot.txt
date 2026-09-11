@@ -1,0 +1,266 @@
+- banner:
+  - link "X":
+    - /url: /
+- main:
+  - button "Back":
+  - heading "Post" [level=2]
+  - 'heading "thijs on X: \"i gave astra a robot, a paint brush, and a camera then asked it to paint the golden gate bridge in real life! it figured out how to control the robot, and progressively got better throughout its attempts. the timelapse is sick\"" [level=1]'
+  - list:
+    - article:
+      - link "@cdngdev":
+        - /url: /cdngdev
+        - img "@cdngdev"
+      - link "thijs":
+        - /url: https://x.com/cdngdev
+      - button "Verified account":
+      - link "@cdngdev":
+        - /url: https://x.com/cdngdev
+      - button "More":
+      - generic: i gave astra a robot, a paint brush, and a camera then asked it to paint the golden gate bridge in real life! it figured out how to control the robot, and progressively got better throughout its attempts. the timelapse is sick
+      - button "Pause"
+      - generic: 01:03
+      - link "View media":
+        - /url: /cdngdev/status/2097339677128982873/video/1
+      - link:
+        - article:
+          - link "@OpenAI":
+            - /url: /OpenAI
+            - img "@OpenAI"
+          - link "OpenAI":
+            - /url: https://x.com/OpenAI
+          - button "Verified account":
+          - link "@OpenAI":
+            - /url: https://x.com/OpenAI
+          - text: ·
+          - link "9月3日":
+            - /url: /OpenAI/status/2095595741528125780
+          - generic: This is GPT-6 Astra. Anything you can do on a computer, Astra can do for you. Fast.
+          - button "Play"
+          - button "Play":
+          - generic: 02:42
+          - link "View media":
+            - /url: /OpenAI/status/2095595741528125780/video/1
+      - link "23:02 · 2026年9月8日":
+        - /url: /cdngdev/status/2097339677128982873
+      - text: ·
+      - link "361.1万 Views":
+        - /url: /cdngdev/status/2097339677128982873
+        - generic: 361.1万
+        - generic: Views
+      - link "Reply":
+        - /url: /i/status/2097339677128982873
+        - generic: "599"
+      - button "Repost":
+        - generic: "1507"
+      - button "Like":
+        - generic: 1.8万
+      - button "Bookmark":
+        - generic: "4958"
+      - button "Share":
+    - link:
+      - article:
+        - link "@cdngdev":
+          - /url: /cdngdev
+          - img "@cdngdev"
+        - link "thijs":
+          - /url: https://x.com/cdngdev
+        - button "Verified account":
+        - link "@cdngdev":
+          - /url: https://x.com/cdngdev
+        - text: ·
+        - link "9月8日":
+          - /url: /cdngdev/status/2097362114545688893
+        - button "More":
+        - generic: for the debate about art which will inevitably come up -- i feel like this is algorithmic art, similar to how pen plotter is. i don't think this will replace artists (certainly doesn't intend to), because there is a lot more to art than being painted with a brush(?)
+        - link "Reply":
+          - /url: /i/status/2097362114545688893
+          - generic: "13"
+        - button "Repost":
+          - generic: "9"
+        - button "Like":
+          - generic: "433"
+        - button "View count":
+          - generic: 4.3万
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@cdngdev":
+          - /url: /cdngdev
+          - img "@cdngdev"
+        - link "thijs":
+          - /url: https://x.com/cdngdev
+        - button "Verified account":
+        - link "@cdngdev":
+          - /url: https://x.com/cdngdev
+        - text: ·
+        - link "9月8日":
+          - /url: /cdngdev/status/2097339677745516710
+        - button "More":
+        - text: its instructed to plan out 1 minute of actions and monitor it in the background to make adjustments as it goes after each run (and sometimes during) i'd give it a bit of feedback on how it was doing and sometimes ask it "what can you do better?" and have it update its own
+        - button "Show more"
+        - link "Image":
+          - /url: /cdngdev/status/2097339677745516710/photo/1
+        - link "View media":
+          - /url: /cdngdev/status/2097339677745516710/photo/1
+        - link "Image":
+          - /url: /cdngdev/status/2097339677745516710/photo/2
+        - link "View media":
+          - /url: /cdngdev/status/2097339677745516710/photo/2
+        - button "Next media":
+        - link "Reply":
+          - /url: /i/status/2097339677745516710
+          - generic: "10"
+        - button "Repost":
+          - generic: "9"
+        - button "Like":
+          - generic: "377"
+        - button "View count":
+          - generic: 8.2万
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@cdngdev":
+          - /url: /cdngdev
+          - img "@cdngdev"
+        - link "thijs":
+          - /url: https://x.com/cdngdev
+        - button "Verified account":
+        - link "@cdngdev":
+          - /url: https://x.com/cdngdev
+        - text: ·
+        - link "9月8日":
+          - /url: /cdngdev/status/2097339678206861789
+        - button "More":
+        - generic: the progression is incredible
+        - button "Play"
+        - button "Play":
+        - generic: 00:04
+        - link "View media":
+          - /url: /cdngdev/status/2097339678206861789/video/1
+        - link "Reply":
+          - /url: /i/status/2097339678206861789
+          - generic: "15"
+        - button "Repost":
+          - generic: "12"
+        - button "Like":
+          - generic: "758"
+        - button "View count":
+          - generic: 5.1万
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@cdngdev":
+          - /url: /cdngdev
+          - img "@cdngdev"
+        - link "thijs":
+          - /url: https://x.com/cdngdev
+        - button "Verified account":
+        - link "@cdngdev":
+          - /url: https://x.com/cdngdev
+        - text: ·
+        - link "9月9日":
+          - /url: /cdngdev/status/2097497391251456122
+        - button "More":
+        - text: thanks to my goated mentor
+        - link "@tobyrsimonds":
+          - /url: https://x.com/tobyrsimonds
+        - text: for letting me borrow his so-101 robot arm lol
+        - link "Reply":
+          - /url: /i/status/2097497391251456122
+          - generic: "1"
+        - button "Repost":
+          - generic: "1"
+        - button "Like":
+          - generic: "44"
+        - button "View count":
+          - generic: 2.1万
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@droidbeauty":
+          - /url: /droidbeauty
+          - img "@droidbeauty"
+        - link "Dave":
+          - /url: https://x.com/droidbeauty
+        - button "Verified account":
+        - link "@droidbeauty":
+          - /url: https://x.com/droidbeauty
+        - text: ·
+        - link "9月8日":
+          - /url: /droidbeauty/status/2097368128439132624
+        - button "More":
+        - generic: It paints like a 7yo kid 😂 AGI
+        - link "Reply":
+          - /url: /i/status/2097368128439132624
+          - generic: "15"
+        - button "Repost":
+        - button "Like":
+          - generic: "101"
+        - button "View count":
+          - generic: 2.5万
+        - button "Bookmark":
+        - button "Share":
+  - status
+  - status
+  - complementary:
+    - heading "See all the replies" [level=2]
+    - link "Continue to X":
+      - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fcdngdev%2Fstatus%2F2097339677128982873
+- complementary:
+  - heading "Log in or sign up for X" [level=2]
+  - paragraph: See what’s happening and join the conversation
+  - link "Continue with phone":
+    - /url: /i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fcdngdev%2Fstatus%2F2097339677128982873
+    - text: Continue with phone
+  - button "Continue with Apple":
+    - text: Continue with Apple
+  - text: Continue with Google
+  - button "通过 Google 继续操作。在新标签页中打开":
+    - generic: 通过 Google 继续操作
+  - iframe:
+    - button "通过 Google 继续操作。在新标签页中打开":
+      - generic: 通过 Google 继续操作
+  - generic: or
+  - link "Log in with username or email":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fcdngdev%2Fstatus%2F2097339677128982873
+    - text: Log in with username or email
+  - heading "Relevant people" [level=2]
+  - link "thijs":
+    - /url: /cdngdev
+    - img "Avatar"
+  - link "thijs @cdngdev":
+    - /url: /cdngdev
+    - generic: thijs
+    - generic: "@cdngdev"
+  - link "Follow":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fcdngdev
+  - navigation "Footer":
+    - link "Terms":
+      - /url: https://x.com/tos
+    - generic: ·
+    - link "Privacy":
+      - /url: https://x.com/privacy
+    - generic: ·
+    - link "Cookies":
+      - /url: https://support.x.com/articles/20170514
+    - generic: ·
+    - link "Accessibility":
+      - /url: https://help.x.com/resources/accessibility
+    - generic: ·
+    - link "US TIDA":
+      - /url: https://help.x.com/en/rules-and-policies/us-tida
+    - generic: ·
+    - link "Ads Info":
+      - /url: https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo
+    - generic: ·
+    - button "More":
+      - text: More
+    - generic: © 2026 X Corp.
+- button "Scan to get the app":
+  - generic: Scan to get the app
+- region "Notifications alt+T"
+- region "Notifications alt+T"

@@ -1,0 +1,196 @@
+- banner:
+  - link "X":
+    - /url: /
+- main:
+  - button "Back":
+  - heading "Post" [level=2]
+  - 'heading "atharva ☆ on X: \"astra trying to wipe the table, a more sustained and intentional task testing its capabilities looking into the chain of thought explains and gives really good overview on the decision making. this is remarkable; slapping a flow head on this is robot AGI\"" [level=1]'
+  - list:
+    - article:
+      - link "@k7agar":
+        - /url: /k7agar
+        - img "@k7agar"
+      - link "atharva ☆":
+        - /url: https://x.com/k7agar
+      - button "Verified account":
+      - link "@k7agar":
+        - /url: https://x.com/k7agar
+      - button "More":
+      - generic: astra trying to wipe the table, a more sustained and intentional task testing its capabilities looking into the chain of thought explains and gives really good overview on the decision making. this is remarkable; slapping a flow head on this is robot AGI
+      - button "Pause"
+      - generic: 00:10
+      - link "View media":
+        - /url: /k7agar/status/2096593654320341027/video/1
+      - link:
+        - article:
+          - link "@k7agar":
+            - /url: /k7agar
+            - img "@k7agar"
+          - link "atharva ☆":
+            - /url: https://x.com/k7agar
+          - button "Verified account":
+          - link "@k7agar":
+            - /url: https://x.com/k7agar
+          - text: ·
+          - link "9月6日":
+            - /url: /k7agar/status/2096590458369810679
+          - text: I thought the tasks they were doing were too simple, so I asked Astra to “pick up the green block and make it upright.” the way it did it left both
+          - link "@sujaldw":
+            - /url: https://x.com/sujaldw
+          - text: and me speechless. I didn’t want to believe it, but now I do scaling is all we need. makes me so much more bullish on
+          - button "Show more"
+          - button "Play"
+          - button "Play":
+          - generic: 00:28
+          - link "View media":
+            - /url: /k7agar/status/2096590458369810679/video/1
+      - link "21:37 · 2026年9月6日":
+        - /url: /k7agar/status/2096593654320341027
+      - text: ·
+      - link "2.1万 Views":
+        - /url: /k7agar/status/2096593654320341027
+        - generic: 2.1万
+        - generic: Views
+      - link "Reply":
+        - /url: /i/status/2096593654320341027
+        - generic: "11"
+      - button "Repost":
+        - generic: "14"
+      - button "Like":
+        - generic: "193"
+      - button "Bookmark":
+        - generic: "75"
+      - button "Share":
+    - link:
+      - article:
+        - link "@DJiafei":
+          - /url: /DJiafei
+          - img "@DJiafei"
+        - link "Jiafei Duan":
+          - /url: https://x.com/DJiafei
+        - button "Verified account":
+        - link "@DJiafei":
+          - /url: https://x.com/DJiafei
+        - text: ·
+        - link "9月6日":
+          - /url: /DJiafei/status/2096594432779051291
+        - button "More":
+        - generic: Try folding clothes.
+        - link "Reply":
+          - /url: /i/status/2096594432779051291
+          - generic: "1"
+        - button "Repost":
+        - button "Like":
+          - generic: "6"
+        - button "View count":
+          - generic: "8683"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@chooi_jeq":
+          - /url: /chooi_jeq
+          - img "@chooi_jeq"
+        - link "Jay Chooi":
+          - /url: https://x.com/chooi_jeq
+        - button "Verified account":
+        - link "@chooi_jeq":
+          - /url: https://x.com/chooi_jeq
+        - text: ·
+        - link "9月6日":
+          - /url: /chooi_jeq/status/2096660372044566744
+        - button "More":
+        - generic: Super cool! Is this EEF via IK solver or direct joint commands?
+        - link "Reply":
+          - /url: /i/status/2096660372044566744
+          - generic: "1"
+        - button "Repost":
+        - button "Like":
+          - generic: "2"
+        - button "View count":
+          - generic: "272"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@ajain404":
+          - /url: /ajain404
+          - img "@ajain404"
+        - link "Aryan Jain":
+          - /url: https://x.com/ajain404
+        - link "@ajain404":
+          - /url: https://x.com/ajain404
+        - text: ·
+        - link "9月6日":
+          - /url: /ajain404/status/2096689275383267419
+        - button "More":
+        - generic: now imagine this but at ultrafast or even chatjimmy speeds
+        - link "Reply":
+          - /url: /i/status/2096689275383267419
+        - button "Repost":
+        - button "Like":
+          - generic: "2"
+        - button "View count":
+          - generic: "142"
+        - button "Bookmark":
+        - button "Share":
+  - status
+  - status
+  - complementary:
+    - heading "See all the replies" [level=2]
+    - link "Continue to X":
+      - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fk7agar%2Fstatus%2F2096593654320341027
+- complementary:
+  - heading "Log in or sign up for X" [level=2]
+  - paragraph: See what’s happening and join the conversation
+  - link "Continue with phone":
+    - /url: /i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fk7agar%2Fstatus%2F2096593654320341027
+    - text: Continue with phone
+  - button "Continue with Apple":
+    - text: Continue with Apple
+  - text: Continue with Google
+  - button "通过 Google 继续操作。在新标签页中打开":
+    - generic: 通过 Google 继续操作
+  - iframe:
+    - button "通过 Google 继续操作。在新标签页中打开":
+      - generic: 通过 Google 继续操作
+  - generic: or
+  - link "Log in with username or email":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fk7agar%2Fstatus%2F2096593654320341027
+    - text: Log in with username or email
+  - heading "Relevant people" [level=2]
+  - link "atharva ☆":
+    - /url: /k7agar
+    - img "Avatar"
+  - link "atharva ☆ @k7agar":
+    - /url: /k7agar
+    - generic: atharva ☆
+    - generic: "@k7agar"
+  - link "Follow":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fk7agar
+  - navigation "Footer":
+    - link "Terms":
+      - /url: https://x.com/tos
+    - generic: ·
+    - link "Privacy":
+      - /url: https://x.com/privacy
+    - generic: ·
+    - link "Cookies":
+      - /url: https://support.x.com/articles/20170514
+    - generic: ·
+    - link "Accessibility":
+      - /url: https://help.x.com/resources/accessibility
+    - generic: ·
+    - link "US TIDA":
+      - /url: https://help.x.com/en/rules-and-policies/us-tida
+    - generic: ·
+    - link "Ads Info":
+      - /url: https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo
+    - generic: ·
+    - button "More":
+      - text: More
+    - generic: © 2026 X Corp.
+- button "Scan to get the app":
+  - generic: Scan to get the app
+- region "Notifications alt+T"
+- region "Notifications alt+T"

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Agentic Real2Sim converts DROID robot manipulation episodes into MuJoCo-simulated episodic twins.">
+  <meta name="keywords" content="Agentic Real2Sim, real-to-sim, DROID, MuJoCo, simulatable episodic twins, vision-language agents">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents</title>
+
+  <!-- Enables cross-origin isolation (SharedArrayBuffer) on static hosting so the
+       embedded OpenUSD viewer below can run. Registers a service worker that
+       re-serves responses with COOP/COEP (credentialless) headers; the top-level
+       page must be isolated for the same-origin viewer iframe to be isolated too.
+       Loaded first so it takes effect before the rest of the page. -->
+  <script src="./coi-serviceworker.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/png" href="./static/images/ar2s_icon.png">
+
+  <!-- Self-hosted so it loads under this page's COEP policy (cross-origin CDN
+       scripts are blocked once the page is cross-origin isolated). -->
+  <script src="./static/js/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="./">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://www.cs.ubc.ca/~gxchen/">Guanxiong Chen</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://qianjun-xia.github.io/">Qianjun Xia</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/jiawei-peng-59a713190">Jiawei Peng</a><sup>2,*</sup>,</span>
+            <span class="author-block"><a href="https://home.mediosz.club/">Heng Zhang</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://de.linkedin.com/in/david-bole-ma">Bole Ma</a><sup>3,*</sup>,</span>
+            <span class="author-block"><a href="https://ca.linkedin.com/in/justin-qian">Justin Qian</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://ca.linkedin.com/in/allison-ziyi-jiao">Ziyi Jiao</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://sg.linkedin.com/in/bingyang-zhou-69613b292">Bingyang Zhou</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/luoxin-ye-b584a0317">Luoxin Ye</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://kywind.github.io/">Kaifeng Zhang</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://ca.linkedin.com/in/kunyi-wang-0933b2241">Kunyi Wang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/weijia-zeng-0a4686238">Weijia Zeng</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://yunuoch.github.io/">Yunuo Chen</a><sup>5</sup>,</span>
+            <span class="author-block"><a href="https://pengzhi1998.github.io/">Pengzhi Yang</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://ziqiu-zeng.github.io/homepage/">Ziqiu Zeng</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://www.siyuanluo.com/">Siyuan Luo</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://wanghmin.github.io/">Huamin Wang</a><sup>7</sup>,</span>
+            <span class="author-block"><a href="https://chaoliu.tech/">Chao Liu</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.cs.jhu.edu/~ayuille1/">Alan Yuille</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://fanshi14.github.io/me/">Fan Shi</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://www.cs.columbia.edu/~cxz/">Changxi Zheng</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://people.csail.mit.edu/liyunzhu/">Yunzhu Li</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://www.math.ucla.edu/~cffjiang/">Chenfanfu Jiang</a><sup>5</sup>,</span>
+            <span class="author-block"><a href="https://peterchencyc.com/">Peter Yichen Chen</a><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">* Equal technical contribution.</span>
+          </div>
+
+          <div class="is-size-6 publication-authors publication-institutions">
+            <span class="author-block"><sup>1</sup> University of British Columbia</span>
+            <span class="author-block"><sup>2</sup> Johns Hopkins University</span>
+            <span class="author-block"><sup>3</sup> Erlangen National High Performance Computing Center (NHR@FAU), Friedrich-Alexander-Universität Erlangen-Nürnberg</span>
+            <span class="author-block"><sup>4</sup> Columbia University</span>
+            <span class="author-block"><sup>5</sup> University of California, Los Angeles</span>
+            <span class="author-block"><sup>6</sup> National University of Singapore</span>
+            <span class="author-block"><sup>7</sup> Style3D</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/agentic-real2sim.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2607.19190"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/agentic-real2sim/agentic_real2sim"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/ar2s_teaser.mp4?v=d6a9655b"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Agentic Real2Sim</span> turns real robot-object interaction recordings into
+        simulatable digital twins.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-ar2s-052" data-video-pair>
+          <div class="ar2s-video-pair">
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">Real DROID observation</p>
+              <video poster="" id="ar2s-052-real" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_052_real.mp4"
+                        type="video/mp4">
+                Your browser does not support the real-world video.
+              </video>
+            </div>
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">MuJoCo episode twin</p>
+              <video poster="" id="ar2s-052-simulated" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_052_simulated.mp4"
+                        type="video/mp4">
+                Your browser does not support the synthetic video.
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="item item-ar2s-089" data-video-pair>
+          <div class="ar2s-video-pair">
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">Real DROID observation</p>
+              <video poster="" id="ar2s-089-real" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_089_real.mp4"
+                        type="video/mp4">
+                Your browser does not support the real-world video.
+              </video>
+            </div>
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">MuJoCo episode twin</p>
+              <video poster="" id="ar2s-089-simulated" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_089_simulated.mp4"
+                        type="video/mp4">
+                Your browser does not support the synthetic video.
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="item item-ar2s-091" data-video-pair>
+          <div class="ar2s-video-pair">
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">Real DROID observation</p>
+              <video poster="" id="ar2s-091-real" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_091_real.mp4"
+                        type="video/mp4">
+                Your browser does not support the real-world video.
+              </video>
+            </div>
+            <div class="ar2s-video-pair-item">
+              <p class="ar2s-video-label">MuJoCo episode twin</p>
+              <video poster="" id="ar2s-091-simulated" controls muted playsinline height="100%">
+                <source src="./static/videos/ar2s_ep_091_simulated.mp4"
+                        type="video/mp4">
+                Your browser does not support the synthetic video.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Real-to-sim conversion for robotic interaction with objects remains labor-intensive because it requires more than visual reconstruction: a streamlined real2sim process must recover scene geometries and object states, infer physical parameters, and assemble actors, objects, cameras, poses, and trajectories into a runnable physical simulation. Today this process still depends on manual tuning of visual foundation models, mesh cleanup, coordinate-frame alignment, and brittle workflow glue across visual perception tools and simulators. We introduce <span class="dnerf">Agentic Real2Sim</span>, a framework for generalized physical world modeling with vision-language agents, converting a real-world recording of object-robot interaction into a simulatable episodic twin which preserves observations, geometries, robot interactions, and object states. We evaluate Agentic Real2Sim on rigid-object manipulation, deformable-object interaction, and humanoid motion scenes, spanning domains that are usually handled by separate Real2Sim pipelines, marking a first step toward scalable conversion. The framework's agentic decisions can be driven by an open-weight VLM backend at a small fraction of the cost of frontier models, while attaining comparable conversion success rate. We aim to use the resulting real-world-aligned twins for downstream robotics tasks, specifically policy learning and evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<!-- Interactive USD viewer. Embeds the OpenUSD (three.js Hydra) viewer as a
+     same-origin iframe and auto-loads a simulator-twin episode on start. The
+     viewer is fully self-contained under /usd-viewer and needs the cross-origin
+     isolation enabled by coi-serviceworker.js (see <head>). -->
+<section class="section" id="interactive-viewer">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Explore Simulatable Episode Twins</h2>
+        <div class="content has-text-justified">
+          <p>
+            Explore reconstructed simulatable episode twins directly in your browser. This
+            presentation renders each scene as an OpenUSD stage through a three.js Hydra
+            delegate &mdash; drag to orbit, scroll to zoom, and right-drag to pan.
+            Use the buttons below to switch between episodes.
+          </p>
+        </div>
+
+        <!-- Episode switcher. Buttons post a message to the viewer iframe to load
+             a different USD in-place (no page/WASM reload). data-file is resolved
+             relative to the viewer page (./usd-viewer/). -->
+        <div class="ar2s-usd-switcher" id="usd-switcher">
+          <button type="button" class="ar2s-usd-btn is-active" data-file="tri-success-nov8-2023-sample12.usd" data-label="TRI · Sample 12">TRI</button>
+          <button type="button" class="ar2s-usd-btn" data-file="autolab-success-jul14-2023-sample00.usd" data-label="AUTOLab · Sample 00">AUTOLab</button>
+          <button type="button" class="ar2s-usd-btn" data-file="usd-success-aug31-2023-sample01.usd" data-label="USD · Sample 01">USD</button>
+          <button type="button" class="ar2s-usd-btn" data-file="pennpal-success-apr29-2023-sample05.usd" data-label="PennPAL · Sample 05">PennPAL</button>
+          <button type="button" class="ar2s-usd-btn" data-file="guptalab-success-may19-2023-sample19.usd" data-label="GuptaLab · Sample 19">GuptaLab</button>
+        </div>
+
+        <div class="ar2s-usd-viewer">
+          <iframe
+            id="usd-viewer-frame"
+            title="Interactive OpenUSD simulator twin"
+            src="./usd-viewer/?viewer=three&file=tri-success-nov8-2023-sample12.usd"
+            loading="lazy"
+            allow="cross-origin-isolated; fullscreen; xr-spatial-tracking"
+            allowfullscreen></iframe>
+        </div>
+        <p class="ar2s-usd-viewer-caption" id="usd-viewer-caption">
+          OpenUSD stage <code>TRI &middot; Sample 12</code>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('usd-viewer-frame');
+      var switcher = document.getElementById('usd-switcher');
+      var caption = document.getElementById('usd-viewer-caption');
+      if (!frame || !switcher) return;
+
+      var ready = false;   // set once the viewer's switch bridge is live
+      var pending = null;  // last requested switch, flushed on ready
+
+      function send(msg) {
+        if (ready) frame.contentWindow.postMessage(msg, '*');
+        else pending = msg; // the viewer signals readiness once initialized
+      }
+
+      window.addEventListener('message', function (event) {
+        if (event.source !== frame.contentWindow) return;
+        if (event.data && event.data.type === 'usd-viewer:ready') {
+          ready = true;
+          if (pending) { frame.contentWindow.postMessage(pending, '*'); pending = null; }
+        }
+      });
+
+      switcher.addEventListener('click', function (event) {
+        var btn = event.target.closest('.ar2s-usd-btn');
+        if (!btn || btn.classList.contains('is-active')) return;
+
+        switcher.querySelectorAll('.ar2s-usd-btn').forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+        });
+        if (caption) caption.innerHTML = 'OpenUSD stage <code>' + btn.dataset.label + '</code>';
+
+        send({ type: 'usd-viewer:load', file: btn.dataset.file, label: btn.dataset.label });
+      });
+    })();
+  </script>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Deformables. -->
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Deformables</h2>
+          <p>
+            The deformable adapter follows the PhysTwin/EMPM setting, replacing rigid object pose
+            tracking with tracked geometry and point, particle, spring, or material state. Simulator
+            rollouts check whether the recovered parameters reproduce observed deformation.
+          </p>
+          <div class="ar2s-deformable-grid">
+            <figure>
+              <video class="ar2s-panel-video" autoplay controls muted loop playsinline>
+                <source src="./static/videos/double_drag_cloth_26-07-15_tracked_pc.mp4"
+                        type="video/mp4">
+                Your browser does not support the double-drag cloth video.
+              </video>
+              <figcaption class="ar2s-media-caption">Double-drag cloth</figcaption>
+            </figure>
+            <figure>
+              <video class="ar2s-panel-video" autoplay controls muted loop playsinline>
+                <source src="./static/videos/double_stretch_Toyandona_sloth_26-05-18_tracked_pc.mp4"
+                        type="video/mp4">
+                Your browser does not support the double-stretch plush video.
+              </video>
+              <figcaption class="ar2s-media-caption">Double-stretch plush</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <!--/ Deformables. -->
+    </div>
+
+    <!-- Humanoid. -->
+    <div class="columns is-centered ar2s-humanoid-block">
+      <div class="column is-full">
+        <h2 class="title is-3">Humanoid</h2>
+        <div class="content">
+          <p>
+            The humanoid adapter uses motion-context retrieval, embodiment-specific initialization,
+            and closed-loop replay against retargeted reference motion. Each pair below presents a
+            reference pose and the corresponding simulated settling transient.
+          </p>
+          <div class="ar2s-humanoid-grid">
+            <article class="ar2s-humanoid-example">
+              <h3 class="ar2s-humanoid-example-title">Pose 13</h3>
+              <div class="ar2s-humanoid-pair">
+                <figure>
+                  <img src="./static/images/humanoid_idx13_real.png"
+                       class="ar2s-humanoid-media"
+                       alt="Real humanoid reference for pose 13.">
+                  <figcaption class="ar2s-media-caption">Real reference</figcaption>
+                </figure>
+                <figure>
+                  <video class="ar2s-humanoid-media" autoplay controls muted loop playsinline
+                         preload="metadata">
+                    <source src="./static/videos/humanoid_idx13_settling.mp4" type="video/mp4">
+                    Your browser does not support the pose 13 settling video.
+                  </video>
+                  <figcaption class="ar2s-media-caption">Settling transient</figcaption>
+                </figure>
+              </div>
+            </article>
+            <article class="ar2s-humanoid-example">
+              <h3 class="ar2s-humanoid-example-title">Pose 20</h3>
+              <div class="ar2s-humanoid-pair">
+                <figure>
+                  <img src="./static/images/humanoid_idx20_real.png"
+                       class="ar2s-humanoid-media"
+                       alt="Real humanoid reference for pose 20.">
+                  <figcaption class="ar2s-media-caption">Real reference</figcaption>
+                </figure>
+                <figure>
+                  <video class="ar2s-humanoid-media" autoplay controls muted loop playsinline
+                         preload="metadata">
+                    <source src="./static/videos/humanoid_idx20_settling.mp4" type="video/mp4">
+                    Your browser does not support the pose 20 settling video.
+                  </video>
+                  <figcaption class="ar2s-media-caption">Settling transient</figcaption>
+                </figure>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Humanoid. -->
+
+    <!-- System architecture. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">System Architecture</h2>
+          <img src="./static/images/Fig_teaser.png"
+               class="ar2s-panel-image"
+               alt="Agentic Real2Sim system architecture.">
+        </div>
+      </div>
+    </div>
+    <!--/ System architecture. -->
+
+    <!-- Selected DROID episodes. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Selected 25 Episodes from DROID Dataset</h2>
+          <p>25 episodic reconstructions rendered:</p>
+          <img src="./static/images/combined_5x5_tight.gif"
+               class="ar2s-panel-image"
+               alt="Selected 25 episodes from the DROID Dataset.">
+        </div>
+      </div>
+    </div>
+    <!--/ Selected DROID episodes. -->
+
+    <!-- Policy evaluation. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Policy Evaluation</h2>
+          <p>We evaluate π₀.₅, pretrained on real-world DROID data, on synthetic scenes created by our pipeline. Each episode pairs the real-world demonstration (left) with policy execution rendered from the Gaussian representation (right).</p>
+          <div class="ar2s-policy-grid">
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_01.gif" class="ar2s-policy-media" alt="Real-world demonstration of placing an object in a blue cup." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_01.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Placing an object in a blue cup</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_02.gif" class="ar2s-policy-media" alt="Real-world demonstration of repositioning an object on the table." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_02.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Repositioning an object on the table</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_03.gif" class="ar2s-policy-media" alt="Real-world demonstration of placing an object in a mug." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_03.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Placing an object in a mug</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_04.gif" class="ar2s-policy-media" alt="Real-world demonstration of repositioning an object on the table." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_04.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Repositioning an object on the table</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_05.gif" class="ar2s-policy-media" alt="Real-world demonstration of stacking one bowl on another." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_05.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Stacking one bowl on another</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_06.gif" class="ar2s-policy-media" alt="Real-world demonstration of dropping a yellow block into a blue cup." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_06.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Dropping a yellow block into a blue cup</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_07.gif" class="ar2s-policy-media" alt="Real-world demonstration of stacking blocks in sequence." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_07.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Stacking blocks in sequence</p>
+            </article>
+            <article class="ar2s-policy-episode">
+              <div class="ar2s-policy-pair">
+                <figure class="ar2s-policy-pane">
+                  <figcaption class="ar2s-policy-label">Real</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_08.gif" class="ar2s-policy-media" alt="Real-world demonstration of placing an object on a plate." width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+                <figure class="ar2s-policy-pane ar2s-policy-pane--sim">
+                  <figcaption class="ar2s-policy-label">Sim</figcaption>
+                  <div class="ar2s-policy-media-window"><img src="./static/images/policy_evaluation/episode_08.gif" class="ar2s-policy-media" alt="" aria-hidden="true" width="640" height="180" loading="lazy" decoding="async"></div>
+                </figure>
+              </div>
+              <p class="ar2s-policy-activity">Placing an object on a plate</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Policy evaluation. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/qpLM2Dvp9mk"
+            title="Agentic Real2Sim video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            credentialless>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{chen2026agenticreal2sim,
+  author       = {Guanxiong Chen and Qianjun Xia and Jiawei Peng and Heng Zhang and Bole Ma and Justin Qian and Ziyi Jiao and Bingyang Zhou and Luoxin Ye and Kaifeng Zhang and Kunyi Wang and Weijia Zeng and Yunuo Chen and Pengzhi Yang and Ziqiu Zeng and Siyuan Luo and Huamin Wang and Chao Liu and Alan Yuille and Fan Shi and Changxi Zheng and Yunzhu Li and Chenfanfu Jiang and Peter Yichen Chen},
+  title        = {{Agentic Real2Sim}: Physics-based World Modeling with Vision-Language Agents},
+  year         = {2026},
+  month        = jun,
+  howpublished = {Project website},
+  url          = {https://agentic-real2sim.github.io/}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/pdfs/agentic-real2sim.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+          <p>
+            Source code mainly borrowed from Keunhong Park's <a href="https://nerfies.github.io/">Nerfies website</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

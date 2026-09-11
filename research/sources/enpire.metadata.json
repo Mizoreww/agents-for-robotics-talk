@@ -1,0 +1,249 @@
+{
+  "key": "enpire",
+  "url": "https://research.nvidia.com/labs/gear/enpire/",
+  "final_url": "https://research.nvidia.com/labs/gear/enpire/",
+  "accessed": "2026-09-10",
+  "sha256": "1c7d7c7095d5ccc03ce0e7dbd6b3ab6f2c2a9abf08928b67e4eed7479fc73295",
+  "chars": 15616,
+  "links": [
+    "https://research.nvidia.com/labs/gear/enpire/#article-content",
+    "https://research.nvidia.com/labs/gear/enpire/#article-title",
+    "https://research.nvidia.com/labs/gear/enpire/#abstract",
+    "https://research.nvidia.com/labs/gear/enpire/#learned-manipulation-policy",
+    "https://research.nvidia.com/labs/gear/enpire/#enpire-system",
+    "https://research.nvidia.com/labs/gear/enpire/#environment-loop",
+    "https://research.nvidia.com/labs/gear/enpire/#auto-evaluation",
+    "https://research.nvidia.com/labs/gear/enpire/#auto-reset",
+    "https://research.nvidia.com/labs/gear/enpire/#case-pusht",
+    "https://research.nvidia.com/labs/gear/enpire/#case-pin-insertion",
+    "https://research.nvidia.com/labs/gear/enpire/#case-tie-ziptie",
+    "https://research.nvidia.com/labs/gear/enpire/#case-gpu-insertion",
+    "https://research.nvidia.com/labs/gear/enpire/#policy-improvement",
+    "https://research.nvidia.com/labs/gear/enpire/#autoenvbench",
+    "https://research.nvidia.com/labs/gear/enpire/#fleet-scaling",
+    "https://research.nvidia.com/labs/gear/enpire/#simulation-evaluation",
+    "https://research.nvidia.com/labs/gear/enpire/#limitations",
+    "https://research.nvidia.com/labs/gear/enpire/#acknowledgements",
+    "https://wenlixiao.com/",
+    "https://jia-xie.com",
+    "https://tonghe-zhang.github.io/",
+    "https://darthutopian.github.io/",
+    "https://max-fu.github.io/",
+    "https://haoruxue.github.io/",
+    "https://yiyang-23.github.io/",
+    "https://cunxid.github.io/",
+    "https://ziwang1105.github.io/",
+    "https://jimmyyhwu.github.io/",
+    "https://guanzhi.me/",
+    "https://www2.eecs.berkeley.edu/Faculty/Homepages/sastry.html",
+    "https://goldberg.berkeley.edu/",
+    "https://jimfan.me/",
+    "https://yukezhu.me/",
+    "https://www.gshi.me/",
+    "https://arxiv.org/abs/2606.19980",
+    "https://github.com/huggingface/gym-pusht"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/website-teaser.mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "NVIDIA",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/logos/nvidia-logo.png"
+    },
+    {
+      "tag": "img",
+      "alt": "Carnegie Mellon University",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/logos/cmu-logo.png"
+    },
+    {
+      "tag": "img",
+      "alt": "UC Berkeley",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/logos/uc-berkeley-logo.png"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/pusht-success.mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-success.mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-success.mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/cut-ziptie-success.mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/sam.min.jpg",
+      "alt": "Perception — SAM 3"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/curobo.min.jpg",
+      "alt": "Planning — cuRobo"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/control.min.jpg",
+      "alt": "Control — YAM arm"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/robot_farm.min.jpg",
+      "alt": "a real robot farm"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/gpu_insertion.min.jpg",
+      "alt": "GPU insertion"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/pin_insertion_2.min.jpg",
+      "alt": "Pin insertion"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/push_t.min.jpg",
+      "alt": "Push-T"
+    },
+    {
+      "tag": "img",
+      "src": "https://research.nvidia.com/labs/gear/enpire/zip_tie.min.jpg",
+      "alt": "Zip tie cutting"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-seg.mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-1-frame.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/pusht-reset-only-1.mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-1-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-2-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-3-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-4-frame.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-1-frame.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-1-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-2-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-3-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-4-frame.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-1-frame.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reset-1.mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-1-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-2-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-3-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-4-frame.jpg"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-1-frame.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-reset-1.mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-1-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-2-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-3-frame.jpg"
+    },
+    {
+      "tag": "img",
+      "alt": "",
+      "src": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-4-frame.jpg"
+    },
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/pin-fleet.mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/robocasa/coffee-setup-mug-seed-1-right.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/robocasa/coffee-setup-mug-seed-1-right.mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://research.nvidia.com/labs/gear/enpire/images/robocasa/coffee-setup-mug-seed-2-right.jpg",
+      "src": "https://research.nvidia.com/labs/gear/enpire/videos/robocasa/coffee-setup-mug-seed-2-right.mp4"
+    }
+  ]
+}

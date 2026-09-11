@@ -1,0 +1,400 @@
+{
+  "html_sha256": "8ddf12abb83477554c3f40cb7abd49145c48904ec84c1cdcdc7705f1f180b55b",
+  "slides": [
+    {
+      "slide": 2,
+      "playing": [
+        {
+          "clip": "painting",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805922
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.82314
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.82314
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "playing": [
+        {
+          "clip": "claude_humanoid",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805322
+        },
+        {
+          "clip": "claude_manip",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805302
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.824703
+        },
+        {
+          "paused": true,
+          "time": 0.824702
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.824703
+        },
+        {
+          "paused": true,
+          "time": 0.824702
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        },
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "playing": [
+        {
+          "clip": "astra_bowl",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805513
+        },
+        {
+          "clip": "astra_insertion",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805487
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.8284
+        },
+        {
+          "paused": true,
+          "time": 0.828398
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.8284
+        },
+        {
+          "paused": true,
+          "time": 0.828398
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        },
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "playing": [
+        {
+          "clip": "wiping",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.808613
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.820639
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.820639
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "playing": [
+        {
+          "clip": "ar2s_real",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805513
+        },
+        {
+          "clip": "ar2s_sim",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805484
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.826373
+        },
+        {
+          "paused": true,
+          "time": 0.826363
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.826373
+        },
+        {
+          "paused": true,
+          "time": 0.826363
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        },
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 16,
+      "playing": [
+        {
+          "clip": "astra_real2sim",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.804955
+        },
+        {
+          "clip": "astra_microphone",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.804887
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.829769
+        },
+        {
+          "paused": true,
+          "time": 0.829716
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.829769
+        },
+        {
+          "paused": true,
+          "time": 0.829716
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        },
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "playing": [
+        {
+          "clip": "enpire_task",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.799015
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.815855
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.815855
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "playing": [
+        {
+          "clip": "enpire_reset",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.803967
+        },
+        {
+          "clip": "enpire_verify",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.803935
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.822861
+        },
+        {
+          "paused": true,
+          "time": 0.822841
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.822861
+        },
+        {
+          "paused": true,
+          "time": 0.822841
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        },
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 24,
+      "playing": [
+        {
+          "clip": "hand",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.805263
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.819266
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.819266
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "slide": 25,
+      "playing": [
+        {
+          "clip": "aspire_trace",
+          "error": null,
+          "paused": false,
+          "ready": 4,
+          "time": 0.806007
+        }
+      ],
+      "pause": [
+        {
+          "paused": true,
+          "time": 0.821151
+        }
+      ],
+      "pauseLater": [
+        {
+          "paused": true,
+          "time": 0.821151
+        }
+      ],
+      "restart": [
+        {
+          "paused": true,
+          "time": 0
+        }
+      ]
+    }
+  ]
+}

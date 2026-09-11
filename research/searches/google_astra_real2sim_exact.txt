@@ -1,0 +1,173 @@
+- link "跳到主要内容"
+- link "无障碍功能帮助":
+  - /url: https://support.google.com/websearch/answer/181196?hl=zh-CN
+- search:
+  - link "Google 首页":
+    - /url: https://www.google.com/webhp?hl=zh-CN&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQPHoECAYQBA
+  - combobox "搜索": "\"GPT-6 does real2sim\" 2026 \"GPT-6 does real2sim\" 2026"
+  - button "清除":
+  - button "按语音搜索":
+  - button "按图搜索":
+  - button "搜索":
+- button "设置":
+- button "分享":
+- button "Google 应用":
+- link "登录":
+  - /url: https://accounts.google.com/ServiceLogin?hl=zh-CN&passive=true&continue=https://www.google.com/search%3Fq%3D%2522GPT-6%2Bdoes%2Breal2sim%2522%2B2026&ec=futura_srp_og_si_72236_p
+  - generic: 登录
+- navigation:
+  - list:
+    - link "AI 模式":
+      - /url: /search?q=%22GPT-6+does+real2sim%22+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&udm=50&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&vsint=&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQ2J8OegQIFRAD
+      - generic: AI 模式
+    - link "全部" [disabled]:
+      - generic: 全部
+    - link "视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&udm=7&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&q=%22GPT-6+does+real2sim%22+2026&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQtKgLegQIGhAB
+      - generic: 视频
+    - link "新闻":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&q=%22GPT-6+does+real2sim%22+2026&tbm=nws&source=lnms&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQ0pQJegQIGxAB
+      - generic: 新闻
+    - link "图片":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&udm=2&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&q=%22GPT-6+does+real2sim%22+2026&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQtKgLegQIGRAB
+      - generic: 图片
+    - link "购物":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&udm=28&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&q=%22GPT-6+does+real2sim%22+2026&ved=1t:220175&ictx=111
+      - generic: 购物
+    - link "短视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&udm=39&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgO5pJ2ROERAFrb15qpZFNMhpztTzx55HFhOSWbDuuu6lTgfNzV60MaUoejUTY3ye5KE4wtpk97VYWNfAi5Z3VnWnuknssODyIXV9310VEsKnvNN8S3bA5eHN7DC1DooRfUDU8PQSCLAHsNcOHgrDiEDPWamk4Hgs3yKzxyY9grYkgZd3VXE8WUqsWhu1LxaPOFTh1hNQ&q=%22GPT-6+does+real2sim%22+2026&sa=X&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQs6gLegQIFxAB
+      - generic: 短视频
+    - button "更多过滤条件":
+      - generic "更多过滤条件":
+        - generic: 更多
+  - button "工具":
+    - generic: 工具
+- heading "搜索结果" [level=1]
+- main:
+  - generic: 安全搜索
+  - button "模糊处理" [pressed]:
+    - generic: 模糊处理
+  - button "关闭":
+    - generic: 关闭
+  - button "滤除":
+    - generic: 滤除
+  - button:
+  - heading "Web results" [level=2]
+  - link "\"GPT-6 does real2sim end to end from robot ... X · Lingxiao234 620+ 个赞 · 2天前":
+    - /url: /goto?url=CAESbAHrOzAV6KnGp0Lu0wXchaBjD6V494xH2tLW2F4YwYByGHMXwqiJJN6CILlv6If6mm5DRvHCgoc080NdSMmHSL4do3kbPhDRmqDZTKxHL1cEfzqrKJRic3Qr0w0f_4x7aYpRsB_394jhzk2Dsw
+    - heading "\"GPT-6 does real2sim end to end from robot ..." [level=3]
+    - generic: X · Lingxiao234
+    - generic: 620+ 个赞 · 2天前
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt.
+  - 'link "Vai Viswanathan on X: \"I didn''t believe it until I tried it ... X · vai_viswanathan 140+ 个赞"':
+    - /url: /goto?url=CAEScAHrOzAVVwQKBw1jGyoyIx6hxqqlgfJ5xKNkP5j6LxHmcTtgWBrnRoPE2H73G8hynbvD2CQqxJEulVNNKk7oJKwyIeiD9RuSToPTEZ11PtgG5PrScXhYiv2ZV3BcfIY6g1lRJvKMxplM5LjX8N6Y2Rc
+    - 'heading "Vai Viswanathan on X: \"I didn''t believe it until I tried it ..." [level=3]'
+    - generic: X · vai_viswanathan
+    - generic: 140+ 个赞
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt.
+  - link "\"The ability of gpt astral to do real to sum is going to be ... X · chris_j_paxton 1天前":
+    - /url: /goto?url=CAESYgHrOzAV7GB53SbQkuMjuIB5W3AebNuOyOj-Ov-Nyli6_pARnlm9zhAY461MnphdQZL3h9Q2_JjUFuba_vwZRs28HflRS-7msNgKTZRWhIlG5zkrH4H2foGWhkXmaXDxq8N4
+    - heading "\"The ability of gpt astral to do real to sum is going to be ..." [level=3]
+    - generic: X · chris_j_paxton
+    - generic: 1天前
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt.
+  - link "sadly this collapses a lot of the real2sim glue layer startups ... X · oprydai 10+ 个赞":
+    - /url: /goto?url=CAESaAHrOzAVURNh-SQE5jtv6FvzTk1sIsPQxBgVaRgHVGy8KC5nX5SEP4oZrns7UVt5AxEt1VJxLYqIH96nltajpXLOZcB1qwKZLcRLc_tmOT2N9vbyNPsEgL-G7tLbfA30sbBcQ7SefA1Y
+    - heading "sadly this collapses a lot of the real2sim glue layer startups ..." [level=3]
+    - generic: X · oprydai
+    - generic: 10+ 个赞
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It ...
+  - 'link "Fumiya Yamazaki | 山崎文也 on X: \"LLM is eating the RFM.. ... X · fmymzk 3 次赞"':
+    - /url: /goto?url=CAESZwHrOzAVuP9nz0w__zaQzu4XoXv0rJhWraOAYuXAK1_F-iBemkT6TlTeWEfpTKm3KRE_EsoPM0iptRi8-WO7KvZ0zYSAuHyXJC7c5VXIDDRS-vH88pfk-ujarR-N01UbMutlnC1_eQE
+    - 'heading "Fumiya Yamazaki | 山崎文也 on X: \"LLM is eating the RFM.. ..." [level=3]'
+    - generic: X · fmymzk
+    - generic: 3 次赞
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt.
+  - link "Xiaoshen Han @xshenhan - Twitter Profile Sotwe https://www.sotwe.com › xshenhan":
+    - /url: /goto?url=CAESVgHrOzAVeCVX26FkmrvgGOyYPvRN1ibCIMrg3Nhq0BbbITVWBqhQbf7zxCHgPw4481RusIcAAeaQ6gg9MmseluPJC3IQRHC7X5kEFp-tq6013p5l9hMY
+    - heading "Xiaoshen Han @xshenhan - Twitter Profile" [level=3]
+    - generic: Sotwe
+    - generic: https://www.sotwe.com › xshenhan
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESpQEB6zswFVcChO_Pbx3mQsjDQ8CiBksLUkTXM_KGJvCcfdw_hkPC70QYxEs3xnJosA1cWVUbwo47G-zR32wbtVnw22NXQEyfzM-x94Phmci4v5t2cuBXxE-RiBlNoI_wv03fDImFsaWQLlPE67TT1jHdkdU_KDpKNSV3qW7gcNp7y0ERhqrYNv7QFg5_4JxeTm-i33qBhWO4jplyTOB7ZYtaxCQ0PzQ
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras ...
+  - link "Reposts by Chris Paxton (@chris_j_paxton) ... X https://x.com › chris_j_paxton › reposts":
+    - /url: /goto?url=CAESXAHrOzAVuHsb0HulA_n1zmooFV7KNZB4Qe9zbI_hxFagaXuOkgAhvlZ6HgKgkoooNU3l1u3t3CTxdOQjy7lmiSA05N6HQZBSI321y8F71Cs_0jjPmBYBrI_BOB1B
+    - heading "Reposts by Chris Paxton (@chris_j_paxton) ..." [level=3]
+    - generic: X
+    - generic: https://x.com › chris_j_paxton › reposts
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESqwEB6zswFW7viFidgP1VzKnum5AfaE17YMz7j4m2Uy4hMmYJ7mmX0IVcsjFfGXoFedtlpDFnEg7-yeC1LjIFuUDg7ItItbNqdjXu9-vovN2OZvIS56xq51RU3uEroD-IWqeHOrTUI5BJYMaqU0R-KKhEogJG4ab1oHcjF_GMihapz2r9UqE5ddwUNCjJbk2q38zvHMp4n3yJ8PzW9lqEKXc22EkpwPjWFoYJTaA
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras ...
+  - link "Xiao - Twitter Search Sotwe https://www.sotwe.com › search › xiao":
+    - /url: /goto?url=CAESWQHrOzAVSHrz8MQ1jT31HM8EzXzh5yeZTEdHxEvinpJ6UB6wXrCixwP-tVtK-YVpCCtXDSGKU_XMgsRbMMGyqzwAL2Qbphqm3Jd6psRVZrMqfkol-VXrnSsy
+    - heading "Xiao - Twitter Search" [level=3]
+    - generic: Sotwe
+    - generic: https://www.sotwe.com › search › xiao
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESqAEB6zswFThkgMQoco1jY4tpWNV-izPpjjxGyT5eruHq_EdVzIW2rqQwbpIMSvaJxJ35DDw8rIQifJ9P5431q55AwmTRiAYT9AdU9ccbtiCNpSwY6a6mSu5hOQJ2vH23jGeV8Zv9ZmvUOxSQMZEO63reIp0GDKlpxxg_esKPBA1DB8Ib2SqOL_NzGsruAydobGB1PtcyaXaEWmwMrEX1j_9kRs5jivRZS-U
+  - button "关于这条结果的详细信息":
+  - generic: 女子問曰 何術得蓮色如血 Nǚzǐ wèn yuē, hé shù dé lián sè rú xuè? 男子笑而不答 Nánzǐ xiào ér bù dá. 良久乃曰 Liángjiǔ nǎi yuē. 吾不施肥 Wú bù shī féi.
+  - link "Anto Patrex on X X · antopatrex1 被赞过 1 次":
+    - /url: /goto?url=CAESbAHrOzAVAzV-s6MlZogPo5G5ksv4xtJYpj43r4wVUQwFRaUEB7IPPOAPU5Wywq66kPGJ3rN6sYEylGDXd2bL_uU9p5nAYLl8pkikelaHT4rS84poeoiQPUBHyDbCoS6biv0ZNxPDG7MK5cvpPQ
+    - heading "Anto Patrex on X" [level=3]
+    - generic: X · antopatrex1
+    - generic: 被赞过 1 次
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It ...
+  - link "Chris Paxton (@chris_j_paxton) / X X · chris_j_paxton 超过 3.6万位关注者":
+    - /url: /goto?url=CAESVAHrOzAV9wwrncKAyfrot3bXcvx7JR1yPUww-rNwc5v9HuA-YdOMIyx-9dhycojdiaG2ypIu2vRCFd5v-31CPWNwNuv2uGl7SKEzzrzEpQsEnCABjQ
+    - heading "Chris Paxton (@chris_j_paxton) / X" [level=3]
+    - generic: X · chris_j_paxton
+    - generic: 超过 3.6万位关注者
+  - button "关于这条结果的详细信息":
+  - emphasis: GPT-6 does real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It ...
+  - navigation:
+    - heading "网页导航" [level=1]
+    - text: "1"
+    - link "Page 2":
+      - /url: /search?q=%22GPT-6+does+real2sim%22+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&ei=kBOiauznGe2Nxc8PhLW1kQ0&start=10&sa=N&sstk=AS6-VmLYTml019W0SmzUvlqA2-z2TeB4WL6dhA9FiRAvF_ULxvzmfQmVj2Va9RqL39EWVJZoRHR0cmGPVhrOzahl1i07Gw1K8_7s-Q&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQ8tMDegQIKxAE
+      - text: "2"
+    - link "Page 3":
+      - /url: /search?q=%22GPT-6+does+real2sim%22+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&ei=kBOiauznGe2Nxc8PhLW1kQ0&start=20&sa=N&sstk=AS6-VmLYTml019W0SmzUvlqA2-z2TeB4WL6dhA9FiRAvF_ULxvzmfQmVj2Va9RqL39EWVJZoRHR0cmGPVhrOzahl1i07Gw1K8_7s-Q&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQ8tMDegQIKxAG
+      - text: "3"
+    - heading "下一页" [level=2]:
+      - link "下一页":
+        - /url: /search?q=%22GPT-6+does+real2sim%22+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnty5qPy-lot1iIaiuCg7FDuv84WRA:1789006736429&ei=kBOiauznGe2Nxc8PhLW1kQ0&start=10&sa=N&sstk=AS6-VmLYTml019W0SmzUvlqA2-z2TeB4WL6dhA9FiRAvF_ULxvzmfQmVj2Va9RqL39EWVJZoRHR0cmGPVhrOzahl1i07Gw1K8_7s-Q&ved=2ahUKEwjs75m4-eKWAxXtRvEDHYRaLdIQ8NMDegQIKxAI
+        - generic: 下一页
+  - navigation
+- contentinfo:
+  - heading "页脚链接" [level=1]
+  - button "洛杉矶 加利福尼亚 - 是根据您的 IP 地址推断出来的":
+    - generic: 洛杉矶 加利福尼亚
+    - text: "-"
+    - generic: 是根据您的 IP 地址推断出来的
+  - text: "-"
+  - button "更新位置信息": 更新位置信息
+  - link "帮助":
+    - /url: https://support.google.com/websearch/?p=ws_results_help&hl=zh-CN&fg=1
+  - link "发送反馈":
+    - /url: "#"
+  - link "隐私权":
+    - /url: https://policies.google.com/privacy?hl=zh-CN&fg=1
+  - link "条款":
+    - /url: https://policies.google.com/terms?hl=zh-CN&fg=1

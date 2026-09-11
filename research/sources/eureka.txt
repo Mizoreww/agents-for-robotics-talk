@@ -1,0 +1,131 @@
+Eureka | Human-Level Reward Design via Coding Large Language Models
+Eureka: Human-Level Reward Design via Coding Large
+Language Models
+Jason Ma
+1 2,
+William Liang2,
+Guanzhi Wang1 3,
+De-An Huang1,
+Osbert Bastani2,
+Dinesh Jayaraman2,
+Yuke Zhu1
+4,
+Linxi "Jim" Fan
+1‡,
+Anima Anandkumar1
+3‡
+1NVIDIA;
+2UPenn;
+3Caltech;
+4UT Austin;
+‡Equal Advising
+Corresponding authors: jasonyma@seas.upenn.edu, dr.jimfan.ai@gmail.com
+arXiv
+PDF
+Code
+Abstract
+Large Language Models (LLMs) have excelled as high-level semantic planners for sequential decision-making tasks. However, harnessing them to learn complex low-level manipulation tasks, such as dexterous pen spinning, remains an open problem. We bridge this fundamental gap and present Eureka, a human-level reward design algorithm powered by LLMs. Eureka exploits the remarkable zero-shot generation, code-writing, and in-context improvement capabilities of state-of-the-art LLMs, such as GPT-4, to perform evolutionary optimization over reward code. The resulting rewards can then be used to acquire complex skills via reinforcement learning. Without any task-specific prompting or pre-defined reward templates, Eureka generates reward functions that outperform expert human-engineered rewards. In a diverse suite of 29 open-source RL environments that include 10 distinct robot morphologies, Eureka outperforms human experts on 83% of the tasks, leading to an average normalized improvement of 52%. The generality of Eureka also enables a new gradient-free in-context learning approach to reinforcement learning from human feedback (RLHF), readily incorporating human inputs to improve the quality and the safety of the generated rewards without model updating. Finally, using Eureka rewards in a curriculum learning setting, we demonstrate for the first time, a simulated Shadow Hand capable of performing pen spinning tricks, adeptly manipulating a pen in circles at rapid speed.
+Eureka Rewards and Policies
+In this demo, we visualize the unmodified best Eureka reward
+for each
+environment and the policy trained using this reward. Our environment suite spans 10 robots and 29 distinct tasks across two
+open-sourced benchmarks, Isaac Gym (Isaac) and Bidexterous Manipulation (Dexterity).
+Isaac
+Dexterity
+[#demo-video-1]
+[#expandedImg-1]
+[#imgtext-1] Select an image above:
+[#answer-1] Eureka response shown within code block.
+Eureka Pen Spinning Gallery
+Combining Eureka with curriculum learning, we demonstrate for the first time a Shadow Hand performing various pen spinning tricks.
+Our main pen spinning axis (center video in the grid) is perpendicular to the palm of the hand, thus defining the spin as parallel to the palm—similar to the ''finger pass'' trick. In addition, we also train several other variations with different axes where each xyz component is chosen from [-1,0,1], resulting in numerous unique patterns.
+[#results-carousel]
+Eureka Components
+Overview. Eureka achieves human-level reward design by in-context evolving reward functions
+More specifically, Eureka first takes unmodified environment
+source code
+and language task description as context to
+zero-shot generate executable reward functions from a coding LLM. Then, it iterates
+between
+evolutionary reward search,
+GPU-accelerated reward evaluation, and reward reflection to progressively improve
+its reward
+outputs.
+Environment as Context.
+By using the raw environment code as context, Eureka can zero-shot generate plausible reward programs, without any task-specific prompt engineering. This allows Eureka to be a generalist reward designer,
+readily producing reward functions on first try for all our environments.
+Rapid Reward Evaluation via Massively Parallel RL.
+Leveraging state-of-the-art GPU-accelerated simulation in NVIDIA Isaac Gym, Eureka is able to quickly evaluate
+the quality of a large batch of reward candidates, enabling scalable search in the reward function space.
+Eureka Reward Reflection. After reward evaluation,
+Eureka constructs reward reflection that summarizes the key statistics of the RL training. Then, Eureka uses this reward reflection
+to enable the backbone LLM (GPT-4) to flexibly improve the reward functions with many distinct
+types of free-form, targeted modification, such as (1) changing the hyperparameter of existing
+reward
+components, (2)
+changing the functional form of existing reward components, and (3) introducing new
+reward
+components.
+Experiments
+We thoroughly evaluate Eureka on a diverse suite of robot embodiments and tasks,
+testing its
+ability
+to generate reward functions, solve new tasks, and incorporate various forms of
+human input.
+Our environments consist of 10 distinct robots and 29 tasks implemented using the
+IsaacGym simulator. First, we include 9 original environments from
+IsaacGym (Isaac), covering a diverse set of robot morphologies from quadruped,
+bipedal,
+quadrotor,
+cobot arm, to dexterous hands. In addition to coverage over robot form factors, we
+ensure
+depth in our
+evaluation by including all 20 tasks from the Bidexterous Manipulation (Dexterity)
+benchmark.
+Dexterity contains 20 complex bi-manual tasks that require a pair of Shadow Hands to
+solve a wide range of complex manipulation skills, ranging from object handover to
+rotating
+a cup by
+180 degrees
+Evaluation Results
+Eureka can generate super human-level reward functions. Across 29 tasks, Eureka rewards outperform expert human-written ones on 83% of them with an average normalized improvement of 52%.
+In particular, Eureka realizes much greater gains on high-dimensional
+dexterity
+environments.
+Eureka evolutionay reward search enables consistent reward improvement over time. Eureka progressively produces better
+rewards that eventually exceed human-level by combining large-scale reward search with detailed reward reflection feedback.
+Eureka generates novel rewards. We
+assess the novelty of Eureka rewards by computing the correlations between Eureka and human rewards on all Isaac tasks.
+As shown, Eureka mostly generates weakly correlated reward functions that outperform the human ones. In addition, we observe that
+the harder the task is, the less correlated the Eureka rewards. In a few cases, Eureka rewards are even negatively correlated with human rewards while significantly
+outperforming them.
+Dexterous Pen Spinning via Curriculum Learning
+Pretrained Pen Reorientation
+Finetuned Pen Spinning
+The pen spinning task requires a Shadow Hand to continuously rotate a pen to achieve some pre-defined spinning patterns for
+as many cycles as possible. We solve this task by (1) instructing Eureka to generate a reward function for re-orienting the pen to random target configurations,
+and then (2) fine-tuning this pre-trained policy using the Eureka reward to reach the desired sequence of pen-spinning configurations.
+As shown, Eureka fine-tuning quickly adapts the policy successfully spin the pen for many cycles in a row. In contrast, neither pre-trained or learning-from-scratch
+policies can complete even a single cycle.
+Eureka from Human Feedback
+Eureka effectively improves and benefits from human reward initialization.
+We study whether starting with a human reward function initialization, a common scenario in real-world RL applications, is advantageous for Eureka.
+As shown, regardless of the quality of the human rewards, Eureka improves and benefits from human rewards as Eureka (Human Init.) is uniformly better than both Eureka and Human on all tasks.
+Eureka enables In-Context Reinforcement Learning from Human Feedback (RLHF). Eureka can incorporate human feedback to modify its rewards so that they progressively induce safer and more human-aligned agent behavior.
+In this example, we show how Eureka can teach a Humanoid how to run upright from a handful of human feedback, which replaces the previous automated reward reflection.
+The final learned behavior (Iteration 5) is more preferred by human users by a wide margin than
+the original Eureka-learned Humanoid running gait.
+[#demo-video-2]
+[#expandedImg-2]
+[#imgtext-2] Select an image above:
+[#answer-2] Eureka response shown within code block.
+[#BibTeX]
+BibTeX
+@article{ma2023eureka,
+title = {Eureka: Human-Level Reward Design via Coding Large Language Models},
+author = {Yecheng Jason Ma and William Liang and Guanzhi Wang and De-An Huang and Osbert Bastani and Dinesh Jayaraman and Yuke Zhu and Linxi Fan and Anima Anandkumar},
+year = {2023},
+journal = {arXiv preprint arXiv: Arxiv-2310.12931}
+}
+Website template borrowed from NeRFies,
+VIMA, and L2R.

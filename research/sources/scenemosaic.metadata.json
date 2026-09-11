@@ -1,0 +1,210 @@
+{
+  "key": "scenemosaic",
+  "url": "https://rxjfighting.github.io/SceneMosaic",
+  "final_url": "https://rxjfighting.github.io/SceneMosaic/",
+  "accessed": "2026-09-10",
+  "sha256": "23a000b902496c70cab35d1fea4e984d7ceb4697d12bb599519f098a0a8055e7",
+  "chars": 5359,
+  "links": [
+    "https://rxjfighting.github.io/SceneMosaic/#main",
+    "https://rxjfighting.github.io/SceneMosaic/#top",
+    "https://rxjfighting.github.io/SceneMosaic/#overview",
+    "https://rxjfighting.github.io/SceneMosaic/#method",
+    "https://rxjfighting.github.io/SceneMosaic/#results",
+    "https://rxjfighting.github.io/SceneMosaic/#gallery",
+    "https://rxjfighting.github.io/SceneMosaic/assets/paper.pdf",
+    "https://github.com/rxjfighting/SceneMosaic"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/hero-base-00.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/hero-variant-00.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/hero-base-06.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/hero-variant-06.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://rxjfighting.github.io/SceneMosaic/assets/images/pipeline.webp",
+      "alt": "SceneMosaic pipeline showing scene reconstruction, physics-based layout stabilization, Critic-Actor evolution, and diversity-driven composition."
+    },
+    {
+      "tag": "img",
+      "src": "https://rxjfighting.github.io/SceneMosaic/assets/images/diversity.webp",
+      "alt": "SceneMosaic base and variant scene pairs across production and domestic spaces."
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-09.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-09.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-03.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-03.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-02.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-02.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-04.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-04.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-07.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-07.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-01.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-01.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-05.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-05.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-08.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-08.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/base-06.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://rxjfighting.github.io/SceneMosaic/assets/posters/variant-06.webp"
+    },
+    {
+      "tag": "source",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "alt": ""
+    }
+  ]
+}

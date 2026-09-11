@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaP-X: Benchmarking Coding Agents for Robot Manipulation</title>
+  <meta name="description" content="CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation">
+
+  <!-- Favicon: light icon for dark mode, dark icon for light mode -->
+  <link rel="icon" href="assets/favicon-dark.png" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/favicon-light.png" type="image/png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon-dark.png" type="image/png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Prism syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css">
+</head>
+<body>
+
+  <!-- ====== Navigation Bar ====== -->
+  <nav class="navbar">
+    <span class="nav-brand" id="nav-brand">CaP-X</span>
+
+    <div class="nav-links">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#" class="nav-link" data-link="arxiv">Paper</a>
+      <a href="#" class="nav-link highlighted" data-link="code">Code</a>
+    </div>
+
+    <a href="#" class="nav-team" id="nav-team" target="_blank" rel="noopener noreferrer"></a>
+  </nav>
+
+  <!-- ====== Hero + Chart (unified aura backdrop) ====== -->
+  <div class="hero-backdrop" id="home">
+    <section class="hero">
+      <h1 class="hero-tagline" id="hero-tagline"></h1>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-outline" data-link="arxiv">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Paper
+        </a>
+        <a href="#" class="btn btn-primary" data-link="code">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Code
+        </a>
+      </div>
+
+      <div class="institution-logos" id="institution-logos"></div>
+    </section>
+
+    <section class="section-full chart-section" id="progress">
+      <div class="chart-container" style="padding: 0 2rem;">
+        <div class="chart-panel">
+          <div style="position: relative;">
+            <div id="timeline-chart"></div>
+            <div id="timeline-tooltip" class="chart-tooltip"></div>
+          </div>
+
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-circle"></div>
+              <span>Closed Source</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-circle dashed"></div>
+              <span>Open Source</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-line"></div>
+              <span>Frontier AI</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-line human"></div>
+              <span>Human Baseline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== Paper Details (second screen) ====== -->
+  <section class="section paper-details-section" id="paper-details">
+    <h2 class="paper-details-title fade-in" id="paper-title"></h2>
+
+    <div class="authors-list fade-in" id="authors-list"></div>
+    <p class="equal-note fade-in" id="equal-note"></p>
+    <div class="affiliations-list fade-in" id="affiliations-list"></div>
+  </section>
+
+<!-- ====== Real-World Demo Gallery ====== -->
+  <section class="section-full demo-section" id="demo">
+    <div class="demo-content" style="padding: 0 2rem; max-width: var(--max-width); margin: 0 auto;">
+      <h2 class="intro-title fade-in">LMs Can Zero-Shot on Robotics Tasks —<br>with <span class="agent-highlight">CaP-Agent0</span></h2>
+      <div class="intro-text fade-in">
+        <p>
+          Today's off-the-shelf LMs have incredible generalization, reasoning, and planning capabilities.
+          Agentic harnesses in <strong>CaP-Agent0</strong> unleash their potential in the physical world.
+        </p>
+        <p class="demo-hint">Click on each task to see the agent in action.</p>
+      </div>
+
+      <div class="demo-gallery">
+        <div class="demo-video-card fade-in" data-caption="The model intrinsically understands the affordance of stacking order — an embodied reasoning capability. It stacks cubes first before stacking the round apple.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Stack Everything.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Embodied Reasoning</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="CaP-Agent0 generalizes zero-shot across embodiments. Given the same task and properly configured tool APIs, it completes the stacking task on a Franka robot." data-code-src="assets/franka_demos/franka_cross_embodiment_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/franka_demos/Franka Cross Embodiment.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Cross Embodiment</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="The model naturally decomposes a high-level task (take the elevator down) into substeps (push button, lower arm, move into elevator). It also uses advanced programming and mathematical tools (e.g. SciPy RANSAC for plane fitting) to execute the button-pushing.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Elevator.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Loco-Manipulation</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="The model can plan a long-horizon, ordered mechanical search, and execute closed-loop behavior in a multi-turn setting.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Mechanical Search 2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Long-Horizon Task Planning</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="The model can naturally lift textual context from image observation. It can directly read the math problem posed by cubes, and understand the hinted action (using the other cubes to complete the equation).">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Math.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Multimodal Reasoning</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="The model can infer additional actions from the observation. It knows to destack the yellow cube first before stacking the red cube on top.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Restack.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Subtask Inference</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="The model follows natural language instructions that reference a wide vocabulary of object properties in the physical world. It correctly interprets abstract descriptors (e.g. color, shape) and acts on the right target accordingly.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Semantic Reasoning.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Language Following</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="Testing robustness against distractors? We've got a full table of them. Using a verification tool (Molmo 2), the model can effortlessly identify the target in the most cluttered environment.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Needle.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Enhanced Visual Grounding</span>
+        </div>
+        <div class="demo-video-card fade-in" data-caption="Given only the prompt 'stack the pyramid,' the model identifies each layer by color — blue (large), green (medium), yellow (small) — and uses these color-size associations to reference and manipulate the correct objects, completing the assembly.">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/agibot_demos/AgiBot Pyramid.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Semantic Reasoning</span>
+        </div>
+      </div>
+      <button class="demo-gallery-toggle" id="demo-gallery-toggle">Show More</button>
+    </div>
+  </section>
+
+  <!-- ====== Introduction ====== -->
+  <section class="section-full intro-section" id="introduction">
+    <div class="intro-content" style="padding: 0 2rem;">
+      <h2 class="intro-title fade-in"><span class="agent-highlight">CaP-Bench</span>: Evaluating LM Agents<br>on Embodied Intelligence</h2>
+
+      <div class="intro-text fade-in">
+        <p>
+          <strong>CaP-Bench</strong> provides the first comprehensive benchmark for evaluating how well large language model agents
+          can write code to control robots. Integrated with hundreds of manipulation tasks across multiple
+          robot learning benchmarks (LIBERO-PRO, Robosuite, BEHAVIOR), <strong>CaP-Bench</strong> tests both LLM and VLM models on their
+          ability to generate executable robot control policies from natural language instructions.
+        </p>
+      </div>
+
+      <div class="feature-pills">
+        <span class="feature-pill">100+ Manipulation Tasks</span>
+        <span class="feature-pill">12+ Frontier Models</span>
+        <span class="feature-pill">Sim-to-Real Transfer</span>
+        <span class="feature-pill">Multi-Turn Evaluation</span>
+        <span class="feature-pill">Code Generation</span>
+        <span class="feature-pill">Open Source</span>
+      </div>
+
+      <!-- Sim Demo Gallery -->
+      <h3 class="section-title fade-in" style="text-align:center; font-size:1.5rem; margin-bottom:1.5rem;">Simulation Results</h3>
+      <p class="demo-hint fade-in" style="display:block; width:fit-content; margin:0 auto 1.5rem; font-size:1rem;">Click on each task to see the agent in action.</p>
+      <div class="sim-gallery">
+        <div class="demo-video-card fade-in"
+             data-caption="A robot arm picks up the red cube and stacks it precisely on top of the green cube. The task requires accurate depth estimation and fine-grained placement to land the cube flush on a small target surface without knocking it over."
+             data-code-src="assets/sim_demos/sim_cube_stack_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_cube_stack.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Cube Stack</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="The robot navigates a cluttered tabletop — with multiple metallic bowls, a plate, and other objects — and identifies the correct black bowl to place onto the white plate. The challenge lies in semantic disambiguation among visually similar objects."
+             data-code-src="assets/sim_demos/sim_pick_up_black_bowl_put_on_white_plate_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_pick_up_black_bowl_put_on_white_plate.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Semantic Object Selection</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="A multi-step task requiring sequential reasoning: the arm first opens the drawer, then picks up the bowl and places it inside the confined space. The agent detects failure mid-execution and retries the placement autonomously."
+             data-code-src="assets/sim_demos/sim_put_bowl_in_drawer_w_retry_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_put_bowl_in_drawer_w_retry.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Sequential Drawer Task</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="The robot picks up a wine bottle standing upright and inserts it into a slanted wine rack. The difficulty comes from the precise angular alignment required to slide the bottle into a narrow rack slot, and transitioning from an upright grasp to a near-horizontal insertion orientation."
+             data-code-src="assets/sim_demos/sim_put_wine_bottle_on_rack_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_put_wine_bottle_on_rack.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Precise Bottle Racking</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="The robot arm sweeps across a large irregular spill with a wiping tool, making multiple passes to clean the table. The agent detects residual stain and retries coverage of missed areas, finishing with a nearly clean surface."
+             data-code-src="assets/sim_demos/sim_spill_wipe_w_retry_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_spill_wipe_w_retry.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Spill Cleanup</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="The robot arm grips and rotates a small stove dial to activate a burner. Success is confirmed by the coil transitioning from dark grey to glowing red-orange — a dexterous fine motor control challenge requiring precise dial manipulation."
+             data-code-src="assets/sim_demos/sim_turn_on_stolve_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_turn_on_stolve.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Stove Knob Turning</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="Two robot arms coordinate to grasp and lift a large box that neither can handle alone. The task requires synchronized bimanual control — both grippers must engage simultaneously and move in sync. The agent detects an initial failed grasp and retries before completing the coordinated lift."
+             data-code-src="assets/sim_demos/sim_two_arm_lift_w_retry_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_two_arm_lift_w_retry.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Bimanual Coordination</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="Two robot arms coordinate a handover: the left arm picks up the hammer and passes it to the right arm, which receives and grasps it. The task requires precise bimanual timing and spatial coordination for a smooth tool transfer."
+             data-code-src="assets/sim_demos/sim_pass_hammer_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_pass_hammer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Bimanual Handover</span>
+        </div>
+
+        <div class="demo-video-card fade-in"
+             data-caption="The agent picks up a square nut and attempts to insert it onto a peg. After the first attempt fails, it detects the misalignment through visual differencing and autonomously retries — demonstrating multi-turn self-verification and closed-loop error recovery."
+             data-code-src="assets/sim_demos/sim_peg_insertion_code.py">
+          <div class="demo-video-wrap">
+            <video class="demo-video" loop muted playsinline preload="metadata">
+              <source src="assets/sim_demos/sim_peg_insertion.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span class="demo-video-label">Peg Insertion</span>
+        </div>
+      </div>
+      <button class="demo-gallery-toggle" id="sim-gallery-toggle">Show More</button>
+    </div>
+  </section>
+
+  <!-- ====== Highlights ====== -->
+  <section class="section" id="highlights">
+    <div class="highlights-section">
+      <h2 class="section-title fade-in" style="text-align:center; margin-bottom:3rem;">Key Findings</h2>
+
+      <!-- Highlight 1 -->
+      <div class="highlight-card">
+        <div class="highlight-text">
+          <div class="highlight-number">1</div>
+          <h3 class="highlight-title">Frontier models achieve meaningful zero-shot success on robotic manipulation</h3>
+          <p class="highlight-desc">
+            Without any task-specific training, today's best frontier models can directly generate executable robot control
+            code and achieve over 30% average success — a sharp contrast to the prior belief that only specially trained
+            models (VLAs) can perform manipulation. Yet a 56-point gap to human performance remains, marking this as
+            one of AI's most important open challenges.
+          </p>
+        </div>
+        <div class="highlight-figure" id="highlight-fig-1">
+          <span class="highlight-figure-placeholder">Loading chart...</span>
+        </div>
+      </div>
+
+      <!-- Highlight 2 -->
+      <div class="highlight-card">
+        <div class="highlight-text">
+          <div class="highlight-number">2</div>
+          <h3 class="highlight-title">Training-free <span class="agent-highlight">CaP-Agent0</span> outperforms state-of-the-art VLAs on perturbed tasks</h3>
+          <p class="highlight-desc">
+            On LIBERO-PRO — 30 manipulation tasks with position and instruction perturbations — state-of-the-art
+            Vision-Language-Action models (OpenVLA, &pi;<sub>0</sub>) score <strong>0% across the board</strong>.
+            Even the best VLA (&pi;<sub>0.5</sub>) reaches only 13% average success. <span class="agent-highlight">CaP-Agent0</span>, a training-free
+            coding agent, achieves <strong>18% without any task-specific training</strong>, demonstrating that
+            code-generation agents generalize where end-to-end learned policies break down.
+          </p>
+        </div>
+        <div class="highlight-figure" id="highlight-fig-2">
+          <span class="highlight-figure-placeholder">Loading chart...</span>
+        </div>
+      </div>
+
+      <!-- Highlight 3 -->
+      <div class="highlight-card">
+        <div class="highlight-text">
+          <div class="highlight-number">3</div>
+          <h3 class="highlight-title"><span class="agent-highlight">CaP-RL</span>: Post-training on code dramatically boosts robot performance — and transfers sim-to-real</h3>
+          <p class="highlight-desc">
+            Using CaP-RL, we apply reinforcement learning with environment rewards directly on the coding agent.
+            A 7B model (Qwen 2.5 Coder) jumps from <strong>20% to 72% average success</strong> in simulation after
+            just 50 training iterations. The learned policies transfer to a real Franka Emika robot with
+            <strong>minimal sim-to-real gap</strong> — reaching 84% on cube lifting and 76% on cube stacking,
+            approaching human expert performance.
+          </p>
+        </div>
+        <div class="highlight-figure" id="highlight-fig-3">
+          <span class="highlight-figure-placeholder">Loading chart...</span>
+        </div>
+      </div>
+
+      <!-- Highlight 4 -->
+      <div class="highlight-card">
+        <div class="highlight-text">
+          <div class="highlight-number">4</div>
+          <h3 class="highlight-title">Higher abstraction boosts all models — and dramatically closes the gap for smaller ones</h3>
+          <p class="highlight-desc">
+            As API abstraction increases from raw primitives (S4) to high-level pick-and-place (S1),
+            <strong>all models improve substantially</strong> — but the gains are most pronounced for
+            weaker and open-source models, whose compilation rates collapse at low abstraction levels.
+            This suggests a promising path: pair a <strong>lightweight LM for high-level planning</strong>
+            with a visual-motor policy (e.g., a VLA) that handles low-level control, letting even
+            smaller models achieve strong task performance through the right division of labor.
+          </p>
+        </div>
+        <div class="highlight-figure" id="highlight-fig-4">
+          <span class="highlight-figure-placeholder">Loading chart...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <p>CaP-X &copy; 2026</p>
+  </footer>
+
+  <!-- ====== Demo Modal ====== -->
+  <div class="demo-modal-overlay" id="demo-modal">
+    <div class="demo-modal">
+      <div class="demo-modal-header">
+        <div class="demo-modal-title-row">
+          <h3 class="demo-modal-title"></h3>
+          <span class="demo-modal-model-badge"></span>
+        </div>
+        <button class="demo-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="demo-modal-bar"></div>
+      <video class="demo-modal-video" autoplay loop muted playsinline controls></video>
+      <div class="demo-modal-caption">
+        <p class="demo-modal-desc"></p>
+      </div>
+      <div class="demo-modal-code" id="demo-modal-code" style="display:none;">
+        <p class="demo-modal-code-label">Agent Code</p>
+        <pre><code class="demo-modal-code-block language-python"></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Scripts ====== -->
+  <!-- D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Prism syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

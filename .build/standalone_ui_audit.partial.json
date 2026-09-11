@@ -1,0 +1,69 @@
+{
+  "html_sha256": "8ddf12abb83477554c3f40cb7abd49145c48904ec84c1cdcdc7705f1f180b55b",
+  "transitions": [
+    {
+      "opening": 5,
+      "intro": "Slide 5: Execution: An Agent with Many Tools",
+      "caseTitle": "Slide 6: RPent: Packaging Robotics as Agent Tools",
+      "back": 5
+    },
+    {
+      "opening": 12,
+      "intro": "Slide 12: World Building: Replay and Prediction",
+      "caseTitle": "Slide 13: Agentic Real2Sim: A Real Episode and Its Twin",
+      "back": 12
+    },
+    {
+      "opening": 17,
+      "intro": "Slide 17: Improvement: A Repeatable Real Experiment",
+      "caseTitle": "Slide 18: ENPIRE: Real Experiments Inside the Loop",
+      "back": 17
+    },
+    {
+      "opening": 23,
+      "intro": "Slide 23: Other Applications: Design and Engineering",
+      "caseTitle": "Slide 24: Demo: Structural Design of a Robot Hand",
+      "back": 23
+    }
+  ],
+  "keyboard": {
+    "endSlide": 26,
+    "homeSlide": 1
+  },
+  "currentScript": {
+    "heading": "05. Execution: An Agent with Many Tools",
+    "text": "播放与指图提示：先指 Agent，再沿分支逐个看 Agent Tools；强调工具是可选、可组合的。右侧只汇集 action outputs，底部反馈经过 perception/state tools 返回 Agent。"
+  },
+  "fullScriptHeadings": [
+    "01. Agents for Robotics",
+    "02. Demo: A Robot Paints with Feedback",
+    "03. Our Ultimate Goal",
+    "04. Three Core Roles, Broader Applications",
+    "05. Execution: An Agent with Many Tools",
+    "06. RPent: Packaging Robotics as Agent Tools",
+    "07. Claude Plays Robotics",
+    "08. Direct Actions and Controller Code",
+    "09. VLA Tools: Grounding and Supervision",
+    "10. Demo: Placement and Fine Insertion",
+    "11. Demo: Wiping a Table",
+    "12. World Building: Replay and Prediction",
+    "13. Agentic Real2Sim: A Real Episode and Its Twin",
+    "14. Agentic Real2Sim: The Conversion Pipeline",
+    "15. Replay Acceptance on DROID-100",
+    "16. Demo: Real2Sim and a Disclosed Failure",
+    "17. Improvement: A Repeatable Real Experiment",
+    "18. ENPIRE: Real Experiments Inside the Loop",
+    "19. ENPIRE: Environment and Improvement",
+    "20. ENPIRE: Reset and Verification",
+    "21. ENPIRE: Improvement on Pin Insertion",
+    "22. Faster Research, Higher Token Use",
+    "23. Other Applications: Design and Engineering",
+    "24. Demo: Structural Design of a Robot Hand",
+    "25. Demo: Inspecting and Repairing an Execution",
+    "26. Conclusion"
+  ],
+  "figureDialog": {
+    "loaded": true,
+    "open": true
+  }
+}

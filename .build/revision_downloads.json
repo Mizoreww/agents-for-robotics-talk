@@ -1,0 +1,58 @@
+[
+  {
+    "name": "enpire_task_source.mp4",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+    "status": "ok",
+    "bytes": 57187269,
+    "sha256": "51b498dc2e16878ddab966e61c86425591ffb6ccd5c25fe8f559393f77d52d59"
+  },
+  {
+    "name": "enpire_reset_source.mp4",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4",
+    "status": "ok",
+    "bytes": 53888857,
+    "sha256": "84b491d37f2dae856ebd629ef2a2aa57e5ccb0e264585e084f252530a748ce12"
+  },
+  {
+    "name": "ar2s_pipeline.png",
+    "url": "https://agentic-real2sim.github.io/static/images/Fig_teaser.png",
+    "status": "ok",
+    "bytes": 912531,
+    "sha256": "f24dfaa8f92e540e92362241b0734e8b6f25a2be98cf2c93a57da0f8c50a21b0"
+  },
+  {
+    "name": "claude_humanoid_source.gif",
+    "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/2d91fbe744a8e22fa60e8e8d287f1f998e4260f5-720x270.gif",
+    "status": "ok",
+    "bytes": 4737204,
+    "sha256": "caa579bd3afb7ce2026f75753ce2b071f983fac750012f8e4525e5099a91f050"
+  },
+  {
+    "name": "claude_manip_source.gif",
+    "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/910d0e73cc16479c5e31ff196bece2d6b8f80289-360x360.gif",
+    "status": "ok",
+    "bytes": 2092035,
+    "sha256": "6253bb49d282d4a4dced3f7672fc2cdc7dc84663279931d7efcea10536d308a5"
+  },
+  {
+    "name": "claude_direct.png",
+    "url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/2ad888f5aac3302eb70d844c1bd131cb39e39c11-6500x2400.png",
+    "status": "ok",
+    "bytes": 1150887,
+    "sha256": "f128ac0134f286b13c2f4b29f0f2eb3a3c54b0da779c30a7d4c8949fecd99abd"
+  },
+  {
+    "name": "wiping_source.mp4",
+    "url": "https://video.twimg.com/amplify_video/2096592948205080576/vid/avc1/640x700/7UEKkcq8dkg2-mkL.mp4?tag=29",
+    "status": "ok",
+    "bytes": 1085702,
+    "sha256": "c623b33bd4b28d23a491362c0e195edae233680274d5c144d57254c177790cd1"
+  },
+  {
+    "name": "hand_source.mp4",
+    "url": "https://video.twimg.com/amplify_video/2097789448717217793/vid/avc1/1190x720/fhq6miW8FLjirxHR.mp4?tag=29",
+    "status": "ok",
+    "bytes": 5553171,
+    "sha256": "5bc7d9fb339300285d22398be0a1ad8b58ea97b443b90bb9b9da4d2b37a0bd07"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "slides": 22,
+  "minutes": 60,
+  "embedded_videos": 15,
+  "browser_playback_passed": 15,
+  "original_figure_slides": [
+    5,
+    7,
+    11,
+    12,
+    15,
+    17,
+    18
+  ],
+  "powerpoint_native_playback_tested": false,
+  "files": [
+    {
+      "name": "Agents_for_Robotics_Focused.pptx",
+      "bytes": 84412492,
+      "sha256": "9192495c929417b32fa5e98d649a16c6bbe538b77ccacfc9c66a8e41938726ba"
+    },
+    {
+      "name": "Agents_for_Robotics_Static_Preview.pdf",
+      "bytes": 10585942,
+      "sha256": "08f031c5385522f0392d3e2c1231f58dd12893d42c1572783a2290f7ecd0e775"
+    },
+    {
+      "name": "Agents_for_Robotics_Offline_Player.zip",
+      "bytes": 75801577,
+      "sha256": "6fa81b6049740899a18c6c78d7915729be55db801ca957d797790e4ccc673b63"
+    },
+    {
+      "name": "Speaker_Notes.md",
+      "bytes": 27913,
+      "sha256": "c1271014f4aaa44c6c307f495c7e6913a4d7ea96fbba172ecbcf24d2ea319f64"
+    }
+  ]
+}

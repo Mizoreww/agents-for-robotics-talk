@@ -1,0 +1,65 @@
+[
+  {
+    "assets": [
+      {
+        "contentType": "image/webp",
+        "id": "f03ea905e344d60b",
+        "kind": "image",
+        "name": "GYHkMobXeJU1Ahb-",
+        "path": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20f1e188-6530-4a54-802c-bd8c843a3b34/f03ea905e344d60b",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2097210560727437312/img/GYHkMobXeJU1Ahb-?format=webp&name=medium"
+      }
+    ],
+    "directoryPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20f1e188-6530-4a54-802c-bd8c843a3b34",
+    "failures": [],
+    "manifestPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20f1e188-6530-4a54-802c-bd8c843a3b34/manifest.json",
+    "summary": {
+      "downloadedCount": 1,
+      "elapsedMs": 636.4453809997067,
+      "failedCount": 0,
+      "requestedCount": 1
+    }
+  },
+  {
+    "assets": [
+      {
+        "contentType": "image/webp",
+        "id": "392e285c13f1f058",
+        "kind": "image",
+        "name": "nIpBp2XGYS-V7j0r",
+        "path": "/run/user/1000/codex-desktop/tmp/browser-use/assets/28ffc3cf-71fa-4825-9e7a-897421b10572/392e285c13f1f058",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2096992032623607809/img/nIpBp2XGYS-V7j0r?format=webp&name=medium"
+      }
+    ],
+    "directoryPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/28ffc3cf-71fa-4825-9e7a-897421b10572",
+    "failures": [],
+    "manifestPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/28ffc3cf-71fa-4825-9e7a-897421b10572/manifest.json",
+    "summary": {
+      "downloadedCount": 1,
+      "elapsedMs": 353.28315700031817,
+      "failedCount": 0,
+      "requestedCount": 1
+    }
+  },
+  {
+    "assets": [
+      {
+        "contentType": "image/webp",
+        "id": "601b07accf36f452",
+        "kind": "image",
+        "name": "RdPUEA2iQFauCet6",
+        "path": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20245827-f337-49e2-bd6b-76b6295a08fd/601b07accf36f452",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2096992089775190016/img/RdPUEA2iQFauCet6?format=webp&name=medium"
+      }
+    ],
+    "directoryPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20245827-f337-49e2-bd6b-76b6295a08fd",
+    "failures": [],
+    "manifestPath": "/run/user/1000/codex-desktop/tmp/browser-use/assets/20245827-f337-49e2-bd6b-76b6295a08fd/manifest.json",
+    "summary": {
+      "downloadedCount": 1,
+      "elapsedMs": 355.32650000043213,
+      "failedCount": 0,
+      "requestedCount": 1
+    }
+  }
+]

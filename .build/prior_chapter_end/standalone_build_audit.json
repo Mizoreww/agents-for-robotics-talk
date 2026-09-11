@@ -1,0 +1,335 @@
+{
+  "slides": 24,
+  "videos": 15,
+  "media_seconds": 376.90333200000003,
+  "minutes": 60.0,
+  "chapter_summary_slides": [
+    10,
+    15,
+    21
+  ],
+  "bytes": 114735766,
+  "sha256": "494bf889ffd9f2adcebadca716e546cda133dd3954a2511909b5c51f772a7d2a",
+  "standalone_file": "/home/limx/Desktop/agent_for_robotics/output/Agents_for_Robotics_Self_Contained.html",
+  "media": [
+    {
+      "name": "painting",
+      "slide": 2,
+      "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+      "duration_seconds": 68.116667
+    },
+    {
+      "name": "claude_humanoid",
+      "slide": 6,
+      "sha256": "bae111e4ec39b843613e7c04300c272ca6d4fef7faf406e9cac7848ec8f5abe8",
+      "duration_seconds": 5.583333
+    },
+    {
+      "name": "claude_manip",
+      "slide": 6,
+      "sha256": "256142b82215c3921c81fa2c76fab59b9c6f4c341bd344b8ee6254b9f5041e49",
+      "duration_seconds": 4.083333
+    },
+    {
+      "name": "astra_bowl",
+      "slide": 8,
+      "sha256": "08b7ca30dfd840d9a602fa6dcb581702a01c678dbf182e5c3bce0387a35e073a",
+      "duration_seconds": 14.3
+    },
+    {
+      "name": "astra_insertion",
+      "slide": 8,
+      "sha256": "e4089a3a778fefe428ac44e89bb42e32649b882927060a5bcbd3323a8a93ac99",
+      "duration_seconds": 13.8
+    },
+    {
+      "name": "wiping",
+      "slide": 9,
+      "sha256": "8f0954d07b5c477e913729ba9645c2d34c381f02cc920876035d500becf86f36",
+      "duration_seconds": 47.2
+    },
+    {
+      "name": "ar2s_real",
+      "slide": 11,
+      "sha256": "c292f2fa539061124a6e3b13cb1bcfc1c9a63fae8befa5f75667ab23a3aa4c7e",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "ar2s_sim",
+      "slide": 11,
+      "sha256": "7c1d705172770378155b4fb9011758fa63f8264cd28c2e850a4535b973922d58",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "astra_real2sim",
+      "slide": 14,
+      "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
+      "duration_seconds": 16.766667
+    },
+    {
+      "name": "astra_microphone",
+      "slide": 14,
+      "sha256": "121a5280e9074b1cf0df3673491a7a89bed7c2b05a4a2bb9b0d6d70a8d022e88",
+      "duration_seconds": 25.0
+    },
+    {
+      "name": "enpire_task",
+      "slide": 16,
+      "sha256": "07f5cf91c12aefaf1ea424285593d1b9f4551e008a77a52bdc565774bb453fcd",
+      "duration_seconds": 30.0
+    },
+    {
+      "name": "enpire_reset",
+      "slide": 18,
+      "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
+      "duration_seconds": 61.92
+    },
+    {
+      "name": "enpire_verify",
+      "slide": 18,
+      "sha256": "4be0fa9ee68c4c7b05b6418aadb39a02ec2da3058c04d8b88d5f79a28c84da77",
+      "duration_seconds": 11.133333
+    },
+    {
+      "name": "hand",
+      "slide": 22,
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "duration_seconds": 28.833333
+    },
+    {
+      "name": "aspire_trace",
+      "slide": 23,
+      "sha256": "e7a8152c5bd2e17c9aac499fc22478fea99b3cbd822c1a8a81dae05fbbad08a9",
+      "duration_seconds": 30.0
+    }
+  ],
+  "images": [
+    {
+      "old_slide": 1,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 1,
+      "alt": "SUSTech logo",
+      "sha256": "219d51cd691d89454219ac42d1207c2da9d9fc8ccfd8257e889c24277cd5dce1"
+    },
+    {
+      "old_slide": 2,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 2,
+      "alt": "VIDEO:painting",
+      "sha256": "f3a4f628c9681d929f40f9211de67e3e311fa2e8dee2f36a81e155b73fdc2ae8"
+    },
+    {
+      "old_slide": 3,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 4,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 5,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 5,
+      "alt": "Original Claude Plays Robotics interface-level results",
+      "sha256": "637d6cb0c8fa8b6d5b5c6b5db57879f67883ec416c86299e556378fb6735f9ca"
+    },
+    {
+      "old_slide": 6,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 6,
+      "alt": "VIDEO:claude_humanoid",
+      "sha256": "a14c2a24d8360a11a3a32ac7b9264c4d02dbf21fe4679da1ef9b241bb82cc021"
+    },
+    {
+      "old_slide": 6,
+      "alt": "VIDEO:claude_manip",
+      "sha256": "1b7b87965a2b295c8b373eba6aae7f0f9771743ba8205ae4088959f5a303776e"
+    },
+    {
+      "old_slide": 7,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 7,
+      "alt": "Original report VLA supervision results on familiar LIBERO-40 tasks",
+      "sha256": "44c7ec8404b41d82117c78967c17b422c92dc3c2ca3e0789a49b6f3234024215"
+    },
+    {
+      "old_slide": 8,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 8,
+      "alt": "VIDEO:astra_bowl",
+      "sha256": "97a8c7fd3f5b70c329cf40ea0a2c9cba6e5b30796751b62399af566298e9fb21"
+    },
+    {
+      "old_slide": 8,
+      "alt": "VIDEO:astra_insertion",
+      "sha256": "1818a7868262a23c52e315f187a7353504177429b7f2d8ef41db38c9c8f6d6ca"
+    },
+    {
+      "old_slide": 9,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 9,
+      "alt": "VIDEO:wiping",
+      "sha256": "e36663705ecd944d29c4353cfc04958656492fecd06b691ba606bd28c77ba966"
+    },
+    {
+      "old_slide": 10,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_real",
+      "sha256": "2822e4d5258e18168059547a8f83d3607bb9ccc546c89a9f03ce91baaddfef1e"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_sim",
+      "sha256": "43064a1723a6f563d18d1286bcc52bd89a58f00eb7fc728789cd54f836152b90"
+    },
+    {
+      "old_slide": 11,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 11,
+      "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
+      "sha256": "c0b09432c8fa38ddb881057e2c5bb8cf861ea61270e26cfb2a5f220d115872c6"
+    },
+    {
+      "old_slide": 12,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 12,
+      "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
+      "sha256": "a7ca558c62667f21e719e58470f2d6b1adc8ae6bff26f21f2c5562b2c6a840c2"
+    },
+    {
+      "old_slide": 13,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 13,
+      "alt": "VIDEO:astra_real2sim",
+      "sha256": "72bc14b55a7b4ff2f346a0a7078303e5c9a5fc271688410e493e326613ac6bef"
+    },
+    {
+      "old_slide": 13,
+      "alt": "VIDEO:astra_microphone",
+      "sha256": "85cd6867869ccece8f2e9a783a93fa7dc60f042855ea904cf67c58632e3d59d2"
+    },
+    {
+      "old_slide": 14,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 14,
+      "alt": "VIDEO:enpire_task",
+      "sha256": "7313bc7bc24bf61c3a2b2739bfd78b0aa31ebf9f5dfb3ba3a1362d5621bb1a00"
+    },
+    {
+      "old_slide": 15,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "ENPIRE original framework, including human-assisted environment construction",
+      "sha256": "b26e41ce03c18eb21f45af22697a16dda5622eb0d7f090c025be8572a2571958"
+    },
+    {
+      "old_slide": 16,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_reset",
+      "sha256": "af1d17c7d4aa6db7e5b89c43cb961d2bd91c8873c1f079235d8346651aaac464"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_verify",
+      "sha256": "ef06af0358068e3e4733fdd00f95c4cd337abd551c421f9279311259d9259745"
+    },
+    {
+      "old_slide": 17,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 17,
+      "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+      "sha256": "07331a2787d65566e8e5bfe44113424e1c490489ea18929efd9e2907df1d5be3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+      "sha256": "affffe53fd56289ab7897819d4cc219492dad61fb98de61976b987027b03c2e3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "old_slide": 20,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 20,
+      "alt": "VIDEO:aspire_trace",
+      "sha256": "f9deaa0557d1860c65c9989cca81b80c38c9eee8323bae58a6a01f632900fa49"
+    },
+    {
+      "old_slide": 21,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 22,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    }
+  ],
+  "native_text": true,
+  "all_fonts_embedded": true
+}

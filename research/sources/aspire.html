@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASPIRE: Agentic /Skills Discovery for Robotics</title>
+  <meta name="description" content="ASPIRE (Agentic Skill Programming through Iterative Robot Exploration) — a continual learning system for robotics that autonomously discovers reusable skills by writing and refining code-as-policy robot control programs.">
+
+  <!-- Open Graph / Twitter share card -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ASPIRE: Agentic /Skills Discovery for Robotics">
+  <meta property="og:image" content="https://research.nvidia.com/labs/gear/aspire/assets/figures/method/how_aspire_works.png?v=2">
+  <meta property="og:url" content="https://research.nvidia.com/labs/gear/aspire/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ASPIRE: Agentic /Skills Discovery for Robotics">
+  <meta name="twitter:description" content="Self-improving code-as-policy robot manipulation with a continually growing skill library.">
+  <meta name="twitter:image" content="https://research.nvidia.com/labs/gear/aspire/assets/figures/method/how_aspire_works.png?v=2">
+
+  <link rel="icon" href="assets/favicon.svg?v=4" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=166">
+</head>
+<body>
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <nav class="navbar navbar-over" id="navbar">
+    <div class="nav-links">
+      <a href="#overview" class="nav-link" data-spy="overview">Overview</a>
+      <a href="#method" class="nav-link" data-spy="method">Method</a>
+      <a href="#gallery" class="nav-link" data-spy="gallery">Task Gallery</a>
+      <a href="#skills" class="nav-link" data-spy="skills">Skill Library</a>
+      <a href="#benchmarks" class="nav-link" data-spy="benchmarks">Benchmarks</a>
+      <a href="#limitations" class="nav-link" data-spy="limitations">Limitations</a>
+      <a href="#conclusion" class="nav-link" data-spy="conclusion">Conclusion</a>
+      <a href="#team" class="nav-link" data-spy="team">Team</a>
+      <a href="#citation" class="nav-link" data-spy="citation">BibTeX</a>
+    </div>
+    <a href="#" class="nav-team" id="nav-team" target="_blank" rel="noopener"></a>
+  </nav>
+
+  <!-- 0. Hero: full-screen evo-forest cover video -->
+  <section class="hero hero-cover" id="hero">
+    <video class="cover-video" id="cover-video" autoplay muted loop playsinline preload="auto"
+           aria-hidden="true">
+      <source src="assets/videos/EvoForestCover.mp4?v=6" type="video/mp4">
+    </video>
+
+    <a href="#grid-hero" class="hero-scroll" aria-label="Scroll to the skill grid">
+      <span class="hero-scroll-label">Scroll</span>
+      <span class="hero-scroll-chev"></span>
+    </a>
+  </section>
+
+  <!-- 0b. Grid wall: the skill grid + wordmark + ambient code overlay -->
+  <section class="hero grid-hero" id="grid-hero">
+    <video class="wall-video" id="wall-video" autoplay muted loop playsinline preload="auto"
+           poster="assets/videos/skill_grid_loop_poster.jpg?v=20260629b" aria-hidden="true">
+      <source src="assets/videos/skill_grid_loop.mp4?v=20260629b" type="video/mp4">
+    </video>
+    <div class="wall-vignette"></div>
+
+    <!-- Ambient code stream, parked on the right so it clears the wordmark -->
+    <pre class="hero-code grid-code" id="hero-code" aria-hidden="true"></pre>
+
+    <!-- Left-anchored wordmark, matching the grid video's title treatment -->
+    <div class="gh-content">
+      <h1 class="gh-title">
+        <span class="gh-line">Auto Discover</span>
+        <span class="gh-line gh-line-accent">/skills</span>
+        <span class="gh-line">for Robots</span>
+      </h1>
+    </div>
+
+    <a href="#overview" class="hero-scroll" aria-label="Scroll to content">
+      <span class="hero-scroll-label">Scroll</span>
+      <span class="hero-scroll-chev"></span>
+    </a>
+  </section>
+
+  <!-- 2. Overview: paper, authors, abstract, headline results -->
+  <section class="section section-overview" id="overview">
+    <div class="container intro-block">
+      <h2 class="page-title" id="paper-title"></h2>
+      <p class="page-authors" id="authors-list"></p>
+      <div class="intro-actions">
+        <a href="https://doi.org/10.48550/arXiv.2607.00272" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <svg class="btn-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><g transform="matrix(1.5499998,0,0,-1.5499998,-123.19936,553.59966)"><path fill="currentColor" d="m 119.65,351.996 c -5.84961,0.13477 -11.1943,-3.29883 -13.502,-8.67578 -2.19629,-5.27051 -0.61914,-8.9668 4.19727,-15.8652 7.05469,-10.3799 78.8242,-96.5625 78.8242,-96.5625 l -15.8828,-14.8633 c -13.3809,-13.3779 -13.9561,-31.333 -1.50977,-43.7754 l 18.4922,-17.6133 -51.5977,-63.377 c -4.00586,-4.26758 -6.48535,-11.7559 -4.24805,-17.1309 2.27832,-5.53613 7.69727,-9.12891 13.6836,-9.07031 3.83398,0.0957 7.43262,1.87402 9.83789,4.86133 l 61.3691,57.0566 94.5762,-90.0703 c 3.19434,-3.08398 7.44336,-4.83984 11.8828,-4.91016 1.60449,0.0039 3.19824,0.245117 4.73242,0.714844 5.7793,1.80566 10.249,6.41797 11.8711,12.252 1.2998,5.47363 -0.27637,11.2334 -4.18164,15.2832 l -83.0859,100.011996 14.8789,13.834 c 11.0957,10.0029 11.1543,27.3906 0.12695,37.4688 l -16.2949,15.6309 56.2559,66.4434 0.0742,0.0859 0.0664,0.0899 c 5.02734,6.53125 7.43164,11.5615 4.83984,17.9395 -3.13379,5.96875 -8.69727,10.29 -15.2559,11.8516 -0.67676,0.0908 -1.35938,0.13574 -2.04297,0.13671 l -0.004,-0.0117 c -4.42871,-0.27051 -8.61035,-2.13086 -11.7754,-5.24023 l -0.13086,-0.10743 -0.12304,-0.11132 -65.207,-59.127 -89.8965,86.2402 c 0,0 -5.33398,6.47754 -10.9707,6.61133 z m 178.104,-33.041 c 0.47852,-0.002 0.95703,-0.0332 1.43164,-0.0957 4.84277,-1.33301 8.95605,-4.54004 11.4316,-8.91016 1.44922,-3.5625 1.00293,-6.45703 -4.19727,-13.2148 l -56.0586,-66.2188 -26.375,25.3027 64.9551,58.9062 c 2.33887,2.41504 5.46484,3.91113 8.8125,4.2168 v 0.0137 z M 192.436,227.402 334.446,57.244 c 2.78711,-3.48926 4.5293,-6.97949 3.3418,-10.9121 -1.16113,-4.30273 -4.43457,-7.71777 -8.68555,-9.05664 -1.08105,-0.333984 -2.20508,-0.503906 -3.33594,-0.505859 -3.20801,0.07617 -6.26953,1.35645 -8.57617,3.58789 l -142.033,135.284999 c -11.1719,11.1719 -9.48242,26.0195 1.39258,36.8945 z"></path></g></svg>
+          arXiv
+        </a>
+        <a href="https://github.com/NVlabs/ASPIRE" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <svg class="btn-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="abstract-block">
+        <p class="intro-text" id="intro-text"></p>
+      </div>
+
+      <figure class="overview-video">
+        <video src="assets/videos/EvoForestCoverFull.mp4?v=3"
+               poster="assets/videos/EvoForestCoverFull_poster.jpg?v=3"
+               controls loop muted playsinline preload="metadata"></video>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2. Method: the system + the three components -->
+  <section class="section section-alt section-soft" id="method">
+    <div class="container container-wide">
+      <header class="section-header">
+        <h2>Method: How ASPIRE Works</h2>
+        <p>ASPIRE is a self-improving continual learning system for robotics that writes and refines code-as-policy robot control programs from execution feedback. It inspects rollout traces, diagnoses failures, repairs programs, validates corrected behaviors, and saves reusable skills for future tasks. ASPIRE operates in an open-ended learning loop with three key components: a closed-loop <strong>robot execution engine</strong>, a continually expanding <strong>skill library</strong>, and an <strong>evolutionary search</strong> procedure.</p>
+      </header>
+
+      <figure class="figure-block figure-full method-figure">
+        <video
+          class="method-figure-video"
+          src="assets/videos/method/how_aspire_works.mp4?v=20260629b"
+          poster="assets/videos/posters/method/how_aspire_works.jpg?v=20260629b"
+          width="2558" height="1440"
+          muted loop playsinline preload="none"
+          aria-label="Figure 1: ASPIRE system overview — Robot Execution Engine, Agentic Coding with evolutionary search, and Skill Library."
+        ></video>
+      </figure>
+
+      <div class="components">
+        <article class="component">
+          <div class="component-media">
+            <video src="assets/videos/method/robot_execution_engine.mp4?v=20260629"
+                   poster="assets/videos/posters/method/robot_execution_engine.jpg?v=20260629"
+                   muted loop playsinline preload="none"></video>
+          </div>
+          <div class="component-text">
+            <h3>Closed-Loop Robot Execution Engine</h3>
+            <p>For each perception, planning, grasping, and control call, the engine records the observations, inputs, outputs, and visual evidence if possible. These rich multimodal traces allow the agent to selectively inspect salient primitive logs, progressively localize failures, and validate repairs through re-execution.</p>
+          </div>
+        </article>
+        <article class="component component-rev">
+          <div class="component-media">
+            <video src="assets/videos/method/skill_accumulation.mp4?v=20260629"
+                   poster="assets/videos/posters/method/skill_accumulation.jpg?v=20260629"
+                   muted loop playsinline preload="none"></video>
+          </div>
+          <div class="component-text">
+            <h3>Continually Expanding Skill Library</h3>
+            <p>ASPIRE maintains a growing skill library that distills validated fixes into modular, transferable robotic knowledge retrievable as in-context guidance for future tasks.</p>
+          </div>
+        </article>
+        <article class="component">
+          <div class="component-media">
+            <video src="assets/videos/method/evo_search.mp4?v=20260629"
+                   poster="assets/videos/posters/method/evo_search.jpg?v=20260629"
+                   muted loop playsinline preload="none"></video>
+          </div>
+          <div class="component-text">
+            <h3>Evolutionary Search Over Programs</h3>
+            <p>ASPIRE employs an <strong>evolutionary search</strong> procedure that generates diverse task sequences and control programs, exploring beyond single-trajectory self-improvement through iterative debugging and parallel refinement.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2b. ASPIRE in action: task gallery -->
+  <section class="section" id="gallery">
+    <div class="container container-wide">
+      <header class="section-header">
+        <h2>Task Gallery</h2>
+      </header>
+
+      <p class="subsection-sub">Each card pairs a CaP-Agent0 baseline or initial task attempt with the final behavior after ASPIRE diagnosed the rollout and rewrote the program. Hover over a demo video to view the baseline or initial program and the ASPIRE fix code. Use the filters to narrow the gallery. This is not an exhaustive list of all tasks.</p>
+      <div class="gallery-shell">
+        <div class="gallery-toolbar">
+          <div class="gallery-filters" id="gallery-filters">
+            <div class="gallery-filter-buttons" id="gallery-room-filters"></div>
+            <label class="gallery-search">
+              <span class="sr-only">Filter tasks</span>
+              <input id="gallery-search" type="search" placeholder="Filter tasks" autocomplete="off">
+            </label>
+            <span class="gallery-count" id="gallery-count"></span>
+            <div class="gallery-pagination" id="gallery-pagination" aria-label="Task gallery pagination">
+              <button class="gallery-page-btn" id="gallery-prev" type="button" data-page-action="prev">Prev</button>
+              <span class="gallery-page-label" id="gallery-page">Page 1 of 1</span>
+              <button class="gallery-page-btn" id="gallery-next" type="button" data-page-action="next">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-scroll" id="gallery-scroll">
+          <div class="pair-grid" id="gallery-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2c. Skill library: distilled text skills learned across domains -->
+  <section class="section section-skills" id="skills">
+    <div class="container container-wide">
+      <header class="section-header">
+        <h2>Skill Library Gallery</h2>
+        <p>Explore the expansive skill library learned by ASPIRE. The gallery is organized into 18 categories, each containing multiple skills. This is a representative sample, not an exhaustive list.</p>
+      </header>
+
+      <div class="skill-stats" id="skill-stats"></div>
+      <div class="skill-controls">
+        <div class="skill-tabs" id="skill-tabs"></div>
+        <label class="skill-search">
+          <span class="sr-only">Filter skills</span>
+          <input id="skill-search" type="search" placeholder="Filter skills" autocomplete="off">
+        </label>
+      </div>
+      <div class="skill-atlas">
+        <div class="skill-list" id="skill-list"></div>
+        <article class="skill-reader" id="skill-reader"></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Benchmark results: LIBERO-PRO, Robosuite, BEHAVIOR-1K -->
+  <section class="section" id="benchmarks">
+    <div class="container container-wide">
+      <header class="section-header">
+        <h2>Benchmark Results</h2>
+      </header>
+
+      <header class="section-header section-subhead">
+        <h2>Main Evaluation Results</h2>
+        <p>Across all benchmarks, an environment seed fixes each task instance, including object poses, distractors, and initial robot/object states. We use disjoint debug and evaluation seeds: ASPIRE learns on a small debug split, then reports success on larger held-out evaluation seeds with one generated program per LIBERO-Pro/Robosuite task, while CaP-Agent0 regenerates a separate program for each seed with test-time reasoning and retries. For BEHAVIOR-1K evaluation, ASPIRE uses incremental block execution, generating each next code block from the current multimodal trace.</p>
+      </header>
+      <div class="bench-grid">
+        <article class="chart-block">
+          <header class="chart-header">
+            <h3>LIBERO-PRO</h3>
+            <p class="panel-label">ASPIRE writes control programs that generalize across object types, object positions, and task details.</p>
+          </header>
+          <div class="chart-panel" id="libero-chart"></div>
+          <div class="legend" id="libero-legend"></div>
+        </article>
+
+        <article class="chart-block">
+          <header class="chart-header">
+            <h3>Robosuite</h3>
+            <p class="panel-label">ASPIRE handles contact-heavy tabletop manipulation tasks. Most notably, ASPIRE improved two-arm handover success rate from the baseline of 20% to 92% through iterative debugging.</p>
+          </header>
+          <div class="chart-panel" id="robosuite-chart"></div>
+          <div class="legend" id="robosuite-legend"></div>
+        </article>
+
+        <article class="chart-block">
+          <header class="chart-header">
+            <h3>BEHAVIOR-1K</h3>
+            <p class="panel-label">For long-horizon mobile manipulation, we show navigation separately from task completion.</p>
+          </header>
+          <div class="chart-panel" id="behavior-chart"></div>
+          <div class="legend" id="behavior-legend"></div>
+        </article>
+      </div>
+
+      <header class="section-header section-subhead">
+        <h2>Zero-Shot Transfer of Skill Library</h2>
+      </header>
+      <div class="bench-grid">
+        <article class="chart-block">
+          <header class="chart-header">
+            <h3>Scaling with Skill-Library Size &middot; LIBERO-Pro Long</h3>
+            <p class="panel-label">Skills learned across LIBERO-90 carry over to held-out long-horizon tasks. As the skill library grows, coding agents achieve higher success rate on LIBERO-Long.</p>
+          </header>
+          <div class="chart-panel" id="zeroshot-chart"></div>
+          <div class="legend" id="zeroshot-legend"></div>
+        </article>
+
+        <article class="chart-block">
+          <header class="chart-header">
+            <h3>Real-Robot Cross-Embodiment Skill Transfer</h3>
+            <p class="panel-label">For each task, we compare real-robot debugging with and without retrieving a corresponding simulation-discovered skill from ASPIRE&rsquo;s library. Token counts are measured until the first successful real-robot program. Success Rate reports held-out evaluation trials of the code that achieved that first success. When equipped with ASPIRE skills, the coding agent reaches its first success with fewer tokens, and the generated code achieves a higher success rate.</p>
+          </header>
+          <div class="cost-pair">
+            <div class="cost-col">
+              <p class="cost-col-title">Output tokens (M)</p>
+              <div class="chart-panel" id="transfer-output-chart"></div>
+            </div>
+            <div class="cost-col">
+              <p class="cost-col-title">Total tokens (M)</p>
+              <div class="chart-panel" id="transfer-tokens-chart"></div>
+            </div>
+          </div>
+          <div class="legend" id="transfer-cost-legend"></div>
+          <div class="cost-col transfer-success-row">
+            <p class="cost-col-title">Held-out success rate (%)</p>
+            <div class="chart-panel" id="transfer-success-chart"></div>
+            <div class="legend" id="transfer-success-legend"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Limitations + Conclusion + BibTeX -->
+  <section class="section section-soft" id="limitations">
+    <div class="container">
+      <header class="section-header">
+        <h2>Limitations</h2>
+      </header>
+      <div class="conclusion-body">
+        <ul class="limitations-list">
+          <li><strong>Not yet a fully autonomous real-world learner.</strong> Real-world deployment still needs robust success detection, safe resets, safety monitoring, and calibration.</li>
+          <li><strong>Dependence on a frozen frontier LLM.</strong> ASPIRE relies on a frontier model (Claude Opus 4.6); we have not verified that smaller or weaker LLMs can sustain the debugging loop.</li>
+          <li><strong>Bounded by a predefined primitive API.</strong> The fixed set of perception, planning, and control primitives keeps debugging safe but limits expressible behaviors.</li>
+          <li><strong>Incomplete long-term memory management.</strong> The skill library currently prioritizes validated reusable repairs but does not fully solve long-term memory management. As the library grows, some entries may become stale, overly specific, redundant, or misleading for a new task.</li>
+          <li><strong>Compute-intensive search loop.</strong> The debug and evolutionary-search loop costs many LLM calls and rollouts per task, so scaling up will require cheaper inference or more sample-efficient search.</li>
+        </ul>
+      </div>
+
+      <header class="section-header section-subhead" id="conclusion">
+        <h2>Conclusion</h2>
+      </header>
+      <div class="conclusion-body">
+        <p>We present ASPIRE, a self-improving continual learning robotic system that autonomously writes and refines robot control programs while compounding experience into a reusable skill library. ASPIRE operates in an open-ended learning loop with three components: a closed-loop <strong>robot execution engine</strong> that exposes fine-grained multimodal traces, a continually expanding <strong>skill library</strong> that distills validated fixes into transferable knowledge, and an <strong>evolutionary search</strong> procedure that explores diverse task sequences and control programs. Across diverse benchmarks, ASPIRE substantially outperforms existing VLA and coding-agent baselines, demonstrates strong zero-shot transfer to unseen long-horizon tasks, and provides initial evidence that the skills discovered in sim can transfer across embodiment to significantly reduce real-robot programming token cost despite different robot embodiments and APIs.</p>
+      </div>
+    </div>
+
+    <div class="container container-wide">
+      <header class="section-header section-subhead" id="team">
+        <h2>Team</h2>
+      </header>
+      <!-- Photos in assets/team/. Ethan Kou keeps a placeholder square until a photo is provided. -->
+      <div class="team-grid">
+        <figure class="team-member"><img class="team-photo" src="assets/team/runyu-lu.jpg?v=1" alt="Runyu Lu" loading="lazy" width="400" height="400"><figcaption class="team-name">Runyu Lu<sup>*&dagger;</sup></figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/yubo-wu.jpg?v=1" alt="Yubo Wu" loading="lazy" width="400" height="400"><figcaption class="team-name">Yubo Wu<sup>*</sup></figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/ethan-kou.jpg?v=1" alt="Ethan Kou" loading="lazy" width="400" height="400"><figcaption class="team-name">Ethan Kou<sup>*</sup></figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/max-fu.jpg?v=1" alt="Max Fu" loading="lazy" width="400" height="400"><figcaption class="team-name">Max Fu</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/wenli-xiao.jpg?v=1" alt="Wenli Xiao" loading="lazy" width="400" height="400"><figcaption class="team-name">Wenli Xiao</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/ajay-mandlekar.jpg?v=1" alt="Ajay Mandlekar" loading="lazy" width="400" height="400"><figcaption class="team-name">Ajay Mandlekar</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/yinzhen-xu.jpg?v=1" alt="Yinzhen Xu" loading="lazy" width="400" height="400"><figcaption class="team-name">Yinzhen Xu</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/guanya-shi.jpg?v=1" alt="Guanya Shi" loading="lazy" width="400" height="400"><figcaption class="team-name">Guanya Shi</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/ken-goldberg.jpg?v=1" alt="Ken Goldberg" loading="lazy" width="400" height="400"><figcaption class="team-name">Ken Goldberg</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/ang-chen.jpg?v=1" alt="Ang Chen" loading="lazy" width="400" height="400"><figcaption class="team-name">Ang Chen</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/mosharaf-chowdhury.jpg?v=1" alt="Mosharaf Chowdhury" loading="lazy" width="400" height="400"><figcaption class="team-name">Mosharaf Chowdhury</figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/yuke-zhu.jpg?v=1" alt="Yuke Zhu" loading="lazy" width="400" height="400"><figcaption class="team-name">Yuke Zhu<sup>&dagger;</sup></figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/linxi-fan.jpg?v=1" alt="Linxi Fan" loading="lazy" width="400" height="400"><figcaption class="team-name">Linxi &ldquo;Jim&rdquo; Fan<sup>&dagger;</sup></figcaption></figure>
+        <figure class="team-member"><img class="team-photo" src="assets/team/guanzhi-wang.jpg?v=1" alt="Guanzhi Wang" loading="lazy" width="400" height="400"><figcaption class="team-name">Guanzhi Wang<sup>&dagger;</sup></figcaption></figure>
+      </div>
+      <p class="team-note"><sup>*</sup>Equal contribution &middot; <sup>&dagger;</sup>Project leads</p>
+    </div>
+
+    <div class="container">
+      <header class="section-header section-subhead" id="citation">
+        <h2>BibTeX</h2>
+      </header>
+      <div class="bibtex-block">
+        <button class="bibtex-copy" id="bibtex-copy" type="button" aria-label="Copy BibTeX">Copy</button>
+        <pre class="bibtex-code" id="bibtex-code">@article{lu2026aspire,
+  title   = {ASPIRE: Agentic /Skills Discovery for Robotics},
+  author  = {Runyu Lu and Yubo Wu and Ethan Kou and Letian Fu and Wenli Xiao and
+             Ajay Mandlekar and Yinzhen Xu and Guanya Shi and Ken Goldberg and
+             Ang Chen and Mosharaf Chowdhury and Yuke Zhu and Linxi "Jim" Fan and Guanzhi Wang},
+  year    = {2026},
+  journal = {arXiv preprint arXiv:2607.00272},
+  url     = {https://arxiv.org/abs/2607.00272}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Acknowledgments -->
+  <section class="section section-soft" id="acknowledgments">
+    <div class="container">
+      <header class="section-header">
+        <h2>Acknowledgments</h2>
+      </header>
+      <div class="conclusion-body">
+        <p>We thank Nadun Ranawaka, Jimmy Wu, Matin Furutan, Haotian Lin, Abhi Maddukuri, Yulu Gan, Matin Nikoui, and Yuqi Xie for their help with open-source support, real robot infrastructure, advice and guidance on the paper, website release, and experimental equipment. We are also grateful to the members of NVIDIA GEAR, UMich SymbioticLab, UsesysLab, UC Berkeley AUTOLab, CMU LeCAR Lab for their kind support.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-mark">ASPIRE</span>
+        <span class="footer-tag">Agentic /Skills Discovery for Robotics</span>
+      </div>
+      <nav class="footer-links">
+        <a href="https://doi.org/10.48550/arXiv.2607.00272" target="_blank" rel="noopener noreferrer"><svg class="footer-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><g transform="matrix(1.5499998,0,0,-1.5499998,-123.19936,553.59966)"><path fill="currentColor" d="m 119.65,351.996 c -5.84961,0.13477 -11.1943,-3.29883 -13.502,-8.67578 -2.19629,-5.27051 -0.61914,-8.9668 4.19727,-15.8652 7.05469,-10.3799 78.8242,-96.5625 78.8242,-96.5625 l -15.8828,-14.8633 c -13.3809,-13.3779 -13.9561,-31.333 -1.50977,-43.7754 l 18.4922,-17.6133 -51.5977,-63.377 c -4.00586,-4.26758 -6.48535,-11.7559 -4.24805,-17.1309 2.27832,-5.53613 7.69727,-9.12891 13.6836,-9.07031 3.83398,0.0957 7.43262,1.87402 9.83789,4.86133 l 61.3691,57.0566 94.5762,-90.0703 c 3.19434,-3.08398 7.44336,-4.83984 11.8828,-4.91016 1.60449,0.0039 3.19824,0.245117 4.73242,0.714844 5.7793,1.80566 10.249,6.41797 11.8711,12.252 1.2998,5.47363 -0.27637,11.2334 -4.18164,15.2832 l -83.0859,100.011996 14.8789,13.834 c 11.0957,10.0029 11.1543,27.3906 0.12695,37.4688 l -16.2949,15.6309 56.2559,66.4434 0.0742,0.0859 0.0664,0.0899 c 5.02734,6.53125 7.43164,11.5615 4.83984,17.9395 -3.13379,5.96875 -8.69727,10.29 -15.2559,11.8516 -0.67676,0.0908 -1.35938,0.13574 -2.04297,0.13671 l -0.004,-0.0117 c -4.42871,-0.27051 -8.61035,-2.13086 -11.7754,-5.24023 l -0.13086,-0.10743 -0.12304,-0.11132 -65.207,-59.127 -89.8965,86.2402 c 0,0 -5.33398,6.47754 -10.9707,6.61133 z m 178.104,-33.041 c 0.47852,-0.002 0.95703,-0.0332 1.43164,-0.0957 4.84277,-1.33301 8.95605,-4.54004 11.4316,-8.91016 1.44922,-3.5625 1.00293,-6.45703 -4.19727,-13.2148 l -56.0586,-66.2188 -26.375,25.3027 64.9551,58.9062 c 2.33887,2.41504 5.46484,3.91113 8.8125,4.2168 v 0.0137 z M 192.436,227.402 334.446,57.244 c 2.78711,-3.48926 4.5293,-6.97949 3.3418,-10.9121 -1.16113,-4.30273 -4.43457,-7.71777 -8.68555,-9.05664 -1.08105,-0.333984 -2.20508,-0.503906 -3.33594,-0.505859 -3.20801,0.07617 -6.26953,1.35645 -8.57617,3.58789 l -142.033,135.284999 c -11.1719,11.1719 -9.48242,26.0195 1.39258,36.8945 z"></path></g></svg>arXiv</a>
+        <a href="https://github.com/NVlabs/ASPIRE" target="_blank" rel="noopener noreferrer"><svg class="footer-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>GitHub</a>
+        <a href="https://research.nvidia.com/labs/gear/" target="_blank" rel="noopener">NVIDIA GEAR</a>
+      </nav>
+    </div>
+    <div class="container footer-affil">
+      NVIDIA &middot; UMich &middot; UIUC &middot; UC Berkeley &middot; CMU
+    </div>
+  </footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js/config.js?v=82"></script>
+  <script src="js/syntax.js?v=2"></script>
+  <script src="js/grid.js?v=67"></script>
+  <script src="js/charts.js?v=77"></script>
+  <script src="js/features.js?v=65"></script>
+  <script src="js/skills.js?v=45"></script>
+  <script src="js/gallery.js?v=92"></script>
+  <script src="js/main.js?v=71"></script>
+</body>
+</html>

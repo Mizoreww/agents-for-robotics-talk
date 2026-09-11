@@ -1,0 +1,112 @@
+{
+  "key": "inner_monologue",
+  "url": "https://innermonologue.github.io/",
+  "final_url": "https://innermonologue.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "58ef4c9c80d4aedcb7b84f3ceea06ba52f260958817ba9623e498e7b7b2af273",
+  "chars": 10190,
+  "links": [
+    "http://g.co/robotics",
+    "https://arxiv.org/abs/2207.05608",
+    "https://youtu.be/0sJjdxn5kcI",
+    "http://jonbarron.info/"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "src": "https://innermonologue.github.io/img/robotics-at-google.png"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/im_teaser_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/0sJjdxn5kcI"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/method.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/im_demo1_an.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/im_demo2_an.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/im_demo3_an.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/im_demo4_an.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/emergent_spontaneous.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/emergent_multilingual.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/emergent_scene.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/emergent_feedback_order.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://innermonologue.github.io/img/emergent_typos.mp4",
+      "type": "video/mp4"
+    }
+  ]
+}

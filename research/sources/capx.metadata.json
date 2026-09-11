@@ -1,0 +1,161 @@
+{
+  "key": "capx",
+  "url": "https://capgym.github.io/",
+  "final_url": "https://capgym.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "272092ad26293cb93c1f0b286208ef306bf19ae13be4857ca1454c22c43925ba",
+  "chars": 3972,
+  "links": [
+    "https://capgym.github.io/#home",
+    "https://capgym.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Stack Everything.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/franka_demos/Franka Cross Embodiment.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Elevator.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Mechanical Search 2.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Math.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Restack.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Semantic Reasoning.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Needle.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/agibot_demos/AgiBot Pyramid.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_cube_stack.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_pick_up_black_bowl_put_on_white_plate.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_put_bowl_in_drawer_w_retry.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_put_wine_bottle_on_rack.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_spill_wipe_w_retry.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_turn_on_stolve.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_two_arm_lift_w_retry.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_pass_hammer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://capgym.github.io/assets/sim_demos/sim_peg_insertion.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    }
+  ]
+}

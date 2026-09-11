@@ -1,0 +1,149 @@
+{
+  "key": "playful",
+  "url": "https://Playful-RATs.github.io/",
+  "final_url": "https://Playful-RATs.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "3611ec6dd6c1d323220e2cdf39e454417fc940d8ca526ac57fda3241d6d503a4",
+  "chars": 6062,
+  "links": [
+    "https://junyi42.com/",
+    "https://gejiaxin.org/",
+    "https://github.com/lukehanjun",
+    "https://max-fu.github.io/",
+    "https://smallyang688.github.io/",
+    "https://openreview.net/profile?id=~Yaowei_Liu3",
+    "https://openreview.net/profile?id=~Raj_Saravanan1",
+    "https://fugtemypt123.github.io/",
+    "https://uynitsuj.github.io/",
+    "https://dantong88.github.io/",
+    "https://zwcolin.github.io/",
+    "https://roeiherz.github.io/",
+    "https://goldberg.berkeley.edu/",
+    "https://yutongbai.com/",
+    "https://dchan.cc/",
+    "https://people.eecs.berkeley.edu/~istoica/",
+    "https://people.eecs.berkeley.edu/~kanazawa/",
+    "https://jiahuilei.com/",
+    "https://havenfeng.github.io/",
+    "https://people.eecs.berkeley.edu/~trevor/",
+    "https://github.com/Playful-RATs/rats",
+    "https://Playful-RATs.github.io/assets/papers/rats-paper.pdf",
+    "https://arxiv.org/abs/2606.19419",
+    "https://Playful-RATs.github.io/#abstract",
+    "https://Playful-RATs.github.io/#method",
+    "https://Playful-RATs.github.io/#deep-dive",
+    "https://Playful-RATs.github.io/#results",
+    "https://Playful-RATs.github.io/#analysis",
+    "https://Playful-RATs.github.io/#bibtex",
+    "https://Playful-RATs.github.io/#top",
+    "https://echo-bench.github.io/",
+    "https://nerfies.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "poster": "https://Playful-RATs.github.io/assets/images/pipeline-overview-poster.jpg"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/pipeline-overview-v9.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/rats-teaser.png",
+      "alt": "Overview of RATs learning reusable robot skills through play"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/task-proposal.png",
+      "alt": "Examples of RATs play task proposals"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/rats-method.png",
+      "alt": "Detailed RATs method diagram"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/close_drawer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/cube_transfer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/open_drawer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/wipe_final.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/libero.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/molmospaces.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://Playful-RATs.github.io/assets/videos/robosuite.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/play-objective-distribution.png",
+      "alt": "Distribution of play objectives"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/play-knowledge-growth.png",
+      "alt": "Growth of knowledge during play"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/eval-skill-category-heatmap.png",
+      "alt": "Learned skill categories used during evaluation"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/code-comparison.png",
+      "alt": "Comparison between direct code synthesis and learned skills"
+    },
+    {
+      "tag": "img",
+      "src": "https://Playful-RATs.github.io/assets/images/skill-transfer.png",
+      "alt": "Play-to-evaluation skill transfer lineage"
+    }
+  ]
+}

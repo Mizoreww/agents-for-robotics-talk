@@ -1,0 +1,12 @@
+小红书笔记快照（文字，2026-09-11 通过用户 Chrome 登录态读取；视频未下载）
+标题：GPT6-Astra Real2Sim初试流程
+作者：Hello燕Sir（广东）　发布：约 2026-09-07（页面显示 4 天前）　类型：视频笔记　点赞：201
+正文（截取）：
+早上确认了下，昨晚测试的输入，除了新开的工作空间的视频，GPT自己还去找了隔壁工作空间的序列等信息，因此增加了一版测试，新版本纯视频输入+GPT6 Astra，版本二视频+序列等信息输入+GPT5.6做预处理+GPT6 Astra重建
+一、纯视频输入：（版本一的代码见评论区git仓库）基于Interndata【Put_the_pen_from_the_table_into_the_pen_holder】三个视角视频帧real2sim 效果见P1
+GPT6 Astra-prompt 1: 请查看real_rgb的真机机器人操作视频（已转化为帧），利用blender进行场景建模和动作重放，最后输出real_rgb和sim_rgb视频（要求三个视角都要有，且能逐帧对应）
+GPT6 Astra-prompt 2: 右侧的墙穿模了，而且右侧的货架未能建模出来，请修复
+二、视频+action+相机内参+机器人URDF输入 基于 DROID【WEIRD+f61abce9+2023-12-06-19h-11m-38s】三个视角视频帧real2sim 效果见上一个帖子
+步骤1：GPT5.6 sol-prompt 1 (prompt1 见git仓库的DROID_prompt1.md)+根据计划帮我一步一步做好
+步骤2：新建工作空间 将三个视角真机视频帧复制过去 + GPT6-prompt 2
+步骤3：GPT6 Astra-prompt 2 请查看real_rgb的真机机器人操作视频（已转化为帧），利用blender进行场景建模和动作最后输出real_rgb和sim_rgb视频（要求三个视角……）

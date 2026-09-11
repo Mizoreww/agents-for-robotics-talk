@@ -1,0 +1,33 @@
+{
+  "key": "gear_current",
+  "url": "https://research.nvidia.com/labs/gear/",
+  "final_url": "https://research.nvidia.com/labs/gear/",
+  "accessed": "2026-09-10",
+  "sha256": "4caab894cd1ac5da4c76509476e361ab1d5b247dec06c9de934d03d5e4d4bd35",
+  "chars": 1676,
+  "links": [
+    "https://research.nvidia.com/labs/gear/",
+    "https://research.nvidia.com/labs/gear/publications/",
+    "https://jimfan.me/",
+    "https://yukezhu.me/",
+    "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=gr00t",
+    "https://developer.nvidia.com/project-gr00t",
+    "https://eureka-research.github.io/",
+    "https://voyager.minedojo.org/",
+    "https://vimalabs.github.io/",
+    "https://minedojo.org/",
+    "https://research.nvidia.com/labs/gear/egoscale/",
+    "https://www.nvidia.com/en-us/about-nvidia/privacy-policy/",
+    "https://www.nvidia.com/en-us/privacy-center/",
+    "https://www.nvidia.com/en-us/about-nvidia/terms-of-service/",
+    "https://www.nvidia.com/en-us/about-nvidia/accessibility/",
+    "https://www.nvidia.com/en-us/about-nvidia/company-policies/",
+    "https://www.nvidia.com/en-us/contact/"
+  ],
+  "media": [
+    {
+      "tag": "video",
+      "src": "https://research.nvidia.com/labs/gear/home_page/setup_wide_duo_tandem.mov"
+    }
+  ]
+}

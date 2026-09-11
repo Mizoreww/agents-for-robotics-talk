@@ -1,0 +1,22 @@
+{
+  "html_sha256": "494bf889ffd9f2adcebadca716e546cda133dd3954a2511909b5c51f772a7d2a",
+  "slide_count": 24,
+  "embedded_video_count": 15,
+  "embedded_image_count": 24,
+  "font_faces": 4,
+  "all_media_byte_identical": true,
+  "external_runtime_resources": 0,
+  "all_scripts_chinese": true,
+  "script_file_equals_embedded_script": true,
+  "isolated_directory_only_html": true,
+  "desktop_text_overflow": 0,
+  "mobile_button_overflow": 0,
+  "html_bytes": 114735766,
+  "playback_all_15_passed": true,
+  "pause_and_restart_passed": true,
+  "ui_checks_passed": true,
+  "native_fullscreen_in_embedded_browser": false,
+  "fullscreen_compatible_focus_view": true,
+  "checked_at": "2026-09-10T19:12:30.868933+08:00",
+  "script_sha256": "b17b8ed9f0722d92580f86cfe3aed7184c0da3503f24103581c22c8d0d52a569"
+}

@@ -1,0 +1,153 @@
+[
+  {
+    "name": "astra_bowl.mp4",
+    "url": "https://openai.robocurve.org/gpt-6-astra/video/bowl-astra-vs-fable51-cost.mp4",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 3338808,
+    "sha256": "c9e5c71c8fcf64d44c0209d1b2495ff1d608b87c3eca5637d2f0af482438046e"
+  },
+  {
+    "name": "astra_insertion.mp4",
+    "url": "https://openai.robocurve.org/gpt-6-astra/runs/videos/rig-4_76c6c1aa.mp4",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 1536881,
+    "sha256": "62c60cbba0a1a2d1f04f26af9ab9a076be7f06c3120d90032252a3b3627fc11e"
+  },
+  {
+    "name": "enpire_pin.mp4",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+    "accessed": "2026-09-10",
+    "status": "unavailable",
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "name": "enpire_verify.mp4",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 1876654,
+    "sha256": "cbdf5d1540492b49f5a26793e65af9d836ddc4f1d1e5bc0bf12b645ff148aedd"
+  },
+  {
+    "name": "ar2s_teaser.mp4",
+    "url": "https://agentic-real2sim.github.io/static/videos/ar2s_teaser.mp4?v=d6a9655b",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 156318,
+    "sha256": "d6a9655b881c3c9be2a0f18c3ee0450c29ad605e2d4ca6715016a8576778838b"
+  },
+  {
+    "name": "ar2s_real.mp4",
+    "url": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_real.mp4",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 8964190,
+    "sha256": "fd880a09588646fd5126e13ddd5e3609772b89e35254a101a7cada8832b9a050"
+  },
+  {
+    "name": "ar2s_sim.mp4",
+    "url": "https://agentic-real2sim.github.io/static/videos/ar2s_ep_052_simulated.mp4",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 293917,
+    "sha256": "608b01a0b9019b1a1fd72c3a03a5c51ca5154e51672265f9d8210ad457bd57f2"
+  },
+  {
+    "name": "aspire_method.mp4",
+    "url": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/how_aspire_works.mp4?v=20260629b",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 2045933,
+    "sha256": "d4ced79db4406e956507b44f867a22dd98dd42765cef695a175533daf3af3fbe"
+  },
+  {
+    "name": "aspire_trace.mp4",
+    "url": "https://research.nvidia.com/labs/gear/aspire/assets/videos/method/robot_execution_engine.mp4?v=20260629",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 12352718,
+    "sha256": "cd91cad9d4494188de756079380f76864f0a43152a77015e6ab1a0a4e7d4f757"
+  },
+  {
+    "name": "voxposer.jpg",
+    "url": "https://voxposer.github.io/media/figures/method.jpg",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 230937,
+    "sha256": "f6363ee10aa4f819dab3cbc9a2990ff9160ec9e940c5ee91cb97062e4ddfaf1d"
+  },
+  {
+    "name": "enpire_verifier.png",
+    "url": "https://arxiv.org/html/2606.19980v1/ziptie_reward.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 2034217,
+    "sha256": "926f1f5c985d7eacfe5f4ff325aa44d3a061b27bf0307584344108bf4fb9606c"
+  },
+  {
+    "name": "enpire_fleet.png",
+    "url": "https://arxiv.org/html/2606.19980v1/corl_2026_template_submission/figures/fleet_narrow.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 8086949,
+    "sha256": "3f67e3c4240427d97fb2daa40f390db752600f1ce799ab1952452eda945d156d"
+  },
+  {
+    "name": "aspire_system.png",
+    "url": "https://arxiv.org/html/2607.00272v1/system_design.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 1033136,
+    "sha256": "fbb54d872cc00eedabb83b7da7972482530139aacbf48270b98927aaedf93c47"
+  },
+  {
+    "name": "aspire_skills.png",
+    "url": "https://arxiv.org/html/2607.00272v1/skill_library_update.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 2057833,
+    "sha256": "0330cdbee8a7cb897f7c5e26bf0c907b84e7c8e1f1656021a3604c6d2c68f6fa"
+  },
+  {
+    "name": "aspire_debug.png",
+    "url": "https://arxiv.org/html/2607.00272v1/1-debugging-skill.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 112935,
+    "sha256": "dde95f5ff94eed0c63b7d93366d134726ffaf4e42931efca618bee6ec14cfc14"
+  },
+  {
+    "name": "ar2s_teaser.png",
+    "url": "https://agentic-real2sim.github.io/static/images/Fig_teaser.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 912531,
+    "sha256": "f24dfaa8f92e540e92362241b0734e8b6f25a2be98cf2c93a57da0f8c50a21b0"
+  },
+  {
+    "name": "rats_method.png",
+    "url": "https://Playful-RATs.github.io/assets/images/rats-method.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 1188496,
+    "sha256": "ff61f38e7ddb8089c41bc218e1bb230f403332c4147a9a23302e16e1827e0af7"
+  },
+  {
+    "name": "rats_teaser.png",
+    "url": "https://Playful-RATs.github.io/assets/images/rats-teaser.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 877697,
+    "sha256": "eef92e4bc88e9e6ed99d365f988363e30697f4490987559f976093f05f365409"
+  },
+  {
+    "name": "autort.png",
+    "url": "https://auto-rt.github.io/static/images/Auto-RT.png",
+    "accessed": "2026-09-10",
+    "status": "downloaded",
+    "bytes": 345991,
+    "sha256": "60b2b1ae0ecbe6c21d0df63d92aa8d1a6653a217791856ac90f69de01faea217"
+  }
+]

@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="SceneMosaic generates simulation-ready 3D indoor scenes from a single reference image, combining fast image-based priors with local agentic evolution. Matches the strongest agentic baseline with a 24x speedup while producing diverse, physically valid layout variants."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="author" content="Xingjian Ran, Xiaoye Mo, Sihao Liu, Jianyu Zhang, Li Luo, Bo Dai" />
+    <meta
+      name="keywords"
+      content="3D scene generation, simulation-ready scenes, indoor scene synthesis, vision-language models, agentic layout evolution, image-to-3D, embodied AI, scene diversity"
+    />
+    <link rel="canonical" href="https://rxjfighting.github.io/SceneMosaic/" />
+    <script>document.documentElement.classList.add("js");</script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SceneMosaic: Efficient and Diverse Simulation-Ready Scene Generation" />
+    <meta
+      property="og:description"
+      content="From a single reference image to a physically grounded 3D scene and a diverse family of valid layout variants in minutes. 24x faster than agentic baselines."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rxjfighting.github.io/SceneMosaic/" />
+    <meta property="og:image" content="https://rxjfighting.github.io/SceneMosaic/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SceneMosaic: efficient and diverse simulation-ready scene generation via hybrid agentic layout evolution." />
+    <meta property="og:site_name" content="SceneMosaic" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SceneMosaic: Efficient and Diverse Simulation-Ready Scene Generation" />
+    <meta
+      name="twitter:description"
+      content="From a single reference image to a physically grounded 3D scene and a diverse family of valid layout variants in minutes. 24x faster than agentic baselines."
+    />
+    <meta name="twitter:image" content="https://rxjfighting.github.io/SceneMosaic/assets/images/og-image.jpg" />
+
+    <title>SceneMosaic — Efficient &amp; Diverse Simulation-Ready Scenes</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/posters/hero-base-00.webp" as="image" type="image/webp" />
+    <link rel="preload" href="assets/posters/hero-variant-00.webp" as="image" type="image/webp" />
+    <link rel="preload" href="assets/posters/hero-base-06.webp" as="image" type="image/webp" />
+    <link rel="preload" href="assets/posters/hero-variant-06.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": "SceneMosaic: Efficient and Diverse Simulation-Ready Scene Generation via Hybrid Agentic Layout Evolution",
+        "abstract": "Diverse and simulation-ready indoor scenes are essential for interactive entertainment and embodied AI, yet their scalable generation remains challenging. SceneMosaic obtains an initial candidate from a learned image-based prior and evolves it through VLM agents, decomposing a scene into independent local units that evolve separately before global composition via Cartesian product. On SceneEval-100 it matches the strongest agentic baseline in semantic layout quality with a 24x speedup.",
+        "author": [
+          { "@type": "Person", "name": "Xingjian Ran", "affiliation": { "@type": "Organization", "name": "The University of Hong Kong" } },
+          { "@type": "Person", "name": "Xiaoye Mo", "affiliation": { "@type": "Organization", "name": "University of Electronic Science and Technology of China" } },
+          { "@type": "Person", "name": "Sihao Liu", "affiliation": { "@type": "Organization", "name": "The University of Hong Kong" } },
+          { "@type": "Person", "name": "Jianyu Zhang", "affiliation": { "@type": "Organization", "name": "The University of Hong Kong" } },
+          { "@type": "Person", "name": "Li Luo", "affiliation": { "@type": "Organization", "name": "The University of Hong Kong" } },
+          { "@type": "Person", "name": "Bo Dai", "affiliation": { "@type": "Organization", "name": "The University of Hong Kong" } }
+        ],
+        "url": "https://rxjfighting.github.io/SceneMosaic/",
+        "image": "https://rxjfighting.github.io/SceneMosaic/assets/images/og-image.jpg",
+        "keywords": "3D scene generation, simulation-ready scenes, indoor scene synthesis, vision-language models, agentic layout evolution, embodied AI",
+        "codeRepository": "https://github.com/rxjfighting/SceneMosaic"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="wordmark" href="#top" aria-label="SceneMosaic home">
+          <span class="wordmark-mark" aria-hidden="true"></span>
+          <span>SceneMosaic</span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#gallery">Gallery</a>
+          <a
+            class="nav-paper"
+            href="assets/paper.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Paper <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+          aria-label="Open navigation"
+          data-menu-toggle
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+
+        <div class="hero-copy">
+          <h1>Scene<span>Mosaic</span></h1>
+          <p class="hero-title">
+            Efficient and Diverse Simulation-Ready Scene Generation via Hybrid
+            Agentic Layout Evolution
+          </p>
+
+          <div class="hero-authors">
+            <p class="authors">
+              <span>Xingjian Ran<sup>1,&#42;</sup></span>
+              <span>Xiaoye Mo<sup>2,&#42;</sup></span>
+              <span>Sihao Liu<sup>1</sup></span>
+              <span>Jianyu Zhang<sup>1</sup></span>
+              <span>Li Luo<sup>1</sup></span>
+              <span>Bo Dai<sup>1,&dagger;</sup></span>
+            </p>
+            <p class="affiliations">
+              <span><sup>1</sup>The University of Hong Kong</span>
+              <span><sup>2</sup>University of Electronic Science and Technology of China</span>
+            </p>
+            <p class="author-notes">
+              <span>&#42; Equal contribution.</span>
+              <span>&dagger; Corresponding author.</span>
+            </p>
+          </div>
+
+          <p class="hero-summary">
+            From a single reference image to a physically grounded 3D scene and
+            a diverse family of valid layout variants in minutes.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="assets/paper.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              Read paper <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-ghost" href="#gallery">Watch results <span aria-hidden="true">↓</span></a>
+            <a
+              class="button button-ghost"
+              href="https://github.com/rxjfighting/SceneMosaic"
+              target="_blank"
+              rel="noopener"
+            >
+              Code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="hero-media"
+          data-reveal
+          aria-label="SceneMosaic Base Scene and Layout Variant video comparisons"
+        >
+          <div class="hero-media-row" id="hero-row-a">
+            <div class="hero-media-head">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="#hero-row-a">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+            <div class="hero-media-grid">
+              <figure>
+                <span class="media-label"><i></i> Base scene</span>
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  poster="assets/posters/hero-base-00.webp"
+                  width="1280"
+                  height="720"
+                  data-lazy-video
+                  data-autoplay
+                  data-start-time="1.95"
+                  aria-label="Orbiting render of a SceneMosaic base scene"
+                >
+                  <source data-src="assets/videos/base-00.mp4" type="video/mp4" />
+                </video>
+              </figure>
+              <figure>
+                <span class="media-label media-label-accent"><i></i> Layout variant</span>
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  poster="assets/posters/hero-variant-00.webp"
+                  width="1280"
+                  height="720"
+                  data-lazy-video
+                  data-autoplay
+                  data-start-time="1.95"
+                  aria-label="Orbiting render of a SceneMosaic layout variant"
+                >
+                  <source data-src="assets/videos/variant-00.mp4" type="video/mp4" />
+                </video>
+              </figure>
+            </div>
+          </div>
+
+          <div class="hero-media-row" id="hero-row-b">
+            <div class="hero-media-head">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="#hero-row-b">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+            <div class="hero-media-grid">
+              <figure>
+                <span class="media-label"><i></i> Base scene</span>
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  poster="assets/posters/hero-base-06.webp"
+                  width="1280"
+                  height="720"
+                  data-lazy-video
+                  data-autoplay
+                  data-start-time="1.95"
+                  aria-label="Orbiting render of a SceneMosaic base living-room scene"
+                >
+                  <source data-src="assets/videos/base-06.mp4" type="video/mp4" />
+                </video>
+              </figure>
+              <figure>
+                <span class="media-label media-label-accent"><i></i> Layout variant</span>
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  poster="assets/posters/hero-variant-06.webp"
+                  width="1280"
+                  height="720"
+                  data-lazy-video
+                  data-autoplay
+                  data-start-time="1.95"
+                  aria-label="Orbiting render of a SceneMosaic living-room layout variant"
+                >
+                  <source data-src="assets/videos/variant-06.mp4" type="video/mp4" />
+                </video>
+              </figure>
+            </div>
+          </div>
+
+          <p class="hero-media-caption">
+            Each row: one reference, two physically grounded arrangements. All are generated by SceneMosaic.
+          </p>
+        </div>
+
+        <a class="scroll-cue" href="#overview">
+          <span>Explore the research</span>
+          <span class="scroll-line" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <section class="section overview" id="overview">
+        <div class="section-label" data-reveal>
+          <span>01</span>
+          <p>Overview</p>
+        </div>
+        <div class="section-heading" data-reveal>
+          <p class="kicker">The core idea</p>
+          <h2>Fast priors. Deliberate agents.<br />Many valid worlds.</h2>
+        </div>
+        <div class="abstract-layout">
+          <p class="lead" data-reveal>
+            SceneMosaic combines fast image-based layout priors with local
+            agentic evolution, turning a single reference into a diverse family
+            of simulation-ready layouts.
+          </p>
+          <div class="abstract-copy" data-reveal>
+            <p>
+              Diverse and simulation-ready indoor scenes are essential for
+              interactive entertainment and embodied AI, yet scalable generation
+              remains challenging. Agentic text-to-3D pipelines can generate
+              high-fidelity scenes but require costly iterative placement and
+              refinement. Parametric image-to-3D models are fast, yet often produce
+              imprecise and physically invalid layouts.
+            </p>
+            <p>
+              SceneMosaic obtains an initial candidate from a learned image-based
+              prior, then evolves it through VLM agents. By decomposing a scene into
+              independent local units and composing their variants through Cartesian
+              products, the framework delivers efficiency, physical validity, and
+              structured diversity together.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-grid">
+          <article class="challenge-card" data-reveal>
+            <p class="card-index">A</p>
+            <h3>Agentic text-to-3D</h3>
+            <p>Semantically coherent and physically strong, but often requires hours of iterative tool use.</p>
+            <span class="tradeoff tradeoff-slow">High fidelity · Slow</span>
+          </article>
+          <article class="challenge-card" data-reveal>
+            <p class="card-index">B</p>
+            <h3>Image-to-3D priors</h3>
+            <p>Fast feed-forward initialization, but prone to floating, collision, clipping, and boundary errors.</p>
+            <span class="tradeoff tradeoff-fragile">Fast · Physically fragile</span>
+          </article>
+          <article class="challenge-card challenge-card-featured" data-reveal>
+            <p class="card-index">C</p>
+            <h3>SceneMosaic</h3>
+            <p>Uses image priors for speed, agents for refinement, and local evolution for combinatorial diversity.</p>
+            <span class="tradeoff tradeoff-balanced">Fast · Valid · Diverse</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section method" id="method">
+        <div class="section-label" data-reveal>
+          <span>02</span>
+          <p>Method</p>
+        </div>
+        <div class="section-heading section-heading-split" data-reveal>
+          <div>
+            <p class="kicker">Hybrid agentic layout evolution</p>
+            <h2>A scene pipeline built around locality.</h2>
+          </div>
+          <p>
+            Reconstruct and structure the scene, ground it with physics, evolve
+            local units with Critic–Actor agents, then select representative
+            compositions with a novelty-aware objective.
+          </p>
+        </div>
+
+        <figure class="paper-figure method-figure" data-reveal>
+          <button
+            class="figure-launch"
+            type="button"
+            data-zoom-src="assets/images/pipeline.webp"
+            data-zoom-alt="SceneMosaic method overview: reconstruction, physical stabilization, local agentic evolution, and diversity-driven composition."
+            aria-label="Open the method overview at full resolution"
+          >
+            <img
+              src="assets/images/pipeline.webp"
+              width="2957"
+              height="1521"
+              loading="lazy"
+              decoding="async"
+              alt="SceneMosaic pipeline showing scene reconstruction, physics-based layout stabilization, Critic-Actor evolution, and diversity-driven composition."
+            />
+          </button>
+          <figcaption>
+            The full SceneMosaic pipeline. Open the figure to inspect object relations,
+            local repair, and novelty-aware selection.
+          </figcaption>
+        </figure>
+
+        <ol class="method-steps">
+          <li data-reveal>
+            <div class="step-top"><span>01</span><i></i></div>
+            <h3>Reconstruct &amp; structure</h3>
+            <p>
+              Register objects, refine instance masks, reconstruct per-object meshes,
+              and organize the scene into anchor-centered local units with explicit
+              support and containment relations.
+            </p>
+            <ul>
+              <li>Perception agent + SAM3</li>
+              <li>Per-object SAM3D reconstruction</li>
+              <li>Hierarchical scene tree</li>
+            </ul>
+          </li>
+          <li data-reveal>
+            <div class="step-top"><span>02</span><i></i></div>
+            <h3>Physically stabilize</h3>
+            <p>
+              Correct containment, apply anchor-aware gravity, and ground each local
+              unit before agentic refinement begins.
+            </p>
+            <ul>
+              <li>Containment correction</li>
+              <li>Anchor-dependent gravity</li>
+              <li>Collision-hull validation</li>
+            </ul>
+          </li>
+          <li data-reveal>
+            <div class="step-top"><span>03</span><i></i></div>
+            <h3>Critic–Actor evolution</h3>
+            <p>
+              Agents inspect orthographic layouts, repair semantic and physical
+              errors, and evolve local variants in parallel while memory prevents
+              cyclic edits.
+            </p>
+            <ul>
+              <li>Orthographic 2D abstraction</li>
+              <li>Symbolic pose updates</li>
+              <li>Cross-unit constraints</li>
+            </ul>
+          </li>
+          <li data-reveal>
+            <div class="step-top"><span>04</span><i></i></div>
+            <h3>Compose for diversity</h3>
+            <p>
+              Assemble validated local variants, reject invalid scenes, and select a
+              compact set with novelty-aware dynamic max-min search.
+            </p>
+            <ul>
+              <li>Cartesian variant assembly</li>
+              <li>Position + distance + rotation</li>
+              <li>Dynamic representative selection</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="diversity-band">
+        <div class="diversity-copy" data-reveal>
+          <p class="kicker kicker-light">Combinatorial scene diversity</p>
+          <h2>Structured alternatives.</h2>
+          <p>
+            Local units are independently evolved, validated, and recombined. A
+            novelty-aware distance then preserves the most distinct global layouts
+            without sacrificing attach and contain relations.
+          </p>
+          <div class="diversity-principles">
+            <span><strong>Local evolution</strong><small>Independent anchor-centered edits</small></span>
+            <span><strong>Physical validation</strong><small>Grounded layouts before composition</small></span>
+          </div>
+        </div>
+        <figure class="diversity-figure" data-reveal>
+          <button
+            class="figure-launch"
+            type="button"
+            data-zoom-src="assets/images/diversity.webp"
+            data-zoom-alt="Four examples comparing SceneMosaic base scenes with structurally diverse layout variants."
+            aria-label="Open the diversity figure at full resolution"
+          >
+            <img
+              src="assets/images/diversity.webp"
+              width="2866"
+              height="1050"
+              loading="lazy"
+              decoding="async"
+              alt="SceneMosaic base and variant scene pairs across production and domestic spaces."
+            />
+          </button>
+        </figure>
+      </section>
+
+      <section class="section results" id="results">
+        <div class="section-label" data-reveal>
+          <span>03</span>
+          <p>Results</p>
+        </div>
+        <div class="section-heading section-heading-split" data-reveal>
+          <div>
+            <p class="kicker">Fast scene generation</p>
+            <h2>Realistic scenes, generated in minutes.</h2>
+          </div>
+          <p>
+            SceneMosaic turns a single reference into a complete, physically grounded
+            3D scene, then evolves new valid arrangements with only a small additional cost.
+          </p>
+        </div>
+        <div class="time-summary" data-reveal aria-label="SceneMosaic generation time">
+          <article>
+            <p>Average base scene</p>
+            <strong><span>~</span>8 <small>min</small></strong>
+            <em>Reconstruction, grounding, and agentic refinement</em>
+          </article>
+          <article>
+            <p>Each additional layout variant</p>
+            <strong><span>~</span>2 <small>min</small></strong>
+            <em>A new coherent arrangement from evolved local units</em>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery">
+        <div class="gallery-intro" data-reveal>
+          <div class="section-label section-label-dark">
+            <span>04</span>
+            <p>Generated scenes</p>
+          </div>
+          <div>
+            <p class="kicker kicker-light">Base ↔ Variant</p>
+            <h2>Walk around the layouts.</h2>
+            <p>
+              Each paired demo follows the same camera orbit, making the structural
+              changes easy to inspect. Videos load only as they approach the viewport.
+            </p>
+          </div>
+        </div>
+
+        <div class="scene-grid">
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>01</span><h3>Kitchen &amp; dining</h3></div>
+            <div class="scene-pair">
+              <figure>
+                <span>Base</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/base-09.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base kitchen and dining scene">
+                  <source data-src="assets/videos/base-09.mp4" type="video/mp4" />
+                </video>
+              </figure>
+              <figure>
+                <span>Variant</span>
+                <video muted loop playsinline preload="none" poster="assets/posters/variant-09.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant kitchen and dining scene">
+                  <source data-src="assets/videos/variant-09.mp4" type="video/mp4" />
+                </video>
+              </figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>02</span><h3>Library lounge</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-03.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base library lounge"><source data-src="assets/videos/base-03.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-03.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant library lounge"><source data-src="assets/videos/variant-03.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>03</span><h3>Laundry &amp; bath</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-02.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base laundry and bathroom scene"><source data-src="assets/videos/base-02.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-02.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant laundry and bathroom scene"><source data-src="assets/videos/variant-02.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>04</span><h3>Bright living room</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-04.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base bright living room"><source data-src="assets/videos/base-04.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-04.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant bright living room"><source data-src="assets/videos/variant-04.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>05</span><h3>Dining study</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-07.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base dining study"><source data-src="assets/videos/base-07.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-07.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant dining study"><source data-src="assets/videos/variant-07.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>06</span><h3>Utility workshop</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-01.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base utility workshop"><source data-src="assets/videos/base-01.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-01.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant utility workshop"><source data-src="assets/videos/variant-01.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>07</span><h3>Bedroom lounge</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-05.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base bedroom lounge"><source data-src="assets/videos/base-05.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-05.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant bedroom lounge"><source data-src="assets/videos/variant-05.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>08</span><h3>Kitchen workspace</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-08.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base kitchen workspace"><source data-src="assets/videos/base-08.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-08.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant kitchen workspace"><source data-src="assets/videos/variant-08.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="scene-card" data-scene-card data-reveal>
+            <div class="scene-card-head"><span>09</span><h3>Contemporary living room</h3></div>
+            <div class="scene-pair">
+              <figure><span>Base</span><video muted loop playsinline preload="none" poster="assets/posters/base-06.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Base contemporary living room"><source data-src="assets/videos/base-06.mp4" type="video/mp4" /></video></figure>
+              <figure><span>Variant</span><video muted loop playsinline preload="none" poster="assets/posters/variant-06.webp" width="1280" height="720" data-lazy-video data-autoplay aria-label="Variant contemporary living room"><source data-src="assets/videos/variant-06.mp4" type="video/mp4" /></video></figure>
+            </div>
+            <div class="scene-card-foot">
+              <p><span>Base scene</span><i aria-hidden="true">↔</i><span>Layout variant</span></p>
+              <button class="hero-video-control" type="button" data-video-toggle="self">
+                <span class="control-dot" aria-hidden="true"></span>
+                <span data-control-label>Pause pair</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark wordmark-footer" href="#top">
+        <span class="wordmark-mark" aria-hidden="true"></span><span>SceneMosaic</span>
+      </a>
+      <p>Efficient and diverse simulation-ready scene generation.</p>
+      <div>
+        <a href="assets/paper.pdf" target="_blank" rel="noopener">Paper</a>
+        <a href="https://github.com/rxjfighting/SceneMosaic" target="_blank" rel="noopener">Code</a>
+        <a href="#method">Method</a>
+        <a href="#gallery">Videos</a>
+      </div>
+    </footer>
+
+    <dialog class="figure-dialog" data-figure-dialog aria-label="Full-resolution figure viewer">
+      <div class="dialog-toolbar">
+        <p>Drag or scroll to inspect the full-resolution figure.</p>
+        <button type="button" data-close-dialog aria-label="Close figure viewer">Close ×</button>
+      </div>
+      <div class="dialog-scroll">
+        <img alt="" data-dialog-image />
+      </div>
+    </dialog>
+
+    <noscript>
+      <p class="noscript-note">
+        JavaScript is disabled. All figures and text remain available; videos can be
+        opened directly from the assets/videos folder.
+      </p>
+    </noscript>
+  </body>
+</html>

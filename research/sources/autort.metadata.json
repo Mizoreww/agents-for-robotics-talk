@@ -1,0 +1,112 @@
+{
+  "key": "autort",
+  "url": "https://auto-rt.github.io/",
+  "final_url": "https://auto-rt.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "5dd540b661a57e277791ca718df51e97fc5a6debbbc5378e51b9fcfbed0fd119",
+  "chars": 8911,
+  "links": [
+    "https://auto-rt.github.io/static/pdf/AutoRT.pdf",
+    "http://arxiv.org/abs/2401.12963",
+    "https://en.wikipedia.org/wiki/Three_Laws_of_Robotics",
+    "https://interactive-language.github.io/",
+    "https://sites.google.com/view/bc-z/home",
+    "https://blog.research.google/2022/12/rt-1-robotics-transformer-for-real.html",
+    "https://robotics-transformer2.github.io/",
+    "https://nerfies.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/AutoRT_viz.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/Auto-RT.png"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env1.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env2.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env3.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env4.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env5.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/env6.jpg"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/fleetfraction.png"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/total_robots.png"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/autort_episodes.png"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/unique_tasks.png"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://auto-rt.github.io/static/videos/autort_time_lapse.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/arrangecups2x.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/fluffpillows2x.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/countobjects2x.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/stackboxes2x.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/diversity.png"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/picktable.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/wipecloth.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/pickfloor.gif"
+    },
+    {
+      "tag": "img",
+      "src": "https://auto-rt.github.io/static/images/fold.gif"
+    }
+  ]
+}

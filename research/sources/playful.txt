@@ -1,0 +1,159 @@
+Playful Agentic Robot Learning | RATs
+[#top]
+Playful Agentic
+Robot Learning
+Junyi Zhang1,*,†,
+Jiaxin Ge1,*,†,
+Hanjun Yoo1,†,
+Letian Fu1,‡,
+Zihan Yang2,‡,
+Yaowei Liu2,‡,
+Raj Saravanan1,‡
+Shaofeng Yin2,
+Justin Yu1,
+Dantong Niu1,
+Zirui Wang1,
+Roei Herzig1,
+Ken Goldberg1,
+Yutong Bai1
+David M. Chan1,
+Ion Stoica1,
+Angjoo Kanazawa1,
+Jiahui Lei1,§,
+Haiwen Feng1,2,§,
+Trevor Darrell1
+1University of California, Berkeley · 2Impossible Research
+*: project leads, ordered by coin flip; †,‡,§: equal contribution
+Code
+Paper
+arXiv
+Your browser does not support embedded video.
+[#overview]
+Contents
+Abstract
+Method
+Team
+Results
+Analysis
+BibTeX
+RATs learns before it is asked. The system uses self-directed play to
+propose useful manipulation tasks, solve them with a specialized robot-agent team,
+and distill successful behavior into callable code skills.
+Before downstream tasks arrive, RATs practices, diagnoses, and accumulates reusable skills.
+[#abstract] Abstract
+Current agentic robot systems can write executable Code-as-Policy programs, observe
+feedback, and revise behavior across attempts, but they remain largely task-driven.
+RATs studies Playful Agentic Robot Learning, where an embodied coding agent
+uses self-directed play as a continual skill-learning stage before downstream tasks
+arrive.
+During play, RATs proposes novel yet learnable tasks, plans and executes robot-code
+policies, verifies intermediate progress, diagnoses failures, retries with feedback,
+and distills successful executions into a persistent code skill library. The resulting
+skills improve held-out downstream tasks and can be plugged into other inference-time
+Code-as-Policy agents without model finetuning.
+[#method]
+Method
+Learning through purposeful play
+RATs turns autonomous interaction into a persistent, reusable skill library.
+01
+Find the competence frontier
+The task proposer favors rarely tried object-skill combinations that remain learnable: neither trivial nor impossible.
+02
+Plan and write robot code
+A planning agent retrieves relevant skills, while execution agents turn the grounded plan into a robot-control program.
+03
+Turn failures into feedback
+Goal and per-step verifiers localize failures. A diagnoser routes concrete feedback into retries or isolated SubAgent practice.
+04
+Carry skills into future tasks
+Successful routines become named code skills that can be retrieved, composed, and transferred to unseen environments.
+[#deep-dive]
+A team built around useful feedback
+RATs couples task proposal, team execution, verification, diagnosis, and memory updates.
+Next iteration
+[#team-cycle-arrowhead]
+01Proposal
+Choose what to practice
+The Task Proposer finds novel, learnable objectives grounded in the current scene and prior experience.
+02Planning
+Ground the attempt
+The planner turns each proposed task into ordered steps and retrieves only the skills relevant to those steps.
+03Execution
+Write and run code
+The Policy Writer generates executable robot-control programs. A SubAgent isolates persistent local bottlenecks.
+04Verification
+See what worked
+Goal and per-step verifiers separate final success from intermediate progress and make retries more targeted.
+05Memory
+Keep the useful parts
+Successful behavior becomes reusable code; failures become compact lessons that shape future practice.
+[#results]
+Results
+Play pays off downstream
+[#in-domain-heading] In-domain improvement
+Skills improve downstream performance.
++20.6pp
+LIBERO-PRO
++17.0pp
+MolmoSpaces
+[#generalization-heading] Cross-environment / sim-to-real generalization
+RATs skills plug into different simulation environments and real-world settings without task-specific model finetuning.
++8.9pp
+RoboSuite cross-environment transfer
++8.8pp
+Real-world transfer
+Result videos
+All
+Real world
+Simulation
+Close drawer
+Real-world manipulation with reusable robot skills.
+Cube transfer
+Real-world transfer of learned localization and transport routines.
+Open drawer
+Real-world manipulation with learned grasping and pulling routines.
+Wipe plate
+Real-world plate wiping with reusable robot skills.
+LIBERO
+Reusing learned skills across downstream simulation tasks.
+MolmoSpaces
+Composing learned skills for diverse articulated-object tasks.
+RoboSuite
+Transferring the learned skill library across simulation environments.
+[#analysis]
+Analysis
+What the robot learns while playing
+A
+Play broadens the practiced objective set
+Across iterations, the proposer explores object-skill combinations rather than repeatedly sampling the same easy behavior.
+Distribution of proposed play objectives.
+B
+Knowledge accumulates across play
+The persistent skill library lets useful routines survive beyond a single episode and become ingredients for later tasks.
+Growth of the learned library through play.
+C
+Skills compose differently by task
+Opening, closing, picking, and placement tasks retrieve distinct mixtures of learned perception, geometry, grasping, and motion helpers.
+Learned skill calls during MolmoSpaces evaluation.
+D
+Verification turns failures into reusable feedback
+Step-level checks expose where direct synthesis fails and give the agent concrete evidence for targeted retries and skill refinement.
+Verification and learned skills reduce repeated low-level synthesis failures.
+E
+Successful skills transfer beyond play
+Verified routines become persistent tools that can be retrieved and composed for downstream evaluation tasks.
+Skill lineage from autonomous play to downstream reuse.
+[#bibtex]
+Citation
+BibTeX
+@article{rats2026playful,
+title = {Playful Agentic Robot Learning},
+author = {Zhang, Junyi and Ge, Jiaxin and Yoo, Hanjun and Fu, Letian and Yang, Zihan and Liu, Yaowei and Saravanan, Raj and Yin, Shaofeng and Yu, Justin and Niu, Dantong and Wang, Zirui and Herzig, Roei and Goldberg, Ken and Bai, Yutong and Chan, David M. and Stoica, Ion and Kanazawa, Angjoo and Lei, Jiahui and Feng, Haiwen and Darrell, Trevor},
+journal = {arXiv preprint arXiv:2606.19419},
+year = {2026}
+}
+RATs
+Playful Agentic Robot Learning
+Website design inspired by the
+ECHO project page,
+which is modified from Nerfies.

@@ -1,0 +1,185 @@
+- link "跳到主要内容"
+- link "无障碍功能帮助":
+  - /url: https://support.google.com/websearch/answer/181196?hl=zh-CN
+- search:
+  - link "Google 首页":
+    - /url: https://www.google.com/webhp?hl=zh-CN&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQPHoECAYQBA
+  - combobox "搜索": site:x.com Astra real2sim 2026 site:x.com Astra real2sim 2026
+  - button "清除":
+  - button "按语音搜索":
+  - button "按图搜索":
+  - button "搜索":
+- button "设置":
+- button "分享":
+- button "Google 应用":
+- link "登录":
+  - /url: https://accounts.google.com/ServiceLogin?hl=zh-CN&passive=true&continue=https://www.google.com/search%3Fq%3Dsite%253Ax.com%2BAstra%2Breal2sim%2B2026&ec=futura_srp_og_si_72236_p
+  - generic: 登录
+- navigation:
+  - list:
+    - link "AI 模式":
+      - /url: /search?q=site:x.com+Astra+real2sim+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&udm=50&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&vsint=&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQ2J8OegQIFBAD&cshid=1789006494920836
+      - generic: AI 模式
+    - link "全部" [disabled]:
+      - generic: 全部
+    - link "图片":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&udm=2&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&q=site:x.com+Astra+real2sim+2026&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQtKgLegQIGRAB&cshid=1789006494920836
+      - generic: 图片
+    - link "购物":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&udm=28&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&q=site:x.com+Astra+real2sim+2026&ved=1t:220175&ictx=111&cshid=1789006494920836
+      - generic: 购物
+    - link "视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&udm=7&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&q=site:x.com+Astra+real2sim+2026&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQtKgLegQIGBAB&cshid=1789006494920836
+      - generic: 视频
+    - link "新闻":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&q=site:x.com+Astra+real2sim+2026&tbm=nws&source=lnms&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQ0pQJegQIFxAB&cshid=1789006494920836
+      - generic: 新闻
+    - link "短视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&udm=39&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm668fbRC_a7Vhb8DCgbMq8eqV8bT1VY7Sa-SsVne4NkFAg-ElnSWMW63AB4N3KbFYyB0kwClcDfGUnk_oRIrPZ0hAGT6517L7gYdsPFd4a6KbRcX26T70kISH9DBqO0LhT-eHpOCFmWGk0nJTR68rZI5bJgo67lIY-bQUqE1RlkxpVlWAhCh5atCfRA3prHE-C27ZQ&q=site:x.com+Astra+real2sim+2026&sa=X&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQs6gLegQIFhAB&cshid=1789006494920836
+      - generic: 短视频
+    - button "更多过滤条件":
+      - generic "更多过滤条件":
+        - generic: 更多
+  - button "工具":
+    - generic: 工具
+- heading "搜索结果" [level=1]
+- main:
+  - heading "Web results" [level=2]
+  - link "Reposts by Boyuan Chen (@BoyuanChen0) / ... X https://x.com › BoyuanChen0 › reposts":
+    - /url: /goto?url=CAESWQHrOzAV3zZRll8lINRbTsvTeHEu4bPF5m-aiK9v2bnFrMWbnQJsEmCcelE0nyauKEIFduxFZXSq_nV4H1PzX0YX0ljuoJ2mxzH-9YQ4uuYN-BzWMKnsNL_v
+    - heading "Reposts by Boyuan Chen (@BoyuanChen0) / ..." [level=3]
+    - generic: X
+    - generic: https://x.com › BoyuanChen0 › reposts
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESqAEB6zswFajW8ytz4OD_CORwz4eILrS5YmV5wBl0HJMRtKeuWqwpzcIikLG-RK6906IRE8jbkE7E7ucOx3LRZNH8r29dnDp1Ce2pHvtGZEpEWgxG01jAr1XFEidHroAms6cyRiKTScckz9MFV93duc7kIwYkIN7F2CSNHQ8FQOGGmOz_kjx9XGjQ6-MdT11FoSiaLrHOgb9n_rHW4DP0ODd5xOk9OVdnABI
+  - button "关于这条结果的详细信息":
+  - text: This is GPT-6
+  - emphasis: Astra
+  - text: . Anything you can do on a computer,
+  - emphasis: Astra
+  - text: "can do for you ... New Paper: \"Scalable"
+  - emphasis: Real2Sim
+  - text: ": Physics-Aware Asset Generation via ..."
+  - link "Reposts by Chris Paxton (@chris_j_paxton) ... X https://x.com › chris_j_paxton › reposts":
+    - /url: /goto?url=CAESXAHrOzAVEUcyiyYbdo2e5lBvIVoTqFq0kuhSEacOP42g8RTUF2YwSEJeYK-dD1wou56kZylDKCGfD8mXVtmS9_p5kQvfI1TovF4WBgLfj0u68S3uwAwpv6kZCvSK
+    - heading "Reposts by Chris Paxton (@chris_j_paxton) ..." [level=3]
+    - generic: X
+    - generic: https://x.com › chris_j_paxton › reposts
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESqwEB6zswFYIHRYC_VqC2fKqeEiEzfejWvAKtx_lgyHaDY0C2Pv8ZgNBZkB-75406zJ4JR0csYnKj7h1iPb7-mHbuEDvcx1pSlVSM_LIm_pjc3iHsqBl4h4e-YoqIpvMysQwEeTf095PfkJJnoZiijzxiN5DSGOOT0FXZnZhm64yf_L1j_WWGhwkt5RVrQtkEDGNPmAN9_-dZcvoxGVsUJfbn9oJF5-vxSK2mZew
+  - button "关于这条结果的详细信息":
+  - text: GPT-6 does
+  - emphasis: real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras, ...
+  - link "atharva ☆ (@k7agar) / X X https://x.com › all":
+    - /url: /goto?url=CAESUAHrOzAVCsEyR-obF4Jaud7tABxGimVxr5DdKtPaLu3rlaFZyQ_W1YkmEfS0HEXstAJnjxOb6iDGValmSAu-LZFyVvBqTiumf-UtFHKSD6Db
+    - heading "atharva ☆ (@k7agar) / X" [level=3]
+    - generic: X
+    - generic: https://x.com › all
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESnwEB6zswFZFRKC0-yNn628sm7OAMwCj2Czi0cxyy0-wf9sb5fooulmhSiVsFSnYIUY5SGnJsYyBRlS47qN9BdZF1gzXOj7d9VQa5BYXtDsOHM7qV81hsRH4ywFuLuMuIL5f4Fctcd4oHjAzzFfcVvLsAn7a-mVwvMzS_0jJFXVWcBRJ_zHPtSqggCNxayr5dTwvozGTqaSlssvja47evI6o
+  - button "关于这条结果的详细信息":
+  - generic: 5天前 —
+  - text: From ChatGPT to o1 to
+  - emphasis: Astra
+  - text: in 4 years. AGI has arrived. Congratulations @OpenAI team. 400K GPUs coming online next.
+  - link "Chris Paxton (@chris_j_paxton) / X X · chris_j_paxton 超过 3.6万位关注者":
+    - /url: /goto?url=CAESVAHrOzAV9uqlSr2x2R6I6RHlZsLpKC4qvZL-Fege9n8cOtjNGb-yvWwT3h0we8YZHTVnx_Qb96eo2OSnOfWIm0sGxx1xv-Am5TGx-ghiPI1DgxYAiA
+    - heading "Chris Paxton (@chris_j_paxton) / X" [level=3]
+    - generic: X · chris_j_paxton
+    - generic: 超过 3.6万位关注者
+  - button "关于这条结果的详细信息":
+  - text: GPT-6 does
+  - emphasis: real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated ...
+  - link "️Darth thromBOOzyt - krasmanalderey X https://x.com › krasmanalderey › all":
+    - /url: /goto?url=CAESWAHrOzAVTxpj-c492C78DxpSDvtcf_uP9ykC5Y9XoXxFG2ReVT39pk_jMVnz2uvzVxz2dQ-jVF58njubaiDTImE5iStHPYkMyy2IWEI0_veUK4mBLDwSlnM
+    - heading "️Darth thromBOOzyt - krasmanalderey" [level=3]
+    - generic: X
+    - generic: https://x.com › krasmanalderey › all
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESpwEB6zswFXM9sr3pS3vOr0XsflUs2nx958XcSZS6KT-RP-mBRyj-nSDpjfcLuxIf5_Q-926yW7ZXJHLAxrpMijo5Idwr_UkIqtJtUR8aaK1IBCUDqNouCOW_-wiX3oUglJRaenotSKmgYMBuPOepBu5VJRQW6tRhLnV6Ffh_Q2QgYo3L7kC1J-fK9dWneSwuyCLnvl9ZtJu3wH9XsCzo5NYHqgFFZZ_Ngw
+  - button "关于这条结果的详细信息":
+  - emphasis: Astra
+  - text: has been the largest-feeling jump in a model release for me in a while, because it seems to complete dramatically more random tasks in my vague "surely ...
+  - link "Intercognitive X · Intercognitive 超过 1090位关注者":
+    - /url: /goto?url=CAESVAHrOzAV-JO6MDzQbg6MHgHHzBnJOCkjav2F2kEC-2tJqw5bkR_N2gJ9838eWK58Fd3u7vasUj3-zjb5Q0_Mt7x-HryVAM_WoayRAyr-PvO20XSQwg
+    - heading "Intercognitive" [level=3]
+    - generic: X · Intercognitive
+    - generic: 超过 1090位关注者
+  - button "关于这条结果的详细信息":
+  - text: GPT-6 does
+  - emphasis: real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras, ...
+  - link "oprydai - Mustafa. X https://x.com › oprydai › all":
+    - /url: /goto?url=CAESXgHrOzAVq2zQizXbSqTJqWYDaQy5WN8Et_dXISMFaKei6yvkLrIcRScjeWb6YRXnicaMhbjfHtz_NCsR546MAdcQ82rXB9waIT7cGh7yEByK1_-lDL4ZTt7VLS1M4RQ
+    - heading "oprydai - Mustafa." [level=3]
+    - generic: X
+    - generic: https://x.com › oprydai › all
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESrwEB6zswFfLl6oi7ieiJkY9kkcz1DgqLwJXyofRsObVtyl31j5WAYIGstd7eGIPHT6_mXAYFPO1iz-OnSEJrVITaaaagUKrOWIQ6Ckx1wU8q1QgP3e5xzc6Ze5g4TrTm4jJvs1cBXVYwLQTG3o9xn1MxWZrLRe4CFSRxFIKIVZnUE9bXRzlHNGCJ4CO8QSWR0qzMHPHzQ3B5YpNK8EDo6TKYggPQhrNfthdj6n1UiicG
+  - button "关于这条结果的详细信息":
+  - generic: Introducing Muse, the personal agent that understands your goals and works 24/7 to get things done for you.
+  - link "Daniel Mika (@DanielMika_) / X X · DanielMika_ 超过 140位关注者":
+    - /url: /goto?url=CAESUQHrOzAVn_yEgkBuhyYzEJNHrXA1eGUsoOgpFpB_nit4hZVsLO31gzEHMmeDTxEsWE-8CNX6SvRRVz3n8l3ns1eqt3dIb_l6AZJsNwmqfXlD8g
+    - heading "Daniel Mika (@DanielMika_) / X" [level=3]
+    - generic: X · DanielMika_
+    - generic: 超过 140位关注者
+  - button "关于这条结果的详细信息":
+  - text: How much in
+  - emphasis: real 2 sim
+  - text: can be fully automated today? I assume computer use / coding agents can solve some stuff out of the box. But how people do things like ...
+  - link "Jim Fan (@DrJimFan) / X X https://x.com › DrJimFan › all":
+    - /url: /goto?url=CAESUgHrOzAVlIfExcvkRHZ_mp3EC-unE0Lnvra-WmiGybk4SY7yam65irBw-_wmBnBc0eXv6L2M-brOD40yYB4xXoZnbqyFxMhxS6Y2UQs2sCwOtHY
+    - heading "Jim Fan (@DrJimFan) / X" [level=3]
+    - generic: X
+    - generic: https://x.com › DrJimFan › all
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESoQEB6zswFeOwAMswVui3aBEihodyaUknR1itMX_RAdh8zNsthk-PnV23EYYhAVa_b-zYbXDFsdH4V6GmSf1fL-Abja2T8g3XnhjdHHp76d6C8eiiiS-n1n8rADruuLzWPUAhgerBiztq-r-bcTRNSK6P6JbLXuDEYEXHhfpmozXpLy0iAtmH2bXsczjyrqRuFVTbWuc8-9onHrLCN2v97ePoBw
+  - button "关于这条结果的详细信息":
+  - generic: "Introducing Atlas: The world's first multimodal world model that generates image and video frames with pixel-perfect camera control and reconstructs them in 3D."
+  - link "huaijiang (@huaijiangzhu) / X X · huaijiangzhu 超过 2900位关注者":
+    - /url: /goto?url=CAESUgHrOzAVcAJuJUdsjndX9Z5iFmzwpN7xLkR3dLLDtkKwTIXNb6aEzD_B6d4Mhp8-R9o4C0FvwjCWqWzRMGqv5enA3CdU37vq1kYg6y31_8REdtg
+    - heading "huaijiang (@huaijiangzhu) / X" [level=3]
+    - generic: X · huaijiangzhu
+    - generic: 超过 2900位关注者
+  - button "关于这条结果的详细信息":
+  - text: GPT-6 does
+  - emphasis: real2sim
+  - text: end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras, ...
+  - navigation:
+    - heading "网页导航" [level=1]
+    - text: "1"
+    - link "Page 2":
+      - /url: /search?q=site:x.com+Astra+real2sim+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&ei=6hGiaonjHJWpxc8P6c20oQc&start=10&sa=N&sstk=AS6-VmLJ9hKb6ECHfps9EBLcoupA7luswpXruWa5S-HD9qa-I6POR8sSaZGEN543AaFJoOkZvmoOeJc8aixhtyH013ORp206Oxlt-g&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQ8tMDegQIKhAE&cshid=1789006494920836
+      - text: "2"
+    - link "Page 3":
+      - /url: /search?q=site:x.com+Astra+real2sim+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&ei=6hGiaonjHJWpxc8P6c20oQc&start=20&sa=N&sstk=AS6-VmLJ9hKb6ECHfps9EBLcoupA7luswpXruWa5S-HD9qa-I6POR8sSaZGEN543AaFJoOkZvmoOeJc8aixhtyH013ORp206Oxlt-g&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQ8tMDegQIKhAG&cshid=1789006494920836
+      - text: "3"
+    - heading "下一页" [level=2]:
+      - link "下一页":
+        - /url: /search?q=site:x.com+Astra+real2sim+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt8UzGrUChEFGAfJNWhkIsC5QURqw:1789006314477&ei=6hGiaonjHJWpxc8P6c20oQc&start=10&sa=N&sstk=AS6-VmLJ9hKb6ECHfps9EBLcoupA7luswpXruWa5S-HD9qa-I6POR8sSaZGEN543AaFJoOkZvmoOeJc8aixhtyH013ORp206Oxlt-g&ved=2ahUKEwiJgIDv9-KWAxWVVPEDHekmLXQQ8NMDegQIKhAI&cshid=1789006494920836
+        - generic: 下一页
+  - navigation
+- contentinfo:
+  - heading "页脚链接" [level=1]
+  - button "洛杉矶 加利福尼亚 - 是根据您的 IP 地址推断出来的":
+    - generic: 洛杉矶 加利福尼亚
+    - text: "-"
+    - generic: 是根据您的 IP 地址推断出来的
+  - text: "-"
+  - button "更新位置信息": 更新位置信息
+  - link "帮助":
+    - /url: https://support.google.com/websearch/?p=ws_results_help&hl=zh-CN&fg=1
+  - link "发送反馈":
+    - /url: "#"
+  - link "隐私权":
+    - /url: https://policies.google.com/privacy?hl=zh-CN&fg=1
+  - link "条款":
+    - /url: https://policies.google.com/terms?hl=zh-CN&fg=1

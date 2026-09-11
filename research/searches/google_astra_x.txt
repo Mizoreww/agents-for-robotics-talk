@@ -1,0 +1,226 @@
+- link "跳到主要内容"
+- link "无障碍功能帮助":
+  - /url: https://support.google.com/websearch/answer/181196?hl=zh-CN
+- search:
+  - link "Google 首页":
+    - /url: https://www.google.com/webhp?hl=zh-CN&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQPHoECAYQBA
+  - combobox "搜索": site:x.com "Astra" robot September 2026 site:x.com "Astra" robot September 2026
+  - button "清除":
+  - button "按语音搜索":
+  - button "按图搜索":
+  - button "搜索":
+- button "设置":
+- button "分享":
+- button "Google 应用":
+- link "登录":
+  - /url: https://accounts.google.com/ServiceLogin?hl=zh-CN&passive=true&continue=https://www.google.com/search%3Fq%3Dsite%253Ax.com%2B%2522Astra%2522%2Brobot%2BSeptember%2B2026&ec=futura_srp_og_si_72236_p
+  - generic: 登录
+- navigation:
+  - list:
+    - link "AI 模式":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&udm=50&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&vsint=&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ2J8OegQIFBAD
+      - generic: AI 模式
+    - link "全部" [disabled]:
+      - generic: 全部
+    - link "购物":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&udm=28&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&q=site:x.com+%22Astra%22+robot+September+2026&ved=1t:220175&ictx=111
+      - generic: 购物
+    - link "图片":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&udm=2&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&q=site:x.com+%22Astra%22+robot+September+2026&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQtKgLegQIGhAB
+      - generic: 图片
+    - link "视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&udm=7&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&q=site:x.com+%22Astra%22+robot+September+2026&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQtKgLegQIFhAB
+      - generic: 视频
+    - link "新闻":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&q=site:x.com+%22Astra%22+robot+September+2026&tbm=nws&source=lnms&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ0pQJegQIFxAB
+      - generic: 新闻
+    - link "短视频":
+      - /url: /search?sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&udm=39&fbs=ABfTbFUhNGvvPEUFOvrsPMHwBXgOm8tUDlxvAZfQkoB3YicE1mGPZRYnWQnVfLvJ8o9wFhut1TkSNdyt_xTnG482-m8_jNwwcBkRKHcY9um8NsbEAOFH2PgxCmquuWOC10kDF9F_uuqfidFF4lS8PqJGqgJ0NAF2kD3RnmOTdrbBY54yhG4Agx7o5njF0WEPInAEWtDhpyrGowj_aJvoJcpn3a5W1aPQyA&q=site:x.com+%22Astra%22+robot+September+2026&sa=X&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQs6gLegQIGBAB
+      - generic: 短视频
+    - button "更多过滤条件":
+      - generic "更多过滤条件":
+        - generic: 更多
+  - button "工具":
+    - generic: 工具
+- heading "搜索结果" [level=1]
+- main:
+  - heading "Web results" [level=2]
+  - link "\"i gave astra a robot, a paint brush, and a camera then ... X · cdngdev 1.8万+ 个赞 · 1天前":
+    - /url: /goto?url=CAESaAHrOzAVGeW-_auhbhLBv2ZFHtxOfdQybHnh5AARAl_HZ1_ug0SOObdPgpFr9YG3r8VZ8a-YeBR5SyRmHil-KeFl1EA9cZI3_iPnQ51PqUFaNtcCj7MMq4ovkEBw6HuTImO2Iqxjtkke
+    - heading "\"i gave astra a robot, a paint brush, and a camera then ..." [level=3]
+    - generic: X · cdngdev
+    - generic: 1.8万+ 个赞 · 1天前
+  - button "关于这条结果的详细信息":
+  - text: i gave
+  - emphasis: astra
+  - text: a
+  - emphasis: robot
+  - text: ", a paint brush, and a camera then asked it to paint the golden gate bridge in real life! it figured out how to control ..."
+  - link "Astra from @OpenAI took control of the SO- ... X · LeRobotHF 100+ 个赞 · 18小时前":
+    - /url: /goto?url=CAESagHrOzAVwLs_2CJwO4gI3bdKTwxVpX30GJddHW11RjhUQ4nxtB2O99hMTvhzezX5Erk3Eq11HPRezgfiXgTHAduVPDE7YKbuXxMa7CD7o0Bd3GaPEPQfJnN8zyCVsqHVLlO5dxf2p3xG6y8
+    - heading "Astra from @OpenAI took control of the SO- ..." [level=3]
+    - generic: X · LeRobotHF
+    - generic: 100+ 个赞 · 18小时前
+  - button "关于这条结果的详细信息":
+  - text: i gave
+  - emphasis: astra
+  - text: a
+  - emphasis: robot
+  - text: ", a paint brush, and a camera then asked it to ... GPT-6"
+  - emphasis: Astra
+  - text: launched
+  - emphasis: September 3, 2026
+  - text: in limited preview, going stable on ...
+  - link "What comes after GPT-6 Astra** The next model won't be a ... X · johnseach 3天前":
+    - /url: /goto?url=CAESagHrOzAVkYMcVD7l2yH2O37OD4Anb12LFdi0fZeryVcRQuoes44YrV3LDUIVSRdJeF3arNUg6pFAlOvWwzduKKd2TeOkxySPbmEuaggWl5StTCvVNDhC9W3eipqOvoPYbY-wsF6Qyuovk4E
+    - heading "What comes after GPT-6 Astra** The next model won't be a ..." [level=3]
+    - generic: X · johnseach
+    - generic: 3天前
+  - button "关于这条结果的详细信息":
+  - text: ...
+  - emphasis: Astra
+  - text: "** The next model won't be a bigger chatbot. It will be a coworker you leave on a machine for a week."
+  - emphasis: Astra
+  - text: shipped
+  - emphasis: 3 Sept 2026
+  - text: .
+  - link "OpenAI's GPT-6 Astra just painted the Golden Gate Bridge ... X · AGTPinsights 6小时前":
+    - /url: /goto?url=CAESbQHrOzAVTSWEx1Xbxt5hYUo51d8k85hi3qlPQcz4Z9G4rOJzkIJqNNBCXmL53quzc895FQhMnZgDBRte-U4gzvfBNKydbBHsieq34sehZtyRHmnXW9mawWqpePjRqOqs7LsNRGLtCsFPBNo7StQ
+    - heading "OpenAI's GPT-6 Astra just painted the Golden Gate Bridge ..." [level=3]
+    - generic: X · AGTPinsights
+    - generic: 6小时前
+  - button "关于这条结果的详细信息":
+  - emphasis: Astra
+  - text: figured out how to control the
+  - emphasis: robot
+  - text: on its own and improved with each attempt, all captured in a timelapse posted
+  - emphasis: September
+  - text: 8,
+  - emphasis: "2026"
+  - text: .
+  - link "What X is saying about OpenAI's Astra X https://x.com › @Scobleizer":
+    - /url: /goto?url=CAESbAHrOzAVItNFxl6wqCTf3EI5cmacs3fKUg7TLGjjszx4d497EKisYLtwFNWpnI94e_UlGcOGVKmM1GqgBjurIQKhIcu4JkJezTPPvAibLEWmteF26tfgZflgOemw8iyK4u2RpXDDI0KKkesmXg
+    - heading "What X is saying about OpenAI's Astra" [level=3]
+    - generic: X
+    - generic: https://x.com › @Scobleizer
+  - generic: ·
+  - link "翻译此页":
+    - /url: /goto?url=CAESvAEB6zswFS8vpWWw26kswD6gqmTEK658CY00PeAhDBmKFSQIVdwEJuiw8w5TKrj48a1LaBJqN2AfgODAMQDEaSUp1vCVCa5VnktqPeb3M24zP4j24nCv06B00-7E_3PPZ7C1VD3W-NoodtahlsGYSDl8qz1-gmGYMQv4k2Btmxr1fCIwCTjSe92VUJ92wj7n7HLIlzjn8uc24ifnlVk2WyI5tGBW2h85knPI31Iu7Vx5OkrsJ7vxLgO7iCokAQ
+  - button "关于这条结果的详细信息":
+  - generic: 4天前 —
+  - emphasis: Astra
+  - text: appears to mark a transition from AI that advises people about computer work to AI that can perform extended computer work. The surge of ...
+  - link "\"me as a kid. well the future of robots and ai together is ... X · shravi_aj 6 次赞 · 19小时前":
+    - /url: /goto?url=CAESagHrOzAVQuOZyYX360BADs3JWXHqOgY_0_YxQucoOhsb9b4oQu46H7m1y5l_PNRJHPICM4xuy2fxt87KHCfKjd-GMxAyr8A_qAfcpv6TxwvU3S3m799IXy2oqB5rcEcQDjdZsL516thaOgg
+    - heading "\"me as a kid. well the future of robots and ai together is ..." [level=3]
+    - generic: X · shravi_aj
+    - generic: 6 次赞 · 19小时前
+  - button "关于这条结果的详细信息":
+  - text: i gave
+  - emphasis: astra
+  - text: a
+  - emphasis: robot
+  - text: ", a paint brush, and a camera then asked it to ... GPT-6"
+  - emphasis: Astra
+  - text: launched
+  - emphasis: September 3, 2026
+  - text: in limited preview, going stable on ...
+  - link "astra trying to wipe the table, a more sustained and ... X · k7agar 190+ 个赞":
+    - /url: /goto?url=CAESZwHrOzAVo6NiMkjM6QLs6pU1uBz9V-W8VO-aD9iOLLwiO2nyaT8phyryfKfW_XwdjI9z-KybGCl08av_X_S2UKzaz1nlCXDVUfAmG8c57nE7ewCyc8RWffnNpKNPn4DWsi5ctfcix9g
+    - heading "astra trying to wipe the table, a more sustained and ..." [level=3]
+    - generic: X · k7agar
+    - generic: 190+ 个赞
+  - button "关于这条结果的详细信息":
+  - emphasis: astra
+  - text: trying to wipe the table, a more sustained and intentional task testing its capabilities looking into the chain of thought explains ...
+  - link "\"Astra designed a tendon-driven robot hand ... X · earthtojake 740+ 个赞":
+    - /url: /goto?url=CAESbAHrOzAVeZFonvRYx5cTF-0vT7_jMA2y8Xd94DLt8eU-rlyNvYawNxHMXtfJncHAP8o2VptWGA8XbrMuEZ2udnYPgUnu4m0UVkoc4qZHdJAf3hzMkC1ISRqzsBZdRq3tQQ--bdNL-G3nk9YtBg
+    - heading "\"Astra designed a tendon-driven robot hand ..." [level=3]
+    - generic: X · earthtojake
+    - generic: 740+ 个赞
+  - button "关于这条结果的详细信息":
+  - text: "Jake Fitzgerald on X: \""
+  - emphasis: Astra
+  - text: designed a tendon-driven
+  - emphasis: robot
+  - text: hand" ... The task took ~48 hours (and 3 usage resets lol) on
+  - emphasis: Astra
+  - text: High It wrote ~50k ...
+  - 'link "Min Choi on X: \"2. Astra beat all 48 levels of the \"I''m Not a ... X · minchoi 50+ 个赞"':
+    - /url: /goto?url=CAESaAHrOzAVxiV5UOwibKxvFYOhjn7k3UvK75ISZx8hMhDkYainluHfZJls2ZRBAgmq6CacZjO1XhXe0P7fFn-Hs0dqYS86hUNNy2H8YSVAHwPrPu0U2Tucm-cKhm4_F3ZVhcEW3B3IzLJs
+    - 'heading "Min Choi on X: \"2. Astra beat all 48 levels of the \"I''m Not a ..." [level=3]'
+    - generic: X · minchoi
+    - generic: 50+ 个赞
+  - button "关于这条结果的详细信息":
+  - emphasis: Astra
+  - text: beat all 48 levels of the "I'm Not a
+  - emphasis: Robot
+  - text: "\" game https:// ..."
+  - emphasis: Astra
+  - text: has successfully beat all 48 levels of the “I'm Not a
+  - emphasis: Robot
+  - text: "” game: 00:00. 8:10 PM ·"
+  - emphasis: Sep 7, 2026
+  - text: 8.9KViews.
+  - 'link "rajan agarwal on X: \"the limit of what Astra can do is ... X · _rajanagarwal 7 次赞"':
+    - /url: /goto?url=CAESbgHrOzAVux4k74IPbXDx5Ek39RM1qVYwCQHHl9yD7T_vV4eDgzdu5VvD8Wytxnm7cvDtUjmVb9XwxZUlOjowJkA9_ATnf0OStnXZf4ltPl7IXq_IgsF9WA12M74u0KPI5xMKl3WvUMgAaKeIMFic
+    - 'heading "rajan agarwal on X: \"the limit of what Astra can do is ..." [level=3]'
+    - generic: X · _rajanagarwal
+    - generic: 7 次赞
+  - button "关于这条结果的详细信息":
+  - text: i gave
+  - emphasis: astra
+  - text: a
+  - emphasis: robot
+  - text: ", a paint brush, and a camera then asked it to paint the golden gate bridge in real life! it figured out how to control ..."
+  - navigation:
+    - heading "网页导航" [level=1]
+    - text: "1"
+    - link "Page 2":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=10&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAE
+      - text: "2"
+    - link "Page 3":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=20&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAG
+      - text: "3"
+    - link "Page 4":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=30&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAI
+      - text: "4"
+    - link "Page 5":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=40&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAK
+      - text: "5"
+    - link "Page 6":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=50&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAM
+      - text: "6"
+    - link "Page 7":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=60&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAO
+      - text: "7"
+    - link "Page 8":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=70&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAQ
+      - text: "8"
+    - link "Page 9":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=80&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAS
+      - text: "9"
+    - link "Page 10":
+      - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=90&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8tMDegQIKhAU
+      - text: "10"
+    - heading "下一页" [level=2]:
+      - link "下一页":
+        - /url: /search?q=site:x.com+%22Astra%22+robot+September+2026&sca_esv=600a4712e594e016&sxsrf=APpeQnt5UulcVOpc9SV2zPAr5daZ6BCaig:1789006204586&ei=fBGiao21I5aUxc8Ps7m8qQo&start=10&sa=N&sstk=AS6-VmIz_DRayCe_7qT9htVMXe_shouVvmzZ0ORBXVTOyhXTsbgt6JBb8llLEzij3ndd-pp0rh7FDZZqeJMQwQbT_gkBRAkBZDTM0w&ved=2ahUKEwiN48y69-KWAxUWSvEDHbMcL6UQ8NMDegQIKhAW
+        - generic: 下一页
+  - navigation
+- contentinfo:
+  - heading "页脚链接" [level=1]
+  - button "洛杉矶 加利福尼亚 - 根据您的活动记录":
+    - generic: 洛杉矶 加利福尼亚
+    - text: "-"
+    - generic: 根据您的活动记录
+  - text: "-"
+  - button "更新位置信息": 更新位置信息
+  - link "帮助":
+    - /url: https://support.google.com/websearch/?p=ws_results_help&hl=zh-CN&fg=1
+  - link "发送反馈":
+    - /url: "#"
+  - link "隐私权":
+    - /url: https://policies.google.com/privacy?hl=zh-CN&fg=1
+  - link "条款":
+    - /url: https://policies.google.com/terms?hl=zh-CN&fg=1

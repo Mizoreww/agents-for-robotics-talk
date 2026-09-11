@@ -1,0 +1,340 @@
+Gemini Robotics — Google DeepMind
+Skip to main content
+[#chevron-left] [#chevron-right] [#expand-less] [#expand-more] [#arrow-back] [#arrow-forward] [#arrow-upward] [#arrow-downward] [#arrow-left] [#arrow-right] [#arrow-drop-up] [#arrow-drop-down] [#help] [#menu] [#more-vert] [#drive-pdf] [#file-download] [#open-in-new] [#phone] [#email] [#instagram] [#link] [#post-blogger] [#blogger] [#post-facebook] [#facebook] [#post-linkedin] [#linkedin] [#share] [#twitter] [#video-youtube] [#youtube] [#video-youtube-white] [#video-youtube-black] [#video-youtube-red] [#video-youtube-white] [#close] [#expand-all] [#play-circle-filled] [#search] [#error] [#pause-button] [#play-button] [#access-time] [#info] [#filter] [#checkmark] [#x] [#discord] [#reddit] [#tiktok] [#tiktok-color] [#google-color-logo] [#google-solid-logo] [#google-logo-adjustable] [#github]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Models
+[#submenu-1]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Research
+[#submenu-2]
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Science
+[#submenu-3]
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+About
+[#submenu-4]
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Build with Gemini Try Gemini
+Google DeepMind
+Google AI
+Learn about all our AI
+Google DeepMind
+Explore the frontier of AI
+Google Labs
+Try our AI experiments
+Google Research
+Explore our research
+Products and apps
+Gemini app
+Chat with Gemini
+Google AI Studio
+Build with our next-gen AI models
+Google Antigravity
+Our agentic development platform
+Models
+Research
+Science
+About
+Build with Gemini
+Try Gemini [#page-content]
+[#cover]
+[#carousel-8825dd09-8eb0-4978-a386-8a2ff9acc0f2]
+[#carousel-announcer-carousel-8825dd09-8eb0-4978-a386-8a2ff9acc0f2] Slide 1 of 4
+Gemini Robotics 2
+The intelligence layer to power any kind of robot
+Try Gemini Robotics ER 2
+Your browser does not support the video tag.
+Gemini Robotics 2
+Our most advanced VLA model: capable of intelligently controlling any type of robot, from bi-arms to full humanoids
+Learn more
+Your browser does not support the video tag.
+Gemini Robotics ER 2
+Our embodied reasoning model: capable of real-world understanding and complex, multi-step planning
+Learn more
+Try Gemini Robotics ER 2
+Your browser does not support the video tag.
+Gemini Robotics On-Device 2
+Our most efficient VLA model, optimized to run locally on robotic devices
+Learn more
+Your browser does not support the video tag.
+Explore the latest
+[#intro]
+Our models enable robots of every shape to think, act, and interact with the world around them. With delicate precision and full-body mastery, they autonomously solve a range of complex tasks – using their intelligence to figure out new situations on the fly.
+[#hero-film]
+Your browser does not support the video tag.
+[#embed-iframe-cf6e422f57274a41b6ebadcf80fcaea6]
+Models
+Capabilities
+Hands-on
+Partners
+Responsibility
+[#jump-links]
+[#models]
+Models
+Our vision-language-action (VLA) model and embodied reasoning (ER) model work together to interact with the physical world. Each has a specialist role, but they operate as one powerful and versatile system.
+[#card-group-carousel-b7f7b236-dc3c-4f55-baa2-3e265a13bcc7]
+[#carousel-announcer-card-group-carousel-b7f7b236-dc3c-4f55-baa2-3e265a13bcc7] Slide 1 of 3
+Gemini Robotics 2
+Our most advanced vision-language-action model (VLA) that converts vision and language input into motor control, enabling a robot to take action
+Learn more
+Gemini Robotics ER 2
+Our embodied reasoning model: capable of reasoning within physical spaces to make detailed plans, coordinating with humans and other robots
+Learn more
+Gemini Robotics On-Device 2
+A lightweight version of our VLA model, optimized to run locally on robotic hardware
+Learn more
+Gemini Robotics 2
+Our most advanced vision-language-action model (VLA) that converts vision and language input into motor control, enabling a robot to take action
+Learn more
+Gemini Robotics ER 2
+Our embodied reasoning model: capable of reasoning within physical spaces to make detailed plans, coordinating with humans and other robots
+Learn more
+Gemini Robotics On-Device 2
+A lightweight version of our VLA model, optimized to run locally on robotic hardware
+Learn more
+[#capabilities]
+Capabilities
+Gemini Robotics 2 is the next step on our journey towards general, useful robotics. It brings whole-body intelligence to humanoids, enables advanced dexterity, and can coordinate multiple robots to work together in shared spaces.
+[#carousel-fc4ec835-ba92-4b08-9c12-96284b41e12f]
+[#carousel-announcer-carousel-fc4ec835-ba92-4b08-9c12-96284b41e12f] Slide 1 of 6
+General
+Most robots are trained to do one specific task over and over. But Gemini Robotics 2 can complete a variety of tasks – even if it hasn’t been trained on them before. It’s able to adapt to new and unfamiliar situations on the fly.
+Powers any embodiment
+Can be adapted to any bi-arm robot in just a few hours, scaling its intelligence from arms to complex humanoid bodies.
+Advanced dexterity
+Enabling a new level of dexterity that enables robots to complete delicate actions requiring finesse, like screwing in a light bulb and tying knots.
+Intelligent whole-body control
+Controls entire humanoid bodies from feet to fingertips. Enabling robots to perform full-range human-like movements from bending to reaching.
+Agentic
+Understands and reasons within the real, physical world. Gemini Robotics 2 pairs deep spatial reasoning with long-horizon planning, enabling robots to map multi-step sequences and complete complex, unfamiliar tasks. Supports multi-robot collaboration, allowing two robots to collaborate, and divide labor to complete a single task.
+Interactive
+Understands and responds to everyday commands. Gemini Robotics 2 can explain its approach while performing an action, while users can redirect it without using technical language. This makes it ideal for instructing robots through volatile, hazardous environments.
+[#hands-on]
+Hands-on
+See how Gemini Robotics handles a range of different tasks.
+[#carousel-50552749-6907-4810-9b4f-42f9eb4884ff]
+[#carousel-announcer-carousel-50552749-6907-4810-9b4f-42f9eb4884ff] Slide 1 of 3
+Your browser does not support the video tag.
+[#embed-iframe-0a5ce34066d141de81b6932cd5838c7c]
+Intelligent whole-body control
+Controls entire humanoid robots from feet to fingertips, translating intent into whole-body control to reach, bend, and balance.
+Your browser does not support the video tag.
+[#embed-iframe-a0ea3e89b90b421da7bb60e2d774b410]
+Advanced dexterity
+Controls complex humanoid hands and parallel grippers to unlock a new level of physical dexterity.
+Your browser does not support the video tag.
+[#embed-iframe-b5adac02382c4aabb280fc52de450352]
+Multi-robot collaboration
+Enables different types of robots to communicate and work together to solve complex workflows a single robot could not do alone.
+[#partners]
+Research partners
+We collaborate with leading robotics hardware developers to push the frontiers of physical AI. Through our deep research partnerships, we're building the next generation of humanoid and general-purpose robots.
+Partner
+Agile Robots
+Learn more
+Partner
+Apptronik
+Learn more
+Partner
+Boston Dynamics
+Learn more
+[#trusted-testers]
+Become a trusted tester
+We're working with 100+ trusted testers — from enterprise automation leaders to cutting-edge robotics startups — to deploy, test, and guide the future of Gemini Robotics in the real world.
+If you're interested in testing our models, please share a few details to join the waitlist.
+Join the waitlist for early access
+[#responsibility]
+Responsibly advancing AI and robotics
+To ensure Gemini Robotics benefits humanity, we’ve taken a comprehensive approach to safety, from practical safeguards to collaborations with experts, policymakers, and our Responsibility and Safety Council.
+Learn more
+[#accelerator]
+Google DeepMind Accelerator
+Supporting the new generation of physical AI
+Our mission is to empower high potential, early stage startups through Google’s AI and Gemini Robotics models
+We’re helping transform their discoveries into market-leading ventures – and to power an era of intelligent physical AI.
+Learn more
+Follow us
+Sign up for updates on our latest innovations
+I accept Google's Terms and Conditions and acknowledge that my information will be used in accordance with Google's Privacy Policy.
+[#1-label]
+Sign up
+[#1-validation]
+[#1-response]
+Build AI responsibly to benefit humanity
+Models
+Gemini
+Gemini Omni
+Nano Banana
+Gemini Audio
+Gemma
+Genie
+Lyria
+Veo
+Research
+Gemini Robotics
+Breakthroughs
+Evals
+Publications
+Frontier safety
+Responsibility
+Science
+AlphaFold
+AlphaGenome
+WeatherNext
+AlphaEarth
+AlphaEvolve
+Products
+Gemini app
+Google AI Studio
+Google Antigravity
+Learn more
+About
+News
+Careers
+National Partnerships for AI
+Accelerator programs
+The Podcast
+About Google
+Google products
+Privacy
+Terms
+Cookies management controls

@@ -1,0 +1,77 @@
+DrEureka | Language Model Guided Sim-To-Real Transfer
+DrEureka:
+Language Model Guided Sim-To-Real Transfer
+Jason Ma*
+1,
+William Liang*1,
+Hungju Wang1,
+Sam Wang1,
+Yuke Zhu2,3,
+Linxi "Jim" Fan2,
+Osbert Bastani1,
+Dinesh Jayaraman1,
+1UPenn;
+2NVIDIA;
+3UT Austin;
+*Equal Contribution
+Corresponding authors: jasonyma@seas.upenn.edu, wjhliang@seas.upenn.edu
+Robotics: Science and Systems (RSS) 2024
+arxiv
+PDF
+Code
+Abstract
+Transferring policies learned in simulation to the real world is a promising strategy for acquiring robot skills at scale. However, sim-to-real approaches typically rely on manual design and tuning of the task reward function as well as the simulation physics parameters, rendering the process slow and human-labor intensive. In this paper, we investigate using Large Language Models (LLMs) to automate and accelerate sim-to-real design. Our LLM-guided sim-to-real approach requires only the physics simulation for the target task and automatically constructs suitable reward functions and domain randomization distributions to support real-world transfer. We first demonstrate our approach can discover sim-to-real configurations that are competitive with existing human-designed ones on quadruped locomotion and dexterous manipulation tasks. Then, we showcase that our approach is capable of solving novel robot tasks, such as quadruped balancing and walking atop a yoga ball, without iterative manual design.
+DrEureka Components
+Overview. DrEureka takes the task and safety instruction, along with environment source code, and runs Eureka to generate a regularized
+reward function and policy. Then, it tests the policy under different simulation conditions to build a reward-aware physics prior, which is
+provided to the LLM to generate a set of domain randomization (DR) parameters. Finally, using the synthesized reward and DR parameters,
+it trains policies for real-world deployment.
+Experiment Highlights
+In this section, we present the key qualitative results from our experiments, highlighting the robustness of DrEureka policies in the real-world yoga ball walking task as well as the
+best DrEureka outputs for all our benchmark tasks. Detailed quantitative experiments and comparisons can be found in the paper. All videos are played at 1x speed.
+DrEureka 5-Minute Uncut Deployment Video
+DrEureka Walking Globe Gallery
+DrEureka policy exhibits impressive robustness in the real-world, adeptly balancing and walking atop a yoga ball under various real-world, un-controlled terrain condition changes and disturbances.
+[#results-carousel]
+We also tried kicking or deflating the ball; DrEureka policy is robust to these disturbances and can recover from them!
+[#results-carousel]
+DrEureka Balancing on a Deflating Ball
+DrEureka Rewards, DR parameters, and Policies
+We evaluate DrEureka on 3 tasks, quadruped globe walking, quadruped locomotion, and dexterous cube rotation. In this demo, we visualize the unmodified best DrEureka reward and DR parameters
+for each
+task and visualize the policy deployed in the training simulation environment as well as the real-world environment.
+Simulation
+[#demo-video-1]
+[#expandedImg-1]
+Real
+[#demo-video-2]
+[#expandedImg-2]
+[#imgtext-1] Select an image above:
+[#answer-1] DrEureka responses shown within code block.
+[#answer-2]
+Qualitative Comparisons
+We have conducted systematic study on the benchmark quadrupedal locomotion task. Here, we present several qualitative results. See the full paper for details.
+Terrain Robustness. On the quadrupedal locomotion task, we also systematically evaluate DrEureka policies on several real-world terrains and find they remain robust and outperform policies
+trained using human-designed reward and DR configurations.
+The default as well as additional real-world environments to test DrEureka's robustness for quadrupedal locomotion.
+DrEureka performs consistently across different terrains and maintains advantages over Human-Designed.
+DrEureka Safety Instruction. DrEureka's LLM reward design subroutine improves upon Eureka by incorporating safety instructions. We find this to be critical for generating reward functions
+safe enough to be deployed in the real world.
+DrEureka Reward-Aware Physics Prior. Through extensive ablation studies, we find that using the initial Eureka policy to generate a reward-aware physics prior is crucial for the success of DrEureka.
+and then using LLM to sample DR parameters are critical for obtaining the best real-world performance.
+Failure Videos and Limitations
+Finally, we show several occasions when the robot falls from the ball. There are many avenues to further improve DrEureka. For example,
+DrEureka policies are currently entirely trained in simulation, but using real-world execution failure as feedback may serve as an effective
+way for LLMs to determine how to best tune sim-to-real in successive iterations. Furthermore, all tasks and policies in our work operately purely from
+robot's proprioceptive inputs, and incorporating vision or other sensors may further improve policy performance and LLM feedback loop.
+[#results-carousel]
+[#BibTeX]
+BibTeX
+@inproceedings{ma2024dreureka,
+title = {DrEureka: Language Model Guided Sim-To-Real Transfer},
+author = {Yecheng Jason Ma and William Liang and Hungju Wang and Sam Wang and Yuke Zhu and Linxi Fan and Osbert Bastani and Dinesh Jayaraman},
+year = {2024},
+booktitle = {Robotics: Science and Systems (RSS)}
+}
+Website template borrowed from NeRFies
+and Eureka

@@ -1,0 +1,248 @@
+Code as Policies: Language Model Programs for Embodied Control
+[#main]
+Code as Policies: Language Model Programs for Embodied Control
+Jacky Liang
+Wenlong Huang
+Fei Xia
+Peng Xu
+Karol Hausman
+Brian Ichter
+Pete Florence
+Andy Zeng
+Robotics at Google
+Paper
+Blog
+Code
+Colab
+Demo
+[#v0]
+Abstract
+Large language models (LLMs) trained on code-completion have been shown to be capable of synthesizing simple Python programs from docstrings [1].
+We find that these codewriting LLMs can be re-purposed to write robot policy code, given natural language commands.
+Specifically, policy code can express functions or feedback loops that process perception outputs (e.g.,from object detectors [2], [3]) and parameterize control primitive APIs.
+When provided as input several example language commands (formatted as comments) followed by corresponding policy code (via few-shot prompting), LLMs can take in new commands and autonomously re-compose API calls to generate new policy code respectively.
+By chaining classic logic structures and referencing third-party libraries (e.g., NumPy, Shapely) to perform arithmetic, LLMs used in this way can write robot policies that (i) exhibit spatial-geometric reasoning, (ii) generalize to new instructions, and (iii) prescribe precise values (e.g., velocities) to ambiguous descriptions (“faster”) depending on context (i.e., behavioral commonsense).
+This paper presents code as policies: a robot-centric formalization of language model generated programs (LMPs) that can represent reactive policies (e.g., impedance controllers), as well as waypoint-based policies (vision-based pick and place, trajectory-based control), demonstrated across multiple real robot platforms. Central to our approach is prompting hierarchical code-gen (recursively defining undefined functions), which can write more complex code and also improves state-of-the-art to solve 39.8% of problems on the HumanEval [1] benchmark.
+Code and videos are available at https://code-as-policies.github.io
+[#v0]
+How can robots perform a wide variety of novel tasks from natural language?
+Execited to present Code as Policies - using language models to directly write robot policy code from language instructions.
+See paper, colabs, blog, and demos at https://t.co/QS6bgGOORw
+long 🧵👇 pic.twitter.com/C7eqCJ4has
+— Jacky Liang (@jackyliang42) November 2, 2022
+Experiment Videos and Generated Code
+Videos have sound that showcase voice and speech-based robot interface.
+Long pauses between commands and responses are mostly caused by OpenAI API query times and rate limiting.
+We also give links to prompts used in each domain. Different prompts specialize the LLM to perform different functions, and they're composed together by the generated code via function calls that use natural language arguments.
+Tabletop Manipulation: Blocks
+Choose a command:
+1) Put the blocks in a horizontal line near the top
+2) Move the sky-colored block in between the red block and the second block from the left
+3) Why did you move the green block?
+4) Which block did you move?
+5) Arrange the blocks in a square around the middle
+6) Make the square bigger
+7) Undo that
+8) Rotate the square by 45 degrees
+9) Can you throw blocks?
+10) Move the red block 5cm to the bottom
+11) Do the same with the other blocks
+12) Put the blocks on different corners clockwise starting at the top right corner
+[#vid_blocks]
+[#content_blocks_1]
+[#code_blocks_1]
+[#content_blocks_2]
+[#code_blocks_2]
+[#content_blocks_3]
+[#code_blocks_3]
+[#content_blocks_4]
+[#code_blocks_4]
+[#content_blocks_5]
+[#code_blocks_5]
+[#content_blocks_6]
+[#code_blocks_6]
+[#content_blocks_7]
+[#code_blocks_7]
+[#content_blocks_8]
+[#code_blocks_8]
+[#content_blocks_9]
+[#code_blocks_9]
+[#content_blocks_10]
+[#code_blocks_10]
+[#content_blocks_11]
+[#code_blocks_11]
+[#content_blocks_12]
+[#code_blocks_12]
+Prompts (same for all tabletop manipulation tasks):
+High-Level UI |
+Parse Object Names |
+Parse Positions |
+Parse Questions |
+Function Generation
+Tabletop Manipulation: Blocks and Bowls
+Choose a command:
+1) Put the red block to the left of the rightmost bowl
+2) Now move it to the side farthest away from it
+3) How many bowls are to the left of the red block?
+4) Place the blocks in bowls with non matching colors
+5) Put the blocks in a vertical line 20 cm long and 10 cm below the blue bowl
+6) Imagine that the bowls represent a volcano, a forest, and an ocean
+7) Also imagine that the blocks are parts of a building
+8) Now build a tower in the forest
+9) Show me what happens when a volcano erupts over the ocean
+[#vid_blocksbowls]
+[#content_blocksbowls_1]
+[#code_blocksbowls_1]
+[#content_blocksbowls_2]
+[#code_blocksbowls_2]
+[#content_blocksbowls_3]
+[#code_blocksbowls_3]
+[#content_blocksbowls_4]
+[#code_blocksbowls_4]
+[#content_blocksbowls_5]
+[#code_blocksbowls_5]
+[#content_blocksbowls_6]
+[#code_blocksbowls_6]
+[#content_blocksbowls_7]
+[#code_blocksbowls_7]
+[#content_blocksbowls_8]
+[#code_blocksbowls_8]
+[#content_blocksbowls_9]
+[#code_blocksbowls_9]
+Prompts (same for all tabletop manipulation tasks):
+High-Level UI |
+Parse Object Names |
+Parse Positions |
+Parse Questions |
+Function Generation
+Tabletop Manipulation: Fruits, Bottles, and Plates
+Choose a command:
+1) How many fruits are there?
+2) Tell me their names
+3) Are there any fruits on the green plate?
+4) Move all fruits to the green plate and bottles to the blue plate
+5) Move the smallest fruit back to the yellow plate
+6) Wait until you see an egg and put it on the green plate
+7) Put the darkest object in the plate that has the apple
+[#vid_fbp]
+[#content_fbp_1]
+[#code_fbp_1]
+[#content_fbp_2]
+[#code_fbp_2]
+[#content_fbp_3]
+[#code_fbp_3]
+[#content_fbp_4]
+[#code_fbp_4]
+[#content_fbp_5]
+[#code_fbp_5]
+[#content_fbp_6]
+[#code_fbp_6]
+[#content_fbp_7]
+[#code_fbp_7]
+Prompts (same for all tabletop manipulation tasks):
+High-Level UI |
+Parse Object Names |
+Parse Positions |
+Parse Questions |
+Function Generation
+Whiteboard Drawing
+Choose a command:
+1) Draw a 5cm hexagon around the middle
+2) Draw a line that bisects the hexagon
+3) Make them both bigger
+4) Erase the hexagon and the line
+5) Draw the sun as a circle at the top right
+6) Draw the ground as a line at the bottom
+7) Draw a pyramid as a triangle on the ground
+8) Draw a smaller pyramid a little bit to the left
+8) Erase the sun, the ground, and the pyramid
+9) Draw circles around the blocks
+10) Draw a square around the sweeter fruit
+[#vid_draw]
+[#content_draw_1]
+[#code_draw_1]
+[#content_draw_2]
+[#code_draw_2]
+[#content_draw_3]
+[#code_draw_3]
+[#content_draw_4]
+[#code_draw_4]
+[#content_draw_5]
+[#code_draw_5]
+[#content_draw_6]
+[#code_draw_6]
+[#content_draw_7]
+[#code_draw_7]
+[#content_draw_8]
+[#code_draw_8]
+[#content_draw_9]
+[#code_draw_9]
+[#content_draw_10]
+[#code_draw_10]
+[#content_draw_11]
+[#code_draw_11]
+Prompts:
+High-Level UI |
+Parse Object Names |
+Parse Shape Points |
+Transform Shape Points |
+Function Generation
+Mobile Robot: Navigation
+Choose a command:
+1) Moving in a 3m by 2m rectangle around the office chair
+2) Do that again but rotated 45 degrees clockwise
+3) Go in a 1.5m square around the stool as many times as needed, check each step if there is a coca cola can, only stop moving when you see the coca cola can
+4) Follow a 2x scaled up convex hull containing the chairs
+5) Move back and forth between the table and the countertop twice
+[#content_mobilenav_1]
+[#vid_1_mobilenav_1]
+[#code_mobilenav_1]
+[#content_mobilenav_2]
+[#vid_1_mobilenav_2]
+[#code_mobilenav_2]
+[#content_mobilenav_3]
+[#vid_1_mobilenav_3]
+[#code_mobilenav_3]
+[#content_mobilenav_4]
+[#vid_1_mobilenav_4]
+[#code_mobilenav_4]
+[#content_mobilenav_5]
+[#vid_1_mobilenav_5]
+[#code_mobilenav_5]
+Prompts (same for all mobile robot tasks):
+High-Level UI |
+Parse Object Names |
+Parse Positions |
+Transform Points |
+Function Generation
+Mobile Robot: Manipulation
+Choose a command:
+1) Put way the coca cola can and the apple on their corresponding bins
+2) Take the coca cola can from the desk and put it in the middle of the fruits on the table
+3) How many fruits are on the table?
+[#content_mobilemnp_1]
+[#vid_1_mobilemnp_1]
+[#code_mobilemnp_1]
+[#content_mobilemnp_2]
+[#vid_1_mobilemnp_2]
+[#code_mobilemnp_2]
+[#content_mobilemnp_3]
+[#vid_1_mobilemnp_3]
+[#code_mobilemnp_3]
+Prompts (same for all mobile robot tasks):
+High-Level UI |
+Parse Object Names |
+Parse Positions |
+Transform Points |
+Function Generation
+Citation
+[arxiv version]
+[#bibtex]
+@inproceedings{codeaspolicies2022,
+title={Code as Policies: Language Model Programs for Embodied Control},
+author={Jacky Liang and Wenlong Huang and Fei Xia and Peng Xu and Karol Hausman and Brian Ichter and Pete Florence and Andy Zeng},
+booktitle={arXiv preprint arXiv:2209.07753},
+year={2022}
+}
+Acknowledgements
+Special thanks to Vikas Sindhwani, Vincent Vanhoucke for helpful feedback on writing, Chad Boodoo for operations and hardware support.

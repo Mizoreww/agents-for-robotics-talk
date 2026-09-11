@@ -1,0 +1,332 @@
+{
+  "key": "pi07",
+  "url": "https://www.pi.website/blog/pi07",
+  "final_url": "https://www.pi.website/blog/pi07",
+  "accessed": "2026-09-10",
+  "sha256": "69a9bcffd175b6aba8fdbe712f1775e1efb2a5bf11c18d4a1cfa1e5a31054b98",
+  "chars": 18091,
+  "links": [
+    "https://www.pi.website/",
+    "https://www.pi.website/blog",
+    "https://www.pi.website/join-us",
+    "https://www.pi.website/download/pi07.pdf",
+    "https://arxiv.org/abs/1810.04805",
+    "https://www.pi.website/blog/pistar06",
+    "https://www.pi.website/blog/pi07#leveraging-more-data-with-diverse-conditioning",
+    "https://www.pi.website/research/human_to_robot",
+    "https://www.pi.website/blog/pi07#compositional-task-generalization",
+    "https://www.pi.website/research/hirobot",
+    "https://www.pi.website/blog/pi07#cross-embodiment-transfer",
+    "https://www.pi.website/blog/pi07#conditioning-on-speed-and-optimality",
+    "https://www.pi.website/blog/pi07#out-of-the-box-performance-on-dexterous-tasks",
+    "https://www.pi.website/blog/pi07#whats-next",
+    "mailto:research@physicalintelligence.company"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/cut_zucchini_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/coffee_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/shirt_folding_processed_no_overlay_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Subgoal 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fsubgoal_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 1",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_1.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 2",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_2.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 3",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_3.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 4",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_4.png&w=3840&q=75"
+    },
+    {
+      "tag": "img",
+      "alt": "Current observation 5",
+      "src": "https://www.pi.website/_next/image?url=%2Fimages%2Fpi07%2Fcurrent_5.png&w=3840&q=75"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/cut_zucchini_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/coffee_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://website.pi-asset.com/pi07/shirt_folding_processed_no_overlay_compressed.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "video"
+    }
+  ]
+}

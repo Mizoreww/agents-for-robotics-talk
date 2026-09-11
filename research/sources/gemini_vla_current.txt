@@ -1,0 +1,258 @@
+Gemini Robotics 2 — Google DeepMind
+Skip to main content
+[#chevron-left] [#chevron-right] [#expand-less] [#expand-more] [#arrow-back] [#arrow-forward] [#arrow-upward] [#arrow-downward] [#arrow-left] [#arrow-right] [#arrow-drop-up] [#arrow-drop-down] [#help] [#menu] [#more-vert] [#drive-pdf] [#file-download] [#open-in-new] [#phone] [#email] [#instagram] [#link] [#post-blogger] [#blogger] [#post-facebook] [#facebook] [#post-linkedin] [#linkedin] [#share] [#twitter] [#video-youtube] [#youtube] [#video-youtube-white] [#video-youtube-black] [#video-youtube-red] [#video-youtube-white] [#close] [#expand-all] [#play-circle-filled] [#search] [#error] [#pause-button] [#play-button] [#access-time] [#info] [#filter] [#checkmark] [#x] [#discord] [#reddit] [#tiktok] [#tiktok-color] [#google-color-logo] [#google-solid-logo] [#google-logo-adjustable] [#github]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Models
+[#submenu-1]
+Explore our next generation AI systems
+Explore models
+Gemini
+Gemini
+Build intelligent agents
+Gemini Omni
+Create anything from anything
+Nano Banana
+Create and edit detailed images
+Gemini Audio
+Talk, create and control audio
+Specialized models
+Veo
+Generate cinematic video with audio
+Imagen
+Generate high-quality images from text
+Lyria
+Generate high fidelity music and audio
+World models & physical AI
+Genie 3
+Generate and explore interactive worlds
+Gemini Robotics
+Perceive, reason, use tools and interact
+Open models
+Gemma
+Build responsible AI applications at scale
+Research
+[#submenu-2]
+Our latest AI breakthroughs and updates from the lab
+Explore research
+Breakthroughs
+SIMA 2
+An agent that plays, reasons, and learns with you
+Genie 3
+Generate and explore interactive worlds
+AlphaGo
+Mastering the game of Go
+Gemini Robotics
+Perceive, reason, use tools and interact
+Learn more
+Evals
+Publications
+Responsibility
+Frontier safety
+Science
+[#submenu-3]
+Unlocking a new era of discovery with AI
+Explore science
+Breakthroughs
+AlphaFold
+Predict protein structures with high accuracy
+AlphaGenome
+Using AI to understand the human genome
+WeatherNext
+Fast and accurate AI weather forecasting
+AlphaEarth
+Map our planet in unprecedented detail
+AlphaEvolve
+Design advanced algorithms for math and applications in computing
+Learn more
+Gemini for Science
+Experimental Tools
+Science Skills
+About
+[#submenu-4]
+Our mission is to build AI responsibly to benefit humanity
+About Google DeepMind
+Learn more
+Education
+Our National Partnerships for AI
+Accelerator programs
+The Podcast
+Responsibility
+Ensuring AI safety through proactive security, even against evolving threats
+News
+Discover our latest AI breakthroughs, projects, and updates
+Careers
+We’re looking for people who want to make a real, positive impact on the world
+Build with Gemini Try Gemini
+Google DeepMind
+Google AI
+Learn about all our AI
+Google DeepMind
+Explore the frontier of AI
+Google Labs
+Try our AI experiments
+Google Research
+Explore our research
+Products and apps
+Gemini app
+Chat with Gemini
+Google AI Studio
+Build with our next-gen AI models
+Google Antigravity
+Our agentic development platform
+Models
+Research
+Science
+About
+Build with Gemini
+Try Gemini [#page-content]
+[#cover]
+Gemini Robotics 2
+Our most advanced VLA model: capable of intelligently controlling any type of robot, from tabletop robots to full humanoids
+Join waitlist for early access
+Your browser does not support the video tag.
+[#intro]
+Gemini Robotics 2 can operate robotic bodies of all sizes and shapes to perform complex tasks. Including dexterous manipulation of hands and grippers to full control of a humanoid body – from feet to fingertips.
+[#capabilities]
+Capabilities
+Gemini Robotics 2 can power any type of robot to think and then interact with the physical world around them.
+General
+Controls robots of any shape or size, scaling its intelligence from arms to complex humanoid bodies.
+Your browser does not support the video tag.
+Your browser does not support the video tag.
+Intelligent whole-body control
+Controls entire humanoid bodies from feet to fingertips. Dynamically balances a robot’s centre of gravity – so, instead of simply reaching from a static position, a robot can safely step, squat, and bend to navigate cluttered, real-world spaces.
+Advanced dexterity
+Unlocks human-level dexterity to use complex, 22-degree-of-freedom hands and grippers.
+Your browser does not support the video tag.
+Your browser does not support the video tag.
+Adaptable behavior
+Uses reasoning to adapt its behavior to suit all sorts of situations – and to complete unexpected, changeable, and complex tasks.
+[#performance]
+Performance
+[#carousel-4b37887d-27ef-483b-a867-10df1a8b1560]
+[#carousel-announcer-carousel-4b37887d-27ef-483b-a867-10df1a8b1560] Slide 1 of 3
+[#model-information]
+Model information
+NameGemini Robotics 2StatusPrivate previewInput
+Text
+Image
+text_snippetimageOutput
+Actions
+stabilization_action
+Follow us
+Sign up for updates on our latest innovations
+I accept Google's Terms and Conditions and acknowledge that my information will be used in accordance with Google's Privacy Policy.
+[#1-label]
+Sign up
+[#1-validation]
+[#1-response]
+Build AI responsibly to benefit humanity
+Models
+Gemini
+Gemini Omni
+Nano Banana
+Gemini Audio
+Gemma
+Genie
+Lyria
+Veo
+Research
+Gemini Robotics
+Breakthroughs
+Evals
+Publications
+Frontier safety
+Responsibility
+Science
+AlphaFold
+AlphaGenome
+WeatherNext
+AlphaEarth
+AlphaEvolve
+Products
+Gemini app
+Google AI Studio
+Google Antigravity
+Learn more
+About
+News
+Careers
+National Partnerships for AI
+Accelerator programs
+The Podcast
+About Google
+Google products
+Privacy
+Terms
+Cookies management controls

@@ -1,0 +1,191 @@
+{
+  "key": "voxposer",
+  "url": "https://voxposer.github.io/",
+  "final_url": "https://voxposer.github.io/",
+  "accessed": "2026-09-10",
+  "sha256": "c1f5f798c7686fec3796257c0d686bec073742f17e8be1819523f29787be79f1",
+  "chars": 5069,
+  "links": [
+    "https://www.corl2023.org/",
+    "https://huangwl18.github.io/",
+    "https://www.chenwangjeremy.net/",
+    "https://ai.stanford.edu/~zharu/",
+    "https://yunzhuli.github.io/",
+    "https://jiajunwu.com/",
+    "https://profiles.stanford.edu/fei-fei-li",
+    "https://voxposer.github.io/voxposer.pdf",
+    "https://arxiv.org/abs/2307.05973",
+    "https://youtu.be/Yvn4eR05A3M",
+    "https://github.com/huangwl18/VoxPoser",
+    "https://voxposer.github.io/prompts/real_planner_prompt.txt",
+    "https://voxposer.github.io/prompts/real_composer_prompt.txt",
+    "https://voxposer.github.io/prompts/real_parse_query_obj_prompt.txt",
+    "https://voxposer.github.io/prompts/real_get_affordance_map_prompt.txt",
+    "https://voxposer.github.io/prompts/real_get_avoidance_map_prompt.txt",
+    "https://voxposer.github.io/prompts/real_get_rotation_map_prompt.txt",
+    "https://voxposer.github.io/prompts/real_get_velocity_map_prompt.txt",
+    "https://voxposer.github.io/prompts/real_get_gripper_map_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_composer_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_parse_query_obj_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_get_affordance_map_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_get_avoidance_map_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_get_rotation_map_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_get_velocity_map_prompt.txt",
+    "https://voxposer.github.io/prompts/sim_get_gripper_map_prompt.txt",
+    "https://github.com/nerfies/nerfies.github.io",
+    "https://peract.github.io/"
+  ],
+  "media": [
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/teaser.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/take-out-the-toaster-and-put-it-on-the-wooden-plate.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/close-top-drawer-dist.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/sort-trash-to-tray-dist.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/open-bottle.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/turn-on-the-lamp.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/sweep-the-trash-into-the-dustpan.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/set-up-the-utensils-for-my-pasta.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/unplug-charger.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/get-napkin.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/hang-towel.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video",
+      "poster": "https://voxposer.github.io/"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/measure-apple.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/Yvn4eR05A3M"
+    },
+    {
+      "tag": "img",
+      "src": "https://voxposer.github.io/media/figures/method.jpg"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/close-drawer.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://voxposer.github.io/media/interactive/close-drawer.html"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://voxposer.github.io/media/interactive/close-drawer.html"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/sort-trash-to-tray-dist.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "video"
+    },
+    {
+      "tag": "source",
+      "src": "https://voxposer.github.io/media/videos/close-top-drawer-dist.mp4",
+      "type": "video/mp4"
+    },
+    {
+      "tag": "img",
+      "src": "https://voxposer.github.io/media/figures/emergent.jpg"
+    }
+  ]
+}

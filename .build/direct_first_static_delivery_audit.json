@@ -1,0 +1,33 @@
+{
+  "html_sha256": "8981ba504a1f8c75a8c8e75bb2133c9e91bf7572055ce066fc47eb8c84032268",
+  "status": "static_verified_browser_retest_unavailable",
+  "slide_count": 26,
+  "chapter_opening_slides": [
+    5,
+    12,
+    17,
+    23
+  ],
+  "rpent_slide": 11,
+  "minutes": 60,
+  "embedded_video_count": 15,
+  "all_media_byte_identical": true,
+  "external_runtime_resources": 0,
+  "script_file_equals_embedded_script": true,
+  "player_js_unchanged": true,
+  "chinese_glyphs_checked": 733,
+  "static_render_pages": 26,
+  "changed_layouts_visually_inspected": [
+    5,
+    6,
+    7,
+    10,
+    11,
+    26
+  ],
+  "fresh_browser_layout_checked": false,
+  "fresh_browser_playback_checked": false,
+  "fresh_browser_ui_checked": false,
+  "fresh_mobile_checked": false,
+  "browser_retest_blocker": "In-app Browser webview failed to attach; retained prior audits are not current-version evidence."
+}

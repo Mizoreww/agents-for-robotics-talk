@@ -1,0 +1,128 @@
+[
+  {
+    "name": "ar2s_sim.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 960,
+        "height": 528,
+        "r_frame_rate": "12/1"
+      }
+    ],
+    "format": {
+      "duration": "10.083333"
+    }
+  },
+  {
+    "name": "astra_insertion.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1344,
+        "height": 448,
+        "r_frame_rate": "10/1"
+      }
+    ],
+    "format": {
+      "duration": "13.800000"
+    }
+  },
+  {
+    "name": "enpire_verify.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 640,
+        "height": 816,
+        "r_frame_rate": "15/1"
+      }
+    ],
+    "format": {
+      "duration": "11.133333"
+    }
+  },
+  {
+    "name": "ar2s_real.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "12/1"
+      }
+    ],
+    "format": {
+      "duration": "10.083333"
+    }
+  },
+  {
+    "name": "ar2s_teaser.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 960,
+        "height": 270,
+        "r_frame_rate": "12/1"
+      }
+    ],
+    "format": {
+      "duration": "5.000000"
+    }
+  },
+  {
+    "name": "astra_bowl.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "14.300000"
+    }
+  },
+  {
+    "name": "aspire_trace.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1",
+        "side_data_list": [
+          {}
+        ]
+      },
+      {
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "36.245333"
+    }
+  },
+  {
+    "name": "aspire_method.mp4",
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 2558,
+        "height": 1440,
+        "r_frame_rate": "60/1"
+      }
+    ],
+    "format": {
+      "duration": "3.983333"
+    }
+  }
+]

@@ -1,0 +1,207 @@
+- banner:
+  - link "X":
+    - /url: /
+- main:
+  - button "Back":
+  - heading "Post" [level=2]
+  - 'heading "lingxiao guo on X: \"GPT-6 does real2sim end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras, built the object assets, performed physics system-ID, ran MuJoCo, and rendered in Blender.\"" [level=1]'
+  - list:
+    - article:
+      - link "@Lingxiao234":
+        - /url: /Lingxiao234
+        - img "@Lingxiao234"
+      - link "lingxiao guo":
+        - /url: https://x.com/Lingxiao234
+      - button "Verified account":
+      - link "@Lingxiao234":
+        - /url: https://x.com/Lingxiao234
+      - button "More":
+      - generic: GPT-6 does real2sim end to end from robot demonstrations. I gave it only multi-view RGB and robot actions, and one simple prompt. It calibrated the cameras, built the object assets, performed physics system-ID, ran MuJoCo, and rendered in Blender.
+      - button "Pause"
+      - generic: 00:09
+      - link "View media":
+        - /url: /Lingxiao234/status/2096992059731443923/video/1
+      - link "0:00 · 2026年9月8日":
+        - /url: /Lingxiao234/status/2096992059731443923
+      - text: ·
+      - link "13.4万 Views":
+        - /url: /Lingxiao234/status/2096992059731443923
+        - generic: 13.4万
+        - generic: Views
+      - link "Reply":
+        - /url: /i/status/2096992059731443923
+        - generic: "43"
+      - button "Repost":
+        - generic: "104"
+      - button "Like":
+        - generic: "908"
+      - button "Bookmark":
+        - generic: "565"
+      - button "Share":
+    - link:
+      - article:
+        - link "@Lingxiao234":
+          - /url: /Lingxiao234
+          - img "@Lingxiao234"
+        - link "lingxiao guo":
+          - /url: https://x.com/Lingxiao234
+        - button "Verified account":
+        - link "@Lingxiao234":
+          - /url: https://x.com/Lingxiao234
+        - text: ·
+        - link "9月7日":
+          - /url: /Lingxiao234/status/2096992076105998454
+        - button "More":
+        - generic: The most interesting thing I think is agentic system-ID. It hypothesizes a physical parameter, edits the model, runs the dynamics, compares against the video, then revises. There's no optimizer anywhere. The agent is the search.
+        - link "Image":
+          - /url: /Lingxiao234/status/2096992076105998454/photo/1
+        - link "View media":
+          - /url: /Lingxiao234/status/2096992076105998454/photo/1
+        - link "Reply":
+          - /url: /i/status/2096992076105998454
+          - generic: "2"
+        - button "Repost":
+        - button "Like":
+          - generic: "33"
+        - button "View count":
+          - generic: "5358"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@Lingxiao234":
+          - /url: /Lingxiao234
+          - img "@Lingxiao234"
+        - link "lingxiao guo":
+          - /url: https://x.com/Lingxiao234
+        - button "Verified account":
+        - link "@Lingxiao234":
+          - /url: https://x.com/Lingxiao234
+        - text: ·
+        - link "9月7日":
+          - /url: /Lingxiao234/status/2096992132527702382
+        - button "More":
+        - generic: But it hit a wall. The bimanual microphone task failed physics — no run retained all three mics. What you see here is kinematic replay, not validated dynamics. Snap-fit clips need compliant contact. Rigid proxies can't express that.
+        - button "Play"
+        - button "Play":
+        - generic: 01:35
+        - link "View media":
+          - /url: /Lingxiao234/status/2096992132527702382/video/1
+        - link "Reply":
+          - /url: /i/status/2096992132527702382
+          - generic: "1"
+        - button "Repost":
+        - button "Like":
+          - generic: "23"
+        - button "View count":
+          - generic: "3932"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@Lingxiao234":
+          - /url: /Lingxiao234
+          - img "@Lingxiao234"
+        - link "lingxiao guo":
+          - /url: https://x.com/Lingxiao234
+        - button "Verified account":
+        - link "@Lingxiao234":
+          - /url: https://x.com/Lingxiao234
+        - text: ·
+        - link "9月7日":
+          - /url: /Lingxiao234/status/2096992144523514172
+        - button "More":
+        - generic: "The part I didn't expect: I've run VGGT-Omega and MapAnything on ABC and DROID. Neither holds objects consistent across views. GPT-6 does it from pure RGB — because it never predicts per-view geometry. It fits ONE shared scene and makes every camera agree with it."
+        - link "Reply":
+          - /url: /i/status/2096992144523514172
+          - generic: "2"
+        - button "Repost":
+        - button "Like":
+          - generic: "18"
+        - button "View count":
+          - generic: "3182"
+        - button "Bookmark":
+        - button "Share":
+    - link:
+      - article:
+        - link "@Lingxiao234":
+          - /url: /Lingxiao234
+          - img "@Lingxiao234"
+        - link "lingxiao guo":
+          - /url: https://x.com/Lingxiao234
+        - button "Verified account":
+        - link "@Lingxiao234":
+          - /url: https://x.com/Lingxiao234
+        - text: ·
+        - link "9月7日":
+          - /url: /Lingxiao234/status/2096992156535955961
+        - button "More":
+        - generic: So the real limit isn't GPT-6. It builds dynamics by calling a simulator, which means its physics can never exceed what that simulator can express.
+        - link "Reply":
+          - /url: /i/status/2096992156535955961
+          - generic: "3"
+        - button "Repost":
+        - button "Like":
+          - generic: "21"
+        - button "View count":
+          - generic: "2915"
+        - button "Bookmark":
+        - button "Share":
+  - status
+  - status
+  - complementary:
+    - heading "See all the replies" [level=2]
+    - link "Continue to X":
+      - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2FLingxiao234%2Fstatus%2F2096992059731443923
+- complementary:
+  - heading "Log in or sign up for X" [level=2]
+  - paragraph: See what’s happening and join the conversation
+  - link "Continue with phone":
+    - /url: /i/jf/onboarding/web?mode=signup&redirect_after_login=%2FLingxiao234%2Fstatus%2F2096992059731443923
+    - text: Continue with phone
+  - button "Continue with Apple":
+    - text: Continue with Apple
+  - text: Continue with Google
+  - iframe:
+    - button "通过 Google 继续操作。在新标签页中打开":
+      - generic: 通过 Google 继续操作
+  - generic: or
+  - link "Log in with username or email":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2FLingxiao234%2Fstatus%2F2096992059731443923
+    - text: Log in with username or email
+  - heading "Relevant people" [level=2]
+  - link "lingxiao guo":
+    - /url: /Lingxiao234
+    - img "Avatar"
+  - link "lingxiao guo @Lingxiao234":
+    - /url: /Lingxiao234
+    - generic: lingxiao guo
+    - generic: "@Lingxiao234"
+  - link "Follow":
+    - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2FLingxiao234
+  - navigation "Footer":
+    - link "Terms":
+      - /url: https://x.com/tos
+    - generic: ·
+    - link "Privacy":
+      - /url: https://x.com/privacy
+    - generic: ·
+    - link "Cookies":
+      - /url: https://support.x.com/articles/20170514
+    - generic: ·
+    - link "Accessibility":
+      - /url: https://help.x.com/resources/accessibility
+    - generic: ·
+    - link "US TIDA":
+      - /url: https://help.x.com/en/rules-and-policies/us-tida
+    - generic: ·
+    - link "Ads Info":
+      - /url: https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo
+    - generic: ·
+    - button "More":
+      - text: More
+    - generic: © 2026 X Corp.
+- button "Scan to get the app":
+  - generic: Scan to get the app
+- region "Notifications alt+T"
+- region "Notifications alt+T"
