@@ -7,7 +7,8 @@
 
 # ---------------------------------------------------------------------------
 # Rendered deliverables — rebuild with .build/build_selfcontained.py
-# The self-contained deck is ~132 MB, above GitHub's 100 MB per-file limit.
+# The self-contained deck is ~132 MB, above GitHub's 100 MB per-file limit, so each
+# built version is published as a GitHub release asset instead of committed.
 # ---------------------------------------------------------------------------
 Agents_for_Robotics_Self_Contained.html
 output/Agents_for_Robotics_Focused.pptx

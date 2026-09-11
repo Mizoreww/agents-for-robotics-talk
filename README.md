@@ -4,6 +4,7 @@
 
 - 讲者 Zimo Huang，讲期 2026-09-16，资料截点 2026-09-11。
 - 当前版本 0.5（2026-09-11），sha256 `1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b`。
+- 成品 HTML 见 [Releases](../../releases/latest) 的附件，约 126 MiB。它超过 GitHub 单文件 100 MB 上限，因此作为 release 附件而不是仓库文件；也可以按下面的步骤从源码重建。
 - 版本演进见 `CHANGELOG.md`，当前状态与边界见 `WORKPLAN.md`，页序与叙事见 `talk_outline.md`，构建与约定见 `AGENTS.md`，面向听讲者的操作说明见 `output/README.md`。
 
 ## 三个部分
@@ -40,7 +41,7 @@
 
 | 条目 | 体积 | 说明 |
 |---|---|---|
-| `output/Agents_for_Robotics_Self_Contained.html` 及 `.build/standalone_isolation/index.html` | 各 132 MB | 超过 GitHub 100 MB 单文件上限，用 `build_selfcontained.py` 重建 |
+| `output/Agents_for_Robotics_Self_Contained.html` 及 `.build/standalone_isolation/index.html` | 各 132 MB | 超过 GitHub 100 MB 单文件上限。成品在 [Releases](../../releases/latest) 提供下载，也可用 `build_selfcontained.py` 重建 |
 | `output/*.pptx`、`*.zip`、`*.pdf`、`output/offline_player/{media,posters,slides}` | 约 240 MB | 0.2 版历史交付，与当前 28 页不逐页对应。其生成链依赖仓库外的 presentation runtime，需要时从本地备份取回；`media_credits.json` 是构建输入，已保留 |
 | `.build/assets/*_source.mp4` 等原始下载 | 242 MB | 项目页素材用 `fetch_media.py` 与 `continue_assets.py` 重取；2026-09-11 的社区视频按 `.build/community_downloads.json` 记录的 `post_url` 与 `sha256` 重取（fxtwitter API 元数据 + X CDN ≤1280 px，小红书取 note 页 stream URL）。X CDN 链接会过期，因此成品 clip 已入库 |
 | `.build/prior_*/` 下的 HTML、`.build/previews/`、各 `*_rendered/`、`*.pdf` | 约 380 MB | 历史或可再生的构建产物。`prior_*` 里的源文件（md / json / py）保留入库 |
