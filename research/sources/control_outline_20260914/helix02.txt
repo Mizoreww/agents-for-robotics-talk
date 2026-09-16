@@ -1,0 +1,69 @@
+Introducing Helix 02: Full-Body AutonomyFIGURE 03HELIXINDEXNEWSCAREERSCOMPANY
+Introducing Helix 02: Full-Body AutonomyJanuary 27, 2026
+Introducing Helix 02
+Last year, Helix showed that a single neural network could control a humanoid’s upper body from pixels. Today, Helix 02 extends that control to the entire robot - walking, manipulating, and balancing as one continuous system.
+Helix 02 is Figure’s most capable humanoid model yet: A single neural system that controls the full body directly from pixels, enabling dexterous, long horizon autonomy across an entire room. Helix 02 represents several breakthroughs:
+Autonomous, long‑horizon loco-manipulation: Helix 02 unloads and reloads a dishwasher across a full-sized kitchen - a four-minute, end-to-end autonomous task that integrates walking, manipulation, and balance with no resets and no human intervention. We believe this is the longest horizon, most complex task completed autonomously by a humanoid robot to date.
+All sensors in. All actuators out: Helix 02 connects every onboard sensor - vision, touch, and proprioception - directly to every actuator through a single unified visuomotor neural network.
+Human-like whole body control from human data: All results are enabled by System 0, a learned whole‑body controller trained on over 1,000 hours of human motion data and sim‑to‑real reinforcement learning. System 0 replaces 109,504 lines of hand‑engineered C++ with a single neural prior for stable, natural motion.
+New classes of dexterity: With Figure 03’s embedded tactile sensing and palm cameras, Helix 02 performs manipulation that was previously out of reach: extracting individual pills, dispensing precise syringe volumes, and singulating small, irregular objects from clutter despite self‑occlusion.Video 1: A Figure robot executes a continuous 4-minute task: walking to a dishwasher, unloading dishes, navigating across a room, stacking items in cabinets, loading and starting the dishwasher - entirely from onboard sensors with no human intervention.
+The Challenge: Unifying Humanoid Locomotion and Manipulation
+For decades, loco-manipulation - the ability for a robot to move and manipulate objects as a single, continuous behavior - has remained one of robotics’ hardest unsolved problems. Not because either capability is hard alone, but because doing both together resists clean decomposition. Lift something and your balance changes; step forward and your reach changes. Arms and legs constrain each other continuously.
+Humanoid robots have demonstrated impressive short-horizon behaviors, like jumping, dancing, and yoga, but nearly all share a limitation: they are not truly steerable. Most systems replay motions planned offline with limited feedback. If an object shifts or a contact unfolds differently, behavior collapses.
+Traditional robotics works around this by separating locomotion and manipulation into distinct controllers stitched together with state machines: walk, stop, stabilize, reach, grasp, walk again. These handoffs are slow, brittle to reason over, and unnatural.
+True autonomy requires something fundamentally different: a single learning system that reasons over the whole body at once. A system that continuously perceives, decides, and acts - walking while carrying, adjusting balance while reaching, recovering from mistakes in real time.
+This is why we built Helix 02.
+Helix 02: A Unified Whole-Body Loco-Manipulation VLA
+Helix 02 extends our "System 1, System 2" architecture with a new foundation layer: System 0.
+Each system operates at its natural timescale. System 2 (S2) reasons slowly about goals: interpreting scenes, understanding language, and sequencing behaviors. System 1 (S1) thinks fast, translating perception into full‑body joint targets at 200 Hz. System 0 (S0) executes at 1 kHz, handling balance, contact, and coordination across the entire body. Together, they form a tightly integrated hierarchy from pixels to torque.
+System 0: Human-like Whole-body Control from Human Data
+S0 is a foundation model for human-like whole-body control: a learned prior over how people move while maintaining balance and stability. It is the backbone of physical embodiment for Helix 02: while higher layers reason about tasks and plans, S0 ensures every motion is executed smoothly, safely, and stably.
+Rather than engineering separate reward functions for walking, turning, crouching, or reaching, S0 learns to track human motion directly from a large and diverse corpus of movement data. In learning to reproduce these motions, the policy learns how to coordinate forces, adjust posture, and maintain balance across the full range of behaviors needed for enabling general loco-manipulation.
+Training data: Over 1,000 hours of joint‑level retargeted human motion data.
+Architecture: A 10M‑parameter neural network that takes full‑body joint state and base motion as input and outputs joint‑level actuator commands at 1 kHz.
+Simulation training: S0 is trained entirely in simulation across more than 200,000 parallel environments with extensive domain randomization, enabling direct transfer to real robots and generalization across the fleet.
+System 1: "All sensors in, all joints out" Visuomotor Policy
+In the original Helix, S1 controlled the upper body and read from joint state and images. In Helix 02, it connects to all sensors, and controls the entire robot.
+Inputs: Head cameras, palm cameras, fingertip tactile sensors, and full‑body proprioception.
+Outputs: Complete joint-level control of the entire robot - legs, torso, head, arms, wrists, and individual fingers.
+This pixels‑to‑whole‑body architecture allows S1 to reason about the complete state of the robot and environment as a single coupled system. The palm cameras and tactile sensors are new hardware capabilities from Figure 03. This is the first time we've demonstrated neural network policies that depend on these modalities.
+Palm cameras provide in‑hand visual feedback when objects are occluded from the head camera. Tactile sensors embedded in each fingertip detect forces as small as three grams - sensitive enough to feel a paperclip - enabling contact‑aware, force‑modulated grasping. These sensing modalities enable Helix to unlock the full dexterity potential of five-fingered hands, tackling intricate manipulation tasks which demand the fine motor control of multi-fingered grasping.
+S1 remains a transformer conditioned on System 2 latents, but now produces full‑body joint targets that S0 tracks at kHz rates.
+System 2: Scene Understanding and Language
+System 2 remains the semantic reasoning layer: processing scenes, understanding language, and producing latent goals for S1. Helix 02 dramatically expands the scope of behaviors S2 can specify. Previously: “Pick up the ketchup.” Now:
+"Walk to the dishwasher and open it"
+"Carry the bowls to the counter"
+"Go back to the top rack and pick up the cups"
+S2 doesn't need to plan low-level footsteps or specify how to coordinate arms and legs. It produces a sequence of semantic latents that S1 interprets into motor commands, which S0 executes.
+Results: Autonomous Long‑Horizon Loco-Manipulation
+Helix 02 performs continuous, multi‑minute tasks that demand the full integration of locomotion, dexterity, and sensing.
+We evaluate Helix 02 on tasks that demand the full integration of locomotion, dexterity, and sensing. All videos shown below are fully autonomous, not teleoperated.
+In video 1, we demonstrate Helix 02 on an extended loco-manipulation task: loading and unloading a dishwasher over a full sized kitchen. This 4-minute continuous behavior represents the most complex autonomous manipulation sequence demonstrated to date. This represents the first demonstration of such long horizon, end-to-end "pixels-to-whole body" control on a humanoid robot.
+What this demonstrates:
+Locomotion under manipulation constraints. The robot walks while holding delicate objects, maintaining stable grasps through every step.
+Making use of the whole body: When its hands are occupied, the robot closes a drawer with its hip and lifts the dishwasher door with its foot - using the entire body as a tool rather than relying solely on the hands.
+Bimanual coordination throughout: Objects are picked up, transferred between hands, stacked, and placed while both arms operate as a coordinated system.
+Motor range across scales. The same neural network produces millimeter‑scale finger motions and room-scale locomotion - a dynamic range spanning four orders of magnitude.
+Long-horizon sequencing: 61 loco-manipulation actions, ordered correctly, with implicit error recovery. The robot maintains task state across minutes of execution.
+Results: Dexterous Manipulation with Touch and In‑Hand Vision
+Helix 02’s tactile sensing and palm cameras unlock manipulation tasks beyond pure vision‑based policies. We demonstrate four tasks at the frontier of multi-fingered dexterity. All videos shown below are fully autonomous, not teleoperated.
+Dexterity Task 1: Unscrew a bottle cap
+The robot must stabilize a bottle while applying continuous, controlled rotation to remove the cap without slipping or crushing the container. This requires bimanual coordination with tactile-regulated grip force and torque control.
+Dexterity Task 2: Locate and pick out the pill from the medicine box
+The robot must locate and extract a single small pill from an organizer, often when the pill is occluded from the head camera. This requires palm-level visual feedback and tactile-guided precision grasping.
+Dexterity Task 3: Push exactly 5 ml from a syringe
+The robot must advance a syringe plunger to dispense a precise volume despite variable resistance and tight tolerances. This requires force-controlled actuation with tactile feedback and coordinated multi-finger stabilization.
+Dexterity Task 4: Pick metal pieces from a cluttered box
+The robot must extract small metal components from a pile where objects overlap, occlude each other, and shift during interaction. This requires robust visual grasp selection with tactile confirmation of secure contact in clutter.
+Here, Figure 03 is unloading real metal pieces from our BotQ manufacturing facility.
+Conclusion
+One year ago, Helix showed that a single neural network could control a humanoid upper body. Today, Helix 02 extends that capability to the entire robot.
+With S0 providing learned whole‑body control, S1 connecting all sensors to all actuators, and S2 enabling semantic reasoning over extended tasks, Helix 02 achieves something new: continuous, room-scale autonomy that seamlessly blends walking and manipulation.
+The results are early - but they already show what continuous, whole-body autonomy makes possible. A 4-minute autonomous task with 61 fluidly executed loco-manipulation actions, dexterous behaviors enabled by tactile sensing and palm cameras, and whole-body coordination that uses hips and feet alongside hands and arms.
+We're eager to see what happens as we continue to scale. Join us on our mission to bring general purpose humanoid robots into the home and global workforce. Check out our open roles here.
+Keep up with us
+Get news, photos, events, and business updates.Email Address*Sign Up
+Contact UsFIGURE 03HELIXINDEXNEWSCAREERSCOMPANY
+© Figure 2026.Terms & ConditionsPrivacy PolicyAccessibility Statement
+What’s on your mind?We’ll get back to you as soon as possible.First Name*Last Name*Email*Subject*Message*Submit
+This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.

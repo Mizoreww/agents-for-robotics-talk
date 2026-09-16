@@ -1,0 +1,125 @@
+{
+  "html_sha256": "4ee50b540fe42314e9e14774da37504da8790d66b1ef944c258abf4ca9987e49",
+  "transitions": [
+    {
+      "opening": 4,
+      "intro": "Slide 4: Agent Controls Robot",
+      "caseTitle": "Slide 5: Hierarchical Robot Control",
+      "back": 4
+    },
+    {
+      "opening": 17,
+      "intro": "Slide 17: Agent Creates Data",
+      "caseTitle": "Slide 18: Astra: From Office Scan to Simulation",
+      "back": 17
+    },
+    {
+      "opening": 25,
+      "intro": "Slide 25: Agent Improves Policy",
+      "caseTitle": "Slide 26: ENPIRE: Environment and Improvement",
+      "back": 25
+    }
+  ],
+  "keyboard": {
+    "endSlide": 35,
+    "homeSlide": 1,
+    "focusExited": true
+  },
+  "figureDialog": {
+    "open": true,
+    "loaded": true,
+    "closed": true
+  },
+  "focusView": {
+    "enabled": true,
+    "native": true
+  },
+  "addedFigures": [
+    {
+      "slide": 11,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 12,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 13,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 14,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 19,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 26,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 28,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 30,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 31,
+      "open": true,
+      "loaded": true
+    }
+  ],
+  "currentScript": {
+    "heading": "05. Hierarchical Robot Control",
+    "text": "读图提示：三张都是上一场 talk 的原图。先看左边 Hi Robot，再看右侧 Helix 和 Helix 02；原图可以点击放大。Hi Robot 的分工很直观。High-level VLM 理解任务、图像和用户的临时指令，输出一个 s"
+  },
+  "fullScriptHeadings": [
+    "01. Agents for Robotics",
+    "02. Demo: Painting with Feedback",
+    "03. Three Roles for Robotics Agents",
+    "04. Agent Controls Robot",
+    "05. Hierarchical Robot Control",
+    "06. Where Does Generalization Live?",
+    "07. Astra: Stronger Real-Robot Performance",
+    "08. Astra: More Real-Robot Demos",
+    "09. One Model, Different Control Interfaces",
+    "10. Astra Interfaces: Three Tasks",
+    "11. Astra: Introducing a Hybrid Architecture",
+    "12. RoboDojo: Overall Results",
+    "13. RoboLab: Overall Results",
+    "14. RoboDojo: Task-Level Patterns",
+    "15. High Latency Limits Real-Time Control",
+    "16. Control: Strengths and Open Gaps",
+    "17. Agent Creates Data",
+    "18. Astra: From Office Scan to Simulation",
+    "19. Astra: Articulated Kitchen Scene",
+    "20. Data: Mechanism and CAD Assets",
+    "21. Astra: Rope-driven Hand Reconstruction",
+    "22. Astra: Real-to-sim Replay",
+    "23. Astra: Dexterous Data Rollout",
+    "24. Data: From Demos to Useful Data",
+    "25. Agent Improves Policy",
+    "26. ENPIRE: Environment and Improvement",
+    "27. ENPIRE: Reset and Verification",
+    "28. ENPIRE: What Did the Agent Change?",
+    "29. ENPIRE: Pin Insertion Curve",
+    "30. ENPIRE: Two Physical Tasks",
+    "31. ENPIRE: Autoresearch in RoboCasa",
+    "32. Astra: Training and Context",
+    "33. ENPIRE: Cost and Chapter Summary",
+    "34. Takeaways",
+    "35. Thank You"
+  ]
+}

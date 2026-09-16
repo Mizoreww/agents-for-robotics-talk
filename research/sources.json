@@ -1,9 +1,9 @@
 {
   "title": "Robotics Agents Survey — Curated Primary Sources",
-  "cutoff": "2026-09-10",
+  "cutoff": "2026-09-16",
   "timezone": "Asia/Shanghai",
-  "selection": "Mechanistic importance, empirical evidence, representative recent capability; not exhaustive bibliography or popularity ranking.",
-  "status": "outline-stage source inventory",
+  "selection": "Astra-first Control; demo-only Data from Awesome-Astra; ENPIRE as Improvement representative.",
+  "status": "v0.20; 34 tests and final-hash 37-slide browser/layout/basic-playback/mobile/visual QA passed; all media unchanged",
   "records": [
     {
       "id": "S01",
@@ -12,7 +12,7 @@
       "publication_date": "2022",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://say-can.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -34,7 +34,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S02",
@@ -43,7 +45,7 @@
       "publication_date": "2022",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://innermonologue.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -65,7 +67,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S03",
@@ -74,7 +78,7 @@
       "publication_date": "2022",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://code-as-policies.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -96,7 +100,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S04",
@@ -105,7 +111,7 @@
       "publication_date": "2023",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://voxposer.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -127,7 +133,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S05",
@@ -136,7 +144,7 @@
       "publication_date": "2023",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://eureka-research.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -158,7 +166,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S06",
@@ -167,7 +177,7 @@
       "publication_date": "2024",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://eureka-research.github.io/dr-eureka/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -189,7 +199,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S07",
@@ -198,7 +210,7 @@
       "publication_date": "2023",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://robogen-ai.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -220,7 +232,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S08",
@@ -229,7 +243,7 @@
       "publication_date": "2024",
       "date_precision": "year",
       "source_type": "foundation",
-      "talk_role": "main",
+      "talk_role": "historical_reference",
       "url": "https://auto-rt.github.io/",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -251,7 +265,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
     },
     {
       "id": "S09",
@@ -260,7 +276,7 @@
       "publication_date": "2026-07-09",
       "date_precision": "day",
       "source_type": "industrial_research_report",
-      "talk_role": "deep_dive",
+      "talk_role": "historical_reference",
       "url": "https://www.anthropic.com/research/claude-plays-robotics",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -282,7 +298,10 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [],
+      "current_use": "Control overview and four-interface synthesis; concrete LIBERO-40 protocol and original quantitative panels on slides 6–7; bounded summary on slide 13. Opus 4.6: 3.5% Direct, 76% supervised, 86% MolmoAct alone; different y-axis scales retained."
     },
     {
       "id": "S10",
@@ -291,7 +310,7 @@
       "publication_date": "2026-09-04",
       "date_precision": "day",
       "source_type": "independent_evaluation",
-      "talk_role": "deep_dive",
+      "talk_role": "historical_reference",
       "url": "https://openai.robocurve.org/gpt-6-astra/",
       "related_urls": [
         "https://developers.openai.com/api/docs/models/gpt-6-astra",
@@ -332,7 +351,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
     },
     {
       "id": "S11",
@@ -341,7 +362,7 @@
       "publication_date": "2026-09-08",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "deep_dive",
+      "talk_role": "active",
       "url": "https://x.com/cdngdev/status/2097339677128982873",
       "related_urls": [
         "https://x.com/cdngdev/status/2097339677745516710"
@@ -361,7 +382,11 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        2
+      ]
     },
     {
       "id": "S12",
@@ -370,7 +395,7 @@
       "publication_date": "2026-09-08",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "deep_dive",
+      "talk_role": "active",
       "url": "https://x.com/Lingxiao234/status/2096992059731443923",
       "related_urls": [
         "https://x.com/Lingxiao234/status/2096992132527702382",
@@ -387,7 +412,11 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        21
+      ]
     },
     {
       "id": "S13",
@@ -396,7 +425,7 @@
       "publication_date": "2026-07",
       "date_precision": "month",
       "source_type": "research_preprint",
-      "talk_role": "deep_dive",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2607.19190v3",
       "related_urls": [
         "https://agentic-real2sim.github.io/",
@@ -438,7 +467,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
     },
     {
       "id": "S14",
@@ -447,7 +478,7 @@
       "publication_date": "2026-09-04",
       "date_precision": "day",
       "source_type": "research_preprint",
-      "talk_role": "trend",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2609.05594v1",
       "related_urls": [
         "https://rxjfighting.github.io/SceneMosaic/",
@@ -489,7 +520,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "trend",
+      "active_slides": []
     },
     {
       "id": "S15",
@@ -498,7 +531,7 @@
       "publication_date": "2026-06-18",
       "date_precision": "day",
       "source_type": "research_preprint",
-      "talk_role": "deep_dive",
+      "talk_role": "active",
       "url": "https://arxiv.org/html/2606.19980v1",
       "related_urls": [
         "https://research.nvidia.com/labs/gear/enpire/"
@@ -539,7 +572,23 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        36
+      ]
     },
     {
       "id": "S16",
@@ -548,7 +597,7 @@
       "publication_date": "2026-03",
       "date_precision": "month",
       "source_type": "research_preprint",
-      "talk_role": "deep_dive",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2603.22435v2",
       "related_urls": [
         "https://capgym.github.io/"
@@ -589,7 +638,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
     },
     {
       "id": "S17",
@@ -598,7 +649,7 @@
       "publication_date": "2026-06-30",
       "date_precision": "day",
       "source_type": "research_preprint",
-      "talk_role": "deep_dive",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2607.00272v1",
       "related_urls": [
         "https://research.nvidia.com/labs/gear/aspire/",
@@ -640,7 +691,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
     },
     {
       "id": "S18",
@@ -649,7 +702,7 @@
       "publication_date": "2026-06-17",
       "date_precision": "day",
       "source_type": "research_preprint",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2606.19419v1",
       "related_urls": [
         "https://Playful-RATs.github.io/",
@@ -691,7 +744,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S19",
@@ -700,7 +755,7 @@
       "publication_date": null,
       "date_precision": "unknown",
       "source_type": "official_product_pages",
-      "talk_role": "context",
+      "talk_role": "historical_reference",
       "url": "https://deepmind.google/models/gemini-robotics/",
       "related_urls": [
         "https://deepmind.google/models/gemini-robotics/vla/",
@@ -767,7 +822,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
     },
     {
       "id": "S20",
@@ -776,7 +833,7 @@
       "publication_date": "2026-04-16",
       "date_precision": "day",
       "source_type": "industrial_research_blog",
-      "talk_role": "context",
+      "talk_role": "historical_reference",
       "url": "https://www.pi.website/blog/pi07",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -798,7 +855,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
     },
     {
       "id": "S21",
@@ -807,7 +866,7 @@
       "publication_date": "2025-03",
       "date_precision": "month",
       "source_type": "technical_report",
-      "talk_role": "context",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2503.14734v2",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -834,7 +893,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
     },
     {
       "id": "S22",
@@ -843,7 +904,7 @@
       "publication_date": "2026-05",
       "date_precision": "month",
       "source_type": "technical_report",
-      "talk_role": "context",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/html/2605.02881v2",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -870,7 +931,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
     },
     {
       "id": "S23",
@@ -879,7 +942,7 @@
       "publication_date": "2026-09-06",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/k7agar/status/2096593654320341027",
       "related_urls": [],
       "accessed": "2026-09-10",
@@ -893,7 +956,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S24",
@@ -902,7 +967,7 @@
       "publication_date": "2026-09-10",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "appendix",
+      "talk_role": "active",
       "url": "https://x.com/earthtojake/status/2097789988670709821",
       "related_urls": [
         "https://x.com/earthtojake/status/2097789991426335015",
@@ -919,7 +984,11 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "appendix",
+      "active_slides": [
+        20
+      ]
     },
     {
       "id": "S25",
@@ -928,7 +997,7 @@
       "publication_date": "2026-09-10",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/ZeYanjie/status/2098118164626501669",
       "related_urls": [
         "https://dex-rubik-cube.yanjieze.com/"
@@ -944,7 +1013,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S26",
@@ -953,7 +1024,7 @@
       "publication_date": "2026-09-09",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/_wenlixiao/status/2097801944119349455",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -967,7 +1038,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S27",
@@ -976,7 +1049,7 @@
       "publication_date": "2026-09-05",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/ARXrobotics/status/2096328304794210604",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -990,7 +1063,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S28",
@@ -999,7 +1074,7 @@
       "publication_date": "2026-09-09",
       "date_precision": "day",
       "source_type": "paper",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://arxiv.org/abs/2609.10522",
       "related_urls": [
         "https://x.com/ZechenBai/status/2097879130356498603",
@@ -1016,7 +1091,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S29",
@@ -1025,7 +1102,7 @@
       "publication_date": "2026-09-09",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/thermalpastor/status/2097496200631210136",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1039,7 +1116,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S30",
@@ -1048,7 +1127,7 @@
       "publication_date": "2026-09-06",
       "date_precision": "day",
       "source_type": "xiaohongshu_note",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://www.xiaohongshu.com/explore/6a9bd4c80000000028037f67",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1062,7 +1141,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S31",
@@ -1071,7 +1152,7 @@
       "publication_date": "2026-09-07",
       "date_precision": "day",
       "source_type": "xiaohongshu_note",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://www.xiaohongshu.com/explore/6a9e29e6000000002603a68a",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1085,7 +1166,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S32",
@@ -1094,7 +1177,7 @@
       "publication_date": "2026-09-08",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/JitendraMalikCV/status/2097173961264284039",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1108,7 +1191,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S33",
@@ -1117,7 +1202,7 @@
       "publication_date": "2026-09-06",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/letian_fu/status/2096673034325381268",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1131,7 +1216,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S34",
@@ -1140,7 +1227,7 @@
       "publication_date": "2026-09-10",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/YuXiang_IRVL/status/2098085522182664439",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1154,7 +1241,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S35",
@@ -1163,7 +1252,7 @@
       "publication_date": "2026-09-10",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/Kuvvius/status/2098038921301311753",
       "related_urls": [
         "https://arxiv.org/abs/2607.27180"
@@ -1179,7 +1268,9 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
     },
     {
       "id": "S36",
@@ -1188,7 +1279,7 @@
       "publication_date": "2026-09-10",
       "date_precision": "day",
       "source_type": "first_party_x_demo",
-      "talk_role": "supporting",
+      "talk_role": "historical_reference",
       "url": "https://x.com/XuefW82242/status/2097972885860311314",
       "related_urls": [],
       "accessed": "2026-09-11",
@@ -1202,7 +1293,518 @@
         }
       ],
       "code_execution_or_replication": false,
-      "complete_video_visual_audit": false
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S37",
+      "title": "GPT-Policy-Eval",
+      "source_type": "project demonstration",
+      "talk_role": "historical_reference",
+      "url": "https://github.com/cheng-haha/GPT-Policy-Eval",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Selected individual trials; no trial denominator; 12× / 24× source playback; code release pending.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": []
+    },
+    {
+      "id": "S38",
+      "title": "GPT 6 Astra as an Embodied Policy",
+      "source_type": "anonymous technical report",
+      "talk_role": "historical_reference",
+      "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "RoboDojo selected 10-task panel only: 13/50 Direct, 24/50 Hybrid. Action prior, generation interface and segment length vary together. RoboLab selected final slots are not pooled. Video excludes model waiting time. Internal Astra training details are undisclosed. Keep anonymous.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": [],
+      "architecture_provenance": ".build/assets/v0_7/provenance.json"
+    },
+    {
+      "id": "S39",
+      "title": "RoboRSI",
+      "source_type": "research blog and code",
+      "talk_role": "historical_reference",
+      "url": "https://lab.noematrix.ai/blog/2-roborsi/",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Code-on/off same Base Skills:174/600 vs129/600. ACT corrective single-task example; adaptive coverage not frozen-policy SR.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": []
+    },
+    {
+      "id": "S40",
+      "title": "Awesome-Astra-Embodied-AI",
+      "source_type": "curated discovery list",
+      "talk_role": "historical_reference",
+      "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Discovery aid, not an independent evaluation; mixed direct actions, code and delegated-policy workflows.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "discovery",
+      "active_slides": []
+    },
+    {
+      "id": "S41",
+      "title": "RPent: Recursive Physical Agent",
+      "author_or_publisher": "RLinf",
+      "source_type": "official repository",
+      "talk_role": "historical_reference",
+      "active_slides": [],
+      "url": "https://github.com/RLinf/RPent",
+      "accessed": "2026-09-14",
+      "verification_scope": "Read-only repository snapshot and motion-interface notes; no implementation executed.",
+      "evidence_boundary": "Composable service organization, not a proof that LLMs must delegate actions. The inspected move_to motion example uses OSC, not IK.",
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_readme.md",
+          "sha256": "bde62f684fe85092e561c7691bb459d1e3c9033dceea172637aae889774c6848"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_tree.json",
+          "sha256": "6c348478acceda2f31d443aa0912c1218f7df76aa85407c5875ff46054b784a1"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_revision.json",
+          "sha256": "cc8661a9bea806ba74d39604805fda5449e798f62a8d8d4f1ea6ffc37c4b2cae"
+        }
+      ],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "S42",
+      "title": "Hi Robot",
+      "author_or_publisher": "Physical Intelligence",
+      "publication_date": "2025-02",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "url": "https://www.pi.website/research/hirobot",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Two-level inference; high-level VLM outputs subtask language for pi0, not an explicit S0 network.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/hirobot.html",
+          "sha256": "8a3ba4bb5ab79246d6e7c4afe7192cfb055bdc4c0e5d5022b96d8c51d0ae8a5c"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S43",
+      "title": "Helix",
+      "author_or_publisher": "Figure",
+      "publication_date": "2025-02",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "url": "https://www.figure.ai/news/helix",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "S2 semantic latent to S1 visuomotor control; architecture, not a controlled comparison.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/helix.html",
+          "sha256": "5b6adc2b7c0ecc16dc1822ac6da290ea110cea2c2f3f395c0059f6a51f1e89a2"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S44",
+      "title": "Helix 02",
+      "author_or_publisher": "Figure",
+      "publication_date": "2026-01",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "url": "https://www.figure.ai/news/helix-02",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "S2/S1/S0; S1 200 Hz and internal S0 1 kHz are different rates.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/helix02.html",
+          "sha256": "d88cc3c9af23943e834a3e55a793e53f2fa4c9fd21ef447ea7595f237efc54a9"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S45",
+      "title": "Astra control dashboard",
+      "author_or_publisher": "Asimfish",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "url": "https://asimfish.github.io/astra-control-dashboard/#sec3",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Same-model Square 1/20 delta EEF, 18/20 waypoint, 16/20 code; unequal budgets; proprio includes visual aids; no pure representation attribution.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_action_interfaces_20260914/asim_index_pinned.html",
+          "sha256": "50af836616bef6dfaed22e142702d37da7e5884c85954e9cb9ae3e7d685d4851"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S46",
+      "title": "Astra keyboard feedback demo",
+      "author_or_publisher": "Kaifeng Zhang (@kaiwynd)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical_reference",
+      "url": "https://x.com/kaiwynd/status/2098823484474348008",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "20x author playback, no denominator or disclosed persistent weight update; retry still holds key too long.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/keyboard.json",
+          "sha256": "787a7e2af3eabd139a843e1150eec679a0e76d172fa8c0173b12a5e4b8d1959a"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S47",
+      "title": "Office reference to Newton / G1",
+      "author_or_publisher": "Jiarui Xu (@Jiarui_X)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical_reference",
+      "url": "https://x.com/Jiarui_X/status/2098439950991806804",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Author-reported construction workflow; clip shows final simulation, not full build or newly trained locomotion.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/office_newton.json",
+          "sha256": "acdf0a020eed086d97622f484f3dd387e2ecbaaf3c844a29404f85935ae62761"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S48",
+      "title": "Astra quadruped CAD / RL preview",
+      "author_or_publisher": "Akira Sasaki (@gclue_akira)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical_reference",
+      "url": "https://x.com/gclue_akira/status/2098300921658868185",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Four separate experts; FULL EVAL NOT MET and partial Wave/Sit CUT retained; no nine-skill or physical-deployment claim.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/quadruped_rl.json",
+          "sha256": "b4b036935d3ff10832672c18076fa1206f0ac166d93430830cb27ae03793622d"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S49",
+      "title": "DreamZero / World Action Models",
+      "author_or_publisher": "DreamZero project",
+      "publication_date": "2026",
+      "date_precision": "year",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "url": "https://dreamzero0.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Reference for WAM category in overview only, not a new detailed study or tested RPent backend.",
+      "captured_versions": [],
+      "snapshots": [],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "HARNESS",
+      "title": "Harness VLA v4 · Table 3, LIBERO-Pro; RPent publication (2 Sep 2026)",
+      "url": "https://arxiv.org/html/2607.08448v4#S3.T3",
+      "accessed": "2026-09-14",
+      "source_type": "primary_results",
+      "code_execution_or_replication": false,
+      "snapshots": [],
+      "active_slides": [],
+      "talk_role": "historical_reference"
+    },
+    {
+      "id": "ENPIRE_SITE",
+      "title": "ENPIRE official interactive plots · model and resource data (accessed 14 Sep 2026)",
+      "url": "https://research.nvidia.com/labs/gear/enpire/",
+      "accessed": "2026-09-14",
+      "source_type": "primary_results",
+      "code_execution_or_replication": false,
+      "snapshots": [],
+      "active_slides": [
+        25,
+        26,
+        27,
+        29,
+        30,
+        31,
+        33,
+        34,
+        35
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "HIROBOT_DISCUSSION",
+      "title": "Hi Robot v2 Discussion",
+      "author_or_publisher": "Physical Intelligence",
+      "publication_date": "2025",
+      "date_precision": "year",
+      "source_type": "primary_source",
+      "talk_role": "active",
+      "url": "https://arxiv.org/html/2502.19417v2#S6",
+      "related_urls": [
+        "https://www.pi.website/research/hirobot"
+      ],
+      "accessed": "2026-09-14",
+      "verification_scope": "Previously captured paper, section 6; no new retrieval or execution.",
+      "evidence_boundary": "Model-level role separation is not fundamental. Our three capability angles are synthesis, not the paper taxonomy.",
+      "captured_versions": [
+        "v2"
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_results_20260914/background/hirobot_paper_v2.html",
+          "sha256": "ed6645c3a64806328a49c484bc74cebb04e3ff6b34f4996240cfa4224fe5e66b"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "active_slides": [
+        6,
+        17
+      ]
+    },
+    {
+      "id": "DOG",
+      "title": "GPT Dog Eval · bounded Go1 joint-chunk loop, source pinned 15 Sep 2026",
+      "url": "https://github.com/guajun/gpt-dog-eval/tree/04ef36d8120545341f6f1e77a464327c801e03aa",
+      "accessed": "2026-09-15",
+      "source_type": "primary_source",
+      "talk_role": "historical_reference",
+      "active_slides": [],
+      "code_execution_or_replication": false,
+      "evidence_boundary": "Bounded joint chunks with paused inference, not real-time humanoid control."
+    },
+    {
+      "id": "DEXGPT",
+      "title": "DexGPT · recorded contact rollout; physical acceptance not met",
+      "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+      "accessed": "2026-09-15",
+      "source_type": "primary_source",
+      "talk_role": "active",
+      "active_slides": [
+        18,
+        21,
+        22
+      ],
+      "code_execution_or_replication": false,
+      "evidence_boundary": "One recorded physics rollout; physical acceptance not met; training value not evaluated."
+    },
+    {
+      "id": "G1_SONIC",
+      "title": "Flood G1 demo · official SONIC planner/policy; overlay rate is not LLM timing",
+      "url": "https://x.com/RotekSong/status/2099104628562608371",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "historical_reference",
+      "active_slides": [],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "MOBILE_ICL",
+      "title": "Axel Peytavin · mobile ICL demo; author-reported spatial transfer, no trial denominator",
+      "url": "https://x.com/ax_pey/status/2098216469012283681",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "active",
+      "active_slides": [
+        17
+      ],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "KITCHEN",
+      "title": "Frank ZY Dou · articulated lab kitchen reconstruction (12 Sep 2026); source image via Awesome-Astra",
+      "url": "https://www.rednote.com/discovery/item/6aa4d64c000000000b037809",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "historical_reference",
+      "code_execution_or_replication": false,
+      "active_slides": []
+    },
+    {
+      "id": "KITCHEN_PROJECT",
+      "title": "Frank ZY Dou · public kitchen-twin output and workflow description",
+      "url": "https://github.com/frank-zy-dou/kitchen-twin/tree/d34e0f8983bcb6ce040130d023cac9623d0efce7",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "active",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        19
+      ]
+    },
+    {
+      "id": "ROPE",
+      "title": "Dmytro Hrybov (@dimentary) · simplified rope-driven hand reconstruction (10 Sep 2026)",
+      "url": "https://x.com/dimentary/status/2097857980150763900",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "active",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        20
+      ]
+    },
+    {
+      "id": "KITCHEN_X",
+      "title": "Zhiyang (Frank) Dou · original kitchen viewer demo, 12 Sep 2026 local time",
+      "url": "https://x.com/frankzydou/status/2098460193319186578",
+      "accessed": "2026-09-16",
+      "source_type": "community_demo",
+      "talk_role": "active",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        19
+      ]
+    },
+    {
+      "id": "KITCHEN_LINKEDIN",
+      "title": "Zhiyang (Frank) Dou · workflow, human-in-the-loop and simulation status",
+      "url": "https://lnkd.in/p/e8YszUkv",
+      "accessed": "2026-09-16",
+      "source_type": "community_demo",
+      "talk_role": "active",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        19
+      ]
+    },
+    {
+      "id": "CUBE",
+      "title": "Rubik’s Cube simulation demo",
+      "url": "https://x.com/ZeYanjie/status/2098118164626501669",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        9
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "CLAW",
+      "title": "Unlocking the Claw methods and recorded replay",
+      "url": "https://qinengwang-aiden.github.io/demos/constraint_demos/methods.html",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        9
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "ENPIRE_CODE",
+      "title": "ENPIRE pinned policy research contract",
+      "url": "https://github.com/NVlabs/ENPIRE/blob/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/autoresearch_instruction.md",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        27
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "ENPIRE_TRANSFER",
+      "title": "ENPIRE experience transfer",
+      "url": "https://arxiv.org/html/2606.19980v1#S3.SS4",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        35
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "ROBORSI",
+      "title": "RoboRSI September 2026 report",
+      "url": "https://lab.noematrix.ai/blog/2-roborsi/",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        35
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "DGM",
+      "title": "Darwin Gödel Machine",
+      "url": "https://sakana.ai/dgm/",
+      "accessed": "2026-09-16",
+      "source_type": "primary",
+      "code_execution_or_replication": false,
+      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
+      "active_slides": [
+        35
+      ],
+      "talk_role": "active"
     }
   ],
   "limitations": [
@@ -1210,5 +1812,20 @@
     "Product pages are date-of-access snapshots, not versioned technical reports.",
     "Paper/project assertions were not experimentally reproduced or fully code-audited.",
     "Hugging Face and search snippets are discovery channels; factual claims cite original sources."
-  ]
+  ],
+  "results_authority": "research/results_v0_9.json",
+  "results_research_notes": [
+    "research/control_background_results_2026-09-14.md",
+    "research/data_improvement_results_2026-09-14.md",
+    "research/astra_interfaces_frequency_2026-09-15.md",
+    "research/data_taxonomy_2026-09-15.md"
+  ],
+  "new_evidence_authority": "research/evidence_v0_11_sources.json",
+  "report_figure_authority": "research/report_figures_v0_13_sources.json",
+  "code_video_authority": "research/code_video_v0_14_sources.json",
+  "data_demo_authority": "research/data_demos_v0_15_sources.json",
+  "data_extra_authority": "research/data_extra_v0_16_sources.json",
+  "kitchen_video_authority": "research/kitchen_v0_17_sources.json",
+  "enpire_media_authority": "research/enpire_v0_18_sources.json",
+  "puzzle_video_authority": "research/puzzle_v0_18_sources.json"
 }

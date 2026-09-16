@@ -1,0 +1,12 @@
+{
+  "html_sha256": "7dd72dc9dc888b6edd7aac19d5b64220770c1fb94e02ce386872d0157d87e3cf",
+  "files": {
+    ".build/build_selfcontained.py": "372ddf27fac8b5e9507a190ed36c9de555606781cba8ea44e6c5b2196fc5c394",
+    ".build/script_revised.md": "0a46722052e753932badab5a7a62d30dfe902020e580fcdc6a44d677dd44af21",
+    ".build/validate_standalone.py": "da46cc159e7e3231b6aa52fda5839ef5cbfd9acb55531cd8380a190019f20988",
+    ".build/standalone_visual_audit.json": "fff8c07c5163acd60f3603bb767114de58f0455a3767036895a9445d9755e098",
+    ".build/standalone_delivery_audit.json": "875786ac27d165ace543a1409aef5e310cd081ec6e4cab9ac300b9ebb44d6ae3",
+    "output/Speaker_Script_Revised.md": "1289aa80282cbe65a37ec1e1ec977b6f20d9d0caff5e66fe43796a9fb8c3a062",
+    "output/Control_Responsibility_Shift.png": "89d2a87d68726638853a94b44258cc21a17ba641d96b4b9825d8ff109507ac74"
+  }
+}

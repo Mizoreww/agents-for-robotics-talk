@@ -1,0 +1,26 @@
+[
+  {
+    "file": "agentic_readme.md",
+    "url": "https://raw.githubusercontent.com/agentic-real2sim/agentic_real2sim/880389bda289d2e78154c73ae1b6d23b7a650557/README.md",
+    "sha256": "5203eee032a12099d7353d4d48ddef20b34b237d60b8b46422cee363875c3b1c",
+    "commit": "880389bda289d2e78154c73ae1b6d23b7a650557"
+  },
+  {
+    "file": "agentic_grasp_candidates.py",
+    "url": "https://raw.githubusercontent.com/agentic-real2sim/agentic_real2sim/880389bda289d2e78154c73ae1b6d23b7a650557/ar2s/grasp_candidates.py",
+    "sha256": "093357799a97c009efce8484933fdd739c61a9ccdbfcebae792a109da006cc4d",
+    "commit": "880389bda289d2e78154c73ae1b6d23b7a650557"
+  },
+  {
+    "file": "enpire_autoresearch_instruction.md",
+    "url": "https://raw.githubusercontent.com/NVlabs/ENPIRE/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/autoresearch_instruction.md",
+    "sha256": "bc46b5dc68d7d2492ac33444a077d85567525bb750866ac9880d31248f72c40a",
+    "commit": "99ee90acf65b5b18957c8382ad580db999528be3"
+  },
+  {
+    "file": "enpire_pld_runtime_readme.md",
+    "url": "https://raw.githubusercontent.com/NVlabs/ENPIRE/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/pld/runtime/README.md",
+    "sha256": "3be28d38cf9f906e14bd4cc7f36a184cfa3dcce91006bb845baea5f545cd05ec",
+    "commit": "99ee90acf65b5b18957c8382ad580db999528be3"
+  }
+]

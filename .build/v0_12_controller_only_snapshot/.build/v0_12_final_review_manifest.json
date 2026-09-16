@@ -1,0 +1,29 @@
+{
+  "baseline": ".build/revision_0_12_baseline/manifest.json",
+  "commits": "No commits; working source vs verified v0.11 snapshot",
+  "html_sha256": "c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1",
+  "files": {
+    ".build/build_selfcontained.py": "0cf8729f00e73b837ac1176f89af776e99b3b42e17f3e8748afad1e21b742899",
+    ".build/script_revised.md": "e195adbb47ecadce48278b7194aae79cf25a26d23f605cc79b868ffc3e86a57b",
+    ".build/validate_standalone.py": "3e33407869fd79569bd64101dcb5bebaad0fe32722c57485c422b5f13e2b8f5e",
+    ".build/extended_visual_audit.mjs": "551c94edb248670e307d1f0ba0bb9c94ee14dab4071a7fa8de066cf0cdf41176",
+    "research/revision_0_12_spec.md": "853907deb4a8d7f5ebe3fee446535a9cbef980a07b319cc07d5741338d8e4e29",
+    "README.md": "b1a90ff3a485c81696df6881bc13c2241b5335ede0a524c63a83fb3b62c110e9",
+    "AGENTS.md": "af3fb2a5e6c8a30bb08ba740888a9c0f316883514bca97ab5c9ac9f32916081f",
+    "output/README.md": "fb64fc4b89519f1de3fafc65532fb76abb12fc6095c64d85f6a92e48d95774c3",
+    "output/Chapter_Spine.md": "fa3c2a2d43ad03399746e480f462697adf908cf16525e5540eacb1e9c8ad05a8",
+    "talk_outline.md": "3cc72027e7b618598348ccdf65178c4676d9f1bee8f9071606e61c95bb44d75c",
+    "CHANGELOG.md": "b7ec4b0985f293e2de914ce747ad98807f2917e52078bcea2d9562dac0e39c33",
+    "research/sources.json": "3cb0ebe7b755943dac6f204bd16b52bc62b51655f06db331118d670e3cbf1767",
+    "WORKPLAN.md": "49f955531cb4de44a1edaa98da59ffa681d78a84c6b17eb6f44025569a4f6896",
+    "output/Speaker_Script_Revised.md": "660e0a9092e36a1c12285f1449228369ae1e64b43b5115dbd2d831ab80157e5d",
+    "research/revision_0_12_review.md": "5c8c1cc688fcb6b20efd3c4615417ba9ee56b4aab02468788ca643af9be8cee9",
+    ".build/standalone_visual_audit.json": "ba0be145ba2dd0ad20a1384bc614cfa5721339977267901033f4fc8a5047ac3b",
+    "output/Control_Responsibility_Shift.png": "620c5e930b13ab5836ab9f241ec0506be6c41054f1b69ca60947bc1fc4a1e239"
+  },
+  "reviewed_content_html_sha256": "c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1",
+  "status": "passed",
+  "standards_findings": 0,
+  "spec_findings": 0,
+  "post_review_changes": "Status documentation only; HTML, generator, validator and Chinese narration unchanged from reviewed hash."
+}

@@ -1,0 +1,148 @@
+{
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
+  "loaded_deck_data_sha256": "71ce8bacad7aa9d7c645f3fb6a3c2a71f4e31129b816d046d586543bb0073a0e",
+  "slides": [
+    35,
+    36
+  ],
+  "svg_labels": [
+    {
+      "label": "Agent",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 147.73379516601562,
+      "right": 234.04629516601562,
+      "top": 529.7429809570312,
+      "bottom": 568.7429809570312
+    },
+    {
+      "label": "Control",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 404.54644775390625,
+      "right": 510.95269775390625,
+      "top": 340.6675720214844,
+      "bottom": 379.6675720214844
+    },
+    {
+      "label": "Data",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 423.5386657714844,
+      "right": 491.9605407714844,
+      "top": 565.6433715820312,
+      "bottom": 604.6433715820312
+    },
+    {
+      "label": "Improvement",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 359.2261657714844,
+      "right": 556.2730102539062,
+      "top": 718.818359375,
+      "bottom": 757.818359375
+    },
+    {
+      "label": "Open problems",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 1221.6796875,
+      "right": 1431.3984375,
+      "top": 181.36856079101562,
+      "bottom": 220.36856079101562
+    },
+    {
+      "label": "System 2",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 655.4902954101562,
+      "right": 776.9746704101562,
+      "top": 280.6929626464844,
+      "bottom": 319.6929626464844
+    },
+    {
+      "label": "Primitives",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 939.2118530273438,
+      "right": 1072.4462890625,
+      "top": 280.6929626464844,
+      "bottom": 319.6929626464844
+    },
+    {
+      "label": "Semantic / spatial",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 610.9246215820312,
+      "right": 849.6121215820312,
+      "top": 364.4605712890625,
+      "bottom": 403.4605712890625
+    },
+    {
+      "label": "Fast / contact-rich",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 610.9246215820312,
+      "right": 851.2839965820312,
+      "top": 423.0978698730469,
+      "bottom": 462.0978698730469
+    },
+    {
+      "label": "Assets / replay / rollouts",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 699.2962646484375,
+      "right": 1022.7650146484375,
+      "top": 565.5027465820312,
+      "bottom": 604.5027465820312
+    },
+    {
+      "label": "Policy improvement loop",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 693.6712646484375,
+      "right": 1028.389892578125,
+      "top": 718.677734375,
+      "bottom": 757.6776733398438
+    },
+    {
+      "label": "Latency?",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 1262.9063720703125,
+      "right": 1390.4600830078125,
+      "top": 308.35723876953125,
+      "bottom": 347.3572692871094
+    },
+    {
+      "label": "Better interface?",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 1205.1953125,
+      "right": 1448.16943359375,
+      "top": 378.96136474609375,
+      "bottom": 417.96136474609375
+    },
+    {
+      "label": "Sim2Real?",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 1254.0625,
+      "right": 1399.3070068359375,
+      "top": 565.6433715820312,
+      "bottom": 604.6433715820312
+    },
+    {
+      "label": "Efficiency?",
+      "size": "24px",
+      "family": "\"Noto Sans\"",
+      "left": 1250.6328125,
+      "right": 1402.7410888671875,
+      "top": 718.818359375,
+      "bottom": 757.818359375
+    }
+  ],
+  "uniform_body_font_px": 24,
+  "script_synced": true,
+  "overflows": 0
+}

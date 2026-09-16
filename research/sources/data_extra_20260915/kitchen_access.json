@@ -1,0 +1,7 @@
+{
+  "surface": "public Rednote note page",
+  "outcome": "note payload absent;401 no login information",
+  "browser_tool": "request-header policy unavailable after retry",
+  "fallback": "Pinned Awesome-Astra case22 image and user-supplied/source description",
+  "no_login_bypass": true
+}

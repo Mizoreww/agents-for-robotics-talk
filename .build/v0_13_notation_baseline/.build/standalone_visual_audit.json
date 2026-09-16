@@ -1,0 +1,14 @@
+{
+  "html_sha256": "3eda1d3fbd2b8a92a4712d916c5916ae59d6cc6594bcab4477ab7393adae52f1",
+  "status": "passed",
+  "date": "2026-09-15",
+  "manually_reviewed_slides": [
+    4,
+    5
+  ],
+  "scope": "Cosmetic follow-up only: gray Direct box and two removed bottom sentences. Other slides/media unchanged. Full browser geometry/media-control/UI/mobile tests rerun; extended full-length playback and two-axis review not rerun.",
+  "screenshots": {
+    ".build/v0_13_polish_visual/04.png": "27b6c81c69f8d21d4ef569c40e9924f44899146e435b36c8abb462b811547ead",
+    ".build/v0_13_polish_visual/05.png": "554fe839f49c4821645745d5012f279227be63e71078890f3d98f5a0573a4d87"
+  }
+}

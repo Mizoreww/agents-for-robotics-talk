@@ -1,0 +1,50 @@
+[
+  {
+    "file": "enpire_robocasa_original.png",
+    "url": "https://arxiv.org/html/2606.19980v1/RoboCasa365.png",
+    "bytes": 491184,
+    "sha256": "5f643f7eba7c44db67f49ca6a15d0827d183328f0b4b149682ddc78a6458ba60",
+    "content_type": "image/png",
+    "accessed": "2026-09-14"
+  },
+  {
+    "file": "enpire_pusht_sim_original.png",
+    "url": "https://arxiv.org/html/2606.19980v1/gym-pusht.png",
+    "bytes": 366591,
+    "sha256": "e62770e488bd1af7fbb4829a3c7924ed5e43ea8d379abb06f9d50f9e0b56b0e7",
+    "content_type": "image/png",
+    "accessed": "2026-09-14"
+  },
+  {
+    "file": "enpire_detection_original.svg",
+    "url": "https://arxiv.org/html/2606.19980v1/sam3_counter_to_cabinet_correctness_target_sr_by_resolution_line.svg",
+    "bytes": 49087,
+    "sha256": "f6ee26a3e6b560197b8eb32313157c74106cc163eb6cadd25386c402cf467e87",
+    "content_type": "image/svg+xml",
+    "accessed": "2026-09-14"
+  },
+  {
+    "file": "agentic_replay_results_original.png",
+    "url": "https://arxiv.org/html/2607.19190v3/figures/figs/compressed/replay_outcomes_model_cost.png",
+    "bytes": 113289,
+    "sha256": "048010fa2871941a94f6228946d59fd97134b85235e606bb8f792642c5da682b",
+    "reuse_from": "research/assets/agentic_replay_results.png",
+    "reviewed": "2026-09-14"
+  },
+  {
+    "file": "enpire_scaling_original.png",
+    "url": "https://arxiv.org/html/2606.19980v1/auto_env_bench.png",
+    "bytes": 1809454,
+    "sha256": "e700a03681fc7e7d754ed71365633cf36c22b1418fd5943dd80dd099d87f4650",
+    "reuse_from": ".build/assets/enpire_scaling.png",
+    "reviewed": "2026-09-14"
+  },
+  {
+    "file": "enpire_utilization_original.svg",
+    "url": "https://arxiv.org/html/2606.19980v1/agent_resource_utilization.svg",
+    "bytes": 111294,
+    "sha256": "39afbe81c4c602e57ffde5bc86b689f5595fde77ca5148f99956277abdc1fd17",
+    "reuse_from": ".build/assets/enpire_utilization.svg",
+    "reviewed": "2026-09-14"
+  }
+]

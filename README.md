@@ -1,64 +1,83 @@
 # Agents for Robotics
 
-一场 60 分钟技术分享的源码、素材处理脚本与研究笔记。交付物是单个完全内嵌的 HTML：28 页英文幻灯片加中文逐页讲稿，图片、视频、字体、样式、播放脚本与讲稿全部内嵌，约 132 MB，移动 HTML 本身即可演讲，运行不需要网络。
+37 页英文 slides，中文逐页讲稿。**一个全部内嵌的 HTML**：28段视频、论文原图、Noto字体、播放器和讲稿均在文件内，可离线移动。
 
-- 讲者 Zimo Huang，讲期 2026-09-16，资料截点 2026-09-11。
-- 当前版本 0.5（2026-09-11），sha256 `1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b`。
-- 成品 HTML 见 [Releases](../../releases/latest) 的附件，约 126 MiB。它超过 GitHub 单文件 100 MB 上限，因此作为 release 附件而不是仓库文件；也可以按下面的步骤从源码重建。
-- 版本演进见 `CHANGELOG.md`，当前状态与边界见 `WORKPLAN.md`，页序与叙事见 `talk_outline.md`，构建与约定见 `AGENTS.md`，面向听讲者的操作说明见 `output/README.md`。
+- Zimo Huang · 2026-09-16 · 本地版 **0.23**。
+- [下载完整 HTML（v0.23 Release 附件）](https://github.com/Mizoreww/agents-for-robotics-talk/releases/download/v0.23/Agents_for_Robotics_Self_Contained.html) · 仓库保持 Private。
+- 主文件：`output/Agents_for_Robotics_Self_Contained.html`，约 138.0 MB。
+- 中文稿：`output/Speaker_Script_Revised.md`，与HTML一致。
+- 章节主线：`output/Chapter_Spine.md`；逐页时间：`talk_outline.md`。
+- SHA-256：`1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507`。
+- 建议60分钟含读图、视频与讨论，尚未彩排计时。
 
-## 三个部分
-
-全场按 Agent 在 robotics 里的三种角色组织，每部分以一张 synthesis 流程图开场（第 5、15、20 页）。
-
-| 页 | 部分 | 内容 |
+| 页 | 部分 | 主线 |
 |---|---|---|
-| 1–4 | Introduction | 开场 painting demo、目标、三角色总览 |
-| 5–14 | Agent Controls Robot | 直接 action 与 controller code、model/interface 比较、VLA as a tool、Robocurve 放置与插入、社区真机与仿真 demo、Show-Harness、RPent、Gaps and Directions |
-| 15–19 | Agent Produces Data | 真实 episode 与其 simulated twin、conversion pipeline、DROID-100 replay acceptance、Real2Sim 失败案例 |
-| 20–26 | Agent Post-trains Robot | ENPIRE 的 environment contract、reset 与 verification、pin insertion curve、token 开销、ASPIRE |
-| 27–28 | Closing | 机械手结构设计（放在三角色之外）、总结 |
+|1–3|Introduction|Painting 与三个角色|
+|4–17|Control|职责迁移、Astra能力与接口、Direct/Hybrid、latency|
+|18–22|Data|三组双案例视频与downstream training问题|
+|23–35|Improvement|ENPIRE方法、原图/结果、官方demo、经验迁移与RSI|
+|36–37|Closing|Takeaways与感谢|
 
-三个细讲标杆：Claude Plays Robotics、Agentic Real2Sim、ENPIRE。Show-Harness、RPent、ASPIRE 为支撑例子。20 段视频，合计约 459 秒。
+## v0.23 — 统一 SVG 总结图
 
-## 目录
+- P36 最左侧新增 Agent，分出 Control / Data / Improvement 三条路径。
+- 移除截图缩略，用原生 SVG 重绘 System 2 → Primitives 与 semantic/spatial、fast/contact-rich 提示；图中文字统一 24px Noto Sans。
+- 保留四个具体问题，更新中文读图提示；P35 和其他页面不变。
+- 范围与验证：`research/revision_0_23_spec.md`、`research/revision_0_23.md`。
 
-- `output/` — 交付物与中文讲稿 `Speaker_Script_Revised.md`；`README.md` 是演讲使用说明。
-- `.build/` — 构建与校验脚本、clip manifest、下载记录、审计 JSON，以及讲稿权威源 `script_revised.md`。
-- `research/` — 调研笔记与来源快照：`survey_notes.md`、`media_storyboard.md`、`talk_narrative_review.md`、`interface_application_revision.md`、`community_demos_2026-09-11.md`、`sources.json`、`sources/`。
+## v0.22 历史调整 — 用具体问题收束
 
-权威状态文件：`.build/standalone_delivery_audit.json`（校验结果，含 `browser_audits` 状态）、`.build/standalone_build_audit.json`（slides / videos / hash）、`.build/slide_records_revised.json`（逐页标题、分组、分钟）。
+- P36 重画为三条路径：Control → P6/P17 原页缩略 → Latency? / Better interface?；Data → Sim2Real?；Improvement → Efficiency?。
+- 两张缩略图可点击放大，文字、字体和框图忠实对应 P6/P17；删除旧的抽象标语，更新中文讲稿。
+- P35 仅删除指定 Open test 行，其余框图与位置不动。右侧 Script 行为和 28 段媒体均保留。
+- 范围与记录：`research/revision_0_22_spec.md`、`research/revision_0_22.md`。
 
-## 重建
+## v0.21 — 右侧讲稿栏
 
-完整命令序列与依赖见 `AGENTS.md`。仓库内已包含重建所需的全部输入：`.build/focus_draft.pptx`、`.build/focus_rendered/*.layout.json`、`.build/clips/*.mp4`（20 段内嵌视频，79 MB）、`.build/assets/*.jpg` 海报、`.build/script_revised.md`、`output/offline_player/media_credits.json`、`research/assets/rpent_framework.png`。
+- 打开 Speaker script 时，右侧展开独立滚动讲稿，左侧 slides 和控件等比例适配剩余空间，不重叠。
+- 保留全文/当前页切换，支持 N、Escape 和 Close；收起后恢复演示区域，不重建视频。
+- Fullscreen 保留双栏；窄屏上下排列，短横屏也保留可读的讲稿高度。字体和全部 slides、讲稿、媒体字节保持不变。
+- 范围与核验：`research/revision_0_21_spec.md`、`research/revision_0_21.md`；侧栏审计：`.build/v0_21_sidebar_audit.json`。
 
-注意：沿用上一版的 14 段 clip 必须与 `output/offline_player/media_credits.json` 记录的 sha256 逐字节一致，校验脚本对此有断言；重新编码不保证得到相同字节，因此这些 clip 入库而不是靠重新下载。
+## v0.20 历史调整
 
-## 不入库的内容
+- P31 原始图表只做竖直居中，保留原水平位置、大小、标题和学术引用。
+- 原 P34 拆为 P34 **ENPIRE: Limitations** 与 P35 **Toward Recursive Self-Improvement**；后者保留研究闭环和经验复用的 open question。
+- Takeaways 顺延至 P36，感谢页至 P37，中央文字为 **Thanks for listening!**。
+- 当前变更与核验：`research/revision_0_20.md`；固定基线：`.build/v0_20_baseline/`。34项回归及最终浏览器、视觉核验通过。
 
-以下条目体积大、可再生或与本讲无关，通过 `.gitignore` 排除。
+## v0.19 历史调整
 
-| 条目 | 体积 | 说明 |
-|---|---|---|
-| `output/Agents_for_Robotics_Self_Contained.html` 及 `.build/standalone_isolation/index.html` | 各 132 MB | 超过 GitHub 100 MB 单文件上限。成品在 [Releases](../../releases/latest) 提供下载，也可用 `build_selfcontained.py` 重建 |
-| `output/*.pptx`、`*.zip`、`*.pdf`、`output/offline_player/{media,posters,slides}` | 约 240 MB | 0.2 版历史交付，与当前 28 页不逐页对应。其生成链依赖仓库外的 presentation runtime，需要时从本地备份取回；`media_credits.json` 是构建输入，已保留 |
-| `.build/assets/*_source.mp4` 等原始下载 | 242 MB | 项目页素材用 `fetch_media.py` 与 `continue_assets.py` 重取；2026-09-11 的社区视频按 `.build/community_downloads.json` 记录的 `post_url` 与 `sha256` 重取（fxtwitter API 元数据 + X CDN ≤1280 px，小红书取 note 页 stream URL）。X CDN 链接会过期，因此成品 clip 已入库 |
-| `.build/prior_*/` 下的 HTML、`.build/previews/`、各 `*_rendered/`、`*.pdf` | 约 380 MB | 历史或可再生的构建产物。`prior_*` 里的源文件（md / json / py）保留入库 |
-| `.build/font_deps`、`.build/static_render_deps`、`.build/qa_deps`、`.build/node_modules` | 107 MB | 第三方依赖，重装即可 |
-| `.build/reference/`、`.build/reference_review.html` | 3.2 MB | 另一场讲座（Steerable Hierarchical-VLA）的渲染页，仅作排版参考，不属于本讲内容 |
-| `research/searches/github_empire.json` | 345 KB | 检索词 "empire" 与 ENPIRE 撞名的结果，混入无关第三方内容，无研究价值 |
+- 最新 P31 清理：删除表格和底部总结条，保留原始三联图、标题及学术引用；讲稿不再指向已删表格。核验记录：`research/revision_0_19_p31.md`。
 
-## 证据口径
+- 最新微调：ENPIRE 灰色页脚统一为学术引用；原 P24 Learned Policy 四视频移至 P33，放在定量结果之后、Limitations/RSI 之前。
 
-- 只细讲三个标杆，其余工作作为背景、对照或支撑例子。
-- 社区 demo（X、小红书）按定性材料使用：作者自述、带倍速、无 trial 统计，讲稿标注其性质，不进入定量结论。
-- 数字只来自被引用的评测：Robocurve 放置 19/20、插入 2/20；HumanCLAW 单次 low-thinking 运行；RoboDojo 一次社区运行 11/60；Show-Harness Table 2（每任务 10 次 trial，作者自设任务集，位于第 12 页）。不做跨论文 success-rate 排行榜。
-- Agentic Real2Sim 测的是 replay acceptance，采用 any-judge best-candidate 规则；ENPIRE 的成绩包含其 reset 与 conditional retry 协议。
-- 若干素材有明确限定：hand 是未经物理验证的 design artifact；microphone 片段是动力学失败后的 kinematic replay；Yanjie Ze 魔方是 MuJoCo physics replay，动作为学习还是脚本，帖子未说明。
-- RPent 是 RLinf 组织下的独立仓库，不是 VLA backbone；其架构图范围大于已确认的集成，DreamZero 未标记支持，`move_to` 用 OSC。
-- 逐条来源见 `research/sources.json` 与 `research/sources/`，社区素材的评估见 `research/community_demos_2026-09-11.md`。
+- P8后新增Cube / Claw双视频，区分仿真展示与理想grasp下的kinematic replay。
+- 第三章集中讲ENPIRE。官网下载的四类reset、verification、fleet、pin/tie/cut/GPU共十段视频均内嵌。完整保留所选视频时间段，清楚标注8×或1×。
+- 删除active CAD + RL / physical ICL视频，历史文件保留。新增两张官网任务照片，保留原Figure 2/3/6/7/12。
+- 用Pin→written recipes→GPU解释经验迁移，最后引出RSI的held-out、matched-budget验证问题。
+- 原Control/Data内容与媒体字节、Takeaways/Thank You内容保持不变，仅插页后顺延编号。
 
-## 使用第三方材料的说明
+## 证据边界
 
-本仓库为私有存档。`research/sources/` 是公开论文、项目页与帖子的完整快照，`.build/clips/` 是社媒与项目页视频的剪辑片段，均用于这次分享的引用与讲解，作者与出处记录在 `research/sources.json`、`.build/community_downloads.json` 与 `.build/media_downloads.json`。仓库若要公开或对外分发，应先把这些第三方媒体换成按记录重新抓取的脚本。
+Astra训练配方未披露；不把模型能力变化写成机器人数据训练的因果结论。Asim预算不同，RoboDojo/RoboLab历史基线和retained slots不混池。社区demo不构成成功率评测。Cube的action接口未披露，Claw不证明真实接触控制。
+
+ENPIRE的environment setup有人参与。物理pass@8含conditional retries，RoboCasa则每episode只执行一次script。Figure 3与Figure 7的时间不拼接。经验总结迁移不等于coding模型权重更新，也不证明持续递归增强。
+
+## 构建与核验
+
+按`AGENTS.md`执行：结果来源检查→构建→CJK subset→重建→隔离复制→静态→Chrome layout/playback/UI/mobile→完整播放新增视频→视觉检查。不要手改生成HTML。
+
+此前范围：`research/revision_0_19_spec.md`。此前固定基线：`.build/revision_0_19_baseline/`，包含v0.18交付及全部P3/P23竖直调整、文字删除，不使用dirty Git HEAD。来源冻结：`research/enpire_v0_18_sources.json`、新增reset的`research/enpire_v0_19_sources.json`及`research/puzzle_v0_18_sources.json`。新增reset由`.build/enpire_order_v019.py`检查，回归为`.build/test_enpire_order_v019.py`；extended QA完整播放十段ENPIRE与两段puzzle。
+
+此前引用/页序核验记录：`.build/standalone_delivery_audit.json`、`.build/v0_19_polish_extended_audit.json`、`research/revision_0_19_polish.md`。官网顺序重排的独立 Standards/Spec 复核已通过；后续引用与页序微调单独记录于 `research/revision_0_19_polish.md`。本次微调的30项回归、完整播放、引用排版及最终视觉核验均已通过。
+
+旧PPTX/PDF/ZIP保持历史，不对应本版。用户已授权将 v0.23 源码与 HTML 上传到现有 Private GitHub 仓库；HTML 因超过 100 MB，使用 Release 附件。未执行 ENPIRE 或调用 Claude/Anthropic 服务。
+
+引用/页序微调保留了所有页面主体和媒体字节。后续 P31 仅删除表格及总结条，并修正讲稿中的“下表”指代；其他页面与所有媒体完全不变。
+
+## GitHub 发布约定
+
+源码、精简后的播放媒体、构建实际核验的 hash-pinned 原始来源及研究记录进入 Git。未使用的原始下载、截图渲染、重复 HTML、第三方依赖和本地缓存不进入 Git。部分已固定的原始视频超过 50 MB，但均低于 GitHub 的 100 MiB 硬限制。不能删除它们后绕过来源验证。
+
+主 HTML 使用 Releases，随附 `.sha256` 校验文件。检出后构建仍需使用文档列出的依赖及工作路径；历史逐版审计属于历史证据，当前状态看 v0.23 的 hash-bound 审计。

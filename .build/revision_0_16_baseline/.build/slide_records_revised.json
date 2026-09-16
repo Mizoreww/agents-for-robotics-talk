@@ -1,0 +1,847 @@
+[
+  {
+    "number": 1,
+    "title": "Agents for Robotics",
+    "section": "",
+    "ids": [],
+    "minutes": 0.5,
+    "script": "大家好，我是 Zimo Huang。今天我们讨论 Agents for Robotics：当 foundation model 既能读图、写代码，也能调用机器人和模拟器接口时，它应该承担哪些工作？\n\n我会从 Control、Data 和 Policy Improvement 三个位置展开。它们分别产出动作、候选资产与轨迹数据，以及下一版策略，不是一套已经端到端打通的系统。我们既看能够解释机制的研究，也看 Astra 出现后的新 demo，最后讨论哪些分工值得重新检验。",
+    "old_slide": 1,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [],
+    "footer": "Primary sources checked 15 September 2026",
+    "startMinutes": 0
+  },
+  {
+    "number": 2,
+    "title": "Demo: Painting with Feedback",
+    "section": "",
+    "ids": [
+      "S11"
+    ],
+    "minutes": 1,
+    "script": "> 播放提示：播放 painting timelapse。看目标如何变成笔触，以及后续尝试怎样调整；不要把播放速度当成 LLM 决策速度。\n\n先看一个直观的例子。作者给 Astra 一台机器人、一支画笔和相机，让它画 Golden Gate Bridge。目标不是一串预先写好的关节角，而是一个可以由语言和视觉表达的概念。\n\n从作者的说明看，系统会规划一段动作，再根据相机和人的反馈继续调整。人也会问它哪里可以画得更好。所以这是一个很有意思的工作流展示，但不是完全没有人工参与，也没有给出重复试验的成功率。\n\n这段视频想引出的问题是：Agent 不再只是解释怎么做，而是在把目标变成可执行产物，并利用反馈继续工作。接下来把这些工作分开看。",
+    "old_slide": 2,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [
+      {
+        "label": "@cdngdev, X demo and method thread (8 Sep 2026)",
+        "url": "https://x.com/cdngdev/status/2097339677128982873"
+      }
+    ],
+    "footer": "@cdngdev, X demo and method thread (8 Sep 2026)  ·  Original author demonstration",
+    "startMinutes": 0.5
+  },
+  {
+    "title": "Three Roles for Robotics Agents",
+    "ids": [],
+    "number": 3,
+    "minutes": 1,
+    "script": "今天有三个问题。第一，当前这一步应该怎么动，是 Agent 自己生成 action，还是交给 learned policy？第二，Agent 能帮助生成什么 Data：assets、Real-to-sim Replay，还是执行出来的 Data Rollout？第三，一次实验反馈怎样变成下一次还能复用的 policy 改进？\n\nControl 围绕一个问题展开：机器人泛化能力应该主要由哪一层承担？先看把希望寄托于 generalist VLA / WAM 的分工，再用Astra 的实机、接口与 Direct/Hybrid 证据，检查哪些空间理解和动作决策可以上移到 Agent。Data 只看 Awesome-Astra 收录的四个 demo，依次区分场景、设计资产、回放和 rollout。Improvement 以 ENPIRE 为代表。Tendon-hand 设计就是 Data 资产层的一个例子。\n\n这三个角色可以联系起来，但不是已经验证的流水线。例如 ENPIRE 直接使用真实机器人，不要求先完成 Data 章节里的重建与回放。",
+    "old_slide": null,
+    "new_slide_key": "questions",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [],
+    "footer": "Three roles · mechanisms, experiments and emerging applications",
+    "startMinutes": 1.5
+  },
+  {
+    "title": "Agent Controls Robot",
+    "ids": [
+      "ROBOCURVE",
+      "ASIM",
+      "ANON",
+      "WAM"
+    ],
+    "number": 4,
+    "minutes": 1.5,
+    "script": "> 读图提示：从左侧 Agent 出发，先指出 Direct 分支，再顺着 Agent Tools 看不同接口，最后沿 observations 回到 Agent。\n\n这张总框图保留了两种选择。Agent 可以直接输出 numeric action，比如 joint q 或 EEF Pose；也可以调用 IK、motion planner、controller code、VLA 或 WAM。这里的 q 和 EEF 是一般接口选项，不表示后面每个实验都测过它们。\n\n图中把 VLA / WAM / Learned policy 合到一个 learned tools 节点，不再把它们当成互斥类别。它们替 Agent 承担的工作不同。IK 和 planner 把几何目标转成可执行运动；controller code 可以在本地闭环；VLA 提供从机器人数据中学到的动作先验；WAM 把世界与动作生成联系起来。图是我们的综合，不是某篇报告测试过所有工具的声明。\n\n无论选哪条路，机器人端仍然有 servo 或 controller，观测也仍然需要返回。今天说的 Direct，重点是是否需要一个独立 learned action policy，并不是跳过所有运动学和低层控制，直接让 LLM 输出电机力矩。\n\n这章不把工具多少作为主问题。我们关心的是：通用的任务理解、空间泛化和动作决策由谁完成，执行层又必须保留哪些能力？先看常见分层，再用一张示意图把这条主线说清楚。",
+    "old_slide": null,
+    "new_slide_key": "control",
+    "diagram_key": "control",
+    "chapter_opening": true,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)",
+        "url": "https://openai.robocurve.org/gpt-6-astra/"
+      },
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      },
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      },
+      {
+        "label": "DreamZero · World Action Models are Zero-shot Policies (2026)",
+        "url": "https://dreamzero0.github.io/"
+      }
+    ],
+    "footer": "Chapter overview · our synthesis; q/EEF are options, not all tested in every cited work",
+    "startMinutes": 2.5
+  },
+  {
+    "title": "Hierarchical Robot Control",
+    "ids": [
+      "HIROBOT",
+      "HELIX",
+      "HELIX02"
+    ],
+    "number": 5,
+    "minutes": 2,
+    "script": "> 读图提示：三张都是上一场 talk 的原图。先看左边 Hi Robot，再看右侧 Helix 和 Helix 02；原图可以点击放大。\n\nHi Robot 的分工很直观。High-level VLM 理解任务、图像和用户的临时指令，输出一个 subtask language command；low-level π0 再把这个指令、图像和 robot state 变成 action。论文明确描述的是 two-level inference，不需要把原图中没有单列的第三个网络补进去。\n\nHelix 用另一种接口连接高低层：System 2 输出 semantic latent，System 1 负责 visuomotor action。原 Helix 的 S2 是 7B 模型，约 7–9 Hz；S1 是 80M，200 Hz。\n\n到了 Helix 02，三层分工更加明确：S2 给语义表示，S1 给 full-body joint targets，S0 进行 whole-body tracking 和 actuator control。官网说明 S1 是 200 Hz，S0 内部是 1 kHz；不要把原图接口上的 200 Hz 都解释成 S0 的执行频率。\n\n可以把它概括为 reasoning、visuomotor policy、low-level control 的分工。但这是常见方案，不是一个已经证明任何模型都必须遵守的定律。接下来先抽象出这类设计把 generalization 放在哪里，再看 Astra 的实验怎样改变这一预期。Figure 的两篇官方发布文展示了层次分工和演示效果，但没有公布带重复试验分母的系统成功率表；61 actions 或 1 kHz 都不能替代成功率。",
+    "old_slide": null,
+    "new_slide_key": "hierarchy",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Hi Robot · original hierarchical architecture (Feb 2025)",
+        "url": "https://www.pi.website/research/hirobot"
+      },
+      {
+        "label": "Figure Helix · original S2/S1 architecture (Feb 2025)",
+        "url": "https://www.figure.ai/news/helix"
+      },
+      {
+        "label": "Figure Helix 02 · original S2/S1/S0 architecture (Jan 2026)",
+        "url": "https://www.figure.ai/news/helix-02"
+      }
+    ],
+    "footer": "Original figures · Hi Robot: two inference levels; Helix 02 adds S0 · checked Figure releases disclose no repeat-trial success table",
+    "startMinutes": 4.0
+  },
+  {
+    "title": "Where Does Generalization Live?",
+    "ids": [
+      "HIROBOT_DISCUSSION",
+      "ROBOCURVE",
+      "ASIM",
+      "ANON"
+    ],
+    "number": 6,
+    "minutes": 2,
+    "script": "> 读图提示：深绿色表示被寄托广泛泛化能力的一侧。先读上方原先的设计设想，再沿红色箭头读到下方的新能力模式；箭头只表示部分职责迁移。\n\n先把接口符号说明白：o是observation，l是subtask language。上方System 2传l，System 1用π(a | o, l)生成交给Controller的目标a。下方System 2传更具体的c = (k, g)，k选择primitive，g给出目标或参数；System 1写成π(a | o, c)，再输出a给Controller。这里的π是统一的功能表达，可以包含确定性的IK或控制程序，不表示所有primitive都必须是随机神经网络。两条链的a都是控制目标，不特指torque。\n\n我们原先有一个很自然的设想：System 2主要理解目标、分解任务，交出semantic information或subtask language。真正把观测和语言变成动作的工作，交给System 1，也就是VLA、WAM或其他learned visuomotor policy。\n\n我们希望它是一个steerable generalist policy。写成公式就是π(a | o, l)：o是当前observation，l是language instruction，a是希望执行的action。理想上，换一个场景、对象、指令，甚至新的任务组合，它都能生成符合意图的行为。但“任意(o,l)都得到正确a”在这里是设计目标，不是某个已有模型的能力保证。WAM还可能联合生成世界演化，图中只抽出其action职责。\n\n因此，过去我们把很多泛化与动作智能的希望寄托在System 1：不仅会动，还要把语义落到空间、选择运动方式，并应对新的任务。System 2则可以相对只负责高层语义。\n\n现在观察到的变化是，更强的foundation model开始自己做其中一部分工作：根据observation理解空间关系、选择动作、生成EEF目标或joint参数，再根据反馈继续调整。图中这些职责从上方System 1移向下方System 2。不是整层搬走，而是原来需要专门visuomotor policy承担的一部分决策，现在可以由Agent承担。\n\n机器人经验进入foundation-model训练，是理解这种变化的一条重要研究假设。不过，Astra的具体robot-data配方与因果对照尚未披露。我们能直接讨论的是能力变化，以及它怎样改变系统分工；不能把训练数据原因当作已经证明的结论。\n\n这样一来，在部分任务上，System 2加比较窄的action primitives就可能做得很好，未必需要一个独立、覆盖所有任务的generalist VLA。Primitive可以是受约束的EEF运动、joint chunk、局部控制程序，也可以是learned motor skill。这里把它们放在System 1，是本talk对执行职能的简称，不代表IK或OSC本身都是learned System 1网络。底层servo和tracking仍由System 0中的Controller负责。\n\n这也不是说VLA失去价值。Narrow primitives仍然需要足够的动作能力，精细接触、高频反馈和跨动力学条件的泛化也没有因此自动解决。我们真正要检验的是：随着System 2变强，System 1还必须有多通用、多聪明？\n\n下面直接看Astra。先看没有独立VLA的实机控制，再看同一模型的不同action interfaces，最后用Direct/Hybrid报告检验什么时候仍需要learned motor prior。关键不是提前选边，而是让任务和实验决定分工。",
+    "old_slide": null,
+    "new_slide_key": "responsibility_shift",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Hi Robot v2 §6 · model-level separation is not fundamental",
+        "url": "https://arxiv.org/html/2502.19417v2#S6"
+      },
+      {
+        "label": "Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)",
+        "url": "https://openai.robocurve.org/gpt-6-astra/"
+      },
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      },
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Our functional synthesis · partial shift; low-level control remains local",
+    "startMinutes": 6.0
+  },
+  {
+    "title": "Astra: Stronger Real-Robot Performance",
+    "ids": [
+      "ROBOCURVE"
+    ],
+    "number": 7,
+    "minutes": 2,
+    "script": "> 播放提示：两段为 Robocurve 的精选实机片段，已省略模型等待。先看 bowl，再看 precision insertion 的边界，视频不替代完整实验统计。\n\n这一页先看能力变化：Astra在真实机器人上完成任务的表现，相比此前模型有了明显提升。Robocurve的bowl任务中，完成数从Fable 5的1/20、Fable 5.1的8/20，提高到Astra的19/20。重点是模型能把任务真正做成，而不是先讨论它采用哪种action interface。\n\nBowl 任务完成了 19/20，说明有些真实操作已经可以通过这条路径做得很好。但同一报告里的 round puzzle insertion 只有 2/20，所以不能由一个成功片段推论精细接触已经全面解决。\n\n下表保留了同一个报告的全部 task × model 完成数。Bowl 中，Fable 5 和 Fable 5.1 分别是 1/20 与 8/20；Astra 是 19/20。Puzzle 中则是 0/20、2/20、2/20。提升主要出现在这组 bowl 任务，不能概括为所有精细接触均有提高。\n\n协议也要看：每次最多 20 个 model calls，速度上限为 25%。Insertion 用同一个 rig；bowl 的 Astra 和 Fable 使用不同 rigs，Astra 还晚两天测试，人工评分知道模型身份。它不是完全隔离模型因素的随机对照。\n\n这正是职责迁移的具体例子。Bowl里不需要独立VLA来决定每段动作，Astra自己根据视觉和proprio生成EEF目标，下面保留IK与controller。这说明一些任务的空间与动作决策可以上移，但puzzle的低成功率也提醒我们：更窄的执行接口并没有解决所有接触问题。下一页继续看这种路径的定性表现，稍后再单独核对latency。\n\n关于原因，公开资料没有披露足够的 Astra 机器人预训练配方或因果消融。因此我会说“能力前提变了，旧分工需要重测”，不会把“加入海量机器人数据导致这一提升”说成已证事实。",
+    "old_slide": null,
+    "new_slide_key": "astra_direct",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)",
+        "url": "https://openai.robocurve.org/gpt-6-astra/"
+      }
+    ],
+    "footer": "Bold: row maximum; descriptive, not a controlled model comparison. Robocurve · selected episodes, model waiting omitted · official robot-pretraining recipe/cause not disclosed",
+    "startMinutes": 8.0
+  },
+  {
+    "title": "Astra: More Real-Robot Demos",
+    "ids": [
+      "POLICYEVAL",
+      "KEYBOARD",
+      "AWESOME"
+    ],
+    "number": 8,
+    "minutes": 1,
+    "script": "> 播放提示：依次用视频自身的 controls 播放，不需要两段同时跑。左边源视频 12×，右边 20×；都不是 LLM 实时延迟展示。\n\n这一页补充两个Astra操作真实机器人的demo：插头操作和键盘输入，展示更丰富的任务形式。左边 GPT-Policy-Eval 给模型一次视频示范，再利用在线视觉反馈进行插头操作。它展示了不依赖独立 VLA 的具体行为路径，但作者明确这是 selected trials，没有完整试验分母。\n\n右边是真实机器人操作键盘的片段。它根据屏幕与机器人反馈处理输入、退格并继续尝试。这里能看到的是反馈下的行为调整，不能仅凭动作变化断言它进行了 RL、更新了模型权重，或者已经保存了跨任务的稳定技能。\n\n接口备注需要保守：截至2026年9月15日，GPT-Policy-Eval的公开仓库只提供README和媒体，没有action schema或控制实现；keyboard作者原帖也没有说明接口。因此不能仅从Franka外观或末端运动判断使用了IK goal，图中标注Control interface: not disclosed。没有公开接口细节，不等于没有底层controller。\n\n这两段比单纯说“能力更强了”具体得多：输入可以是示范或语义目标，输出已经落到真实动作。但接口仍然影响结果。下一页就固定为同一个 Astra，看不同 action 输出的公开比较。",
+    "old_slide": null,
+    "new_slide_key": "control_demos",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "GPT-Policy-Eval · selected visual-context robot trials (Sep 2026)",
+        "url": "https://github.com/cheng-haha/GPT-Policy-Eval"
+      },
+      {
+        "label": "Kaifeng Zhang (@kaiwynd) · Astra keyboard feedback demo, 20×",
+        "url": "https://x.com/kaiwynd/status/2098823484474348008"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "Community demonstrations · selected trials; no aggregate success rate · source playback 12× / 20×",
+    "startMinutes": 10.0
+  },
+  {
+    "title": "One Model, Different Control Interfaces",
+    "ids": [
+      "ASIM"
+    ],
+    "number": 9,
+    "minutes": 2,
+    "script": "> 读图提示：先读三种输出，再看三段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。\n\n这组作者公开实验使用同一 GPT-6 Astra、medium reasoning，在 Franka / robosuite 的 Square 任务上比较 ΔEEF chunks、absolute EEF waypoints，以及返回 waypoints 的 Python 程序。\n\n结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。第三列现在是该code/proprio组真实的Square ep00：作者记录为成功，125 steps、1 query。视频只有6.4秒，但query本身花了41.339秒，整个episode为42.42秒；播放省略了模型等待，不能当作实时控制。\n\n最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式，也不能单凭这一行断言哪种primitive最通用。\n\n这些是相同 proprio 档位，但该档位还包含 EEF 像素标记、相机尺度和固定地标，不是单纯只有关节状态。公开逐回合记录与表格数字一致，我们没有重跑实验。\n\n另两个任务也提醒我们不要找统一赢家：Lift 三者都是 20/20；Can 则是 18/20、17/20、7/20。暂不讨论 latency，不等于忽略控制步数与反馈预算。下一页把完整三任务与不同 observation settings 放在一起，避免只挑 Square 这一行。",
+    "old_slide": null,
+    "new_slide_key": "interfaces",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      }
+    ],
+    "footer": "Author experiment dashboard, not a matched-budget ablation · 20 episodes/condition · model waiting omitted",
+    "startMinutes": 11.0
+  },
+  {
+    "title": "Astra Interfaces: Three Tasks",
+    "ids": [
+      "ASIM"
+    ],
+    "number": 10,
+    "minutes": 1.5,
+    "script": "> 读表提示：先比较中间三个 proprio 列，再看没有 proprio 和 privileged observation 两列；不要逐格念数字。\n\nWaypoint proprio整列加粗是为了突出这条接口路线，不表示它在每个任务都最好。Square中，排除privileged观测后，它的18/20最高；但Can中ΔEEF为18/20，高于waypoint的17/20。Lift几乎所有方式都达到20/20，无法区分接口。Can 中，ΔEEF和waypoint分别是18/20和17/20，code只有7/20。Square却相反：ΔEEF只有1/20，waypoint为18/20，code为16/20。因此没有跨任务通吃的接口赢家。\n\nObservation 也影响解释。Square waypoint 没有 proprio 时是0/20，加入该档信息后是18/20；code换到privileged信息后是19/20。这里的 proprio 还含图像标记和固定参考，不能把差异都算成 action 表达的作用。\n\nScript upper 与 random lower 只是这个实验的控制项。所有格子都是20 episodes，但控制步数与查询预算不同，特别是 Square 的waypoint平均256.6 steps已超过ΔEEF上限。当前结果说明 interface、observations 和预算都值得研究，不构成某种表达的纯因果优势。",
+    "old_slide": null,
+    "new_slide_key": "interface_results",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      }
+    ],
+    "footer": "Bold: row maxima + highlighted Waypoint proprio column. Asim prompt-v3 dashboard · all 3 tasks and 7 conditions retained; observation and execution/query budgets differ",
+    "startMinutes": 13.0
+  },
+  {
+    "title": "Astra: Introducing a Hybrid Architecture",
+    "ids": [
+      "ANON"
+    ],
+    "number": 11,
+    "minutes": 2.5,
+    "script": "> 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。\n\n接下来引入另一种Hybrid架构：把learned action prior与Astra的判断、修正结合起来。这份报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。\n\n共享输入包括三个 RGB views、14D proprioception、task instruction，以及 Astra 的 history / notes。Direct 由 Astra 生成双臂 EEF position、orientation 和 gripper targets，每次执行 1–5 control steps 后重新观察。\n\nHybrid 先由 task-finetuned π0.5 产生 50×14 joint-space candidate。Astra 结合观测和 FK trajectory 审核，选择接受前缀 1–15 steps，或者给 1–5 steps 的 EEF correction。这是 OR 分支，不是每一次都先执行 policy 再附加 correction。图中的 joint q 来自 π0.5，不能拿它当 Astra-q versus Astra-EEF 的消融。\n\nEEF 仍通过 local IK 和 controller 执行。25 Hz 是 native control rate，不是 LLM 的决策频率。RoboDojo 选定的 10 tasks × 5 paired cases 中，Direct 13/50，Hybrid 24/50。\n\n这组结果说明新能力并不自动让 learned prior 失去价值。但 prior、action interface 和 executed segment length 一起变化，不能归因为单一因素。接下来先看 RoboDojo 与 RoboLab 的两组整体结果，再用 RoboDojo 逐任务热力图检查差异；两组实验不能混池。",
+    "old_slide": null,
+    "new_slide_key": "hybrid",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "RoboDojo: 10 selected tasks × 5 paired cases · simulation clips omit LLM waiting · prior/interface/horizon vary",
+    "startMinutes": 14.5
+  },
+  {
+    "title": "RoboDojo: Overall Results",
+    "ids": [
+      "ANON"
+    ],
+    "number": 12,
+    "minutes": 2,
+    "script": "> 读图提示：两张都是报告原始结果图，左边Score，右边success rate；可以点击放大。两图沿用同一Score排序，不要按右图行次误读为success-rate排名。\n\n先只看三条彩色柱。Hybrid是24/50，success rate 48%；Direct是13/50，也就是26%。对应的mean Score是62.60与37.81。橙色π0.5是公开参考，不是用我们的五组种子重新跑出来的baseline。\n\n灰色柱同样来自公开RoboDojo统计，作者重算了这十个选定任务以及standard/randomized场景的权重，因此不能拿它当整个benchmark的最新排行榜，也不能声称这些模型与Astra做了同种子配对比较。\n\nDirect有两个episode缺少可用native Score，所以37.81基于48个scored episodes，Hybrid基于50个；两组success rate的分母都保持50。Learned prior、action interface和执行段长一起变化，结果支持整体Hybrid配置的价值，不能把提升归因于单个组件。\n\n下一页换到RoboLab，排序会反过来。我们要看任务与prior的适配，而不是从一个汇总图宣布一种架构普遍最好。",
+    "old_slide": null,
+    "new_slide_key": "robodojo_results",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Original report screenshots · 10 selected tasks · Direct Score n=48, Hybrid n=50; success denominator 50 each",
+    "startMinutes": 17.0
+  },
+  {
+    "title": "RoboLab: Overall Results",
+    "ids": [
+      "ANON"
+    ],
+    "number": 13,
+    "minutes": 2,
+    "script": "> 读图提示：这是报告原始整体结果图。先说明selected final slots的口径，再看Direct与Hybrid的位置；可点击放大。\n\nDirect最终49/50，Hybrid46/50；π0.5与Cosmos3-Nano-Policy各18/50，DreamZero为17/50。报告认为，选定的semantic pick-and-place任务，以及student prior未针对这些任务适配，可能解释与RoboDojo不同的排序。这是解释假设，不是隔离因素后的因果结论。\n\n特别要保留选择规则：Astra组使用retained final slots，包含历史结果和authorized retries，initial states没有严格配对。Direct最后两次BlocksInBin retry把decision budget从180提高到500。三个baseline来自June cohort，每任务按顺序取前五次，包括失败。\n\n所以这些数字是已发布记录的描述性汇总，不是fresh、统一预算、每条件只跑一次的配对试验。相同task名称和slot数量也不能证明task version、control settings或起点一致。不要和RoboDojo合成一个总成功率。\n\n随后回到RoboDojo的逐任务热力图，检查整体均值背后的任务差异。",
+    "old_slide": null,
+    "new_slide_key": "robolab_results",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Original report screenshot · selected final slots + historical first-five baselines; initial states/budgets not fully paired",
+    "startMinutes": 19.0
+  },
+  {
+    "title": "RoboDojo: Task-Level Patterns",
+    "ids": [
+      "ANON"
+    ],
+    "number": 14,
+    "minutes": 1.5,
+    "script": "> 读图提示：先看右侧Hybrid与Direct两列，再横向比较对应任务。颜色越深Score越高；这是partial-completion Score，不是success rate。可点击放大原图。\n\n总体数会掩盖分工差异。Classify objects中Direct的Score是100，Hybrid是71；但Fold clothes中Hybrid是100，Direct是40，Build tower则是64与12。Hybrid不是逐任务都赢，Direct也不是所有操作都能替代动作先验。\n\n把这张图连回开头的问题：更强System 2确实可以承担更多语义、空间和动作决策，但System 1需要多强、多通用，仍然取决于任务和prior是否适配。热力图提供任务层面的线索，不是“语义”和“物理”两种能力被严格分离的测量。\n\n前五列是公开参考值，后两列是报告的实验。它们不是同种子重跑；Direct缺失Score的分母限制仍然适用。图中保留原报告全部十个任务、Overall和七种方法，没有重新挑选最有利的任务。\n\n最后核对视频容易掩盖的另一个问题：这些系统具体输出什么，模型多久才返回一次？",
+    "old_slide": null,
+    "new_slide_key": "report_heatmap",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Original report Score heatmap · all 10 tasks and 7 methods · public references are not matched reruns; click to enlarge",
+    "startMinutes": 21.0
+  },
+  {
+    "title": "High Latency Limits Real-Time Control",
+    "ids": [
+      "ASIM"
+    ],
+    "number": 15,
+    "minutes": 1.5,
+    "script": "> 读图提示：这一页只看latency。三张卡是同一个公开harness的平均model-query time，不是所有Astra部署的统一速度。\n\n前面的simulation replay省略了模型等待；真实系统不可能把环境也一同暂停。这正是目前很严重的问题：模型作一次决策要等待数十秒，碰到扰动和持续接触时，很难及时根据新反馈调整。\n\n数字来自Asim prompt-v3、medium reasoning、proprio设置下Lift、Can、Square各20个episodes，共180回合、731次查询的公开日志。ΔEEF有414次查询，平均30.75秒；waypoint有241次，平均26.08秒；code有76次，平均41.98秒。这是根据已发布日志汇总，不是我们重新计时。\n\n三种query完成的工作量不同，不能把数值顺序直接当作接口速度排行榜。Query time也不是完整闭环latency，执行、工具调用和渲染还可能增加时间；机器人端的Controller Hz不等于Agent inference Hz。这里的结论不是给所有模型设一个速度上限，而是当前这组系统的数十秒级等待已经明显限制快速反馈。\n\n因此，下一页的第一个open problem是如何降低foundation model的latency，让更强的决策能力真正进入及时的交互闭环，而不只是在省略等待的视频中完成任务。",
+    "old_slide": null,
+    "new_slide_key": "interface_timing",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      }
+    ],
+    "footer": "Asim prompt-v3 · reported query time, not full-loop latency · workloads and control budgets differ",
+    "startMinutes": 22.5
+  },
+  {
+    "title": "Control: Strengths and Open Gaps",
+    "ids": [
+      "HIROBOT_DISCUSSION",
+      "ASIM",
+      "ANON",
+      "ROBOCURVE",
+      "MOBILE_ICL"
+    ],
+    "number": 16,
+    "minutes": 1,
+    "script": "> 读图提示：先看左边已经展示的能力，再看右边尚不可靠或尚未证实的能力。这不是三种独立神经模块，也不是把任务机械地分成 System 2 / 1 / 0。\n\n回到第6页的职责迁移图。我们不再预设System 2只传语义，也不要求所有泛化都由一个generalist VLA / WAM承担。部分空间与动作决策可以由更强Agent完成，下面的action primitives则保留必要的motor competence。Agent 已经能理解语义目标、识别任务对象并利用视觉反馈；在已测试的设置中，也展示了目标重定位和一定的 spatial generalization。左边说的是有条件的能力，不是任意新机器人、新相机和新环境都能成功。\n\n右边有两种不同的缺口。High-frequency control 是实时闭环问题：目前看到的系统仍依赖 local controller、interpolation、短动作片段或已有 policy。模拟器在 LLM 思考时暂停，并不能证明机器人在真实扰动下也来得及纠正。Physical generalization 则问接触、摩擦、质量、柔顺性或动力学变化后是否仍可靠。现有报告没有建立全面的跨物理条件泛化结论。\n\nRobocurve 的 bowl 是19/20，puzzle只有2/20，说明成功的语义任务不能代替精细接触验证。但单次失败也不能唯一定位为物理理解不足，sensing、pose、controller和budget都可能参与。Asim在同一个Astra上更换观测和action interface，也出现明显差异，但预算并不匹配，不能据此分离单一原因。\n\n因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。\n\nHi Robot 的 Discussion 本身就说模型层面的角色分离 is not fundamental。我们不是宣布旧实验失效，而是在模型能力变化后重新检验旧结论。Astra 的机器人预训练配方及因果对照仍未披露，不能由成功 demo 反推训练原因。\n\n从这四项能力和缺口，箭头收束到两个当前open problems。第一，如何降低foundation model的latency，让系统能更及时地利用反馈。第二，如何为Agent设计更好的interface和action primitives，让动作段之间衔接更流畅，让contact-rich任务中的执行更稳定。这不仅是让模型选对目标，也涉及执行器提供什么抽象、如何保持连续性，以及怎样处理接触变化。它们是待研究问题，不是这组demo已经解决的结论。\n\n接下来从“怎样生成下一步 action”，转向“Agent 可以帮助生成哪些 Data”。",
+    "old_slide": null,
+    "new_slide_key": "control_summary",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Hi Robot v2 §6 · model-level separation is not fundamental",
+        "url": "https://arxiv.org/html/2502.19417v2#S6"
+      },
+      {
+        "label": "Astra control dashboard · prompt-v3, same-model interface records; unequal budgets",
+        "url": "https://asimfish.github.io/astra-control-dashboard/#sec3"
+      },
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      },
+      {
+        "label": "Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)",
+        "url": "https://openai.robocurve.org/gpt-6-astra/"
+      },
+      {
+        "label": "Axel Peytavin · mobile ICL demo; author-reported spatial transfer, no trial denominator",
+        "url": "https://x.com/ax_pey/status/2098216469012283681"
+      }
+    ],
+    "footer": "Our synthesis · demonstrated task-specific strengths and current research questions",
+    "startMinutes": 24.0
+  },
+  {
+    "title": "Agent Creates Data",
+    "ids": [
+      "AWESOME",
+      "DEXGPT"
+    ],
+    "number": 17,
+    "minutes": 1,
+    "script": "> 读图提示：保留三条产物分支。它们是分类，不代表每个 demo 都完成了整条链。\n\n第二章我们不展开论文，只看 Awesome-Astra-Embodied-AI 收录的四个 demo。先看场景和机械手资产，再看 Real-to-sim Replay，最后看真正保存 states、actions 和 contacts 的 Data Rollout。\n\nAgent 在这里主要编写、连接和修补工程工具：把扫描或设计目标变成资产，把真实演示变成可回放的场景，或者运行 simulator 留下轨迹。我们关注每段视频具体交出了什么，不把“看起来很像”直接当成“已经能用于训练”。\n\n先从最直观的场景生成开始。",
+    "old_slide": null,
+    "new_slide_key": "world",
+    "diagram_key": "world",
+    "chapter_opening": true,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      },
+      {
+        "label": "DexGPT · recorded contact rollout; physical acceptance not met",
+        "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b"
+      }
+    ],
+    "footer": "Data taxonomy synthesis · assets, Real-to-sim Replay and Data Rollout have different validation requirements",
+    "startMinutes": 25.0
+  },
+  {
+    "title": "Astra: From Office Scan to Simulation",
+    "ids": [
+      "OFFICE",
+      "AWESOME"
+    ],
+    "number": 18,
+    "minutes": 1.5,
+    "script": "> 播放提示：单独播放 Office 视频，先看重建的场景，再看其中的 G1。视频是产物演示，不是完整开发过程。\n\nJiarui Xu 的原帖描述了一条清楚的链：office scan 的参考画面，经 Astra 辅助重建为 Blender scene，导出 USD，再装进 Newton，形成 G1 可以运行的场景。\n\n这里值得看的不是机器人已经学会什么，而是 Agent 把场景搭建中的文件、几何和 simulator 接口串起来了。产物是 scene asset。原帖没有披露 G1 locomotion policy 的来源或训练过程，所以不能把它说成 Astra 在这一步训练出了新策略。\n\n接下来把尺度缩小：从整个办公室，看到一个机械手的结构设计。",
+    "old_slide": null,
+    "new_slide_key": "data_scene",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "Jiarui Xu (@Jiarui_X) · office reference to Newton/G1 scene; author-reported workflow",
+        "url": "https://x.com/Jiarui_X/status/2098439950991806804"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "Jiarui Xu · author-reported scene workflow; G1 policy provenance and downstream training gain not disclosed",
+    "startMinutes": 26.0
+  },
+  {
+    "number": 19,
+    "title": "Data: Mechanism and CAD Assets",
+    "section": "",
+    "ids": [
+      "S24"
+    ],
+    "minutes": 1,
+    "script": "> 播放提示：这是 CAD / mechanism asset 的可视化，不是物理机械手测试。\n\nJake 的 tendon-hand demo 同样属于资产生成。作者说用 build123d 生成190个STEP文件，再用 JavaScript 制作 animation，导出 GLB 展示。Agent 交出的不只是描述，而是可以继续检查和修改的设计文件。\n\n但作者也明确说“Would this model work irl? Def not.”。所以动画不能替代 tendon transmission、负载、摩擦或装配验证；它是候选设计，不是已验证的 physical hand。\n\n看完资产，再看如何把已有真实行为搬进 simulation。",
+    "old_slide": 19,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "@earthtojake, X hand design and limitation thread (10 Sep 2026)",
+        "url": "https://x.com/earthtojake/status/2097789988670709821"
+      },
+      {
+        "label": "Author limitation and follow-up",
+        "url": "https://x.com/earthtojake/status/2097789991426335015"
+      },
+      {
+        "label": "Author limitation and follow-up",
+        "url": "https://x.com/earthtojake/status/2097801101890207893"
+      }
+    ],
+    "footer": "@earthtojake, X hand design and limitation thread (10 Sep 2026)  ·  Original X design demonstration",
+    "startMinutes": 27.5
+  },
+  {
+    "title": "Astra: Real-to-sim Replay",
+    "ids": [
+      "S12",
+      "AWESOME"
+    ],
+    "number": 20,
+    "minutes": 1.5,
+    "script": "> 播放提示：视频内已经排列了真实与模拟视角。比较对象、相机和动作，不把视觉相似当成定量评测。\n\nLingxiao 的案例输入是 multi-view RGB 加 robot actions。作者描述 Astra 组织了 camera calibration、asset construction、physics system-ID、MuJoCo 和 Blender，视频展示相应的 replay。\n\n这里 Agent 不只调用一个固定工具，而是在组织和修补整条重建 workflow。产物从静态 scene 变成了可以重放的行为。不过这段视频没有提供独立的新 action 预测评测。\n\n作者在另一个 microphone 示例中明确区分了 kinematic replay 和 validated dynamics：刚性近似不能充分表达 snap-fit 的 compliant contact。我们不把那个例子的失败统计嫁接到当前视频，只借此说明 replay 与物理验证是两道要求。\n\n最后看一个公开保留了真实 simulator rollout 数据的 demo。",
+    "old_slide": null,
+    "new_slide_key": "data_replay",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "@Lingxiao234, X Real2Sim and failure thread (8 Sep 2026)",
+        "url": "https://x.com/Lingxiao234/status/2096992059731443923"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "Lingxiao · input includes robot actions; selected replay, not a predictive-dynamics evaluation",
+    "startMinutes": 28.5
+  },
+  {
+    "title": "Astra: Dexterous Data Rollout",
+    "ids": [
+      "DEXGPT",
+      "AWESOME"
+    ],
+    "number": 21,
+    "minutes": 1.5,
+    "script": "> 播放提示：播放完整的20.3秒原视频。左、中、右分别是 source human demonstration、imposed-hinge kinematic reference、passive-hinge contact physics；只有右栏检验接触驱动的物体运动。\n\nDexGPT 从 monocular GIF 提取手部运动，再 retarget 到两只22-DOF Sharpa Wave hands，并在 MuJoCo 里生成接触 rollout。作者把 Astra 编写的 hand tracking、IK retargeting 和 grasp refinement 串成 pipeline。\n\n它和单纯 animation 的区别是，公开代码调用 mj_step，保存 qpos、qvel、controls、contacts 和 forces。这里确实有时序数据产物，而不只是渲染的视频。\n\n但“跑过 simulator”也不等于“物理验证通过”。原报告 task_success 是 false，maximum penetration 为5.623 mm，高于小于5 mm的要求；203个 logged states 是同一条轨迹，不是203次试验。页内保留一个简短的 physical validation not met 标签，不展开结果表，也不把这项 demo 讲成新的论文。\n\n它没有报告 downstream training 收益。视频时长是回放时长，不是 Astra inference latency。",
+    "old_slide": null,
+    "new_slide_key": "data_rollout",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "DexGPT · recorded contact rollout; physical acceptance not met",
+        "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "DexGPT original replay · task_success=false; 203 logged states are one trajectory, not 203 trials",
+    "startMinutes": 30.0
+  },
+  {
+    "title": "Data: From Demos to Useful Data",
+    "ids": [
+      "AWESOME",
+      "DEXGPT"
+    ],
+    "number": 22,
+    "minutes": 1,
+    "script": "> 读图提示：上排是三种产物，中排是各自需要回答的问题，最后汇到训练价值。\n\n这四个 demo 展示了 Agent 可以帮助构建什么：Office scene、mechanism asset、Real-to-sim Replay，以及实际记录下来的 Data Rollout。共同点是 Agent 把多种工程工具组织起来，产出可继续使用和检查的文件与轨迹。\n\n但三类产物的验证不同：asset 要能被 simulator 正确使用；replay 要匹配记录；rollout 还要通过 physical checks。最终想把这些叫作有用的训练数据，就要继续问：它是否改善了 downstream training 或评测？这些演示本身还没有回答这个问题。\n\n第三章换一个位置：Agent 不只产生候选数据，而是直接组织实验，修改下一版 policy。",
+    "old_slide": null,
+    "new_slide_key": "world_summary",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Creates Data",
+    "sources": [
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      },
+      {
+        "label": "DexGPT · recorded contact rollout; physical acceptance not met",
+        "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b"
+      }
+    ],
+    "footer": "Our synthesis of community demos · physical validity and training value require separate tests",
+    "startMinutes": 31.5
+  },
+  {
+    "title": "Agent Improves Policy",
+    "ids": [
+      "S15"
+    ],
+    "number": 23,
+    "minutes": 1,
+    "script": "> 读图提示：从固定 Task + API 出发，沿 Agent → rollout → verifier / logs → Agent 走一圈。强调更新对象是后续 trial 的 policy。\n\n第三章的问题是：一次实验的反馈，怎样成为下次仍能使用的能力？这不同于 Control 里临时修正下一条 action。Agent 现在可以修改 policy code、training recipe，或训练 neural policy，让之后的 trial 使用新的版本。\n\nENPIRE 把这个过程放在真实机器人上。Environment 的 action、安全、reset 和 verification 接口先在人的反馈下建立，进入 improvement 阶段后固定下来。\n\n这可以放在 robot self-improvement 的方向下讨论，但具体要看留下什么：是 policy weights、代码，还是 context？存在一个循环，并不自动意味着改进者自身获得了递归增强能力。下面先看实验环境怎样搭建。",
+    "old_slide": null,
+    "new_slide_key": "improve",
+    "diagram_key": "improve",
+    "chapter_opening": true,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "Our synthesis of ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+    "startMinutes": 32.5
+  },
+  {
+    "number": 24,
+    "title": "ENPIRE: Environment and Improvement",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 2,
+    "script": "> 读图提示：沿原图区分 human-assisted environment setup 与 autonomous improvement；不要把两阶段压成无人参与的一步。\n\n第一阶段建立环境接口。系统在 human feedback 下实现 safety constraints、automatic reset 和 success verification。完成以后，这些能力通过固定的 Gym APIs 给下一阶段使用。\n\n第二阶段，coding Agent 获得训练代码的修改权限。它可以读资料、提出 hypothesis、修改 BC 或 RL 程序，再调用真实 rollout，查看 trajectory、video 和 reward，判断下一步值得改什么。\n\n这里固定环境与成功标准非常重要：策略做不好，不能通过修改 verifier 让自己看起来成功。否则分数的变化就没有稳定含义。\n\n多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。先把支持反复试验的 reset 和 verification 看具体。",
+    "old_slide": 15,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original Figure 2, method panel",
+    "startMinutes": 33.5
+  },
+  {
+    "number": 25,
+    "title": "ENPIRE: Reset and Verification",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 1.5,
+    "script": "> 播放提示：依次播放 pin reset 和 zip-tie verification，两段来自不同任务，不是同一个 rollout 的同步镜头。\n\nAutomatic reset 让一次机器人实验变成可重复过程。如果每次失败都需要人恢复现场，Agent 的自主实验就在这里停住。\n\nPin reset 展示怎样准备下一次 trial。ENPIRE 的部分任务从最困难的 subphase 开始，这是把研究聚焦到关键操作，但不能改述成任意初始状态下的完整任务能力。Reset 的状态分布也影响实验是否可比。\n\nZip-tie 例子展示如何检查结果。论文讨论结合多个 camera view 降低视觉 verifier 的 false positives，其他任务还可结合 proprioception 或 torque 信号。\n\n所以 safety、reset 和 verification 是不同职责：安全不等于做对，能够 reset 也不证明 success test 可靠。把这些条件建立好后，我们终于可以看 Agent 实际改了哪些东西。",
+    "old_slide": 16,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original project videos",
+    "startMinutes": 35.5
+  },
+  {
+    "title": "ENPIRE: What Did the Agent Change?",
+    "ids": [
+      "S15"
+    ],
+    "number": 26,
+    "minutes": 2.5,
+    "script": "> 读图提示：放大 Figure 12。先读 idea tree 的实心与空心节点，再跟随虚线读下面的 best-score curve；不要逐个念所有节点。\n\n这张原图比抽象地说“改代码、跑实验”更具体。上面每个节点是一项探索过的 idea，新的分支代表不同方向。实心绿色节点提高了 team-average best success rate，空心节点则评估过但没有收益。\n\n例如 I37 是 BC regularization，论文在这次 run 上标注 +10.8 percentage points。后面的 I66 调整 batch size，从 1024 到 512，标注 +0.9 pp；I76 的 controller compensation 标注 +1.3 pp。\n\n这里的重点不是记住三个数，而是看见修改对象：Agent 可以改变学习目标和训练程序，也可以改变执行补偿，而不是只负责启动训练。没有收益的分支同样是这段探索过程的一部分。\n\n这不是三项独立随机消融，不能把这些增量当成在所有条件下都能复现的平均因果效果。下图也不是每个当前 policy 的性能，而是随 research wall-clock 推进的 team-average best score。接下来用正式 learning curve 和 scaling 实验看总体表现。",
+    "old_slide": null,
+    "new_slide_key": "idea_tree",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE Appendix B.6, original Figure 12 · one team run, best-score trajectory; not independent causal ablations",
+    "startMinutes": 37.0
+  },
+  {
+    "number": 27,
+    "title": "ENPIRE: Pin Insertion Curve",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 2,
+    "script": "> 读图提示：先看随 research time 变化的性能，再看不同 fleet size；横轴不是 action inference latency。\n\n这组结果回答两个问题：真实反馈能否支持 policy improvement，以及更多并行实验能否更早找到高性能策略。\n\nPin insertion 中，从一个 agent–robot pair 扩到八个，达到接近完美 success rate 的 research time，从超过一个半小时缩短到大约四十分钟。这里研究的是发现好策略需要多久，不是机器人执行一次动作有多快。\n\nSuccess rate 的口径也必须保留。每个 rollout 允许最多八次 conditional retries，后续尝试可以利用前面失败的信息。因此它包含 precision 和 recovery，不是 one-shot insertion precision，也不是相互独立的 best-of-eight；不能套独立 Bernoulli 假设反推单次成功率。\n\n在这个固定环境和 protocol 内，实验支持策略随研究推进改善，也支持并行资源带来更短 time-to-target。更快是否更省，最后再看资源图。在那之前，先补两页正式结果：两个真实任务的模型对照，以及 RoboCasa 中 tools、VLA 与 autoresearch 的对照。",
+    "old_slide": 17,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original Figure 3, pin panel; axes and legend retained",
+    "startMinutes": 39.5
+  },
+  {
+    "title": "ENPIRE: Two Physical Tasks",
+    "ids": [
+      "S15",
+      "ENPIRE_SITE"
+    ],
+    "number": 28,
+    "minutes": 2.5,
+    "script": "> 读图提示：左侧保留完整Figure 3和原曲线，右侧列官网实际绘图数据的终点均值。两列不是同一种分数。\n\nPhysical Push-T研究heuristic policy discovery，在8小时位置，Codex、Claude、Kimi的normalized score分别为0.938、0.750、0.625。Pin insertion研究gradient-based policy improvement，在4小时位置，success rate分别为95.5%、97.5%、79.0%。不能把Push-T的0.938改称93.8% binary success。\n\n论文对应配置是Codex/GPT-5.5 xhigh、Claude Code/Opus4.7 High和Kimi Code/Kimi K2.6 thinking。这些不是Astra模型对比。不同任务的排序也不同，不应据此宣布统一的coding agent冠军。\n\n官网每个configuration提供四条plotted traces及means，但没有充分披露独立seed数量或专门held-out test set的大小。我们没有把四条线叫四次独立复现。Physical rollout仍允许最多八次conditional retries，因此也不是pass@1 precision。\n\n这些结果回答在固定实机环境中能否改进策略。下一页换到RoboCasa，观察autoresearch如何改善工具和VLA的组合，注意评测协议也会改变。",
+    "old_slide": null,
+    "new_slide_key": "enpire_results",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      },
+      {
+        "label": "ENPIRE official interactive plots · model and resource data (accessed 14 Sep 2026)",
+        "url": "https://research.nvidia.com/labs/gear/enpire/"
+      }
+    ],
+    "footer": "Bold: highest reported mean per task; not statistical significance. ENPIRE Figure 3 + official plot data · Codex/GPT-5.5 xhigh; Claude/Opus 4.7 High; Kimi/K2.6 thinking",
+    "startMinutes": 41.5
+  },
+  {
+    "title": "ENPIRE: Autoresearch in RoboCasa",
+    "ids": [
+      "S15"
+    ],
+    "number": 29,
+    "minutes": 1.5,
+    "script": "> 读图提示：上方保留原Figure 6，包括task示例和三个aggregate bars。原图未给精确数字标签，不从柱高补造百分比。\n\n三个对照分别是GR00T N1.5端到端VLA、CaP-X*的zero-shot agentic tool use，以及加入反复开发反馈的ENPIRE。原图中ENPIRE的aggregate最高。它说明改进对象也可以是工具调用和执行程序，不一定只能训练新权重。\n\n例如Agent找到的策略会先用detection与motion planning移动到目标上方，再进入grasp，必要时组合VLA。关键是先根据实验反馈改程序，再检验留下来的程序。\n\nAppendix描述的reported evaluations每项使用40个预先固定的seed/layout/style组合，同一task的方法共享这些设置。每episode运行一次generated script，禁止oracle、reset和重复retry API。不要把上一页实机最多八次conditional retries搬到这张仿真表上。\n\n图里八张task图片是示例，不等于已披露八行数表，也不能据此乘出320 pooled trials。我们能陈述的结果是原图的相对表现，aggregate pooling的细节和精确百分比没有充分公布。",
+    "old_slide": null,
+    "new_slide_key": "enpire_robocasa",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "Bold: reported highest aggregate bar; no estimated percentage. ENPIRE Figure 6 + Appendix D.2 · autoresearch improves tool/policy programs; aggregate pooling details not fully disclosed",
+    "startMinutes": 44.0
+  },
+  {
+    "title": "Astra: Training and Context",
+    "ids": [
+      "QUAD",
+      "WENLI",
+      "AWESOME"
+    ],
+    "number": 30,
+    "minutes": 1,
+    "script": "> 播放提示：左边四足完整 14 秒，点击原生 fullscreen 可以读九宫格状态；不要裁掉 FULL EVAL NOT MET。右边是 8× 的 physical ICL 展示，两者分别播放。\n\n左边作者报告 Astra 参与 Fusion360 / STL 设计、simulation 和 RL 迭代。视频是九种行为的开发预览，不是九种行为全部通过验证：原片明确保留 FULL EVAL NOT MET，Wave 和 Sit 还只展示 partial first cycles，并标注四个 separate experts。实机部署仍属于后续计划。\n\n它展示的方向是 Agent 开始覆盖设计、环境、训练和修错的一整段工程工作。开发过程来自作者描述，视频本身是训练产物预览，不是完整过程记录。\n\n右边是 Astra 的 physical in-context learning。人给出示范，Agent 利用 context，通过已有 motion-planning tools 产生行为。作者报告 first-pass success，但没有完整试验分母；也没有由此证明模型权重更新或技能已持久化。\n\n把它们放在一起，是为了区分 training、code revision 和 in-context adaptation。它们都可能让行为变化，但不是同一种 post-training。ENPIRE 的正式结果仍按原论文的 policy-improvement protocol 理解，不借社区 demo 增加它的成功率。",
+    "old_slide": null,
+    "new_slide_key": "improvement_demos",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "Akira Sasaki (@gclue_akira) · quadruped CAD/RL development preview; partial evaluation gates",
+        "url": "https://x.com/gclue_akira/status/2098300921658868185"
+      },
+      {
+        "label": "Wenli Xiao (@_wenlixiao), X · human video to robot arm with GPT-6 Astra (9 Sep 2026)",
+        "url": "https://x.com/_wenlixiao/status/2097801944119349455"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "Quadruped: 4 experts, some FULL EVAL NOT MET, Wave/Sit CUT · ICL: existing motion tools, 8×, no trial denominator",
+    "startMinutes": 45.5
+  },
+  {
+    "number": 31,
+    "title": "ENPIRE: Cost and Chapter Summary",
+    "section": "3",
+    "ids": [
+      "S15",
+      "ENPIRE_SITE"
+    ],
+    "minutes": 2.5,
+    "script": "> 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。\n\n更多 agent–robot pairs 可以更早找到好策略，但可能消耗更多 tokens；每台机器人的 utilization 也未必随规模单调提高。Research wall-clock、policy latency、token consumption 和 robot utilization 不是同一个“效率”。\n\n下表来自官网 Figure 7 的精确绘图数据，保留 mean 和 std。1、4、8 对 agent–robot 的 per-robot utilization 分别约为 49.1%、30.9%、29.8%，GPU active-time fraction 为 29.4%、32.5%、49.0%；整队 token rate 是每分钟 9.3k、40.0k、140.3k。后者不是每个 Agent 的消耗，GPU 指标也不是直接读取 nvidia-smi 的 occupancy。\n\n这些 std 的具体统计层次没有充分披露，不叫 confidence interval。Figure 7 自己的 time-to-success 是 4.5/3.2/2.0 小时，与前面 pin 曲线的约40分钟不是同一组数；不能把两个图的 token 数和时间拼成一个实验。\n\n如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。\n\n本章可以收束为：在可重复、可验证的真实实验接口内，Agent 能把 feedback 转成后续 policy 或 training code 的改进；扩大并行度还可以缩短研究周期。Human-assisted setup、conditional retries、verifier 的可靠性与成本，都是这项结果成立的条件。\n\n这是一种具体的 robot self-improvement 实践，不等于已证明开放世界的 recursive self-improvement。最后把三个角色的产物与验证要求放回同一张图。",
+    "old_slide": 18,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Policy",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      },
+      {
+        "label": "ENPIRE official interactive plots · model and resource data (accessed 14 Sep 2026)",
+        "url": "https://research.nvidia.com/labs/gear/enpire/"
+      }
+    ],
+    "footer": "Bold: highest utilization / lowest fleet token rate; no overall efficiency winner. ENPIRE Figure 7 · pin insertion · official mean ± std; aggregation not fully specified · robot/GPU time fractions; fleet tokens/min",
+    "startMinutes": 46.5
+  },
+  {
+    "title": "Takeaways",
+    "ids": [
+      "ANON",
+      "S15",
+      "AWESOME"
+    ],
+    "number": 32,
+    "minutes": 1,
+    "script": "> 读图提示：从 Agent 分别沿三条支路看 Role、Artifact 和 Evidence。三章是不同工作位置，不是一条已打通的端到端流水线。\n\n最后只留三个对应关系。Control 产出 Action，要看执行是否可靠。Data 产出候选 assets 和 rollouts，要分别验证 physics 与 downstream training value。Improvement 产出下一版 Policy 或程序，要看 held-out gain 和总成本。\n\n更强模型让这些分工值得重测，但新 demo 不能替代相应的验证。我们真正要问的是：在自己的机器人工作中，哪些信息、判断和执行责任，现在可以重新分配给 Agent？",
+    "old_slide": null,
+    "new_slide_key": "end",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Closing",
+    "sources": [
+      {
+        "label": "Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      },
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      },
+      {
+        "label": "Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation",
+        "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI"
+      }
+    ],
+    "footer": "Different artifacts and different tests · community demos motivate questions, not cross-paper rankings",
+    "startMinutes": 49.0
+  },
+  {
+    "title": "Thank You",
+    "ids": [],
+    "number": 33,
+    "minutes": 0.5,
+    "script": "谢谢大家。欢迎讨论，也欢迎结合你们自己的机器人系统，说说最想让 Agent 接手哪一部分，以及需要什么实验才能放心交给它。",
+    "old_slide": null,
+    "new_slide_key": "thanks",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Closing",
+    "sources": [],
+    "footer": "Agents for Robotics",
+    "startMinutes": 50.0
+  }
+]

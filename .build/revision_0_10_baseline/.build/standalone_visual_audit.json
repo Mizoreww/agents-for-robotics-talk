@@ -1,0 +1,269 @@
+{
+  "html_sha256": "eb25dad97e0adc4947b19d76b165dfb7ecb27a1276702c3068ee344cfc8e14f7",
+  "reviewed_at": "2026-09-14T10:20:44.161146+00:00",
+  "slides_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "full_resolution_result_pages": [
+    6,
+    8,
+    10,
+    11,
+    14,
+    16,
+    17,
+    23,
+    31,
+    32,
+    34
+  ],
+  "result": "passed",
+  "preserved_style": "Noto Serif / Noto Sans / embedded CJK, white/teal, byte-identical player JS/CSS/shell",
+  "checks": [
+    "36 slides reviewed in contact sheets; all added or changed result-table pages inspected at presentation resolution",
+    "Original figures, axes, legends and uncertainty retained; new Figure 5 / Figure 3 / Figure 6 enlargement inspected",
+    "Chapter diagrams first at 4/19/26; summaries 18/25/34",
+    "Desktop/390px controls and Chinese script inspected; no clipped buttons",
+    "All 18 unchanged video payloads pass fresh play/pause/restart audits; five supplemental clips complete playback",
+    "No source experiment replication; success/score/selected-slot/retry and cost scope remain separate"
+  ],
+  "screenshots": [
+    {
+      "file": ".build/v0_9_visual/01.png",
+      "sha256": "234e121d28b85808b173cdc091365efa2b3f7b4019d1265f0e21722583ae53cc"
+    },
+    {
+      "file": ".build/v0_9_visual/02.png",
+      "sha256": "6a96a253735746ff812b3ab452acb166f4c4657fb5e05b8e92448d2374a801cc"
+    },
+    {
+      "file": ".build/v0_9_visual/03.png",
+      "sha256": "4b4e719dd988f981cef14ee858a04c3351f2d8c0f22cce2e4b564a166ac0351a"
+    },
+    {
+      "file": ".build/v0_9_visual/04.png",
+      "sha256": "6d03bdf57fa9af41d8b9820f0c23e84fd7d6d843669413263e0406235d539915"
+    },
+    {
+      "file": ".build/v0_9_visual/05.png",
+      "sha256": "7dd76263b916c4dcf24c10f69c656070425974e881cc470b08845626c074ead1"
+    },
+    {
+      "file": ".build/v0_9_visual/06.png",
+      "sha256": "24919f7347bb307aa1a2afcb14f0bcc48ec7ee6542444578331afec936b5a6bf"
+    },
+    {
+      "file": ".build/v0_9_visual/07.png",
+      "sha256": "d2a642e86881adbba18419f7973163bf05d3ab48c84c61df5f842c8696623162"
+    },
+    {
+      "file": ".build/v0_9_visual/08.png",
+      "sha256": "39ef0f05f7574aab72e755da04b9bc5262680eb349cac3d2b245d4b48a02ba25"
+    },
+    {
+      "file": ".build/v0_9_visual/09.png",
+      "sha256": "f23c03d8a514feb688a317c5aa81289ab530f9e64187e3eee63523f16c8684df"
+    },
+    {
+      "file": ".build/v0_9_visual/10.png",
+      "sha256": "e2fba9ab7a3c6c39dda2d452fb6560e7b634d91417a96405a3e1e17a22d08a35"
+    },
+    {
+      "file": ".build/v0_9_visual/11.png",
+      "sha256": "e9781b69353c40c0c22f86eaef06134a5af62aa9257a524c41cc4cc9c8a84980"
+    },
+    {
+      "file": ".build/v0_9_visual/12.png",
+      "sha256": "a7047eb828a24ac36ac0f5887d74b03b3fdcf5319909c083d7af9a48ea1e22da"
+    },
+    {
+      "file": ".build/v0_9_visual/13.png",
+      "sha256": "6b8f1c1aee8628971d52ac1c5a9c692024e5532ba158b8f97a0f76e97f52047a"
+    },
+    {
+      "file": ".build/v0_9_visual/14.png",
+      "sha256": "ab17cf476337eacb106b000ea8304228fa91c1adeb360daf90ecf5e8406ca987"
+    },
+    {
+      "file": ".build/v0_9_visual/15.png",
+      "sha256": "1efcf2f077c4a0be17fa00cd00821ef8aacf679aeee9db2e8167f40b2ac3040c"
+    },
+    {
+      "file": ".build/v0_9_visual/16.png",
+      "sha256": "77e12ce405da551a0baed6878afaa9799933d056053b8d28594cba943e3c8af8"
+    },
+    {
+      "file": ".build/v0_9_visual/17.png",
+      "sha256": "74ee64f8b1aa173a325447ce8fc986cdc626ff5fdb628d0838c5049c71b7e099"
+    },
+    {
+      "file": ".build/v0_9_visual/18.png",
+      "sha256": "bad4d8015ade351f87248630372116633e34f3eeccd82b1aa0972e54abc41274"
+    },
+    {
+      "file": ".build/v0_9_visual/19.png",
+      "sha256": "a107452411a092e8cd570786a525885daeec8c2aa2fcf1570f862d0c6933be80"
+    },
+    {
+      "file": ".build/v0_9_visual/20.png",
+      "sha256": "9609da5be9cfa465a5a6248c568988060607581a9f6faf762e0de5029cdd9fe5"
+    },
+    {
+      "file": ".build/v0_9_visual/21.png",
+      "sha256": "921884124046c9bc4dc9a4248e4ce134a48fd42b0250ba18a61bae80aac24de5"
+    },
+    {
+      "file": ".build/v0_9_visual/22.png",
+      "sha256": "e154e6208c631567aac7fb1fd827151b3d5dcebb7388adcc41e7d2cc1450ea74"
+    },
+    {
+      "file": ".build/v0_9_visual/23.png",
+      "sha256": "47cfee81c682c085a86a3c6a244b857c41920da24dc61d298782e68222b413ae"
+    },
+    {
+      "file": ".build/v0_9_visual/24.png",
+      "sha256": "cd3aac1fcb4ed390468f2fcf18bbc0910268d03e67a94c736e6aec5311d18266"
+    },
+    {
+      "file": ".build/v0_9_visual/25.png",
+      "sha256": "908a62e4e057cf807a45aa9def8f7fc54b284c4feeccf9fdf7b6bbd479fc19b9"
+    },
+    {
+      "file": ".build/v0_9_visual/26.png",
+      "sha256": "5302bf0d7ec10ce617366a56a12202d6c98933d20b3e4f1c62d5f6c26dd708ff"
+    },
+    {
+      "file": ".build/v0_9_visual/27.png",
+      "sha256": "47f90df42d8732559d47bfc5cecb8671ed08024dbcbaffbe5474f06443357706"
+    },
+    {
+      "file": ".build/v0_9_visual/28.png",
+      "sha256": "b7bf400059bd5789b8244c96933311f6d86b583c4fc39758cfa5593511b81187"
+    },
+    {
+      "file": ".build/v0_9_visual/29.png",
+      "sha256": "1cda482169b6774fbd77092bdc5ad6b5b37c11aab8b16f975c643d160eb69f4b"
+    },
+    {
+      "file": ".build/v0_9_visual/30.png",
+      "sha256": "336275b2d2c88a2c603d61e2dd3369b3a551a0d528652ad6a5a7c0d6698b179e"
+    },
+    {
+      "file": ".build/v0_9_visual/31.png",
+      "sha256": "5f2cb68d24cba4d4f8224c4389b99008b84739aa4b3894e520dc97af9d2027b4"
+    },
+    {
+      "file": ".build/v0_9_visual/32.png",
+      "sha256": "6defde0fb6f2a7b12d0d4f44b56d810a8b0de95cd2136e0307174cd9200382c9"
+    },
+    {
+      "file": ".build/v0_9_visual/33.png",
+      "sha256": "d6aac1506d22bfbd0dfc7896e492c6dfc2a18b84f268c9c938c63f53b6a89108"
+    },
+    {
+      "file": ".build/v0_9_visual/34.png",
+      "sha256": "2536c3f8da41d4cf0f09dec72aee7bef7c43da2dd60b92198bf23ca352352229"
+    },
+    {
+      "file": ".build/v0_9_visual/35.png",
+      "sha256": "1a5df12587827c94c5770db4c1bd72fc6a349ccaee18c6a371e700b578992fda"
+    },
+    {
+      "file": ".build/v0_9_visual/36.png",
+      "sha256": "614120e89b26f4e68a14ed691e7f36cf7bcec9b96beae27bbb9f644583df4572"
+    },
+    {
+      "file": ".build/v0_9_visual/controls.png",
+      "sha256": "0b30ae8c49fa17fc02e5aff9ccd9224c9c8fefa4cab5fbce3bb9c7835e4e75bd"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-15-0.png",
+      "sha256": "e3d67f464248f2f7b261419672fbf5400f2786b85581fc7acb7cbfef0709542e"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-21-0.png",
+      "sha256": "428546af9d282e1757f2ef14c8532c046438cbf3b996a48bb255f5110aad5a69"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-27-0.png",
+      "sha256": "2ab306ac067ff2fa036bb874c09be789ba31af22ab8ad1d0982e538a51e9e44e"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-29-0.png",
+      "sha256": "06654d19fdd3be28138822d9636d5dc2cd3d930b40d9b80ff7be6b6b452d4e03"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-31-0.png",
+      "sha256": "86be7e81d01200c2ee74b0caa719f3392d30449806d262c854c40dcb01e0aad9"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-32-0.png",
+      "sha256": "5ef4f01929f0b4337c399bc1988b43c8008fd93a569eabad616de2965d2607f5"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-5-0.png",
+      "sha256": "e9aa1c7acdf0bf695ab5a18ffbfc80eaf2d7df5f702179a24ca39bc291c309c3"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-5-1.png",
+      "sha256": "9c25e440ce09b146265b70a1693cacc4610944e624027024074b13abfb816de7"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-5-2.png",
+      "sha256": "f9970ac99b8bb59fdf3017f4c409b0249b57852c2e1bc80432480109294ce804"
+    },
+    {
+      "file": ".build/v0_9_visual/figure-6-0.png",
+      "sha256": "ccae867bff5739189e061bfc6e8891c657497f077386f4f9eff5ec9a0df8d857"
+    },
+    {
+      "file": ".build/v0_9_visual/mobile.png",
+      "sha256": "4aee4347d1d2022ae48b7dc9e81e09044324eee3942967f5f1a1dc1db5f2b562"
+    },
+    {
+      "file": ".build/v0_9_visual/script-desktop.png",
+      "sha256": "f835de15bb9a7228e6327512273b0f60c6f02bc6ed33e4a98eb11d558d862ff3"
+    },
+    {
+      "file": ".build/v0_9_visual/script-mobile.png",
+      "sha256": "2aafc0e2afe9bc82c72556120658e0bedbbc8f9e0896dcc4375153a26b5988aa"
+    }
+  ],
+  "baseline_media_visual_review": ".build/revision_0_9_baseline/.build/standalone_visual_audit.json",
+  "note": "Media bytes unchanged from visually reviewed v0.8; supplemental playback freshly bound to the v0.9 HTML."
+}

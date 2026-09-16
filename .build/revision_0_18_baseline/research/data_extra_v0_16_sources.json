@@ -1,0 +1,20 @@
+{
+  "kitchen_case": 22,
+  "rope_case": 23,
+  "awesome_commit": "61baafd5fc94ae2db32da8da57704310033a6210",
+  "kitchen_image_url": "https://raw.githubusercontent.com/zjwzcx/Awesome-Astra-Embodied-AI/61baafd5fc94ae2db32da8da57704310033a6210/assets/case-15-articulated-kitchen.jpg",
+  "rope_original_post": "https://x.com/dimentary/status/2097857980150763900",
+  "sha256": {
+    ".build/assets/v0_16/kitchen.jpg": "2f9368ae63e55b252185ca2907281077690b9d7cf493df41c02243e038033d1b",
+    ".build/assets/v0_16/rope_hand_source.mp4": "ba469f105401222b160fd389a3853c17985c4926fe8a7de601fbdc907d6cab0d",
+    ".build/assets/v0_16/rope_hand.jpg": "74ab2779a4cdbde677db17affd68d079d69808eb3fc38be9b9f30c69276a30a7",
+    ".build/clips/rope_hand.mp4": "a330c8730e689c479202ae929da6ca6318da5d5644e2340aac62165a8fbfe143",
+    ".build/clip_manifest_v7.json": "50595d9ccd3fe132804d60dc5fd2a2aa5dc36a5458a0a7338785be39aa9d72b7",
+    "research/sources/data_extra_20260915/rope_hand_oembed.json": "c6606b3d82f820dd4142f142f4643959fe14387daf595a4cce5e6913e40b44f2",
+    "research/sources/data_extra_20260915/kitchen_access.json": "1534c66fb8a49fe92ef86326e969f0abafa30fd10809ea0f4cd2907b808828ff",
+    "research/sources/data_demos_20260915/awesome_readme.md": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7",
+    "research/sources/control_action_interfaces_20260914/robot_use_readme.md": "9f6786cecf5d2ad7dff300923933c629ade53b4efd4feebb30c4316885712fb3",
+    "research/sources/data_extra_20260915/kitchen_project_readme.md": "8f3914e35da978144c78b66faf9c50101442b85a287a82c334f4690782b681c7"
+  },
+  "kitchen_public_project": "https://github.com/frank-zy-dou/kitchen-twin/tree/d34e0f8983bcb6ce040130d023cac9623d0efce7"
+}

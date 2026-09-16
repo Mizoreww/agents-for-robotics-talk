@@ -1,15 +1,15 @@
 {
-  "slides": 28,
-  "videos": 20,
-  "media_seconds": 459.044673,
+  "slides": 37,
+  "videos": 28,
+  "media_seconds": 653.621332,
   "minutes": 60.0,
   "chapter_opening_slides": [
-    5,
-    15,
-    20
+    4,
+    18,
+    23
   ],
-  "bytes": 132107157,
-  "sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "bytes": 137957708,
+  "sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
   "standalone_file": "/home/limx/Desktop/agent_for_robotics/output/Agents_for_Robotics_Self_Contained.html",
   "media": [
     {
@@ -19,118 +19,166 @@
       "duration_seconds": 68.116667
     },
     {
-      "name": "claude_humanoid",
-      "slide": 6,
-      "sha256": "bae111e4ec39b843613e7c04300c272ca6d4fef7faf406e9cac7848ec8f5abe8",
-      "duration_seconds": 5.583333
-    },
-    {
-      "name": "claude_manip",
-      "slide": 6,
-      "sha256": "256142b82215c3921c81fa2c76fab59b9c6f4c341bd344b8ee6254b9f5041e49",
-      "duration_seconds": 4.083333
-    },
-    {
       "name": "astra_bowl",
-      "slide": 9,
+      "slide": 7,
       "sha256": "08b7ca30dfd840d9a602fa6dcb581702a01c678dbf182e5c3bce0387a35e073a",
       "duration_seconds": 14.3
     },
     {
       "name": "astra_insertion",
-      "slide": 9,
+      "slide": 7,
       "sha256": "e4089a3a778fefe428ac44e89bb42e32649b882927060a5bcbd3323a8a93ac99",
       "duration_seconds": 13.8
     },
     {
-      "name": "wenli_icl",
+      "name": "policy_plug",
+      "slide": 8,
+      "sha256": "4ab601841dab2c479e206404360b4ea973a13b2f1d7d7e20c5c5f2a3771fe800",
+      "duration_seconds": 28.166667
+    },
+    {
+      "name": "keyboard",
+      "slide": 8,
+      "sha256": "f047faa2e68f9fbe5e1ee6b1608532b34bb6be21ea0c142a15576f57bf0aa8b3",
+      "duration_seconds": 25.992633
+    },
+    {
+      "name": "cube",
+      "slide": 9,
+      "sha256": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
+      "duration_seconds": 23.1
+    },
+    {
+      "name": "claw",
+      "slide": 9,
+      "sha256": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
+      "duration_seconds": 20.566016
+    },
+    {
+      "name": "asim_delta",
       "slide": 10,
-      "sha256": "b58ac0d20ba7ea718eff75094f8aa049c7c966b60258da50b8c1ee7ca489e1f6",
-      "duration_seconds": 11.2
+      "sha256": "0a38501925b229f02ced43d54b48dbad0798f011f719dd18fb4fa453a7de2262",
+      "duration_seconds": 10.2
     },
     {
-      "name": "arx_knob",
+      "name": "asim_waypoint",
       "slide": 10,
-      "sha256": "2607e59fe83435908711b9d19e8e9bb703359a8dfe1af3440e285c5ec08b3ccb",
-      "duration_seconds": 15.333333
+      "sha256": "9bd84e8ca1600812ea985609525370543184c08c74c73d66ed00426eafb928fc",
+      "duration_seconds": 17.3
     },
     {
-      "name": "ze_rubik",
-      "slide": 11,
-      "sha256": "f8e36e1080d451ca3058a6fb99a3c16d78a605c14ab515c64312d9bdea972ce1",
-      "duration_seconds": 23.108008
+      "name": "asim_code",
+      "slide": 10,
+      "sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
+      "duration_seconds": 6.4
     },
     {
-      "name": "juggle",
-      "slide": 11,
-      "sha256": "6efe7a5b43bc80f53f7c1b282bee8a98ae0ccd12ed255ec10662d012b24c286a",
-      "duration_seconds": 5.266667
-    },
-    {
-      "name": "show_harness",
+      "name": "anon_direct_sort",
       "slide": 12,
-      "sha256": "bcac5e3944ddb27f4d90343cf87ba61a9418112551c94370cc52d304f1331f8a",
-      "duration_seconds": 33.0
+      "sha256": "9860f94ce03b92bfd4bd28ea570dc7f43118442024753cc1faded74f2a7b1411",
+      "duration_seconds": 24.64
     },
     {
-      "name": "xhs_piper",
-      "slide": 14,
-      "sha256": "656cbc278b243bbe183974a399ff3be69cc4a327469b26cd532ba1e9fa41b686",
-      "duration_seconds": 41.433333
+      "name": "anon_hybrid_pack",
+      "slide": 12,
+      "sha256": "87a43a15cbef44fded03295d96510f6aa6ecb07c6b87857d67a8d0c5e4527fb9",
+      "duration_seconds": 15.44
     },
     {
-      "name": "ar2s_real",
-      "slide": 16,
-      "sha256": "c292f2fa539061124a6e3b13cb1bcfc1c9a63fae8befa5f75667ab23a3aa4c7e",
-      "duration_seconds": 10.083333
+      "name": "office_newton",
+      "slide": 19,
+      "sha256": "5c0840014fd7d76e1299c5b4a1f5717e2211691e6eef194ef79aa6c45a979b95",
+      "duration_seconds": 25.0
     },
     {
-      "name": "ar2s_sim",
-      "slide": 16,
-      "sha256": "7c1d705172770378155b4fb9011758fa63f8264cd28c2e850a4535b973922d58",
-      "duration_seconds": 10.083333
+      "name": "kitchen",
+      "slide": 19,
+      "sha256": "98db3ae24844ff38a33224dc0265e749beed7f24b1b0155b90fc2ac2e50bf9c5",
+      "duration_seconds": 20.933333
+    },
+    {
+      "name": "hand",
+      "slide": 20,
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "duration_seconds": 28.833333
+    },
+    {
+      "name": "rope_hand",
+      "slide": 20,
+      "sha256": "a330c8730e689c479202ae929da6ca6318da5d5644e2340aac62165a8fbfe143",
+      "duration_seconds": 24.666667
     },
     {
       "name": "astra_real2sim",
-      "slide": 19,
+      "slide": 21,
       "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
       "duration_seconds": 16.766667
     },
     {
-      "name": "astra_microphone",
-      "slide": 19,
-      "sha256": "121a5280e9074b1cf0df3673491a7a89bed7c2b05a4a2bb9b0d6d70a8d022e88",
-      "duration_seconds": 25.0
-    },
-    {
-      "name": "enpire_task",
+      "name": "dexgpt",
       "slide": 21,
-      "sha256": "07f5cf91c12aefaf1ea424285593d1b9f4551e008a77a52bdc565774bb453fcd",
-      "duration_seconds": 30.0
+      "sha256": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+      "duration_seconds": 20.3
     },
     {
-      "name": "enpire_reset",
-      "slide": 23,
-      "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
-      "duration_seconds": 61.92
-    },
-    {
-      "name": "enpire_verify",
-      "slide": 23,
-      "sha256": "4be0fa9ee68c4c7b05b6418aadb39a02ec2da3058c04d8b88d5f79a28c84da77",
+      "name": "enpire_verify_full",
+      "slide": 25,
+      "sha256": "28b820ed3f0734e29a3c58f3681aadac9058cbd0aaf07649f35f93984b144096",
       "duration_seconds": 11.133333
     },
     {
-      "name": "aspire_trace",
+      "name": "enpire_reset_pusht",
       "slide": 26,
-      "sha256": "e7a8152c5bd2e17c9aac499fc22478fea99b3cbd822c1a8a81dae05fbbad08a9",
-      "duration_seconds": 30.0
+      "sha256": "1a2937e89fff1299edbffaa33ff3ad97edb91074594a61d6e88a0aa51d26ffe7",
+      "duration_seconds": 1.7
     },
     {
-      "name": "hand",
-      "slide": 27,
-      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
-      "duration_seconds": 28.833333
+      "name": "enpire_reset_full",
+      "slide": 26,
+      "sha256": "e939319f9b2ca82557537fad1539758d34830cc9288e7a596f4da797379dcc13",
+      "duration_seconds": 7.733333
+    },
+    {
+      "name": "enpire_reset_tie",
+      "slide": 26,
+      "sha256": "2a08a03e096b5c347ec4cdd6ba97a53a5a19c7a5c565f5b24538d360a99213e1",
+      "duration_seconds": 4.5
+    },
+    {
+      "name": "enpire_reset_gpu",
+      "slide": 26,
+      "sha256": "bb6de3676b4726855aa4927c654e2fa021071143fbf72906c2ca360d52dd8220",
+      "duration_seconds": 5.5
+    },
+    {
+      "name": "enpire_fleet",
+      "slide": 30,
+      "sha256": "19e9bcd92e3081f35e23e603f747d4f9c2fcb76c0e5b27fadb480886535cdf78",
+      "duration_seconds": 31.866667
+    },
+    {
+      "name": "enpire_pin",
+      "slide": 33,
+      "sha256": "bde252c3c2942c0ea3897bfef6029a8b96d0a93de75c4fdda0107a3002331391",
+      "duration_seconds": 51.666016
+    },
+    {
+      "name": "enpire_gpu",
+      "slide": 33,
+      "sha256": "245837a3058780b2f1e8e03c8157cf267807478bdca7376a49e200d0f1a4348b",
+      "duration_seconds": 59.9
+    },
+    {
+      "name": "enpire_tie",
+      "slide": 33,
+      "sha256": "a9398923bdd46ed8eb514d1ebd7b61f888546ef68dd96551b643ae5dc3269616",
+      "duration_seconds": 47.666667
+    },
+    {
+      "name": "enpire_cut",
+      "slide": 33,
+      "sha256": "849d15eecb6135d5d47941c3830b65201ebf84a82cd62ebd165c10cf6da09695",
+      "duration_seconds": 27.433333
     }
   ],
   "images": [
@@ -170,24 +218,9 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 5,
-      "alt": "Original Claude Plays Robotics interface-level results",
-      "sha256": "637d6cb0c8fa8b6d5b5c6b5db57879f67883ec416c86299e556378fb6735f9ca"
-    },
-    {
       "old_slide": 6,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
-    },
-    {
-      "old_slide": 6,
-      "alt": "VIDEO:claude_humanoid",
-      "sha256": "a14c2a24d8360a11a3a32ac7b9264c4d02dbf21fe4679da1ef9b241bb82cc021"
-    },
-    {
-      "old_slide": 6,
-      "alt": "VIDEO:claude_manip",
-      "sha256": "1b7b87965a2b295c8b373eba6aae7f0f9771743ba8205ae4088959f5a303776e"
     },
     {
       "old_slide": 7,
@@ -195,24 +228,9 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 7,
-      "alt": "Original report VLA supervision results on familiar LIBERO-40 tasks",
-      "sha256": "44c7ec8404b41d82117c78967c17b422c92dc3c2ca3e0789a49b6f3234024215"
-    },
-    {
       "old_slide": 8,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
-    },
-    {
-      "old_slide": 8,
-      "alt": "VIDEO:astra_bowl",
-      "sha256": "97a8c7fd3f5b70c329cf40ea0a2c9cba6e5b30796751b62399af566298e9fb21"
-    },
-    {
-      "old_slide": 8,
-      "alt": "VIDEO:astra_insertion",
-      "sha256": "1818a7868262a23c52e315f187a7353504177429b7f2d8ef41db38c9c8f6d6ca"
     },
     {
       "old_slide": 9,
@@ -220,24 +238,9 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 9,
-      "alt": "VIDEO:wiping",
-      "sha256": "e36663705ecd944d29c4353cfc04958656492fecd06b691ba606bd28c77ba966"
-    },
-    {
       "old_slide": 10,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
-    },
-    {
-      "old_slide": 10,
-      "alt": "VIDEO:ar2s_real",
-      "sha256": "2822e4d5258e18168059547a8f83d3607bb9ccc546c89a9f03ce91baaddfef1e"
-    },
-    {
-      "old_slide": 10,
-      "alt": "VIDEO:ar2s_sim",
-      "sha256": "43064a1723a6f563d18d1286bcc52bd89a58f00eb7fc728789cd54f836152b90"
     },
     {
       "old_slide": 11,
@@ -245,44 +248,19 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 11,
-      "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
-      "sha256": "c0b09432c8fa38ddb881057e2c5bb8cf861ea61270e26cfb2a5f220d115872c6"
-    },
-    {
       "old_slide": 12,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 12,
-      "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
-      "sha256": "a7ca558c62667f21e719e58470f2d6b1adc8ae6bff26f21f2c5562b2c6a840c2"
-    },
-    {
       "old_slide": 13,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 13,
-      "alt": "VIDEO:astra_real2sim",
-      "sha256": "72bc14b55a7b4ff2f346a0a7078303e5c9a5fc271688410e493e326613ac6bef"
-    },
-    {
-      "old_slide": 13,
-      "alt": "VIDEO:astra_microphone",
-      "sha256": "85cd6867869ccece8f2e9a783a93fa7dc60f042855ea904cf67c58632e3d59d2"
-    },
-    {
       "old_slide": 14,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
-    },
-    {
-      "old_slide": 14,
-      "alt": "VIDEO:enpire_task",
-      "sha256": "7313bc7bc24bf61c3a2b2739bfd78b0aa31ebf9f5dfb3ba3a1362d5621bb1a00"
     },
     {
       "old_slide": 15,
@@ -298,16 +276,6 @@
       "old_slide": 16,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
-    },
-    {
-      "old_slide": 16,
-      "alt": "VIDEO:enpire_reset",
-      "sha256": "af1d17c7d4aa6db7e5b89c43cb961d2bd91c8873c1f079235d8346651aaac464"
-    },
-    {
-      "old_slide": 16,
-      "alt": "VIDEO:enpire_verify",
-      "sha256": "ef06af0358068e3e4733fdd00f95c4cd337abd551c421f9279311259d9259745"
     },
     {
       "old_slide": 17,
@@ -345,11 +313,6 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "old_slide": 20,
-      "alt": "VIDEO:aspire_trace",
-      "sha256": "f9deaa0557d1860c65c9989cca81b80c38c9eee8323bae58a6a01f632900fa49"
-    },
-    {
       "old_slide": 21,
       "alt": "CLEAR logo",
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
@@ -360,39 +323,204 @@
       "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
     },
     {
-      "source": "https://x.com/_wenlixiao/status/2097801944119349455",
-      "alt": "VIDEO:wenli_icl",
-      "sha256": "da9f7fa711989d0d6cd746fa1a772816c69b32d86bf02e926d354627ae05f4cd"
+      "source": "https://arxiv.org/html/2606.19980v1#S1.F3",
+      "alt": "ENPIRE complete original Figure 3; model curves, traces and fleet scaling",
+      "sha256": "e700a03681fc7e7d754ed71365633cf36c22b1418fd5943dd80dd099d87f4650"
     },
     {
-      "source": "https://x.com/ARXrobotics/status/2096328304794210604",
-      "alt": "VIDEO:arx_knob",
-      "sha256": "a9309020b0fdb4aab9dea07fbeb6f634df0c8ecfb12ff7afc107f1cfd45254ac"
+      "source": "https://arxiv.org/html/2606.19980v1#S3.F6",
+      "alt": "ENPIRE original Figure 6; RoboCasa task examples and aggregate baseline bars",
+      "sha256": "5f643f7eba7c44db67f49ca6a15d0827d183328f0b4b149682ddc78a6458ba60"
+    },
+    {
+      "source": "https://www.pi.website/research/hirobot",
+      "alt": "Hi Robot original architecture: high-level VLM and pi0",
+      "sha256": "fc307d2d240556863b3a60fd06bce0de869e9b7019cb9cc3dab2c09579d8969b"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix",
+      "alt": "Figure Helix original architecture: System 2 to System 1",
+      "sha256": "dee9f51122028c2f6547db81446c0c52e5ca1e54ce2d0ceef7621a163cbb5197"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix-02",
+      "alt": "Figure Helix 02 original architecture with System 0",
+      "sha256": "a1fe99598192bd20106ef5bb8ef2ef33b0a75ee3a001dcb08339567fa9384a12"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_bowl",
+      "sha256": "e20f55d316e337c5acc193a4b7aa9e9a97c3f663becdaa911b68dcfd35125487"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_insertion",
+      "sha256": "7e67a55902ff079fabc7789adb5c0342840e09d7cc93d6b4c25a96d69962fa47"
+    },
+    {
+      "source": "https://github.com/cheng-haha/GPT-Policy-Eval",
+      "alt": "VIDEO:policy_plug",
+      "sha256": "0c20a3cf04d926bdc1bfc8d8a285b35e580740a268797b6ec4255943b7bfe9db"
+    },
+    {
+      "source": "https://x.com/kaiwynd/status/2098823484474348008",
+      "alt": "VIDEO:keyboard",
+      "sha256": "db4fa388e73b268c979f9f85e7a0ba4ff8e2af52ebf969a465ab6127e69d6581"
     },
     {
       "source": "https://x.com/ZeYanjie/status/2098118164626501669",
-      "alt": "VIDEO:ze_rubik",
-      "sha256": "fa2ef85c8aadab923abe3bd0780dbe4ad45f39e591f7665e0bc074a6a6c7788a"
+      "alt": "VIDEO:cube",
+      "sha256": "52630cb3c0fc41d9edb344b9550e88a730f7bdd259d4cf5f5ebcbf48478ddd11"
     },
     {
-      "source": "https://x.com/thermalpastor/status/2097496200631210136",
-      "alt": "VIDEO:juggle",
-      "sha256": "1b3f6f9079563ca1690135ffbc0accf3e269914b8ac26315fea5832ee8ff48e5"
+      "source": "https://qinengwang-aiden.github.io/demos/constraint_demos/?demo=claw",
+      "alt": "VIDEO:claw",
+      "sha256": "eedfbdac26dbd96e3c4f227fefa8bb07e1b0db1fbcda448e47934fb93a634db2"
     },
     {
-      "source": "https://x.com/ZechenBai/status/2097879130356498603",
-      "alt": "VIDEO:show_harness",
-      "sha256": "00ff49d6b51c9c6457a7feced7ac599a8ebf9ff76ffc6fd38328344cc3ffb725"
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_delta",
+      "sha256": "184eb61ef2a996e7a3d7ca5a1a7c3e216e6e4816b7323968690f7b9599b056fc"
     },
     {
-      "source": "https://github.com/RLinf/RPent",
-      "alt": "Official RPent service-oriented framework",
-      "sha256": "031b682ae067ff574f028a65e74363e8583b727030f7d800cf87b0d147dbd84c"
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_waypoint",
+      "sha256": "3cf20b0fbe41754e33103aa6e7f5dcf549ade0d8b8aae0d283b2e4e9b64644a9"
     },
     {
-      "source": "https://www.xiaohongshu.com/explore/6a9bd4c80000000028037f67",
-      "alt": "VIDEO:xhs_piper",
-      "sha256": "18c6018eb21f1bced8fd080bdce112d6a804a299824854fef52a6556da6cabf6"
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_code",
+      "sha256": "514bd122d67596d129cbfab76d79ed1dd2462ca10016053584c73adaf9dc71bb"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original anonymous Direct/Hybrid execution architecture; click to inspect inputs and step horizons",
+      "sha256": "4b9c06759d21fcfa3c71f409ce16ca609a4a2b7f5a6727d0e85c0ad22acf411a"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_direct_sort",
+      "sha256": "ca546f2189719da1456df9938140be8132567f0646c04bc329a0dec1e9826612"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_hybrid_pack",
+      "sha256": "9b13b091cacd3198de85aec1038590f682ec3f55331545277b04e344ebbe44a1"
+    },
+    {
+      "source": "https://x.com/Jiarui_X/status/2098439950991806804",
+      "alt": "VIDEO:office_newton",
+      "sha256": "1daa926a4c2b2984e756e70c84d9449e21c4e799b1537747d9d94469729cdf2f"
+    },
+    {
+      "source": "https://x.com/frankzydou/status/2098460193319186578",
+      "alt": "VIDEO:kitchen",
+      "sha256": "ffa4aaed990d7111b9a047394bd44667eac756fbd5015240ef1f60e21f3fa113"
+    },
+    {
+      "source": "https://x.com/earthtojake/status/2097789988670709821",
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "source": "https://x.com/dimentary/status/2097857980150763900",
+      "alt": "VIDEO:rope_hand",
+      "sha256": "74ab2779a4cdbde677db17affd68d079d69808eb3fc38be9b9f30c69276a30a7"
+    },
+    {
+      "source": "https://x.com/Lingxiao234/status/2096992059731443923",
+      "alt": "VIDEO:astra_real2sim",
+      "sha256": "2ce37c55de5d37a5662cf2c089cd00e61807963cf3593741e11e3f9093728c66"
+    },
+    {
+      "source": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+      "alt": "VIDEO:dexgpt",
+      "sha256": "b230b84b7b7147c943fe0de98e5fedab8b0056859b58c476563734c42497daf6"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#A2.F12",
+      "alt": "ENPIRE Figure 12: original idea tree and hill-climbing curve, including no-gain nodes",
+      "sha256": "3daf3e0a1221207b967fa5555d8f1fab8821e1926225fe03600e262b4824e359"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_verify_full",
+      "sha256": "166b233d82b001346970d9d09304e1b3f33f4b35e26a46c577652ec0757b2577"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_reset_pusht",
+      "sha256": "cfc0e43dd0bd1a1dba228be046f08b01dbc17e3e65b65b53541b7a59dc3117db"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_reset_full",
+      "sha256": "3386d5881858b16514a809c1ecb1dad49328ab31c074abb7713c39344d9e9fed"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_reset_tie",
+      "sha256": "b6596434d630b89b4e066ed9c974abb3b23f1347f3bee3a7a66794dd797d5927"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_reset_gpu",
+      "sha256": "34d773cb11af51b764b8b2dcd8afad359093b42bd3ec3a24f72a536cfd0fa480"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "ENPIRE official task photograph: Push-T: heuristic code",
+      "sha256": "6a07257bf35622dd677f8265be99010eb87f06ad012a3b90465af7233f205380"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "ENPIRE official task photograph: Pin insertion: learned policy",
+      "sha256": "bdcf01db3ccf12f96bdb6fdb411b3626f258ec6a29bb41f1ca7004a1e163c5f0"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_fleet",
+      "sha256": "461d4b6914c98a29ac966732fc464e0150b80c6b2a31edae805750aa544a24d1"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_pin",
+      "sha256": "a43408b208fe9e9c0ad30cea1cce20abf3cc9a8a9978308d743e7529111ada5f"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_gpu",
+      "sha256": "fac1220eb5a1b4f1a079ada2bbe4c47f4d15ad6ca5e98772e210fb04723e1fca"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_tie",
+      "sha256": "9204120a461bad78045b41aa82872c40d097e546438dce9d39e45eb70c3f561b"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_cut",
+      "sha256": "3e33e9490648051efecbca4a0dfbf4c8d7171f4b600f275845fe832326bbec3e"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboDojo panel-score-ranking.png",
+      "sha256": "948f4a6e92fee1b8dd33d8af4db909a0be8855a3ebc71afea993af41b3577984"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboDojo panel-sr-ranking.png",
+      "sha256": "855657a47b81fc0333be8aeff806aaee73c8d6ee616dd480bed81c4bbc3f6ed1"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboLab success-rate result",
+      "sha256": "ad38b3487b1c4a28e4ec57bfb2c173164413e354b9a019c028ad9cdb7d63b284"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report per-task Score heatmap; overflow expanded, data and colors unchanged",
+      "sha256": "f9b63070c6ca90df4a0249ff45bb2011ddd2c5926e2b7efcc85bbe1f37c79598"
     }
   ],
   "native_text": true,

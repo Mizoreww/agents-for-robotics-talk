@@ -1,0 +1,1967 @@
+
+GPT-6 Astra on robot arms | Robocurve
+  
+    
+  
+  
+GPT‑6 Astra on robotic manipulation
+  
+September 4, 2026
+  
+A follow‑up to 
+our comparison of Claude Fable 5 and Fable 5.1
+.
+  We gave OpenAI's GPT‑6 Astra control of the same YAM arms under the same
+Inspect Robots
+ agent policy, on the same two tasks:
+  
+“Pick up the red block from the table and place it inside the bowl.”
+  
+“Pick up the round blue puzzle piece by the knob at its center and place it into
+  the matching circular groove in the board.”
+  
+On the bowl task Astra placed the block in 
+19 of 20
+ trials, against Fable 5.1's 
+8 of 20
+ and Fable 5 in 1 of 20, in 2.5 minutes per trial to Fable 5.1's 6.8, at an estimated $0.94 per run to $2.12.
+  
+The puzzle task is a different story: Astra completed the insertion 2 times in 20 against Fable 5.1's 2 in 20. It reaches the groove and stalls at the same final step Fable does, at $1.36 per run to $2.18.
+  
+  
+  
+Block into bowl: the best completed run of each model (highest stage, then shortest), each played
+  in its own time at the same speed‑up. Timers show real elapsed time with thinking pauses removed.
+  
+  
+Astra completes the bowl task far more often, at about half the cost per run
+  
+ 
+  
+   
+    
+    
+2026-09-04T18:50:02.475437
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+    
+    
+     
+     
+      
+$1
+     
+    
+    
+     
+     
+      
+$2
+     
+    
+    
+     
+     
+      
+$3
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+Fable 5
+   
+   
+    
+Fable 5.1
+   
+   
+    
+GPT-6 Astra
+   
+   
+    
+    
+   
+   
+    
+2.4× higher completion rate
+    
+2.3× cheaper
+   
+   
+    
+Block into bowl
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+    
+    
+     
+     
+      
+$1
+     
+    
+    
+     
+     
+      
+$2
+     
+    
+    
+     
+     
+      
+$3
+     
+    
+   
+   
+    
+     
+      
+     
+     
+    
+    
+     
+      
+     
+     
+    
+    
+     
+      
+     
+     
+    
+    
+     
+      
+     
+     
+    
+    
+     
+      
+     
+     
+    
+    
+     
+      
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+Fable 5
+   
+   
+    
+Fable 5.1
+   
+   
+    
+GPT-6 Astra
+   
+   
+    
+    
+   
+   
+    
+same completion rate
+    
+1.6× cheaper
+   
+   
+    
+Puzzle piece into groove
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+estimated cost per run (USD, list price)
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+  
+Large dots are condition means; faint dots are individual trials (100 if completed, 0 otherwise) at their own
+  cost.
+  
+  
+Scoring
+  
+Every trial was scored by a human grader on the highest stage it reached, so a run
+  that fails still records how far it got. The rubric is unchanged from the Fable report.
+  
+0
+No purposeful approach
+1
+Made contact with the object
+2
+Lifted the object clear of the table
+3
+Positioned it above the deposit point
+4
+Placed it in its final position
+  
+  
+Astra places the block almost every time; on the puzzle it stalls where Fable does
+  
+ 
+  
+   
+    
+    
+2026-09-04T18:50:02.444943
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+    
+     
+    
+    
+     
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+     
+      
+Fable 5  (n=20)
+     
+    
+    
+     
+     
+      
+Fable 5.1  (n=20)
+     
+    
+    
+     
+     
+      
+GPT-6 Astra  (n=20)
+     
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+13
+   
+   
+    
+   
+   
+    
+3
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+6
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+8
+   
+   
+    
+   
+   
+    
+   
+   
+    
+19
+   
+   
+    
+Block into bowl
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+0
+     
+    
+    
+     
+     
+      
+20
+     
+    
+    
+     
+     
+      
+40
+     
+    
+    
+     
+     
+      
+60
+     
+    
+    
+     
+     
+      
+80
+     
+    
+    
+     
+     
+      
+100
+     
+    
+    
+     
+share of trials (%)
+    
+   
+   
+    
+     
+     
+      
+Fable 5  (n=20)
+     
+    
+    
+     
+     
+      
+Fable 5.1  (n=20)
+     
+    
+    
+     
+     
+      
+GPT-6 Astra  (n=20)
+     
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+11
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+5
+   
+   
+    
+   
+   
+    
+   
+   
+    
+4
+   
+   
+    
+   
+   
+    
+4
+   
+   
+    
+   
+   
+    
+9
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+   
+   
+    
+3
+   
+   
+    
+   
+   
+    
+6
+   
+   
+    
+   
+   
+    
+   
+   
+    
+8
+   
+   
+    
+   
+   
+    
+2
+   
+   
+    
+Puzzle piece into groove
+   
+  
+  
+   
+    
+   
+   
+    
+0 no approach
+   
+   
+    
+   
+   
+    
+1 contact
+   
+   
+    
+   
+   
+    
+2 lifted
+   
+   
+    
+   
+   
+    
+3 positioned
+   
+   
+    
+   
+   
+    
+4 placed
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+  
+Share of trials per model reaching each stage; n per row is the number of trials in that cell.
+  
+  
+Results
+  
+  
+    
+Task
+Model
+Mean stage
+Completions
+    
+Rate
+Output tokens/run
+Est. cost/run
+Minutes/run
+    
+Block into bowl
+Fable 5
+1.30
+1 / 20
+5%
+19.2k
+$2.69
+8.2
+Block into bowl
+Fable 5.1
+2.40
+8 / 20
+40%
+12.9k
+$2.12
+6.8
+Block into bowl
+GPT-6 Astra
+3.95
+19 / 20
+95%
+2.1k
+$0.94
+2.5
+Puzzle into groove
+Fable 5
+1.50
+0 / 20
+0%
+16.3k
+$2.63
+7.9
+Puzzle into groove
+Fable 5.1
+2.35
+2 / 20
+10%
+10.5k
+$2.18
+5.9
+Puzzle into groove
+GPT-6 Astra
+2.00
+2 / 20
+10%
+2.7k
+$1.36
+3.4
+  
+  
+  
+  
+All runs
+  
+Every counted trial, 120 in total.
+  
+  
+    
+Task
+Model
+Score
+Time (min)
+    
+Output tokens
+Transcript
+Video
+Rerun
+    
+Block into bowl
+GPT-6 Astra
+4
+1.7
+1,533
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+1.7
+1,734
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+1.7
+1,573
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+1.8
+1,669
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+1.9
+1,570
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.1
+1,491
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.1
+2,153
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.1
+1,782
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.2
+2,034
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.5
+2,441
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.5
+2,625
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.5
+1,697
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.8
+2,434
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+2.9
+2,966
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+3.2
+1,627
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+3.3
+2,768
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+3.3
+2,777
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+3.4
+2,185
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+4
+3.5
+1,979
+view
+watch
+download
+Block into bowl
+GPT-6 Astra
+3
+3.5
+2,428
+view
+watch
+download
+Block into bowl
+Fable 5
+4
+5.2
+13,120
+view
+watch
+download
+Block into bowl
+Fable 5
+3
+7.1
+14,048
+view
+watch
+download
+Block into bowl
+Fable 5
+2
+5.0
+10,663
+view
+watch
+download
+Block into bowl
+Fable 5
+2
+8.7
+17,859
+view
+watch
+download
+Block into bowl
+Fable 5
+2
+9.1
+15,064
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+4.7
+9,096
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+5.8
+13,800
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+5.8
+9,954
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+7.1
+16,666
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+7.2
+18,165
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+7.2
+14,719
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+8.4
+24,975
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+8.7
+17,436
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+8.8
+21,388
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+9.6
+30,566
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+10.8
+28,784
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+11.7
+27,810
+view
+watch
+download
+Block into bowl
+Fable 5
+1
+14.8
+35,211
+view
+watch
+download
+Block into bowl
+Fable 5
+0
+8.7
+17,764
+view
+watch
+download
+Block into bowl
+Fable 5
+0
+9.7
+27,582
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+4.2
+9,124
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+4.8
+9,779
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+5.0
+11,359
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+5.1
+8,526
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+5.6
+10,998
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+6.5
+7,031
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+6.7
+15,901
+view
+watch
+download
+Block into bowl
+Fable 5.1
+4
+7.5
+8,964
+view
+watch
+download
+Block into bowl
+Fable 5.1
+3
+5.7
+14,477
+view
+watch
+download
+Block into bowl
+Fable 5.1
+3
+8.6
+20,110
+view
+watch
+download
+Block into bowl
+Fable 5.1
+2
+7.3
+20,022
+view
+watch
+download
+Block into bowl
+Fable 5.1
+2
+18.9
+14,526
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+5.7
+13,265
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+5.9
+18,073
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+6.0
+13,070
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+6.6
+11,506
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+7.1
+11,404
+view
+watch
+download
+Block into bowl
+Fable 5.1
+1
+8.5
+17,760
+view
+watch
+download
+Block into bowl
+Fable 5.1
+0
+4.5
+8,979
+view
+watch
+download
+Block into bowl
+Fable 5.1
+0
+5.2
+13,394
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+4
+2.8
+2,229
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+4
+3.3
+1,967
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+2.3
+2,581
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+2.6
+2,805
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+2.6
+2,470
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+2.9
+2,978
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+3.0
+2,937
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+3.1
+2,932
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+3.6
+2,538
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+3
+3.6
+3,417
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+2
+3.9
+3,142
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+2.2
+2,458
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+2.8
+2,464
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+3.0
+2,117
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+3.1
+2,901
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+3.9
+3,041
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+1
+10.2
+2,491
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+0
+2.6
+3,025
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+0
+2.8
+2,916
+view
+watch
+download
+Puzzle into groove
+GPT-6 Astra
+0
+3.3
+3,161
+view
+watch
+download
+Puzzle into groove
+Fable 5
+3
+5.4
+12,599
+view
+watch
+download
+Puzzle into groove
+Fable 5
+3
+6.6
+11,044
+view
+watch
+download
+Puzzle into groove
+Fable 5
+3
+6.7
+11,726
+view
+watch
+download
+Puzzle into groove
+Fable 5
+3
+6.8
+10,743
+view
+watch
+download
+Puzzle into groove
+Fable 5
+3
+8.8
+14,855
+view
+watch
+download
+Puzzle into groove
+Fable 5
+2
+7.0
+19,149
+view
+watch
+download
+Puzzle into groove
+Fable 5
+2
+9.1
+22,592
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+4.5
+9,620
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+4.7
+9,942
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+5.3
+13,629
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+5.8
+16,029
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+6.6
+16,460
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+7.3
+10,544
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+8.3
+25,603
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+8.3
+23,105
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+9.1
+20,718
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+15.1
+29,746
+view
+watch
+download
+Puzzle into groove
+Fable 5
+1
+17.2
+11,577
+view
+watch
+download
+Puzzle into groove
+Fable 5
+0
+6.2
+18,229
+view
+watch
+download
+Puzzle into groove
+Fable 5
+0
+10.0
+18,386
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+4
+5.2
+10,618
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+4
+7.6
+10,306
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+4.1
+9,993
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+5.0
+11,549
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+5.4
+10,450
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+6.0
+10,417
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+6.5
+10,725
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+7.1
+10,312
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+7.2
+11,048
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+7.4
+11,978
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+3
+7.5
+12,251
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+2
+3.7
+9,362
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+2
+4.5
+8,946
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+2
+4.9
+9,432
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+2
+6.6
+12,046
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+1
+3.9
+9,341
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+1
+4.3
+9,597
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+1
+5.5
+12,735
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+1
+10.0
+9,111
+view
+watch
+download
+Puzzle into groove
+Fable 5.1
+0
+6.5
+10,359
+view
+watch
+download
+  
+  
+  
+  
+Technical specifications
+  
+Embodiment
+Bimanual I2RT YAM arms, 6-DoF per arm with parallel-jaw grippers
+Control
+Absolute end-effector poses (
+move_to
+): x, y, z, yaw, pitch, roll and gripper, per arm. The robot's IK converts poses to joint angles.
+Observation
+Three camera views (top, left wrist, right wrist) plus proprioceptive state, each turn
+Policy
+agent
+ policy, medium thinking effort, 20-LLM-call budget, 25% speed cap, default safety guardrails on
+Models
+gpt-6-astra
+, 
+claude-fable-5
+ and 
+claude-fable-5-1
+Harness
+Inspect Robots
+ 0.58.0
+Trials
+20 per model per task; puzzle on rig-4 for all models, bowl on rig-3 for the Fable models and rig-1 for Astra
+Token counts
+Wire-level request and response tokens, not billed tokens; cost at list price, $10 / $50 per million input / output tokens for all three models
+  
+  
+Limitations
+  
+Astra's trials were run two days after the Fable trials, and not interleaved with them. The puzzle comparison is on the same rig; the bowl comparison is not: the Fable bowl trials ran on rig-3, which was unavailable.
+Grading was operator-judged with the model known, so scores are open to unconscious bias.
+Costs are list price. Anthropic requests were sent without prompt caching; OpenAI cached about a fifth of Astra's input automatically, which is not discounted here, so Astra's cost is, if anything, overstated.
+Objects were reset by hand between trials, and all models ran at medium reasoning effort only.

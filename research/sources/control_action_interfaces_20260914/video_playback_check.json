@@ -1,0 +1,26 @@
+[
+  {
+    "src": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep00.mp4",
+    "duration": 1.8,
+    "time": 0.318057,
+    "width": 256,
+    "height": 256,
+    "error": null
+  },
+  {
+    "src": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep00.mp4",
+    "duration": 10.2,
+    "time": 0.31577,
+    "width": 256,
+    "height": 256,
+    "error": null
+  },
+  {
+    "src": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep00.mp4",
+    "duration": 17.3,
+    "time": 0.31318,
+    "width": 256,
+    "height": 256,
+    "error": null
+  }
+]

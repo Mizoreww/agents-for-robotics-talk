@@ -1,0 +1,50 @@
+[
+  {
+    "file": "enpire_site_03~yq9q893hmn.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/03~yq9q893hmn.js",
+    "bytes": 112594,
+    "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+  },
+  {
+    "file": "enpire_site_0d3tkj33oycf2.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0d3tkj33oycf2.js",
+    "bytes": 57741,
+    "sha256": "2a4653e53a56ac6ea963b296eda9626a685c9838a9603e3ad0280975e118a717"
+  },
+  {
+    "file": "enpire_site_0fsi8lw5utejl.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0fsi8lw5utejl.js",
+    "bytes": 282,
+    "sha256": "e9786b1305894e4119bb9811a816dac9cf576755596dd989ee15b455749fc35e"
+  },
+  {
+    "file": "enpire_site_0h4bq73pogmtb.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0h4bq73pogmtb.js",
+    "bytes": 227314,
+    "sha256": "b17064eac667723a6b3eee82861cca94184eff50fda0a0ff13ad7a44a1950d8a"
+  },
+  {
+    "file": "enpire_site_0pjq-hlddzx4h.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0pjq-hlddzx4h.js",
+    "bytes": 194804,
+    "sha256": "03e0e4b438e782e496d5669b0d8d29e9c7155540260671aaa986191cfcc4eae9"
+  },
+  {
+    "file": "enpire_site_11dgx9quo0zhy.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/11dgx9quo0zhy.js",
+    "bytes": 701225,
+    "sha256": "347643c2c2dfb3237bb2c0cbf6d1e93a59f8acd8b80d0d165108cd2dab29c86d"
+  },
+  {
+    "file": "enpire_site_11qk_vpw_zwkf.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/11qk_vpw_zwkf.js",
+    "bytes": 22466,
+    "sha256": "cc3273c1a58f89af78184ebb484071a77d9dddb7feef40161848b9f67ce5bf0f"
+  },
+  {
+    "file": "enpire_site_turbopack-0h4ruw6wmw4n6.js",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/turbopack-0h4ruw6wmw4n6.js",
+    "bytes": 10475,
+    "sha256": "e60263016ba30a36bd45ac92fb2d0aab5a6479adf54a676d5e50c026587424bd"
+  }
+]

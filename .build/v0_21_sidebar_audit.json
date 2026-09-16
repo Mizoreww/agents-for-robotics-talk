@@ -1,0 +1,1906 @@
+{
+  "html_sha256": "9735355c06fbf47f99d531a34a7b68c62f87c3a8e6c6d336a8d4d1221e8cc9d3",
+  "loaded_deck_data_sha256": "d48406ecab25b2276173b8aeb02fa48fc5f171678cf1cd4f57b9f36b7c108591",
+  "layouts": [
+    {
+      "label": "desktop-closed",
+      "viewport": 1600,
+      "height": 1000,
+      "docWidth": 1600,
+      "docHeight": 1000,
+      "stage": {
+        "left": 34.125,
+        "right": 1565.875,
+        "top": 12,
+        "bottom": 873.609375,
+        "width": 1531.75,
+        "height": 861.609375
+      },
+      "canvas": {
+        "left": 34.125,
+        "right": 1565.875,
+        "top": 12,
+        "bottom": 873.609375,
+        "width": 1531.75,
+        "height": 861.609375
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 1600,
+        "bottom": 1000
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 170,
+          "right": 272.140625,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "select",
+          "left": 277.140625,
+          "right": 764.65625,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "next",
+          "left": 769.65625,
+          "right": 848.1875,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "play",
+          "left": 858.1875,
+          "right": 976.09375,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "pause",
+          "left": 981.09375,
+          "right": 1067.859375,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "restart",
+          "left": 1072.859375,
+          "right": 1166.5625,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 1176.5625,
+          "right": 1313.234375,
+          "top": 891.609375,
+          "bottom": 929.609375
+        },
+        {
+          "id": "fullscreen",
+          "left": 1318.234375,
+          "right": 1430,
+          "top": 891.609375,
+          "bottom": 929.609375
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "desktop-open",
+      "viewport": 1600,
+      "height": 1000,
+      "docWidth": 1600,
+      "docHeight": 1000,
+      "stage": {
+        "left": 12,
+        "right": 1128,
+        "top": 128.921875,
+        "bottom": 756.671875,
+        "width": 1116,
+        "height": 627.75
+      },
+      "canvas": {
+        "left": 12,
+        "right": 1128,
+        "top": 128.921875,
+        "bottom": 756.671875,
+        "width": 1116,
+        "height": 627.75
+      },
+      "notes": {
+        "left": 1140,
+        "right": 1600,
+        "top": 0,
+        "bottom": 1000,
+        "width": 460,
+        "height": 1000
+      },
+      "main": {
+        "left": 0,
+        "right": 1140,
+        "bottom": 1000
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 473.75,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "next",
+          "left": 478.75,
+          "right": 557.28125,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "play",
+          "left": 567.28125,
+          "right": 685.1875,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "pause",
+          "left": 690.1875,
+          "right": 776.953125,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "restart",
+          "left": 781.953125,
+          "right": 875.65625,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "notes-toggle",
+          "left": 885.65625,
+          "right": 1001.234375,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "fullscreen",
+          "left": 1006.234375,
+          "right": 1118,
+          "top": 774.671875,
+          "bottom": 812.671875
+        },
+        {
+          "id": "notes-close",
+          "left": 1497,
+          "right": 1576,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 1165,
+          "right": 1273.75,
+          "top": 146.09375,
+          "bottom": 184.09375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "fullscreen-open",
+      "viewport": 1600,
+      "height": 1000,
+      "docWidth": 1600,
+      "docHeight": 1000,
+      "stage": {
+        "left": 6,
+        "right": 1134,
+        "top": 154.75,
+        "bottom": 789.25,
+        "width": 1128,
+        "height": 634.5
+      },
+      "canvas": {
+        "left": 6,
+        "right": 1134,
+        "top": 154.75,
+        "bottom": 789.25,
+        "width": 1128,
+        "height": 634.5
+      },
+      "notes": {
+        "left": 1140,
+        "right": 1600,
+        "top": 0,
+        "bottom": 1000,
+        "width": 460,
+        "height": 1000
+      },
+      "main": {
+        "left": 0,
+        "right": 1140,
+        "bottom": 1000
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 12,
+          "right": 114.140625,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "select",
+          "left": 119.140625,
+          "right": 492.734375,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "next",
+          "left": 497.734375,
+          "right": 576.265625,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "play",
+          "left": 586.265625,
+          "right": 704.171875,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "pause",
+          "left": 709.171875,
+          "right": 795.9375,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "restart",
+          "left": 800.9375,
+          "right": 894.640625,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "notes-toggle",
+          "left": 904.640625,
+          "right": 1020.21875,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "fullscreen",
+          "left": 1025.21875,
+          "right": 1128,
+          "top": 801.25,
+          "bottom": 839.25
+        },
+        {
+          "id": "notes-close",
+          "left": 1497,
+          "right": 1576,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 1165,
+          "right": 1273.75,
+          "top": 146.09375,
+          "bottom": 184.09375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "1280x800-open",
+      "viewport": 1280,
+      "height": 800,
+      "docWidth": 1280,
+      "docHeight": 800,
+      "stage": {
+        "left": 12.203125,
+        "right": 858.203125,
+        "top": 82.859375,
+        "bottom": 558.734375,
+        "width": 846,
+        "height": 475.875
+      },
+      "canvas": {
+        "left": 12.203125,
+        "right": 858.203125,
+        "top": 82.859375,
+        "bottom": 558.734375,
+        "width": 846,
+        "height": 475.875
+      },
+      "notes": {
+        "left": 870.40625,
+        "right": 1280,
+        "top": 0,
+        "bottom": 800,
+        "width": 409.59375,
+        "height": 800
+      },
+      "main": {
+        "left": 0,
+        "right": 870.40625,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 764.875,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "next",
+          "left": 769.875,
+          "right": 848.40625,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "play",
+          "left": 161.84375,
+          "right": 279.75,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "pause",
+          "left": 284.75,
+          "right": 371.515625,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "restart",
+          "left": 376.515625,
+          "right": 470.21875,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 476.21875,
+          "right": 591.796875,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "fullscreen",
+          "left": 596.796875,
+          "right": 708.5625,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "notes-close",
+          "left": 1177,
+          "right": 1256,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 895.40625,
+          "right": 1004.15625,
+          "top": 115.046875,
+          "bottom": 153.046875
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "1280x800-closed",
+      "viewport": 1280,
+      "height": 800,
+      "docWidth": 1280,
+      "docHeight": 800,
+      "stage": {
+        "left": 51.90625,
+        "right": 1228.09375,
+        "top": 12,
+        "bottom": 673.59375,
+        "width": 1176.1875,
+        "height": 661.59375
+      },
+      "canvas": {
+        "left": 51.90625,
+        "right": 1228.1007080078125,
+        "top": 12,
+        "bottom": 673.609375,
+        "width": 1176.1944580078125,
+        "height": 661.609375
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 1280,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 592.65625,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "next",
+          "left": 597.65625,
+          "right": 676.1875,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "play",
+          "left": 686.1875,
+          "right": 804.09375,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "pause",
+          "left": 809.09375,
+          "right": 895.859375,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "restart",
+          "left": 900.859375,
+          "right": 994.5625,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 1004.5625,
+          "right": 1141.234375,
+          "top": 691.59375,
+          "bottom": 729.59375
+        },
+        {
+          "id": "fullscreen",
+          "left": 1146.234375,
+          "right": 1258,
+          "top": 691.59375,
+          "bottom": 729.59375
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "1024x768-open",
+      "viewport": 1024,
+      "height": 768,
+      "docWidth": 1024,
+      "docHeight": 768,
+      "stage": {
+        "left": 12.15625,
+        "right": 684.15625,
+        "top": 115.796875,
+        "bottom": 493.796875,
+        "width": 672,
+        "height": 378
+      },
+      "canvas": {
+        "left": 12.15625,
+        "right": 684.15625,
+        "top": 115.796875,
+        "bottom": 493.7968444824219,
+        "width": 672,
+        "height": 377.9999694824219
+      },
+      "notes": {
+        "left": 696.328125,
+        "right": 1024,
+        "top": 0,
+        "bottom": 768,
+        "width": 327.671875,
+        "height": 768
+      },
+      "main": {
+        "left": 0,
+        "right": 696.328125,
+        "bottom": 768
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 511.796875,
+          "bottom": 549.796875
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 590.796875,
+          "top": 511.796875,
+          "bottom": 549.796875
+        },
+        {
+          "id": "next",
+          "left": 595.796875,
+          "right": 674.328125,
+          "top": 511.796875,
+          "bottom": 549.796875
+        },
+        {
+          "id": "play",
+          "left": 74.796875,
+          "right": 192.703125,
+          "top": 555.796875,
+          "bottom": 593.796875
+        },
+        {
+          "id": "pause",
+          "left": 197.703125,
+          "right": 284.46875,
+          "top": 555.796875,
+          "bottom": 593.796875
+        },
+        {
+          "id": "restart",
+          "left": 289.46875,
+          "right": 383.171875,
+          "top": 555.796875,
+          "bottom": 593.796875
+        },
+        {
+          "id": "notes-toggle",
+          "left": 389.171875,
+          "right": 504.75,
+          "top": 555.796875,
+          "bottom": 593.796875
+        },
+        {
+          "id": "fullscreen",
+          "left": 509.75,
+          "right": 621.515625,
+          "top": 555.796875,
+          "bottom": 593.796875
+        },
+        {
+          "id": "notes-close",
+          "left": 921,
+          "right": 1000,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 721.328125,
+          "right": 830.078125,
+          "top": 146.09375,
+          "bottom": 184.09375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "1024x768-closed",
+      "viewport": 1024,
+      "height": 768,
+      "docWidth": 1024,
+      "docHeight": 768,
+      "stage": {
+        "left": 12,
+        "right": 1012,
+        "top": 23.546875,
+        "bottom": 586.046875,
+        "width": 1000,
+        "height": 562.5
+      },
+      "canvas": {
+        "left": 12,
+        "right": 1012,
+        "top": 23.546875,
+        "bottom": 586.046875,
+        "width": 1000,
+        "height": 562.5
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 1024,
+        "bottom": 768
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 604.046875,
+          "bottom": 642.046875
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 918.46875,
+          "top": 604.046875,
+          "bottom": 642.046875
+        },
+        {
+          "id": "next",
+          "left": 923.46875,
+          "right": 1002,
+          "top": 604.046875,
+          "bottom": 642.046875
+        },
+        {
+          "id": "play",
+          "left": 228.09375,
+          "right": 346,
+          "top": 648.046875,
+          "bottom": 686.046875
+        },
+        {
+          "id": "pause",
+          "left": 351,
+          "right": 437.765625,
+          "top": 648.046875,
+          "bottom": 686.046875
+        },
+        {
+          "id": "restart",
+          "left": 442.765625,
+          "right": 536.46875,
+          "top": 648.046875,
+          "bottom": 686.046875
+        },
+        {
+          "id": "notes-toggle",
+          "left": 542.46875,
+          "right": 679.140625,
+          "top": 648.046875,
+          "bottom": 686.046875
+        },
+        {
+          "id": "fullscreen",
+          "left": 684.140625,
+          "right": 795.90625,
+          "top": 648.046875,
+          "bottom": 686.046875
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "820x430-open",
+      "viewport": 820,
+      "height": 430,
+      "docWidth": 820,
+      "docHeight": 430,
+      "stage": {
+        "left": 30.4375,
+        "right": 469.546875,
+        "top": 6,
+        "bottom": 252.984375,
+        "width": 439.109375,
+        "height": 246.984375
+      },
+      "canvas": {
+        "left": 30.4375,
+        "right": 469.548583984375,
+        "top": 6,
+        "bottom": 253,
+        "width": 439.111083984375,
+        "height": 247
+      },
+      "notes": {
+        "left": 500,
+        "right": 820,
+        "top": 0,
+        "bottom": 430,
+        "width": 320,
+        "height": 430
+      },
+      "main": {
+        "left": 0,
+        "right": 500,
+        "bottom": 430
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 16,
+          "right": 104.125,
+          "top": 266.984375,
+          "bottom": 304.984375
+        },
+        {
+          "id": "select",
+          "left": 109.125,
+          "right": 412.65625,
+          "top": 266.984375,
+          "bottom": 304.984375
+        },
+        {
+          "id": "next",
+          "left": 417.65625,
+          "right": 484,
+          "top": 266.984375,
+          "bottom": 304.984375
+        },
+        {
+          "id": "play",
+          "left": 116.515625,
+          "right": 219.203125,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "pause",
+          "left": 224.203125,
+          "right": 298.140625,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "restart",
+          "left": 303.140625,
+          "right": 383.484375,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 148.71875,
+          "right": 249.25,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "fullscreen",
+          "left": 254.25,
+          "right": 351.265625,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "notes-close",
+          "left": 717,
+          "right": 796,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 525,
+          "right": 633.75,
+          "top": 146.09375,
+          "bottom": 184.09375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "820x430-closed",
+      "viewport": 820,
+      "height": 430,
+      "docWidth": 820,
+      "docHeight": 430,
+      "stage": {
+        "left": 151.328125,
+        "right": 668.65625,
+        "top": 6,
+        "bottom": 296.984375,
+        "width": 517.328125,
+        "height": 290.984375
+      },
+      "canvas": {
+        "left": 151.328125,
+        "right": 668.6614379882812,
+        "top": 6,
+        "bottom": 297,
+        "width": 517.3333129882812,
+        "height": 291
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 820,
+        "bottom": 430
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 16,
+          "right": 118.140625,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "select",
+          "left": 123.140625,
+          "right": 720.46875,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "next",
+          "left": 725.46875,
+          "right": 804,
+          "top": 310.984375,
+          "bottom": 348.984375
+        },
+        {
+          "id": "play",
+          "left": 126.09375,
+          "right": 244,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "pause",
+          "left": 249,
+          "right": 335.765625,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "restart",
+          "left": 340.765625,
+          "right": 434.46875,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 440.46875,
+          "right": 577.140625,
+          "top": 354.984375,
+          "bottom": 392.984375
+        },
+        {
+          "id": "fullscreen",
+          "left": 582.140625,
+          "right": 693.90625,
+          "top": 354.984375,
+          "bottom": 392.984375
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "701x500-open",
+      "viewport": 701,
+      "height": 500,
+      "docWidth": 701,
+      "docHeight": 500,
+      "stage": {
+        "left": 6,
+        "right": 375,
+        "top": 60.71875,
+        "bottom": 268.28125,
+        "width": 369,
+        "height": 207.5625
+      },
+      "canvas": {
+        "left": 6,
+        "right": 375,
+        "top": 60.71875,
+        "bottom": 268.28125,
+        "width": 369,
+        "height": 207.5625
+      },
+      "notes": {
+        "left": 381,
+        "right": 701,
+        "top": 0,
+        "bottom": 500,
+        "width": 320,
+        "height": 500
+      },
+      "main": {
+        "left": 0,
+        "right": 381,
+        "bottom": 500
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 16,
+          "right": 104.125,
+          "top": 282.28125,
+          "bottom": 320.28125
+        },
+        {
+          "id": "select",
+          "left": 109.125,
+          "right": 293.65625,
+          "top": 282.28125,
+          "bottom": 320.28125
+        },
+        {
+          "id": "next",
+          "left": 298.65625,
+          "right": 365,
+          "top": 282.28125,
+          "bottom": 320.28125
+        },
+        {
+          "id": "play",
+          "left": 57.015625,
+          "right": 159.703125,
+          "top": 326.28125,
+          "bottom": 364.28125
+        },
+        {
+          "id": "pause",
+          "left": 164.703125,
+          "right": 238.640625,
+          "top": 326.28125,
+          "bottom": 364.28125
+        },
+        {
+          "id": "restart",
+          "left": 243.640625,
+          "right": 323.984375,
+          "top": 326.28125,
+          "bottom": 364.28125
+        },
+        {
+          "id": "notes-toggle",
+          "left": 89.21875,
+          "right": 189.75,
+          "top": 370.28125,
+          "bottom": 408.28125
+        },
+        {
+          "id": "fullscreen",
+          "left": 194.75,
+          "right": 291.765625,
+          "top": 370.28125,
+          "bottom": 408.28125
+        },
+        {
+          "id": "notes-close",
+          "left": 598,
+          "right": 677,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 406,
+          "right": 514.75,
+          "top": 146.09375,
+          "bottom": 184.09375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "701x500-closed",
+      "viewport": 701,
+      "height": 500,
+      "docWidth": 701,
+      "docHeight": 500,
+      "stage": {
+        "left": 29.609375,
+        "right": 671.375,
+        "top": 6,
+        "bottom": 366.984375,
+        "width": 641.765625,
+        "height": 360.984375
+      },
+      "canvas": {
+        "left": 29.609375,
+        "right": 671.38720703125,
+        "top": 6,
+        "bottom": 367,
+        "width": 641.77783203125,
+        "height": 361
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 701,
+        "bottom": 500
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 16,
+          "right": 118.140625,
+          "top": 380.984375,
+          "bottom": 418.984375
+        },
+        {
+          "id": "select",
+          "left": 123.140625,
+          "right": 601.46875,
+          "top": 380.984375,
+          "bottom": 418.984375
+        },
+        {
+          "id": "next",
+          "left": 606.46875,
+          "right": 685,
+          "top": 380.984375,
+          "bottom": 418.984375
+        },
+        {
+          "id": "play",
+          "left": 66.59375,
+          "right": 184.5,
+          "top": 424.984375,
+          "bottom": 462.984375
+        },
+        {
+          "id": "pause",
+          "left": 189.5,
+          "right": 276.265625,
+          "top": 424.984375,
+          "bottom": 462.984375
+        },
+        {
+          "id": "restart",
+          "left": 281.265625,
+          "right": 374.96875,
+          "top": 424.984375,
+          "bottom": 462.984375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 380.96875,
+          "right": 517.640625,
+          "top": 424.984375,
+          "bottom": 462.984375
+        },
+        {
+          "id": "fullscreen",
+          "left": 522.640625,
+          "right": 634.40625,
+          "top": 424.984375,
+          "bottom": 462.984375
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "390x844-open",
+      "viewport": 390,
+      "height": 844,
+      "docWidth": 390,
+      "docHeight": 927,
+      "stage": {
+        "left": 6,
+        "right": 384,
+        "top": 14,
+        "bottom": 226.625,
+        "width": 378,
+        "height": 212.625
+      },
+      "canvas": {
+        "left": 6,
+        "right": 384,
+        "top": 14,
+        "bottom": 226.625,
+        "width": 378,
+        "height": 212.625
+      },
+      "notes": {
+        "left": 0,
+        "right": 390,
+        "top": 454.40625,
+        "bottom": 927.03125,
+        "width": 390,
+        "height": 472.625
+      },
+      "main": {
+        "left": 0,
+        "right": 390,
+        "bottom": 454.40625
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 14,
+          "right": 101.125,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "select",
+          "left": 104.125,
+          "right": 307.65625,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "next",
+          "left": 310.65625,
+          "right": 376,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "play",
+          "left": 65.015625,
+          "right": 166.703125,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "pause",
+          "left": 169.703125,
+          "right": 242.640625,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "restart",
+          "left": 245.640625,
+          "right": 324.984375,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "notes-toggle",
+          "left": 95.71875,
+          "right": 195.25,
+          "top": 332.625,
+          "bottom": 372.625
+        },
+        {
+          "id": "fullscreen",
+          "left": 198.25,
+          "right": 294.265625,
+          "top": 332.625,
+          "bottom": 372.625
+        },
+        {
+          "id": "notes-close",
+          "left": 291,
+          "right": 370,
+          "top": 469.40625,
+          "bottom": 503.40625
+        },
+        {
+          "id": "all-script",
+          "left": 20,
+          "right": 128.75,
+          "top": 551.75,
+          "bottom": 589.75
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "390x844-closed",
+      "viewport": 390,
+      "height": 844,
+      "docWidth": 390,
+      "docHeight": 844,
+      "stage": {
+        "left": 6,
+        "right": 384,
+        "top": 14,
+        "bottom": 226.625,
+        "width": 378,
+        "height": 212.625
+      },
+      "canvas": {
+        "left": 6,
+        "right": 384,
+        "top": 14,
+        "bottom": 226.625,
+        "width": 378,
+        "height": 212.625
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 390,
+        "bottom": 454.40625
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 14,
+          "right": 101.125,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "select",
+          "left": 104.125,
+          "right": 307.65625,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "next",
+          "left": 310.65625,
+          "right": 376,
+          "top": 240.625,
+          "bottom": 280.625
+        },
+        {
+          "id": "play",
+          "left": 65.015625,
+          "right": 166.703125,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "pause",
+          "left": 169.703125,
+          "right": 242.640625,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "restart",
+          "left": 245.640625,
+          "right": 324.984375,
+          "top": 286.625,
+          "bottom": 326.625
+        },
+        {
+          "id": "notes-toggle",
+          "left": 85.984375,
+          "right": 204.984375,
+          "top": 332.625,
+          "bottom": 372.625
+        },
+        {
+          "id": "fullscreen",
+          "left": 207.984375,
+          "right": 304,
+          "top": 332.625,
+          "bottom": 372.625
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "568x320-open",
+      "viewport": 568,
+      "height": 320,
+      "docWidth": 568,
+      "docHeight": 853,
+      "stage": {
+        "left": 6,
+        "right": 562,
+        "top": 14,
+        "bottom": 326.75,
+        "width": 556,
+        "height": 312.75
+      },
+      "canvas": {
+        "left": 6,
+        "right": 562,
+        "top": 14,
+        "bottom": 326.75,
+        "width": 556,
+        "height": 312.75
+      },
+      "notes": {
+        "left": 0,
+        "right": 568,
+        "top": 493.140625,
+        "bottom": 853.140625,
+        "width": 568,
+        "height": 360
+      },
+      "main": {
+        "left": 0,
+        "right": 568,
+        "bottom": 493.140625
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 14,
+          "right": 101.125,
+          "top": 340.75,
+          "bottom": 380.75
+        },
+        {
+          "id": "select",
+          "left": 104.125,
+          "right": 485.65625,
+          "top": 340.75,
+          "bottom": 380.75
+        },
+        {
+          "id": "next",
+          "left": 488.65625,
+          "right": 554,
+          "top": 340.75,
+          "bottom": 380.75
+        },
+        {
+          "id": "play",
+          "left": 32.859375,
+          "right": 134.546875,
+          "top": 386.75,
+          "bottom": 426.75
+        },
+        {
+          "id": "pause",
+          "left": 137.546875,
+          "right": 210.484375,
+          "top": 386.75,
+          "bottom": 426.75
+        },
+        {
+          "id": "restart",
+          "left": 213.484375,
+          "right": 292.828125,
+          "top": 386.75,
+          "bottom": 426.75
+        },
+        {
+          "id": "notes-toggle",
+          "left": 336.578125,
+          "right": 436.109375,
+          "top": 386.75,
+          "bottom": 426.75
+        },
+        {
+          "id": "fullscreen",
+          "left": 439.109375,
+          "right": 535.125,
+          "top": 386.75,
+          "bottom": 426.75
+        },
+        {
+          "id": "notes-close",
+          "left": 469,
+          "right": 548,
+          "top": 508.140625,
+          "bottom": 542.140625
+        },
+        {
+          "id": "all-script",
+          "left": 20,
+          "right": 128.75,
+          "top": 590.484375,
+          "bottom": 628.484375
+        }
+      ],
+      "open": true
+    },
+    {
+      "label": "568x320-closed",
+      "viewport": 568,
+      "height": 320,
+      "docWidth": 568,
+      "docHeight": 493,
+      "stage": {
+        "left": 6,
+        "right": 562,
+        "top": -159,
+        "bottom": 153.75,
+        "width": 556,
+        "height": 312.75
+      },
+      "canvas": {
+        "left": 6,
+        "right": 562,
+        "top": -159,
+        "bottom": 153.75,
+        "width": 556,
+        "height": 312.75
+      },
+      "notes": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0
+      },
+      "main": {
+        "left": 0,
+        "right": 568,
+        "bottom": 320.140625
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 14,
+          "right": 101.125,
+          "top": 167.75,
+          "bottom": 207.75
+        },
+        {
+          "id": "select",
+          "left": 104.125,
+          "right": 485.65625,
+          "top": 167.75,
+          "bottom": 207.75
+        },
+        {
+          "id": "next",
+          "left": 488.65625,
+          "right": 554,
+          "top": 167.75,
+          "bottom": 207.75
+        },
+        {
+          "id": "play",
+          "left": 28,
+          "right": 129.6875,
+          "top": 213.75,
+          "bottom": 253.75
+        },
+        {
+          "id": "pause",
+          "left": 132.6875,
+          "right": 205.625,
+          "top": 213.75,
+          "bottom": 253.75
+        },
+        {
+          "id": "restart",
+          "left": 208.625,
+          "right": 287.96875,
+          "top": 213.75,
+          "bottom": 253.75
+        },
+        {
+          "id": "notes-toggle",
+          "left": 321.96875,
+          "right": 440.96875,
+          "top": 213.75,
+          "bottom": 253.75
+        },
+        {
+          "id": "fullscreen",
+          "left": 443.96875,
+          "right": 539.984375,
+          "top": 213.75,
+          "bottom": 253.75
+        }
+      ],
+      "open": false
+    },
+    {
+      "label": "reduced-motion",
+      "viewport": 1280,
+      "height": 800,
+      "docWidth": 1280,
+      "docHeight": 800,
+      "stage": {
+        "left": 12.203125,
+        "right": 858.203125,
+        "top": 82.859375,
+        "bottom": 558.734375,
+        "width": 846,
+        "height": 475.875
+      },
+      "canvas": {
+        "left": 12.203125,
+        "right": 858.203125,
+        "top": 82.859375,
+        "bottom": 558.734375,
+        "width": 846,
+        "height": 475.875
+      },
+      "notes": {
+        "left": 870.40625,
+        "right": 1280,
+        "top": 0,
+        "bottom": 800,
+        "width": 409.59375,
+        "height": 800
+      },
+      "main": {
+        "left": 0,
+        "right": 870.40625,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "id": "prev",
+          "left": 22,
+          "right": 124.140625,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "select",
+          "left": 129.140625,
+          "right": 764.875,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "next",
+          "left": 769.875,
+          "right": 848.40625,
+          "top": 576.734375,
+          "bottom": 614.734375
+        },
+        {
+          "id": "play",
+          "left": 161.84375,
+          "right": 279.75,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "pause",
+          "left": 284.75,
+          "right": 371.515625,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "restart",
+          "left": 376.515625,
+          "right": 470.21875,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "notes-toggle",
+          "left": 476.21875,
+          "right": 591.796875,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "fullscreen",
+          "left": 596.796875,
+          "right": 708.5625,
+          "top": 620.734375,
+          "bottom": 658.734375
+        },
+        {
+          "id": "notes-close",
+          "left": 1177,
+          "right": 1256,
+          "top": 20,
+          "bottom": 54
+        },
+        {
+          "id": "all-script",
+          "left": 895.40625,
+          "right": 1004.15625,
+          "top": 115.046875,
+          "bottom": 153.046875
+        }
+      ],
+      "open": true
+    }
+  ],
+  "checks": [
+    "animation has no overlap",
+    "independent scrolling and fixed header",
+    "full/current script and slide sync",
+    "Escape and focus restoration",
+    "rapid reversals",
+    "N toggle and Close button",
+    "Escape with focused slide selector",
+    "video playback remains continuous",
+    "fullscreen split layout",
+    "figure Escape precedence",
+    "responsive desktop and stacked mobile",
+    "reduced motion",
+    "print layout"
+  ],
+  "errors": [],
+  "animationFrames": [
+    {
+      "right": 1565.875,
+      "left": 1600,
+      "width": 1531.75
+    },
+    {
+      "right": 1565.875,
+      "left": 1600,
+      "width": 1531.75
+    },
+    {
+      "right": 1555.015625,
+      "left": 1578.296875,
+      "width": 1531.75
+    },
+    {
+      "right": 1522.3125,
+      "left": 1534.3125,
+      "width": 1510.3125
+    },
+    {
+      "right": 1460.5,
+      "left": 1472.5,
+      "width": 1448.5
+    },
+    {
+      "right": 1393.34375,
+      "left": 1405.34375,
+      "width": 1381.34375
+    },
+    {
+      "right": 1333.828125,
+      "left": 1345.828125,
+      "width": 1321.828125
+    },
+    {
+      "right": 1284.5625,
+      "left": 1296.5625,
+      "width": 1272.5625
+    },
+    {
+      "right": 1244.546875,
+      "left": 1256.546875,
+      "width": 1232.546875
+    },
+    {
+      "right": 1213.171875,
+      "left": 1225.171875,
+      "width": 1201.171875
+    },
+    {
+      "right": 1188.296875,
+      "left": 1200.296875,
+      "width": 1176.296875
+    },
+    {
+      "right": 1169.03125,
+      "left": 1181.03125,
+      "width": 1157.03125
+    },
+    {
+      "right": 1154.21875,
+      "left": 1166.21875,
+      "width": 1142.21875
+    },
+    {
+      "right": 1143.3125,
+      "left": 1155.3125,
+      "width": 1131.3125
+    },
+    {
+      "right": 1135.625,
+      "left": 1147.625,
+      "width": 1123.625
+    },
+    {
+      "right": 1130.765625,
+      "left": 1142.765625,
+      "width": 1118.765625
+    },
+    {
+      "right": 1128.375,
+      "left": 1140.375,
+      "width": 1116.375
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    },
+    {
+      "right": 1128,
+      "left": 1140,
+      "width": 1116
+    }
+  ],
+  "playback": [
+    {
+      "same": true,
+      "before": 1.102573,
+      "after": 1.965957,
+      "paused": false,
+      "error": null
+    },
+    {
+      "same": true,
+      "before": 1.102522,
+      "after": 1.965909,
+      "paused": false,
+      "error": null
+    },
+    {
+      "same": true,
+      "before": 1.102471,
+      "after": 1.965859,
+      "paused": false,
+      "error": null
+    },
+    {
+      "same": true,
+      "before": 1.100328,
+      "after": 1.963716,
+      "paused": false,
+      "error": null
+    }
+  ],
+  "nativeFullscreen": true
+}

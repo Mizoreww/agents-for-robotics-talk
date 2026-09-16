@@ -42,7 +42,7 @@ for slide in deck['slides']:
     content += f'<div class="footer">{html.escape(slide["footer"])}</div><div class="page-no">{slide["number"]}</div>'
     pages.append('<article class="canvas">' + defs + content + '</article>')
 document = HTML(string='<!doctype html><html><head><meta charset="utf-8"><style>' + styles + '</style></head><body>' + ''.join(pages) + '</body></html>').render()
-assert len(document.pages) == 28, len(document.pages)
+assert len(document.pages) == len(deck['slides']), len(document.pages)
 destination = root / '.build/three_parts_static_preview.pdf'
 document.write_pdf(destination)
 report = {

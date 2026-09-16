@@ -1,0 +1,80 @@
+[
+  {
+    "name": "anon_direct_sort",
+    "download_url": "https://anonymous-report-421.github.io/public-website/media/rollouts/gpt__classify_objects__standard__g0__l3.mp4?v=d0a09bd92d73f864",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_6/anon_direct_sort_source.mp4",
+    "source_sha256": "d0a09bd92d73f864c668029fd15a2761327bcf00c5a4e07aabe3949acce22c22",
+    "source_metadata": {
+      "id": "gpt__classify_objects__standard__g0__l3",
+      "case_id": "classify_objects__standard__g0__l3",
+      "method": "gpt",
+      "task": "classify_objects",
+      "variant": "standard",
+      "seeds": {
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0
+      },
+      "status": "success",
+      "success": true,
+      "score": 1.0,
+      "native_complete": true,
+      "steps": 615,
+      "limit": 1100,
+      "dt": 0.04,
+      "fps": 25.0,
+      "frames": 616,
+      "duration": 24.64,
+      "instruction": "Sort the objects by category into the three baskets.",
+      "corrected_steps": 0,
+      "chunks": 123,
+      "tokens": {
+        "totalTokens": 21475317,
+        "inputTokens": 21444911,
+        "cachedInputTokens": 20970368,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 30406,
+        "reasoningOutputTokens": 12352
+      },
+      "video": "media/rollouts/gpt__classify_objects__standard__g0__l3.mp4",
+      "poster": "media/posters/gpt__classify_objects__standard__g0__l3.jpg",
+      "result_sha256": "4939cdd32d3936824ed32942263e1d21c112ad893455c76afcdeb62ff4d43117",
+      "native_outcome": {
+        "native_success": true,
+        "native_score": 1.0,
+        "complete": true
+      },
+      "video_sha256": "d0a09bd92d73f864c668029fd15a2761327bcf00c5a4e07aabe3949acce22c22",
+      "video_url": "media/rollouts/gpt__classify_objects__standard__g0__l3.mp4?v=d0a09bd92d73f864",
+      "poster_url": "media/posters/gpt__classify_objects__standard__g0__l3.jpg?v=6a1e9c340df87ab3"
+    }
+  },
+  {
+    "name": "anon_hybrid_pack",
+    "download_url": "https://anonymous-report-421.github.io/public-website/media/clips/clip__615a6ef1b93ea9da852f24c9__0.mp4?v=d17fd03a8e2926f5",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_6/anon_hybrid_pack_source.mp4",
+    "source_sha256": "d17fd03a8e2926f5c1474eb6fb5ebd368bfbcdd17649b497093e351d405cbf10",
+    "source_metadata": {
+      "id": "clip__615a6ef1b93ea9da852f24c9__0",
+      "case_id": "pack_objects_into_box__random__g0__l1",
+      "task": "pack_objects_into_box",
+      "method": "mix",
+      "instruction": "Place all the objects into the box with their front sides facing left.",
+      "video": "media/clips/clip__615a6ef1b93ea9da852f24c9__0.mp4",
+      "poster": "media/posters/clip__615a6ef1b93ea9da852f24c9__0.jpg",
+      "start": 25.48,
+      "end": 40.92,
+      "start_frame": 637,
+      "end_frame_exclusive": 1023,
+      "fps": 25.0,
+      "frames": 386,
+      "duration": 15.44,
+      "paired_gallery_id": "mix__pack_objects_into_box__random__g0__l1",
+      "video_sha256": "d17fd03a8e2926f5c1474eb6fb5ebd368bfbcdd17649b497093e351d405cbf10",
+      "video_url": "media/clips/clip__615a6ef1b93ea9da852f24c9__0.mp4?v=d17fd03a8e2926f5",
+      "poster_url": "media/posters/clip__615a6ef1b93ea9da852f24c9__0.jpg?v=864bafe79d6e6a4e"
+    }
+  }
+]

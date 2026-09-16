@@ -1,0 +1,5212 @@
+
+GPT-6 Astra vs MolmoAct2 on bimanual robotic manipulation
+Contents
+Astra vs MolmoAct2
+Per-task breakdown
+Scoring
+StationeryBench tasks
+Uncap the marker
+Pour paper clips into a lifted bowl
+Hand a ruler between arms, cup to cup
+Pull the middle sticky note from a stack
+Open the box, take out an eraser, close the lid
+Results
+All runs
+Technical specifications
+Limitations
+GPT-6 Astra vs MolmoAct2 on bimanual robotic manipulation
+September 10, 2026
+By Zihan Jack Zhang, Sravanthi Machcha, Sabrina Zou, Tzu Kit Chan, and Jay Chooi
+StationeryBench
+ is five bimanual manipulation tasks built from everyday desk stationery: a marker, a ruler, a lidded box, a stack of sticky-note pads, and a box of paper clips. We gave OpenAI's GPT-6 Astra, driven by the 
+Inspect Robots
+ agent policy, and Ai2's MolmoAct2, a vision-language-action model, control of the same YAM arms on all 5 tasks, 200 trials in total.
+Uncap the marker
+Pour paper clips into a lifted bowl
+Hand a ruler between arms, cup to cup
+Pull the middle sticky note from a stack
+Open the box, take out an eraser, close the lid
+Uncap the marker: GPT-6 Astra (trial 8, completed) above MolmoAct2 (trial 2, progress 50 of 100), seen from the robot's cameras: left wrist, top, right wrist. Both runs play at 2.4× real time (GPT-6 Astra with its thinking pauses cut out) until 1 s after GPT-6 Astra finishes; MolmoAct2's remaining 108 s then fast-forward at 27×, marked by the centre chip. Timers show real time since each run's first camera frame, and a jump forward is a thinking pause that was removed.
+Astra completed 7 of 100 trials across StationeryBench, MolmoAct2 completed none
+ 
+  
+   
+    
+    
+2026-09-11T00:45:25.806908
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+100 trials
+     
+    
+    
+     
+     
+      
+GPT-6 Astra
+      
+100 trials
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+      
+(complete)
+     
+    
+    
+     
+progress score
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+3.9× higher
+   
+   
+    
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+12
+   
+   
+    
+46
+   
+  
+  
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+MolmoAct2
+   
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+GPT-6 Astra
+   
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+mean progress
+   
+  
+ 
+ 
+  
+   
+  
+ 
+One dot per graded trial, 200 in total, pooled over 5 tasks. Progress is scored 0 to 100 in steps of 25, one per milestone of the task's rubric. 100 means the instruction was fully satisfied. Milestones are task-specific and are given below.
+Astra gets further on average: progress score 46 vs 12 out of 100
+ 
+  
+   
+    
+    
+2026-09-11T00:45:25.738140
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+     
+     
+      
+0
+     
+    
+    
+     
+     
+      
+20
+     
+    
+    
+     
+     
+      
+40
+     
+    
+    
+     
+     
+      
+60
+     
+    
+    
+     
+     
+      
+80
+     
+    
+    
+     
+     
+      
+100
+     
+    
+    
+     
+share of trials (%)
+    
+   
+   
+    
+     
+     
+      
+GPT-6 Astra (n=100)
+     
+    
+    
+     
+     
+      
+MolmoAct2 (n=100)
+     
+    
+   
+   
+    
+   
+   
+    
+39
+   
+   
+    
+44
+   
+   
+    
+9
+   
+   
+    
+7
+   
+   
+    
+mean progress 46
+   
+   
+    
+65
+   
+   
+    
+23
+   
+   
+    
+12
+   
+   
+    
+mean progress 12
+   
+  
+  
+   
+    
+progress score
+   
+   
+    
+   
+   
+    
+0
+   
+   
+    
+   
+   
+    
+25
+   
+   
+    
+   
+   
+    
+50
+   
+   
+    
+   
+   
+    
+75
+   
+   
+    
+   
+   
+    
+100 (complete)
+   
+  
+ 
+ 
+  
+   
+  
+ 
+Pooled trials by progress score. Segment labels are trial counts.
+ 
+  
+   
+    
+    
+2026-09-11T00:45:25.867960
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+      
+(complete)
+     
+    
+    
+     
+progress score
+    
+   
+   
+    
+     
+     
+      
+Open the box, take out
+      
+an eraser, close the
+      
+lid
+     
+    
+    
+     
+     
+      
+Pull the middle sticky
+      
+note from a stack
+     
+    
+    
+     
+     
+      
+Hand a ruler between
+      
+arms, cup to cup
+     
+    
+    
+     
+     
+      
+Pour paper clips into
+      
+a lifted bowl
+     
+    
+    
+     
+     
+      
+Uncap the marker
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+2.5× higher
+   
+   
+    
+2.9× higher
+   
+   
+    
+2.8× higher
+   
+   
+    
+0 vs 34
+   
+   
+    
+0 vs 34
+   
+   
+    
+    
+   
+   
+    
+    
+   
+   
+    
+    
+   
+   
+    
+    
+   
+   
+    
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+25
+   
+   
+    
+62
+   
+   
+    
+18
+   
+   
+    
+51
+   
+   
+    
+16
+   
+   
+    
+46
+   
+   
+    
+0
+   
+   
+    
+34
+   
+   
+    
+0
+   
+   
+    
+34
+   
+  
+  
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+MolmoAct2
+   
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+GPT-6 Astra
+   
+   
+    
+    
+     
+    
+    
+     
+    
+   
+   
+    
+mean progress
+   
+  
+ 
+ 
+  
+   
+  
+ 
+The same trials split by task, one band per task with progress score on the horizontal axis: MolmoAct2 on the lower line, Astra on the upper.
+Scoring
+Every trial was scored by a human grader on a 0 to 100 progress score: four milestones worth 25 points each, so 100 means the instruction was fully satisfied. The milestones are the same shape for every task and each task section below gives its own specifications. Using “Uncap the marker” as the example:
+0
+Nothing purposeful. 
+“Uncap the marker”: No purposeful contact with the marker.
+25
+Deliberate contact with the target object(s). 
+“Uncap the marker”: Touches or moves the marker deliberately.
+50
+A secure grasp. 
+“Uncap the marker”: Holds the marker securely in one gripper.
+75
+The task's core manipulation achieved. 
+“Uncap the marker”: Cap separated from the body, either part still held.
+100
+The instruction fully satisfied. 
+“Uncap the marker”: Cap and body both released on the table.
+The StationeryBench tasks
+Uncap the marker
+“Pull the cap off the sharpie and place them separately on the table.”
+Human demonstration
+0
+No purposeful contact with the marker
+25
+Touches or moves the marker deliberately
+50
+Holds the marker securely in one gripper
+75
+Cap separated from the body, either part still held
+100
+Cap and body both released on the table
+Astra completed 5 of 20 trials (mean progress 62 of 100) against MolmoAct2's 0 of 20 (25).
+ 
+  
+   
+    
+    
+2026-09-11T00:45:26.077902
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+   
+   
+    
+5/20
+   
+   
+    
+Completions
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0 No purposeful
+      
+contact with the
+      
+marker
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25 Touches or moves
+      
+the marker
+      
+deliberately
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50 Holds the marker
+      
+securely in one
+      
+gripper
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75 Cap separated from
+      
+the body, either part
+      
+still held
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100 Cap and body both
+      
+released on the table
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+    
+   
+   
+    
+5/20 completed
+   
+   
+    
+Progress score per trial
+    
+(diamond = mean, 95% CI)
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+25
+   
+   
+    
+62
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+Completion bars have Wilson 95% confidence intervals. Dots show individual trial progress scores; diamonds show means with t 95% confidence intervals.
+GPT-6 Astra example run — trial 10, completed
+MolmoAct2 example run — trial 2, progress 50 of 100
+Pour paper clips into a lifted bowl
+“Lift the left bowl in the air, and pour some paper clips from the paperclip box into the bowl.”
+Human demonstration
+0
+No purposeful contact with bowl or box
+25
+Touches or moves the bowl or the box deliberately
+50
+Bowl lifted and held clear of the table
+75
+Pours paper clips toward the bowl, but some spill onto the table
+100
+Paper clips land in the bowl with none spilled onto the table; bowl and box released
+Astra completed 0 of 20 trials (mean progress 51 of 100) against MolmoAct2's 0 of 20 (18).
+ 
+  
+   
+    
+    
+2026-09-11T00:45:26.209382
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+Completions
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0 No purposeful
+      
+contact with bowl or
+      
+box
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25 Touches or moves
+      
+the bowl or the box
+      
+deliberately
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50 Bowl lifted and
+      
+held clear of the
+      
+table
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75 Pours paper clips
+      
+toward the bowl, but
+      
+some spill onto the
+      
+table
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100 Paper clips land
+      
+in the bowl with none
+      
+spilled onto the
+      
+table; bowl and box
+      
+released
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+   
+    
+0/20 completed
+   
+   
+    
+Progress score per trial
+    
+(diamond = mean, 95% CI)
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+18
+   
+   
+    
+51
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+Completion bars have Wilson 95% confidence intervals. Dots show individual trial progress scores; diamonds show means with t 95% confidence intervals.
+GPT-6 Astra example run — trial 1, progress 75 of 100
+MolmoAct2 example run — trial 5, progress 50 of 100
+Hand a ruler between arms, cup to cup
+“Transfer the ruler from the left cup to the right cup, but you must hand it over to the other arms' gripper in mid-air.”
+Human demonstration
+0
+No purposeful contact with the ruler
+25
+Touches or moves the ruler deliberately
+50
+Ruler lifted clear of the left cup in one gripper
+75
+Ruler held by the other gripper after a mid-air handover
+100
+Ruler standing in the right cup and released
+Astra completed 1 of 20 trials (mean progress 46 of 100) against MolmoAct2's 0 of 20 (16).
+ 
+  
+   
+    
+    
+2026-09-11T00:45:26.344031
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+   
+   
+    
+1/20
+   
+   
+    
+Completions
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0 No purposeful
+      
+contact with the ruler
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25 Touches or moves
+      
+the ruler deliberately
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50 Ruler lifted clear
+      
+of the left cup in one
+      
+gripper
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75 Ruler held by the
+      
+other gripper after a
+      
+mid-air handover
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100 Ruler standing in
+      
+the right cup and
+      
+released
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+1/20 completed
+   
+   
+    
+Progress score per trial
+    
+(diamond = mean, 95% CI)
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+16
+   
+   
+    
+46
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+Completion bars have Wilson 95% confidence intervals. Dots show individual trial progress scores; diamonds show means with t 95% confidence intervals.
+GPT-6 Astra example run — trial 6, completed
+MolmoAct2 example run — trial 1, progress 25 of 100
+Pull the middle sticky note from a stack
+“There is a stack of three sticky notes, take the middle one out and put it on the table, make sure everything is at rest at the end, but do not let the top one touch the table at all so it should rest on one of the sticky notes at the end.”
+Human demonstration
+0
+No purposeful contact with the stack
+25
+Touches or moves a pad deliberately
+50
+Top pad lifted clear of the stack
+75
+Middle pad removed from the stack and released on the table
+100
+Middle pad on the table, top pad resting on a pad and not on the table
+Astra completed 1 of 20 trials (mean progress 34 of 100) against MolmoAct2's 0 of 20 (0).
+ 
+  
+   
+    
+    
+2026-09-11T00:45:26.471563
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+   
+   
+    
+1/20
+   
+   
+    
+Completions
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0 No purposeful
+      
+contact with the stack
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25 Touches or moves a
+      
+pad deliberately
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50 Top pad lifted
+      
+clear of the stack
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75 Middle pad removed
+      
+from the stack and
+      
+released on the table
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100 Middle pad on the
+      
+table, top pad resting
+      
+on a pad and not on
+      
+the table
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+1/20 completed
+   
+   
+    
+Progress score per trial
+    
+(diamond = mean, 95% CI)
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+0
+   
+   
+    
+34
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+Completion bars have Wilson 95% confidence intervals. Dots show individual trial progress scores; diamonds show means with t 95% confidence intervals.
+GPT-6 Astra example run — trial 11, completed
+MolmoAct2 example run — trial 1, progress 0 of 100
+Open the box, take out an eraser, close the lid
+“Open the lid of the box and take out one eraser from the box and place it on the table, then close the box, the lid is a lift open so it could be easier to just prop open the lid with the gripper.”
+Human demonstration
+0
+No purposeful contact with the box or lid
+25
+Touches the lid deliberately
+50
+Lid held open far enough to reach inside
+75
+Eraser lifted out of the box
+100
+Eraser released on the table outside the box and the lid closed
+Astra completed 0 of 20 trials (mean progress 34 of 100) against MolmoAct2's 0 of 20 (0).
+ 
+  
+   
+    
+    
+2026-09-11T00:45:26.595761
+    
+image/svg+xml
+    
+     
+      
+Matplotlib v3.11.1, https://matplotlib.org/
+     
+    
+   
+  
+ 
+ 
+  
+ 
+  
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0
+     
+    
+    
+     
+      
+     
+     
+     
+      
+20
+     
+    
+    
+     
+      
+     
+     
+     
+      
+40
+     
+    
+    
+     
+      
+     
+     
+     
+      
+60
+     
+    
+    
+     
+      
+     
+     
+     
+      
+80
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100
+     
+    
+    
+     
+completion rate (%)
+    
+   
+   
+    
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+   
+   
+    
+0/20
+   
+   
+    
+Completions
+   
+   
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+  
+  
+   
+    
+   
+   
+    
+     
+     
+      
+MolmoAct2
+      
+(n=20)
+     
+    
+    
+     
+     
+      
+GPT-6
+      
+Astra
+      
+(n=20)
+     
+    
+   
+   
+    
+     
+      
+     
+     
+     
+      
+0 No purposeful
+      
+contact with the box
+      
+or lid
+     
+    
+    
+     
+      
+     
+     
+     
+      
+25 Touches the lid
+      
+deliberately
+     
+    
+    
+     
+      
+     
+     
+     
+      
+50 Lid held open far
+      
+enough to reach inside
+     
+    
+    
+     
+      
+     
+     
+     
+      
+75 Eraser lifted out
+      
+of the box
+     
+    
+    
+     
+      
+     
+     
+     
+      
+100 Eraser released on
+      
+the table outside the
+      
+box and the lid closed
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+     
+    
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+   
+   
+    
+   
+   
+   
+    
+0/20 completed
+   
+   
+    
+Progress score per trial
+    
+(diamond = mean, 95% CI)
+   
+   
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+     
+    
+    
+     
+    
+   
+   
+    
+0
+   
+   
+    
+34
+   
+  
+ 
+ 
+  
+   
+  
+  
+   
+  
+ 
+Completion bars have Wilson 95% confidence intervals. Dots show individual trial progress scores; diamonds show means with t 95% confidence intervals.
+GPT-6 Astra example run — trial 13, progress 50 of 100
+MolmoAct2 example run — trial 1, progress 0 of 100
+Results
+Task
+Model
+n
+Mean progress (0-100)
+Completions
+Rate
+Never left start pose
+Calls/run
+Output tokens/run
+Est. cost/run
+Uncap the marker
+GPT-6 Astra
+20
+62
+5/20
+25%
+0/20
+19.4
+2,863
+$1.93
+Uncap the marker
+MolmoAct2
+20
+25
+0/20
+0%
+5/20
+-
+-
+-
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+20
+51
+0/20
+0%
+0/20
+16.1
+2,900
+$1.57
+Pour paper clips into a lifted bowl
+MolmoAct2
+20
+18
+0/20
+0%
+0/20
+-
+-
+-
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+20
+46
+1/20
+5%
+0/20
+17.1
+3,206
+$1.73
+Hand a ruler between arms, cup to cup
+MolmoAct2
+20
+16
+0/20
+0%
+2/20
+-
+-
+-
+Pull the middle sticky note from a stack
+GPT-6 Astra
+20
+34
+1/20
+5%
+2/20
+12.6
+2,358
+$1.21
+Pull the middle sticky note from a stack
+MolmoAct2
+20
+0
+0/20
+0%
+20/20
+-
+-
+-
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+20
+34
+0/20
+0%
+0/20
+16.8
+2,828
+$1.68
+Open the box, take out an eraser, close the lid
+MolmoAct2
+20
+0
+0/20
+0%
+20/20
+-
+-
+-
+Never left start pose: trials whose commanded arm joints stayed within 1 rad (summed range) of the home pose for the whole run.
+All runs
+200 total trials.
+Task
+Model
+Trial
+Progress
+Termination
+Output tokens
+Transcript
+Video
+Rerun
+Uncap the marker
+GPT-6 Astra
+1
+50
+give_up
+2,450
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+2
+100
+done
+3,277
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+3
+100
+done
+2,928
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+4
+50
+give_up
+3,192
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+5
+50
+give_up
+2,503
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+6
+50
+done
+3,235
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+7
+50
+give_up
+2,780
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+8
+100
+give_up
+2,687
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+9
+50
+give_up
+2,974
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+10
+100
+done
+2,207
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+11
+50
+give_up
+2,337
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+12
+50
+done
+2,805
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+13
+50
+give_up
+3,255
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+14
+100
+done
+2,840
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+15
+50
+give_up
+3,242
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+16
+50
+done
+3,026
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+17
+50
+give_up
+2,577
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+18
+50
+done
+2,759
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+19
+50
+give_up
+3,044
+view
+watch
+download
+Uncap the marker
+GPT-6 Astra
+20
+50
+give_up
+3,139
+view
+watch
+download
+Uncap the marker
+MolmoAct2
+1
+0
+operator_end
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+2
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+3
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+4
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+5
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+6
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+7
+25
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+8
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+9
+25
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+10
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+11
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+12
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+13
+25
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+14
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+15
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+16
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+17
+50
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+18
+25
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+19
+0
+max_steps
+-
+-
+watch
+download
+Uncap the marker
+MolmoAct2
+20
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+1
+75
+done
+2,465
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+2
+50
+give_up
+3,178
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+3
+75
+give_up
+2,626
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+4
+25
+give_up
+2,237
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+5
+50
+give_up
+2,208
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+6
+25
+overheat
+1,867
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+7
+75
+done
+3,456
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+8
+50
+give_up
+2,199
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+9
+25
+give_up
+2,647
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+10
+50
+give_up
+4,020
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+11
+50
+give_up
+3,347
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+12
+25
+give_up
+2,973
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+13
+75
+done
+4,198
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+14
+75
+done
+3,840
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+15
+50
+give_up
+2,923
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+16
+75
+done
+3,136
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+17
+50
+give_up
+2,480
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+18
+25
+give_up
+2,419
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+19
+50
+give_up
+2,894
+view
+watch
+download
+Pour paper clips into a lifted bowl
+GPT-6 Astra
+20
+50
+give_up
+2,895
+view
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+1
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+2
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+3
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+4
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+5
+50
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+6
+25
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+7
+25
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+8
+25
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+9
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+10
+50
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+11
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+12
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+13
+50
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+14
+50
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+15
+25
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+16
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+17
+25
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+18
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+19
+0
+max_steps
+-
+-
+watch
+download
+Pour paper clips into a lifted bowl
+MolmoAct2
+20
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+1
+50
+give_up
+3,464
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+2
+25
+give_up
+2,010
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+3
+25
+give_up
+2,642
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+4
+25
+give_up
+2,736
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+5
+50
+give_up
+2,962
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+6
+100
+done
+3,623
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+7
+50
+give_up
+3,578
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+8
+50
+overheat
+3,549
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+9
+50
+give_up
+3,156
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+10
+50
+give_up
+2,958
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+11
+50
+give_up
+3,131
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+12
+25
+give_up
+2,771
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+13
+50
+give_up
+2,623
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+14
+50
+give_up
+3,295
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+15
+25
+give_up
+2,620
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+16
+75
+give_up
+4,549
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+17
+75
+give_up
+4,113
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+18
+50
+give_up
+3,000
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+19
+0
+give_up
+3,384
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+GPT-6 Astra
+20
+50
+give_up
+3,961
+view
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+1
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+2
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+3
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+4
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+5
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+6
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+7
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+8
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+9
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+10
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+11
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+12
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+13
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+14
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+15
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+16
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+17
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+18
+0
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+19
+25
+max_steps
+-
+-
+watch
+download
+Hand a ruler between arms, cup to cup
+MolmoAct2
+20
+25
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+1
+25
+give_up
+1,834
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+2
+75
+give_up
+4,045
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+3
+50
+give_up
+3,363
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+4
+25
+give_up
+2,151
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+5
+25
+give_up
+3,259
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+6
+25
+give_up
+2,369
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+7
+25
+give_up
+1,875
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+8
+50
+give_up
+3,317
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+9
+25
+give_up
+1,139
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+10
+25
+give_up
+1,292
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+11
+100
+done
+3,173
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+12
+25
+give_up
+1,529
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+13
+25
+give_up
+3,355
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+14
+25
+give_up
+3,997
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+15
+25
+give_up
+1,500
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+16
+25
+give_up
+1,244
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+17
+25
+give_up
+2,442
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+18
+25
+give_up
+1,058
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+19
+25
+give_up
+1,129
+view
+watch
+download
+Pull the middle sticky note from a stack
+GPT-6 Astra
+20
+25
+give_up
+3,096
+view
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+1
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+2
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+3
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+4
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+5
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+6
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+7
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+8
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+9
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+10
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+11
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+12
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+13
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+14
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+15
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+16
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+17
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+18
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+19
+0
+max_steps
+-
+-
+watch
+download
+Pull the middle sticky note from a stack
+MolmoAct2
+20
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+1
+25
+give_up
+3,074
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+2
+50
+give_up
+3,434
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+3
+25
+give_up
+3,348
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+4
+25
+give_up
+2,892
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+5
+25
+give_up
+2,475
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+6
+50
+give_up
+3,142
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+7
+25
+give_up
+2,452
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+8
+25
+give_up
+2,522
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+9
+25
+give_up
+3,053
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+10
+50
+give_up
+2,800
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+11
+50
+give_up
+3,240
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+12
+25
+give_up
+2,433
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+13
+50
+give_up
+2,272
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+14
+25
+give_up
+2,301
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+15
+50
+give_up
+3,123
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+16
+25
+give_up
+2,685
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+17
+50
+give_up
+2,997
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+18
+25
+give_up
+2,364
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+19
+25
+give_up
+2,482
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+GPT-6 Astra
+20
+25
+give_up
+3,474
+view
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+1
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+2
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+3
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+4
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+5
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+6
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+7
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+8
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+9
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+10
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+11
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+12
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+13
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+14
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+15
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+16
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+17
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+18
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+19
+0
+max_steps
+-
+-
+watch
+download
+Open the box, take out an eraser, close the lid
+MolmoAct2
+20
+0
+max_steps
+-
+-
+watch
+download
+Technical specifications
+Benchmark
+StationeryBench: 5 tasks, each with its own 0-4 rubric. Instructions and rubrics are listed per task above
+Embodiment
+Bimanual I2RT YAM arms, 6-DoF per arm with parallel-jaw grippers
+Control
+Astra: absolute end-effector poses via the agent's tools. MolmoAct2: joint-space action chunks at 10 Hz from its /act server
+Observation
+Three camera views (top, left wrist, right wrist) plus proprioceptive state, frames are 224×224 policy inputs
+Policies
+GPT-6 Astra: agent policy, medium effort, 20-LLM-call budget, 25% speed cap, 900-step cap, eef_pos interface, responses wire API; MolmoAct2: molmoact2 policy, action_horizon 30, num_steps not recorded, server_url not recorded, 1200-step cap
+Harness
+Inspect Robots
+ 0.58.0
+Trials
+20 per model per task
+Token counts / cost
+Astra only, list price without caching discounts. GPT-6 Astra: $10 / $50 per million input / output tokens
+Limitations
+Grading was operator-judged with the model known, so scores are open to unconscious bias.
+MolmoAct2 was run zero-shot, with the released allenai/MolmoAct2-BimanualYAM checkpoint, and no fine-tuning on these tasks or objects, which are not known to be in its training. The same checkpoint, server and rigs successfully complete its own pick-and-place tasks.
+In 47 of 100 MolmoAct2 trials, the arms never left the start pose (commanded joint range under 1 rad over the entire run), including every trial of Pull the middle sticky note from a stack and Open the box, take out an eraser, close the lid. We attribute this to the scenes (one small object on a bare table) lying outside its training distribution rather than to the pipeline.
+The two models were not always run on the same rig.Instructions are 135 to 297 characters which are longer than the short commands MolmoAct2 was trained on.
+Objects were reset by hand between trials.
+Astra was evaluated at medium effort only.
+Frames are 224×224 policy inputs, so run videos are low resolution. Thinking pauses are removed from the videos.
+StationeryBench
+ is a part of 
+WorldEvals
+. The task registry and rubrics used here are in the 
+StationeryBench
+ repository. Earlier reports: 
+GPT-6 Astra
+ · 
+Fable 5.1

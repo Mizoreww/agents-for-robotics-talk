@@ -1,0 +1,75 @@
+[#S4.SS1]
+
+[#S4.SS1.p1]
+
+[#S4.SS1.p1.1] We evaluate the rigid DROID conversions with replay success, an episode-level metric that measures consistency between the simulated episode and the real episode. Specifically, following paradigm adopted in Cao et al. [1], we compute the metric following a structured, VLM-based process: a evaluator first prepares a fixed set of real and simulated keyframes with the labels [#S4.SS1.p1.1.1] start, [#S4.SS1.p1.1.2] middle_1, [#S4.SS1.p1.1.3] middle_2, and [#S4.SS1.p1.1.4] end. Next, the evaluator selects reconstruction candidates deterministically from the latest grasp sweep: a sample is eligible only if the probe marks it as grasped, its replay video exists, and its lift and displacement statistics are finite and within broad sanity bounds. Among the eligible samples, the evaluator sends at most five candidates to the judges, ranked by peak object displacement with sample id as the deterministic tie-breaker. Three judges, each with a distinct VLM backend, then independently compare the episode’s real keyframes with each candidate’s simulated keyframes, using the same structured schema; each judge scores the quality of a candidate based on target-object identity, the target object’s final location, action similarity, and end-gripper location, while recording start-pose drift as context. The rubric is defined as follows: a judge scores each candidate out of [#S4.SS1.p1.m1] 1010, subtracting up to [#S4.SS1.p1.m2] 44 points for identifying the wrong target object, [#S4.SS1.p1.m3] 33 for a wrong final object location, [#S4.SS1.p1.m4] 22 for a wrong action performed, and [#S4.SS1.p1.m5] 11 for a wrong final gripper location. Starting-pose drift is recorded as context rather than directly subtracted; scores of [#S4.SS1.p1.m6] 88 or higher count as pass, [#S4.SS1.p1.m7] 77 as partial, and [#S4.SS1.p1.m8] 66 or lower as fail. Each judge acts as a success finder by nominating its own highest-scored candidate. We define [#S4.SS1.p1.m9] re∈{0,1}r_{e}\in\{0,1\} as the episode replay-success indicator, with [#S4.SS1.p1.m10] re=1r_{e}=1 if at least one of the three judges assigns a best-candidate score of at least [#S4.SS1.p1.m11] 88 out of [#S4.SS1.p1.m12] 1010; otherwise [#S4.SS1.p1.m13] re=0r_{e}=0. Episodes without a valid judge record are also assigned [#S4.SS1.p1.m14] re=0r_{e}=0. The reported replay score for the episode is the maximum of the three judge-best scores.
+
+[#S4.SS2]
+
+[#S4.SS2.p1]
+
+[#S4.SS2.p1.1] We evaluate the rigid object manipulation setting on [#S4.SS2.p1.1.1] DROID-100, a randomly selected set of [#S4.SS2.p1.m1] 100100 manipulation episodes sampled to span objects, camera viewpoints, occlusion patterns, and manipulation verbs (pick / place / push / insert). All sampled episodes remain in the replay-success denominator, including runs that stop before producing a valid replay record.
+
+[#S4.SS2.SSS0.Px1]
+
+[#S4.SS2.SSS0.Px1.p1]
+
+[#S4.SS2.SSS0.Px1.p1.1] Using Gemma 4 31B as the VLM backend, Agentic Real2Sim produces 48 successful, 8 partial, and 44 failed replay outcomes over DROID-100, with a total model bill of $2.62. Fig. 3 reports the corresponding outcomes for three additional VLM backends and compares their model costs.
+
+[#S4.SS2.SSS0.Px2]
+
+[#S4.SS2.SSS0.Px2.p1]
+
+[#S4.SS2.SSS0.Px2.p1.1] Fig. 2 pairs real DROID observations with their MuJoCo replays for representative episodes spanning the sampled axes, exposing intermediate pipeline artifacts for at least one scene: recovered object meshes, FoundationPose-style pose-tracking overlays, and the calibrated robot/ground state. We include at least one informative failure (e.g. a segmentation or pose-tracking miss) so the panel is honest rather than cherry-picked.
+
+[#S4.SS3]
+
+[#S4.SS3.2]
+
+[#S4.SS3.p1] [#S4.SS3.g1]
+
+[#S4.SS3.p2]
+
+[#S4.SS3.p2.1] Across all four backends, we use the same pipeline configuration, with reasoning enabled for selected agentic steps, and vary only the VLM. The reported model bills include all model usage under this configuration. Fig. 3 shows that the four backends have broadly similar observed outcome compositions: Gemma 4 31B, Qwen 3.6 35B, GPT-5.4, and Claude Haiku 4.5 obtain [#S4.SS3.p2.m1] 48/10048/100, [#S4.SS3.p2.m2] 45/10045/100, [#S4.SS3.p2.m3] 43/10043/100, and [#S4.SS3.p2.m4] 37/10037/100 replay successes, respectively. The clearer separation is cost: relative to Gemma’s 2.62 model bill, Claude costs [#S4.SS3.p2.m5] 3.5×3.5\times as much, Qwen [#S4.SS3.p2.m6] 5.0×5.0\times, and GPT-5.4 [#S4.SS3.p2.m7] 31.4×31.4\times.
+
+[#S4.SS3.p3]
+
+[#S4.SS3.p3.1] We attribute the similar outcomes across backends to how the pipeline scopes the VLM’s role. The VLM does not perform geometry or physics itself: it orchestrates deterministic specialist components for segmentation, stereo depth, and pose tracking, together with a deterministic grasp sweep, and is queried only for bounded, schema-constrained decisions such as object discovery, keyframe and mask selection under a capped retry budget, and replay-refinement choices.
+
+[#S4.SS4]
+
+[#S4.SS4.p1]
+
+[#S4.SS4.p1.1] We use the deformable and humanoid settings as qualitative stress tests for the same conversion contract under non-rigid dynamics and closed-loop humanoid control. These domains are presented through representative visual comparisons rather than aggregate scores.
+
+[#S4.SS4.SSS0.Px1]
+
+[#S4.SS4.SSS0.Px1.p1]
+
+[#S4.SS4.SSS0.Px1.p1.1] These are PhysTwin-style episodes with assets such as rope, cloth, plush objects, soft packages, and elastoplastic materials. We compare the real interaction video with the recovered geometry and simulated deformation, and report representative real-sim matches together with failure cases.
+
+[#S4.SS4.SSS0.Px2]
+
+[#S4.SS4.SSS0.Px2.p1]
+
+[#S4.SS4.SSS0.Px2.p1.1] These are Unitree G1 clips of locomotion and short whole-body motions, retargeted from LAFAN1. We compare the simulated humanoid against the reference motion in closed-loop simulation and report qualitative side-by-side motion comparisons.
+
+[#S4.SS4.SSS0.Px2.1]
+
+[#S4.SS4.SSS0.Px2.p2] [#S4.SS4.SSS0.Px2.g1]
+
+[#S4.SS4.SSS0.Px3]
+
+[#S4.SS4.SSS0.Px3.p1]
+
+[#S4.SS4.SSS0.Px3.p1.1] Fig. 4 shows both domains. In Fig. 4 (a), deformable cases pair real interaction video with tracked geometry and a deformation overlay, emphasizing whether the recovered material response follows the visible bending, stretching, and contact sequence. In Fig. 4 (b), we show a simulated humanoid against its reference motion for standing, kneeling, and short-locomotion clips, emphasizing gross pose, balance, and motion-phase agreement.
+
+[#S5]
+
+[#S5.p1]
+
+[#S5.p1.1] We introduced [#S5.p1.1.1] Agentic Real2Sim, a framework for converting real-world physical interaction recordings into simulatable digital twins. The framework must preserve the actors, manipulated entities, geometry, physical parameters, camera setup and objects along with end effector trajectories needed for simulation. For the task of converting DROID episodes, Agentic Real2Sim converts robot-object manipulation recordings into MuJoCo episode twins through visual processing, physical-prior inference, scene preparation, and simulator-in-the-loop refinement. The same episode contract also provides a common interface for PhysTwin-style deformable manipulation and BFM-Zero-style humanoid motion, allowing the pipeline to span settings that are usually handled by separate Real2Sim systems. Also, our framework decouples agentic decisions from any single VLM provider: on DROID-100, an open 31B backend attains comparable observed replay-success outcomes to proprietary alternatives while using only about [#S5.p1.m1] 3%3\% of GPT-5.4’s model cost. Finally, we aim to use the aligned episode twins as simulator assets for downstream robotics tasks, specifically policy learning and evaluation.
+
+[#S5.p2]
+
+[#S5.p2.1] Current limitations are the focus on rigid-object DROID episodes and the pipeline’s sensitivity to errors in upstream perception and simulator feedback. Future work will extend automated conversion to deformable episodes and systematically evaluate agentic components and VLM backends for reliability, replay stability, and enable policy learning and evaluation for the robotics community.

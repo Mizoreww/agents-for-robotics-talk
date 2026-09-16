@@ -1,0 +1,23 @@
+{
+  "html_sha256": "9735355c06fbf47f99d531a34a7b68c62f87c3a8e6c6d336a8d4d1221e8cc9d3",
+  "status": "passed",
+  "date": "2026-09-16",
+  "scope": "P35 exact text deletion; P36 concrete open questions and source-faithful thumbnails. Other slides/media/player preserved.",
+  "manually_reviewed_slides": [
+    35,
+    36
+  ],
+  "screenshots": [
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_22_visual/35.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_22_visual/36.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_22_visual/36-script.png"
+  ],
+  "screenshot_sha256": {
+    ".build/v0_22_visual/35.png": "68e9341b09f04832a69365f32811d2955c8af526ba19f13b9b873af0ca085bf5",
+    ".build/v0_22_visual/36.png": "08a6a091443c28efeaf0135132543f207f53d9b916ae8f44378ebc6c65d37cbe",
+    ".build/v0_22_visual/36-script.png": "cddbd9a489ba08db57e55c522325e5b210544a1eb076eeba89128fa9ff11918a"
+  },
+  "baseline": ".build/v0_22_baseline/deck.json",
+  "scope_test": ".build/test_takeaways_v022.py",
+  "targeted_browser_audit": ".build/v0_22_closing_audit.json"
+}

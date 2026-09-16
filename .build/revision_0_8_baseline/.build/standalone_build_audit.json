@@ -1,0 +1,264 @@
+{
+  "slides": 21,
+  "videos": 9,
+  "media_seconds": 260.249999,
+  "minutes": 60.0,
+  "chapter_opening_slides": [
+    4,
+    9,
+    14
+  ],
+  "bytes": 99897279,
+  "sha256": "cccec9692b6470391539624e016cce0ee7860c3b0f4ebb8c3b0b8ac315cbd602",
+  "standalone_file": "/home/limx/Desktop/agent_for_robotics/output/Agents_for_Robotics_Self_Contained.html",
+  "media": [
+    {
+      "name": "painting",
+      "slide": 2,
+      "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+      "duration_seconds": 68.116667
+    },
+    {
+      "name": "anon_direct_sort",
+      "slide": 7,
+      "sha256": "9860f94ce03b92bfd4bd28ea570dc7f43118442024753cc1faded74f2a7b1411",
+      "duration_seconds": 24.64
+    },
+    {
+      "name": "anon_hybrid_pack",
+      "slide": 7,
+      "sha256": "87a43a15cbef44fded03295d96510f6aa6ecb07c6b87857d67a8d0c5e4527fb9",
+      "duration_seconds": 15.44
+    },
+    {
+      "name": "ar2s_real",
+      "slide": 10,
+      "sha256": "c292f2fa539061124a6e3b13cb1bcfc1c9a63fae8befa5f75667ab23a3aa4c7e",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "ar2s_sim",
+      "slide": 10,
+      "sha256": "7c1d705172770378155b4fb9011758fa63f8264cd28c2e850a4535b973922d58",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "enpire_task",
+      "slide": 15,
+      "sha256": "07f5cf91c12aefaf1ea424285593d1b9f4551e008a77a52bdc565774bb453fcd",
+      "duration_seconds": 30.0
+    },
+    {
+      "name": "enpire_reset",
+      "slide": 17,
+      "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
+      "duration_seconds": 61.92
+    },
+    {
+      "name": "enpire_verify",
+      "slide": 17,
+      "sha256": "4be0fa9ee68c4c7b05b6418aadb39a02ec2da3058c04d8b88d5f79a28c84da77",
+      "duration_seconds": 11.133333
+    },
+    {
+      "name": "hand",
+      "slide": 20,
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "duration_seconds": 28.833333
+    }
+  ],
+  "images": [
+    {
+      "old_slide": 1,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 1,
+      "alt": "SUSTech logo",
+      "sha256": "219d51cd691d89454219ac42d1207c2da9d9fc8ccfd8257e889c24277cd5dce1"
+    },
+    {
+      "old_slide": 2,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 2,
+      "alt": "VIDEO:painting",
+      "sha256": "f3a4f628c9681d929f40f9211de67e3e311fa2e8dee2f36a81e155b73fdc2ae8"
+    },
+    {
+      "old_slide": 3,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 4,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 5,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 6,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 7,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 8,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 9,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_real",
+      "sha256": "2822e4d5258e18168059547a8f83d3607bb9ccc546c89a9f03ce91baaddfef1e"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_sim",
+      "sha256": "43064a1723a6f563d18d1286bcc52bd89a58f00eb7fc728789cd54f836152b90"
+    },
+    {
+      "old_slide": 11,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 11,
+      "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
+      "sha256": "c0b09432c8fa38ddb881057e2c5bb8cf861ea61270e26cfb2a5f220d115872c6"
+    },
+    {
+      "old_slide": 12,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 12,
+      "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
+      "sha256": "a7ca558c62667f21e719e58470f2d6b1adc8ae6bff26f21f2c5562b2c6a840c2"
+    },
+    {
+      "old_slide": 13,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 14,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 14,
+      "alt": "VIDEO:enpire_task",
+      "sha256": "7313bc7bc24bf61c3a2b2739bfd78b0aa31ebf9f5dfb3ba3a1362d5621bb1a00"
+    },
+    {
+      "old_slide": 15,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "ENPIRE original framework, including human-assisted environment construction",
+      "sha256": "b26e41ce03c18eb21f45af22697a16dda5622eb0d7f090c025be8572a2571958"
+    },
+    {
+      "old_slide": 16,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_reset",
+      "sha256": "af1d17c7d4aa6db7e5b89c43cb961d2bd91c8873c1f079235d8346651aaac464"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_verify",
+      "sha256": "ef06af0358068e3e4733fdd00f95c4cd337abd551c421f9279311259d9259745"
+    },
+    {
+      "old_slide": 17,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 17,
+      "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+      "sha256": "07331a2787d65566e8e5bfe44113424e1c490489ea18929efd9e2907df1d5be3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+      "sha256": "affffe53fd56289ab7897819d4cc219492dad61fb98de61976b987027b03c2e3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "old_slide": 20,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 21,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 22,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report control architecture: pi0.5 + Astra versus Astra Direct",
+      "sha256": "4b9c06759d21fcfa3c71f409ce16ca609a4a2b7f5a6727d0e85c0ad22acf411a"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_direct_sort",
+      "sha256": "ca546f2189719da1456df9938140be8132567f0646c04bc329a0dec1e9826612"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_hybrid_pack",
+      "sha256": "9b13b091cacd3198de85aec1038590f682ec3f55331545277b04e344ebbe44a1"
+    }
+  ],
+  "native_text": true,
+  "all_fonts_embedded": true
+}

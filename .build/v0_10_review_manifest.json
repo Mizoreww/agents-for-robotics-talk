@@ -1,0 +1,22 @@
+{
+  "baseline": ".build/revision_0_10_baseline/manifest.json",
+  "files": {
+    ".build/build_selfcontained.py": "602f2f76fbb1ac8b6a87f9a6f6c8dfc73c1c2336f9e8dc291afe7468daf52915",
+    ".build/results_slides_v09.py": "d32d44490643883937b03928ad80febacff7957fc070fafdc2cf637daab7ae6b",
+    ".build/table_emphasis.py": "f5469b8cbf4faac70df3afe02ce1009b5658b2205bb54290c4df3b38ed7f2770",
+    ".build/test_table_emphasis.py": "a7b4b279b572c5c9ffe5ed08fda847bc834ab2b42fb148b317964a7364745277",
+    ".build/validate_standalone.py": "5e02722f54a550ef6d76f8263d0fa9f91923912877f8646568b9ee4c0da93169",
+    ".build/script_revised.md": "5e0d72441d4a040678fad991846bb50fb5a16a8bd0b55ccf681022ce46cdbaef",
+    ".build/extended_visual_audit.mjs": "bd14505f9ac98a7b7eaf6d4363d21edc40b84ab223e251e97769210b6fa95756",
+    "research/revision_0_10_spec.md": "03821e87218f9ddce8bb851e48aec015b0a1560d7b0dd7d0f031af72499fd23f",
+    "research/sources.json": "7d68e6af715d6ecbe37c934f0afde2002c394d1b59f6168dc27fc58045e36e69",
+    "AGENTS.md": "4f4b40894cd68feb18bc5a4ffd606ee35466f403e87b81d9caeecd5379ea17e7",
+    "README.md": "c008ffa79b521abf10f12359d2fc62dc319a90e45cb580422c50f8426df78fb8",
+    "WORKPLAN.md": "28a255261dbdc2a272c1d762df388f49a9528bfe4e5e47b338a175f59f715df5",
+    "CHANGELOG.md": "55f5806e0400a92965ae859c47ac677b1b5ea11922af78a8daaf2c6d64f42f52",
+    "output/Chapter_Spine.md": "5622ceb38465e82b72c2d8335c7439a957519abbb61148cabbbbfd5a697bbfae",
+    "output/README.md": "b4c9f4f90f89795cfb4c2848d44eaddbdd1ca8a241faf28863bbdf30ee6ad0fe",
+    "talk_outline.md": "8abc8545d2e3769e81acd9f986da4f806d7e4a5f5f37932c4a33c2364f7229f4"
+  },
+  "html_sha256": "c8ce5975116882cb36f40e827d53d9a64c18fb91e8767410d6ca7501de787a28"
+}

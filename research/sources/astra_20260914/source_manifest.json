@@ -1,0 +1,188 @@
+{
+  "retrieved_on": "2026-09-14",
+  "scope": "read-only research; no media/model downloads or execution",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 20565,
+      "sha256": "d4f6dc58988d295b21f7de9bc96cea3d577f86dcb0a8794fc0143ddd2f70a509",
+      "source_url": "https://raw.githubusercontent.com/zjwzcx/Awesome-Astra-Embodied-AI/a22a671bf68c29d05fa22e3a77b2352fc8eccd1d/README.md",
+      "transform": "public social xsec query parameters removed"
+    },
+    {
+      "file": "astra_guide_fetched.md",
+      "bytes": 16434,
+      "sha256": "2e221d8e004f522522d4b3654864d1f65021ab708c6cfb17ce00965291b2df88",
+      "source_url": "https://developers.openai.com/api/docs/guides/latest-model",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "astra_model_docs_fetched.md",
+      "bytes": 1483,
+      "sha256": "bd6b4003758bfde4fae07485740ed53928bf0dbed04f0e0fce3e2fc8295269aa",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "head.json",
+      "bytes": 3303,
+      "sha256": "429780082431f14c90bbc7cded60c7322972f799f2f4148c0813409c1e957d93",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "policy_eval_README.md",
+      "bytes": 4391,
+      "sha256": "0b810a43c142f88cf13609bc7159a9d05020ad3001599032445064dc8f609739",
+      "source_url": "https://raw.githubusercontent.com/cheng-haha/GPT-Policy-Eval/43929f0ee3673da67393fcbe85d43c58eb15db59/README.md",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "policy_eval_head.json",
+      "bytes": 3421,
+      "sha256": "e32b5e885c94f3d9db82a37aa6de93938765a197848cb8d0da9126182837b029",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "policy_eval_repo.json",
+      "bytes": 5391,
+      "sha256": "e51c9ea335d8d872bf36bd94c9c316355f0d466780e8ab75e2333de45e96c7f7",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "policy_eval_tree.json",
+      "bytes": 3356,
+      "sha256": "9702f7b396ecc97b2b62689aa9a18abd4a827bafb0d8218622840c85a4368bcd",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "repo.json",
+      "bytes": 5652,
+      "sha256": "d913cbe28a8fef81e7b3daa71c4c0eafd31d3d885a6b1312d62e64e95f9d323f",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "robocurve.html",
+      "bytes": 121210,
+      "sha256": "bab32ae6497b93079677112c3f0b43bd0405a60718cf396899155885c8ffb478",
+      "source_url": "https://openai.robocurve.org/gpt-6-astra/",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "robocurve.txt",
+      "bytes": 14903,
+      "sha256": "412b95e2ac762027f607be7a867cf9b086df0cce2452a02d5ce41cacb6518295",
+      "source_url": null,
+      "transform": "HTML text extraction"
+    },
+    {
+      "file": "show_code/core/action_units.py",
+      "bytes": 1468,
+      "sha256": "dd5cbf9af81de7abf9055e0e6437a7d6af7d33a4c3f72eaf7c00cc5494976b33",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/core/action_units.py",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code/core/vlm/roles.py",
+      "bytes": 24837,
+      "sha256": "e43af1ca48dbcdb1f424779c40d48fabb05a42e9b9cce2be97e084d36b3f5ca6",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/core/vlm/roles.py",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code/interpreters/README.md",
+      "bytes": 2415,
+      "sha256": "85ae927e41f410729350ee933f894054d586211cdd9398f102fc5ad051f1eb7a",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/interpreters/README.md",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code/interpreters/franka_atomic_controller.py",
+      "bytes": 4342,
+      "sha256": "f168ed1eb431a520d51bb45665ec3ef6773f9426e46e8433c7d9510268e4e01d",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/interpreters/franka_atomic_controller.py",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code/interpreters/real_atomic_controller.py",
+      "bytes": 51290,
+      "sha256": "daf1bc582b4db0f6c47773a86a76ee0afed5d19e94704f0c9dc5d7fdfb08119b",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/interpreters/real_atomic_controller.py",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code_README.md",
+      "bytes": 13491,
+      "sha256": "157a33020abf375e9f2c0695d3752fda7699f65a65bb14307180115609f8ec6d",
+      "source_url": "https://raw.githubusercontent.com/showlab/Show-Harness/137d5718c3b7af0150764d8f9beeb252c9f2794a/README.md",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code_head.json",
+      "bytes": 4361,
+      "sha256": "52fa6a3090a84e1345da8356f4a75e278b5a78f09aa8b2b2108914b44f0b2d21",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_code_tree.json",
+      "bytes": 83182,
+      "sha256": "cfc5ac6b771cf76c8e41ce3ace617a2d7f5d5b30ccb928c4e378083aa49b2f9a",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_harness.html",
+      "bytes": 684329,
+      "sha256": "0bb92a9be08300339efa911a6601922a24300ad3fd15ccbaa805c5ef8a2e7472",
+      "source_url": "https://arxiv.org/html/2609.10522",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "show_harness.txt",
+      "bytes": 90895,
+      "sha256": "bb7b9530bf93e766094352348b594f381a117277b64f16e40179e6820937d797",
+      "source_url": null,
+      "transform": "HTML text extraction"
+    },
+    {
+      "file": "show_harness_github_search.json",
+      "bytes": 22119,
+      "sha256": "f56ad28265cbdd3a722165bd45573d9b9be8e9bde34ddb64fd2e066db121d27a",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "tree.json",
+      "bytes": 9466,
+      "sha256": "ad78743ed872e802cbd42ca8067d88b08b97f93923794e7233923bf42b6e69e2",
+      "source_url": null,
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "vla0.html",
+      "bytes": 126505,
+      "sha256": "72acff0aeed53c9f0d839e95641929757f3d142951aeac9ace56efd27339193f",
+      "source_url": "https://arxiv.org/html/2510.13054",
+      "transform": "saved source/tool text"
+    },
+    {
+      "file": "vla0.txt",
+      "bytes": 34603,
+      "sha256": "7e95973d2a8897df1269cc13a75c81704ad7664d0ba93ac3ee12247bed7a69c7",
+      "source_url": null,
+      "transform": "HTML text extraction"
+    }
+  ],
+  "fetch_failures": [
+    {
+      "url": "https://openai.com/index/gpt-6-astra/",
+      "error": "HTTP Error 403: Forbidden",
+      "consequence": "announcement full text not audited; do not make an exhaustive no-training-disclosure claim"
+    }
+  ]
+}

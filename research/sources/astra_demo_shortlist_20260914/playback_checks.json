@@ -1,0 +1,104 @@
+[
+  {
+    "name": "office_newton",
+    "src": "https://video.twimg.com/amplify_video/2098439638574870528/vid/avc1/1280x720/jtX8iCLebZux4cuq.mp4?tag=29",
+    "duration": 303.733333,
+    "time": 0.213772,
+    "width": 1280,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "office_newton_t1.png",
+      "office_newton_t152.png",
+      "office_newton_t302.png"
+    ]
+  },
+  {
+    "name": "quadruped_rl",
+    "src": "https://video.twimg.com/amplify_video/2098297480752607232/vid/avc1/864x720/LTAoxHmb9RVDh6HW.mp4?tag=29",
+    "duration": 14,
+    "time": 0.215901,
+    "width": 864,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "quadruped_rl_t1.png",
+      "quadruped_rl_t7.png",
+      "quadruped_rl_t12.png"
+    ]
+  },
+  {
+    "name": "keyboard",
+    "src": "https://video.twimg.com/amplify_video/2098821014465519616/vid/avc1/1280x720/bduXDPXMi2ZGil4Y.mp4?tag=29",
+    "duration": 134.5344,
+    "time": 0.21299,
+    "width": 1280,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "keyboard_t1.png",
+      "keyboard_t67.png",
+      "keyboard_t133.png"
+    ]
+  },
+  {
+    "name": "g1_cola",
+    "src": "https://video.twimg.com/amplify_video/2099104580219117569/vid/avc1/960x600/Odva_XeSxXrVDMF6.mp4?tag=29",
+    "duration": 27.52,
+    "time": 0.214096,
+    "width": 960,
+    "height": 600,
+    "error": null,
+    "snapshots": [
+      "g1_cola_t14.png"
+    ]
+  },
+  {
+    "name": "video_physics",
+    "src": "https://video.twimg.com/amplify_video/2097815161298141184/vid/avc1/794x720/Bz63pAwAG782zssb.mp4?tag=14",
+    "duration": 20.2,
+    "time": 0.208268,
+    "width": 794,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "video_physics_t10.png"
+    ]
+  },
+  {
+    "name": "mobile_icl",
+    "src": "https://video.twimg.com/amplify_video/2098212559770013696/vid/avc1/1280x720/rgMCLhPwK42tT0HG.mp4?tag=29",
+    "duration": 20.714667,
+    "time": 0.204056,
+    "width": 1280,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "mobile_icl_t10.png"
+    ]
+  },
+  {
+    "name": "unseen_robot",
+    "src": "https://video.twimg.com/amplify_video/2097828478884429825/vid/avc1/1280x720/XEVE93thuFJthvW7.mp4?tag=29",
+    "duration": 70.442667,
+    "time": 0.215122,
+    "width": 1280,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "unseen_robot_t35.png"
+    ]
+  },
+  {
+    "name": "wuji_rollout",
+    "src": "https://video.twimg.com/amplify_video/2097716973899780096/vid/avc1/1280x720/P5a73WIYKRi4rUKD.mp4?tag=16",
+    "duration": 33.9,
+    "time": 0.217541,
+    "width": 1280,
+    "height": 720,
+    "error": null,
+    "snapshots": [
+      "wuji_rollout_t17.png"
+    ]
+  }
+]

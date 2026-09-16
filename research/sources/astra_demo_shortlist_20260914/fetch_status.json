@@ -1,0 +1,27 @@
+[
+  [
+    "dexgpt_readme.md",
+    10757,
+    "https://raw.githubusercontent.com/Hu-xiao-max/dexgpt/main/README.md"
+  ],
+  [
+    "office_oembed.json",
+    1055,
+    "https://publish.x.com/oembed?url=https://x.com/Jiarui_X/status/2098439950991806804"
+  ],
+  [
+    "quadruped_oembed.json",
+    1108,
+    "https://publish.x.com/oembed?url=https://x.com/gclue_akira/status/2098300921658868185"
+  ],
+  [
+    "duck_rl.html",
+    466547,
+    "https://www.rednote.com/discovery/item/6aa347e2000000000b036667?xsec_token=AB1z4k50CvQ0PFZpqtQXWYlVMONqE2yr3ER8jk-hVWI74=&xsec_source=pc_search&source=web_profile_page"
+  ],
+  [
+    "isaac_ppo.html",
+    466541,
+    "https://www.rednote.com/discovery/item/6aa29087000000002600bb2e?xsec_token=ABupW63bXfa1dAqIk6vaYviNev-xOXuTmePvxk8Su9NK4=&xsec_source=pc_collect"
+  ]
+]

@@ -1,27 +1,27 @@
 {
-  "html_sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
   "transitions": [
     {
-      "opening": 5,
-      "intro": "Slide 5: Agent Controls Robot",
-      "caseTitle": "Slide 6: Direct Actions and Code",
-      "back": 5
+      "opening": 4,
+      "intro": "Slide 4: Agent Controls Robot",
+      "caseTitle": "Slide 5: Hierarchical Robot Control",
+      "back": 4
     },
     {
-      "opening": 15,
-      "intro": "Slide 15: Agent Produces Data",
-      "caseTitle": "Slide 16: Real Episode and Its Twin",
-      "back": 15
+      "opening": 18,
+      "intro": "Slide 18: Agent Creates Data",
+      "caseTitle": "Slide 19: Astra: Scene Reconstruction",
+      "back": 18
     },
     {
-      "opening": 20,
-      "intro": "Slide 20: Agent Post-trains Robot",
-      "caseTitle": "Slide 21: ENPIRE: Real Experiments in the Loop",
-      "back": 20
+      "opening": 23,
+      "intro": "Slide 23: Agent Improves Policy",
+      "caseTitle": "Slide 24: ENPIRE: Environment and Improvement",
+      "back": 23
     }
   ],
   "keyboard": {
-    "endSlide": 28,
+    "endSlide": 37,
     "homeSlide": 1,
     "focusExited": true
   },
@@ -34,38 +34,99 @@
     "enabled": true,
     "native": true
   },
+  "addedFigures": [
+    {
+      "slide": 12,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 13,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 14,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 15,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 24,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 27,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 28,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 29,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 30,
+      "open": true,
+      "loaded": true
+    },
+    {
+      "slide": 32,
+      "open": true,
+      "loaded": true
+    }
+  ],
   "currentScript": {
-    "heading": "05. Agent Controls Robot",
-    "text": "播放与指图提示：先沿最上方 Direct action output 走到 Execution，再指出下方 Agent Tools 是其他可选分支。此处只作导读，接口优势留到后面的实验页展开。先看这张总图。Agent 可以自己决定下一步 a"
+    "heading": "05. Hierarchical Robot Control",
+    "text": "读图提示：三张都是上一场 talk 的原图。先看左边 Hi Robot，再看右侧 Helix 和 Helix 02；原图可以点击放大。Hi Robot 的分工很直观。High-level VLM 理解任务、图像和用户的临时指令，输出一个 s"
   },
   "fullScriptHeadings": [
     "01. Agents for Robotics",
     "02. Demo: Painting with Feedback",
-    "03. Our Goal",
-    "04. Three Roles",
-    "05. Agent Controls Robot",
-    "06. Direct Actions and Code",
-    "07. Model and Interface",
-    "08. VLA as a Tool",
-    "09. Demo: Placement and Insertion",
-    "10. Demo: Zero-shot Real Arms",
-    "11. Demo: Dexterity in Simulation",
-    "12. Harness: Semantic Actions",
-    "13. RPent: Robotics as Tools",
-    "14. Gaps and Directions",
-    "15. Agent Produces Data",
-    "16. Real Episode and Its Twin",
-    "17. Conversion Pipeline",
-    "18. Replay Acceptance on DROID-100",
-    "19. Demo: Real2Sim and a Failure",
-    "20. Agent Post-trains Robot",
-    "21. ENPIRE: Real Experiments in the Loop",
-    "22. ENPIRE: Environment and Improvement",
-    "23. ENPIRE: Reset and Verification",
-    "24. ENPIRE: Pin Insertion Curve",
-    "25. Faster Research, Higher Token Use",
-    "26. ASPIRE: Repairing Skills",
-    "27. Beyond: Structural Design",
-    "28. Conclusion"
+    "03. Three Roles for Robotics Agents",
+    "04. Agent Controls Robot",
+    "05. Hierarchical Robot Control",
+    "06. Where Does Generalization Live?",
+    "07. Astra: Stronger Real-Robot Performance",
+    "08. Astra: More Real-Robot Demos",
+    "09. Robot Puzzle Demos in Simulation",
+    "10. One Model, Different Control Interfaces",
+    "11. Astra Interfaces: Three Tasks",
+    "12. Astra: Introducing a Hybrid Architecture",
+    "13. RoboDojo: Overall Results",
+    "14. RoboLab: Overall Results",
+    "15. RoboDojo: Task-Level Patterns",
+    "16. High Latency Limits Real-Time Control",
+    "17. Control: Strengths and Open Gaps",
+    "18. Agent Creates Data",
+    "19. Astra: Scene Reconstruction",
+    "20. Astra: Hand Assets",
+    "21. Astra: Replay and Data Rollout",
+    "22. Data: From Demos to Useful Data",
+    "23. Agent Improves Policy",
+    "24. ENPIRE: Environment and Improvement",
+    "25. ENPIRE: Auto Evaluation",
+    "26. ENPIRE: Auto Reset",
+    "27. ENPIRE: Two Ways to Improve Policy",
+    "28. ENPIRE: What Did the Agent Change?",
+    "29. ENPIRE: Evaluate Coding Agents",
+    "30. ENPIRE: Parallel Physical Research",
+    "31. ENPIRE: Cost of Physical Research",
+    "32. ENPIRE: Autoresearch in RoboCasa",
+    "33. ENPIRE: Learned Manipulation Demos",
+    "34. ENPIRE: Limitations",
+    "35. Toward Recursive Self-Improvement",
+    "36. Takeaways",
+    "37. Thank You"
   ]
 }

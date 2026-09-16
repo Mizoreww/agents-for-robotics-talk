@@ -1,0 +1,394 @@
+[
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0pjq-hlddzx4h.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0h4bq73pogmtb.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/turbopack-0h4ruw6wmw4n6.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0fsi8lw5utejl.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/0d3tkj33oycf2.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/11dgx9quo0zhy.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/03~yq9q893hmn.js",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/website-teaser.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/logos/nvidia-logo.png",
+    "alt": "NVIDIA",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/logos/cmu-logo.png",
+    "alt": "Carnegie Mellon University",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/logos/uc-berkeley-logo.png",
+    "alt": "UC Berkeley",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pusht-success.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-success.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-success.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/cut-ziptie-success.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/sam.min.jpg",
+    "alt": "Perception \u2014 SAM 3",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/curobo.min.jpg",
+    "alt": "Planning \u2014 cuRobo",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/control.min.jpg",
+    "alt": "Control \u2014 YAM arm",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/robot_farm.min.jpg",
+    "alt": "a real robot farm",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/gpu_insertion.min.jpg",
+    "alt": "GPU insertion",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/pin_insertion_2.min.jpg",
+    "alt": "Pin insertion",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/push_t.min.jpg",
+    "alt": "Push-T",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/zip_tie.min.jpg",
+    "alt": "Zip tie cutting",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-seg.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pusht-reset-only-1.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-2-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-3-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pusht-reset-only-4-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-2-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-3-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/pin-reset-only-4-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reset-1.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-2-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-3-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/ziptie-reset-4-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-reset-1.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-1-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-2-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-3-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "img",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/gpu-reset-4-frame.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-fleet.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/robocasa/coffee-setup-mug-seed-1-right.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/robocasa/coffee-setup-mug-seed-1-right.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/robocasa/coffee-setup-mug-seed-2-right.mp4",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "video",
+    "attr": "poster",
+    "url": "https://research.nvidia.com/labs/gear/enpire/images/robocasa/coffee-setup-mug-seed-2-right.jpg",
+    "alt": "",
+    "id": ""
+  },
+  {
+    "tag": "script",
+    "attr": "src",
+    "url": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/11qk_vpw_zwkf.js",
+    "alt": "",
+    "id": "_R_"
+  }
+]

@@ -1,0 +1,1948 @@
+document.documentElement.classList.add("js");
+
+const applicationsChapter = document.querySelector("#chapter-applications");
+const physicalApplication = document.querySelector("#application-navigation");
+if (applicationsChapter && physicalApplication) {
+  applicationsChapter.after(physicalApplication);
+}
+
+const root = document.documentElement;
+const header = document.querySelector("[data-header]");
+const menuButton = document.querySelector(".menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+const languageButtons = [...document.querySelectorAll("[data-set-lang]")];
+const heroOrbit = document.querySelector(".ambient-orbit-hero");
+const heroIntro = document.querySelector(".hero-title-stage .dek");
+const film = document.querySelector("#roborsi-film");
+const engineeringMorph = document.querySelector("[data-engineering-morph]");
+const engineeringComparison = engineeringMorph?.querySelector(
+  ".engineering-video-comparison",
+);
+const engineeringBefore = engineeringMorph?.querySelector(
+  ".engineering-history-media.is-before",
+);
+const engineeringAfter = engineeringMorph?.querySelector(
+  ".engineering-history-media.is-after",
+);
+const frameworkVideos = [
+  ...document.querySelectorAll(".ppt-architecture video"),
+];
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const skillTree = document.querySelector("[data-skill-tree-scrubber]");
+const skillTreeRange = skillTree?.querySelector("[data-skill-tree-range]");
+const skillTreeStage = skillTree?.querySelector("[data-skill-tree-stage]");
+const skillTreeFrames = [
+  ...(skillTree?.querySelectorAll("[data-skill-tree-frame]") || []),
+];
+const skillTreeIndex = skillTree?.querySelector("[data-skill-tree-index]");
+const skillTreeTitle = skillTree?.querySelector("[data-skill-tree-title]");
+const skillTreeCopy = skillTree?.querySelector("[data-skill-tree-copy]");
+const skillTreePlay = skillTree?.querySelector("[data-skill-tree-play]");
+const skillTreePlayIcon = skillTree?.querySelector(
+  "[data-skill-tree-play-icon]",
+);
+const skillTreeRoundButtons = [
+  ...(skillTree?.querySelectorAll("[data-skill-tree-round]") || []),
+];
+const realRobotSkillTree = document.querySelector(
+  "[data-real-robot-skill-tree]",
+);
+const realRobotSkillTreeVideo = realRobotSkillTree?.querySelector(
+  "[data-real-robot-tree-video]",
+);
+const realRobotSkillTreeRange = realRobotSkillTree?.querySelector(
+  "[data-real-robot-tree-range]",
+);
+const realRobotSkillTreeRound = realRobotSkillTree?.querySelector(
+  "[data-real-robot-tree-round]",
+);
+const realRobotSkillTreePlay = realRobotSkillTree?.querySelector(
+  "[data-real-robot-tree-play]",
+);
+const realRobotSkillTreePlayIcon = realRobotSkillTree?.querySelector(
+  "[data-real-robot-tree-play-icon]",
+);
+const capabilityRadar = document.querySelector("[data-capability-radar]");
+const capabilityRadarRange = capabilityRadar?.querySelector(
+  "[data-radar-range]",
+);
+const capabilityRadarShape = capabilityRadar?.querySelector(
+  "[data-radar-shape]",
+);
+const capabilityRadarPoints = [
+  ...(capabilityRadar?.querySelectorAll("[data-radar-point]") || []),
+];
+const capabilityRadarAxisValues = [
+  ...(capabilityRadar?.querySelectorAll("[data-radar-axis-value]") || []),
+];
+const capabilityRadarRound = capabilityRadar?.querySelector(
+  "[data-radar-round]",
+);
+const capabilityRadarCenter = capabilityRadar?.querySelector(
+  "[data-radar-center]",
+);
+const capabilityRadarPlay = capabilityRadar?.querySelector(
+  "[data-radar-play]",
+);
+const capabilityRadarPlayIcon = capabilityRadar?.querySelector(
+  "[data-radar-play-icon]",
+);
+const agentAnimations = [
+  ...document.querySelectorAll("[data-agent-animation]"),
+];
+
+const skillTreeStages = [
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-01.svg",
+    zh: {
+      title: "建立初始纯视觉技能图",
+      copy: "六个原子技能接入共享的基础技能总线，形成第一版完整技能图。",
+    },
+    en: {
+      title: "Build the initial pure-vision graph",
+      copy: "Six Atomic Skills connect to a shared Base Skill bus to form the first complete capability graph.",
+    },
+  },
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-02.svg",
+    zh: {
+      title: "加入持物偏移补偿",
+      copy: "物体抓起后不再假设与夹爪中心完全重合，放置分支显式补偿抓持偏移。",
+    },
+    en: {
+      title: "Compensate held-object offset",
+      copy: "The placement branch accounts for the offset between the grasped object and the gripper center.",
+    },
+  },
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-03.svg",
+    zh: {
+      title: "修正遮挡表面的目标高度",
+      copy: "机械臂或物体遮挡目标时，放置技能重新估计可见表面高度。",
+    },
+    en: {
+      title: "Correct occluded surface height",
+      copy: "The placement skill re-estimates visible surface height when the arm or held object blocks the target.",
+    },
+  },
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-04.svg",
+    zh: {
+      title: "增加释放后的稳定性检查",
+      copy: "夹爪释放后继续观察物体是否稳定留在目标区域，再结束原子任务。",
+    },
+    en: {
+      title: "Check post-release stability",
+      copy: "After release, the skill observes whether the object remains stable in the target region.",
+    },
+  },
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-05.svg",
+    zh: {
+      title: "保留完整空间关系",
+      copy: "定位分支开始区分“在上方”“在旁边”等关系，避免只找对物体却放错位置。",
+    },
+    en: {
+      title: "Preserve spatial relations",
+      copy: "Grounding distinguishes relations such as above and beside instead of locating only the correct object.",
+    },
+  },
+  {
+    image: "../../assets/roborsi/evolution/skill-tree-stages/release-06.svg",
+    zh: {
+      title: "以可见表面为中心完成定位",
+      copy: "最后一轮更新把单点定位改为以可见表面为中心，并保留前五轮已经验证的节点。",
+    },
+    en: {
+      title: "Center on the visible footprint",
+      copy: "The final release replaces single-point grounding with visible-footprint centering while retaining prior nodes.",
+    },
+  },
+];
+
+const capabilityRadarRawProfiles = [
+  [398729258, 76601.326, 1, 3246, 43, 32],
+  [291211783, 76276.499, 2, 2389, 60, 45],
+  [291211783, 64481.723, 3, 2389, 67, 52],
+  [241475742, 57510.923, 4, 2038, 71, 66],
+  [208388568, 50530.537, 5, 1793, 80, 71],
+];
+
+const RADAR_RELATIVE_FLOOR = 30;
+const RADAR_RELATIVE_CEILING = 70;
+
+function relativeRadarScore(value, start, end) {
+  const progress =
+    start === end
+      ? 1
+      : Math.max(0, Math.min(1, (value - start) / (end - start)));
+  return (
+    RADAR_RELATIVE_FLOOR +
+    (RADAR_RELATIVE_CEILING - RADAR_RELATIVE_FLOOR) * progress
+  );
+}
+
+const radarFirstRaw = capabilityRadarRawProfiles[0];
+const radarLastRaw =
+  capabilityRadarRawProfiles[capabilityRadarRawProfiles.length - 1];
+const capabilityRadarProfiles = capabilityRadarRawProfiles.map((profile) => [
+  relativeRadarScore(profile[0], radarFirstRaw[0], radarLastRaw[0]),
+  relativeRadarScore(profile[1], radarFirstRaw[1], radarLastRaw[1]),
+  relativeRadarScore(profile[2], radarFirstRaw[2], radarLastRaw[2]),
+  relativeRadarScore(profile[3], radarFirstRaw[3], radarLastRaw[3]),
+  (100 * profile[4]) / 120,
+  (100 * profile[5]) / 120,
+]);
+
+const skillTreePlayback = {
+  playing: Boolean(skillTree) && !reduceMotion.matches,
+  visible: false,
+  startTime: null,
+  value: 1,
+};
+
+const capabilityRadarPlayback = {
+  playing: Boolean(capabilityRadar) && !reduceMotion.matches,
+  visible: false,
+  startTime: null,
+  value: 1,
+};
+
+const REAL_ROBOT_SKILL_TREE_ROUNDS = 104;
+const REAL_ROBOT_SKILL_TREE_KEYFRAMES = [
+  { round: 1, time: 0 },
+  { round: 3, time: 3 },
+  { round: 4, time: 5.5 },
+  { round: 10, time: 7 },
+  { round: 22, time: 8 },
+  { round: 37, time: 9 },
+  { round: 47, time: 10 },
+  { round: 55, time: 11 },
+  { round: 68, time: 12 },
+  { round: 75, time: 13 },
+  { round: 92, time: 14 },
+  { round: 95, time: 15 },
+  { round: 100, time: 15.6 },
+  { round: 101, time: 16 },
+  { round: 102, time: 17.5 },
+  { round: 103, time: 19.8 },
+  { round: 104, time: 20.35 },
+];
+
+const pageMetadata = {
+  zh: {
+    lang: "zh-CN",
+    title: "RoboRSI｜NOEMATRIX LAB",
+    description:
+      "RoboRSI：在真实复杂场景中实现稳定、高效、可复用的机器人自进化。",
+  },
+  en: {
+    lang: "en",
+    title: "RoboRSI | NOEMATRIX LAB",
+    description:
+      "RoboRSI: stable, efficient, and reusable robot self-evolution in complex real-world environments.",
+  },
+};
+
+function setMenuOpen(open) {
+  mobileMenu?.classList.toggle("is-open", open);
+  mobileMenu?.toggleAttribute("inert", !open);
+  mobileMenu?.setAttribute("aria-hidden", String(!open));
+  menuButton?.setAttribute("aria-expanded", String(open));
+}
+
+function closeMenu() {
+  setMenuOpen(false);
+}
+
+function positionHeroOrbit() {
+  if (!heroOrbit || !heroIntro || window.innerWidth <= 1180) {
+    heroOrbit?.style.removeProperty("top");
+    heroOrbit?.style.removeProperty("left");
+    return;
+  }
+
+  const introRect = heroIntro.getBoundingClientRect();
+  const orbitRect = heroOrbit.getBoundingClientRect();
+  const leftGap = Math.min(80, Math.max(50, window.innerWidth * 0.06));
+  const top = heroOrbit.offsetTop + introRect.bottom + 8 - orbitRect.bottom;
+  const desiredLeft = introRect.left - orbitRect.width - leftGap;
+  const left = heroOrbit.offsetLeft + desiredLeft - orbitRect.left;
+  heroOrbit.style.top = `${Math.round(top)}px`;
+  heroOrbit.style.left = `${Math.round(left)}px`;
+}
+
+function scheduleHeroOrbitPosition() {
+  window.requestAnimationFrame(() =>
+    window.requestAnimationFrame(positionHeroOrbit),
+  );
+}
+
+let engineeringMorphFrame = 0;
+
+function updateEngineeringMorph() {
+  engineeringMorphFrame = 0;
+  if (
+    !engineeringMorph ||
+    !engineeringComparison ||
+    !engineeringBefore ||
+    !engineeringAfter
+  ) {
+    return;
+  }
+
+  const comparisonWidth = engineeringComparison.clientWidth;
+  const compact =
+    window.innerWidth <= 900 ||
+    comparisonWidth < 1000 ||
+    reduceMotion.matches;
+  if (compact) {
+    engineeringMorph.classList.remove("is-morph-ready");
+    [
+      "--comparison-card-height",
+      "--comparison-stage-height",
+      "--comparison-before-width",
+      "--comparison-after-width",
+      "--comparison-arrow-center",
+      "--comparison-inline-height",
+      "--comparison-before-opacity",
+      "--comparison-arrow-opacity",
+    ].forEach((property) => engineeringMorph.style.removeProperty(property));
+    return;
+  }
+
+  engineeringMorph.classList.add("is-morph-ready");
+  const columnGap = Math.min(88, Math.max(68, comparisonWidth * 0.065));
+  const availableWidth = Math.max(0, comparisonWidth - columnGap);
+  const beforeWidth = availableWidth / 2;
+  const afterWidth = availableWidth - beforeWidth;
+  engineeringMorph.style.setProperty(
+    "--comparison-before-width",
+    `${beforeWidth.toFixed(2)}px`,
+  );
+  engineeringMorph.style.setProperty(
+    "--comparison-arrow-center",
+    `${(beforeWidth + columnGap / 2).toFixed(2)}px`,
+  );
+
+  const beforeVideo = engineeringBefore.querySelector(":scope > video");
+  const finalInlineHeight =
+    beforeVideo?.offsetHeight || beforeWidth * (9 / 16);
+  const stickyTop =
+    Number.parseFloat(getComputedStyle(engineeringComparison).top) || 96;
+  const initialVideoHeight = 430;
+  const startTop = window.innerHeight / 2 - initialVideoHeight / 2;
+  const morphDistance = Math.max(1, startTop - stickyTop);
+  const afterBorderTop =
+    Number.parseFloat(getComputedStyle(engineeringAfter).borderTopWidth) || 0;
+  let normalVideoDocumentTop = afterBorderTop;
+  for (
+    let node = engineeringMorph;
+    node instanceof HTMLElement;
+    node = node.offsetParent
+  ) {
+    normalVideoDocumentTop += node.offsetTop;
+  }
+  const morphStartScroll = normalVideoDocumentTop - startTop;
+  const travelled = window.scrollY - morphStartScroll;
+  const progress = Math.max(0, Math.min(1, travelled / morphDistance));
+  const eased =
+    progress * progress * progress * (progress * (progress * 6 - 15) + 10);
+  const currentAfterWidth =
+    comparisonWidth - (comparisonWidth - afterWidth) * eased;
+  const currentInlineHeight =
+    initialVideoHeight - (initialVideoHeight - finalInlineHeight) * eased;
+
+  engineeringMorph.style.setProperty(
+    "--comparison-after-width",
+    `${currentAfterWidth.toFixed(2)}px`,
+  );
+  engineeringMorph.style.setProperty(
+    "--comparison-inline-height",
+    `${currentInlineHeight.toFixed(2)}px`,
+  );
+
+  const beforeMediaHeight =
+    beforeVideo?.offsetHeight || 0;
+  const afterMediaHeight =
+    engineeringAfter.querySelector(".inline-evidence-layout")?.offsetHeight || 0;
+  const beforeCaptionHeight =
+    engineeringBefore.querySelector("figcaption")?.offsetHeight || 0;
+  const afterCaptionHeight =
+    engineeringAfter.querySelector("figcaption")?.offsetHeight || 0;
+  const cardHeight = Math.max(
+    beforeMediaHeight + beforeCaptionHeight + 6,
+    afterMediaHeight + afterCaptionHeight + 6,
+  );
+  engineeringMorph.style.setProperty(
+    "--comparison-card-height",
+    `${Math.ceil(cardHeight)}px`,
+  );
+  engineeringMorph.style.setProperty(
+    "--comparison-stage-height",
+    `${Math.ceil(cardHeight + 120)}px`,
+  );
+
+  const revealPosition = Math.max(
+    0,
+    Math.min(1, (progress - 0.12) / 0.68),
+  );
+  const revealProgress =
+    revealPosition * revealPosition * (3 - 2 * revealPosition);
+  const arrowPosition = Math.max(
+    0,
+    Math.min(1, (progress - 0.52) / 0.42),
+  );
+  const arrowOpacity =
+    arrowPosition * arrowPosition * (3 - 2 * arrowPosition);
+  engineeringMorph.style.setProperty(
+    "--comparison-before-opacity",
+    revealProgress.toFixed(4),
+  );
+  engineeringMorph.style.setProperty(
+    "--comparison-arrow-opacity",
+    arrowOpacity.toFixed(4),
+  );
+}
+
+function scheduleEngineeringMorph() {
+  if (engineeringMorphFrame) return;
+  engineeringMorphFrame = window.requestAnimationFrame(updateEngineeringMorph);
+}
+
+function setFilmLanguage(language) {
+  if (!film) return;
+  const source = film.querySelector("source");
+  const track = film.querySelector("track");
+  const nextSource =
+    language === "zh" ? film.dataset.srcZh : film.dataset.srcEn;
+  const nextPoster =
+    language === "zh" ? film.dataset.posterZh : film.dataset.posterEn;
+  const nextLabel =
+    language === "zh" ? film.dataset.labelZh : film.dataset.labelEn;
+
+  if (nextLabel) film.setAttribute("aria-label", nextLabel);
+  if (nextPoster) film.poster = nextPoster;
+  if (!source || !nextSource || source.getAttribute("src") === nextSource) {
+    if (track) {
+      track.src =
+        language === "zh"
+          ? "../../assets/roborsi/demo/roborsi-demo-zh.vtt"
+          : "../../assets/roborsi/demo/roborsi-demo-en.vtt";
+      track.srclang = language === "zh" ? "zh-CN" : "en";
+      track.label = language === "zh" ? "中文" : "English";
+    }
+    return;
+  }
+
+  const wasPaused = film.paused;
+  const currentTime = Number.isFinite(film.currentTime) ? film.currentTime : 0;
+  source.src = nextSource;
+  if (track) {
+    track.src =
+      language === "zh"
+        ? "../../assets/roborsi/demo/roborsi-demo-zh.vtt"
+        : "../../assets/roborsi/demo/roborsi-demo-en.vtt";
+    track.srclang = language === "zh" ? "zh-CN" : "en";
+    track.label = language === "zh" ? "中文" : "English";
+  }
+  film.load();
+  film.addEventListener(
+    "loadedmetadata",
+    () => {
+      if (Number.isFinite(film.duration)) {
+        film.currentTime = Math.min(currentTime, Math.max(0, film.duration - 0.1));
+      }
+      if (!wasPaused) film.play().catch(() => undefined);
+    },
+    { once: true },
+  );
+}
+
+function frameworkVideoIsVisible(video) {
+  if (getComputedStyle(video).display === "none") return false;
+  const bounds = video.getBoundingClientRect();
+  return bounds.bottom > 0 && bounds.top < window.innerHeight;
+}
+
+function syncFrameworkVideos() {
+  frameworkVideos.forEach((video) => {
+    if (
+      !document.hidden &&
+      !reduceMotion.matches &&
+      frameworkVideoIsVisible(video)
+    ) {
+      video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  });
+}
+
+function agentAnimationIsVisible(animation) {
+  const bounds = animation.getBoundingClientRect();
+  return bounds.bottom > 0 && bounds.top < window.innerHeight;
+}
+
+function syncAgentAnimations() {
+  agentAnimations.forEach((animation) => {
+    animation.classList.toggle(
+      "is-running",
+      !document.hidden &&
+        !reduceMotion.matches &&
+        agentAnimationIsVisible(animation),
+    );
+  });
+}
+
+function setSkillTreeStage(value, language = root.dataset.lang) {
+  if (
+    !skillTreeRange ||
+    !skillTreeStage ||
+    !skillTreeFrames.length ||
+    !skillTreeIndex ||
+    !skillTreeTitle ||
+    !skillTreeCopy
+  ) {
+    return;
+  }
+  const position = Math.max(
+    1,
+    Math.min(skillTreeStages.length, Number(value) || 1),
+  );
+  const stageIndex = Math.round(position) - 1;
+  skillTreeFrames.forEach((frame, index) => {
+    frame.classList.toggle("is-active", index === stageIndex);
+  });
+  const stage = skillTreeStages[stageIndex];
+  const localized = stage[language === "zh" ? "zh" : "en"];
+  skillTreeStage.setAttribute(
+    "aria-label",
+    language === "zh"
+      ? `TSR 第 ${stageIndex + 1} 轮：${localized.title}`
+      : `Top-down Skill Refinement round ${stageIndex + 1}: ${localized.title}`,
+  );
+  skillTreeIndex.textContent =
+    `ROUND ${String(stageIndex + 1).padStart(2, "0")} / 06`;
+  skillTreeTitle.textContent = localized.title;
+  skillTreeCopy.textContent = localized.copy;
+  skillTreeRange.value = String(position);
+  skillTreeRange.setAttribute(
+    "aria-valuetext",
+    language === "zh"
+      ? `第 ${stageIndex + 1} 轮：${localized.title}`
+      : `Round ${stageIndex + 1}: ${localized.title}`,
+  );
+  skillTreeRoundButtons.forEach((button, index) => {
+    const active = index === stageIndex;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  skillTreeRange.style.setProperty(
+    "--skill-tree-progress",
+    `${((position - 1) / (skillTreeStages.length - 1)) * 100}%`,
+  );
+  skillTreePlayback.value = position;
+}
+
+function radarCoordinates(values) {
+  return values.map((value, index) => {
+    const angle = -Math.PI / 2 + (index * Math.PI) / 3;
+    const radius = 225 * (value / 100);
+    return {
+      x: 320 + radius * Math.cos(angle),
+      y: 280 + radius * Math.sin(angle),
+    };
+  });
+}
+
+function setCapabilityRadarStage(value) {
+  if (
+    !capabilityRadarRange ||
+    !capabilityRadarShape ||
+    capabilityRadarPoints.length !== 6 ||
+    capabilityRadarAxisValues.length !== 6 ||
+    !capabilityRadarRound ||
+    !capabilityRadarCenter
+  ) {
+    return;
+  }
+  const position = Math.max(1, Math.min(5, Number(value) || 1));
+  const lower = Math.floor(position) - 1;
+  const upper = Math.ceil(position) - 1;
+  const blend = position - Math.floor(position);
+  const profile = capabilityRadarProfiles[lower].map(
+    (current, index) =>
+      current +
+      (capabilityRadarProfiles[upper][index] - current) * blend,
+  );
+  const rawProfile = capabilityRadarRawProfiles[lower].map(
+    (current, index) =>
+      current +
+      (capabilityRadarRawProfiles[upper][index] - current) * blend,
+  );
+  const points = radarCoordinates(profile);
+  capabilityRadarShape.setAttribute(
+    "points",
+    points.map((point) => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" "),
+  );
+  capabilityRadarPoints.forEach((point, index) => {
+    point.setAttribute("cx", points[index].x.toFixed(1));
+    point.setAttribute("cy", points[index].y.toFixed(1));
+  });
+  const lowerRound = lower + 1;
+  const upperRound = upper + 1;
+  const transition =
+    lowerRound !== upperRound && blend >= 0.02 && blend <= 0.98;
+  const round = blend > 0.98 ? upperRound : lowerRound;
+  const isZh = root.dataset.lang === "zh";
+  capabilityRadarAxisValues.forEach((label, index) => {
+    const raw = rawProfile[index];
+    let value = "";
+    if (index === 0) value = `≤ ${(raw / 1_000_000).toFixed(1)}M`;
+    if (index === 1) value = `≤ ${(raw / 3600).toFixed(1)} h`;
+    if (index === 2) {
+      value = isZh
+        ? `${Math.round(raw)} / 6 轮`
+        : `${Math.round(raw)} / 6 releases`;
+    }
+    if (index === 3) {
+      value = isZh
+        ? `≤ ${Math.round(raw).toLocaleString("zh-CN")} 次`
+        : `≤ ${Math.round(raw).toLocaleString("en-US")} calls`;
+    }
+    if (index === 4 || index === 5) {
+      value = `${Math.round(raw)} / 120`;
+    }
+    label.textContent = value;
+  });
+  capabilityRadarRound.textContent = transition
+    ? `PASS ${lowerRound} → ${upperRound}`
+    : `PASS ${round}`;
+  capabilityRadarCenter.textContent = transition
+    ? `ROUND ${lowerRound}–${upperRound}`
+    : `ROUND ${round}`;
+  capabilityRadarRange.value = String(position);
+  capabilityRadarRange.setAttribute(
+    "aria-valuetext",
+    transition
+      ? root.dataset.lang === "zh"
+        ? `第 ${lowerRound} 轮到第 ${upperRound} 轮的过渡`
+        : `Transition from Pass ${lowerRound} to Pass ${upperRound}`
+      : root.dataset.lang === "zh"
+        ? `第 ${round} 轮`
+        : `Pass ${round}`,
+  );
+  capabilityRadarRange.style.setProperty(
+    "--radar-progress",
+    `${((position - 1) / 4) * 100}%`,
+  );
+  capabilityRadarPlayback.value = position;
+}
+
+function realRobotSkillTreeMaxTime() {
+  if (
+    !realRobotSkillTreeVideo ||
+    !Number.isFinite(realRobotSkillTreeVideo.duration)
+  ) {
+    return 0;
+  }
+  return Math.min(
+    Math.max(0, realRobotSkillTreeVideo.duration - 1 / 30),
+    REAL_ROBOT_SKILL_TREE_KEYFRAMES.at(-1).time,
+  );
+}
+
+function realRobotSkillTreeTimeForRound(round) {
+  const bounded = Math.max(
+    1,
+    Math.min(REAL_ROBOT_SKILL_TREE_ROUNDS, Number(round) || 1),
+  );
+  const upperIndex = REAL_ROBOT_SKILL_TREE_KEYFRAMES.findIndex(
+    (keyframe) => keyframe.round >= bounded,
+  );
+  if (upperIndex <= 0) return 0;
+  const upper = REAL_ROBOT_SKILL_TREE_KEYFRAMES[upperIndex];
+  const lower = REAL_ROBOT_SKILL_TREE_KEYFRAMES[upperIndex - 1];
+  const progress = (bounded - lower.round) / (upper.round - lower.round);
+  return lower.time + progress * (upper.time - lower.time);
+}
+
+function realRobotSkillTreeRoundForTime(time) {
+  const maxTime = realRobotSkillTreeMaxTime();
+  if (maxTime <= 0) return 1;
+  const bounded = Math.max(0, Math.min(maxTime, Number(time) || 0));
+  const upperIndex = REAL_ROBOT_SKILL_TREE_KEYFRAMES.findIndex(
+    (keyframe) => keyframe.time >= bounded,
+  );
+  if (upperIndex <= 0) return 1;
+  const upper = REAL_ROBOT_SKILL_TREE_KEYFRAMES[upperIndex];
+  const lower = REAL_ROBOT_SKILL_TREE_KEYFRAMES[upperIndex - 1];
+  const progress = (bounded - lower.time) / (upper.time - lower.time);
+  return Math.max(
+    1,
+    Math.min(
+      REAL_ROBOT_SKILL_TREE_ROUNDS,
+      Math.floor(
+        lower.round + progress * (upper.round - lower.round) + Number.EPSILON,
+      ),
+    ),
+  );
+}
+
+function updateRealRobotSkillTreeRound(round, seek = false) {
+  if (!realRobotSkillTreeRange || !realRobotSkillTreeRound) return;
+  const bounded = Math.max(
+    1,
+    Math.min(REAL_ROBOT_SKILL_TREE_ROUNDS, Math.round(Number(round) || 1)),
+  );
+  realRobotSkillTreeRange.value = String(bounded);
+  realRobotSkillTreeRound.textContent =
+    `ROUND ${String(bounded).padStart(3, "0")} / 104`;
+  realRobotSkillTreeRange.setAttribute(
+    "aria-valuetext",
+    root.dataset.lang === "zh"
+      ? `第 ${bounded} 轮，共 104 轮`
+      : `Round ${bounded} of 104`,
+  );
+  realRobotSkillTreeRange.style.setProperty(
+    "--skill-tree-progress",
+    `${((bounded - 1) / (REAL_ROBOT_SKILL_TREE_ROUNDS - 1)) * 100}%`,
+  );
+  if (
+    seek &&
+    realRobotSkillTreeVideo &&
+    realRobotSkillTreeMaxTime() > 0
+  ) {
+    realRobotSkillTreeVideo.currentTime =
+      realRobotSkillTreeTimeForRound(bounded);
+  }
+}
+
+function updateRealRobotSkillTreePlayButton() {
+  if (
+    !realRobotSkillTreeVideo ||
+    !realRobotSkillTreePlay ||
+    !realRobotSkillTreePlayIcon
+  ) {
+    return;
+  }
+  const playing = !realRobotSkillTreeVideo.paused;
+  const label =
+    root.dataset.lang === "zh"
+      ? playing
+        ? "暂停真机技能树动画"
+        : "播放真机技能树动画"
+      : playing
+        ? "Pause real-robot Skill Tree animation"
+        : "Play real-robot Skill Tree animation";
+  realRobotSkillTreePlay.setAttribute("aria-label", label);
+  realRobotSkillTreePlay.title = label;
+  realRobotSkillTreePlayIcon.textContent = playing ? "Ⅱ" : "▶";
+}
+
+function syncRealRobotSkillTreeFromVideo() {
+  if (!realRobotSkillTreeVideo) return;
+  updateRealRobotSkillTreeRound(
+    realRobotSkillTreeRoundForTime(realRobotSkillTreeVideo.currentTime),
+  );
+  updateRealRobotSkillTreePlayButton();
+}
+
+function updateRoundPlayButton(kind) {
+  const isSkillTree = kind === "skill-tree";
+  const playback = isSkillTree
+    ? skillTreePlayback
+    : capabilityRadarPlayback;
+  const button = isSkillTree ? skillTreePlay : capabilityRadarPlay;
+  const icon = isSkillTree ? skillTreePlayIcon : capabilityRadarPlayIcon;
+  if (!button || !icon) return;
+  const isZh = root.dataset.lang === "zh";
+  const subject = isSkillTree
+    ? isZh
+      ? "技能树"
+      : "Skill Tree"
+    : isZh
+      ? "雷达图"
+      : "radar";
+  const label = playback.playing
+    ? isZh
+      ? `暂停${subject}动画`
+      : `Pause ${subject} animation`
+    : isZh
+      ? `播放${subject}动画`
+      : `Play ${subject} animation`;
+  button.setAttribute("aria-label", label);
+  button.title = label;
+  icon.textContent = playback.playing ? "Ⅱ" : "▶";
+}
+
+function setRoundPlayback(kind, playing) {
+  const isSkillTree = kind === "skill-tree";
+  const playback = isSkillTree
+    ? skillTreePlayback
+    : capabilityRadarPlayback;
+  const minimum = 1;
+  const maximum = isSkillTree ? skillTreeStages.length : 5;
+  playback.playing = Boolean(playing) && !reduceMotion.matches;
+  if (playback.playing) {
+    if (playback.value >= maximum - 0.001) {
+      playback.value = minimum;
+      if (isSkillTree) setSkillTreeStage(minimum);
+      else setCapabilityRadarStage(minimum);
+    }
+    playback.startTime =
+      performance.now() -
+      ((playback.value - minimum) / (maximum - minimum)) * 8000;
+  } else {
+    playback.startTime = null;
+  }
+  updateRoundPlayButton(kind);
+}
+
+function roundPlaybackPosition(now, playback, minimum, maximum) {
+  if (playback.startTime === null) {
+    playback.startTime =
+      now -
+      ((playback.value - minimum) / (maximum - minimum)) * 8000;
+  }
+  const cycle = 9400;
+  const phase = (now - playback.startTime) % cycle;
+  if (phase >= 8000) return maximum;
+  return minimum + (maximum - minimum) * (phase / 8000);
+}
+
+function animateRoundFigures(now) {
+  if (
+    skillTreePlayback.playing &&
+    skillTreePlayback.visible &&
+    !document.hidden &&
+    !reduceMotion.matches
+  ) {
+    setSkillTreeStage(
+      roundPlaybackPosition(
+        now,
+        skillTreePlayback,
+        1,
+        skillTreeStages.length,
+      ),
+    );
+  }
+  if (
+    capabilityRadarPlayback.playing &&
+    capabilityRadarPlayback.visible &&
+    !document.hidden &&
+    !reduceMotion.matches
+  ) {
+    setCapabilityRadarStage(
+      roundPlaybackPosition(now, capabilityRadarPlayback, 1, 5),
+    );
+  }
+  window.requestAnimationFrame(animateRoundFigures);
+}
+
+function setLanguage(language) {
+  const nextLanguage = language === "zh" ? "zh" : "en";
+  const metadata = pageMetadata[nextLanguage];
+  root.dataset.lang = nextLanguage;
+  root.lang = metadata.lang;
+  document.title = metadata.title;
+  document
+    .querySelector('meta[name="description"]')
+    ?.setAttribute("content", metadata.description);
+
+  languageButtons.forEach((button) =>
+    button.setAttribute(
+      "aria-pressed",
+      String(button.dataset.setLang === nextLanguage),
+    ),
+  );
+  document
+    .querySelectorAll("[data-label-zh][data-label-en]")
+    .forEach((element) => {
+      const label =
+        nextLanguage === "zh"
+          ? element.dataset.labelZh
+          : element.dataset.labelEn;
+      if (label) element.setAttribute("aria-label", label);
+    });
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const value =
+      nextLanguage === "zh" ? element.dataset.zh : element.dataset.en;
+    if (value) element.textContent = value;
+  });
+  setFilmLanguage(nextLanguage);
+  setSkillTreeStage(skillTreeRange?.value || 1, nextLanguage);
+  setCapabilityRadarStage(capabilityRadarRange?.value || 1);
+  updateRealRobotSkillTreeRound(realRobotSkillTreeRange?.value || 1);
+  updateRealRobotSkillTreePlayButton();
+  updateRoundPlayButton("skill-tree");
+  updateRoundPlayButton("radar");
+  evidenceVideos.forEach(syncVideoLabel);
+  if (activeTraceItem) renderTraceDialog(activeTraceItem);
+  closeMenu();
+  scheduleHeroOrbitPosition();
+  window.requestAnimationFrame(scheduleEngineeringMorph);
+  window.requestAnimationFrame(syncFrameworkVideos);
+}
+
+languageButtons.forEach((button) =>
+  button.addEventListener("click", () => {
+    const language = button.dataset.setLang === "zh" ? "zh" : "en";
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.set("lang", language);
+    window.history.replaceState(null, "", nextUrl.href);
+    setLanguage(language);
+  }),
+);
+
+skillTreeRange?.addEventListener("input", (event) => {
+  setRoundPlayback("skill-tree", false);
+  setSkillTreeStage(event.currentTarget.value);
+});
+
+skillTreeRoundButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setRoundPlayback("skill-tree", false);
+    setSkillTreeStage(button.dataset.skillTreeRound);
+    skillTreeRange?.focus();
+  });
+});
+
+skillTreePlay?.addEventListener("click", () => {
+  setRoundPlayback("skill-tree", !skillTreePlayback.playing);
+});
+
+capabilityRadarRange?.addEventListener("input", (event) => {
+  setRoundPlayback("radar", false);
+  setCapabilityRadarStage(event.currentTarget.value);
+});
+
+capabilityRadarPlay?.addEventListener("click", () => {
+  setRoundPlayback("radar", !capabilityRadarPlayback.playing);
+});
+
+realRobotSkillTreeRange?.addEventListener("input", (event) => {
+  pauseVideo(realRobotSkillTreeVideo, true);
+  updateRealRobotSkillTreeRound(event.currentTarget.value, true);
+});
+
+realRobotSkillTreePlay?.addEventListener("click", () => {
+  if (!realRobotSkillTreeVideo) return;
+  if (
+    realRobotSkillTreeVideo.paused &&
+    realRobotSkillTreeRoundForTime(realRobotSkillTreeVideo.currentTime) >=
+      REAL_ROBOT_SKILL_TREE_ROUNDS
+  ) {
+    realRobotSkillTreeVideo.currentTime = 0;
+  }
+  if (realRobotSkillTreeVideo.paused) {
+    playVideo(realRobotSkillTreeVideo, true);
+  } else {
+    pauseVideo(realRobotSkillTreeVideo, true);
+  }
+  updateRealRobotSkillTreePlayButton();
+});
+
+realRobotSkillTreeVideo?.addEventListener(
+  "loadedmetadata",
+  () => {
+    if (reduceMotion.matches) {
+      updateRealRobotSkillTreeRound(REAL_ROBOT_SKILL_TREE_ROUNDS, true);
+      pauseVideo(realRobotSkillTreeVideo, true);
+    } else {
+      syncRealRobotSkillTreeFromVideo();
+    }
+  },
+);
+realRobotSkillTreeVideo?.addEventListener(
+  "timeupdate",
+  syncRealRobotSkillTreeFromVideo,
+);
+realRobotSkillTreeVideo?.addEventListener(
+  "play",
+  updateRealRobotSkillTreePlayButton,
+);
+realRobotSkillTreeVideo?.addEventListener(
+  "pause",
+  updateRealRobotSkillTreePlayButton,
+);
+
+if (reduceMotion.matches) {
+  setSkillTreeStage(skillTreeStages.length);
+  setCapabilityRadarStage(5);
+  setRoundPlayback("skill-tree", false);
+  setRoundPlayback("radar", false);
+  if (realRobotSkillTreeVideo?.readyState >= 1) {
+    updateRealRobotSkillTreeRound(REAL_ROBOT_SKILL_TREE_ROUNDS, true);
+    pauseVideo(realRobotSkillTreeVideo, true);
+  }
+  document
+    .querySelectorAll(".ppt-architecture video[autoplay]")
+    .forEach((video) => video.pause());
+} else {
+  setSkillTreeStage(1);
+  setCapabilityRadarStage(1);
+  updateRoundPlayButton("skill-tree");
+  updateRoundPlayButton("radar");
+}
+
+menuButton?.addEventListener("click", () => {
+  setMenuOpen(!mobileMenu?.classList.contains("is-open"));
+});
+mobileMenu
+  ?.querySelectorAll("a")
+  .forEach((link) => link.addEventListener("click", closeMenu));
+setMenuOpen(false);
+
+const inPageLinks = [...document.querySelectorAll('a[href^="#"]')];
+let lockedNavigation = null;
+let lockedNavigationSeen = false;
+
+function targetFor(link) {
+  const href = link.getAttribute("href");
+  if (!href || href === "#") return null;
+  try {
+    return document.getElementById(decodeURIComponent(href.slice(1)));
+  } catch {
+    return null;
+  }
+}
+
+function updateLocationHash(target) {
+  const nextUrl = new URL(window.location.href);
+  nextUrl.hash = `#${encodeURIComponent(target.id)}`;
+  window.history.pushState(null, "", nextUrl.href);
+}
+
+inPageLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const target = targetFor(link);
+    if (!target) return;
+    event.preventDefault();
+    lockActiveNavigation(target);
+    closeMenu();
+    const headerOffset =
+      Number.parseFloat(
+        window.getComputedStyle(document.documentElement).scrollPaddingTop,
+      ) || 0;
+    const targetTop =
+      target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: reduceMotion.matches ? "auto" : "smooth",
+    });
+    if (link.classList.contains("skip-link")) {
+      target.focus({ preventScroll: true });
+    }
+    updateLocationHash(target);
+  });
+});
+
+function updateHeader() {
+  header?.classList.toggle("is-scrolled", window.scrollY > 16);
+}
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  },
+  { rootMargin: "0px 0px -7%", threshold: 0.05 },
+);
+document
+  .querySelectorAll(".reveal")
+  .forEach((element) => revealObserver.observe(element));
+
+const agentAnimationObserver = new IntersectionObserver(
+  () => syncAgentAnimations(),
+  { rootMargin: "-8% 0px -8%", threshold: 0.16 },
+);
+agentAnimations.forEach((animation) =>
+  agentAnimationObserver.observe(animation),
+);
+
+const frameworkVideoObserver = new IntersectionObserver(
+  () => syncFrameworkVideos(),
+  { rootMargin: "0px", threshold: [0, 0.15] },
+);
+frameworkVideos.forEach((video) => frameworkVideoObserver.observe(video));
+
+const roundFigureObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.target === skillTree) {
+        skillTreePlayback.visible = entry.isIntersecting;
+      }
+      if (entry.target === capabilityRadar) {
+        capabilityRadarPlayback.visible = entry.isIntersecting;
+      }
+    });
+  },
+  { rootMargin: "-8% 0px -8%", threshold: [0, 0.12] },
+);
+if (skillTree) roundFigureObserver.observe(skillTree);
+if (capabilityRadar) roundFigureObserver.observe(capabilityRadar);
+
+reduceMotion.addEventListener?.("change", () => {
+  if (reduceMotion.matches) {
+    setSkillTreeStage(skillTreeStages.length);
+    setCapabilityRadarStage(5);
+    setRoundPlayback("skill-tree", false);
+    setRoundPlayback("radar", false);
+    if (realRobotSkillTreeVideo?.readyState >= 1) {
+      updateRealRobotSkillTreeRound(REAL_ROBOT_SKILL_TREE_ROUNDS, true);
+      pauseVideo(realRobotSkillTreeVideo, true);
+    }
+  } else {
+    setRoundPlayback("skill-tree", true);
+    setRoundPlayback("radar", true);
+  }
+  updateRealRobotSkillTreePlayButton();
+  syncAgentAnimations();
+  syncFrameworkVideos();
+});
+
+window.requestAnimationFrame(animateRoundFigures);
+
+const navLinks = [...document.querySelectorAll(".site-nav a")];
+
+function setActiveNavigation(target, chapter) {
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    const exact = href === `#${target}`;
+    const group = link.closest("[data-toc-group]")?.dataset.tocGroup;
+    const chapterMain = link.classList.contains("toc-main") && group === chapter;
+    link.classList.toggle("is-active", exact);
+    link.classList.toggle("is-chapter-active", chapterMain && !exact);
+  });
+}
+
+function lockActiveNavigation(target) {
+  lockedNavigation = {
+    target: target.id,
+    chapter: target.dataset.chapter,
+  };
+  lockedNavigationSeen = false;
+  setActiveNavigation(lockedNavigation.target, lockedNavigation.chapter);
+}
+
+function maintainLockedNavigation() {
+  if (!lockedNavigation) return false;
+  const target = document.getElementById(lockedNavigation.target);
+  if (!target) {
+    lockedNavigation = null;
+    lockedNavigationSeen = false;
+    return false;
+  }
+  const rect = target.getBoundingClientRect();
+  const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+  if (visible) lockedNavigationSeen = true;
+  if (!visible && lockedNavigationSeen) {
+    lockedNavigation = null;
+    lockedNavigationSeen = false;
+    return false;
+  }
+  setActiveNavigation(lockedNavigation.target, lockedNavigation.chapter);
+  return true;
+}
+
+function isAtDocumentEnd() {
+  return (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight - 4
+  );
+}
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    if (maintainLockedNavigation()) return;
+    if (isAtDocumentEnd()) {
+      setActiveNavigation("citation", "citation");
+      return;
+    }
+    const current = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!current) return;
+    const target = current.target.id;
+    const chapter = current.target.dataset.chapter;
+    setActiveNavigation(target, chapter);
+  },
+  { rootMargin: "-24% 0px -62%", threshold: [0, 0.12] },
+);
+document
+  .querySelectorAll("[data-section]")
+  .forEach((section) => sectionObserver.observe(section));
+
+if (window.location.hash.length > 1) {
+  const initialTarget = document.getElementById(
+    decodeURIComponent(window.location.hash.slice(1)),
+  );
+  if (initialTarget?.hasAttribute("data-section")) {
+    lockActiveNavigation(initialTarget);
+  }
+}
+
+window.addEventListener(
+  "scroll",
+  () => {
+    scheduleEngineeringMorph();
+    if (maintainLockedNavigation()) return;
+    if (isAtDocumentEnd()) setActiveNavigation("citation", "citation");
+  },
+  { passive: true },
+);
+
+const evidenceVideos = [];
+const registeredVideos = new WeakSet();
+const episodeById = new Map();
+const traceDialog = document.querySelector("[data-trace-dialog]");
+const traceDialogVideo = traceDialog?.querySelector("[data-trace-video]");
+let activeTraceItem = null;
+let randomSuccessPool = [];
+let robotwinSuccessPool = [];
+let codeShowcasePool = [];
+let lastCodeKeys = new Set();
+let liberoIterationData = null;
+
+let lastRandomKeys = new Set();
+let lastRobotwinKeys = new Set();
+
+function assetHref(path) {
+  return path.startsWith("assets/") ? `../../${path}` : path;
+}
+
+function shuffled(items) {
+  const next = [...items];
+  for (let index = next.length - 1; index > 0; index -= 1) {
+    const swap = Math.floor(Math.random() * (index + 1));
+    [next[index], next[swap]] = [next[swap], next[index]];
+  }
+  return next;
+}
+
+function selectRandomSuccesses() {
+  const fresh = shuffled(
+    randomSuccessPool.filter((item) => !lastRandomKeys.has(item.id)),
+  );
+  const retained = shuffled(
+    randomSuccessPool.filter((item) => lastRandomKeys.has(item.id)),
+  );
+  return [...fresh, ...retained].slice(0, 6);
+}
+
+function selectRandomRobotwin() {
+  const fresh = shuffled(
+    robotwinSuccessPool.filter((item) => !lastRobotwinKeys.has(item.id)),
+  );
+  const retained = shuffled(
+    robotwinSuccessPool.filter((item) => lastRobotwinKeys.has(item.id)),
+  );
+  return [...fresh, ...retained].slice(0, 6);
+}
+
+function renderRandomSuccesses() {
+  const selected = selectRandomSuccesses();
+  lastRandomKeys = new Set(selected.map((item) => item.id));
+  document.querySelectorAll("[data-random-slot]").forEach((slot, index) => {
+    const item = selected[index];
+    if (!item) return;
+    const video = slot.querySelector("video");
+    const source = slot.querySelector("source");
+    if (video && source) {
+      video.pause();
+      source.src = assetHref(item.video);
+      video.poster = assetHref(item.poster);
+      video.dataset.traceId = item.id;
+      delete video.dataset.userPaused;
+      video.load();
+    }
+    const meta = slot.querySelector("[data-random-meta]");
+    const titleZh = slot.querySelector("[data-random-title-zh]");
+    const titleEn = slot.querySelector("[data-random-title-en]");
+    const trace = slot.querySelector("[data-random-trace]");
+    if (meta) meta.textContent = `${item.platform} · ${item.task}`;
+    if (titleZh) titleZh.textContent = item.title_zh;
+    if (titleEn) titleEn.textContent = item.title_en;
+    if (trace) trace.textContent = item.trace_preview;
+    if (video) syncVideoLabel(video);
+  });
+}
+
+function createEpisodeCard(item, className) {
+  const article = document.createElement("article");
+  article.className = className;
+
+  const video = document.createElement("video");
+  video.className = "evidence-video";
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.poster = assetHref(item.poster);
+  video.dataset.traceId = item.id;
+  const source = document.createElement("source");
+  source.src = assetHref(item.video);
+  source.type = "video/mp4";
+  video.append(source);
+
+  const copy = document.createElement("div");
+  const meta = document.createElement("span");
+  meta.textContent = `${item.platform} · ${item.task}`;
+  const titleZh = document.createElement("h3");
+  titleZh.className = "lang-zh";
+  titleZh.textContent = item.title_zh;
+  const titleEn = document.createElement("h3");
+  titleEn.className = "lang-en";
+  titleEn.textContent = item.title_en;
+  const preview = document.createElement("p");
+  const code = document.createElement("code");
+  code.textContent = item.trace_preview;
+  preview.append(code);
+  copy.append(meta, titleZh, titleEn, preview);
+  article.append(video, copy);
+  registerEvidenceVideo(video);
+  return article;
+}
+
+function renderEpisodeGrid(selector, items, className) {
+  const grid = document.querySelector(selector);
+  if (!grid) return;
+  grid.replaceChildren(
+    ...items.map((item) => createEpisodeCard(item, className)),
+  );
+}
+
+function renderRandomCodeShowcase() {
+  if (!codeShowcasePool.length) return;
+  const fresh = shuffled(
+    codeShowcasePool.filter((item) => !lastCodeKeys.has(item.id)),
+  );
+  const retained = shuffled(
+    codeShowcasePool.filter((item) => lastCodeKeys.has(item.id)),
+  );
+  const selected = [...fresh, ...retained].slice(0, 3);
+  lastCodeKeys = new Set(selected.map((item) => item.id));
+  renderEpisodeGrid(
+    "[data-code-showcase]",
+    selected,
+    "random-success-card trace-enabled-card",
+  );
+}
+
+function renderRandomRobotwin() {
+  const selected = selectRandomRobotwin();
+  lastRobotwinKeys = new Set(selected.map((item) => item.id));
+  renderEpisodeGrid(
+    "[data-robotwin-showcase]",
+    selected,
+    "robotwin-trace-card trace-enabled-card",
+  );
+}
+
+const LIBERO_SUITE_ORDER = [
+  "libero_spatial",
+  "libero_object",
+  "libero_goal",
+  "libero_90",
+];
+const LIBERO_SUITE_LABELS = {
+  libero_spatial: { zh: "空间类任务", en: "Spatial tasks", tag: "SPATIAL" },
+  libero_object: { zh: "物体类任务", en: "Object tasks", tag: "OBJECT" },
+  libero_goal: { zh: "目标类任务", en: "Goal tasks", tag: "GOAL" },
+  libero_90: { zh: "LIBERO-90 任务", en: "LIBERO-90 tasks", tag: "LIBERO-90" },
+};
+const lastSuiteKeys = new Map();
+
+function renderSuiteGroupedLibero() {
+  const grid = document.querySelector("[data-random-success-grid]");
+  if (!grid || !randomSuccessPool.length) return false;
+  const fragments = [];
+  LIBERO_SUITE_ORDER.forEach((suite) => {
+    const items = randomSuccessPool.filter((item) =>
+      (item.task || "").startsWith(`${suite}/`),
+    );
+    if (!items.length) return;
+    const previous = lastSuiteKeys.get(suite) || new Set();
+    const fresh = shuffled(items.filter((item) => !previous.has(item.id)));
+    const retained = shuffled(items.filter((item) => previous.has(item.id)));
+    const selected = [...fresh, ...retained].slice(0, 6);
+    lastSuiteKeys.set(suite, new Set(selected.map((item) => item.id)));
+    const label = LIBERO_SUITE_LABELS[suite];
+    const header = document.createElement("header");
+    header.className = "libero-group-header";
+    const title = document.createElement("h4");
+    const titleZh = document.createElement("span");
+    titleZh.className = "lang-zh";
+    titleZh.textContent = label.zh;
+    const titleEn = document.createElement("span");
+    titleEn.className = "lang-en";
+    titleEn.textContent = label.en;
+    title.append(titleZh, titleEn);
+    const tag = document.createElement("p");
+    tag.textContent = label.tag;
+    const count = document.createElement("small");
+    count.textContent = `${selected.length} / ${items.length}`;
+    header.append(title, tag, count);
+    fragments.push(header);
+    fragments.push(
+      ...selected.map((item) =>
+        createEpisodeCard(item, "random-success-card trace-enabled-card"),
+      ),
+    );
+  });
+  if (!fragments.length) return false;
+  grid.replaceChildren(...fragments);
+  grid.classList.add("is-grouped");
+  return true;
+}
+
+const LIBERO_GROUP_ORDER = ["bowl", "food", "cabinet"];
+
+function renderGroupedLibero() {
+  const grid = document.querySelector("[data-random-success-grid]");
+  if (!grid) return false;
+  if (!liberoIterationData?.items || !liberoIterationData?.groups) return false;
+  const fragments = [];
+  LIBERO_GROUP_ORDER.forEach((groupKey) => {
+    const group = liberoIterationData.groups[groupKey];
+    if (!group) return;
+    const groupItems = randomSuccessPool.filter(
+      (item) => liberoIterationData.items[item.id]?.group === groupKey,
+    );
+    if (!groupItems.length) return;
+    const header = document.createElement("header");
+    header.className = "libero-group-header";
+    const title = document.createElement("h4");
+    const titleZh = document.createElement("span");
+    titleZh.className = "lang-zh";
+    titleZh.textContent = group.label_zh;
+    const titleEn = document.createElement("span");
+    titleEn.className = "lang-en";
+    titleEn.textContent = group.label_en;
+    title.append(titleZh, titleEn);
+    const desc = document.createElement("p");
+    const descZh = document.createElement("span");
+    descZh.className = "lang-zh";
+    descZh.textContent = group.desc_zh;
+    const descEn = document.createElement("span");
+    descEn.className = "lang-en";
+    descEn.textContent = group.desc_en;
+    desc.append(descZh, descEn);
+    const count = document.createElement("small");
+    count.textContent = String(groupItems.length);
+    header.append(title, desc, count);
+    fragments.push(header);
+    fragments.push(
+      ...groupItems.map((item) =>
+        createEpisodeCard(item, "random-success-card trace-enabled-card"),
+      ),
+    );
+  });
+  if (!fragments.length) return false;
+  grid.replaceChildren(...fragments);
+  grid.classList.add("is-grouped");
+  document
+    .querySelector("[data-randomize-successes]")
+    ?.closest(".random-gallery-toolbar")
+    ?.setAttribute("hidden", "");
+  return true;
+}
+
+function traceTitle(item) {
+  return root.dataset.lang === "zh" ? item.title_zh : item.title_en;
+}
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+function svgEl(name, attrs) {
+  const el = document.createElementNS(SVG_NS, name);
+  Object.keys(attrs || {}).forEach((key) => el.setAttribute(key, attrs[key]));
+  return el;
+}
+
+function drawIterationCurve(svg, info) {
+  if (!svg || !liberoIterationData?.curve?.length) return;
+  const curve = liberoIterationData.curve;
+  const total = liberoIterationData.total_tasks || 120;
+  const left = 44;
+  const right = 328;
+  const top = 14;
+  const bottom = 126;
+  const relMin = curve[0].release;
+  const relMax = curve[curve.length - 1].release;
+  const x = (release) =>
+    left + ((release - relMin) / (relMax - relMin || 1)) * (right - left);
+  const y = (count) => bottom - (count / total) * (bottom - top);
+  svg.replaceChildren();
+  const grid = svgEl("g", { class: "iteration-grid" });
+  [0.25, 0.5, 0.75].forEach((ratio) => {
+    const gy = y(total * ratio);
+    grid.append(
+      svgEl("line", { x1: left, y1: gy, x2: right, y2: gy }),
+    );
+    const label = svgEl("text", { x: left - 6, y: gy + 4, "text-anchor": "end" });
+    label.textContent = `${Math.round(ratio * 100)}%`;
+    grid.append(label);
+  });
+  grid.append(
+    svgEl("line", { x1: left, y1: bottom, x2: right, y2: bottom }),
+  );
+  const zero = svgEl("text", { x: left - 6, y: bottom + 4, "text-anchor": "end" });
+  zero.textContent = "0%";
+  grid.append(zero);
+  const firstTick = svgEl("text", {
+    x: left,
+    y: bottom + 16,
+    "text-anchor": "start",
+    class: "iteration-x-label",
+  });
+  firstTick.textContent = `release ${relMin}`;
+  const lastTick = svgEl("text", {
+    x: right,
+    y: bottom + 16,
+    "text-anchor": "end",
+    class: "iteration-x-label",
+  });
+  lastTick.textContent = `release ${relMax}`;
+  grid.append(firstTick, lastTick);
+  svg.append(grid);
+  const path = curve
+    .map((point, index) =>
+      `${index === 0 ? "M" : "L"}${x(point.release).toFixed(1)} ${y(point.cumulative).toFixed(1)}`,
+    )
+    .join(" ");
+  svg.append(svgEl("path", { class: "iteration-line", d: path }));
+  curve.forEach((point) => {
+    svg.append(
+      svgEl("circle", {
+        class: "iteration-point",
+        cx: x(point.release).toFixed(1),
+        cy: y(point.cumulative).toFixed(1),
+        r: 2.4,
+      }),
+    );
+  });
+  const markX = x(info.release);
+  const markY = y(info.cumulative);
+  svg.append(
+    svgEl("circle", {
+      class: "iteration-mark",
+      cx: markX.toFixed(1),
+      cy: markY.toFixed(1),
+      r: 5,
+    }),
+  );
+  const mark = svgEl("text", {
+    class: "iteration-mark-label",
+    x: (markX + (markX > right - 70 ? -10 : 10)).toFixed(1),
+    y: (markY - 8 < top + 8 ? markY + 16 : markY - 8).toFixed(1),
+    "text-anchor": markX > right - 70 ? "end" : "start",
+  });
+  mark.textContent = `${info.cumulative}/${total}`;
+  svg.append(mark);
+}
+
+function renderTraceIteration(item, isZh) {
+  const block = traceDialog?.querySelector("[data-trace-iteration]");
+  if (!block) return;
+  const info = liberoIterationData?.items?.[item.id];
+  if (!info || !liberoIterationData?.curve?.length) {
+    block.setAttribute("hidden", "");
+    return;
+  }
+  block.removeAttribute("hidden");
+  const releaseLabel = block.querySelector("[data-trace-iteration-release]");
+  if (releaseLabel) {
+    releaseLabel.textContent = isZh
+      ? `第 ${info.release_index}/${info.releases_total} 个迭代 release · release ${info.release} 首次通过`
+      : `iteration ${info.release_index}/${info.releases_total} · first pass at release ${info.release}`;
+  }
+  drawIterationCurve(block.querySelector("[data-trace-iteration-curve]"), info);
+}
+
+function renderTraceDialog(item) {
+  if (!traceDialog) return;
+  const isZh = root.dataset.lang === "zh";
+  traceDialog.querySelector("[data-trace-platform]").textContent =
+    `${item.platform} · ${item.task}`;
+  traceDialog.querySelector("[data-trace-title]").textContent = traceTitle(item);
+  traceDialog.querySelector("[data-trace-task]").textContent = item.task;
+  traceDialog.querySelector("[data-trace-scope]").textContent =
+    item.trace_scope === "exact_episode"
+      ? isZh
+        ? "精确回合"
+        : "exact episode"
+      : item.trace_scope;
+  traceDialog.querySelector("[data-trace-verdict]").textContent =
+    item.verdict === "simulator_success"
+      ? isZh
+        ? "仿真成功"
+        : "simulator success"
+      : item.verdict;
+  renderTraceIteration(item, isZh);
+  const steps = traceDialog.querySelector("[data-trace-steps]");
+  steps.replaceChildren(
+    ...item.tool_chain.map((step) => {
+      const row = document.createElement("li");
+      row.className = step.ok ? "is-success" : "is-failure";
+      const index = document.createElement("span");
+      index.textContent = String(step.index ?? "");
+      const body = document.createElement("div");
+      const tool = document.createElement("strong");
+      tool.textContent = step.tool;
+      const status = document.createElement("small");
+      status.textContent = step.ok
+        ? isZh
+          ? "通过"
+          : "OK"
+        : isZh
+          ? "失败"
+          : "FAILED";
+      body.append(tool, status);
+      if (step.detail) {
+        const detail = document.createElement("code");
+        detail.textContent = step.detail;
+        body.append(detail);
+      }
+      row.append(index, body);
+      return row;
+    }),
+  );
+
+  if (traceDialogVideo) {
+    const source = traceDialogVideo.querySelector("source");
+    traceDialogVideo.pause();
+    traceDialogVideo.poster = assetHref(item.poster);
+    if (source) source.src = assetHref(item.video);
+    traceDialogVideo.load();
+  }
+}
+
+function openTrace(item) {
+  if (!traceDialog || !item) return;
+  activeTraceItem = item;
+  renderTraceDialog(item);
+  evidenceVideos.forEach((video) => video.pause());
+  traceDialog.showModal();
+  traceDialogVideo?.play().catch(() => undefined);
+}
+
+function resumeVisibleVideos() {
+  evidenceVideos.forEach((video) => {
+    const rect = video.getBoundingClientRect();
+    const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (visible && video.dataset.userPaused !== "true" && !reduceMotion.matches) {
+      playVideo(video);
+    }
+  });
+}
+
+function closeTrace() {
+  if (!traceDialog?.open) return;
+  traceDialogVideo?.pause();
+  traceDialog.close();
+}
+
+function syncVideoLabel(video) {
+  const playing = !video.paused;
+  const language = root.dataset.lang === "zh" ? "zh" : "en";
+  const container = video.closest("article, aside, figure");
+  const title =
+    (language === "zh" ? video.dataset.titleZh : video.dataset.titleEn) ||
+    container
+      ?.querySelector(`h3.lang-${language}, h3 .lang-${language}`)
+      ?.textContent?.trim() ||
+    container
+      ?.querySelector(`strong.lang-${language}`)
+      ?.textContent?.trim() ||
+    "";
+  if (video.dataset.physicalVideo !== undefined) {
+    const label =
+      language === "zh"
+        ? `打开${title || "真机"}视频，可展开交互式工具调用链`
+        : `Open ${title || "real-robot"} video; interactive tool chain available`;
+    video.setAttribute("aria-label", label);
+    video.removeAttribute("aria-pressed");
+    video.classList.toggle("is-paused", !playing);
+    return;
+  }
+  if (video.dataset.traceId) {
+    const label =
+      language === "zh"
+        ? `查看${title || "此回合"}工具调用链`
+        : `View tool trace for ${title || "this episode"}`;
+    video.setAttribute("aria-label", label);
+    video.removeAttribute("aria-pressed");
+    return;
+  }
+  const label =
+    language === "zh"
+      ? playing
+        ? `暂停${title || "此"}视频`
+        : `播放${title || "此"}视频`
+      : playing
+        ? `Pause ${title || "this"} video`
+        : `Play ${title || "this"} video`;
+  video.setAttribute("aria-label", label);
+  video.setAttribute("aria-pressed", String(playing));
+  video.classList.toggle("is-paused", !playing);
+}
+
+function pauseVideo(video, userInitiated = false) {
+  video.pause();
+  if (userInitiated) video.dataset.userPaused = "true";
+  syncVideoLabel(video);
+}
+
+function playVideo(video, userInitiated = false) {
+  if (userInitiated) delete video.dataset.userPaused;
+  video.play().then(() => syncVideoLabel(video)).catch(() => syncVideoLabel(video));
+}
+
+function registerEvidenceVideo(video) {
+  if (registeredVideos.has(video)) return;
+  registeredVideos.add(video);
+  evidenceVideos.push(video);
+  video.setAttribute("role", "button");
+  video.setAttribute("tabindex", "0");
+  syncVideoLabel(video);
+  const activate = () => {
+    const item = episodeById.get(video.dataset.traceId);
+    if (item) {
+      openTrace(item);
+      return;
+    }
+    if (video.paused) playVideo(video, true);
+    else pauseVideo(video, true);
+  };
+  video.addEventListener("click", activate);
+  video.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    activate();
+  });
+  videoObserver.observe(video);
+}
+
+const videoObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      if (
+        entry.isIntersecting &&
+        !document.hidden &&
+        !reduceMotion.matches &&
+        video.dataset.userPaused !== "true"
+      ) {
+        playVideo(video);
+      } else if (!entry.isIntersecting || document.hidden || reduceMotion.matches) {
+        pauseVideo(video);
+      }
+    });
+  },
+  { rootMargin: "120px 0px", threshold: 0.15 },
+);
+
+document
+  .querySelectorAll(".evidence-video")
+  .forEach((video) => registerEvidenceVideo(video));
+
+document
+  .querySelector("[data-randomize-successes]")
+  ?.addEventListener("click", renderRandomSuccesses);
+document
+  .querySelector("[data-randomize-robotwin]")
+  ?.addEventListener("click", renderRandomRobotwin);
+document
+  .querySelector("[data-randomize-code]")
+  ?.addEventListener("click", () => {
+    renderRandomCodeShowcase();
+    setLanguage(root.dataset.lang);
+  });
+
+traceDialog
+  ?.querySelector("[data-close-trace]")
+  ?.addEventListener("click", closeTrace);
+traceDialog?.addEventListener("click", (event) => {
+  if (event.target === traceDialog) closeTrace();
+});
+traceDialog?.addEventListener("close", () => {
+  traceDialogVideo?.pause();
+  activeTraceItem = null;
+  resumeVisibleVideos();
+});
+
+async function loadSimulationShowcase() {
+  const response = await fetch(
+    "../../assets/roborsi/evidence/simulation-showcase-v1.json?v=20260902-1",
+  );
+  if (!response.ok) {
+    throw new Error(`showcase manifest HTTP ${response.status}`);
+  }
+  const payload = await response.json();
+  if (
+    payload.schema !== "robot-rsi.simulation-showcase.v1" ||
+    payload.counts?.act !== 1 ||
+    payload.counts?.libero_showcase !== 9 ||
+    payload.counts?.libero_pool !== 24 ||
+    payload.counts?.robotwin !== 24
+  ) {
+    throw new Error("unexpected showcase manifest");
+  }
+  const robotwinShowcase = payload.robotwin_showcase.filter(
+    (item) => item.showcase_eligible !== false,
+  );
+  if (robotwinShowcase.length < 6) {
+    throw new Error("insufficient RoboTwin showcase episodes");
+  }
+  [
+    ...payload.libero_showcase,
+    ...payload.libero_random_pool,
+    ...robotwinShowcase,
+    ...payload.act_showcase,
+  ].forEach((item) => episodeById.set(item.id, item));
+  randomSuccessPool = payload.libero_random_pool;
+  renderEpisodeGrid(
+    "[data-libero-showcase]",
+    payload.libero_showcase,
+    "evidence-card trace-enabled-card",
+  );
+  robotwinSuccessPool = robotwinShowcase;
+  codeShowcasePool = payload.libero_showcase;
+  renderRandomRobotwin();
+  renderRandomSuccesses();
+  renderRandomCodeShowcase();
+  setLanguage(root.dataset.lang);
+}
+
+async function loadLiberoIterationData() {
+  try {
+    const response = await fetch(
+      "../../assets/roborsi/evidence/libero-task-iteration-v1.json?v=20260904-1",
+    );
+    if (!response.ok) return;
+    const payload = await response.json();
+    if (payload.schema !== "robot-rsi.libero-task-iteration.v1") return;
+    liberoIterationData = payload;
+  } catch (error) {
+    console.error("Unable to load LIBERO iteration data", error);
+  }
+}
+
+// Per review feedback: keep the per-task iteration curve and goal-object grouping
+// dormant for now — do not fetch iteration data, render the classic random-6 gallery.
+loadSimulationShowcase()
+  .catch((error) => {
+  console.error("Unable to load simulation showcase", error);
+  document.querySelectorAll(".showcase-loading").forEach((element) => {
+    element.textContent =
+      root.dataset.lang === "zh"
+        ? "仿真素材暂时无法载入。"
+        : "Simulation media is temporarily unavailable.";
+  });
+});
+
+document.addEventListener("visibilitychange", () => {
+  evidenceVideos.forEach((video) => {
+    if (document.hidden) {
+      video.pause();
+      syncVideoLabel(video);
+    }
+  });
+  syncAgentAnimations();
+  syncFrameworkVideos();
+});
+
+const copyButton = document.querySelector("[data-copy-bibtex]");
+copyButton?.addEventListener("click", async () => {
+  const bibtex = document.querySelector("#bibtex")?.textContent || "";
+  if (!bibtex) return;
+  try {
+    let copied = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(bibtex);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+    if (!copied) {
+      const fallbackInput = document.createElement("textarea");
+      fallbackInput.value = bibtex;
+      fallbackInput.setAttribute("readonly", "");
+      fallbackInput.style.position = "fixed";
+      fallbackInput.style.opacity = "0";
+      document.body.appendChild(fallbackInput);
+      fallbackInput.select();
+      copied = document.execCommand("copy");
+      fallbackInput.remove();
+      if (!copied) throw new Error("BibTeX copy failed");
+    }
+    const originalZh = copyButton.querySelector(".lang-zh")?.textContent;
+    const originalEn = copyButton.querySelector(".lang-en")?.textContent;
+    if (copyButton.querySelector(".lang-zh")) {
+      copyButton.querySelector(".lang-zh").textContent = "已复制";
+    }
+    if (copyButton.querySelector(".lang-en")) {
+      copyButton.querySelector(".lang-en").textContent = "Copied";
+    }
+    window.setTimeout(() => {
+      if (copyButton.querySelector(".lang-zh")) {
+        copyButton.querySelector(".lang-zh").textContent = originalZh || "复制";
+      }
+      if (copyButton.querySelector(".lang-en")) {
+        copyButton.querySelector(".lang-en").textContent = originalEn || "Copy";
+      }
+    }, 1600);
+  } catch {
+    document.querySelector("#bibtex")?.parentElement?.focus();
+  }
+});
+
+let resizeTimer;
+window.addEventListener(
+  "resize",
+  () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      scheduleHeroOrbitPosition();
+      scheduleEngineeringMorph();
+    }, 120);
+  },
+  { passive: true },
+);
+
+document.fonts?.ready.then(() => {
+  scheduleHeroOrbitPosition();
+  scheduleEngineeringMorph();
+});
+window.addEventListener(
+  "load",
+  () => {
+    scheduleHeroOrbitPosition();
+    scheduleEngineeringMorph();
+  },
+  { once: true },
+);
+
+const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+setLanguage(requestedLanguage === "zh" ? "zh" : "en");

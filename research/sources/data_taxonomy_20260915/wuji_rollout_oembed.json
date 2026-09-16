@@ -1,0 +1,13 @@
+{
+  "url": "https://x.com/Lingxiao234/status/2097717020540481630",
+  "author_name": "lingxiao guo",
+  "author_url": "https://x.com/Lingxiao234",
+  "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I wanted to find whether GPT-6 hits its limit on robot dexterity.<br><br>So I just gave it two videos, without states or actions, and told it to do real2sim and physical retarget to Wuji hands.<br><br>Here are the successful physical rollouts \u2014 a Rubik&#39;s cube, then an egocentric human video. <a href=\"https://t.co/xuDzgjjRS4\">pic.twitter.com/xuDzgjjRS4</a></p>&mdash; lingxiao guo (@Lingxiao234) <a href=\"https://x.com/Lingxiao234/status/2097717020540481630?ref_src=twsrc%5Etfw\">September 9, 2026</a></blockquote>\n\n",
+  "width": 550,
+  "height": null,
+  "type": "rich",
+  "cache_age": "3153600000",
+  "provider_name": "X",
+  "provider_url": "https://x.com",
+  "version": "1.0"
+}

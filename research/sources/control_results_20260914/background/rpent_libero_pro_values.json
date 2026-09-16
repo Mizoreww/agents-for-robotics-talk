@@ -1,0 +1,67 @@
+{
+  "source": "https://arxiv.org/pdf/2607.08448v4",
+  "anchor": "Table 3, PDF page 8; Appendix C.2",
+  "cells": [
+    "Spat-T",
+    "Spat-S",
+    "Obj-T",
+    "Obj-S",
+    "Goal-T",
+    "Goal-S",
+    "L10-T",
+    "L10-S"
+  ],
+  "trials_per_cell": 100,
+  "protocol": "Few-shot: task seed 0 for exploration memory only; held-out seeds 1–10 for evaluation; no reset in evaluation. Same frozen pi05_libero130_fullshot checkpoint.",
+  "count_provenance": "Success numerators mechanically derived from eight cell percentages, each with N=100; not independently recounted from raw episode logs.",
+  "rows": [
+    {
+      "method": "pi_RLinf",
+      "cells": [
+        42,
+        59,
+        71,
+        78,
+        45,
+        42,
+        49,
+        14
+      ],
+      "derived_successes": 400,
+      "episodes": 800,
+      "published_success_percent": 50.0
+    },
+    {
+      "method": "Harness VLA (Codex)",
+      "cells": [
+        81,
+        69,
+        94,
+        91,
+        75,
+        66,
+        52,
+        49
+      ],
+      "derived_successes": 577,
+      "episodes": 800,
+      "published_success_percent": 72.1
+    },
+    {
+      "method": "Harness VLA (CC)",
+      "cells": [
+        94,
+        80,
+        88,
+        90,
+        87,
+        87,
+        71,
+        62
+      ],
+      "derived_successes": 659,
+      "episodes": 800,
+      "published_success_percent": 82.4
+    }
+  ]
+}

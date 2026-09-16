@@ -1,0 +1,1343 @@
+--- baseline/.build/browser_audit.mjs
++++ current/.build/browser_audit.mjs
+@@ -66,7 +66,7 @@
+ ui.figureDialog = await page.evaluate(() => ({ open: $('figure-dialog').open, loaded: $('large-figure').complete && $('large-figure').naturalWidth > 0 }));
+ await page.keyboard.press('Escape'); await page.waitForTimeout(200); ui.figureDialog.closed = await page.evaluate(() => !$('figure-dialog').open);
+ ui.addedFigures = [];
+-for (const n of [12, 13, 14, 15, 24, 26, 27, 28, 29, 30]) {
++for (const n of [12, 13, 14, 15, 25, 28, 29, 30, 31, 33]) {
+  await goto(n); await page.click('#slide img.original'); await page.waitForTimeout(300);
+  ui.addedFigures.push(await page.evaluate(n => ({slide:n,open:$('figure-dialog').open,loaded:$('large-figure').complete && $('large-figure').naturalWidth>0}),n));
+  await page.keyboard.press('Escape');
+--- baseline/.build/build_selfcontained.py
++++ current/.build/build_selfcontained.py
+@@ -7,7 +7,7 @@
+ old=json.loads((B/'slide_records_focus.json').read_text())
+ media=json.loads((OUT/'offline_player/media_credits.json').read_text())
+ community=[]
+-for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json']:
++for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json','clip_manifest_v11.json']:
+  community += json.loads((B/manifest).read_text())
+ for c in community:
+  c.setdefault('source_url',next((m['sourceUrl'] for m in media if m['name']==c['name']),''))
+@@ -28,6 +28,8 @@
+ from enpire_v018 import verify_enpire, verify_puzzles, build_slides as enpire_slides
+ verify_enpire(ROOT)
+ verify_puzzles(ROOT)
++from enpire_order_v019 import verify_reset_sources
++verify_reset_sources(ROOT)
+ assets={}; layouts={}; image_audit=[]
+ def asset(data,mime):
+  key=hashlib.sha256(data).hexdigest()
+@@ -394,11 +396,11 @@
+  'robolab_results':('RoboLab: Overall Results',report_lab_results(),['ANON']),
+  'report_heatmap':('RoboDojo: Task-Level Patterns',report_task_heatmap(),['ANON']),
+ })
+-order=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 'enpire_env', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 'enpire_robocasa', 'enpire_demos', 'enpire_transfer', 18, 'rsi_summary', 'end', 'thanks']
++order=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 'enpire_demos', 15, 'enpire_env', 'enpire_resets', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 18, 'enpire_robocasa', 'rsi_summary', 'end', 'thanks']
+ assert len(order)==36
+ chapter_keys={'control','world','improve'}
+ new_titles={1:'Agents for Robotics',2:'Demo: Painting with Feedback',10:'Real Episode and Its Twin',11:'Agentic Real2Sim: Method',12:'DROID-100: Protocol and Results',15:'ENPIRE: Environment and Improvement',16:'ENPIRE: Reset and Verification',17:'ENPIRE: Pin Insertion Curve',18:'ENPIRE: Cost of Physical Research',19:'Data: Mechanism and CAD Assets'}
+-minutes=[0.5, 1, 1, 1.5, 2, 2, 2, 1, 1, 2, 1.5, 2.5, 2, 2, 1.5, 1.5, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 2.5, 2.5, 2, 1.5, 2, 2, 2.5, 1.5, 1, 0.5]
++minutes=[0.5, 1, 1, 1.5, 2, 2, 2, 1, 1, 2, 1.5, 2.5, 2, 2, 1.5, 1.5, 1, 1, 2, 2, 2, 1, 1, 2, 2, 1.5, 2.5, 2, 2.5, 2.5, 2, 2.5, 1.5, 1.5, 1, 0.5]
+ assert len(minutes)==36 and sum(minutes)==59,sum(minutes)
+ script_text=(B/'script_revised.md').read_text()
+ chunks=re.split(r'^## (\d{2})\. (.+)\n',script_text,flags=re.M)
+@@ -557,7 +559,8 @@
+  'real2sim_results':'Agentic Real2Sim v3 Figure 3 · partial: score 7; failed: ≤6 or no valid record · not a total-cost or predictive-validity metric',
+  'idea_tree':'ENPIRE Appendix B.6, original Figure 12 · one team run, best-score trajectory; not independent causal ablations',
+  'puzzle_demos':'Cube: author-posted simulation demo · Claw: recorded IK/joint path with pregrasped ideal grasps, not contact-dynamics evidence',
+- 'enpire_env':'ENPIRE official reset and verification recordings · full sequences; 8× reset, 1× verification',
++ 'enpire_resets':'ENPIRE official reset cases · complete sequences at 8×; no new trial-count claim',
++ 'enpire_env':'ENPIRE official Auto Evaluation · full detector sequence at 1×; reward pipeline is our source-grounded schematic',
+  'enpire_methods':'ENPIRE §2, §3.1–3.2 and Appendix B.5 · official task photographs; policy and training code are editable',
+  'enpire_fleet_page':'ENPIRE §3.3 and Figure 3 pin panel · full official fleet sequence at 8×; research time, not control latency',
+  'enpire_demos':'ENPIRE official learned-policy demonstrations · full recordings at 8×; no independent trial counts inferred from clips',
+@@ -666,7 +669,7 @@
+  payloads.append(f'<script id="{m["payloadId"]}" type="application/octet-stream" data-sha256="{m["sha256"]}">{base64.b64encode(raw).decode()}</script>')
+ page_html=page_html.replace('<!-- VIDEO_PAYLOADS -->','\n'.join(payloads))
+ dest=OUT/'Agents_for_Robotics_Self_Contained.html';dest.write_text(page_html)
+-assert len(new_media)==25,len(new_media)
++assert len(new_media)==28,len(new_media)
+ report={'slides':len(slides),'videos':len(new_media),'media_seconds':sum(m['duration_seconds'] for m in new_media),'minutes':sum(minutes),'chapter_opening_slides':[n for n,key in enumerate(order,1) if key in chapter_keys],'bytes':dest.stat().st_size,'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'standalone_file':str(dest),'media':[{k:m[k] for k in ['name','slide','sha256','duration_seconds']} for m in new_media],'images':image_audit,'native_text':True,'all_fonts_embedded':True}
+ (B/'standalone_build_audit.json').write_text(json.dumps(report,indent=2))
+ (B/'slide_records_revised.json').write_text(json.dumps([{k:v for k,v in r.items() if k not in ['html','notesHtml']} for r in slides],ensure_ascii=False,indent=2))
+--- baseline/.build/enpire_order_v019.py
++++ current/.build/enpire_order_v019.py
+@@ -0,0 +1,21 @@
++"""Fail-closed provenance for the official-site reset cases added in v0.19."""
++import hashlib
++import json
++
++RESET_CLIPS = {'enpire_reset_pusht', 'enpire_reset_tie', 'enpire_reset_gpu'}
++
++
++def verify_reset_sources(root):
++    pins = json.loads((root / 'research/enpire_v0_19_sources.json').read_text())
++    for file, expected in pins['sha256'].items():
++        if hashlib.sha256((root / file).read_bytes()).hexdigest() != expected:
++            raise ValueError(f'ENPIRE reset source drift: {file}')
++    clips = json.loads((root / '.build/clip_manifest_v11.json').read_text())
++    if {c['name'] for c in clips} != RESET_CLIPS:
++        raise ValueError('Incomplete reset case selection')
++    for clip in clips:
++        if clip['start_seconds'] != 0 or clip['full_decode'] != 'passed':
++            raise ValueError('Reset case must preserve a complete decoded sequence')
++        if abs(clip['duration_seconds'] * 8 - clip['source_duration_seconds']) >= .4:
++            raise ValueError('Reset timing or playback-rate drift')
++    return pins
+--- baseline/.build/enpire_v018.py
++++ current/.build/enpire_v018.py
+@@ -47,12 +47,35 @@
+         placements.setdefault(key, []).append((name, box))
+         return els
+ 
+-    env = page('ENPIRE: Reset and Verification', 3)
+-    env += [text('Automatic reset', 64, 151, 560, 36, 26, '#1d7d76', True),
+-            text('Two-view verification', 656, 151, 560, 36, 26, '#1d7d76', True)]
+-    env += video('enpire_env', 'enpire_reset_full', 64, 210, 560, 327, 'Pin reset · complete sequence · 8×')
+-    env += video('enpire_env', 'enpire_verify_full', 656, 210, 560, 327, 'Zip-tie detector views · complete sequence · 1×')
+-    env += band('Reset and verifier stay fixed during policy improvement.')
++    env = page('ENPIRE: Auto Evaluation', 3)
++    env += [text('Two-view outcome verification', 64, 156, 560, 38, 25, '#1d7d76', True)]
++    env += video('enpire_env', 'enpire_verify_full', 64, 224, 560, 315, 'Zip-tie detector views · complete sequence · 1×')
++    for i, (label, detail) in enumerate([
++        ('Detect + segment', 'Head and strap in each camera'),
++        ('Check each view', 'Geometry + fixed length threshold'),
++        ('Fuse verdicts: AND', 'One fixed binary reward')]):
++        y = 184 + i * 139
++        env += [rect(752, y, 464, 93, '#f4f6f5', '#c6d9d6'),
++                text(label, 770, y+12, 428, 34, 26, '#1d7d76', True),
++                text(detail, 770, y+55, 428, 27, 20, '#646464')]
++        if i < 2:
++            env += [connector(984, y+93, 984, y+139)]
++    env += band('The reward definition stays fixed during policy improvement.')
++
++    def four_videos(key, title, cases):
++        els = page(title, 3)
++        for i, (name, label) in enumerate(cases):
++            x = 64 + (i % 2) * 592
++            y = 147 + (i // 2) * 252
++            els += [text(label, x, y, 560, 32, 23, '#1d7d76', True)]
++            els += video(key, name, x, y+39, 560, 187, 'Complete official sequence · 8×')
++        return els
++
++    resets = four_videos('enpire_resets', 'ENPIRE: Auto Reset', [
++        ('enpire_reset_pusht', 'Case 1 · Push-T'),
++        ('enpire_reset_full', 'Case 2 · Pin insertion'),
++        ('enpire_reset_tie', 'Case 3 · Tie zip-tie'),
++        ('enpire_reset_gpu', 'Case 4 · GPU insertion')])
+ 
+     methods = page('ENPIRE: Two Ways to Improve Policy', 3)
+     for x, title, file, equation, detail in [
+@@ -74,27 +97,15 @@
+               text('8 pairs: ~40 min', 690, 551, 490, 42, 30, '#1d7d76', True, align='center'),
+               text('Time to near-perfect pin performance · conditional retries allowed', 64, 615, 1152, 35, 21, '#646464', align='center')]
+ 
+-    demos = page('ENPIRE: Learned Manipulation Demos', 3)
+-    for x, name, label in [(64, 'enpire_pin', 'Pin insertion'), (460, 'enpire_tie', 'Tie zip-tie'), (856, 'enpire_cut', 'Cut zip-tie')]:
+-        demos += [text(label, x, 155, 360, 37, 26, '#1d7d76', True)]
+-        demos += video('enpire_demos', name, x, 222, 360, 312, 'Complete official sequence · 8×')
+-    demos += band('Observe recovery across attempts; physical pass@8 includes conditional retries.')
++    demos = four_videos('enpire_demos', 'ENPIRE: Learned Manipulation Demos', [
++        ('enpire_pin', 'Pin insertion'), ('enpire_gpu', 'GPU insertion'),
++        ('enpire_tie', 'Tie zip-tie'), ('enpire_cut', 'Cut zip-tie')])
+ 
+-    transfer = page('ENPIRE: Experience Across Tasks', 3)
+-    for i, (label, sub) in enumerate([('Pin autoresearch', 'Experiments + reflection'), ('Written recipes', 'Persistent experience'), ('GPU autoresearch', 'New task instructions')]):
+-        x = 64 + 404*i
+-        transfer += [rect(x, 158, 344, 100, '#eaf5f3' if i == 1 else '#f4f6f5', '#c6d9d6'),
+-                     text(label, x+10, 177, 324, 32, 24, '#1d7d76', True, align='center'),
+-                     text(sub, x+10, 216, 324, 28, 19, '#646464', align='center')]
+-        if i < 2:
+-            transfer += [connector(x+344, 208, x+404, 208)]
+-    transfer += video('enpire_transfer', 'enpire_gpu', 64, 298, 650, 307, 'GPU insertion · complete official sequence · 8×')
+-    transfer += [text('What carries over?', 764, 339, 444, 40, 28, '#1d7d76', True),
+-                 text('A written summary\nof training experience', 764, 397, 444, 87, 27),
+-                 text('No prior checkpoints or raw trajectories', 764, 511, 444, 71, 21, '#646464')]
+-
+-    rsi = page('Toward Recursive Self-Improvement', 3)
+-    rsi += [text('RSI: can experience improve the improver?', 64, 151, 1152, 44, 29, '#1d7d76', True)]
++    rsi = page('ENPIRE: Limits and the RSI Question', 3)
++    rsi += [text('Idle robots & compute', 64, 151, 540, 36, 27, '#aa514a', True),
++            text('Waiting, coding and coordination', 64, 192, 540, 31, 21, '#646464'),
++            text('More agents, more tokens', 676, 151, 540, 36, 27, '#aa514a', True),
++            text('Faster research is not cheaper research', 676, 192, 540, 31, 21, '#646464')]
+     for x, w, label, sub, accent in [(64, 260, 'Agent', 'Hypothesis + edits', True),
+                                     (438, 330, 'Policy / training code', 'New version', False),
+                                     (884, 332, 'Physical experiments', 'Fixed tests + logs', False)]:
+@@ -108,10 +119,10 @@
+             connector(532, 504, 625, 504), text('Better future research?', 658, 481, 558, 44, 29, '#aa514a', True),
+             text('Open test: held-out tasks, matched budgets, no regression', 64, 575, 1152, 45, 27, '#646464', align='center')]
+     return {
+-        'enpire_env': ('ENPIRE: Reset and Verification', env, ['S15', 'ENPIRE_SITE']),
++        'enpire_env': ('ENPIRE: Auto Evaluation', env, ['S15', 'ENPIRE_SITE']),
++        'enpire_resets': ('ENPIRE: Auto Reset', resets, ['S15', 'ENPIRE_SITE']),
+         'enpire_methods': ('ENPIRE: Two Ways to Improve Policy', methods, ['S15', 'ENPIRE_SITE', 'ENPIRE_CODE']),
+         'enpire_fleet_page': ('ENPIRE: Parallel Physical Research', fleet, ['S15', 'ENPIRE_SITE']),
+         'enpire_demos': ('ENPIRE: Learned Manipulation Demos', demos, ['S15', 'ENPIRE_SITE']),
+-        'enpire_transfer': ('ENPIRE: Experience Across Tasks', transfer, ['ENPIRE_TRANSFER', 'ENPIRE_SITE']),
+-        'rsi_summary': ('Toward Recursive Self-Improvement', rsi, ['ENPIRE_TRANSFER', 'ROBORSI', 'DGM']),
++        'rsi_summary': ('ENPIRE: Limits and the RSI Question', rsi, ['ENPIRE_SITE', 'ENPIRE_TRANSFER', 'ROBORSI', 'DGM']),
+     }
+--- baseline/.build/extended_visual_audit.mjs
++++ current/.build/extended_visual_audit.mjs
+@@ -1,11 +1,12 @@
+-// Additional v0.18 verification: original-figure screenshots and whole new-clip playback.
++// Additional v0.19 verification: original-figure screenshots and whole new-clip playback.
+ // Visual inspection is recorded separately; playback progression is not experiment validation.
+ import {createRequire} from 'node:module';
+-import {readFileSync, writeFileSync} from 'node:fs';
++import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
+ import {createHash} from 'node:crypto';
+ const require = createRequire(import.meta.url);
+ const {chromium} = require('playwright');
+ const root = '/home/limx/Desktop/agent_for_robotics';
++mkdirSync(`${root}/.build/v0_19_visual`,{recursive:true});
+ const sha = b => createHash('sha256').update(b).digest('hex');
+ const html_sha256 = sha(readFileSync(`${root}/output/Agents_for_Robotics_Self_Contained.html`));
+ const streamServedHash = async () => {
+@@ -30,17 +31,21 @@
+   const expectedDeck = readFileSync(`${root}/output/Agents_for_Robotics_Self_Contained.html`,'utf8').match(/<script type="application\/json" id="deck-data">([\s\S]*?)<\/script>/)[1];
+   if (loadedDeckHash !== sha(expectedDeck)) throw new Error('Loaded deck data differs from delivery');
+   const go = async n => {await page.evaluate(n=>show(n),n);await page.waitForFunction(()=>!loading);await page.waitForTimeout(200);};
++  for (let n=1;n<=36;n++) {
++    await go(n);
++    await page.locator('#slide').screenshot({path:`${root}/.build/v0_19_visual/${String(n).padStart(2,'0')}.png`});
++  }
+   const figures=[];
+-  for (const [n,index] of [[5,0],[5,1],[5,2],[12,0],[13,0],[13,1],[14,0],[15,0],[24,0],[26,0],[26,1],[27,0],[28,0],[29,0],[30,0]]) {
++  for (const [n,index] of [[5,0],[5,1],[5,2],[12,0],[13,0],[13,1],[14,0],[15,0],[25,0],[28,0],[28,1],[29,0],[30,0],[31,0],[33,0]]) {
+     await go(n);await page.locator('#slide img.original').nth(index).click();
+     await page.waitForFunction(()=>document.getElementById('large-figure').complete);
+-    const file=`${root}/.build/v0_18_visual/figure-${n}-${index}.png`;
++    const file=`${root}/.build/v0_19_visual/figure-${n}-${index}.png`;
+     await page.screenshot({path:file});
+     figures.push({slide:n,index,file});
+     await page.keyboard.press('Escape');
+   }
+   const playback=[];
+-  for (const [n,name] of [[9,'cube'],[9,'claw'],[25,'enpire_reset_full'],[25,'enpire_verify_full'],[29,'enpire_fleet'],[31,'enpire_pin'],[31,'enpire_tie'],[31,'enpire_cut'],[32,'enpire_gpu']]) {
++  for (const [n,name] of [[9,'cube'],[9,'claw'],[24,'enpire_pin'],[24,'enpire_gpu'],[24,'enpire_tie'],[24,'enpire_cut'],[26,'enpire_verify_full'],[27,'enpire_reset_pusht'],[27,'enpire_reset_full'],[27,'enpire_reset_tie'],[27,'enpire_reset_gpu'],[31,'enpire_fleet']]) {
+     await go(n);
+     const video=page.locator(`video[data-clip="${name}"]`);
+     await video.evaluate(async v=>{v.loop=false;v.currentTime=0;v.playbackRate=1;await v.play();});
+@@ -58,11 +63,11 @@
+     playback.push({slide:n,clip:name,samples,ended});
+   }
+   await go(34);await page.keyboard.press('n');
+-  await page.screenshot({path:`${root}/.build/v0_18_visual/script-desktop.png`});
++  await page.screenshot({path:`${root}/.build/v0_19_visual/script-desktop.png`});
+   await page.setViewportSize({width:390,height:844});
+-  await page.screenshot({path:`${root}/.build/v0_18_visual/script-mobile.png`,fullPage:true});
++  await page.screenshot({path:`${root}/.build/v0_19_visual/script-mobile.png`,fullPage:true});
+   if (await streamServedHash() !== html_sha256) throw new Error('Served HTML changed during audit');
+   const report={html_sha256,served_html_byte_identity:true,loaded_deck_data_sha256:loadedDeckHash,identity_check:'Streamed HTTP bytes before/after browser run plus SHA-256 of actual loaded deck-data DOM',figures,playback,scope:'Complete uninterrupted playback at 1x presentation rate; source speedups retained. Separate visual review uses sequential 1-second samples.'};
+-  writeFileSync(`${root}/.build/v0_18_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
++  writeFileSync(`${root}/.build/v0_19_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
+   console.log(JSON.stringify({html_sha256,figures:figures.length,completeClips:playback.map(x=>x.clip)}));
+ } finally {await browser.close();}
+--- baseline/.build/prepare_enpire_order_media.py
++++ current/.build/prepare_enpire_order_media.py
+@@ -0,0 +1,73 @@
++"""Archive three official reset cases; preserve complete sequences at site playback speed."""
++from concurrent.futures import ThreadPoolExecutor
++from pathlib import Path
++import hashlib
++import json
++import subprocess
++import urllib.request
++
++ROOT = Path(__file__).resolve().parent.parent
++ASSETS = ROOT / '.build/assets/v0_19'
++SITE = 'https://research.nvidia.com/labs/gear/enpire/'
++ASSETS.mkdir(parents=True, exist_ok=True)
++
++
++def sha(file):
++    return hashlib.sha256(file.read_bytes()).hexdigest()
++
++
++def probe(file):
++    return json.loads(subprocess.check_output([
++        '/home/limx/miniconda3/envs/RoboTwin/bin/ffprobe', '-v', 'error', '-show_streams', '-show_format', '-of', 'json', str(file)]))
++
++
++def prepare(item):
++    name, filename = item
++    source = ASSETS / filename
++    url = SITE + 'videos/' + filename
++    # Require each exact URL to occur in the already-pinned official inventory.
++    inventory = json.loads((ROOT / 'research/sources/enpire_20260916/media_inventory.json').read_text())
++    assert url in {row['url'] for row in inventory}
++    if not source.exists():
++        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
++        with urllib.request.urlopen(request, timeout=120) as response, source.open('wb') as out:
++            while chunk := response.read(1048576):
++                out.write(chunk)
++    source_seconds = float(probe(source)['format']['duration'])
++    clip = ROOT / '.build/clips' / (name + '.mp4')
++    poster = ASSETS / (name + '.jpg')
++    subprocess.run(['/home/limx/miniconda3/envs/RoboTwin/bin/ffmpeg', '-v', 'error', '-y', '-i', str(source), '-an',
++                    '-vf', 'setpts=PTS/8,scale=960:-2,fps=30', '-c:v', 'libx264',
++                    '-threads', '2', '-preset', 'medium', '-crf', '25', '-pix_fmt', 'yuv420p',
++                    '-movflags', '+faststart', str(clip)], check=True)
++    subprocess.run(['/home/limx/miniconda3/envs/RoboTwin/bin/ffmpeg', '-v', 'error', '-i', str(clip), '-f', 'null', '-'], check=True)
++    subprocess.run(['/home/limx/miniconda3/envs/RoboTwin/bin/ffmpeg', '-v', 'error', '-y', '-i', str(clip), '-frames:v', '1', str(poster)], check=True)
++    info = probe(clip)
++    stream = next(s for s in info['streams'] if s['codec_type'] == 'video')
++    seconds = float(info['format']['duration'])
++    assert abs(seconds * 8 - source_seconds) < .4
++    return {'name': name, 'source_url': SITE, 'download_url': url,
++            'source_file': str(source), 'source_sha256': sha(source), 'file': str(clip),
++            'poster': str(poster), 'start_seconds': 0, 'duration_seconds': seconds,
++            'source_duration_seconds': source_seconds, 'presentation_speed': 8,
++            'speed_multiplier': 1, 'audio': 'removed for narrated talk',
++            'width': stream['width'], 'height': stream['height'], 'codec': stream['codec_name'],
++            'pixel_format': stream['pix_fmt'], 'sha256': sha(clip), 'full_decode': 'passed',
++            'source_playback': 'Complete original reset, encoded at 8x source time; player 1x.'}
++
++
++with ThreadPoolExecutor(max_workers=3) as pool:
++    clips = list(pool.map(prepare, [
++        ('enpire_reset_pusht', 'pusht-reset-only-1.mp4'),
++        ('enpire_reset_tie', 'ziptie-reset-1.mp4'),
++        ('enpire_reset_gpu', 'gpu-reset-1.mp4')]))
++manifest = ROOT / '.build/clip_manifest_v11.json'
++manifest.write_text(json.dumps(clips, indent=2) + '\n')
++files = [manifest, ROOT / 'research/sources/enpire_order_20260916/website.html',
++         ROOT / 'research/sources/enpire_order_20260916/user_toc.png']
++for clip in clips:
++    files.extend(Path(clip[key]) for key in ('source_file', 'file', 'poster'))
++pins = {'source': SITE, 'selection': 'First official reset case per task; entire original sequence.',
++        'sha256': {str(f.relative_to(ROOT)): sha(f) for f in files}}
++(ROOT / 'research/enpire_v0_19_sources.json').write_text(json.dumps(pins, indent=2) + '\n')
++print(json.dumps([{'name': c['name'], 'seconds': c['duration_seconds']} for c in clips]))
+--- baseline/.build/results_slides_v09.py
++++ current/.build/results_slides_v09.py
+@@ -109,7 +109,7 @@
+     els += note('≤5 eligible candidates · 3 VLM judges · any judge’s best candidate ≥8/10 passes.\nBill covers model calls for the 100-episode run; perception, simulation and preparation costs are excluded.', 602, 18)
+     slides['real2sim_results'] = (title, els, ['S13'])
+ 
+-    title = 'ENPIRE: Two Physical Tasks'
++    title = 'ENPIRE: Evaluate Coding Agents'
+     els = page(title, 3, 'Official plot means at the stated research time · different metrics and policy families')
+     els += [figure(source_root / 'later/enpire_scaling_original.png',
+                    'ENPIRE complete original Figure 3; model curves, traces and fleet scaling',
+--- baseline/.build/script_revised.md
++++ current/.build/script_revised.md
+@@ -1,6 +1,6 @@
+ # Agents for Robotics — 中文讲稿
+ 
+-讲者：Zimo Huang · 2026-09-16 · 本地修订 0.18（2026-09-16）
++讲者：Zimo Huang · 2026-09-16 · 本地修订 0.19（2026-09-16）
+ 
+ 英文 slides，中文讲解，专有名词保留英文。建议 59 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图。Control 看能力与接口证据；Data 只看 Awesome-Astra 收录的社区 demos；Improvement 细讲 ENPIRE。
+ 
+@@ -275,7 +275,17 @@
+ 
+ 因此它先建立可重复、可验证的环境，再让 Agent 提出假设、组织实验和保留有效修改。章末我们再把这件事接到 RSI，也就是本 talk 所说的 Recursive Self-Improvement：能否连“如何改进”的经验也留下来，让以后做研究更有效？
+ 
+-## 24. ENPIRE: Environment and Improvement
++## 24. ENPIRE: Learned Manipulation Demos
++
++> 播放提示：依次展示 Pin insertion、GPU insertion、Tie zip-tie 和 Cut zip-tie。四段均为官网完整原视频转 8×，可以点开单独全屏，不必同时解说。
++
++先看 ENPIRE 最后得到了什么。它让 coding Agent 反复做实机实验，留下能执行这些接触操作的 robot policy。我们先看行为，再回头解释这些 policy 是怎样得到的。
++
++关注动作失误以后怎样恢复，而不只是最后的成功瞬间。官网的 physical pass@8 是一个长程 rollout 中每个 subtask 最多八次 conditional retries，后面的尝试利用前面的失败信息，不是八个独立随机样本，也不是 pass@1。
++
++这些视频展示的是作者得到的行为，不是额外的成功率测试。接下来按官网的顺序，先看整个 ENPIRE System，再拆开支撑它持续试验的 Environment Loop。
++
++## 25. ENPIRE: Environment and Improvement
+ 
+ > 读图提示：沿原图区分 human-assisted environment setup 与 autonomous improvement；不要把两阶段压成无人参与的一步。
+ 
+@@ -285,19 +295,29 @@
+ 
+ 这里固定环境与成功标准非常重要：策略做不好，不能通过修改 verifier 让自己看起来成功。否则分数的变化就没有稳定含义。
+ 
+-多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。先把支持反复试验的 reset 和 verification 看具体。
+-
+-## 25. ENPIRE: Reset and Verification
+-
+-> 播放提示：左边为完整 pin reset，压缩到 8×；右边为完整 zip-tie detector 视频，1×。两段来自不同任务，不是同一 rollout 的同步画面。
+-
+-Automatic reset 解决下一次试验从哪里开始。Agent 组合 SAM3 的物体检测、pose tracking、cuRobo motion planning 和 gripper torque 检查，把现场恢复到指定起点。部分任务直接从最难的 subphase 开始，不能解释成从任意初态解决完整任务。
+-
+-Verification 解决结果到底有没有变好。右边展示 top/right 两个视角的检测框；完整判定还包括 segmentation 和几何测试，避免一个视角看起来穿过、实际上没有穿过的 false positive。Pin insertion 则结合视觉对齐、插入深度与力矩信号。
+-
+-环境构造仍需要 human feedback，也需要成功和失败样例。之后进入 policy improvement，reset、verifier、安全约束和评测规则固定，不能为了得高分而修改成功定义。有了稳定的实验接口，才谈得上自动改进。
+-
+-## 26. ENPIRE: Two Ways to Improve Policy
++多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。下面先看它如何自动判断结果，再看怎样把现场恢复到下一次试验的起点。
++
++## 26. ENPIRE: Auto Evaluation
++
++> 播放提示：左侧是官网完整 zip-tie detector 视频，1×。右侧是对官方判定流程的简化，视频本身只展示 detection 视图，不冒充整个 reward pipeline。
++
++Environment Loop 先回答一个基本问题：这次到底做成了没有？以 Zip-tie 为例，系统在两个相机视角中检测 head 和 strap，再通过 segmentation、几何关系和固定长度阈值分别得到判断，最后用 AND 融合为 binary reward。
++
++两个视角可以降低单视角遮挡或错位带来的 false positive，但这不等于 verifier 永远不会出错。构造这套判定仍需要 human feedback，以及成功、失败样例；Pin insertion 还会使用视觉对齐、深度和力矩信息。
++
++进入 Policy Improvement 后，verifier 与安全约束固定。Agent 可以改变做事的方法，不能改变成功的定义。知道怎么评分以后，接着解决如何反复开始下一次试验。
++
++## 27. ENPIRE: Auto Reset
++
++> 播放提示：按官网 Case 1–4 顺序看 Push-T、Pin insertion、Tie zip-tie、GPU insertion。各取官网一个完整 reset case，均为 8×；不是同一个任务的四段动作。
++
++Auto Reset 的目标不是完成任务，而是让下一次试验有一个可用的起点。Push-T 恢复物体的初始位置；Pin insertion 重新抓取并回到 pre-insertion pose；Zip-tie 需要抓住 head，再用另一只手卷起 tail 并对齐；GPU 则包含抓取、移到预插入姿态，以及拔出后重新开始。
++
++这些流程组合 perception、tracking、motion planning 和 gripper feedback。初始状态来自各任务注册的范围，不能由一次 reset 演示推出任意状态都能恢复，也不能把 pre-insertion 起点说成已经解决整段操作。
++
++环境构造仍有人参与；验证并固定 reset、success verification 与 safety 之后，才进入后面的自主研究。有了可以反复 reset、执行、评分的接口，Agent 才能把一个想法真正拿到硬件上试。
++
++## 28. ENPIRE: Two Ways to Improve Policy
+ 
+ > 读图提示：两张官网原图分别对应 Push-T 和 Pin insertion。对比下方 f(o) 与 πθ(a | o)，不要把 coding Agent 和部署 policy 混成同一个模型。
+ 
+@@ -309,7 +329,7 @@
+ 
+ 原论文的 robot policy 以 30 Hz 运行，底层 joint controller 为 100 Hz；这也不是 coding Agent 的推理频率。Agent 在更慢的研究循环中组织改进，训练出的 policy 在执行循环中产生动作。下面看它实际提出过什么修改。
+ 
+-## 27. ENPIRE: What Did the Agent Change?
++## 29. ENPIRE: What Did the Agent Change?
+ 
+ > 读图提示：放大 Figure 12。先读 idea tree 的实心与空心节点，再跟随虚线读下面的 best-score curve；不要逐个念所有节点。
+ 
+@@ -321,7 +341,7 @@
+ 
+ 这不是三项独立随机消融，不能把这些增量当成在所有条件下都能复现的平均因果效果。下图也不是每个当前 policy 的性能，而是随 research wall-clock 推进的 team-average best score。接下来用正式的模型对照和 fleet scaling 看总体表现。
+ 
+-## 28. ENPIRE: Two Physical Tasks
++## 30. ENPIRE: Evaluate Coding Agents
+ 
+ > 读图提示：左侧保留完整Figure 3和原曲线，右侧列官网实际绘图数据的终点均值。两列不是同一种分数。
+ 
+@@ -333,7 +353,7 @@
+ 
+ 这些结果回答在固定实机环境中能否改进策略。下一页先看扩大并行实验，能否更早找到高性能策略。
+ 
+-## 29. ENPIRE: Parallel Physical Research
++## 31. ENPIRE: Parallel Physical Research
+ 
+ > 播放提示：左边是完整的官方 pin fleet 视频，8×。右边原曲线保留 axes 和 legend，可以点击放大。
+ 
+@@ -343,9 +363,23 @@
+ 
+ 这里的物理 rollout 允许最多八次 conditional retries，后一次尝试能利用前面失败的信息。因此不是 one-shot precision，也不是相互独立的 best-of-eight，不能由此反推 pass@1。Fleet 视频展示并行执行的形态，不给视频里的动作自行统计新成功率。
+ 
+-这组证据支持更多资源缩短 time-to-target，但更快不等于更省。后面会回到成本，现在先看同一套 autoresearch 思路在 RoboCasa 中怎样使用。
+-
+-## 30. ENPIRE: Autoresearch in RoboCasa
++这组证据支持更多资源缩短 time-to-target，但更快不等于更省。所以下一页紧接着看 robot utilization、GPU utilization 和 token consumption。
++
++## 32. ENPIRE: Cost of Physical Research
++
++> 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。
++
++更多 agent–robot pairs 可以更早找到好策略，但可能消耗更多 tokens；每台机器人的 utilization 也未必随规模单调提高。Research wall-clock、policy latency、token consumption 和 robot utilization 不是同一个“效率”。
++
++下表来自官网 Figure 7 的精确绘图数据，保留 mean 和 std。1、4、8 对 agent–robot 的 per-robot utilization 分别约为 49.1%、30.9%、29.8%，GPU active-time fraction 为 29.4%、32.5%、49.0%；整队 token rate 是每分钟 9.3k、40.0k、140.3k。后者不是每个 Agent 的消耗，GPU 指标也不是直接读取 nvidia-smi 的 occupancy。
++
++这些 std 的具体统计层次没有充分披露，不叫 confidence interval。Figure 7 自己的 time-to-success 是 4.5/3.2/2.0 小时，与前面 pin 曲线的约40分钟不是同一组数；不能把两个图的 token 数和时间拼成一个实验。
++
++如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。
++
++到这里，实机部分的能力与代价放在了一起。按照官网的顺序，接着看 Simulation Evaluation：同样的改进思路能否作用于仿真任务，评测规则又有什么不同？
++
++## 33. ENPIRE: Autoresearch in RoboCasa
+ 
+ > 读图提示：上方保留原Figure 6，包括task示例和三个aggregate bars。原图未给精确数字标签，不从柱高补造百分比。
+ 
+@@ -353,55 +387,25 @@
+ 
+ 例如Agent找到的策略会先用detection与motion planning移动到目标上方，再进入grasp，必要时组合VLA。关键是先根据实验反馈改程序，再检验留下来的程序。
+ 
+-Appendix描述的reported evaluations每项使用40个预先固定的seed/layout/style组合，同一task的方法共享这些设置。每episode运行一次generated script，禁止oracle、reset和重复retry API。不要把上一页实机最多八次conditional retries搬到这张仿真表上。
++Appendix描述的reported evaluations每项使用40个预先固定的seed/layout/style组合，同一task的方法共享这些设置。每episode运行一次generated script，禁止oracle、reset和重复retry API。不要把前面实机最多八次conditional retries搬到这张仿真表上。
+ 
+ 图里八张task图片是示例，不等于已披露八行数表，也不能据此乘出320 pooled trials。我们能陈述的结果是原图的相对表现，aggregate pooling的细节和精确百分比没有充分公布。
+ 
+-## 31. ENPIRE: Learned Manipulation Demos
+-
+-> 播放提示：依次看 Pin insertion、Tie zip-tie、Cut zip-tie，均为官网下载原文件完整内容，统一转为 8×。可单独全屏观察接触与恢复，不必三段同时解说。
+-
+-这页只看 ENPIRE 自己的任务 demo，不再放 CAD + RL 开发预览或另一个 physical ICL 项目。关注点不只是最后有没有做成，也包括接触失败后如何继续尝试、调整，再走向完成。
+-
+-官网把这些任务的结果描述为高 pass@8，其中 retry 不是八个互相独立的随机样本，而是同一长程 rollout 内利用失败信息恢复。这里没有把片段裁到只剩成功动作，也不从几个展示视频额外推算成功率。
+-
+-这些是作者展示的已得到的行为。它们不能单独证明训练算法更强，也不自动证明跨物体、跨任务的泛化。更接近自进化的问题是：在一个任务里学会如何做实验，能不能帮助下一个任务？
+-
+-## 32. ENPIRE: Experience Across Tasks
+-
+-> 读图提示：沿 Pin autoresearch、Written recipes、GPU autoresearch 看传递的是什么。下方 GPU insertion 为官网完整原片转 8×，它展示目标任务，不是迁移消融视频。
+-
+-ENPIRE §3.4 给了一个很有意思的桥梁。完成 Pin insertion 的 autoresearch 后，Agent 被要求总结和反思有效的 training recipes，再把这份经验加入 GPU insertion 新任务的 instructions。作者报告这些经验可以转移到相似的新 dexterous task。
+-
+-Appendix B.1 进一步说明，传过去的是明确的 Markdown summary，旧任务的 raw trajectories、hidden logs 和 checkpoints 都没有直接带过去。所以这不是把旧 policy 换个名字部署，也不是 foundation model 的 weights 更新，而是把研究经验放进下次能够读到的外部记忆。
+-
+-这已经比“只让下一版 policy 更好”更接近 self-improving Agent：过去的实验能影响以后怎样提出和选择方法。不过，当前证据还不能说明改进者的能力会不断增强，更没有证明递归加速。要支持更强的 RSI 结论，还需要 held-out tasks 上有无记忆的比较、相同预算以及重复验证。
+-
+-## 33. ENPIRE: Cost of Physical Research
+-
+-> 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。
+-
+-更多 agent–robot pairs 可以更早找到好策略，但可能消耗更多 tokens；每台机器人的 utilization 也未必随规模单调提高。Research wall-clock、policy latency、token consumption 和 robot utilization 不是同一个“效率”。
+-
+-下表来自官网 Figure 7 的精确绘图数据，保留 mean 和 std。1、4、8 对 agent–robot 的 per-robot utilization 分别约为 49.1%、30.9%、29.8%，GPU active-time fraction 为 29.4%、32.5%、49.0%；整队 token rate 是每分钟 9.3k、40.0k、140.3k。后者不是每个 Agent 的消耗，GPU 指标也不是直接读取 nvidia-smi 的 occupancy。
+-
+-这些 std 的具体统计层次没有充分披露，不叫 confidence interval。Figure 7 自己的 time-to-success 是 4.5/3.2/2.0 小时，与前面 pin 曲线的约40分钟不是同一组数；不能把两个图的 token 数和时间拼成一个实验。
+-
+-如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。
+-
+-因此，把经验保存下来并减少重复探索，可能不仅是能力问题，也是成本问题。最后用一张框图把 ENPIRE 已经做到的部分和 RSI 的下一步分开。
+-
+-## 34. Toward Recursive Self-Improvement
+-
+-> 读图提示：先看上面已运行的 policy improvement 循环，再看下方从 retained recipes / memory 指向 Better future research 的问号。问号不能省掉。
+-
+-本章已经看到，Agent 能把实机反馈转成下一版 policy 或训练程序，在固定接口内持续搜索。ENPIRE 还把一个任务的经验整理成 recipes，影响下一项研究。两部分合在一起，确实开始接近 self-improving Agent 的方向。
+-
+-这里把 RSI 展开为 Recursive Self-Improvement，强调的不只是产物变好，而是改进后的系统是否更擅长做下一轮改进。改进对象不一定是 LLM weights，也可能是 memory、tools、workflow 或研究代码。不能因为基础模型 frozen 就排除所有 RSI，也不能因为有循环就宣布 RSI 已成立。
+-
+-最近的 RoboRSI 报告也讨论把交互沉淀成可复用 skill 和 policy；更早的 Darwin Gödel Machine 则在 coding 任务中修改 Agent 自身代码。它们帮助说明这个概念，但这里不展开另一套结果，更不把 coding benchmark 当成机器人实证。
+-
+-我想留下的 open question 是：积累的经验，能否在 held-out tasks 和相同研究预算下，让 Agent 更快找到更好的策略，同时不损害旧能力？ENPIRE 提供了可运行的物理反馈循环，也给出经验复用的起点；开放世界、持续可验证的 recursive improvement 仍需要下一步实验。
++最后把官网列出的 limitations 和 future directions 收束起来，再讨论它与 RSI 的关系。
++
++## 34. ENPIRE: Limits and the RSI Question
++
++> 读图提示：先读上方两项官网 limitations，再看 policy improvement 闭环，最后看 retained recipes / memory 指向 Better future research 的问号。
++
++官网强调两项代价。第一，Agent 读日志、写代码、等待模型和协调分支时，机器人及 compute 可能空闲，更多机器人不等于更高的 per-robot utilization。第二，更多 Agent 带来更多日志阅读和分支协调，虽然更早找到成功策略，总 token consumption 也可能上升。
++
++这就引出比“多开几个 Agent”更进一步的问题：能否留下经验，少重复已经做过的探索？ENPIRE §3.4 把 Pin insertion 的研究经验整理为 Markdown summary，再加入 GPU insertion 新任务的 instructions。Appendix B.1 明确不带入旧的 checkpoints、raw trajectories 或 hidden logs；这是 training recipes 的复用，不是 foundation model weights 更新。
++
++这已经接近 self-improving Agent，但不能因为有循环就宣布 RSI 成立。本 talk 把 RSI 展开为 Recursive Self-Improvement，关键不只是产物变好，还要问积累后的系统是否更擅长下一轮改进。变化可以发生在 memory、tools、workflow 或研究代码上，不必只看 LLM weights。
++
++最近的 RoboRSI 和更早的 Darwin Gödel Machine 提供概念背景，这里不再展开另一篇工作，也不把 coding benchmark 当成机器人实证。ENPIRE 的证据仍限于已构造好的任务、固定接口和相应 retry 规则。
++
++最后保留这个 open question：在 held-out tasks 和相同研究预算下，经验能否让 Agent 更快得到更好的 policy，同时不损害旧能力？ENPIRE 给出了可运行的物理研究闭环和经验复用起点；持续、开放世界的 recursive improvement 还需要进一步验证。
+ 
+ ## 35. Takeaways
+ 
+--- baseline/.build/test_centering_v018.py
++++ current/.build/test_centering_v018.py
+@@ -44,18 +44,19 @@
+             '', previous['slides'][22]['html'])
+         self.assertEqual(count, 1)
+         previous['slides'][22]['html'] = expected
+-        for field in ('slides', 'media', 'scriptMarkdown'):
+-            self.assertEqual(previous[field], self.after[field], field)
++        for i in list(range(23)) + [34, 35]:
++            self.assertEqual(previous['slides'][i], self.after['slides'][i], i + 1)
+ 
+     def test_only_requested_slides_change(self):
+         for a, b in zip(self.before['slides'], self.after['slides'], strict=True):
++            if 24 <= a['number'] <= 34:
++                continue  # v0.19 explicitly resequences the ENPIRE chapter.
+             for key in a:
+                 if a['number'] in (3, 23) and key == 'html':
+                     continue
+                 self.assertEqual(a[key], b[key], (a['number'], key))
+-        self.assertEqual(self.before['media'], self.after['media'])
+-        self.assertEqual(self.before['asset_keys'], sorted(self.after['assets']))
+-        self.assertEqual(self.before['scriptMarkdown'], self.after['scriptMarkdown'])
++        self.assertEqual([m for m in self.before['media'] if m['slide'] < 23],
++                         [m for m in self.after['media'] if m['slide'] < 23])
+ 
+     def test_exact_requested_text_removed(self):
+         removed = {
+--- baseline/.build/test_enpire_order_v019.py
++++ current/.build/test_enpire_order_v019.py
+@@ -0,0 +1,69 @@
++"""Official-site chapter order, retained content, and reset-source contracts."""
++import json
++from pathlib import Path
++import re
++import tempfile
++import shutil
++import unittest
++
++from enpire_order_v019 import RESET_CLIPS, verify_reset_sources
++
++ROOT = Path(__file__).resolve().parent.parent
++
++
++def deck(file):
++    return json.loads(re.search(r'<script type="application/json" id="deck-data">(.*?)</script>', file.read_text(), re.S)[1])
++
++
++class OfficialOrderTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.before = deck(ROOT / '.build/revision_0_19_baseline/output/Agents_for_Robotics_Self_Contained.html')
++        cls.after = deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
++
++    def test_unchanged_chapters_and_deletions(self):
++        self.assertEqual(self.before['slides'][:23], self.after['slides'][:23])
++        self.assertEqual(self.before['slides'][34:], self.after['slides'][34:])
++
++    def test_exact_site_order(self):
++        self.assertEqual([s['new_slide_key'] or s['old_slide'] for s in self.after['slides'][23:34]],
++                         ['enpire_demos', 15, 'enpire_env', 'enpire_resets', 'enpire_methods',
++                          'idea_tree', 'enpire_results', 'enpire_fleet_page', 18, 'enpire_robocasa', 'rsi_summary'])
++        self.assertIn('Markdown summary', self.after['slides'][33]['script'])
++        self.assertIn('Idle robots &amp; compute', self.after['slides'][33]['html'])
++        self.assertIn('More agents, more tokens', self.after['slides'][33]['html'])
++
++    def test_all_original_clips_retained(self):
++        old = {m['name']: m for m in self.before['media']}
++        new = {m['name']: m for m in self.after['media']}
++        self.assertEqual(set(new) - set(old), RESET_CLIPS)
++        self.assertTrue(set(old) <= set(new))
++        for name, clip in old.items():
++            for key in ('sha256', 'duration_seconds', 'sourceUrl', 'start_seconds', 'speed_multiplier'):
++                self.assertEqual(clip[key], new[name][key], (name, key))
++        self.assertEqual({m['name'] for m in new.values() if m['slide'] == 24},
++                         {'enpire_pin', 'enpire_gpu', 'enpire_tie', 'enpire_cut'})
++        self.assertEqual({m['name'] for m in new.values() if m['slide'] == 27},
++                         RESET_CLIPS | {'enpire_reset_full'})
++
++    def test_reset_sources_and_full_sequence(self):
++        verify_reset_sources(ROOT)
++        clips = json.loads((ROOT / '.build/clip_manifest_v11.json').read_text())
++        self.assertEqual(len(clips), 3)
++        self.assertTrue(all(c['presentation_speed'] == 8 for c in clips))
++
++    def test_source_drift_rejected(self):
++        pins = json.loads((ROOT / 'research/enpire_v0_19_sources.json').read_text())
++        with tempfile.TemporaryDirectory() as directory:
++            mirror = Path(directory)
++            for file in ['research/enpire_v0_19_sources.json', *pins['sha256']]:
++                target = mirror / file
++                target.parent.mkdir(parents=True, exist_ok=True)
++                shutil.copyfile(ROOT / file, target)
++            (mirror / '.build/clips/enpire_reset_gpu.mp4').write_bytes(b'corrupt')
++            with self.assertRaises(ValueError):
++                verify_reset_sources(mirror)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- baseline/.build/test_enpire_v018.py
++++ current/.build/test_enpire_v018.py
+@@ -7,6 +7,7 @@
+ import unittest
+ 
+ from enpire_v018 import NEW_CLIPS, verify_enpire, verify_puzzles
++from enpire_order_v019 import RESET_CLIPS
+ 
+ ROOT = Path(__file__).resolve().parent.parent
+ 
+@@ -60,7 +61,7 @@
+     def test_chapter_and_rsi_boundaries(self):
+         d = deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
+         self.assertEqual(len(d['slides']), 36)
+-        self.assertEqual({m['name'] for m in d['media'] if m['slide'] >= 23}, NEW_CLIPS)
++        self.assertEqual({m['name'] for m in d['media'] if m['slide'] >= 23}, NEW_CLIPS | RESET_CLIPS)
+         text = d['scriptMarkdown']
+         for term in ['Markdown summary', 'held-out tasks', 'Recursive Self-Improvement', '不是 coding foundation model', 'conditional retries']:
+             self.assertIn(term, text)
+--- baseline/.build/validate_standalone.py
++++ current/.build/validate_standalone.py
+@@ -26,10 +26,10 @@
+ assert text.startswith('<!DOCTYPE html>') and p.charset
+ assert len(p.ids)==len(set(p.ids))
+ assert not p.external,p.external
+-deck=json.loads(p.scripts['deck-data']);N=36;V=25
++deck=json.loads(p.scripts['deck-data']);N=36;V=28
+ assert len(deck['slides'])==N and len(deck['media'])==V
+ assert [r['number'] for r in deck['slides']]==list(range(1,N+1))
+-expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 'enpire_env', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 'enpire_robocasa', 'enpire_demos', 'enpire_transfer', 18, 'rsi_summary', 'end', 'thanks']
++expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 'enpire_demos', 15, 'enpire_env', 'enpire_resets', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 18, 'enpire_robocasa', 'rsi_summary', 'end', 'thanks']
+ assert [(r['old_slide'] if r['old_slide'] is not None else r['new_slide_key']) for r in deck['slides']]==expected_keys
+ opening_slides=[r['number'] for r in deck['slides'] if r['chapter_opening']]
+ assert opening_slides==[4,18,23]
+@@ -41,7 +41,7 @@
+   assert all(t in chapter['html'] for t in ['Task + API','Agent','Real rollout','Verifier + logs'])
+  else:assert 'Chapter overview' in chapter['html']
+ assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*14+['2 · Agent Creates Data']*5+['3 · Agent Improves Policy']*12+['Closing']*2
+-expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'Robot Puzzle Demos in Simulation', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Astra: Scene Reconstruction', 'Astra: Hand Assets', 'Astra: Replay and Data Rollout', 'Data: From Demos to Useful Data', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: Two Ways to Improve Policy', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Parallel Physical Research', 'ENPIRE: Autoresearch in RoboCasa', 'ENPIRE: Learned Manipulation Demos', 'ENPIRE: Experience Across Tasks', 'ENPIRE: Cost of Physical Research', 'Toward Recursive Self-Improvement', 'Takeaways', 'Thank You']
++expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'Robot Puzzle Demos in Simulation', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Astra: Scene Reconstruction', 'Astra: Hand Assets', 'Astra: Replay and Data Rollout', 'Data: From Demos to Useful Data', 'Agent Improves Policy', 'ENPIRE: Learned Manipulation Demos', 'ENPIRE: Environment and Improvement', 'ENPIRE: Auto Evaluation', 'ENPIRE: Auto Reset', 'ENPIRE: Two Ways to Improve Policy', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Evaluate Coding Agents', 'ENPIRE: Parallel Physical Research', 'ENPIRE: Cost of Physical Research', 'ENPIRE: Autoresearch in RoboCasa', 'ENPIRE: Limits and the RSI Question', 'Takeaways', 'Thank You']
+ assert [r['title'] for r in deck['slides']]==expected_titles
+ assert all(len(t)<=40 for t in expected_titles)
+ def slide(n):return deck['slides'][n-1]
+@@ -49,8 +49,8 @@
+ assert slide(5)['ids']==['HIROBOT','HELIX','HELIX02']
+ assert len(re.findall(r'class="art original"',slide(5)['html']))==3
+ assert slide(12)['ids']==['ANON']
+-for n in [23,24,27]:assert slide(n)['ids']==['S15']
+-assert slide(33)['ids']==['S15','ENPIRE_SITE']
++for n in [23,25,29]:assert slide(n)['ids']==['S15']
++assert slide(32)['ids']==['S15','ENPIRE_SITE']
+ assert all(t in slide(4)['html'] for t in ['q / EEF Pose','Agent Tools','IK / motion planner','VLA / WAM / Learned policy','servo / controller'])
+ assert all(t in slide(7)['html'] for t in ['19 / 20','2 / 20','Astra: Stronger Real-Robot Performance'])
+ assert '20 calls/run;' not in slide(7)['html'] and 'No independent VLA.' not in slide(7)['html']
+@@ -64,9 +64,9 @@
+ assert all(t in slide(12)['html'] for t in ['13 / 50','24 / 50'])
+ assert 'simulation' in slide(12)['html'] and 'omit LLM waiting' in slide(12)['footer']
+ assert 'control-time playback' in slide(12)['script'] and '不能用来比较端到端 latency' in slide(12)['script']
+-assert all(t in slide(27)['script'] for t in ['I37','10.8','I66','I76','不是三项独立'])
+-assert 'one-shot' in slide(29)['script'] and 'tokens' in slide(33)['script']
+-assert '8×' in slide(31)['footer'] and 'ENPIRE' in slide(31)['title']
++assert all(t in slide(29)['script'] for t in ['I37','10.8','I66','I76','不是三项独立'])
++assert 'one-shot' in slide(31)['script'] and 'tokens' in slide(32)['script']
++assert '8×' in slide(24)['footer'] and 'ENPIRE' in slide(24)['title']
+ assert 'Not a validated' in slide(20)['html']
+ # v0.10: shared-start interface layout, capability diagnosis and sparse closing.
+ assert all(t in slide(17)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Still difficult','Open problems','Lower foundation-model latency','Better interfaces / action primitives'])
+@@ -167,14 +167,14 @@
+ table_cells(7,['Completions','Fable 5','Fable 5.1','GPT-6 Astra'],
+  [[t]+[f"{r['successes']} / {r['n']}" for r in results['robocurve'] if r['task']==t] for t in ['Block into bowl','Puzzle into groove']])
+ table_cells(11,['Task','Script\nupper','Random\nlower','ΔEEF\nproprio','Waypoint\nnone','Waypoint\nproprio','Code\nproprio','Code\nprivileged'],results['asim'])
+-table_cells(28,['Coding agent','Push-T @ 8 h\nNormalized score','Pin @ 4 h\nSuccess rate'],
++table_cells(30,['Coding agent','Push-T @ 8 h\nNormalized score','Pin @ 4 h\nSuccess rate'],
+  [['Codex','0.938','95.5%'],['Claude','0.750','97.5%'],['Kimi','0.625','79.0%']])
+-table_cells(30,['Method','What changes','Reported evidence'],
++table_cells(33,['Method','What changes','Reported evidence'],
+  [['GR00T N1.5','End-to-end VLA','Baseline'],['CaP-X*','Zero-shot agentic tool use','No autoresearch'],['ENPIRE','Tool / VLA code + feedback','Highest aggregate bar']])
+-table_cells(33,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
++table_cells(32,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
+  [[str(r['agentCount']),f"{r['robotMean']:.1f} ± {r['robotStd']:.1f}%",f"{r['gpuMean']:.1f} ± {r['gpuStd']:.1f}%",f"{t['mean']/1000:.1f} ± {t['std']/1000:.1f}k"] for r,t in zip(results['enpire_resources']['utilization'],results['enpire_resources']['tokenRate'])])
+ # Independent expected coordinates: body rows/columns are zero-based. All ties retained.
+-expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 11: {(0, 7), (0, 4), (2, 7), (1, 5), (0, 3), (0, 6), (1, 7), (0, 5), (2, 5)}, 28: {(0, 1), (1, 2)}, 30: {(2, 2)}, 33: {(0, 1), (0, 3), (2, 2)}}
++expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 11: {(0, 7), (0, 4), (2, 7), (1, 5), (0, 3), (0, 6), (1, 7), (0, 5), (2, 5)}, 30: {(0, 1), (1, 2)}, 33: {(2, 2)}, 32: {(0, 1), (0, 3), (2, 2)}}
+ for number,wanted in expected_bold.items():
+  observed=set();all_coordinates=set()
+  for tag in re.findall(r'<div class="text"[^>]+>',slide(number)['html']):
+@@ -189,12 +189,12 @@
+  assert observed==wanted,(number,observed,wanted)
+  assert 'Bold:' in slide(number)['footer']
+ assert {s['number'] for s in deck['slides'] if 'data-table-cell=' in s['html']}==set(expected_bold)
+-for number,terms in {28: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 30: ['40-episode', 'No reset/retry', 'not published']}.items():
++for number,terms in {30: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 33: ['40-episode', 'No reset/retry', 'not published']}.items():
+  assert all(term in slide(number)['html'] for term in terms),(number,terms)
+-assert all(term in slide(33)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
++assert all(term in slide(32)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
+ assert all(len(slide(n)['title'])<=40 for n in range(1,N+1))
+ # Demo slides stay sparse and labels retain medium/speed boundaries.
+-for n in [8, 9, 19, 20, 21, 31]:
++for n in [8, 9, 19, 20, 21, 24, 27]:
+  assert len(re.sub('<[^>]+>',' ',slide(n)['html']).split())<100
+ assert '20×' in slide(8)['html'] and '12×' in slide(8)['html']
+ assert sum(r['minutes'] for r in deck['slides'])==59
+@@ -216,10 +216,10 @@
+ old_media=json.loads((out/'offline_player/media_credits.json').read_text())
+ original_by_name={m['name']:m for m in old_media}
+ community=[]
+-for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json']:
++for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json','clip_manifest_v11.json']:
+  community+=json.loads((B/name).read_text())
+ community_by_name={c['name']:c for c in community}
+-expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'claw', 'cube'}, 10: {'asim_waypoint', 'asim_delta', 'asim_code'}, 12: {'anon_hybrid_pack', 'anon_direct_sort'}, 19: {'kitchen', 'office_newton'}, 20: {'rope_hand', 'hand'}, 21: {'astra_real2sim', 'dexgpt'}, 25: {'enpire_verify_full', 'enpire_reset_full'}, 29: {'enpire_fleet'}, 31: {'enpire_tie', 'enpire_cut', 'enpire_pin'}, 32: {'enpire_gpu'}}
++expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'claw', 'cube'}, 10: {'asim_waypoint', 'asim_delta', 'asim_code'}, 12: {'anon_hybrid_pack', 'anon_direct_sort'}, 19: {'kitchen', 'office_newton'}, 20: {'rope_hand', 'hand'}, 21: {'astra_real2sim', 'dexgpt'}, 24: {'enpire_tie', 'enpire_cut', 'enpire_pin', 'enpire_gpu'}, 26: {'enpire_verify_full'}, 27: {'enpire_reset_full', 'enpire_reset_pusht', 'enpire_reset_tie', 'enpire_reset_gpu'}, 31: {'enpire_fleet'}}
+ assert set(m['slide'] for m in deck['media'])==set(expected_media)
+ for number,names in expected_media.items():
+  assert {m['name'] for m in deck['media'] if m['slide']==number}==names
+@@ -272,6 +272,6 @@
+ assert ui['focusView']['enabled'] and ui['keyboard']['focusExited']
+ assert ui['figureDialog']['open'] and ui['figureDialog']['loaded'] and ui['figureDialog']['closed']
+ assert ui['keyboard']['endSlide']==N
+-assert [r['slide'] for r in ui['addedFigures']]==[12,13,14,15,24,26,27,28,29,30] and all(r['open'] and r['loaded'] for r in ui['addedFigures'])
++assert [r['slide'] for r in ui['addedFigures']]==[12,13,14,15,25,28,29,30,31,33] and all(r['open'] and r['loaded'] for r in ui['addedFigures'])
+ report.update(browser_audits='passed for this hash',desktop_text_overflow=0,mobile_button_overflow=0)
+ (B/'standalone_delivery_audit.json').write_text(json.dumps(report,indent=2,ensure_ascii=False));print(json.dumps(report,indent=2,ensure_ascii=False))
+--- baseline/AGENTS.md
++++ current/AGENTS.md
+@@ -1,7 +1,7 @@
+ # Agents for Robotics
+ 
+-One self-contained HTML technical talk — 36 English slides, Chinese speaker script, 25 embedded clips,
+-~137 MB — plus its research notes and build scripts. Speaker Zimo Huang, talk date 2026-09-16.
++One self-contained HTML technical talk — 36 English slides, Chinese speaker script, 28 embedded clips,
++~138 MB — plus its research notes and build scripts. Speaker Zimo Huang, talk date 2026-09-16.
+ 
+ ## Build and verify
+ 
+@@ -71,12 +71,12 @@
+ 
+ ## Status
+ 
+-Version 0.18 (2026-09-16): Control 4–17, Data 18–22, Improvement 23–34, closing 35–36.
+-36 slides, 25 clips, 59-minute suggested timing. HTML SHA-256 `95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a`.
++Version 0.19 (2026-09-16): Control 4–17, Data 18–22, Improvement 23–34, closing 35–36.
++36 slides, 28 clips, 59-minute suggested timing. HTML SHA-256 `eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749`.
+ 
+-Current scope: `research/revision_0_18_spec.md`. Fixed comparison is `.build/revision_0_18_baseline/`,
++Current scope: `research/revision_0_19_spec.md`. Fixed comparison is `.build/revision_0_19_baseline/`,
+ not older Git HEAD. Chapter spine: `output/Chapter_Spine.md`. Overview diagrams open 4/18/23;
+-three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 12; original results are 13–15; ENPIRE idea tree is 27.
++three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 12; original results are 13–15; ENPIRE idea tree is 29.
+ Results come from `research/results_v0_9.json`, generated by `.build/derive_results_v09.py`.
+ The independent `research/results_v0_9_sources.json` pins reviewed source identities and is never regenerated by the normal build.
+ New source authority: `research/evidence_v0_11_sources.json`; loader `.build/evidence_v011.py` rejects byte drift.
+@@ -93,7 +93,7 @@
+ Original curves retain uncertainty; no estimated RoboCasa bar values. Community demos remain qualitative.
+ 
+ Use `.build/standalone_delivery_audit.json`, `.build/standalone_visual_audit.json` and
+-`.build/v0_18_centering_manifest.json` for the current P3/P23 vertical-only polish. Current-hash offline/browser checks and 22 regression tests passed; both revised pages were visually inspected. All other slides, script and media are unchanged. Prior Standards0 / Spec0 and nine complete-clip playback checks remain historical v0.18 evidence; see `research/revision_0_18_review.md`. Prior v0.9 source-freeze P2 remains resolved.
++`.build/v0_19_extended_audit.json` for v0.19 status. Current chapter order follows the official site: demos 24, system 25, evaluation/reset 26–27, policy improvement 28–29, coding-agent results 30, fleet/cost 31–32, simulation 33, limitations/RSI 34. Full-playback QA and Standards/Spec review pending; see `research/revision_0_19_review.md`.
+ No measured rehearsal duration, new GitHub release, push, or PPTX/PDF/ZIP regeneration.
+ 
+ 
+@@ -110,10 +110,10 @@
+ 
+ Data pairs six demos: Office + kitchen (19), hand CAD + rope-hand (20), multi-view replay + DexGPT rollout (21), opening (18) and summary (22). Control timing (16) separates Asim published query seconds from controller Hz and Go1 simulation-time feedback.
+ 
+-P16 is now latency-only (ASIM); P17 has four authored inline SVG icons and two open problems. Page-number typos in user edits are resolved by the exact quoted text. P11 Waypoint proprio is a highlighted column, not a universal winner; Can delta18/20 exceeds waypoint17/20. Current polish/build scope is v0.18.
++P16 is now latency-only (ASIM); P17 has four authored inline SVG icons and two open problems. Page-number typos in user edits are resolved by the exact quoted text. P11 Waypoint proprio is a highlighted column, not a universal winner; Can delta18/20 exceeds waypoint17/20. Current polish/build scope is v0.19.
+ 
+ Data demo provenance: `research/data_demos_v0_15_sources.json`; `.build/data_demos_v015.py` fails closed on byte drift. Run `.build/test_data_demos_v015.py` after rebuilding to verify Data demo-only scope. `.build/test_enpire_v018.py` owns the current cross-chapter preservation checks.
+ 
+ Case22/23 authority: `research/data_extra_v0_16_sources.json`; same loader checks both source manifests. Kitchen now uses the complete author-posted X video, pinned by `research/kitchen_v0_17_sources.json`; LinkedIn confirms human-in-the-loop modelling and simulation still being added. The original Rednote browser tool was unavailable; no login bypass was used. Rope video is the original10 Sep24.67-second clip, not the12 Sep follow-up.
+ 
+-ENPIRE v0.18 media and read-only source pins: `research/enpire_v0_18_sources.json`. P9 puzzle media: `research/puzzle_v0_18_sources.json`. Both checked by `.build/enpire_v018.py`. Run `.build/test_enpire_v018.py`; all nine added videos require complete playback. RSI is a discussion framing, not a claim of self-updating foundation-model weights.
++ENPIRE source pins: `research/enpire_v0_18_sources.json` (seven original clips) and `research/enpire_v0_19_sources.json` (three added reset clips); P9 puzzle pins: `research/puzzle_v0_18_sources.json`. Loaders: `.build/enpire_v018.py` and `.build/enpire_order_v019.py`. Regressions: `.build/test_enpire_v018.py` and `.build/test_enpire_order_v019.py`. The deck has 28 clips, including 10 ENPIRE official clips. Extended QA plays all 10 ENPIRE clips plus both puzzles to completion (12 clips). RSI remains a scoped discussion, not a demonstrated self-updating foundation model.
+--- baseline/CHANGELOG.md
++++ current/CHANGELOG.md
+@@ -1,3 +1,15 @@
++## [0.19] - 2026-09-16
++### Features
++- Follow the ENPIRE official-site explanation order without adding slides: learned-policy demos, system, evaluation/reset, improvement, coding-agent evaluation, fleet/cost, simulation, limitations/RSI.
++- Add complete Push-T, zip-tie and GPU reset recordings; retain every earlier clip. The self-contained HTML now embeds 28 clips.
++- Synchronize Chinese narration and transitions. Keep the first two chapters, P23 and closing unchanged.
++### Design Rationale
++- Show the resulting behavior before explaining its production, establish the repeatable environment before the search method, and discuss evidence and costs together.
++- Fold the separate transfer discussion into the limitations/RSI conclusion rather than interrupting the main method-to-evaluation flow.
++### Notes & Caveats
++- New reset cases illustrate registered initialization routines, not arbitrary-state recovery. No new results or denominators are inferred from videos.
++- Physical conditional retries and RoboCasa single-script evaluation remain distinct. Original Noto fonts and all user-requested deletions are retained.
++
+ ## [0.18] - 2026-09-16
+ ### Features
+ - Added the requested Cube/Claw simulation demo page after P8.
+--- baseline/README.md
++++ current/README.md
+@@ -1,12 +1,12 @@
+ # Agents for Robotics
+ 
+-36 页英文 slides，中文逐页讲稿。**一个全部内嵌的 HTML**：25段视频、论文原图、Noto字体、播放器和讲稿均在文件内，可离线移动。
++36 页英文 slides，中文逐页讲稿。**一个全部内嵌的 HTML**：28段视频、论文原图、Noto字体、播放器和讲稿均在文件内，可离线移动。
+ 
+-- Zimo Huang · 2026-09-16 · 本地版 **0.18**。
+-- 主文件：`output/Agents_for_Robotics_Self_Contained.html`，约 136.7 MB。
++- Zimo Huang · 2026-09-16 · 本地版 **0.19**。
++- 主文件：`output/Agents_for_Robotics_Self_Contained.html`，约 138.0 MB。
+ - 中文稿：`output/Speaker_Script_Revised.md`，与HTML一致。
+ - 章节主线：`output/Chapter_Spine.md`；逐页时间：`talk_outline.md`。
+-- SHA-256：`95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a`。
++- SHA-256：`eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749`。
+ - 建议59分钟含读图、视频与讨论，尚未彩排计时。
+ 
+ | 页 | 部分 | 主线 |
+@@ -17,10 +17,10 @@
+ |23–34|Improvement|ENPIRE方法、原图/结果、官方demo、经验迁移与RSI|
+ |35–36|Closing|Takeaways与感谢|
+ 
+-## v0.18
++## v0.19
+ 
+ - P8后新增Cube / Claw双视频，区分仿真展示与理想grasp下的kinematic replay。
+-- 第三章集中讲ENPIRE。官网下载的reset、verification、fleet、pin/tie/cut/GPU共七段视频均内嵌。完整保留所选视频时间段，清楚标注8×或1×。
++- 第三章集中讲ENPIRE。官网下载的四类reset、verification、fleet、pin/tie/cut/GPU共十段视频均内嵌。完整保留所选视频时间段，清楚标注8×或1×。
+ - 删除active CAD + RL / physical ICL视频，历史文件保留。新增两张官网任务照片，保留原Figure 2/3/6/7/12。
+ - 用Pin→written recipes→GPU解释经验迁移，最后引出RSI的held-out、matched-budget验证问题。
+ - 原Control/Data内容与媒体字节、Takeaways/Thank You内容保持不变，仅插页后顺延编号。
+@@ -35,10 +35,10 @@
+ 
+ 按`AGENTS.md`执行：结果来源检查→构建→CJK subset→重建→隔离复制→静态→Chrome layout/playback/UI/mobile→完整播放新增视频→视觉检查。不要手改生成HTML。
+ 
+-当前范围：`research/revision_0_18_spec.md`。固定基线：`.build/revision_0_18_baseline/`，包含v0.17和P21文字修改，不使用dirty Git HEAD。新来源冻结：`research/enpire_v0_18_sources.json`、`research/puzzle_v0_18_sources.json`。
++当前范围：`research/revision_0_19_spec.md`。固定基线：`.build/revision_0_19_baseline/`，包含v0.18交付及全部P3/P23竖直调整、文字删除，不使用dirty Git HEAD。来源冻结：`research/enpire_v0_18_sources.json`、新增reset的`research/enpire_v0_19_sources.json`及`research/puzzle_v0_18_sources.json`。新增reset由`.build/enpire_order_v019.py`检查，回归为`.build/test_enpire_order_v019.py`；extended QA完整播放十段ENPIRE与两段puzzle。
+ 
+-P3/P23 仅竖直位置微调已完成，当前状态见 `.build/v0_18_centering_manifest.json`。当前 hash 的离线、全页布局、播放、按钮、移动端检查通过；22 项回归测试通过。其他页、讲稿与媒体未变，沿用 v0.18 的内容审查与完整视频播放证据，不把旧 hash 的记录当成新执行。
++当前核验记录：`.build/standalone_delivery_audit.json`、`.build/v0_19_extended_audit.json`、`research/revision_0_19_review.md`。本次按官网顺序重排 ENPIRE，完整播放及 Standards/Spec 复核进行中。
+ 
+ 旧PPTX/PDF/ZIP保持历史，不对应本版。没有push/release，也没有执行ENPIRE或调用Claude/Anthropic服务。
+ 
+-本次保留范围例外：P8过渡句指向新增puzzle页，P3第三章提示同步为ENPIRE与可复用研究经验；其他原Control/Data正文不改。
++本次P1–23及P35–36的页面和逐页讲稿与固定baseline完全一致，保留此前所有删改与水平布局。
+--- baseline/WORKPLAN.md
++++ current/WORKPLAN.md
+@@ -1,4 +1,14 @@
+-## Active v0.18 — 2026-09-16
++## Active v0.19 — Official ENPIRE narrative order
++
++- [x] Freeze the delivered v0.18 including all P3/P23 edits.
++- [x] Match the user screenshot and official website section order.
++- [x] Add three complete official reset recordings; preserve all original clips.
++- [x] Reorder chapter 24–34 and rewrite Chinese transitions; keep other pages fixed.
++- [x] Pass source, scope, order and static regressions.
++- [ ] Complete current-hash layout/UI/full-playback and visual checks.
++- [ ] Finish Standards/Spec review and final delivery.
++
++## Historical v0.18 — 2026-09-16
+ 
+ - [x] P3/P23: remove the requested explanatory text and adjust body vertical positions only; retain original horizontal layout and title positions.
+ - [x] Verify exactly two slide HTML bodies changed; all scripts, other slides and media retained.
+--- baseline/output/Chapter_Spine.md
++++ current/output/Chapter_Spine.md
+@@ -1,6 +1,6 @@
+-# Agents for Robotics — 章节主线 v0.18
++# Agents for Robotics — 章节主线 v0.19
+ 
+-Zimo Huang · 2026-09-16。36页英文 slides，25段内嵌视频，中文讲稿。建议59分钟，未彩排。
++Zimo Huang · 2026-09-16。36页英文 slides，28段内嵌视频，中文讲稿。建议59分钟，未彩排。
+ 
+ ## 1. Control（4–17）：动作决策应该放在哪一层？
+ 
+@@ -20,19 +20,18 @@
+ 
+ 保持原五页紧凑组织，不恢复 Agentic Real2Sim 论文深讲。
+ 
+-## 3. Improvement（23–34）：实验反馈能否改善下一次研究？
++## 3. Improvement（23–34）：按官网顺序理解 ENPIRE
+ 
+-**问题（23）**：不仅改下一条 action，还要改下一版 policy；先用框图看完整物理反馈循环。
+-
+-**方法（24–27）**：ENPIRE 原 Figure 2，先 human-assisted environment setup，后固定 safety/reset/verifier 的 autonomous improvement。完整 reset / verification 视频解释重复实验如何成立。两张官网任务照片区分 heuristic code 与 BC/RL policy training。Figure 12 原 idea tree 展示 objective、batch size 和 controller compensation 等真实修改；保留无收益分支，不当独立因果消融。
+-
+-**实验（28–30）**：Figure 3 与官方终点均值保留 Push-T normalized score、Pin success rate 的不同指标。Fleet 完整视频配原 learning/scaling 曲线，1→8 pairs 从 >1.5 h 到 ~40 min，指 research time。物理 pass@8 含 conditional retries，不是 iid sampling。RoboCasa Figure 6 与表格保持40个固定 matched episodes、每episode一次script、禁 reset/retry/oracle 的协议，不估计柱高。
+-
+-**行为与迁移（31–32）**：Pin / tie / cut 三段官方完整视频，8×，替代 CAD/RL 与 physical ICL。GPU insertion 完整视频配 Pin→written recipes→GPU autoresearch 图。§3.4 / Appendix B.1 的迁移对象是经验总结，不是旧 checkpoint / raw trajectories；视频不是 transfer ablation。
+-
+-**成本（33）**：Figure 7 及精确均值/std。更多机器人缩短研究时间，却提高 fleet token rate；utilization 是 active-time fraction。该图4.5/3.2/2h与40min曲线不是同一组实验。
+-
+-**RSI 与总结（34）**：上方闭环说明 ENPIRE 的 policy improvement；下方 memory/recipes 指向“Better future research?”。RSI 指 Recursive Self-Improvement，改进者可以通过 tools、memory、workflow/code 改变，不局限于 LLM weight updates。是否在 held-out tasks 和 matched budgets 下更擅长改进、且不遗忘，仍是开放检验。RoboRSI 与 DGM 只在讲稿中提供概念背景，不再展开新标杆。
++- **23 导图**：保留已删减的章节闭环图，不恢复 Chapter overview、Evidence 或 Still open 文本。
++- **24 Learned Policy**：先看 Pin、GPU、Tie/Cut zip-tie 四段结果行为。它们是完整官方演示，8×，不是新成功率统计。
++- **25 ENPIRE System**：原 Figure 2，先构造环境，再在固定接口下改进 policy。
++- **26 Auto Evaluation**：two-view detector 视频配 detection / segmentation → per-view geometry → AND reward 框图；判定标准固定。
++- **27 Auto Reset**：按官网 Case 1–4 看 Push-T、Pin、Zip-tie、GPU；都是完整 reset case，不能混称 learned-policy rollout。
++- **28–29 Policy Improvement**：heuristic code 与 BC/RL 训练两条路，再看原 idea tree 中成功和无收益的实际修改。
++- **30 Evaluate Coding Agent**：原曲线和精确数据；Push-T normalized score 与 Pin success rate 不混池。
++- **31–32 Fleet Scaling**：并行研究的曲线和视频紧接成本与 utilization，区分 Figure 3/7 口径。
++- **33 Simulation Evaluation**：RoboCasa 原图，40 个固定 matched episodes、每回合一次 script，禁 reset/retry/oracle，不估柱高。
++- **34 Limitations / RSI**：先讲官网的资源闲置和 token 成本，再以经验复用引出 open question。Pin→Markdown summary→GPU 只证明报告范围内的经验迁移，不是无限递归能力证明。
+ 
+ ## Closing（35–36）
+ 
+--- baseline/output/README.md
++++ current/output/README.md
+@@ -1,11 +1,11 @@
+-# Current delivery — v0.18
++# Current delivery — v0.19
+ 
+-- **Agents_for_Robotics_Self_Contained.html**: 36 English slides, 25 embedded clips, original figures, fonts and synchronized Chinese script. One file, about 136.7 MB, offline.
++- **Agents_for_Robotics_Self_Contained.html**: 36 English slides, 28 embedded clips, original figures, fonts and synchronized Chinese script. One file, about 138.0 MB, offline.
+ - **Speaker_Script_Revised.md**: Chinese narration with English technical terms.
+ - **Chapter_Spine.md**: chapter question, method, results and limits.
+ 
+-HTML SHA-256: `95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a`. Suggested 59 minutes, not rehearsed.
++HTML SHA-256: `eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749`. Suggested 59 minutes, not rehearsed.
+ Control 4–17; Data 18–22; Improvement 23–34; closing 35–36.
+-P3/P23 vertical-position follow-up: current-hash offline/browser QA, 22 regression tests and two-page visual inspection passed. Other slides, scripts and media are unchanged. Current authority: `.build/v0_18_centering_manifest.json`; earlier full-clip playback and Standards/Spec review remain historical v0.18 evidence.
++Current v0.19 authority: `.build/v0_19_extended_audit.json` and `research/revision_0_19_review.md`. Full-playback QA and Standards/Spec review pending.
+ 
+ Historical preview images and PPTX/PDF/ZIP are not re-numbered deliverables. No public release was made.
+--- baseline/output/Speaker_Script_Revised.md
++++ current/output/Speaker_Script_Revised.md
+@@ -1,6 +1,6 @@
+ # Agents for Robotics — 中文讲稿
+ 
+-讲者：Zimo Huang · 2026-09-16 · 本地修订 0.18（2026-09-16）
++讲者：Zimo Huang · 2026-09-16 · 本地修订 0.19（2026-09-16）
+ 
+ 英文 slides，中文讲解，专有名词保留英文。建议 59 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图。Control 看能力与接口证据；Data 只看 Awesome-Astra 收录的社区 demos；Improvement 细讲 ENPIRE。
+ 
+@@ -35,17 +35,17 @@
+ | 21 | Astra: Replay and Data Rollout | 2 | 31:00 |
+ | 22 | Data: From Demos to Useful Data | 1 | 33:00 |
+ | 23 | Agent Improves Policy | 1 | 34:00 |
+-| 24 | ENPIRE: Environment and Improvement | 2 | 35:00 |
+-| 25 | ENPIRE: Reset and Verification | 2 | 37:00 |
+-| 26 | ENPIRE: Two Ways to Improve Policy | 2 | 39:00 |
+-| 27 | ENPIRE: What Did the Agent Change? | 2.5 | 41:00 |
+-| 28 | ENPIRE: Two Physical Tasks | 2.5 | 43:30 |
+-| 29 | ENPIRE: Parallel Physical Research | 2 | 46:00 |
+-| 30 | ENPIRE: Autoresearch in RoboCasa | 1.5 | 48:00 |
+-| 31 | ENPIRE: Learned Manipulation Demos | 2 | 49:30 |
+-| 32 | ENPIRE: Experience Across Tasks | 2 | 51:30 |
+-| 33 | ENPIRE: Cost of Physical Research | 2.5 | 53:30 |
+-| 34 | Toward Recursive Self-Improvement | 1.5 | 56:00 |
++| 24 | ENPIRE: Learned Manipulation Demos | 2 | 35:00 |
++| 25 | ENPIRE: Environment and Improvement | 2 | 37:00 |
++| 26 | ENPIRE: Auto Evaluation | 1.5 | 39:00 |
++| 27 | ENPIRE: Auto Reset | 2.5 | 40:30 |
++| 28 | ENPIRE: Two Ways to Improve Policy | 2 | 43:00 |
++| 29 | ENPIRE: What Did the Agent Change? | 2.5 | 45:00 |
++| 30 | ENPIRE: Evaluate Coding Agents | 2.5 | 47:30 |
++| 31 | ENPIRE: Parallel Physical Research | 2 | 50:00 |
++| 32 | ENPIRE: Cost of Physical Research | 2.5 | 52:00 |
++| 33 | ENPIRE: Autoresearch in RoboCasa | 1.5 | 54:30 |
++| 34 | ENPIRE: Limits and the RSI Question | 1.5 | 56:00 |
+ | 35 | Takeaways | 1 | 57:30 |
+ | 36 | Thank You | 0.5 | 58:30 |
+ 
+@@ -476,7 +476,24 @@
+ 
+ - [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+ 
+-## 24. ENPIRE: Environment and Improvement
++## 24. ENPIRE: Learned Manipulation Demos
++
++建议 2 分钟（含读图、视频及停顿）。
++
++> 播放提示：依次展示 Pin insertion、GPU insertion、Tie zip-tie 和 Cut zip-tie。四段均为官网完整原视频转 8×，可以点开单独全屏，不必同时解说。
++
++先看 ENPIRE 最后得到了什么。它让 coding Agent 反复做实机实验，留下能执行这些接触操作的 robot policy。我们先看行为，再回头解释这些 policy 是怎样得到的。
++
++关注动作失误以后怎样恢复，而不只是最后的成功瞬间。官网的 physical pass@8 是一个长程 rollout 中每个 subtask 最多八次 conditional retries，后面的尝试利用前面的失败信息，不是八个独立随机样本，也不是 pass@1。
++
++这些视频展示的是作者得到的行为，不是额外的成功率测试。接下来按官网的顺序，先看整个 ENPIRE System，再拆开支撑它持续试验的 Environment Loop。
++
++### 参考来源
++
++- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++- [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
++
++## 25. ENPIRE: Environment and Improvement
+ 
+ 建议 2 分钟（含读图、视频及停顿）。
+ 
+@@ -488,30 +505,47 @@
+ 
+ 这里固定环境与成功标准非常重要：策略做不好，不能通过修改 verifier 让自己看起来成功。否则分数的变化就没有稳定含义。
+ 
+-多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。先把支持反复试验的 reset 和 verification 看具体。
+-
+-### 参考来源
+-
+-- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+-
+-## 25. ENPIRE: Reset and Verification
+-
+-建议 2 分钟（含读图、视频及停顿）。
+-
+-> 播放提示：左边为完整 pin reset，压缩到 8×；右边为完整 zip-tie detector 视频，1×。两段来自不同任务，不是同一 rollout 的同步画面。
+-
+-Automatic reset 解决下一次试验从哪里开始。Agent 组合 SAM3 的物体检测、pose tracking、cuRobo motion planning 和 gripper torque 检查，把现场恢复到指定起点。部分任务直接从最难的 subphase 开始，不能解释成从任意初态解决完整任务。
+-
+-Verification 解决结果到底有没有变好。右边展示 top/right 两个视角的检测框；完整判定还包括 segmentation 和几何测试，避免一个视角看起来穿过、实际上没有穿过的 false positive。Pin insertion 则结合视觉对齐、插入深度与力矩信号。
+-
+-环境构造仍需要 human feedback，也需要成功和失败样例。之后进入 policy improvement，reset、verifier、安全约束和评测规则固定，不能为了得高分而修改成功定义。有了稳定的实验接口，才谈得上自动改进。
++多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。下面先看它如何自动判断结果，再看怎样把现场恢复到下一次试验的起点。
++
++### 参考来源
++
++- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++
++## 26. ENPIRE: Auto Evaluation
++
++建议 1.5 分钟（含读图、视频及停顿）。
++
++> 播放提示：左侧是官网完整 zip-tie detector 视频，1×。右侧是对官方判定流程的简化，视频本身只展示 detection 视图，不冒充整个 reward pipeline。
++
++Environment Loop 先回答一个基本问题：这次到底做成了没有？以 Zip-tie 为例，系统在两个相机视角中检测 head 和 strap，再通过 segmentation、几何关系和固定长度阈值分别得到判断，最后用 AND 融合为 binary reward。
++
++两个视角可以降低单视角遮挡或错位带来的 false positive，但这不等于 verifier 永远不会出错。构造这套判定仍需要 human feedback，以及成功、失败样例；Pin insertion 还会使用视觉对齐、深度和力矩信息。
++
++进入 Policy Improvement 后，verifier 与安全约束固定。Agent 可以改变做事的方法，不能改变成功的定义。知道怎么评分以后，接着解决如何反复开始下一次试验。
+ 
+ ### 参考来源
+ 
+ - [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+ - [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+ 
+-## 26. ENPIRE: Two Ways to Improve Policy
++## 27. ENPIRE: Auto Reset
++
++建议 2.5 分钟（含读图、视频及停顿）。
++
++> 播放提示：按官网 Case 1–4 顺序看 Push-T、Pin insertion、Tie zip-tie、GPU insertion。各取官网一个完整 reset case，均为 8×；不是同一个任务的四段动作。
++
++Auto Reset 的目标不是完成任务，而是让下一次试验有一个可用的起点。Push-T 恢复物体的初始位置；Pin insertion 重新抓取并回到 pre-insertion pose；Zip-tie 需要抓住 head，再用另一只手卷起 tail 并对齐；GPU 则包含抓取、移到预插入姿态，以及拔出后重新开始。
++
++这些流程组合 perception、tracking、motion planning 和 gripper feedback。初始状态来自各任务注册的范围，不能由一次 reset 演示推出任意状态都能恢复，也不能把 pre-insertion 起点说成已经解决整段操作。
++
++环境构造仍有人参与；验证并固定 reset、success verification 与 safety 之后，才进入后面的自主研究。有了可以反复 reset、执行、评分的接口，Agent 才能把一个想法真正拿到硬件上试。
++
++### 参考来源
++
++- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++- [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
++
++## 28. ENPIRE: Two Ways to Improve Policy
+ 
+ 建议 2 分钟（含读图、视频及停顿）。
+ 
+@@ -531,7 +565,7 @@
+ - [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+ - [ENPIRE public autoresearch contract · pinned source 99ee90a](https://github.com/NVlabs/ENPIRE/blob/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/autoresearch_instruction.md)
+ 
+-## 27. ENPIRE: What Did the Agent Change?
++## 29. ENPIRE: What Did the Agent Change?
+ 
+ 建议 2.5 分钟（含读图、视频及停顿）。
+ 
+@@ -549,7 +583,7 @@
+ 
+ - [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+ 
+-## 28. ENPIRE: Two Physical Tasks
++## 30. ENPIRE: Evaluate Coding Agents
+ 
+ 建议 2.5 分钟（含读图、视频及停顿）。
+ 
+@@ -568,7 +602,7 @@
+ - [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+ - [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+ 
+-## 29. ENPIRE: Parallel Physical Research
++## 31. ENPIRE: Parallel Physical Research
+ 
+ 建议 2 分钟（含读图、视频及停顿）。
+ 
+@@ -580,14 +614,35 @@
+ 
+ 这里的物理 rollout 允许最多八次 conditional retries，后一次尝试能利用前面失败的信息。因此不是 one-shot precision，也不是相互独立的 best-of-eight，不能由此反推 pass@1。Fleet 视频展示并行执行的形态，不给视频里的动作自行统计新成功率。
+ 
+-这组证据支持更多资源缩短 time-to-target，但更快不等于更省。后面会回到成本，现在先看同一套 autoresearch 思路在 RoboCasa 中怎样使用。
++这组证据支持更多资源缩短 time-to-target，但更快不等于更省。所以下一页紧接着看 robot utilization、GPU utilization 和 token consumption。
+ 
+ ### 参考来源
+ 
+ - [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+ - [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+ 
+-## 30. ENPIRE: Autoresearch in RoboCasa
++## 32. ENPIRE: Cost of Physical Research
++
++建议 2.5 分钟（含读图、视频及停顿）。
++
++> 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。
++
++更多 agent–robot pairs 可以更早找到好策略，但可能消耗更多 tokens；每台机器人的 utilization 也未必随规模单调提高。Research wall-clock、policy latency、token consumption 和 robot utilization 不是同一个“效率”。
++
++下表来自官网 Figure 7 的精确绘图数据，保留 mean 和 std。1、4、8 对 agent–robot 的 per-robot utilization 分别约为 49.1%、30.9%、29.8%，GPU active-time fraction 为 29.4%、32.5%、49.0%；整队 token rate 是每分钟 9.3k、40.0k、140.3k。后者不是每个 Agent 的消耗，GPU 指标也不是直接读取 nvidia-smi 的 occupancy。
++
++这些 std 的具体统计层次没有充分披露，不叫 confidence interval。Figure 7 自己的 time-to-success 是 4.5/3.2/2.0 小时，与前面 pin 曲线的约40分钟不是同一组数；不能把两个图的 token 数和时间拼成一个实验。
++
++如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。
++
++到这里，实机部分的能力与代价放在了一起。按照官网的顺序，接着看 Simulation Evaluation：同样的改进思路能否作用于仿真任务，评测规则又有什么不同？
++
++### 参考来源
++
++- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++- [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
++
++## 33. ENPIRE: Autoresearch in RoboCasa
+ 
+ 建议 1.5 分钟（含读图、视频及停顿）。
+ 
+@@ -597,85 +652,35 @@
+ 
+ 例如Agent找到的策略会先用detection与motion planning移动到目标上方，再进入grasp，必要时组合VLA。关键是先根据实验反馈改程序，再检验留下来的程序。
+ 
+-Appendix描述的reported evaluations每项使用40个预先固定的seed/layout/style组合，同一task的方法共享这些设置。每episode运行一次generated script，禁止oracle、reset和重复retry API。不要把上一页实机最多八次conditional retries搬到这张仿真表上。
++Appendix描述的reported evaluations每项使用40个预先固定的seed/layout/style组合，同一task的方法共享这些设置。每episode运行一次generated script，禁止oracle、reset和重复retry API。不要把前面实机最多八次conditional retries搬到这张仿真表上。
+ 
+ 图里八张task图片是示例，不等于已披露八行数表，也不能据此乘出320 pooled trials。我们能陈述的结果是原图的相对表现，aggregate pooling的细节和精确百分比没有充分公布。
+ 
+-### 参考来源
+-
+-- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+-
+-## 31. ENPIRE: Learned Manipulation Demos
+-
+-建议 2 分钟（含读图、视频及停顿）。
+-
+-> 播放提示：依次看 Pin insertion、Tie zip-tie、Cut zip-tie，均为官网下载原文件完整内容，统一转为 8×。可单独全屏观察接触与恢复，不必三段同时解说。
+-
+-这页只看 ENPIRE 自己的任务 demo，不再放 CAD + RL 开发预览或另一个 physical ICL 项目。关注点不只是最后有没有做成，也包括接触失败后如何继续尝试、调整，再走向完成。
+-
+-官网把这些任务的结果描述为高 pass@8，其中 retry 不是八个互相独立的随机样本，而是同一长程 rollout 内利用失败信息恢复。这里没有把片段裁到只剩成功动作，也不从几个展示视频额外推算成功率。
+-
+-这些是作者展示的已得到的行为。它们不能单独证明训练算法更强，也不自动证明跨物体、跨任务的泛化。更接近自进化的问题是：在一个任务里学会如何做实验，能不能帮助下一个任务？
+-
+-### 参考来源
+-
+-- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++最后把官网列出的 limitations 和 future directions 收束起来，再讨论它与 RSI 的关系。
++
++### 参考来源
++
++- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
++
++## 34. ENPIRE: Limits and the RSI Question
++
++建议 1.5 分钟（含读图、视频及停顿）。
++
++> 读图提示：先读上方两项官网 limitations，再看 policy improvement 闭环，最后看 retained recipes / memory 指向 Better future research 的问号。
++
++官网强调两项代价。第一，Agent 读日志、写代码、等待模型和协调分支时，机器人及 compute 可能空闲，更多机器人不等于更高的 per-robot utilization。第二，更多 Agent 带来更多日志阅读和分支协调，虽然更早找到成功策略，总 token consumption 也可能上升。
++
++这就引出比“多开几个 Agent”更进一步的问题：能否留下经验，少重复已经做过的探索？ENPIRE §3.4 把 Pin insertion 的研究经验整理为 Markdown summary，再加入 GPU insertion 新任务的 instructions。Appendix B.1 明确不带入旧的 checkpoints、raw trajectories 或 hidden logs；这是 training recipes 的复用，不是 foundation model weights 更新。
++
++这已经接近 self-improving Agent，但不能因为有循环就宣布 RSI 成立。本 talk 把 RSI 展开为 Recursive Self-Improvement，关键不只是产物变好，还要问积累后的系统是否更擅长下一轮改进。变化可以发生在 memory、tools、workflow 或研究代码上，不必只看 LLM weights。
++
++最近的 RoboRSI 和更早的 Darwin Gödel Machine 提供概念背景，这里不再展开另一篇工作，也不把 coding benchmark 当成机器人实证。ENPIRE 的证据仍限于已构造好的任务、固定接口和相应 retry 规则。
++
++最后保留这个 open question：在 held-out tasks 和相同研究预算下，经验能否让 Agent 更快得到更好的 policy，同时不损害旧能力？ENPIRE 给出了可运行的物理研究闭环和经验复用起点；持续、开放世界的 recursive improvement 还需要进一步验证。
++
++### 参考来源
++
+ - [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+-
+-## 32. ENPIRE: Experience Across Tasks
+-
+-建议 2 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：沿 Pin autoresearch、Written recipes、GPU autoresearch 看传递的是什么。下方 GPU insertion 为官网完整原片转 8×，它展示目标任务，不是迁移消融视频。
+-
+-ENPIRE §3.4 给了一个很有意思的桥梁。完成 Pin insertion 的 autoresearch 后，Agent 被要求总结和反思有效的 training recipes，再把这份经验加入 GPU insertion 新任务的 instructions。作者报告这些经验可以转移到相似的新 dexterous task。
+-
+-Appendix B.1 进一步说明，传过去的是明确的 Markdown summary，旧任务的 raw trajectories、hidden logs 和 checkpoints 都没有直接带过去。所以这不是把旧 policy 换个名字部署，也不是 foundation model 的 weights 更新，而是把研究经验放进下次能够读到的外部记忆。
+-
+-这已经比“只让下一版 policy 更好”更接近 self-improving Agent：过去的实验能影响以后怎样提出和选择方法。不过，当前证据还不能说明改进者的能力会不断增强，更没有证明递归加速。要支持更强的 RSI 结论，还需要 held-out tasks 上有无记忆的比较、相同预算以及重复验证。
+-
+-### 参考来源
+-
+-- [ENPIRE §3.4 and Appendix B.1 · written experience transfer from pin to GPU insertion](https://arxiv.org/html/2606.19980v1#S3.SS4)
+-- [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+-
+-## 33. ENPIRE: Cost of Physical Research
+-
+-建议 2.5 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。
+-
+-更多 agent–robot pairs 可以更早找到好策略，但可能消耗更多 tokens；每台机器人的 utilization 也未必随规模单调提高。Research wall-clock、policy latency、token consumption 和 robot utilization 不是同一个“效率”。
+-
+-下表来自官网 Figure 7 的精确绘图数据，保留 mean 和 std。1、4、8 对 agent–robot 的 per-robot utilization 分别约为 49.1%、30.9%、29.8%，GPU active-time fraction 为 29.4%、32.5%、49.0%；整队 token rate 是每分钟 9.3k、40.0k、140.3k。后者不是每个 Agent 的消耗，GPU 指标也不是直接读取 nvidia-smi 的 occupancy。
+-
+-这些 std 的具体统计层次没有充分披露，不叫 confidence interval。Figure 7 自己的 time-to-success 是 4.5/3.2/2.0 小时，与前面 pin 曲线的约40分钟不是同一组数；不能把两个图的 token 数和时间拼成一个实验。
+-
+-如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。
+-
+-因此，把经验保存下来并减少重复探索，可能不仅是能力问题，也是成本问题。最后用一张框图把 ENPIRE 已经做到的部分和 RSI 的下一步分开。
+-
+-### 参考来源
+-
+-- [ENPIRE, arXiv:2606.19980v1 (Jun 2026)](https://arxiv.org/html/2606.19980v1)
+-- [ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)](https://research.nvidia.com/labs/gear/enpire/)
+-
+-## 34. Toward Recursive Self-Improvement
+-
+-建议 1.5 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：先看上面已运行的 policy improvement 循环，再看下方从 retained recipes / memory 指向 Better future research 的问号。问号不能省掉。
+-
+-本章已经看到，Agent 能把实机反馈转成下一版 policy 或训练程序，在固定接口内持续搜索。ENPIRE 还把一个任务的经验整理成 recipes，影响下一项研究。两部分合在一起，确实开始接近 self-improving Agent 的方向。
+-
+-这里把 RSI 展开为 Recursive Self-Improvement，强调的不只是产物变好，而是改进后的系统是否更擅长做下一轮改进。改进对象不一定是 LLM weights，也可能是 memory、tools、workflow 或研究代码。不能因为基础模型 frozen 就排除所有 RSI，也不能因为有循环就宣布 RSI 已成立。
+-
+-最近的 RoboRSI 报告也讨论把交互沉淀成可复用 skill 和 policy；更早的 Darwin Gödel Machine 则在 coding 任务中修改 Agent 自身代码。它们帮助说明这个概念，但这里不展开另一套结果，更不把 coding benchmark 当成机器人实证。
+-
+-我想留下的 open question 是：积累的经验，能否在 held-out tasks 和相同研究预算下，让 Agent 更快找到更好的策略，同时不损害旧能力？ENPIRE 提供了可运行的物理反馈循环，也给出经验复用的起点；开放世界、持续可验证的 recursive improvement 仍需要下一步实验。
+-
+-### 参考来源
+-
+ - [ENPIRE §3.4 and Appendix B.1 · written experience transfer from pin to GPU insertion](https://arxiv.org/html/2606.19980v1#S3.SS4)
+ - [RoboRSI · Noematrix research report (Sep 2026)](https://lab.noematrix.ai/blog/2-roborsi/)
+ - [Darwin Gödel Machine · self-modifying coding agent, not a robotics evaluation](https://sakana.ai/dgm/)
+--- baseline/research/revision_0_19_spec.md
++++ current/research/revision_0_19_spec.md
+@@ -0,0 +1,55 @@
++# v0.19 — ENPIRE official-site narrative order
++
++User authority: the supplied website contents screenshot, archived as
++`research/sources/enpire_order_20260916/user_toc.png`.
++Fixed comparison: `.build/revision_0_19_baseline/`, frozen from the delivered
++v0.18 after P3/P23 vertical-only corrections and P23 subtitle deletion.
++
++## Scope
++
++Keep 36 slides. Slides 1–23 and 35–36 retain exact slide content and narration.
++Do not restore deleted phrases, horizontally center titles, or touch Control/Data.
++Resequence and revise only ENPIRE slides 24–34 and their Chinese speaker script.
++Retain all existing embedded clips and their exact bytes; media can move pages.
++
++## Chapter sequence
++
++| Page | Site section | Content |
++|---:|---|---|
++| 23 | Abstract / chapter opening | Existing introduction diagram, unchanged |
++| 24 | Learned Policy | Pin, GPU insertion, tie and cut demos; behavior first |
++| 25 | ENPIRE System | Original Figure 2; build environment, then improve policy |
++| 26 | Environment Loop: Auto Evaluation | Two-view detector video and reward pipeline |
++| 27 | Environment Loop: Auto Reset | Push-T, pin, zip-tie, GPU reset demos in site order |
++| 28 | Policy Improvement | Heuristic code vs learned-policy training |
++| 29 | Policy Improvement | Original hypothesis tree; actual changes and failures |
++| 30 | Evaluate Coding Agent | Original curves plus frozen exact results |
++| 31 | Fleet Scaling | Fleet video and original scaling curves |
++| 32 | Fleet Scaling | Original resource/cost results |
++| 33 | Simulation Evaluation | Original RoboCasa results and distinct protocol |
++| 34 | Limitations & Future Directions | Task-specific setup, limited physical tests, RSI synthesis |
++
++Auto Reset adds three official complete-sequence clips to the existing pin reset.
++The four reset cases are illustrations, not a new quantitative benchmark.
++Official videos retain source-time speed labels; no success-only cropping.
++The previously separate experience-transfer page is folded into P34 narration:
++Pin → Markdown recipe → GPU is reported transfer evidence, not an RSI proof.
++The existing GPU learned-policy clip moves to P24 and must not be mislabeled reset.
++
++## Evidence and style
++
++Reuse verified paper/site/code source pins and exact result data. No new numerical
++claims. Preserve conditional-retry vs RoboCasa single-script distinctions and
++the separate Figure 3/7 time and resource denominators. Explain limitations
++before the open RSI question; no extra paper deep dives.
++
++English slides, Chinese narration, original Noto typography, sparse text and
++large native videos/original figures. Keep each page's purpose clear and use
++natural Chinese transitions in the same sequence as the website.
++
++## Acceptance
++
++Fail-closed media pins, full new-clip decode/playback, all-slide/offline/UI QA,
++exact unchanged-page regression, updated slide/media mapping, visual review,
++and Codex-native two-axis Standards/Spec review against the fixed baseline.
++No publish/push or regeneration of historical PPTX/PDF/ZIP.
+--- baseline/talk_outline.md
++++ current/talk_outline.md
+@@ -1,6 +1,6 @@
+-# Agents for Robotics — v0.18 page order
++# Agents for Robotics — v0.19 page order
+ 
+-36 English slides, Chinese narration, 25 embedded clips. Suggested 59 minutes; not rehearsed.
++36 English slides, Chinese narration, 28 embedded clips. Suggested 59 minutes; not rehearsed.
+ 
+ | Page | Title | Chapter | Minutes |
+ |---:|---|---|---:|
+@@ -27,16 +27,16 @@
+ | 21 | Astra: Replay and Data Rollout | 2 · Agent Creates Data | 2 |
+ | 22 | Data: From Demos to Useful Data | 2 · Agent Creates Data | 1 |
+ | 23 | Agent Improves Policy | 3 · Agent Improves Policy | 1 |
+-| 24 | ENPIRE: Environment and Improvement | 3 · Agent Improves Policy | 2 |
+-| 25 | ENPIRE: Reset and Verification | 3 · Agent Improves Policy | 2 |
+-| 26 | ENPIRE: Two Ways to Improve Policy | 3 · Agent Improves Policy | 2 |
+-| 27 | ENPIRE: What Did the Agent Change? | 3 · Agent Improves Policy | 2.5 |
+-| 28 | ENPIRE: Two Physical Tasks | 3 · Agent Improves Policy | 2.5 |
+-| 29 | ENPIRE: Parallel Physical Research | 3 · Agent Improves Policy | 2 |
+-| 30 | ENPIRE: Autoresearch in RoboCasa | 3 · Agent Improves Policy | 1.5 |
+-| 31 | ENPIRE: Learned Manipulation Demos | 3 · Agent Improves Policy | 2 |
+-| 32 | ENPIRE: Experience Across Tasks | 3 · Agent Improves Policy | 2 |
+-| 33 | ENPIRE: Cost of Physical Research | 3 · Agent Improves Policy | 2.5 |
+-| 34 | Toward Recursive Self-Improvement | 3 · Agent Improves Policy | 1.5 |
++| 24 | ENPIRE: Learned Manipulation Demos | 3 · Agent Improves Policy | 2 |
++| 25 | ENPIRE: Environment and Improvement | 3 · Agent Improves Policy | 2 |
++| 26 | ENPIRE: Auto Evaluation | 3 · Agent Improves Policy | 1.5 |
++| 27 | ENPIRE: Auto Reset | 3 · Agent Improves Policy | 2.5 |
++| 28 | ENPIRE: Two Ways to Improve Policy | 3 · Agent Improves Policy | 2 |
++| 29 | ENPIRE: What Did the Agent Change? | 3 · Agent Improves Policy | 2.5 |
++| 30 | ENPIRE: Evaluate Coding Agents | 3 · Agent Improves Policy | 2.5 |
++| 31 | ENPIRE: Parallel Physical Research | 3 · Agent Improves Policy | 2 |
++| 32 | ENPIRE: Cost of Physical Research | 3 · Agent Improves Policy | 2.5 |
++| 33 | ENPIRE: Autoresearch in RoboCasa | 3 · Agent Improves Policy | 1.5 |
++| 34 | ENPIRE: Limits and the RSI Question | 3 · Agent Improves Policy | 1.5 |
+ | 35 | Takeaways | Closing | 1 |
+ | 36 | Thank You | Closing | 0.5 |

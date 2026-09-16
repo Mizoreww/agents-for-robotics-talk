@@ -1,0 +1,1235 @@
+                                                       Hi Robot: Open-Ended Instruction Following with Hierarchical
+                                                                     Vision-Language-Action Models
+
+
+                                                 Lucy Xiaoyang Shi 1 2 Brian Ichter 1 Michael Equi 1 Liyiming Ke 1 Karl Pertsch 1 2 3 Quan Vuong 1
+                                                 James Tanner 1 Anna Walling 1 Haohuan Wang 1 Niccolo Fusai 1 Adrian Li-Bell 1 Danny Driess 1
+                                                                         Lachy Groom 1 Sergey Levine 1 3 Chelsea Finn 1 2
+                                                                       https://www.pi.website/research/hirobot
+arXiv:2502.19417v2 [cs.RO] 15 Jul 2025
+
+
+
+
+                                                                    Abstract                                    inputs, corrections, and feedback. Achieving this kind of
+                                                                                                                flexibility is essential for robots in open-ended, human-
+                                                Generalist robots that can perform a range of dif-
+                                                                                                                centric environments. For instance, consider a robot tasked
+                                                ferent tasks in open-world settings must be able
+                                                                                                                with tidying up a table after a meal: instead of rigidly fol-
+                                                to not only reason about the steps needed to ac-
+                                                                                                                lowing a single predefined set of steps, the robot would
+                                                complish their goals, but also process complex
+                                                                                                                need to interpret dynamic prompts like “only take away
+                                                instructions, prompts, and even feedback dur-
+                                                                                                                someone’s dishes if they are done eating,” respond to cor-
+                                                ing task execution. Intricate instructions (e.g.,
+                                                                                                                rections like “leave it alone,” and adapt when faced with un-
+                                                “Could you make me a vegetarian sandwich?”
+                                                                                                                familiar challenges, such as a delicate object that requires
+                                                or “I don’t like that one”) require not just the
+                                                                                                                special handling. This paper aims to advance robotic intel-
+                                                ability to physically perform the individual steps,
+                                                                                                                ligence by enabling robots to interpret and act on diverse
+                                                but the ability to situate complex commands and
+                                                                                                                natural language commands, feedback, and corrections – a
+                                                feedback in the physical world. In this work, we
+                                                                                                                step towards creating agents that reason through tasks, inte-
+                                                describe a system that uses vision-language mod-
+                                                                                                                grate human feedback seamlessly, and operate with human-
+                                                els in a hierarchical structure, first reasoning over
+                                                                                                                like adaptability. If we can enable a robot to process and
+                                                complex prompts and user feedback to deduce
+                                                                                                                engage with complex natural language interaction, we can
+                                                the most appropriate next step to fulfill the task,
+                                                                                                                unlock not only better instruction following, but also the
+                                                and then performing that step with low-level ac-
+                                                                                                                ability for users to guide a robot through new tasks and
+                                                tions. In contrast to direct instruction following
+                                                                                                                correct the robot in real time.
+                                                methods that can fulfill simple commands (“pick
+                                                up the cup”), our system can reason through                     Achieving this level of flexibility and steerability in
+                                                complex prompts and incorporate situated feed-                  robotic systems is challenging. While standard language-
+                                                back during task execution (“that’s not trash”).                conditioned imitation learning can follow simple, atomic
+                                                We evaluate our system across three robotic plat-               instructions such as “pick up the coke can” (Brohan et al.,
+                                                forms, including single-arm, dual-arm, and dual-                2022), real-world tasks are rarely so straightforward. Imag-
+                                                arm mobile robots, demonstrating its ability to                 ine a more realistic prompt, such as: “Could you make
+                                                handle tasks such as cleaning messy tables, mak-                me a vegetarian sandwich? I’d prefer it without tomatoes.
+                                                ing sandwiches, and grocery shopping.                           Also, if you have ham or roast beef, could you make a sep-
+                                                                                                                arate sandwich with one of those for my friend?” This re-
+                                                                                                                quires not only understanding the language, but also the
+                                         1. Introduction                                                        ability to situate commands within the current context and
+                                                                                                                compose existing skills (e.g., picking up the roast beef)
+                                         A defining feature of intelligence is its flexibility: people          to solve a new task. If the robot further receives correc-
+                                         not only excel at complex tasks but also adapt to new situa-           tions and feedback (“that’s not how you do it, you have
+                                         tions, modify behaviors in real time, and respond to diverse           to get lower, otherwise you’ll keep missing”), these must
+                                            1
+                                              Physical Intelligence 2 Stanford University 3 University of       also be integrated dynamically into task execution. This
+                                         California, Berkeley. Correspondence to: Physical Intelligence         challenge resembles the distinction between Kahneman’s
+                                         <research@physicalintelligence.company>.                               “System 1” and “System 2” cognitive processes (Kahne-
+                                                                                                                man, 2011). The “automatic” System 1 corresponds to a
+                                         Proceedings of the 42 nd International Conference on Machine           policy capable of executing straightforward commands by
+                                         Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025
+                                         by the author(s).                                                      triggering pre-learned skills, while the more deliberative
+
+                                                                                                            1
+                    Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+
+  PROMPTS                                                                        Hi Robot                            Hi Robot
+
+
+                                                                      1. pick up bread
+                     ...
+
+      Multi-stage
+      Multi-stage   “Hi
+                    “Hi robot,
+                         robot, can
+                                can you
+                                     you make
+                                         make me
+                                              me aa cheese,
+                                                    cheese,           2. put bread on chopping              8. put lettuce on beef
+
+     Instructions
+     Instructions     roast
+                      roast beef,
+                             beef, and
+                                   and lettuce
+                                        lettuce sandwich?
+                                                sandwich?                                                   9. pick up bread
+
+                                                                      board
+
+                                                                      ...                                   10. put bread on lettuce
+
+
+                    “Can
+                    “Can you
+                         you clean
+                             clean up
+                                    up only
+                                       only the
+                                            the trash,
+                                                trash, but
+                                                       but            1. pick up plastic                    2. put container in trash
+
+     Unseen
+     Unseen Tasks
+            Tasks                                                                                           3. pick up foil tray
+
+                                 not
+                                 not dishes?”
+                                      dishes?”                        container
+                                                                                                            ...
+
+
+                                                                                                            3. pick up bag of chips
+
+       Situated
+       Situated              “That’s
+                                                              “Oh
+                                                               “Oh sorry!
+                                                                    sorry!   1. open gripper
+               4. throw away bag of
+     Corrections
+     Corrections             “That’s not
+                                     not trash!”
+                                         trash!”               I’ll
+                                                                I’ll put
+                                                                      put
+                                                               it
+                                                                it back”
+                                                                    back”    2. go higher                   chips
+
+                                                                                                            ...
+
+                                                                                                            3. pick up 1 slice of
+         User
+         User                                                   “Ok,
+                                                                 “Ok, II     1. pick up bread
+
+                         “I’m
+                         “I’m allergic
+                              allergic to
+                                       to pickles.”
+                                          pickles.”                                                         tomato
+
+     Constraints
+     Constraints                                              will
+                                                               will avoid
+                                                                     avoid   2. put bread on
+                                                               pickles”                                     ....
+
+                                                                pickles”     chopping board
+                                                                                                            8. put bread on ham
+
+                                                                      1. pick up orange chip bag
+
+     Open-ended
+     Open-ended       “It’s
+                      “It’s movie
+                            movie night!
+                                   night! Can
+                                          Can you
+                                               you get
+                                                   get me
+                                                       me             2. put chip bag in basket
+
+       Prompts         some                                                                                 5. pick up water bottle
+
+       Prompts         some chips,
+                            chips, Oreos,
+                                    Oreos, and
+                                           and drinks?”
+                                                drinks?”              3. pick up Oreo
+                      ...
+                                                                      4. put Oreo in basket
+
+
+
+Figure 1: Open-ended instruction following. Hi Robot enables robots to follow multi-stage instructions, adapt to real-time corrections
+and constraints, complete unseen long-horizon tasks, and respond verbally when needed.
+
+
+System 2 involves higher-level reasoning to parse complex                        ing grounding in the robot’s capabilities.
+long-horizon tasks, interpret feedback, and decide on an ap-
+                                                                                 The main contribution of our paper is a hierarchical
+propriate course of action. Prior work in robotic instruction
+                                                                                 interactive robot learning system (Hi Robot), a novel
+following has largely focused on atomic instructions (Step-
+                                                                                 framework that uses VLMs for both high-level reasoning
+puttis et al., 2020; Jang et al., 2022; Brohan et al., 2022),
+                                                                                 and low-level task execution. We show that our framework
+addressing only System 1-level behaviors.
+                                                                                 enables a robot to process much more complex prompts
+In this paper, we address the more intricate reasoning                           than prior end-to-end instruction following systems and in-
+needed for complex prompts and feedback by introducing a                         corporate feedback during task execution (Figure 1). While
+hierarchical reasoning system for robotic control based on                       some of the individual components of this system, such as
+vision-language models (VLMs). In our system, the robot                          the low-level VLA policy, have been studied in prior work,
+incorporates complex prompts and language feedback us-                           the combination of these components along with our syn-
+ing a VLM, which is tasked with interpreting the current                         thetic data generation scheme are novel and enable novel
+observations and user utterances, and generating suitable                        capabilities. We evaluate Hi Robot on diverse robots, in-
+verbal responses and atomic commands (e.g., “grasp the                           cluding single-arm, dual-arm, and mobile platforms. Our
+cup”) to pass into the low-level policy for execution. This                      evaluation requires the robots to perform a variety of tasks,
+low-level policy is itself a vision-language model finetuned                     including new combinations of skills seen during training,
+for producing robotic actions, also known as a vision-                           in the context of scenarios that span cleaning of messy ta-
+language-action (VLA) model (Black et al., 2024; Brohan                          bles, making sandwiches, and grocery shopping. Our ex-
+et al., 2023a; Kim et al., 2024; Wen et al., 2024). We                           periments show that Hi Robot surpasses multiple prior ap-
+expect that robot demonstrations annotated with atomic                           proaches, including using API-based VLMs and flat VLA
+commands will not be sufficient for training the high-level                      policies, in both alignment with human intent and task suc-
+model to follow complex, open-ended prompts, and we                              cess. By grounding high-level reasoning in both verbal and
+therefore need representative examples of complex prompt                         physical interaction, Hi Robot paves the way for more in-
+following. To acquire this data, we propose to synthetically                     tuitive and steerable human-robot symbiosis, advancing the
+label datasets consisting of robot observations and actions                      potential for flexible intelligence in real-world applications.
+with hypothetical prompts and human interjections that
+might have been plausible for that situation. To this end,                       2. Related Work
+we provide a state-of-the-art vision-language model with a
+robot observation and target atomic command, and ask it                          Our work relates to research on VLMs for robotic control,
+to come up with a prompt or human interaction that may                           which we can categorize into two groups: directly training
+have preceded that observation and command, i.e. gener-                          VLMs for robotic control and using VLMs out-of-the-box
+ating high-level policy prompts for different outcomes. By                       with pre-defined robot skills. In the former category, meth-
+incorporating these synthetically-generated but situated ex-                     ods fine-tune VLMs to output robotic controls based on in-
+amples into high-level policy training, our approach gener-                      put images and language commands (Brohan et al., 2023a;
+alizes to diverse prompts and interjections while maintain-                      Wen et al., 2024; Kim et al., 2024; Black et al., 2024; Liu
+
+
+                                                                             2
+               Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+et al., 2024c; Li et al., 2024; O’Neill et al., 2024; Zawal-          to the corrections seen in the human-written data; our ap-
+ski et al., 2024; Zheng et al., 2025; Pertsch et al., 2025) .         proach leverages VLMs and a new data generation scheme
+While such methods have demonstrated impressive gener-                to enable diverse prompts and open-ended corrections. Fi-
+alization and instruction-following, they are trained for rel-        nally, RACER (Dai et al., 2024) can also incorporate situ-
+atively simple commands (“put the cup on the plate”). In              ated corrections, but relies on a physics simulator to con-
+contrast, we demonstrate tasks with intricate prompts and             struct recovery behaviors; our approach only uses real robot
+human interactions that require situated reasoning.                   demonstrations without intentional perturbations or correc-
+                                                                      tions and is applicable to open-ended prompts.
+In the latter category, a number of methods use LLMs and
+VLMs to reason over robot observations and commands,
+and break up multi-stage tasks into simpler steps that can            3. Preliminaries and Problem Statement
+be performed by low-level controllers. Earlier methods of
+                                                                      A learned policy controls a robot by processing observation
+this sort used language models in combination with var-
+                                                                      inputs, which we denote ot , and producing one or more ac-
+ious learned or hand-designed skills (Huang et al., 2022;
+                                                                      tions At = [at , at+1 , ..., at+H−1 ], where we use At to
+Brohan et al., 2023b; Liang et al., 2023; Shah et al., 2024;
+                                                                      denote an action chunk consisting of the next H actions to
+Singh et al., 2023; Wang et al., 2024; Li et al., 2025a), but
+                                                                      execute (Zhao et al., 2023). Our system takes as input the
+such systems have limited ability to incorporate complex
+                                                                      images from multiple cameras I1t , ..., Int , the robot’s con-
+context, such as image observations, into the reasoning pro-
+                                                                      figuration (i.e., joint and gripper positions) qt , and a lan-
+cess. More recently, multiple works have use VLMs to out-
+                                                                      guage prompt ℓt . Thus, we have ot = [I1t , ..., Int , ℓt , qt ],
+put parameters for pre-defined robotic skills (Huang et al.,
+                                                                      and the policy represents the distribution p(At |ot ). Prior
+2023; Liu et al., 2024a; Nasiriany et al., 2024; Chen et al.,
+                                                                      works have proposed various methods for representing and
+2024; Liu et al., 2024b; Stone et al., 2023; Qiu et al., 2024;
+                                                                      training such policies (Zhao et al., 2023; Chi et al., 2023;
+Zhi et al., 2024). Such methods can process more complex
+                                                                      Octo Model Team et al., 2024; Pertsch et al., 2025).
+commands and situate them in the context of visual ob-
+servations, but these approaches have shown limited phys-             Since our focus will be specifically on complex, multi-stage
+ical dexterity and limited ability to incorporate real-time           tasks that require parsing intricate prompts and even dy-
+language interaction with humans (with some exceptions                namic user feedback, we need our policies to be able to
+discussed below). In contrast, our system utilizes VLMs               interpret complex language and ground it via observations
+for both high-level reasoning and low-level control, with             of the environment. A particularly powerful approach for
+a flexible language interface between the two. These de-              handling such complex semantics is provided by vision-
+sign choices, along with a new synthetic data generation              language-action (VLA) models (Black et al., 2024; Brohan
+scheme, allow our system to achieve both significant phys-            et al., 2023a; Kim et al., 2024; Wen et al., 2024), which
+ical dexterity and detailed promptability that prior works            use vision-language model (VLM) pre-training to initial-
+lack.                                                                 ize the policy p(At |ot ). A VLM is a language model
+                                                                      that has also been trained to process image inputs, and
+Many works aim to enable robotic language interaction
+                                                                      represents a distribution p(ℓ′ |I, ℓ) – the probability of a
+with users, including model-based systems that parse lan-
+                                                                      language suffix ℓ′ (e.g., an answer to a question) in re-
+guage instructions and feedback and ground them via a
+                                                                      sponse to an image-language prefix consisting of an im-
+symbolic representation of the scene (Swadzba et al., 2009;
+                                                                      age I and a prompt ℓ (e.g., a visual question). The most
+Matuszek et al., 2013; Namasivayam et al., 2023; Patki
+                                                                      commonly used VLMs represent p(ℓ′ |I, ℓ) via an autore-
+et al., 2019), and more recent learning-based methods that
+                                                                      gressive decoder-only Transformer model, factorizing the
+process feedback directly, typically with a hierarchical ar-
+                                                                      distribution into a product of autoregressive token proba-
+chitecture (Liu et al., 2023; Xiao et al., 2024; Shi et al.,
+                                                                      bilities p(xt+1 |x1 , ..., xt , I), where xt denotes the tth token
+2024; Belkhale et al., 2024; Singh et al., 2024; McCallum
+                                                                      (not to be confused with a physical time step), and we have
+et al.; Driess et al., 2023; Dai et al., 2024; Hu et al., 2023;
+                                                                      ℓ = [x1 , ..., xtp ] and ℓ′ = [xtp +1 , ..., xtp +ts ], with tp the
+Li et al., 2025b). Our work builds on the latter class of
+                                                                      length of the prefix and ts the length of the suffix (Beyer
+methods, where user feedback is incorporated via a high-
+                                                                      et al., 2024). We also use such Transformer-based VLMs,
+level policy that provides atomic commands to a learned
+                                                                      but since we do not modify their architecture and their au-
+low-level policy. Unlike OLAF (Liu et al., 2023), which
+                                                                      toregressive structure is therefore not relevant to our dis-
+uses an LLM to modify robot trajectories, our approach can
+                                                                      cussion, we will use the more concise p(ℓ′ |I, ℓ) notation to
+incorporate situated corrections based on the robot’s obser-
+                                                                      represent a standard VLM.
+vations, respond to those corrections in real time, and fol-
+low complex prompts describing dexterous manipulation                 A standard VLA is produced by fine-tuning the VLM
+tasks. While YAY Robot (Shi et al., 2024) can handle sit-             p(ℓ′ |I, ℓ) such that the actions At are represented by tokens
+uated real-time corrections, it is limited to one prompt and          in the suffix ℓ′ , typically by tokenizing the actions via dis-
+
+                                                                  3
+                 Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+                                                                               of observation as the standard VLA described in Section 3,
+                    User Prompt / Interjection
+                                                                               except that the language command ℓt is replaced by the
+                                                                               output from the high-level policy ℓ̂t . Thus, following the
+                                                           Robot               System 1/System 2 analogy, the job of the high-level pol-
+                        High-Level
+                        High-Level Policy
+
+                                    Policy
+               Verbal
+
+                              (VLM)
+                              (VLM)
+                                                                               icy is to take in the overall task prompt ℓt and accompa-
+                                                         Response
+                                                                               nying context, in the form of images and user interactions,
+                                                                               and translate it into a suitable task for the robot to do at
+                    Low-Level Language Command                                 this moment, represented by ℓ̂t , that the low-level policy
+                                                                               is likely to understand. Of course, for simple and familiar
+                                                                               tasks, this is not necessary – if we simply want the robot to
+                         Low-Level
+                         Low-Level Policy
+
+                                    Policy
+                                    perform a task that the low-level policy was directly trained
+                                                          Actions
+                               (VLA)
+                               (VLA)                                           for, we could simply set ℓ̂t = ℓt and proceed as in prior
+   Joints
+                                                                               work (Brohan et al., 2022). The benefit of this hierarchical
+                                                                               inference process is in situations where either the prompt ℓt
+                                                                               is too complex for the low-level policy to parse, too unfa-
+Figure 2: Overview of hierarchical VLA. The policy consists
+of a high-level and a low-level policy. The high-level policy pro-             miliar in the context of the robot data, or involves intricate
+cesses open-ended instructions and images from base and wrist-                 interactions with the user.
+mounted cameras to generate low-level language commands. The
+low-level policy uses these commands, images, and robot states                 The high-level policy is represented by a VLM that uses the
+to produce actions and optionally verbal responses.                            images and ℓt as the prefix, and produces ℓ̂t as the suffix.
+                                                                               We describe how this model is trained in Section 4.3.
+cretization. We build on the π0 VLA (Black et al., 2024),                      Since high-level inference is slower but also less sensitive
+which additionally handles multiple images and continuous                      to quick changes in the environment, we can comfortably
+state observations qt , and modifies the VLM to output con-                    run it at a lower frequency. A variety of strategies could
+tinuous action chunk distributions via flow-matching, but                      be used to instantiate this, including intelligent strategies
+the high-level principles are similar. While such VLA mod-                     where the system detects when the command ℓ̂t has been
+els can follow a wide variety of language prompts (Brohan                      completed before inferring the next suitable command. In
+et al., 2023a), by themselves they are typically limited to                    our implementation, we found a very simple strategy to
+simple and atomic commands, and do not handle the com-                         work well: we rerun high-level inference and recompute
+plex prompts and feedback that we study in this paper.                         ℓ̂t either when one second has elapsed, or when a new in-
+                                                                               teraction with the user takes place. This provides reactive
+4. Hi Robot                                                                    behavior when the user provides feedback or corrections,
+                                                                               while maintaining simplicity.
+We provide an overview of our method in Figure 2. Our
+approach decomposes the policy p(At |ot ) into a low-level                     4.2. Incorporating User Interaction
+and high-level inference process, where the low-level pol-
+icy consists of a VLA that produces the action chunk At                        The user can intervene at any point during policy execution
+in response to a simpler, low-level language command, and                      and provide additional information and feedback, or even
+the high-level policy consists of a VLM that processes the                     change the task entirely. In our prototype, these interven-
+open-ended task prompt, and outputs these low-level lan-                       tions take the form of text commands or spoken language
+guage commands for the low-level inference process. The                        (which is then transcribed into text). When the system re-
+two processes run at different rates: the low-level process                    ceives a user intervention, the high-level inference is trig-
+produces action chunks at a high frequency, while the high-                    gered immediately to recompute ℓ̂t . The high-level policy
+level process is invoked less often, either after a set time or                has the option to include a verbal utterance ut in the com-
+upon receiving new language feedback. Thus, the high-                          mand ℓ̂t , which can be confirmations or clarifications from
+level process essentially “talks” to the low-level process,                    the robot. When ut is included, we use a text to speech
+breaking down complex prompts and interactions into bite-                      system to play the utterance to the user, and remove it from
+sized commands that can be converted into actions.                             ℓ̂t before passing it into the low-level policy.
+                                                                               When an interjection (“leave it alone”) has been fulfilled,
+4.1. Hierarchical Inference with VLAs                                          the user can signal to the robot that it may switch back
+Formally, the high-level policy phi (ℓ̂t |I1t , ..., Int , ℓt ) takes in       to the previous command and continue the task execution.
+the image observations and an open-ended prompt ℓt , and                       Notably, the responses of the high-level policy are contex-
+produces an intermediate language command ℓ̂t . The low-                       tual, because it observes not only the prompt ℓt , but also
+level policy plo (At |I1t , ..., Int , ℓ̂t , qt ) takes in the same type       the current image observations. Therefore, it can correctly
+
+                                                                           4
+                    Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+                                                                           generation of the synethetic dataset Dsyn in Appendix A.
+    0    ROBOT DATA                           HUMAN
+         COLLECTION                      1    ANNOTATION
+                                                                           We train the high-level policy phi (ℓ̂t |I1t , ..., Int , ℓt ) on
+                                                            <skill>
+
+                                                            pick up        Dsyn ∪ Dlabeled using the cross-entropy loss for next-
+                                                             KitKat
+                                                                           token prediction.                   To train the low-level policy
+                                                                           plo (At |I1t , ..., Int , ℓ̂t , qt ), we use Dlabeled ∪ Ddemo using a
+                                                                           flow-matching objective, following Black et al. (2024).
+         SYNTHETIC DATA                       HIGH-LEVEL POLICY
+    2    GENERATION                      3    TRAINING
+                                                                           4.4. Model Architecture and Implementation
+                                             <IMGS>        <USER>
+                                                                           In our implementation, the low-level and high-level poli-
+                                                                           cies use the same base VLM as a starting point, namely
+        Data-Generator
+        Data-Generator VLM
+                       VLM
+                                             High-Level
+                                             High-Level Policy
+                                                        Policy
+                                                                           the PaliGemma-3B VLM (Beyer et al., 2024). The low-
+                                                                           level policy is the π0 VLA (Black et al., 2024), which
+         <user>
+      <robot speech>
+                                      is trained by finetuning PaliGemma-3B with an additional
+      can you get       sure, I can     <ROBOT SPEECH>     <SKILL>
+     me something        grab you a                                        flow matching “action expert” to produce continuous ac-
+         sweet?            KitKat!
+                                                                           tions, while the high-level policy is fine-tuned on the
+                                                                           image-language tuples described in Section 4.3 to predict
+                                                                           commands. While we employ π0 for our experiments, our
+Figure 3: Data collection and generation for training the high-            framework is inherently modular, allowing for the integra-
+level policy. We first collect teleoperated robot demonstrations           tion of alternative language-conditioned policies as needed.
+and segment them into short skills (e.g., pick up KitKat). Using
+this labeled data, we prompt a vision-language model (VLM) to
+generate synthetic user instructions (e.g., “Can you get me some-          5. Experiments
+thing sweet?”) and robot responses. The resulting dataset is used
+to train the high-level policy, which maps image observations and          In our experimental evaluation, we study a range of prob-
+user commands to verbal responses and skill labels.                        lems that combine challenging physical interactions with
+                                                                           complex user interaction, including multi-stage instruc-
+                                                                           tions, live user feedback in the middle of the task, and
+ground feedback like “that’s not trash,” which is not possi-               prompts that describe novel task variations. We compare
+ble with language-only systems.                                            our full method to prior approaches and to alternative de-
+                                                                           signs that use other high-level policy training methods. The
+4.3. Data Collection and Training Hi Robot                                 aims of our experiments are:
+To train Hi Robot in a scalable manner, we employ                          1. Evaluate the ability of our method to follow a variety of
+both human-labeled and synthetically generated interaction                    complex textual prompts and live user feedback.
+data, as illustrated in Figure 3. First, we collect robot                  2. Compare our full method to prior approaches that train
+demonstration data Ddemo via teleoperation. This yields                       a flat instruction-following VLA policy or that use foun-
+trajectories with coarse language annotations of the over-                    dation models out-of-the-box for high-level reasoning.
+all goal (e.g., make a sandwich). We then segment these                    3. Evaluate the importance of synthetic data and hierarchy
+full demonstration episodes into short skills, ℓ̂t , such as                  for task performance and language following.
+pick up one piece of lettuce, which generally last between
+one and three seconds. We also heuristically extract ba-
+                                                                           5.1. Tasks and Baseline Methods
+sic movement primitives (e.g., small corrective motions)
+such as move the right arm to the left from the raw robot                  We use three complex problem domains in our experi-
+actions. The resulting dataset Dlabeled contains a set of                  ments, as shown in Figure 4.
+(ℓ̂t , I1t , ..., Int ) tuples that describe robot skills.
+                                                                           Table bussing involves cleaning up a table, placing dishes
+Next, we use a large vision-language model (VLM) pgen                      and utensils into a bussing bin and trash items into the trash.
+to produce synthetic user prompts and interjections ℓt ,                   The training data consists of full table cleaning episodes.
+and corresponding robot utterance ut . Given Dlabeled , we                 This task is physically challenging because some items re-
+prompt pgen with both the visual context I1t , ..., Int and the            quire nuanced grasping strategies (e.g., grasping a plate by
+skill label ℓ̂t (e.g., pick up the lettuce). pgen then imag-               the edge), the robot must pick up and singulate different
+ines an appropriate interaction that might have led to ℓ̂t in a            objects, and in some cases might even manipulate some
+real user interaction: it generates possible user prompts ℓt               objects using others (e.g., picking up a plate with trash on
+(e.g., “Can you add some lettuce for me?”) along with the                  it and tilting the plate to dump the trash into the trash bin).
+robot’s verbal responses and clarifications ut . We detail the             In our evaluation, the robot receives prompts that substan-
+
+                                                                       5
+                Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+
+   1
+                         “hi robot, can you clean up only the trash, but not dishes?”                             “that's not trash“
+ Table 
+
+ Bussing                                          pick up plastic     throw the           pick up plastic                                pick up chip
+                                                                                                                     open gripper                          put it in trash
+                                                  container           container away      bowl                                           bag
+
+
+
+
+                             “Sure
+                              “Sure thing!”
+                                     thing!”                                                                         “Whoops,
+                                                                                                                      “Whoops, Sorry”
+                                                                                                                                Sorry”
+
+
+                                                                                         “leave it alone“
+
+                         throw away                                   pick up             put chopstick            pick up foil          throw foil tray   go back to home
+                                                  pick up bottle
+                         plastic lid                                  chopstick           on table                 tray                  away              position
+
+
+
+
+                                                                                                 “Yep”
+                                                                                                  “Yep”
+
+
+   2                     “hi robot, can you make a sandwich with cheese and roast beef?“
+
+ Sandwich
+                                        pick up 1 slice     put bread on                                                       put cheese on     pick up 1 slice
+                                                                                          pick up 1 slice of cheese
+ Making                                           of bread            chopping board                                                     bread             of roast beef
+
+
+
+
+                                “On
+                                 “On it!”
+                                      it!”
+
+
+                                                  “can you add a bit of lettuce?“         “ok this is all I want“
+
+                         put roast beef           pick up 1 piece     put lettuce on      pick up 1 slice          put bread on          put bread on
+                                                                                                                                                           return home
+                         on cheese                of lettuce          roast beef          of bread                 lettuce               lettuce
+
+
+
+
+                                                      “Of
+                                                       “Of course”
+                                                            course”                        “Ok,
+                                                                                            “Ok, almost
+                                                                                                  almost done”
+                                                                                                          done”
+
+                                                                                                                                                            “I also want
+   3                     “hi robot, I just did a hike... can you get me some drinks and a Twix?“                                                               Kitkat“
+                                                                      put energy
+ Grocery
+                go to shelf
+                                                  pick up red
+                                                                      drink into          pick up Twix             hand off Twix
+                                                                                                                                         put Twix in
+                                                                                                                                                           pick up KitKat
+ Shopping                                         energy drink                                                                           basket
+                                                                      basket
+
+
+
+
+                          “That
+                           “That sounds
+                                  sounds fun!”
+                                          fun!”                                                                                                               “Got
+                                                                                                                                                               “Got it”
+                                                                                                                                                                     it”
+
+
+                                                  “alright, let’s go“
+
+                         put KitKat in                                                    grab basket              put basket on         adjust basket
+                                                  Move arms home      go to table                                                                          go home
+                         basket                                                           handles                  table                 handles
+
+
+
+
+                                                    “Sounds
+                                                     “Sounds Good”
+                                                              Good”
+
+
+
+
+Figure 4: Task domains used in our evaluation. Across three domains, we evaluate complex instructions, intermediate feedback, and
+user interruptions. For example, in Table Bussing, when the user says, “that’s not trash,” the robot correctly puts the bowl back down
+instead of putting it away. All images are from policy rollouts.
+
+
+tively alter the goal of the task, such as “can you clean up                            robot’s “default” behavior of always putting away all items.
+only the trash, but not dishes?”, “can you clean up only the                            This includes understanding what to do and also what not
+dishes, but not trash?”, and “bus all the yellowish things”.                            to do (e.g., avoid touching dishes when asked to collect
+This requires the high-level model to reason about the task                             only trash). The robot might also receive contextual feed-
+and each object (e.g., recognizing that reusable plastic cups                           back during the task, such as “this is not trash”, “leave the
+are dishes, while paper cups are trash), then modify the                                rest”, or “leave it alone,” which require it to understand the
+
+
+                                                                                    6
+                        Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+
+                    Table Bussing                         Sandwich Making                        Grocery Shopping                                  Average
+  100
+
+   80
+
+   60
+
+   40
+
+   20
+
+    0
+
+        Instruction Accuracy   TASK PROGRESS   Instruction Accuracy   TASK PROGRESS   Instruction Accuracy   TASK PROGRESS       Instruction Accuracy        TASK PROGRESS
+
+
+
+                                                  Flat VLA        GPT-4o High-Level   Hi Robot        Expert Human High-Level (Oracle)
+
+
+Figure 5: Comparisons to Prior Methods. Hi Robot outperforms GPT-4o and flat VLA on Table Bussing, Sandwich Making, and
+Grocery Shopping. Hi Robot averages over 40% higher instruction accuracy than GPT-4o, showing stronger alignment with user
+prompts and real-time observations, and approaches expert human guidance by leveraging its high-level policy.
+
+
+interjection and respond accordingly.                                                     finetuned with our real and synthetic datasets. This com-
+Sandwich making requires the robot to make a sandwich,                                    parison is similar to an advanced version of SayCan (Bro-
+using up to six ingredients as well as bread. This task is                                han et al., 2023b), which uses an out-of-the-box LLM as
+physically difficult, because the robot has to manipulate de-                             a high-level policy, while this baseline uses a VLM. To
+formable and delicate ingredients that have to be grasped                                 align GPT-4o with the robot’s affordances, we carefully en-
+carefully and placed precisely. The data contains examples                                gineer the prompt to include task-relevant instructions that
+of different types of sandwiches, with segment labels (e.g.,                              the low-level policy can follow, determined by ranking the
+“pick up one slice of bread”). We use this task to evalu-                                 most common skill labels in the human-annotated dataset,
+ate complex prompts, such as “hi robot, can you make me                                   and ask GPT-4o to choose among them.
+a sandwich with cheese, roast beef, and lettuce?” or “can                                 Flat VLA: This comparison directly uses the same π0 low-
+you make me a vegetarian sandwich? I’m allergic to pick-                                  level policy as in Hi Robot, but without any high level or
+les”, and live corrections, like “that’s all, no more”.                                   synthetic data, representing a state-of-the-art approach for
+Grocery shopping entails picking up a combination of re-                                  instruction following (Black et al., 2024).
+quested items from a grocery shelf, placing them into a bas-                              Flat VLA with synthetic data: This ablation uses the
+ket, and placing the basket on a nearby table. This task                                  π0 low-level policy by itself, without a high-level model,
+requires controlling a bimanual mobile manipulator (see                                   but includes the synthetic data in the training data for the
+Figure 4) and interpreting nuanced semantics that involve                                 low-level policy, such that it can still process the complex
+variable numbers of objects. Examples of prompts include                                  prompts used in our evaluation. This baseline allows us to
+“hey robot, can you get me some chips? I’m preparing for                                  evaluate the benefit of hierarchy independent from the ef-
+a movie night”, “can you get me something sweet?”, “can                                   fect of synthetic data.
+you grab me something to drink?”, “hey robot, can you get                                 Hi Robot without synthetic data: This ablation corre-
+me some Twix and Skittles?”, as well as interjections such                                sponds to our method without synthetic training data, eval-
+as “I also want some Kitkat”.                                                             uating the importance of including diverse synthetically-
+                                                                                          generated prompts in training. This ablation can be seen as
+Comparisons and ablations. Our comparisons evaluate
+                                                                                          an advanced VLM-based version of YAY Robot (Shi et al.,
+our full method and a number of alternative approaches,
+                                                                                          2024), a prior system that uses a high-level model to predict
+which either employ a different type of high-level strategy,
+                                                                                          language commands for a low-level model.
+or do not utilize a hierarchical structure. These include:
+Expert human high level: This oracle baseline uses an                                     5.2. Metrics and Evaluation Protocol
+expert human in place of the high-level model, who manu-
+ally enters language commands for low-level behaviors that                                We report two complementary metrics, measured by a hu-
+they believe are most likely to succeed at the task. This al-                             man evaluator who is blind to the method being run. Each
+lows us to understand how much performance is limited by                                  evaluation consists of 20 trials per task per method.
+the low-level policy, with ideal high-level commands.                                     Instruction Accuracy (IA). This score measures how well
+GPT-4o high-level model: This method uses the same                                        the high-level policy’s predicted instruction aligns with hu-
+high-level/low-level decomposition as Hi Robot, but                                       man intent, requiring multi-modal understanding of the
+queries the GPT-4o API-based model for the high level,                                    current environment and prompt. If the prediction from the
+while using the same low-level policy. GPT-4o is a sig-                                   high-level model is consistent with both the user’s com-
+nificantly larger VLM than the one we use, but it is not                                  mand and the current observation, the evaluator marks it
+
+                                                                                      7
+                 Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+                                     INPUTS                                                        LOW-LEVEL COMMAND PREDICTIONS
+
+                       USER PROMPT                    IMAGE OBSERVATION   HI ROBOT W/O SYNTHETIC DATA      GPT-4o HIGH-LEVEL             HI ROBOT
+
+
+       Can
+       Can you
+           you make
+                make me
+                     me aa sandwich
+                           sandwich with
+                                     with cheese,
+                                          cheese,                             pick up one slice           pick up one piece         pick up one slice
+               roast
+               roast beef,
+                      beef, and
+                             and lettuce?
+                                 lettuce?                                     of cheddar cheese               of lettuce            of cheddar cheese
+
+
+       I’m
+       I’m preparing
+            preparing for
+                       for aa movie
+                              movie night.
+                                    night. Can
+                                           Can you
+                                                you                             put Oreo into                                         put Oreo into
+           get
+           get me
+               me some
+                  some Oreo,
+                        Oreo, Twix,
+                               Twix, and
+                                     and chips?
+                                         chips?                                   the basket                pick up Twix                the basket
+
+                                                                                                                                    respond: Done! All
+       Can
+       Can you
+           you clean
+               clean up
+                     up only
+                         only the
+                              the trash,
+                                  trash, but
+                                         but not
+                                             not                                                                                      trash has been
+                        dishes?                                                  pick up the              put the bowl into        cleared. Let me know
+                        dishes?                                                      bowl                      the bin              if I can help with
+                                                                                                                                      anything else!
+
+                      no,
+                      no, not
+                          not that
+                              that                                                 pick up                     pick up               respond: Sorry!
+
+                                                                                  chopstick                   chopstick                open gripper
+
+
+
+
+Figure 6: Qualitative Command Comparisons. GPT-4o often (a) misidentifies objects, (b) skips subtasks, or (c) ignores user intent.
+Hi Robot consistently produces commands aligned with the robot’s ongoing actions and user requests. Without synthetic data, the high-
+level policy aligns well with image observations but ignores user constraints.
+
+
+as a correct prediction; otherwise, it is labeled as incorrect.               often fails to maintain a coherent internal state, leading to
+The Instruction Accuracy for a trial is then computed as the                  commands like picking up new objects when the gripper is
+proportion of correct predictions out of the total number                     still occupied or prematurely switching tasks. The flat base-
+of predictions. For flat baselines, which lack interpretable                  line, on the other hand, does not react to real-time feedback.
+language predictions, scoring is based on the evaluator’s
+                                                                              (3) Hi Robot is effective across diverse tasks, robots,
+interpretation of the intent of the policy behavior.
+                                                                              and user constraints. On single-arm, dual-arm, and mo-
+Task Progress (TP). Since all tasks we evaluate are com-                      bile bimanual platforms, Hi Robot is able to handle dis-
+plex and long-horizon, we record task progress to provide                     tinct objects (from fragile cheese slices to tall bottles) while
+a granular view of task completion. Task progress quanti-                     respecting dynamic constraints (e.g., “bus only yellowish
+fies how closely the robot matches the intended goal and is                   items,” “don’t add tomatoes”). By contrast, the flat baseline
+computed by the proportion of objects that are successfully                   and GPT-4o often revert to default behaviors (e.g., picking
+placed in their correct locations or configurations.                          up every object in sight, or including almost all ingredients
+                                                                              in a sandwich) when the prompt changes mid-episode.
+5.3. Core Results                                                             (4) Expert human guidance reveals the low-level pol-
+We present results for our system and two key baselines:                      icy’s strengths but underscores the need for high-level
+a GPT-4o policy and a flat VLA method. Quantitative and                       reasoning. With human high-level instructions, the low-
+qualitative results are in Figure 5 and Figure 6, and we sum-                 level policy executes nearly flawlessly, showing that fail-
+marize our findings below.                                                    ures stem more from reasoning than actuation. However,
+                                                                              solely relying on human input is not scalable. Hi Robot
+(1) Hi Robot excels at open-ended instruction following.                      bridges this gap via a high-level VLM that aligns with
+Across all tasks, Hi Robot exhibits substantially higher In-                  user prompts and real-time observations, whereas GPT-
+struction Accuracy and Task Progress, compared to GPT-                        4o’s lack of physical grounding and the flat baseline’s lack
+4o and the flat baseline. It properly identifies, picks up, and               of high-level reasoning hinder performance.
+places the correct items – even when prompted to handle
+only certain objects or omit ingredients (e.g., “I’m aller-
+                                                                              5.4. Ablation Studies
+gic to pickles”). In contrast, GPT-4o frequently loses con-
+text once physical interaction begins, issuing nonsensical                    We conduct two key ablations to isolate the contributions
+commands (e.g., “pick up bermuda triangle”) or sometimes                      of (1) synthetic data for high-level reasoning, and (2) hier-
+labeling everything as “plate” or “spoon,” which disrupts                     archical decomposition vs. a single “flat” policy.
+long-horizon planning.
+                                                                              (A) Synthetic data is critical for open-ended instruction
+(2) Hi Robot shows strong situated reasoning and adap-                        following. Comparing Hi Robot (trained on human-labeled
+tation to feedback. When users modify requests mid-task                       + synthetic data) to a variant trained solely on human-
+(e.g., “leave the rest,” “I also want a KitKat”), Hi Robot up-                labeled data shows that synthetic interactions significantly
+dates low-level commands accordingly. GPT-4o, however,                        boost language flexibility (Figure 7). Without them, the ab-
+
+
+                                                                          8
+                   Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+
+         Table          Sandwich
+      Grocery
+
+                                                                              6. Discussion and Future Work
+                                                         Average
+        Bussing          Making       Shopping
+                                                                              We presented Hi Robot, a system that uses vision-language
+ 100                                                    46%
+
+                                                        46%
+       39%
+
+                                                                   39%
+
+                                                        gap
+                                                        gap        gap
+                                                                   gap        models (VLMs) in a hierarchical structure, first reasoning
+  80                                                                          over complex prompts, user feedback, and language inter-
+  60
+                                                                              action to deduce the most appropriate next step to fulfill the
+                                                                              task, and then performing that step by directly outputting
+  40
+                                                                              low-level action commands. Our system can be thought of
+  20                                                                          as a VLM-based instantiation of the “System 1” and “Sys-
+   0                                                                          tem 2” architecture (Kahneman, 2011). The deliberative
+        IA    TP        IA     TP     IA     TP         IA        TP          “System 2” layer takes the form of a high-level VLM pol-
+                                                                              icy, which leverages semantic and visual knowledge from
+                   Hi Robot w/o synthetic data     Hi Robot                   web-scale pre-training to reason through complex prompts
+                                                                              and user interactions. The physical, reactive “System 1”
+Figure 7: Ablation on synthetic data. Synthetic data is essential             layer also takes the form of a VLM, trained to directly out-
+for handling open-ended instructions, as the model trained with-              put robot actions in response to simpler commands that de-
+out it struggle with user-driven deviations, failing to integrate clar-       scribe atomic behaviors.
+ifications and constraints, whereas Hi Robot adapts seamlessly by
+leveraging diverse, compositional language prompts. (IA = In-                 The two VLMs have nearly identical architectures, with the
+struction Accuracy, TP = Task Progress)                                       only difference being that the low-level policy uses flow
+                                                                              matching to output the actions. Indeed, the separation of
+                                                                              roles at the model level is not fundamental to this design: a
+         Table          Sandwich
+      Grocery
+
+                                                             Average
+        Bussing          Making       Shopping                                natural step for future work is to combine both systems into
+ 100
+                                                        19%
+
+                                                        19%
+      34%
+
+                                                                  34%
+        one model, and draw the “System 1” vs “System 2” dis-
+                                                        gap
+                                                        gap       gap
+                                                                  gap
+                                                                              tinction purely at inference time. Future work could also
+  80
+                                                                              interleave high-level and low-level processing more intri-
+  60                                                                          cately – while our system simply runs high-level inference
+  40
+                                                                              at a fixed but lower frequency, an adaptive system might si-
+                                                                              multaneously process inputs and language asynchronously
+  20
+                                                                              at multiple different levels of abstraction, providing for a
+   0                                                                          more flexible multi-level reasoning procedure.
+        IA    TP        IA     TP     IA     TP          IA       TP
+                                                                              Our system also has a number of limitations that could be
+                    Flat VLA w/synthetic data     Hi Robot
+                                                                              studied in future work. While we show that our high-level
+                                                                              policy can often break down complex commands into low-
+Figure 8: Hierarchical policy vs. flat policy. The hierarchical               level steps that the robot can perform physically, the train-
+approach outperforms the flat variant trained on the same data,               ing process for this high level model relies in some amount
+as it effectively integrates user feedback and partial instructions,          of prompt engineering to produce synthetic training exam-
+whereas the flat model struggles with mid-task clarifications and
+nuanced task variations. (IA = Instruction Accuracy, TP = Task                ples that induce this behavior. The training process decou-
+Progress)                                                                     ples the high-level and low-level models, and they are not
+                                                                              aware of one another’s capabilities except through the train-
+lated model ignores clarifications (e.g., “this is not trash”)                ing examples. Coupling these two layers more directly,
+or includes forbidden items (e.g., pickles), while Hi Robot                   e.g. by allowing the high-level policy to be more aware of
+smoothly adapts to such feedback, due to the broader cov-                     how successfully the low-level policy completes each com-
+erage of compositional language in synthetic data.                            mand, would be an exciting direction for future work. More
+                                                                              generally, by instantiating both high-level and low-level
+(B) Hierarchical structure outperforms a flat policy. We                      reasoning via VLMs, we believe that this design opens the
+next compare Hi Robot to a flat policy trained on the same                    door for much more intricate integration of these compo-
+synthetic data but without a separate reasoning step (Fig-                    nents, such that future work might create robotic vision-
+ure 8). The flat model often reverts to clearing all items or                 language-action models that dynamically reason about in-
+fails to handle partial instructions (“bus only the yellowish                 puts, feedback, and even their own capabilities to produce
+things”), whereas Hi Robot re-checks the prompt at each                       suitable situated response in complex open-world settings.
+high-level step and responds coherently to mid-task up-
+dates. This suggests separating high-level reasoning from
+low-level control is benficial for multi-step coherence and
+adapting to dynamic user inputs.
+
+                                                                          9
+               Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+Acknowledgments                                                           Do as i can, not as i say: Grounding language in robotic
+                                                                          affordances. In Conference on robot learning, pp. 287–
+We thank Ury Zhilinsky and Kevin Black for their help in                  318. PMLR, 2023b.
+setting up the data and training infrastructure. We thank
+Karol Hausman for valuable feedback and discussions on                  Chen, H., Yao, Y., Liu, R., Liu, C., and Ichnowski,
+video demonstration and language-following evaluation.                    J. Automating robot failure recovery using vision-
+We are also grateful to Noah Brown, Szymon Jakubczak,                     language models with optimized prompts. arXiv preprint
+Adnan Esmail, Tim Jones, Mohith Mothukuri, and Devin                      arXiv:2409.03966, 2024.
+LeBlanc for their support in robot maintenance. We appre-
+ciate Suraj Nair and Laura Smith for their insightful dis-              Chi, C., Feng, S., Du, Y., Xu, Z., Cousineau, E., Burch-
+cussions that helped with policy debugging. We also thank                 fiel, B., and Song, S. Diffusion policy: Visuomotor
+Claudio Guglieri for help in creating visualizations used in              policy learning via action diffusion. In Proceedings of
+this paper and on the project website. Finally, we extend                 Robotics: Science and Systems (RSS), 2023.
+our deepest gratitude to the entire team of robot operators
+at Physical Intelligence for their immense contributions to             Dai, Y., Lee, J., Fazeli, N., and Chai, J. Racer: Rich
+data collection, annotation, and policy evaluations.                      language-guided failure recovery policies for imitation
+                                                                          learning. arXiv preprint arXiv:2409.14674, 2024.
+
+Impact Statement                                                        Driess, D., Xia, F., Sajjadi, M. S., Lynch, C., Chowdhery,
+                                                                          A., Ichter, B., Wahid, A., Tompson, J., Vuong, Q., Yu, T.,
+This paper presents work where the goal is to advance the                 et al. Palm-e: An embodied multimodal language model.
+fields of machine learning and robotics. There are many                   arXiv preprint arXiv:2303.03378, 2023.
+potential societal consequences of our work, none of which
+we feel must be specifically highlighted here.                          Fu, Z., Zhao, T. Z., and Finn, C. Mobile aloha: Learning bi-
+                                                                          manual mobile manipulation with low-cost whole-body
+References                                                                teleoperation. arXiv preprint arXiv:2401.02117, 2024.
+
+Belkhale, S., Ding, T., Xiao, T., Sermanet, P., Vuong, Q.,              Hu, Y., Lin, F., Zhang, T., Yi, L., and Gao, Y. Look
+  Tompson, J., Chebotar, Y., Dwibedi, D., and Sadigh, D.                  before you leap: Unveiling the power of gpt-4v in
+  Rt-h: Action hierarchies using language. arXiv preprint                 robotic vision-language planning, 2023. URL https:
+  arXiv:2403.01823, 2024.                                                 //arxiv.org/abs/2311.17842.
+
+Beyer, L., Steiner, A., Pinto, A. S., Kolesnikov, A., Wang,             Huang, W., Abbeel, P., Pathak, D., and Mordatch, I. Lan-
+  X., Salz, D., Neumann, M., Alabdulmohsin, I., Tschan-                   guage models as zero-shot planners: Extracting action-
+  nen, M., Bugliarello, E., et al. Paligemma: A versatile                 able knowledge for embodied agents. In International
+  3b vlm for transfer. arXiv preprint arXiv:2407.07726,                   conference on machine learning, pp. 9118–9147. PMLR,
+  2024.                                                                   2022.
+
+Black, K., Brown, N., Driess, D., Esmail, A., Equi, M.,                 Huang, W., Wang, C., Zhang, R., Li, Y., Wu, J., and Fei-
+  Finn, C., Fusai, N., Groom, L., Hausman, K., Ichter,                    Fei, L. Voxposer: Composable 3d value maps for robotic
+  B., et al. π0 : A vision-language-action flow model for                 manipulation with language models. arXiv preprint
+  general robot control. arXiv preprint arXiv:2410.24164,                 arXiv:2307.05973, 2023.
+  2024.
+                                                                        Jang, E., Irpan, A., Khansari, M., Kappler, D., Ebert, F.,
+Brohan, A., Brown, N., Carbajal, J., Chebotar, Y., Dabis, J.,             Lynch, C., Levine, S., and Finn, C. Bc-z: Zero-shot
+  Finn, C., Gopalakrishnan, K., Hausman, K., Herzog, A.,                  task generalization with robotic imitation learning. In
+  Hsu, J., et al. Rt-1: Robotics transformer for real-world               Conference on Robot Learning, pp. 991–1002. PMLR,
+  control at scale. arXiv preprint arXiv:2212.06817, 2022.                2022.
+
+Brohan, A., Brown, N., Carbajal, J., Chebotar, Y., Chen, X.,            Kahneman, D. Thinking, fast and slow. Farrar, Straus
+  Choromanski, K., Ding, T., Driess, D., Dubey, A., Finn,                 and Giroux, New York, 2011. ISBN 9780374275631
+  C., et al. Rt-2: Vision-language-action models trans-                   0374275637.
+  fer web knowledge to robotic control. arXiv preprint
+  arXiv:2307.15818, 2023a.                                              Kim, M. J., Pertsch, K., Karamcheti, S., Xiao, T., Balakr-
+                                                                          ishna, A., Nair, S., Rafailov, R., Foster, E., Lam, G., San-
+Brohan, A., Chebotar, Y., Finn, C., Hausman, K., Herzog,                  keti, P., et al. Openvla: An open-source vision-language-
+  A., Ho, D., Ibarz, J., Irpan, A., Jang, E., Julian, R., et al.          action model. arXiv preprint arXiv:2406.09246, 2024.
+
+                                                                   10
+               Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+Li, B., Wu, P., Abbeel, P., and Malik, J. Interactive task             Namasivayam, K., Singh, H., Bindal, V., Tuli, A., Agrawal,
+  planning with language models, 2025a. URL https:                       V., Jain, R., Singla, P., and Paul, R. Learning neuro-
+  //arxiv.org/abs/2310.10645.                                            symbolic programs for language guided robot manip-
+                                                                         ulation. In 2023 IEEE International Conference on
+Li, Q., Liang, Y., Wang, Z., Luo, L., Chen, X., Liao, M.,                Robotics and Automation (ICRA), pp. 7973–7980. IEEE,
+  Wei, F., Deng, Y., Xu, S., Zhang, Y., et al. Cogact: A                 2023.
+  foundational vision-language-action model for synergiz-
+  ing cognition and action in robotic manipulation. arXiv              Nasiriany, S., Xia, F., Yu, W., Xiao, T., Liang, J., Dasgupta,
+  preprint arXiv:2411.19650, 2024.                                       I., Xie, A., Driess, D., Wahid, A., Xu, Z., et al. Pivot:
+                                                                         Iterative visual prompting elicits actionable knowledge
+Li, Y., Deng, Y., Zhang, J., Jang, J., Memmel, M., Yu, R.,               for vlms. arXiv preprint arXiv:2402.07872, 2024.
+  Garrett, C. R., Ramos, F., Fox, D., Li, A., Gupta, A.,
+                                                                       Octo Model Team, Ghosh, D., Walke, H., Pertsch, K.,
+  and Goyal, A. Hamster: Hierarchical action models for
+                                                                         Black, K., Mees, O., Dasari, S., Hejna, J., Xu, C., Luo,
+  open-world robot manipulation, 2025b. URL https:
+                                                                         J., Kreiman, T., Tan, Y., Chen, L. Y., Sanketi, P., Vuong,
+  //arxiv.org/abs/2502.05485.
+                                                                         Q., Xiao, T., Sadigh, D., Finn, C., and Levine, S. Octo:
+Liang, J., Huang, W., Xia, F., Xu, P., Hausman, K., Ichter,              An open-source generalist robot policy. In Proceedings
+  B., Florence, P., and Zeng, A. Code as policies: Lan-                  of Robotics: Science and Systems, Delft, Netherlands,
+  guage model programs for embodied control. In 2023                     2024.
+  IEEE International Conference on Robotics and Au-                    O’Neill, A., Rehman, A., Maddukuri, A., Gupta, A.,
+  tomation (ICRA), pp. 9493–9500. IEEE, 2023.                            Padalkar, A., Lee, A., Pooley, A., Gupta, A., Mandlekar,
+                                                                         A., Jain, A., et al. Open x-embodiment: Robotic learn-
+Liu, F., Fang, K., Abbeel, P., and Levine, S. Moka: Open-                ing datasets and rt-x models: Open x-embodiment col-
+  vocabulary robotic manipulation through mark-based vi-                 laboration 0. In 2024 IEEE International Conference on
+  sual prompting. In First Workshop on Vision-Language                   Robotics and Automation (ICRA), pp. 6892–6903. IEEE,
+  Models for Navigation and Manipulation at ICRA 2024,                   2024.
+  2024a.
+                                                                       Patki, S., Daniele, A. F., Walter, M. R., and Howard, T. M.
+Liu, H., Chen, A., Zhu, Y., Swaminathan, A., Kolobov, A.,                Inferring compact representations for efficient natural
+  and Cheng, C.-A. Interactive robot learning from verbal                language understanding of robot instructions. In 2019
+  correction. arXiv preprint arXiv:2310.17555, 2023.                     International Conference on Robotics and Automation
+                                                                         (ICRA), pp. 6926–6933. IEEE, 2019.
+Liu, P., Orru, Y., Vakil, J., Paxton, C., Shafiullah, N. M. M.,
+  and Pinto, L. Ok-robot: What really matters in integrat-             Pertsch, K., Stachowicz, K., Ichter, B., Driess, D., Nair,
+  ing open-knowledge models for robotics. arXiv preprint                 S., Vuong, Q., Mees, O., Finn, C., and Levine, S. Fast:
+  arXiv:2401.12202, 2024b.                                               Efficient action tokenization for vision-language-action
+                                                                         models. arXiv preprint arXiv:2501.09747, 2025.
+Liu, S., Wu, L., Li, B., Tan, H., Chen, H., Wang, Z., Xu,
+  K., Su, H., and Zhu, J. Rdt-1b: a diffusion founda-                  Qiu, D., Ma, W., Pan, Z., Xiong, H., and Liang, J. Open-
+  tion model for bimanual manipulation. arXiv preprint                   vocabulary mobile manipulation in unseen dynamic en-
+  arXiv:2410.07864, 2024c.                                               vironments with 3d semantic maps. arXiv preprint
+                                                                         arXiv:2406.18115, 2024.
+Loshchilov, I. and Hutter, F. Decoupled weight decay reg-
+                                                                       Radford, A., Kim, J. W., Xu, T., Brockman, G., McLeavey,
+  ularization, 2017.
+                                                                         C., and Sutskever, I. Robust speech recognition via
+                                                                         large-scale weak supervision. In International confer-
+Matuszek, C., Herbst, E., Zettlemoyer, L., and Fox, D.
+                                                                         ence on machine learning, pp. 28492–28518. PMLR,
+ Learning to parse natural language commands to a robot
+                                                                         2023.
+ control system. In Experimental Robotics: The 13th In-
+ ternational Symposium on Experimental Robotics, vol-                  Shah, R., Yu, A., Zhu, Y., Zhu, Y., and Martı́n-Martı́n,
+ ume 88, pp. 403. Springer, 2013.                                        R. Bumble: Unifying reasoning and acting with vision-
+                                                                         language models for building-wide mobile manipula-
+McCallum, S., Taylor-Davies, M., Albrecht, S., and Suglia,               tion. arXiv preprint arXiv:2410.06237, 2024.
+ A. Is feedback all you need? leveraging natural language
+ feedback in goal-conditioned rl. In NeurIPS 2023 Work-                Shi, L. X., Hu, Z., Zhao, T. Z., Sharma, A., Pertsch, K.,
+ shop on Goal-Conditioned Reinforcement Learning.                        Luo, J., Levine, S., and Finn, C. Yell at your robot:
+
+                                                                  11
+              Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+  Improving on-the-fly from language corrections. arXiv            Zhao, T. Z., Kumar, V., Levine, S., and Finn, C. Learning
+  preprint arXiv:2403.12910, 2024.                                   fine-grained bimanual manipulation with low-cost hard-
+                                                                     ware. arXiv preprint arXiv:2304.13705, 2023.
+Singh, I., Blukis, V., Mousavian, A., Goyal, A., Xu, D.,
+  Tremblay, J., Fox, D., Thomason, J., and Garg, A. Prog-          Zheng, J., Li, J., Liu, D., Zheng, Y., Wang, Z., Ou, Z., Liu,
+  prompt: Generating situated robot task plans using large           Y., Liu, J., Zhang, Y.-Q., and Zhan, X. Universal ac-
+  language models. In 2023 IEEE International Confer-                tions for enhanced embodied foundation models. arXiv
+  ence on Robotics and Automation (ICRA), pp. 11523–                 preprint arXiv:2501.10105, 2025.
+  11530. IEEE, 2023.
+                                                                   Zhi, P., Zhang, Z., Han, M., Zhang, Z., Li, Z., Jiao, Z.,
+Singh, U., Bhattacharyya, P., and Namboodiri, V. P.                  Jia, B., and Huang, S. Closed-loop open-vocabulary
+  Lgr2: Language guided reward relabeling for accelerat-             mobile manipulation with gpt-4v.       arXiv preprint
+  ing hierarchical reinforcement learning. arXiv preprint            arXiv:2404.10220, 2024.
+  arXiv:2406.05881, 2024.
+Stephan, M., Khazatsky, A., Mitchell, E., Chen, A. S., Hsu,
+  S., Sharma, A., and Finn, C. Rlvf: Learning from ver-
+  bal feedback without overgeneralization. arXiv preprint
+  arXiv:2402.10893, 2024.
+Stepputtis, S., Campbell, J., Phielipp, M., Lee, S., Baral,
+  C., and Ben Amor, H. Language-conditioned imitation
+  learning for robot manipulation tasks. Advances in Neu-
+  ral Information Processing Systems, 33:13139–13150,
+  2020.
+Stone, A., Xiao, T., Lu, Y., Gopalakrishnan, K., Lee, K.-
+  H., Vuong, Q., Wohlhart, P., Kirmani, S., Zitkovich,
+  B., Xia, F., et al. Open-world object manipulation us-
+  ing pre-trained vision-language models. arXiv preprint
+  arXiv:2303.00905, 2023.
+Swadzba, A., Vorwerg, C., Wachsmuth, S., and Rickheit,
+  G. A computational model for the alignment of hierar-
+  chical scene representations in human-robot interaction.
+  In Twenty-First International Joint Conference on Artifi-
+  cial Intelligence. Citeseer, 2009.
+Wang, S., Han, M., Jiao, Z., Zhang, Z., Wu, Y. N., Zhu,
+ S.-C., and Liu, H. Llmˆ 3: Large language model-based
+ task and motion planning with motion failure reasoning.
+ arXiv preprint arXiv:2403.11552, 2024.
+Wen, J., Zhu, Y., Li, J., Zhu, M., Wu, K., Xu, Z., Liu, N.,
+ Cheng, R., Shen, C., Peng, Y., et al. Tinyvla: Towards
+ fast, data-efficient vision-language-action models for
+ robotic manipulation. arXiv preprint arXiv:2409.12514,
+ 2024.
+Xiao, A., Janaka, N., Hu, T., Gupta, A., Li, K., Yu, C.,
+  and Hsu, D. Robi butler: Remote multimodal inter-
+  actions with household robot assistant. arXiv preprint
+  arXiv:2409.20548, 2024.
+Zawalski, M., Chen, W., Pertsch, K., Mees, O., Finn, C.,
+  and Levine, S. Robotic control via embodied chain-
+  of-thought reasoning. arXiv preprint arXiv:2407.08693,
+  2024.
+
+                                                              12
+                   Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+A. Synthetic Data Generation                                                            between task domains and more robust, open-ended robot
+                                                                                        behavior.
+A.1. Scenario and Response Categorization
+To ensure the quality and diversity of the synthetic data,                              B. System and Robot Overview
+we incorporate structured scenario classification and re-
+sponse categorization into the prompt design for pgen , fol-                            Our system integrates speech-based interactions and real-
+lowing (Stephan et al., 2024). Specifically, we classify                                time robotic control. Below, we detail the components of
+interactions into different scenario types, such as nega-                               our system, including audio processing, GPU-based infer-
+tive task (where the user instructs the robot what not to                               ence, and the robot configurations.
+do), situated correction (where the user adjusts an earlier
+command based on the evolving task state), and specific                                 B.1. Perception and Language Processing
+constraint (where the user specifies particular constraints,
+                                                                                        For speech-based interaction, we use a consumer-grade
+such as dietary preferences). In addition, we categorize
+                                                                                        lavalier microphone for audio input. Speech-to-text tran-
+the robot’s responses into types such as simple confirma-
+                                                                                        scription is handled locally using Whisper large-v2 (Rad-
+tions, clarifications, and error handling. These classifica-
+                                                                                        ford et al., 2023). For text-to-speech synthesis, we employ
+tions guide the generation process to ensure a broad range
+                                                                                        the Cartetia API to generate natural and expressive speech
+of user-robot interactions.
+                                                                                        outputs.
+A.2. Prompt Construction for Contextual Grounding
+                                                                                        B.2. Inference Hardware
+In prompt P, we include a detailed description of the task
+                                                                                        To support real-time inference, we utilize one to two
+(e.g., bussing a table, making a sandwich, grocery shop-
+                                                                                        NVIDIA GeForce RTX 4090 consumer-grade GPUs.
+ping) and instruct the model to ground responses in visual
+observations and prior context. A key advantage of lever-
+aging large pretrained VLMs is their ability to incorporate                             B.3. Real-Time Inference Latency
+world knowledge when generating interactions. For in-                                   We measured latency across components on consumer-
+stance, the model can infer dietary constraints when gener-                             grade RTX 4090.
+ating prompts for sandwich-making, producing user com-
+mands such as “Can you make a sandwich for me? I’m                                      Low-Level Policy Per-Step Inference Times
+lactose intolerant” and an appropriate robot response like
+                                                                                                  Component                  Time (ms)
+“Sure, I won’t put cheese on it.” Similarly, it can reason
+over ambiguous or implicit requests, such as inferring that                                       Image encoding                14
+“I want something sweet” in a grocery shopping scenario                                           Observation processing        32
+should lead to suggestions like chocolate or candy.                                               Action prediction (x10)       27
+                                                                                                  Total (on-board)              73
+To maintain consistency in multi-step tasks, we condition                                         Total (off-board + WiFi)      86
+pgen on prior skill labels within an episode ℓ̂0 , ..., ℓ̂t−1 ,
+allowing it to generate coherent user commands that                                     High-Level Policy (Single Decoding Step)
+account for past actions. For instance, if the robot
+has already placed lettuce and tomato on a sandwich,                                      • RTX 4090: 47 ms (prefill) + 13.2 ms (decode)
+the generated user prompt might request additional in-                                    • H100: 17.3 ms (prefill) + 5.7 ms (decode)
+gredients that logically follow. This ensures that the                                  These measurements confirm real-time feasibility at
+synthetic interactions reflect realistic task progression                               ∼10 Hz control rates. With action chunking (Zhao et al.,
+rather than isolated commands. As such, we leverage                                     2023), we can use it to control robots at 50 Hz.
+pgen (ℓt , ut |I1t , ..., Int , ℓ̂0 , ..., ℓ̂t−1 , ℓ̂t , P) to produce a richer,
+more diverse synthetic dataset Dsyn that provides mean-                                 B.4. Robot System Details
+ingful supervision for training our high-level policy.
+                                                                                        We employ three different robot configurations with vari-
+While in this work we generate a separate Dsyn and train
+                                                                                        ous manipulation and mobility capabilities.
+a separate high-level policy for each task (e.g., sandwich
+making vs. table cleaning) for clarity and ease of bench-
+                                                                                        UR5e. This setup features a 6-DoF robotic arm equipped
+marking, the architecture is readily amenable to a unified
+                                                                                        with a parallel jaw gripper. It includes two cameras: a
+multi-task formulation. In principle, the same hierarchical
+                                                                                        wrist-mounted camera and an over-the-shoulder camera.
+approach could be used to train a single high-level policy
+                                                                                        The system operates within a 7-dimensional configuration
+across a multitude of tasks, facilitating knowledge transfer
+                                                                                        and action space.
+
+                                                                                   13
+               Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+Bimanual ARX. This configuration consists of two 6-                         • Temporarily ignoring instructions: e.g., grabbing
+DoF ARX arms. The system is equipped with three cam-                          cheese when the robot is close to it despite user’s
+eras: two wrist-mounted cameras and one base camera.                          lactose intolerance (due to training bias toward
+The combined system has a 14-dimensional configuration                        proximal objects)
+and action space, enabling dextrous bimanual manipulation                   • Error accumulation and out-of-distribution
+tasks.                                                                        (OOD) recovery: e.g., dropped objects
+                                                                     Beyond the future directions discussed in the main text,
+Mobile ARX. Built on the Mobile ALOHA (Fu et al.,                    several additional mitigations may help address observed
+2024) platform, this system integrates two 6-DoF ARX                 limitations, including but not limited to:
+robotic arms mounted on a mobile base. The nonholo-
+nomic base introduces two additional action dimensions,                • Stronger instruction-following model
+resulting in a 14-dimensional configuration space and a 16-            • Long-context model
+dimensional action space. Similar to the bimanual setup,               • Adversarial data generation for edge cases
+it includes two wrist-mounted cameras and a base camera,               • Diverse data collection including failure recovery and
+providing robust visual feedback for navigation and manip-               annotation
+ulation.
+                                                                     C.5. System Prompt for GPT-4o
+C. Model and Experiment Details                                      In the system prompt for GPT-4o, we include a description
+                                                                     of the task, robot setup, and common instructions to select
+C.1. Model Initialization                                            from. Below is an example for the Table Cleaning task.
+While our method can be trained from scratch or fine-tuned
+                                                                                  Listing 1: GPT-4o Baseline Prompt
+from any vision-language model (VLM) backbone, in prac-
+tice we use PaliGemma (Beyer et al., 2024) as the base               You are an AI assistant guiding a single-
+                                                                     arm robot to bus tables.
+model. PaliGemma is an open-source, 3-billion-parameter
+VLM that offers a good balance between performance and               The robot can optionally place trash in the
+computational efficiency. We unfreeze the full model for              trash bin and utensils and dishes in the
+fine-tuning.                                                         plastic box.
+
+                                                                     Every 2 seconds, you can issue one
+C.2. Optimizer and Hyperparameters                                   instruction from a provided list.
+                                                                     You will receive images from two cameras:
+We use the AdamW optimizer (Loshchilov & Hutter, 2017)               one for a global view and one on the robot’
+with β1 = 0.9, β2 = 0.95, and no weight decay. Gradient               wrist for detailed views.
+norms are clipped to a maximum magnitude of 1. We main-
+tain an exponential moving average (EMA) of the network              Interpret the user’s instruction into one
+weights with a decay factor of 0.999. The learning rate is           from the provided list for the robot to
+                                                                     execute. Adhere strictly to the user’s
+warmed up over the first 1,000 steps and then held constant          instruction. If ambiguous, reason out the
+at 1 × 10−5 . We use a batch size of 512.                            best action for the robot. Only provide the
+                                                                      exact instruction from the list without
+C.3. Training Duration and Resources                                 explanation.
+
+Training the high-level policy is highly efficient, requiring        You will select your instruction from the
+approximately 2 hours on 8×H100 GPUs. The low-level                  following list:
+                                                                     put food container in trash bin
+policy follows a similar training pipeline, though training          pick up chopstick
+time may vary depending on the dataset size and the com-             drop wrapper in trash
+plexity of the target tasks for action prediction.                   pick up plastic plate
+                                                                     pick up the cup
+                                                                     pick up white bowl
+C.4. Failure Cases
+                                                                     place bowl to box
+We observed the following failure modes:                             pick up spoon
+                                                                     place trash to trash bin
+ 1. High-level:                                                      drop box in trash
+      • Difficulty with instructions requiring long-                 place take out box to trash
+                                                                     move to the left
+        context reasoning, since the current system lacks            pick up container
+        memory                                                       drop plate in bin
+ 2. Low-level:                                                       pick up the trash
+
+                                                                14
+          Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models
+
+pick up plastic bowl
+go higher
+place spoon to box
+pick up the paper container
+drop fork in bin
+pick up the bowl
+pick up the plastic container
+go lower
+pick up box
+move to the right
+drop plastic lid into recycling bin
+pick up wrapper
+pick up the plate
+put bowl in box
+pick up the container
+put the plate in the bin
+pick up cup
+put cup into box
+throw it in the trash
+pick up food container
+pick up blue cup
+drop the bowl into the bin
+move towards me
+pick up napkin
+rotate counterclockwise
+put the cup in the bin
+throw trash away
+rotate clockwise
+drop plastic bowl into box
+open gripper
+pick up plastic cup
+pick up the plate
+close gripper
+move away from me
+go back to home position
+
+
+
+
+                                                     15
+

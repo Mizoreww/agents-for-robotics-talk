@@ -5,7 +5,7 @@ Usage: python3 validate_standalone.py            # static checks + browser audit
 """
 from pathlib import Path
 from html.parser import HTMLParser
-import base64, hashlib, json, re, sys
+import base64, hashlib, html, json, re, sys
 ROOT=Path('/home/limx/Desktop/agent_for_robotics');B=ROOT/'.build';out=ROOT/'output';f=out/'Agents_for_Robotics_Self_Contained.html'
 STATIC_ONLY='--static' in sys.argv
 class Audit(HTMLParser):
@@ -26,50 +26,189 @@ p=Audit();text=f.read_text();p.feed(text)
 assert text.startswith('<!DOCTYPE html>') and p.charset
 assert len(p.ids)==len(set(p.ids))
 assert not p.external,p.external
-deck=json.loads(p.scripts['deck-data']);N=28;V=20
-assert len(deck['slides'])==N and len(deck['media'])==V,(len(deck['slides']),len(deck['media']))
+deck=json.loads(p.scripts['deck-data']);N=37;V=28
+assert len(deck['slides'])==N and len(deck['media'])==V
 assert [r['number'] for r in deck['slides']]==list(range(1,N+1))
-expected_order=[1,2,3,4,None,6,5,7,8,None,None,None,None,None,None,10,11,12,13,None,14,15,16,17,18,20,19,22]
-assert [r['old_slide'] for r in deck['slides']]==expected_order,'Three parts must keep their case order.'
-assert [r['new_slide_key'] for r in deck['slides'] if r['new_slide_key']]==['exec','community','simdex','harness','toolkits','gaps','world','improve']
+expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 'enpire_env', 'enpire_resets', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 18, 'enpire_robocasa', 'enpire_demos', 'enpire_limits', 'rsi_summary', 'end', 'thanks']
+assert [(r['old_slide'] if r['old_slide'] is not None else r['new_slide_key']) for r in deck['slides']]==expected_keys
 opening_slides=[r['number'] for r in deck['slides'] if r['chapter_opening']]
-assert opening_slides==[5,15,20]
-assert [r['diagram_key'] for r in deck['slides'] if r['diagram_key']]==['exec','world','improve']
+assert opening_slides==[4,18,23]
+assert [r['diagram_key'] for r in deck['slides'] if r['diagram_key']]==['control','world','improve']
 for number in opening_slides:
  chapter=deck['slides'][number-1]
  assert next(r['number'] for r in deck['slides'] if r['group']==chapter['group'])==number
- assert any(s in chapter['html'] for s in ['Chapter overview','Human-assisted setup','Our synthesis'])
-groups=[r['group'] for r in deck['slides']]
-assert groups[:4]==['Introduction']*4 and groups[4:14]==['1 · Agent Controls Robot']*10 and groups[14:19]==['2 · Agent Produces Data']*5 and groups[19:26]==['3 · Agent Post-trains Robot']*7 and groups[26:]==['Closing']*2,groups
-titles={r['number']:r['title'] for r in deck['slides']}
-expected_titles={1:'Agents for Robotics',2:'Demo: Painting with Feedback',3:'Our Goal',4:'Three Roles',5:'Agent Controls Robot',6:'Direct Actions and Code',7:'Model and Interface',8:'VLA as a Tool',9:'Demo: Placement and Insertion',10:'Demo: Zero-shot Real Arms',11:'Demo: Dexterity in Simulation',12:'Harness: Semantic Actions',13:'RPent: Robotics as Tools',14:'Gaps and Directions',15:'Agent Produces Data',16:'Real Episode and Its Twin',17:'Conversion Pipeline',18:'Replay Acceptance on DROID-100',19:'Demo: Real2Sim and a Failure',20:'Agent Post-trains Robot',21:'ENPIRE: Real Experiments in the Loop',22:'ENPIRE: Environment and Improvement',23:'ENPIRE: Reset and Verification',24:'ENPIRE: Pin Insertion Curve',25:'Faster Research, Higher Token Use',26:'ASPIRE: Repairing Skills',27:'Beyond: Structural Design',28:'Conclusion'}
-assert titles==expected_titles,[(k,titles[k],expected_titles[k]) for k in titles if titles[k]!=expected_titles.get(k)]
-assert all(len(t)<=40 for t in titles.values()),'Titles must stay short.'
-for label in ['Direct action output','q / EEF Pose','servo / controller','Agent Tools','IK / motion planner','Controller code','VLA / learned policy','WAM','Perception / state tools']:
- assert label in deck['slides'][4]['html'],label
-assert 'extend the report' in deck['slides'][4]['html']
-for label in ['MV_FWD','GRASP','89%','Parallel-jaw']:
- assert label in deck['slides'][11]['html'],label
-for label in ['Gaps','Directions','Part 2','Part 3','19/20']:
- assert label in deck['slides'][13]['html'],label
-# Added slides keep the deck's sparse style: few text blocks, no small dense paragraphs.
-for n in (10,11,12,14):
- blocks=re.findall(r'font-size:(\d+)px[^>]*>([^<]*)</div>',deck['slides'][n-1]['html'])
- assert all(int(size)>=17 for size,_ in blocks),n
- assert sum(len(t) for size,t in blocks if int(size)<=21)<=260,(n,[t for size,t in blocks if int(size)<=21])
-assert 'Official RPent service-oriented framework' in deck['slides'][12]['html'] and 'DreamZero is not marked supported' in deck['slides'][12]['html']
-assert 'runnable simulated episode' in deck['slides'][14]['html']
-assert 'Not a validated' in deck['slides'][26]['html']
-assert 'Three Roles' in deck['slides'][3]['html'] and 'Agent Post-trains Robot' in deck['slides'][3]['html']
-assert '第二部分' in deck['slides'][13]['script'] and '第三部分' in deck['slides'][18]['script']
-assert '@ZeYanjie' in deck['slides'][10]['html'] and 'MuJoCo' in deck['slides'][10]['html']
-assert '小红书' in deck['slides'][13]['html']
+ if number==23:
+  assert all(t in chapter['html'] for t in ['Task + API','Agent','Real rollout','Verifier + logs'])
+ else:assert 'Chapter overview' in chapter['html']
+assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*14+['2 · Agent Creates Data']*5+['3 · Agent Improves Policy']*13+['Closing']*2
+expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'Robot Puzzle Demos in Simulation', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Astra: Scene Reconstruction', 'Astra: Hand Assets', 'Astra: Replay and Data Rollout', 'Data: From Demos to Useful Data', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Auto Evaluation', 'ENPIRE: Auto Reset', 'ENPIRE: Two Ways to Improve Policy', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Evaluate Coding Agents', 'ENPIRE: Parallel Physical Research', 'ENPIRE: Cost of Physical Research', 'ENPIRE: Autoresearch in RoboCasa', 'ENPIRE: Learned Manipulation Demos', 'ENPIRE: Limitations', 'Toward Recursive Self-Improvement', 'Takeaways', 'Thank You']
+assert [r['title'] for r in deck['slides']]==expected_titles
+assert all(len(t)<=40 for t in expected_titles)
+def slide(n):return deck['slides'][n-1]
+# Each promised source remains scoped to its role: architecture, evidence, or community demo.
+assert slide(5)['ids']==['HIROBOT','HELIX','HELIX02']
+assert len(re.findall(r'class="art original"',slide(5)['html']))==3
+assert slide(12)['ids']==['ANON']
+for n in [23,24,28]:assert slide(n)['ids']==['S15']
+assert slide(31)['ids']==['S15','ENPIRE_SITE']
+assert all(t in slide(4)['html'] for t in ['q / EEF Pose','Agent Tools','IK / motion planner','VLA / WAM / Learned policy','servo / controller'])
+assert all(t in slide(7)['html'] for t in ['19 / 20','2 / 20','Astra: Stronger Real-Robot Performance'])
+assert '20 calls/run;' not in slide(7)['html'] and 'No independent VLA.' not in slide(7)['html']
+assert 'Astra: More Real-Robot Demos' in slide(8)['html']
+assert 'Selected demonstrations, not success-rate estimates.' not in slide(8)['html']
+assert slide(8)['html'].count('Control interface: not disclosed')==2
+assert '不能仅从Franka外观' in slide(8)['script']
+assert all(t in slide(10)['html'] for t in ['1 / 20','18 / 20','16 / 20','200 steps','500 steps'])
+assert all(t in slide(10)['script'] for t in ['256.6','不是 joint q','proprio','没有重跑'])
+assert all(t in slide(12)['script'] for t in ['50×14','1–15','1–5','25 Hz','14D','OR','FK trajectory','内部网络'])
+assert all(t in slide(12)['html'] for t in ['13 / 50','24 / 50'])
+assert 'simulation' in slide(12)['html'] and 'omit LLM waiting' in slide(12)['footer']
+assert 'control-time playback' in slide(12)['script'] and '不能用来比较端到端 latency' in slide(12)['script']
+assert all(t in slide(28)['script'] for t in ['I37','10.8','I66','I76','不是三项独立'])
+assert 'one-shot' in slide(30)['script'] and 'tokens' in slide(31)['script']
+assert '8×' in slide(33)['html'] and 'ENPIRE' in slide(33)['title']
+assert 'Not a validated' in slide(20)['html']
+# v0.10: shared-start interface layout, capability diagnosis and sparse closing.
+assert all(t in slide(17)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Still difficult','Open problems','Lower foundation-model latency','Better interfaces / action primitives'])
+assert all(t in slide(17)['script'] for t in ['不是三种独立','is not fundamental','因果对照仍未披露'])
+assert slide(17)['ids'][0]=='HIROBOT_DISCUSSION'
+assert len(' '.join(re.findall(r'<text\b[^>]*>(.*?)</text>',slide(36)['html'])).split())<50
+assert all(t in slide(36)['html'] for t in ['Takeaways','Latency?','Better interface?','Sim2Real?','Efficiency?','takeaways-diagram','System 2','Primitives','Agent'])
+assert '不是一条已打通' in slide(36)['script']
+assert 'Open test: held-out tasks, matched budgets, no regression' not in slide(35)['html']
+assert all(t not in slide(36)['html'] for t in ['Different artifacts. Different tests.','Re-test the division of work as models improve.'])
+assert 'Thanks for listening!' in slide(37)['html'] and 'Questions &amp; discussion' in slide(37)['html']
+assert len(re.sub('<[^>]+>',' ',slide(37)['html']).split())<25
+# v0.12: Hi Robot results are replaced, not the original architecture figures.
+assert slide(6)['new_slide_key']=='responsibility_shift'
+assert 'data-table-cell' not in slide(6)['html']
+assert slide(6)['html'].count('System 0')==2 and 'Servo' not in slide(6)['html']
+assert re.sub('<[^>]+>',' ',slide(6)['html']).split().count('Controller')==2
+assert len(re.sub('<[^>]+>',' ',slide(6)['html']).split())<80
+assert all(t in slide(6)['html'] for t in ['Earlier','Generalist VLA / WAM','π(a | o, l)','π(a | o, c)','c = (k, g)','a: controller target','Emerging','Action primitives','Controller','Partial shift'])
+assert all(t in slide(6)['script'] for t in ['设计目标','不是某个已有模型的能力保证','部分职责迁移','因果对照尚未披露'])
+assert 'functional synthesis' in slide(6)['footer']
+assert '不是整层搬走' in slide(6)['script'] and '简称' in slide(6)['script']
+assert all(t in slide(17)['script'] for t in ['第6页','generalist VLA / WAM','motor competence'])
+
+# v0.11: distinguish inference time, local control and candidate-data validity.
+from evidence_v011 import load_evidence
+new_evidence=load_evidence(ROOT)
+assert slide(16)['ids']==['ASIM']
+for term in ['30.75 s','26.08 s','41.98 s','414 queries','241 queries','76 queries','Tens of seconds per query make rapid feedback difficult.']:
+ assert term in slide(16)['html'],term
+assert all(term in slide(16)['script'] for term in ['180回合','731次','不是完整闭环latency','Controller Hz不等于Agent inference Hz'])
+assert '12-joint chunks' not in slide(16)['html']
+assert slide(17)['html'].count('class="art capability-icon"')==4
+assert 'Model + interface + feedback budget' not in slide(17)['html']
+assert 'Evidence-limited boundaries' not in slide(17)['html']
+assert all(term in slide(17)['script'] for term in ['open problems','动作段之间衔接更流畅','contact-rich'])
+assert slide(18)['ids']==['AWESOME','DEXGPT']
+assert all(term in slide(18)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','Validate physics'])
+assert 'Not a validated' in slide(20)['html'] and '190个STEP' in slide(20)['script']
+assert slide(22)['ids']==['AWESOME','DEXGPT']
+assert all(term in slide(22)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','How can we use it for downstream training?'])
+assert all(term in slide(21)['script'] for term in ['5.623 mm','203个','不是203次','downstream training'])
+assert 'Beyond' not in ' '.join(r['title'] for r in deck['slides'])
+# v0.18 retains every pre-existing Control/Data clip byte-for-byte.
+baseline=json.loads((B/'revision_0_18_baseline/.build/standalone_build_audit.json').read_text())
+expected_retained={r['name']:r['sha256'] for r in baseline['media'] if r['slide']<=21}
+assert expected_retained=={r['name']:r['sha256'] for r in deck['media'] if r['name'] in expected_retained}
+from enpire_v018 import verify_enpire, verify_puzzles
+verify_enpire(ROOT);verify_puzzles(ROOT)
+from data_demos_v015 import verify_data_demos, verify_data_extra, verify_kitchen_video
+verify_data_demos(ROOT);verify_data_extra(ROOT);verify_kitchen_video(ROOT)
+assert all('S13' not in r['ids'] for r in deck['slides'])
+assert all(term not in deck['scriptMarkdown'] for term in ['Agentic Real2Sim','DROID-100','48 accepted'])
+assert [r['new_slide_key'] or r['old_slide'] for r in deck['slides'][17:22]]==['world','data_scenes','data_hands','data_motion','world_summary']
+assert 'physical validation not met' in slide(21)['html']
+assert slide(19)['ids']==['OFFICE','KITCHEN_X','KITCHEN_LINKEDIN','KITCHEN_PROJECT','AWESOME']
+assert slide(20)['ids']==['S24','ROPE','AWESOME']
+assert all(t in slide(19)['html'] for t in ['20 s monocular RGB','articulated assets'])
+assert all(t in slide(19)['script'] for t in ['adding simulation','human-in-the-loop','20秒不是建模耗时'])
+assert 'Source image' not in slide(19)['html']
+assert 'illustrative cable deformation' in slide(20)['html']
+assert '不是9月12日的后续版本' in slide(20)['script']
+from report_figures_v013 import load_report_figures
+captures=load_report_figures(ROOT)
+new_image_keys={name:hashlib.sha256(file.read_bytes()).hexdigest() for name,file in captures.items()}
+for n,names in {13:['panel-score-ranking.png','panel-sr-ranking.png'],14:['robolab-success-ranking.png'],15:['task-score-table-complete.png']}.items():
+ assert 'data-table-cell' not in slide(n)['html']
+ assert slide(n)['ids']==['ANON']
+ for name in names:assert new_image_keys[name] in slide(n)['html']
+assert all(t in slide(13)['html'] for t in ['24/50','13/50'])
+assert all(t in slide(13)['script'] for t in ['48个scored episodes','分母都保持50','执行段长'])
+assert all(t in slide(14)['script'] for t in ['authorized retries','180提高到500','June cohort','49/50','46/50'])
+assert all(t in slide(15)['script'] for t in ['不是success rate','64与12','十个任务','七种方法'])
+assert slide(7)['new_slide_key']=='astra_direct'
+for r in deck['slides'][:17]:
+ assert 'S09' not in r['ids'] and 'RPENT' not in r['ids']
+ assert 'Claude' not in r['script'] and 'RPent' not in r['script']
+
+
+assert all(term not in slide(11)['html'] for term in ['Square is sensitive','Unequal budgets:'])
+assert 'highlighted Waypoint proprio column' in slide(11)['footer']
+assert all(term in slide(11)['script'] for term in ['不表示它在每个任务都最好','18/20','17/20','预算不同'])
+assert 'Public baselines are reweighted references, not paired reruns.' not in slide(13)['html']
+assert 'Selected final slots + retries / historical baselines; not fresh paired trials.' not in slide(14)['html']
+assert '重算了' in slide(13)['script'] and 'retained final slots' in slide(14)['script']
+assert 'Square · same model / proprio setting · unequal control and query budgets.' not in slide(10)['html']
+from code_video_v014 import verify_code_video
+verify_code_video(ROOT)
+
+# v0.9: a result table is complete only when its cells and qualifying protocol travel together.
+results=json.loads((ROOT/'research/results_v0_9.json').read_text())
+assert results['sources']==json.loads((ROOT/'research/results_v0_9_sources.json').read_text())['sources']
+for relative,expected in results['sources'].items():
+ assert hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==expected,relative
+def table_cells(number,headers,rows):
+ values=[html.unescape(t) for t in re.findall(r'<div class="text"[^>]*>(.*?)</div>',slide(number)['html'],re.S)]
+ expected=headers+[str(cell) for row in rows for cell in row]
+ start=values.index(headers[0])
+ assert values[start:start+len(expected)]==expected,(number,values[start:],expected)
+table_cells(7,['Completions','Fable 5','Fable 5.1','GPT-6 Astra'],
+ [[t]+[f"{r['successes']} / {r['n']}" for r in results['robocurve'] if r['task']==t] for t in ['Block into bowl','Puzzle into groove']])
+table_cells(11,['Task','Script\nupper','Random\nlower','ΔEEF\nproprio','Waypoint\nnone','Waypoint\nproprio','Code\nproprio','Code\nprivileged'],results['asim'])
+table_cells(29,['Coding agent','Push-T @ 8 h\nNormalized score','Pin @ 4 h\nSuccess rate'],
+ [['Codex','0.938','95.5%'],['Claude','0.750','97.5%'],['Kimi','0.625','79.0%']])
+table_cells(32,['Method','What changes','Reported evidence'],
+ [['GR00T N1.5','End-to-end VLA','Baseline'],['CaP-X*','Zero-shot agentic tool use','No autoresearch'],['ENPIRE','Tool / VLA code + feedback','Highest aggregate bar']])
+assert 'data-table-cell=' not in slide(31)['html']
+assert 'More parallel experiments reduce research time' not in slide(31)['html']
+# Independent expected coordinates: body rows/columns are zero-based. All ties retained.
+expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 11: {(0, 7), (0, 4), (2, 7), (1, 5), (0, 3), (0, 6), (1, 7), (0, 5), (2, 5)}, 29: {(0, 1), (1, 2)}, 32: {(2, 2)}}
+for number,wanted in expected_bold.items():
+ observed=set();all_coordinates=set()
+ for tag in re.findall(r'<div class="text"[^>]+>',slide(number)['html']):
+  match=re.search(r'data-table-cell="(\d+),(\d+)"',tag)
+  if not match:continue
+  coord=tuple(map(int,match.groups()))
+  assert coord not in all_coordinates,(number,coord)
+  all_coordinates.add(coord)
+  marked='data-result-best="true"' in tag
+  assert marked==('font-weight:700;' in tag),(number,coord,tag)
+  if marked:observed.add(coord)
+ assert observed==wanted,(number,observed,wanted)
+ if number<23:assert 'Bold:' in slide(number)['footer']
+ else:assert 'W. Xiao et al.' in slide(number)['footer']
+assert {s['number'] for s in deck['slides'] if 'data-table-cell=' in s['html']}==set(expected_bold)
+for number,terms in {29: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 32: ['40-episode', 'No reset/retry', 'not published']}.items():
+ assert all(term in slide(number)['html'] for term in terms),(number,terms)
+assert all(term in slide(31)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
+assert all(len(slide(n)['title'])<=40 for n in range(1,N+1))
+# Demo slides stay sparse and labels retain medium/speed boundaries.
+for n in [8, 9, 19, 20, 21, 33, 26]:
+ assert len(re.sub('<[^>]+>',' ',slide(n)['html']).split())<100
+assert '20×' in slide(8)['html'] and '12×' in slide(8)['html']
 assert sum(r['minutes'] for r in deck['slides'])==60
 assert deck['scriptMarkdown']==(out/'Speaker_Script_Revised.md').read_text()
 assert all(re.search(r'[一-鿿]',r['script']) for r in deck['slides'])
 headings=dict((int(n),t) for n,t in re.findall(r'^## (\d{2})\. (.+)$',deck['scriptMarkdown'],re.M))
 assert all(headings[r['number']]==r['title'] for r in deck['slides'])
 for key,a in deck['assets'].items():assert hashlib.sha256(base64.b64decode(a['data'],validate=True)).hexdigest()==key
+build_audit=json.loads((B/'standalone_build_audit.json').read_text())
+assert build_audit['sha256']==hashlib.sha256(f.read_bytes()).hexdigest()
+assert {record['sha256'] for record in build_audit['images']}==set(deck['assets']),'Image audit must describe exactly the delivered assets.'
 for m in deck['media']:
  raw=base64.b64decode(p.scripts[m['payloadId']],validate=True)
  assert hashlib.sha256(raw).hexdigest()==m['sha256']
@@ -79,22 +218,24 @@ for m in deck['media']:
  assert 'VIDEO:'+m['name'] not in slide['html'],'Posters are player-only.'
 old_media=json.loads((out/'offline_player/media_credits.json').read_text())
 original_by_name={m['name']:m for m in old_media}
-community=json.loads((B/'clip_manifest_v2.json').read_text());community_by_name={c['name']:c for c in community}
-retained={n for n in original_by_name if n!='wiping'}
-assert {m['name'] for m in deck['media']}==retained|set(community_by_name),{m['name'] for m in deck['media']}
+community=[]
+for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json','clip_manifest_v11.json']:
+ community+=json.loads((B/name).read_text())
+community_by_name={c['name']:c for c in community}
+expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'claw', 'cube'}, 10: {'asim_code', 'asim_delta', 'asim_waypoint'}, 12: {'anon_hybrid_pack', 'anon_direct_sort'}, 19: {'kitchen', 'office_newton'}, 20: {'rope_hand', 'hand'}, 21: {'astra_real2sim', 'dexgpt'}, 33: {'enpire_tie', 'enpire_cut', 'enpire_gpu', 'enpire_pin'}, 25: {'enpire_verify_full'}, 26: {'enpire_reset_tie', 'enpire_reset_full', 'enpire_reset_pusht', 'enpire_reset_gpu'}, 30: {'enpire_fleet'}}
+assert set(m['slide'] for m in deck['media'])==set(expected_media)
+for number,names in expected_media.items():
+ assert {m['name'] for m in deck['media'] if m['slide']==number}==names
 for m in deck['media']:
- if m['name'] in original_by_name:
-  assert deck['slides'][m['slide']-1]['old_slide']==original_by_name[m['name']]['slide']
-  assert m['sha256']==original_by_name[m['name']]['sha256']
- else:
-  assert m['sha256']==community_by_name[m['name']]['sha256'] and m['sourceUrl']==community_by_name[m['name']]['source_url']
-assert {m['name'] for m in deck['media'] if m['slide']==10}=={'wenli_icl','arx_knob'} and {m['name'] for m in deck['media'] if m['slide']==11}=={'ze_rubik','juggle'}
-assert {m['name'] for m in deck['media'] if m['slide']==12}=={'show_harness'} and {m['name'] for m in deck['media'] if m['slide']==14}=={'xhs_piper'}
+ record=community_by_name.get(m['name'],original_by_name.get(m['name']))
+ assert m['sha256']==record['sha256']
+ source=record.get('source_url') or original_by_name.get(m['name'],{}).get('sourceUrl')
+ assert m['sourceUrl']==source
 # Every embedded clip must sit inside the 1280x720 stage and above the footer.
 for m in deck['media']:assert m['x']>=0 and m['y']>=0 and m['x']+m['w']<=1280.5 and m['y']+m['h']<=660,m['name']
 # All Chinese characters used by script, slide text and player UI must exist in the embedded CJK subset.
-from fontTools.ttLib import TTFont
 sys.path.insert(0,str(B/'font_deps'))
+from fontTools.ttLib import TTFont
 cmap=TTFont(B/'assets/noto_cjk_script.woff2').getBestCmap()
 used={c for src in [deck['scriptMarkdown'],''.join(s['html'] for s in deck['slides']),(B/'standalone_player.js').read_text()] for c in src if ord(c)>0x2E7F}
 missing=sorted(c for c in used if ord(c) not in cmap)
@@ -117,6 +258,8 @@ assert len(layout['slides'])==N and all(not r['overflow'] and r['images'] and al
 assert [r['number'] for r in layout['slides']]==list(range(1,N+1))
 phone=json.loads((B/'standalone_mobile_audit.json').read_text());assert phone['html_sha256']==html_sha256
 assert phone['documentWidth']==phone['viewport']
+assert phone['script']['documentWidth']==phone['script']['viewport']
+assert all(b['rect']['left']>=0 and b['rect']['right']<=phone['script']['viewport']+.5 for b in phone['script']['buttons'])
 assert all(b['rect']['left']>=0 and b['rect']['right']<=phone['viewport']+.5 for b in phone['buttons'])
 playback=json.loads((B/'standalone_playback_audit.json').read_text());assert playback['html_sha256']==html_sha256
 observed_clips=[v['clip'] for row in playback['slides'] for v in row['playing']]
@@ -124,12 +267,14 @@ assert sorted(observed_clips)==sorted(m['name'] for m in deck['media'])
 for row in playback['slides']:
  assert all(v['time']>0 and not v['paused'] and not v['error'] for v in row['playing'])
  assert all(v['paused'] for v in row['pause'])
+ assert all(a['clip']==b['clip'] and b['paused'] and abs(a['time']-b['time'])<.05 for a,b in zip(row['pause'],row['pauseLater']))
  assert all(v['paused'] and v['time']<=.05 for v in row['restart'])
 ui=json.loads((B/'standalone_ui_audit.json').read_text());assert ui['html_sha256']==html_sha256
 assert ui['fullScriptHeadings']==[f'{r["number"]:02}. {r["title"]}' for r in deck['slides']]
 assert all(r['back']==r['opening'] for r in ui['transitions'])
 assert ui['focusView']['enabled'] and ui['keyboard']['focusExited']
-assert ui['figureDialog']['open'] and ui['figureDialog']['loaded']
+assert ui['figureDialog']['open'] and ui['figureDialog']['loaded'] and ui['figureDialog']['closed']
 assert ui['keyboard']['endSlide']==N
+assert [r['slide'] for r in ui['addedFigures']]==[12,13,14,15,24,27,28,29,30,32] and all(r['open'] and r['loaded'] for r in ui['addedFigures'])
 report.update(browser_audits='passed for this hash',desktop_text_overflow=0,mobile_button_overflow=0)
 (B/'standalone_delivery_audit.json').write_text(json.dumps(report,indent=2,ensure_ascii=False));print(json.dumps(report,indent=2,ensure_ascii=False))

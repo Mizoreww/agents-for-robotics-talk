@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT-6 Astra on robot arms | Robocurve</title>
+<meta name="description" content="OpenAI's GPT-6 Astra vs Claude Fable 5.1 controlling a pair of YAM arms under the same agent policy: 19/20 vs 8/20 on block-into-bowl in interleaved blinded pairs, 2/20 vs 2/20 on the puzzle, with 80% fewer output tokens.">
+<link rel="canonical" href="https://openai.robocurve.org/gpt-6-astra/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Robocurve">
+<meta property="og:title" content="GPT-6 Astra on robotic manipulation">
+<meta property="og:description" content="OpenAI's GPT-6 Astra vs Claude Fable 5.1 controlling a pair of YAM arms under the same agent policy: 19/20 vs 8/20 on block-into-bowl in interleaved blinded pairs, 2/20 vs 2/20 on the puzzle, with 80% fewer output tokens.">
+<meta property="og:url" content="https://openai.robocurve.org/gpt-6-astra/">
+<meta property="og:image" content="https://openai.robocurve.org/gpt-6-astra/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chart of completion rate against output tokens for GPT-6 Astra, Fable 5.1 and Fable 5 on two robot-arm tasks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPT-6 Astra on robotic manipulation">
+<meta name="twitter:description" content="OpenAI's GPT-6 Astra vs Claude Fable 5.1 controlling a pair of YAM arms under the same agent policy: 19/20 vs 8/20 on block-into-bowl in interleaved blinded pairs, 2/20 vs 2/20 on the puzzle, with 80% fewer output tokens.">
+<meta name="twitter:image" content="https://openai.robocurve.org/gpt-6-astra/og.jpg">
+<style>
+
+@font-face { font-family: "Space Grotesk"; src: url("fonts/SpaceGrotesk-Regular.ttf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "Space Grotesk"; src: url("fonts/SpaceGrotesk-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "Space Grotesk"; src: url("fonts/SpaceGrotesk-Bold.ttf") format("truetype"); font-weight: 600 700; }
+:root { --bg:#fff; --ink:#161A1D; --body:#33383D; --muted:#6B767D; --hairline:#D8DEE2; --gridline:#EDF1F3; --teal:#275E71; --clay:#B4674A; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--body); font-family:"Space Grotesk",sans-serif; font-size:16px; line-height:1.55; }
+main { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+.logo { display:flex; align-items:center; gap:10px; margin-bottom:40px; }
+.logo svg { height:26px; width:auto; display:block; }
+.hero { margin: 0 0 28px; }
+.hero svg { width:80%; height:auto; }
+h1 { font-size: 34px; line-height:1.2; font-weight:500; color:var(--ink); max-width: 720px; margin: 8px 0 6px; }
+.date { font-size:14px; color:var(--muted); margin-bottom:14px; }
+.headline { font-size: 26px; line-height:1.25; font-weight:500; color:var(--ink); max-width: 720px; margin: 0 0 10px; }
+h2 { font-size:20px; font-weight:600; color:var(--ink); margin-bottom:12px; }
+.sub { color:var(--muted); max-width: 680px; margin-bottom: 10px; }
+.sub b { color: var(--body); font-weight: 500; }
+.task { color:var(--ink); border-left:2px solid var(--teal); padding:2px 0 2px 14px; margin:12px 0; max-width:680px; }
+.sub a, a { color: var(--teal); text-decoration: none; font-weight:500; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+hr { border:none; border-top:1px solid var(--hairline); margin: 40px 0; }
+video { width:100%; display:block; border:1px solid var(--hairline); }
+.heroloop { width:auto; max-width:100%; max-height:78vh; display:block; margin:0 auto; border:1px solid var(--hairline); }
+.vidcap, .figcap { font-size:14px; color:var(--muted); margin-top:8px; max-width:680px; }
+.figcap b { color:var(--ink); }
+.msstrip { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin-top:18px; }
+.msstrip img { width:100%; aspect-ratio:1; display:block; border:1px solid var(--hairline); }
+.msstrip .t { display:flex; justify-content:space-between; align-items:baseline; gap:6px; font-weight:600; color:var(--ink); font-size:13px; margin:6px 0 2px; }
+.msstrip .t small { color:var(--muted); font-weight:500; white-space:nowrap; }
+@media (max-width: 700px) {
+  .hero svg { width:100%; }
+  .hero svg text { font-size:10px !important; }
+  /* on-chart mean labels are hand-placed for desktop scale and collide when
+     the type is bumped; the legend carries identity on small screens */
+  .hero svg text.ann { display:none; }
+  .msstrip { grid-template-columns:repeat(3, 1fr); gap:8px; }
+  .msstrip .t { font-size:11px; }
+}
+.pdfbox { border:1px solid var(--hairline); }
+.pdfbox object { width:100%; height:78vh; display:block; }
+.dl { margin-top:10px; font-size:14px; }
+table { border-collapse:collapse; width:100%; font-size:14px; font-variant-numeric:tabular-nums; }
+th { text-align:left; font-weight:600; color:var(--ink); border-bottom:1px solid var(--hairline); padding:6px 8px 6px 0; }
+td { border-bottom:1px solid var(--gridline); padding:6px 8px 6px 0; }
+td.r, th.r { text-align:right; }
+/* td padding is right-only, so a left-aligned column butting up against a
+   right-aligned one leaves just 8px between the two values. The artifact link
+   columns sit directly after the numbers, so give that group a left gutter. */
+td.lk, th.lk { padding-left:18px; }
+/* The all-runs table is 8 columns and cannot fit a phone. Let it scroll inside
+   its own box so the page body never scrolls sideways. */
+.tscroll { overflow-x:auto; }
+.tscroll table.wide { min-width:520px; }
+.techsheet td.k { color:var(--ink); font-weight:600; white-space:nowrap; padding-right:18px; vertical-align:top; }
+ul.limits { max-width:680px; color:var(--body); margin-left:18px; }
+ul.limits li { margin-bottom:8px; }
+.statgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:18px 0 4px; }
+.statgrid .n { font-size:30px; font-weight:600; color:var(--ink); line-height:1.1; }
+.statgrid .l { font-size:14px; color:var(--muted); margin-top:4px; }
+.setups { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0 18px; }
+.setups img { width:100%; display:block; border:1px solid var(--hairline); }
+.setups .t { font-size:13px; font-weight:600; color:var(--ink); margin-top:7px; }
+@media (max-width:700px) { .setups { grid-template-columns:1fr; } }
+@media (max-width:700px) { .statgrid { grid-template-columns:1fr; gap:12px; } }
+.heroprint { display:none; }
+@media print {
+  .dl, h2 + .sub + .dl { display:none; }
+  body { font-size:12px; }
+  main { max-width:none; padding:0; }
+  video { display:none !important; }
+  .heroprint { display:block; width:100%; border:1px solid var(--hairline); margin-top:24px; }
+  .hero svg { width:100%; }
+  hr { margin:22px 0; }
+  h2, .headline { break-after:avoid; }
+  table { break-inside:auto; }
+  .tscroll { overflow:visible; }
+  .tscroll table { min-width:0; }
+  tr { break-inside:avoid; }
+}
+
+.tscroll table.wide { min-width:560px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">
+    <svg viewBox="0 0 809 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.1081 117.909C18.4126 118.346 17.6079 118.578 16.7865 118.578H4.3689C-0.582131 118.578 -1.7087 111.639 2.98804 110.073L29.4615 101.244C34.3591 99.6106 37.5359 106.335 33.1639 109.081L19.1081 117.909Z" fill="#006275"/>
+<path d="M54.8714 117.187C54.0458 118.074 52.8886 118.578 51.6769 118.578H40.1689C35.7966 118.578 34.1401 112.863 37.8345 110.525L65.8525 92.7916C70.1759 90.0553 74.8679 95.7091 71.3814 99.4539L54.8714 117.187Z" fill="#006275"/>
+<path d="M88.3652 116.526C87.5678 117.802 86.1687 118.578 84.6634 118.578H68.8936C65.0833 118.578 63.1023 114.038 65.6939 111.245L113.961 59.2207C117.561 55.3409 123.667 60.0131 120.863 64.5018L88.3652 116.526Z" fill="#006275"/>
+<path d="M156.209 114.845C155.896 116.989 154.057 118.578 151.891 118.578H99.6529C96.229 118.578 94.1383 114.815 95.9466 111.908L164.257 2.07438C166.756 -1.94339 172.968 0.329954 172.283 5.01155L156.209 114.845Z" fill="#006275"/>
+<path d="M250.999 32.0306V65.4087H267.626C282.144 65.4087 289.589 59.4528 289.589 48.6576C289.589 37.8624 282.02 32.0306 267.626 32.0306H250.999ZM264.524 114.297H228.416V110.947L229.284 110.699C237.474 109.334 240.7 107.597 240.7 101.02V40.5922C240.7 33.8918 237.598 31.9065 229.284 30.4175L228.416 30.1693V26.8191H273.582C290.457 26.8191 300.756 36.7457 300.756 48.6576C300.756 57.5915 294.8 66.1532 283.26 69.3794C289.589 72.6055 291.45 78.5615 293.063 84.8897C293.683 87.2473 294.056 89.7289 294.676 92.0865C296.661 101.889 299.391 110.327 310.931 111.94L311.799 112.064V115.538H305.223C290.581 115.538 287.355 105.736 285.246 95.6849C284.129 90.5975 283.384 85.386 281.771 80.795C280.158 76.328 277.801 72.6055 273.706 70.6202H250.999V99.7796C250.999 106.728 254.845 109.21 263.655 110.699L264.524 110.947V114.297Z" fill="#006275"/>
+<path d="M343.565 110.451C359.82 110.451 362.302 92.3346 362.302 82.408C362.302 72.6055 359.572 54.8617 343.565 54.8617C327.311 54.8617 324.705 72.9778 324.705 82.9044C324.705 92.831 327.435 110.451 343.565 110.451ZM343.565 115.538C320.61 115.538 314.53 95.6849 314.53 82.7803C314.53 69.8757 320.61 50.1466 343.565 50.1466C366.521 50.1466 372.725 69.8757 372.725 82.7803C372.725 95.6849 366.521 115.538 343.565 115.538Z" fill="#006275"/>
+<path d="M384.432 114.297V45.0592C384.432 39.8478 384.432 35.0085 377.608 35.0085H374.63V31.7824L390.76 24.4615H394.111V58.0879C398.081 53.8691 403.665 50.1466 411.234 50.1466C432.824 50.1466 437.291 71.737 437.291 82.9044C437.291 94.1959 432.824 115.538 411.358 115.538C401.556 115.538 395.351 110.699 391.505 104.867L388.279 114.297H384.432ZM394.235 95.933C394.607 97.0498 395.103 98.4147 395.6 99.4073C397.957 104.867 402.424 109.21 410.241 109.21C424.635 109.21 426.868 94.0718 426.868 82.7803C426.868 71.6129 424.387 55.6062 410.117 55.6062C403.665 55.6062 398.826 59.825 396.096 64.0438C395.848 64.292 395.351 65.1606 394.979 66.0292C394.731 66.5255 394.483 66.8977 394.359 67.27C394.235 67.3941 394.235 67.5181 394.111 67.7663V95.4367C394.235 95.5608 394.235 95.6849 394.235 95.933Z" fill="#006275"/>
+<path d="M474.026 110.451C490.281 110.451 492.763 92.3346 492.763 82.408C492.763 72.6055 490.033 54.8617 474.026 54.8617C457.772 54.8617 455.166 72.9778 455.166 82.9044C455.166 92.831 457.896 110.451 474.026 110.451ZM474.026 115.538C451.071 115.538 444.991 95.6849 444.991 82.7803C444.991 69.8757 451.071 50.1466 474.026 50.1466C496.982 50.1466 503.186 69.8757 503.186 82.7803C503.186 95.6849 496.982 115.538 474.026 115.538Z" fill="#006275"/>
+<path d="M558.974 99.6555L559.595 98.7869L563.441 100.896L563.069 101.517C558.85 108.589 551.405 115.538 539.742 115.538C524.852 115.538 516.29 106.356 512.816 96.9257C511.203 92.0865 510.706 87.3713 510.706 82.5321C510.706 69.3794 517.283 50.1466 540.238 50.1466C544.953 50.1466 549.42 51.3874 554.135 51.3874C555.252 51.3874 556.493 51.0152 557.361 50.3948L557.61 50.1466H560.091V69.0071H556.245L555.997 68.2626C554.259 61.6863 549.544 55.234 539.99 55.234C523.611 55.234 521.129 72.7296 521.129 82.6562C521.129 92.9551 523.487 109.458 540.362 109.458C548.8 109.458 555.004 105.115 558.974 99.6555Z" fill="#006275"/>
+<path d="M619.176 114.297H615.826V103.13C610.614 108.465 602.177 115.538 592.87 115.538C581.331 115.538 576.367 107.845 576.367 100.4V72.1092C576.367 66.8977 576.367 61.9344 569.543 61.9344H566.565V58.7083L582.323 51.3874H585.674V98.0424C585.674 103.006 589.272 106.728 595.972 106.728C603.914 106.728 610.366 101.641 614.585 96.8016V72.1092C614.585 66.8977 614.585 61.9344 607.76 61.9344H604.782V58.7083L620.913 51.3874H624.263V93.5755C624.263 94.6922 624.263 95.933 624.387 97.2979C624.511 98.4147 624.635 99.6555 625.132 100.524C626 102.509 627.613 103.75 631.088 103.75H634.066V106.976L619.176 114.297Z" fill="#006275"/>
+<path d="M673.366 114.297H637.878V110.947L638.747 110.699C647.184 109.086 650.162 107.473 650.162 100.524V72.1092C650.162 66.8977 650.162 61.9344 643.338 61.9344H640.36V58.7083L656.491 51.3874H659.841V62.1826C665.549 55.4821 672.746 50.3948 681.928 50.3948C683.293 50.3948 684.782 50.5188 686.271 50.6429L687.387 50.767L685.898 61.0659L684.781 60.9418C682.92 60.6936 681.307 60.5695 679.446 60.5695C671.505 60.5695 666.169 62.9271 661.826 67.7663C661.702 67.8904 661.206 68.5108 660.71 69.0071C660.461 69.3794 660.213 69.6275 659.965 69.8757C659.965 69.9998 659.841 69.9998 659.841 70.1239V100.524C659.841 107.473 664.06 109.086 672.497 110.699L673.366 110.947V114.297Z" fill="#006275"/>
+<path d="M719.629 114.297L700.397 65.2847C698.783 60.8177 696.674 56.8471 691.214 54.7377L690.594 54.4895V51.3874H718.14V54.6136L717.272 54.8617C712.929 55.6062 710.571 58.0879 710.571 61.4381C710.571 62.5548 710.819 63.6716 711.316 64.7883L725.461 101.02L739.482 64.7883C740.103 63.4234 740.351 62.1826 740.351 60.8177C740.351 57.9638 738.862 55.4821 735.636 54.8617L734.767 54.6136V51.3874H755.613V54.6136L754.993 54.7377C752.015 55.6062 750.154 57.0952 748.913 58.9565C747.796 60.1973 746.307 63.6716 745.811 65.2847L725.958 114.297H719.629Z" fill="#006275"/>
+<path d="M766.61 70.7443H797.134C796.762 63.4234 792.419 55.3581 781.872 55.3581C771.821 55.3581 768.099 63.6716 766.61 70.7443ZM803.587 99.6555L804.207 98.7869L808.054 100.896L807.681 101.517C803.214 108.838 795.769 115.538 783.733 115.538C768.844 115.538 760.53 105.86 757.304 96.4294C755.815 91.8383 755.318 87.2473 755.318 82.5321C755.318 70.372 761.523 50.1466 783.609 50.1466C797.258 50.1466 803.338 58.5842 806.068 66.8977C806.689 69.1312 807.681 72.2333 807.681 74.5908C807.681 74.5908 807.557 74.9631 807.433 75.2113C807.309 75.3353 807.185 75.5835 807.185 75.5835L806.937 76.0798H765.866C765.741 77.9411 765.741 79.8023 765.741 81.5395C765.741 91.8383 767.727 109.458 784.726 109.458C793.288 109.458 799.492 105.115 803.587 99.6555Z" fill="#006275"/>
+</svg>
+  </div>
+
+  <h1>GPT&#8209;6 Astra on robotic manipulation</h1>
+  <p class="date">September 4, 2026</p>
+  <p class="sub">A follow&#8209;up to <a href="https://anthropic.robocurve.org/fable-5.1/">our comparison of Claude Fable&nbsp;5 and Fable&nbsp;5.1</a>.
+  We gave OpenAI's GPT&#8209;6 Astra control of the same YAM arms under the same
+  <a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a> agent policy, on the same two tasks:</p>
+  <p class="task">&ldquo;Pick up the red block from the table and place it inside the bowl.&rdquo;</p>
+  <p class="task">&ldquo;Pick up the round blue puzzle piece by the knob at its center and place it into
+  the matching circular groove in the board.&rdquo;</p>
+
+  <p class="sub">On the bowl task Astra placed the block in <strong>19 of 20</strong> trials, against Fable&nbsp;5.1's <strong>8 of 20</strong> and Fable&nbsp;5 in 1 of 20, in 2.5 minutes per trial to Fable&nbsp;5.1's 6.8, at an estimated $0.94 per run to $2.12.</p>
+  <p class="sub">The puzzle task is a different story: Astra completed the insertion 2 times in 20 against Fable&nbsp;5.1's 2 in 20. It reaches the groove and stalls at the same final step Fable does, at $1.36 per run to $2.18.</p>
+  
+
+  <video style="margin-top:24px" autoplay loop muted playsinline
+         poster="video/bowl-astra-vs-fable51-cost-poster.jpg" src="video/bowl-astra-vs-fable51-cost.mp4"></video>
+  <p class="vidcap">Block into bowl: the best completed run of each model (highest stage, then shortest), each played
+  in its own time at the same speed&#8209;up. Timers show real elapsed time with thinking pauses removed.</p>
+
+  <hr>
+
+  <h2 class="headline">Astra completes the bowl task far more often, at about half the cost per run</h2>
+  <div class="hero">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="691.2pt" height="331.2pt" viewBox="0 0 691.2 331.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-04T18:50:02.475437</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 331.2 
+L 691.2 331.2 
+L 691.2 0 
+L 0 0 
+L 0 331.2 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 62.208 264.96 
+L 352.381585 264.96 
+L 352.381585 39.744 
+L 62.208 39.744 
+L 62.208 264.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="135.277585" y="280.268" transform="rotate(-0 135.277585 280.268)">$1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="208.34717" y="280.268" transform="rotate(-0 208.34717 280.268)">$2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="281.416755" y="280.268" transform="rotate(-0 281.416755 280.268)">$3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 62.208 252.894857 
+L 352.381585 252.894857 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="258.798857" transform="rotate(-0 58.708 258.798857)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 62.208 212.677714 
+L 352.381585 212.677714 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="218.581714" transform="rotate(-0 58.708 218.581714)">20</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 62.208 172.460571 
+L 352.381585 172.460571 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="178.364571" transform="rotate(-0 58.708 178.364571)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 62.208 132.243429 
+L 352.381585 132.243429 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="138.147429" transform="rotate(-0 58.708 138.147429)">60</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 62.208 92.026286 
+L 352.381585 92.026286 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="97.930286" transform="rotate(-0 58.708 97.930286)">80</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <path d="M 62.208 51.809143 
+L 352.381585 51.809143 
+" clip-path="url(#pa03f16026c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b767d" x="58.708" y="57.713143" transform="rotate(-0 58.708 57.713143)">100</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11.5px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="26.951875" y="152.352" transform="rotate(-90 26.951875 152.352)">completion rate (%)</text>
+    </g>
+   </g>
+   <g id="line2d_17">
+    <defs>
+     <path id="m701938d263" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #b4674a; stroke-opacity: 0.3"/>
+    </defs>
+    <g>
+     <use xlink:href="#m701938d263" x="226.837428" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="241.754584" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="293.444008" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="265.082049" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="258.461945" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="269.796499" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="252.823895" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="299.529974" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="227.525744" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="260.382944" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="244.405549" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="243.694582" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="284.180977" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="302.66539" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="254.1618" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="321.291558" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="238.07553" y="51.809143" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="244.390204" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="229.655722" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="220.41242" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="line2d_18">
+    <defs>
+     <path id="mcce5e74091" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #275e71; stroke-opacity: 0.3"/>
+    </defs>
+    <g>
+     <use xlink:href="#mcce5e74091" x="247.271338" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="215.45611" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="234.843663" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="221.466814" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="202.530831" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="208.591953" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="194.239625" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="213.182184" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="205.392236" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="247.91435" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="166.859721" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="228.341931" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="214.611425" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="268.671958" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="179.692201" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="251.708123" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="245.503784" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="195.581913" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="194.62251" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="211.028093" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <defs>
+     <path id="ma22e00ee86" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #6b4c9a; stroke-opacity: 0.3"/>
+    </defs>
+    <g>
+     <use xlink:href="#ma22e00ee86" x="110.286325" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="109.872752" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="149.841084" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="116.272186" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="167.430394" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="112.837915" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="109.914401" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="151.713127" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="109.229009" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="145.086446" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="117.973246" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="115.202447" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="150.297038" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="115.620405" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="119.214698" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="115.472074" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="164.617215" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="148.265704" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="143.629438" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="140.803838" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 62.208 264.96 
+L 352.381585 264.96 
+" style="fill: none; stroke: #d8dee2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #b4674a" x="270.92864" y="233.774571" transform="rotate(-0 270.92864 233.774571)">Fable 5</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #275e71" x="229.375538" y="163.394571" transform="rotate(-0 229.375538 163.394571)">Fable 5.1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b4c9a" x="118.678987" y="65.496429" transform="rotate(-0 118.678987 65.496429)">GPT-6 Astra</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 211.82207 165.376117 
+Q 174.027688 117.162543 137.198964 70.180839 
+" style="fill: none; stroke: #5c6770; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 138.271424 75.439149 
+L 137.198964 70.180839 
+L 142.049088 72.477857 
+" style="fill: none; stroke: #5c6770; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10.5px; font-family: 'Space Grotesk'; fill: #161a1d" transform="translate(190.027263 108.472528)">2.4× higher completion rate</text>
+    <text style="font-size: 10.5px; font-family: 'Space Grotesk'; fill: #161a1d" transform="translate(190.027263 131.249128)">2.3× cheaper</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: start; fill: #161a1d" x="62.208" y="31.744" transform="rotate(-0 62.208 31.744)">Block into bowl</text>
+   </g>
+   <g id="line2d_20">
+    <defs>
+     <path id="m0cbbad5a73" d="M 0 6.5 
+C 1.72382 6.5 3.377269 5.815119 4.596194 4.596194 
+C 5.815119 3.377269 6.5 1.72382 6.5 0 
+C 6.5 -1.72382 5.815119 -3.377269 4.596194 -4.596194 
+C 3.377269 -5.815119 1.72382 -6.5 0 -6.5 
+C -1.72382 -6.5 -3.377269 -5.815119 -4.596194 -4.596194 
+C -5.815119 -3.377269 -6.5 -1.72382 -6.5 0 
+C -6.5 1.72382 -5.815119 3.377269 -4.596194 4.596194 
+C -3.377269 5.815119 -1.72382 6.5 0 6.5 
+z
+" style="stroke: #b4674a"/>
+    </defs>
+    <g clip-path="url(#pa03f16026c)">
+     <use xlink:href="#m0cbbad5a73" x="258.92864" y="242.840571" style="fill: #b4674a; stroke: #b4674a"/>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <defs>
+     <path id="ma18386b902" d="M 0 6.5 
+C 1.72382 6.5 3.377269 5.815119 4.596194 4.596194 
+C 5.815119 3.377269 6.5 1.72382 6.5 0 
+C 6.5 -1.72382 5.815119 -3.377269 4.596194 -4.596194 
+C 3.377269 -5.815119 1.72382 -6.5 0 -6.5 
+C -1.72382 -6.5 -3.377269 -5.815119 -4.596194 -4.596194 
+C -5.815119 -3.377269 -6.5 -1.72382 -6.5 0 
+C -6.5 1.72382 -5.815119 3.377269 -4.596194 4.596194 
+C -3.377269 5.815119 -1.72382 6.5 0 6.5 
+z
+" style="stroke: #275e71"/>
+    </defs>
+    <g clip-path="url(#pa03f16026c)">
+     <use xlink:href="#ma18386b902" x="217.375538" y="172.460571" style="fill: #275e71; stroke: #275e71"/>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <defs>
+     <path id="m74d2147957" d="M 0 6.5 
+C 1.72382 6.5 3.377269 5.815119 4.596194 4.596194 
+C 5.815119 3.377269 6.5 1.72382 6.5 0 
+C 6.5 -1.72382 5.815119 -3.377269 4.596194 -4.596194 
+C 3.377269 -5.815119 1.72382 -6.5 0 -6.5 
+C -1.72382 -6.5 -3.377269 -5.815119 -4.596194 -4.596194 
+C -5.815119 -3.377269 -6.5 -1.72382 -6.5 0 
+C -6.5 1.72382 -5.815119 3.377269 -4.596194 4.596194 
+C -3.377269 5.815119 -1.72382 6.5 0 6.5 
+z
+" style="stroke: #6b4c9a"/>
+    </defs>
+    <g clip-path="url(#pa03f16026c)">
+     <use xlink:href="#m74d2147957" x="130.678987" y="61.863429" style="fill: #6b4c9a; stroke: #6b4c9a"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 387.202415 264.96 
+L 677.376 264.96 
+L 677.376 39.744 
+L 387.202415 39.744 
+L 387.202415 264.96 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_23"/>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_24"/>
+     <g id="text_16">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="460.272" y="280.268" transform="rotate(-0 460.272 280.268)">$1</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_25"/>
+     <g id="text_17">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="533.341585" y="280.268" transform="rotate(-0 533.341585 280.268)">$2</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_26"/>
+     <g id="text_18">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="606.41117" y="280.268" transform="rotate(-0 606.41117 280.268)">$3</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_7">
+     <g id="line2d_27">
+      <path d="M 387.202415 252.894857 
+L 677.376 252.894857 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28"/>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_29">
+      <path d="M 387.202415 212.677714 
+L 677.376 212.677714 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_30"/>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_31">
+      <path d="M 387.202415 172.460571 
+L 677.376 172.460571 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_32"/>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_33">
+      <path d="M 387.202415 132.243429 
+L 677.376 132.243429 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_34"/>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_35">
+      <path d="M 387.202415 92.026286 
+L 677.376 92.026286 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_36"/>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_37">
+      <path d="M 387.202415 51.809143 
+L 677.376 51.809143 
+" clip-path="url(#p0be132147c)" style="fill: none; stroke: #edf1f3; stroke-width: 1.2; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_38"/>
+    </g>
+   </g>
+   <g id="line2d_39">
+    <g>
+     <use xlink:href="#m701938d263" x="562.263257" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="578.278649" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="560.516164" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="555.953699" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="566.398265" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="562.017013" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="628.020038" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="569.155911" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="574.757426" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="580.00163" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="584.547289" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="605.727969" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="587.542411" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="606.140812" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="593.032129" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="556.603287" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="615.845915" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="558.141402" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="587.367775" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+     <use xlink:href="#m701938d263" x="561.261473" y="252.894857" style="fill: #b4674a; fill-opacity: 0.3; stroke: #b4674a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="line2d_40">
+    <g>
+     <use xlink:href="#mcce5e74091" x="525.225746" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="566.803801" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="566.047531" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="559.353626" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="563.356378" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="551.08288" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="559.105921" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="550.226505" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="547.791826" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="563.856905" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="515.767619" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="513.966454" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="568.081788" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="515.441729" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="538.104991" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="526.953111" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="557.516657" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="558.119481" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="548.411456" y="252.894857" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+     <use xlink:href="#mcce5e74091" x="539.089238" y="51.809143" style="fill: #275e71; fill-opacity: 0.3; stroke: #275e71; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="line2d_41">
+    <g>
+     <use xlink:href="#ma22e00ee86" x="479.118107" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="477.615066" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="501.128858" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="504.539747" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="491.019681" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="484.730582" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="478.318726" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="500.074464" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="488.091052" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="500.296596" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="456.318935" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="486.741457" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="495.394357" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="473.110326" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="494.8193" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="499.998472" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="500.936685" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="465.006178" y="51.809143" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="461.840073" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+     <use xlink:href="#ma22e00ee86" x="487.272673" y="252.894857" style="fill: #6b4c9a; fill-opacity: 0.3; stroke: #6b4c9a; stroke-opacity: 0.3"/>
+    </g>
+   </g>
+   <g id="patch_6">
+    <path d="M 387.202415 264.96 
+L 677.376 264.96 
+" style="fill: none; stroke: #d8dee2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #b4674a" x="591.678626" y="243.828857" transform="rotate(-0 591.678626 243.828857)">Fable 5</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #275e71" x="558.715182" y="223.720286" transform="rotate(-0 558.715182 223.720286)">Fable 5.1</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'Space Grotesk'; text-anchor: end; fill: #6b4c9a" x="474.318567" y="236.419286" transform="rotate(-0 474.318567 236.419286)">GPT-6 Astra</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 537.716883 232.786286 
+Q 516.517901 232.786286 496.884167 232.786286 
+" style="fill: none; stroke: #5c6770; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 501.684167 235.186286 
+L 496.884167 232.786286 
+L 501.684167 230.386286 
+" style="fill: none; stroke: #5c6770; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10.5px; font-family: 'Space Grotesk'; fill: #161a1d" transform="translate(486.318567 189.246386)">same completion rate</text>
+    <text style="font-size: 10.5px; font-family: 'Space Grotesk'; fill: #161a1d" transform="translate(486.318567 212.096814)">1.6× cheaper</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: start; fill: #161a1d" x="387.202415" y="31.744" transform="rotate(-0 387.202415 31.744)">Puzzle piece into groove</text>
+   </g>
+   <g id="line2d_42">
+    <g clip-path="url(#p0be132147c)">
+     <use xlink:href="#m0cbbad5a73" x="579.678626" y="252.894857" style="fill: #b4674a; stroke: #b4674a"/>
+    </g>
+   </g>
+   <g id="line2d_43">
+    <g clip-path="url(#p0be132147c)">
+     <use xlink:href="#ma18386b902" x="546.715182" y="232.786286" style="fill: #275e71; stroke: #275e71"/>
+    </g>
+   </g>
+   <g id="line2d_44">
+    <g clip-path="url(#p0be132147c)">
+     <use xlink:href="#m74d2147957" x="486.318567" y="232.786286" style="fill: #6b4c9a; stroke: #6b4c9a"/>
+    </g>
+   </g>
+  </g>
+  <g id="text_24">
+   <text style="font-size: 11.5px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="366.336" y="317.952" transform="rotate(-0 366.336 317.952)">estimated cost per run (USD, list price)</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa03f16026c">
+   <rect x="62.208" y="39.744" width="290.173585" height="225.216"/>
+  </clipPath>
+  <clipPath id="p0be132147c">
+   <rect x="387.202415" y="39.744" width="290.173585" height="225.216"/>
+  </clipPath>
+ </defs>
+</svg>
+</div>
+  <p class="figcap">Large dots are condition means; faint dots are individual trials (100 if completed, 0 otherwise) at their own
+  cost.</p>
+
+  <hr>
+
+  <h2>Scoring</h2>
+  <p class="sub">Every trial was scored by a human grader on the highest stage it reached, so a run
+  that fails still records how far it got. The rubric is unchanged from the Fable report.</p>
+  <table class="techsheet"><tr><td class='k'>0</td><td>No purposeful approach</td></tr>
+<tr><td class='k'>1</td><td>Made contact with the object</td></tr>
+<tr><td class='k'>2</td><td>Lifted the object clear of the table</td></tr>
+<tr><td class='k'>3</td><td>Positioned it above the deposit point</td></tr>
+<tr><td class='k'>4</td><td>Placed it in its final position</td></tr></table>
+
+  <hr>
+
+  <h2 class="headline">Astra places the block almost every time; on the puzzle it stalls where Fable does</h2>
+  <div class="hero">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="691.2pt" height="532.8pt" viewBox="0 0 691.2 532.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-04T18:50:02.444943</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 532.8 
+L 691.2 532.8 
+L 691.2 0 
+L 0 0 
+L 0 532.8 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 138.24 239.4 
+L 670.464 239.4 
+L 670.464 68.4 
+L 138.24 68.4 
+L 138.24 239.4 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7"/>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="98.841433" transform="rotate(-0 134.74 98.841433)">Fable 5  (n=20)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8"/>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="159.804" transform="rotate(-0 134.74 159.804)">Fable 5.1  (n=20)</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9"/>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="220.766567" transform="rotate(-0 134.74 220.766567)">GPT-6 Astra  (n=20)</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 138.24 239.4 
+L 670.464 239.4 
+" style="fill: none; stroke: #d8dee2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 138.24 76.172727 
+L 191.4624 76.172727 
+L 191.4624 109.702139 
+L 138.24 109.702139 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #f2e6e0"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="164.8512" y="96.743433" transform="rotate(-0 164.8512 96.743433)">2</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 191.4624 76.172727 
+L 537.408 76.172727 
+L 537.408 109.702139 
+L 191.4624 109.702139 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #e0c3b4"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="364.4352" y="96.743433" transform="rotate(-0 364.4352 96.743433)">13</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 537.408 76.172727 
+L 617.2416 76.172727 
+L 617.2416 109.702139 
+L 537.408 109.702139 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #cb9a83"/>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="577.3248" y="96.743433" transform="rotate(-0 577.3248 96.743433)">3</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 617.2416 76.172727 
+L 643.8528 76.172727 
+L 643.8528 109.702139 
+L 617.2416 109.702139 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #b4674a"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 643.8528 76.172727 
+L 670.464 76.172727 
+L 670.464 109.702139 
+L 643.8528 109.702139 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #7e3f27"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 138.24 137.135294 
+L 191.4624 137.135294 
+L 191.4624 170.664706 
+L 138.24 170.664706 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #f2e6e0"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="164.8512" y="157.706" transform="rotate(-0 164.8512 157.706)">2</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 191.4624 137.135294 
+L 351.1296 137.135294 
+L 351.1296 170.664706 
+L 191.4624 170.664706 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #e0c3b4"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="271.296" y="157.706" transform="rotate(-0 271.296 157.706)">6</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 351.1296 137.135294 
+L 404.352 137.135294 
+L 404.352 170.664706 
+L 351.1296 170.664706 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #cb9a83"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="377.7408" y="157.706" transform="rotate(-0 377.7408 157.706)">2</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 404.352 137.135294 
+L 457.5744 137.135294 
+L 457.5744 170.664706 
+L 404.352 170.664706 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #b4674a"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="430.9632" y="157.706" transform="rotate(-0 430.9632 157.706)">2</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 457.5744 137.135294 
+L 670.464 137.135294 
+L 670.464 170.664706 
+L 457.5744 170.664706 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #7e3f27"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="564.0192" y="157.706" transform="rotate(-0 564.0192 157.706)">8</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 138.24 198.097861 
+L 164.8512 198.097861 
+L 164.8512 231.627273 
+L 138.24 231.627273 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #b4674a"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 164.8512 198.097861 
+L 670.464 198.097861 
+L 670.464 231.627273 
+L 164.8512 231.627273 
+z
+" clip-path="url(#p03ad4fda51)" style="fill: #7e3f27"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="417.6576" y="218.668567" transform="rotate(-0 417.6576 218.668567)">19</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 13.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #161a1d" x="138.24" y="60.4" transform="rotate(-0 138.24 60.4)">Block into bowl</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_16">
+    <path d="M 138.24 478.8 
+L 670.464 478.8 
+L 670.464 307.8 
+L 138.24 307.8 
+L 138.24 478.8 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_7">
+     <g id="line2d_10"/>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="138.24" y="494.108" transform="rotate(-0 138.24 494.108)">0</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_11"/>
+     <g id="text_15">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="244.6848" y="494.108" transform="rotate(-0 244.6848 494.108)">20</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_12"/>
+     <g id="text_16">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="351.1296" y="494.108" transform="rotate(-0 351.1296 494.108)">40</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_13"/>
+     <g id="text_17">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="457.5744" y="494.108" transform="rotate(-0 457.5744 494.108)">60</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_14"/>
+     <g id="text_18">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="564.0192" y="494.108" transform="rotate(-0 564.0192 494.108)">80</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_15"/>
+     <g id="text_19">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="670.464" y="494.108" transform="rotate(-0 670.464 494.108)">100</text>
+     </g>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #6b767d" x="404.352" y="519.42" transform="rotate(-0 404.352 519.42)">share of trials (%)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_16"/>
+     <g id="text_21">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="338.241433" transform="rotate(-0 134.74 338.241433)">Fable 5  (n=20)</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17"/>
+     <g id="text_22">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="399.204" transform="rotate(-0 134.74 399.204)">Fable 5.1  (n=20)</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18"/>
+     <g id="text_23">
+      <text style="font-size: 12px; font-family: 'Space Grotesk'; text-anchor: end; fill: #161a1d" x="134.74" y="460.166567" transform="rotate(-0 134.74 460.166567)">GPT-6 Astra  (n=20)</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_17">
+    <path d="M 138.24 478.8 
+L 670.464 478.8 
+" style="fill: none; stroke: #d8dee2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 138.24 315.572727 
+L 191.4624 315.572727 
+L 191.4624 349.102139 
+L 138.24 349.102139 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #f2e6e0"/>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="164.8512" y="336.143433" transform="rotate(-0 164.8512 336.143433)">2</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 191.4624 315.572727 
+L 484.1856 315.572727 
+L 484.1856 349.102139 
+L 191.4624 349.102139 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #e0c3b4"/>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="337.824" y="336.143433" transform="rotate(-0 337.824 336.143433)">11</text>
+   </g>
+   <g id="patch_20">
+    <path d="M 484.1856 315.572727 
+L 537.408 315.572727 
+L 537.408 349.102139 
+L 484.1856 349.102139 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #cb9a83"/>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="510.7968" y="336.143433" transform="rotate(-0 510.7968 336.143433)">2</text>
+   </g>
+   <g id="patch_21">
+    <path d="M 537.408 315.572727 
+L 670.464 315.572727 
+L 670.464 349.102139 
+L 537.408 349.102139 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #b4674a"/>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="603.936" y="336.143433" transform="rotate(-0 603.936 336.143433)">5</text>
+   </g>
+   <g id="patch_22">
+    <path d="M 138.24 376.535294 
+L 164.8512 376.535294 
+L 164.8512 410.064706 
+L 138.24 410.064706 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #f2e6e0"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 164.8512 376.535294 
+L 271.296 376.535294 
+L 271.296 410.064706 
+L 164.8512 410.064706 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #e0c3b4"/>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="218.0736" y="397.106" transform="rotate(-0 218.0736 397.106)">4</text>
+   </g>
+   <g id="patch_24">
+    <path d="M 271.296 376.535294 
+L 377.7408 376.535294 
+L 377.7408 410.064706 
+L 271.296 410.064706 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #cb9a83"/>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="324.5184" y="397.106" transform="rotate(-0 324.5184 397.106)">4</text>
+   </g>
+   <g id="patch_25">
+    <path d="M 377.7408 376.535294 
+L 617.2416 376.535294 
+L 617.2416 410.064706 
+L 377.7408 410.064706 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #b4674a"/>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="497.4912" y="397.106" transform="rotate(-0 497.4912 397.106)">9</text>
+   </g>
+   <g id="patch_26">
+    <path d="M 617.2416 376.535294 
+L 670.464 376.535294 
+L 670.464 410.064706 
+L 617.2416 410.064706 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #7e3f27"/>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="643.8528" y="397.106" transform="rotate(-0 643.8528 397.106)">2</text>
+   </g>
+   <g id="patch_27">
+    <path d="M 138.24 437.497861 
+L 218.0736 437.497861 
+L 218.0736 471.027273 
+L 138.24 471.027273 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #f2e6e0"/>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="178.1568" y="458.068567" transform="rotate(-0 178.1568 458.068567)">3</text>
+   </g>
+   <g id="patch_28">
+    <path d="M 218.0736 437.497861 
+L 377.7408 437.497861 
+L 377.7408 471.027273 
+L 218.0736 471.027273 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #e0c3b4"/>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #161a1d" x="297.9072" y="458.068567" transform="rotate(-0 297.9072 458.068567)">6</text>
+   </g>
+   <g id="patch_29">
+    <path d="M 377.7408 437.497861 
+L 404.352 437.497861 
+L 404.352 471.027273 
+L 377.7408 471.027273 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #cb9a83"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 404.352 437.497861 
+L 617.2416 437.497861 
+L 617.2416 471.027273 
+L 404.352 471.027273 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #b4674a"/>
+   </g>
+   <g id="text_34">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="510.7968" y="458.068567" transform="rotate(-0 510.7968 458.068567)">8</text>
+   </g>
+   <g id="patch_31">
+    <path d="M 617.2416 437.497861 
+L 670.464 437.497861 
+L 670.464 471.027273 
+L 617.2416 471.027273 
+z
+" clip-path="url(#p2b0b9c664d)" style="fill: #7e3f27"/>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Space Grotesk'; text-anchor: middle; fill: #ffffff" x="643.8528" y="458.068567" transform="rotate(-0 643.8528 458.068567)">2</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 13.5px; font-family: 'Space Grotesk'; text-anchor: start; fill: #161a1d" x="138.24" y="299.8" transform="rotate(-0 138.24 299.8)">Puzzle piece into groove</text>
+   </g>
+  </g>
+  <g id="legend_1">
+   <g id="patch_32">
+    <path d="M 30.636 27.207 
+L 41.636 27.207 
+L 41.636 17.362 
+L 30.636 17.362 
+z
+" style="fill: #f2e6e0; stroke: #f2e6e0; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 11px; font-family: 'Space Grotesk'; text-anchor: start; fill: #6b767d" x="47.136" y="26.052" transform="rotate(-0 47.136 26.052)">0 no approach</text>
+   </g>
+   <g id="patch_33">
+    <path d="M 141.713656 27.207 
+L 152.713656 27.207 
+L 152.713656 17.362 
+L 141.713656 17.362 
+z
+" style="fill: #e0c3b4; stroke: #e0c3b4; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 11px; font-family: 'Space Grotesk'; text-anchor: start; fill: #6b767d" x="158.213656" y="26.052" transform="rotate(-0 158.213656 26.052)">1 contact</text>
+   </g>
+   <g id="patch_34">
+    <path d="M 225.81725 27.207 
+L 236.81725 27.207 
+L 236.81725 17.362 
+L 225.81725 17.362 
+z
+" style="fill: #cb9a83; stroke: #cb9a83; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 11px; font-family: 'Space Grotesk'; text-anchor: start; fill: #6b767d" x="242.31725" y="26.052" transform="rotate(-0 242.31725 26.052)">2 lifted</text>
+   </g>
+   <g id="patch_35">
+    <path d="M 297.901625 27.207 
+L 308.901625 27.207 
+L 308.901625 17.362 
+L 297.901625 17.362 
+z
+" style="fill: #b4674a; stroke: #b4674a; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 11px; font-family: 'Space Grotesk'; text-anchor: start; fill: #6b767d" x="314.401625" y="26.052" transform="rotate(-0 314.401625 26.052)">3 positioned</text>
+   </g>
+   <g id="patch_36">
+    <path d="M 398.740688 27.207 
+L 409.740688 27.207 
+L 409.740688 17.362 
+L 398.740688 17.362 
+z
+" style="fill: #7e3f27; stroke: #7e3f27; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 11px; font-family: 'Space Grotesk'; text-anchor: start; fill: #6b767d" x="415.240688" y="26.052" transform="rotate(-0 415.240688 26.052)">4 placed</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p03ad4fda51">
+   <rect x="138.24" y="68.4" width="532.224" height="171"/>
+  </clipPath>
+  <clipPath id="p2b0b9c664d">
+   <rect x="138.24" y="307.8" width="532.224" height="171"/>
+  </clipPath>
+ </defs>
+</svg>
+</div>
+  <p class="figcap">Share of trials per model reaching each stage; n per row is the number of trials in that cell.</p>
+
+  <hr>
+
+  <h2>Results</h2>
+  <div class="tscroll">
+  <table>
+    <thead><tr><th>Task</th><th>Model</th><th class="r">Mean stage</th><th class="r">Completions</th>
+    <th class="r">Rate</th><th class="r">Output tokens/run</th><th class="r">Est. cost/run</th><th class="r">Minutes/run</th></tr></thead>
+    <tbody><tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1.30</td><td class='r'>1 / 20</td><td class='r'>5%</td><td class='r'>19.2k</td><td class='r'>$2.69</td><td class='r'>8.2</td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>2.40</td><td class='r'>8 / 20</td><td class='r'>40%</td><td class='r'>12.9k</td><td class='r'>$2.12</td><td class='r'>6.8</td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>3.95</td><td class='r'>19 / 20</td><td class='r'>95%</td><td class='r'>2.1k</td><td class='r'>$0.94</td><td class='r'>2.5</td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1.50</td><td class='r'>0 / 20</td><td class='r'>0%</td><td class='r'>16.3k</td><td class='r'>$2.63</td><td class='r'>7.9</td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>2.35</td><td class='r'>2 / 20</td><td class='r'>10%</td><td class='r'>10.5k</td><td class='r'>$2.18</td><td class='r'>5.9</td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>2.00</td><td class='r'>2 / 20</td><td class='r'>10%</td><td class='r'>2.7k</td><td class='r'>$1.36</td><td class='r'>3.4</td></tr></tbody>
+  </table>
+  </div>
+
+  <hr>
+
+  <h2>All runs</h2>
+  <p class="sub">Every counted trial, 120 in total.</p>
+  <div class="tscroll">
+  <table class="wide">
+    <thead><tr><th>Task</th><th>Model</th><th class="r">Score</th><th class="r">Time (min)</th>
+    <th class="r">Output tokens</th><th class='lk'>Transcript</th><th class='lk'>Video</th><th class='lk'>Rerun</th></tr></thead>
+    <tbody><tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>1.7</td><td class='r'>1,533</td><td class='lk'><a href='runs/transcripts/rig-1_6b47f3c6.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_6b47f3c6.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_6b47f3c6.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>1.7</td><td class='r'>1,734</td><td class='lk'><a href='runs/transcripts/rig-1_ce096d00.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_ce096d00.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_ce096d00.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>1.7</td><td class='r'>1,573</td><td class='lk'><a href='runs/transcripts/rig-1_331420ca.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_331420ca.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_331420ca.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>1.8</td><td class='r'>1,669</td><td class='lk'><a href='runs/transcripts/rig-1_bbabb896.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_bbabb896.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_bbabb896.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>1.9</td><td class='r'>1,570</td><td class='lk'><a href='runs/transcripts/rig-1_4265dd2b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_4265dd2b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_4265dd2b.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.1</td><td class='r'>1,491</td><td class='lk'><a href='runs/transcripts/rig-1_af4ad27d.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_af4ad27d.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_af4ad27d.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.1</td><td class='r'>2,153</td><td class='lk'><a href='runs/transcripts/rig-1_74dc0873.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_74dc0873.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_74dc0873.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.1</td><td class='r'>1,782</td><td class='lk'><a href='runs/transcripts/rig-1_67e2f399.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_67e2f399.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_67e2f399.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.2</td><td class='r'>2,034</td><td class='lk'><a href='runs/transcripts/rig-1_1d7495e7.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_1d7495e7.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_1d7495e7.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.5</td><td class='r'>2,441</td><td class='lk'><a href='runs/transcripts/rig-1_74369b9a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_74369b9a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_74369b9a.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.5</td><td class='r'>2,625</td><td class='lk'><a href='runs/transcripts/rig-1_b7ce2b74.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_b7ce2b74.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_b7ce2b74.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.5</td><td class='r'>1,697</td><td class='lk'><a href='runs/transcripts/rig-1_dcc477ea.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_dcc477ea.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_dcc477ea.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.8</td><td class='r'>2,434</td><td class='lk'><a href='runs/transcripts/rig-1_67a7102e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_67a7102e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_67a7102e.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.9</td><td class='r'>2,966</td><td class='lk'><a href='runs/transcripts/rig-1_6382f6da.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_6382f6da.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_6382f6da.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.2</td><td class='r'>1,627</td><td class='lk'><a href='runs/transcripts/rig-1_efac9fe1.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_efac9fe1.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_efac9fe1.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.3</td><td class='r'>2,768</td><td class='lk'><a href='runs/transcripts/rig-1_040f1344.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_040f1344.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_040f1344.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.3</td><td class='r'>2,777</td><td class='lk'><a href='runs/transcripts/rig-1_721d78a5.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_721d78a5.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_721d78a5.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.4</td><td class='r'>2,185</td><td class='lk'><a href='runs/transcripts/rig-1_5f53a87d.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_5f53a87d.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_5f53a87d.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.5</td><td class='r'>1,979</td><td class='lk'><a href='runs/transcripts/rig-1_4f94b36e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_4f94b36e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_4f94b36e.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>3.5</td><td class='r'>2,428</td><td class='lk'><a href='runs/transcripts/rig-1_8ca08ed9.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-1_8ca08ed9.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-1_8ca08ed9.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>4</td><td class='r'>5.2</td><td class='r'>13,120</td><td class='lk'><a href='runs/transcripts/rig-3_e1117d44.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_e1117d44.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_e1117d44.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>3</td><td class='r'>7.1</td><td class='r'>14,048</td><td class='lk'><a href='runs/transcripts/rig-3_247be7bf.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_247be7bf.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_247be7bf.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>2</td><td class='r'>5.0</td><td class='r'>10,663</td><td class='lk'><a href='runs/transcripts/rig-3_f0cf92a3.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_f0cf92a3.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_f0cf92a3.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>2</td><td class='r'>8.7</td><td class='r'>17,859</td><td class='lk'><a href='runs/transcripts/rig-3_3a9b0ddb.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_3a9b0ddb.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_3a9b0ddb.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>2</td><td class='r'>9.1</td><td class='r'>15,064</td><td class='lk'><a href='runs/transcripts/rig-3_ab7e654f.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_ab7e654f.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_ab7e654f.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>4.7</td><td class='r'>9,096</td><td class='lk'><a href='runs/transcripts/rig-3_f3810f56.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_f3810f56.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_f3810f56.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>5.8</td><td class='r'>13,800</td><td class='lk'><a href='runs/transcripts/rig-3_b2321570.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_b2321570.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_b2321570.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>5.8</td><td class='r'>9,954</td><td class='lk'><a href='runs/transcripts/rig-3_1eaf9989.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_1eaf9989.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_1eaf9989.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>7.1</td><td class='r'>16,666</td><td class='lk'><a href='runs/transcripts/rig-3_6046d265.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_6046d265.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_6046d265.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>7.2</td><td class='r'>18,165</td><td class='lk'><a href='runs/transcripts/rig-3_2a2bde2e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_2a2bde2e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_2a2bde2e.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>7.2</td><td class='r'>14,719</td><td class='lk'><a href='runs/transcripts/rig-3_e1754989.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_e1754989.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_e1754989.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>8.4</td><td class='r'>24,975</td><td class='lk'><a href='runs/transcripts/rig-3_bf238349.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_bf238349.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_bf238349.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>8.7</td><td class='r'>17,436</td><td class='lk'><a href='runs/transcripts/rig-3_8c3e0134.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_8c3e0134.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_8c3e0134.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>8.8</td><td class='r'>21,388</td><td class='lk'><a href='runs/transcripts/rig-3_45801dbe.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_45801dbe.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_45801dbe.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>9.6</td><td class='r'>30,566</td><td class='lk'><a href='runs/transcripts/rig-3_c16654a2.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_c16654a2.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_c16654a2.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>10.8</td><td class='r'>28,784</td><td class='lk'><a href='runs/transcripts/rig-3_6e8e0044.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_6e8e0044.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_6e8e0044.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>11.7</td><td class='r'>27,810</td><td class='lk'><a href='runs/transcripts/rig-3_29103b97.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_29103b97.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_29103b97.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>1</td><td class='r'>14.8</td><td class='r'>35,211</td><td class='lk'><a href='runs/transcripts/rig-3_c5d62cba.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_c5d62cba.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_c5d62cba.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>0</td><td class='r'>8.7</td><td class='r'>17,764</td><td class='lk'><a href='runs/transcripts/rig-3_79082e74.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_79082e74.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_79082e74.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5</td><td class='r'>0</td><td class='r'>9.7</td><td class='r'>27,582</td><td class='lk'><a href='runs/transcripts/rig-3_c2c68390.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_c2c68390.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_c2c68390.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>4.2</td><td class='r'>9,124</td><td class='lk'><a href='runs/transcripts/rig-3_f3f30ea2.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_f3f30ea2.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_f3f30ea2.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>4.8</td><td class='r'>9,779</td><td class='lk'><a href='runs/transcripts/rig-3_447ac0a9.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_447ac0a9.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_447ac0a9.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>5.0</td><td class='r'>11,359</td><td class='lk'><a href='runs/transcripts/rig-3_198ac66c.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_198ac66c.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_198ac66c.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>5.1</td><td class='r'>8,526</td><td class='lk'><a href='runs/transcripts/rig-3_5f24ff1a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_5f24ff1a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_5f24ff1a.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>5.6</td><td class='r'>10,998</td><td class='lk'><a href='runs/transcripts/rig-3_43385463.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_43385463.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_43385463.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>6.5</td><td class='r'>7,031</td><td class='lk'><a href='runs/transcripts/rig-3_9c985869.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_9c985869.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_9c985869.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>6.7</td><td class='r'>15,901</td><td class='lk'><a href='runs/transcripts/rig-3_baf7102e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_baf7102e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_baf7102e.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>7.5</td><td class='r'>8,964</td><td class='lk'><a href='runs/transcripts/rig-3_81500aaa.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_81500aaa.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_81500aaa.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>5.7</td><td class='r'>14,477</td><td class='lk'><a href='runs/transcripts/rig-3_c3fc27fa.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_c3fc27fa.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_c3fc27fa.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>8.6</td><td class='r'>20,110</td><td class='lk'><a href='runs/transcripts/rig-3_9ba9fc30.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_9ba9fc30.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_9ba9fc30.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>7.3</td><td class='r'>20,022</td><td class='lk'><a href='runs/transcripts/rig-3_678b9e3b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_678b9e3b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_678b9e3b.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>18.9</td><td class='r'>14,526</td><td class='lk'><a href='runs/transcripts/rig-3_5bc8330b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_5bc8330b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_5bc8330b.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>5.7</td><td class='r'>13,265</td><td class='lk'><a href='runs/transcripts/rig-3_4e5067fa.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_4e5067fa.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_4e5067fa.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>5.9</td><td class='r'>18,073</td><td class='lk'><a href='runs/transcripts/rig-3_fe9d6f8f.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_fe9d6f8f.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_fe9d6f8f.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>6.0</td><td class='r'>13,070</td><td class='lk'><a href='runs/transcripts/rig-3_41c88041.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_41c88041.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_41c88041.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>6.6</td><td class='r'>11,506</td><td class='lk'><a href='runs/transcripts/rig-3_0c4282a8.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_0c4282a8.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_0c4282a8.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>7.1</td><td class='r'>11,404</td><td class='lk'><a href='runs/transcripts/rig-3_e0d75213.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_e0d75213.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_e0d75213.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>8.5</td><td class='r'>17,760</td><td class='lk'><a href='runs/transcripts/rig-3_09b168e7.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_09b168e7.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_09b168e7.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>0</td><td class='r'>4.5</td><td class='r'>8,979</td><td class='lk'><a href='runs/transcripts/rig-3_4f4d481c.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_4f4d481c.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_4f4d481c.rrd' download>download</a></td></tr>
+<tr><td>Block into bowl</td><td>Fable 5.1</td><td class='r'>0</td><td class='r'>5.2</td><td class='r'>13,394</td><td class='lk'><a href='runs/transcripts/rig-3_4e39dc4a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-3_4e39dc4a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-3_4e39dc4a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>2.8</td><td class='r'>2,229</td><td class='lk'><a href='runs/transcripts/rig-4_edd32a0a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_edd32a0a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_edd32a0a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>4</td><td class='r'>3.3</td><td class='r'>1,967</td><td class='lk'><a href='runs/transcripts/rig-4_e013c39a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_e013c39a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_e013c39a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>2.3</td><td class='r'>2,581</td><td class='lk'><a href='runs/transcripts/rig-4_76c6c1aa.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_76c6c1aa.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_76c6c1aa.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>2.6</td><td class='r'>2,805</td><td class='lk'><a href='runs/transcripts/rig-4_d26e22e6.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_d26e22e6.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_d26e22e6.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>2.6</td><td class='r'>2,470</td><td class='lk'><a href='runs/transcripts/rig-4_27172965.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_27172965.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_27172965.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>2.9</td><td class='r'>2,978</td><td class='lk'><a href='runs/transcripts/rig-4_c3ae5367.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_c3ae5367.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_c3ae5367.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>3.0</td><td class='r'>2,937</td><td class='lk'><a href='runs/transcripts/rig-4_3198e78e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_3198e78e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_3198e78e.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>3.1</td><td class='r'>2,932</td><td class='lk'><a href='runs/transcripts/rig-4_eb40eafd.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_eb40eafd.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_eb40eafd.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>3.6</td><td class='r'>2,538</td><td class='lk'><a href='runs/transcripts/rig-4_f127e66b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_f127e66b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_f127e66b.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>3</td><td class='r'>3.6</td><td class='r'>3,417</td><td class='lk'><a href='runs/transcripts/rig-4_c57bff1a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_c57bff1a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_c57bff1a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>2</td><td class='r'>3.9</td><td class='r'>3,142</td><td class='lk'><a href='runs/transcripts/rig-4_a1a54798.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_a1a54798.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_a1a54798.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>2.2</td><td class='r'>2,458</td><td class='lk'><a href='runs/transcripts/rig-4_f6191432.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_f6191432.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_f6191432.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>2.8</td><td class='r'>2,464</td><td class='lk'><a href='runs/transcripts/rig-4_fb8daf2d.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_fb8daf2d.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_fb8daf2d.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>3.0</td><td class='r'>2,117</td><td class='lk'><a href='runs/transcripts/rig-4_c4c2e75a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_c4c2e75a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_c4c2e75a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>3.1</td><td class='r'>2,901</td><td class='lk'><a href='runs/transcripts/rig-4_fe062fe0.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_fe062fe0.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_fe062fe0.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>3.9</td><td class='r'>3,041</td><td class='lk'><a href='runs/transcripts/rig-4_c74997eb.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_c74997eb.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_c74997eb.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>1</td><td class='r'>10.2</td><td class='r'>2,491</td><td class='lk'><a href='runs/transcripts/rig-4_3a441687.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_3a441687.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_3a441687.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>0</td><td class='r'>2.6</td><td class='r'>3,025</td><td class='lk'><a href='runs/transcripts/rig-4_45cf10d2.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_45cf10d2.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_45cf10d2.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>0</td><td class='r'>2.8</td><td class='r'>2,916</td><td class='lk'><a href='runs/transcripts/rig-4_281ccc8d.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_281ccc8d.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_281ccc8d.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>GPT-6 Astra</td><td class='r'>0</td><td class='r'>3.3</td><td class='r'>3,161</td><td class='lk'><a href='runs/transcripts/rig-4_bb22303f.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_bb22303f.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_bb22303f.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>3</td><td class='r'>5.4</td><td class='r'>12,599</td><td class='lk'><a href='runs/transcripts/rig-4_452ee506.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_452ee506.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_452ee506.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>3</td><td class='r'>6.6</td><td class='r'>11,044</td><td class='lk'><a href='runs/transcripts/rig-4_0e760ca6.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_0e760ca6.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_0e760ca6.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>3</td><td class='r'>6.7</td><td class='r'>11,726</td><td class='lk'><a href='runs/transcripts/rig-4_5ba76d19.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_5ba76d19.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_5ba76d19.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>3</td><td class='r'>6.8</td><td class='r'>10,743</td><td class='lk'><a href='runs/transcripts/rig-4_2da7cfde.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_2da7cfde.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_2da7cfde.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>3</td><td class='r'>8.8</td><td class='r'>14,855</td><td class='lk'><a href='runs/transcripts/rig-4_6a99bdfd.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_6a99bdfd.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_6a99bdfd.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>2</td><td class='r'>7.0</td><td class='r'>19,149</td><td class='lk'><a href='runs/transcripts/rig-4_fb1601c3.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_fb1601c3.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_fb1601c3.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>2</td><td class='r'>9.1</td><td class='r'>22,592</td><td class='lk'><a href='runs/transcripts/rig-4_b90fd8b1.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_b90fd8b1.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_b90fd8b1.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>4.5</td><td class='r'>9,620</td><td class='lk'><a href='runs/transcripts/rig-4_3f7d4c96.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_3f7d4c96.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_3f7d4c96.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>4.7</td><td class='r'>9,942</td><td class='lk'><a href='runs/transcripts/rig-4_f455e605.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_f455e605.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_f455e605.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>5.3</td><td class='r'>13,629</td><td class='lk'><a href='runs/transcripts/rig-4_6708f542.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_6708f542.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_6708f542.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>5.8</td><td class='r'>16,029</td><td class='lk'><a href='runs/transcripts/rig-4_1bf1d77c.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_1bf1d77c.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_1bf1d77c.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>6.6</td><td class='r'>16,460</td><td class='lk'><a href='runs/transcripts/rig-4_701665da.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_701665da.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_701665da.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>7.3</td><td class='r'>10,544</td><td class='lk'><a href='runs/transcripts/rig-4_e888be5b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_e888be5b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_e888be5b.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>8.3</td><td class='r'>25,603</td><td class='lk'><a href='runs/transcripts/rig-4_f26762f6.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_f26762f6.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_f26762f6.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>8.3</td><td class='r'>23,105</td><td class='lk'><a href='runs/transcripts/rig-4_9e92d8b3.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_9e92d8b3.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_9e92d8b3.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>9.1</td><td class='r'>20,718</td><td class='lk'><a href='runs/transcripts/rig-4_73ce3b83.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_73ce3b83.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_73ce3b83.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>15.1</td><td class='r'>29,746</td><td class='lk'><a href='runs/transcripts/rig-4_658c1744.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_658c1744.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_658c1744.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>1</td><td class='r'>17.2</td><td class='r'>11,577</td><td class='lk'><a href='runs/transcripts/rig-4_fd7cfdc7.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_fd7cfdc7.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_fd7cfdc7.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>0</td><td class='r'>6.2</td><td class='r'>18,229</td><td class='lk'><a href='runs/transcripts/rig-4_a685676a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_a685676a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_a685676a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5</td><td class='r'>0</td><td class='r'>10.0</td><td class='r'>18,386</td><td class='lk'><a href='runs/transcripts/rig-4_cd296d55.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_cd296d55.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_cd296d55.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>5.2</td><td class='r'>10,618</td><td class='lk'><a href='runs/transcripts/rig-4_fd86a832.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_fd86a832.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_fd86a832.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>4</td><td class='r'>7.6</td><td class='r'>10,306</td><td class='lk'><a href='runs/transcripts/rig-4_d3d2906e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_d3d2906e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_d3d2906e.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>4.1</td><td class='r'>9,993</td><td class='lk'><a href='runs/transcripts/rig-4_6aeb92f9.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_6aeb92f9.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_6aeb92f9.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>5.0</td><td class='r'>11,549</td><td class='lk'><a href='runs/transcripts/rig-4_1ddcd3a0.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_1ddcd3a0.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_1ddcd3a0.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>5.4</td><td class='r'>10,450</td><td class='lk'><a href='runs/transcripts/rig-4_19d5f265.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_19d5f265.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_19d5f265.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>6.0</td><td class='r'>10,417</td><td class='lk'><a href='runs/transcripts/rig-4_3d4f61c3.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_3d4f61c3.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_3d4f61c3.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>6.5</td><td class='r'>10,725</td><td class='lk'><a href='runs/transcripts/rig-4_3d04f389.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_3d04f389.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_3d04f389.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>7.1</td><td class='r'>10,312</td><td class='lk'><a href='runs/transcripts/rig-4_2f9792ae.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_2f9792ae.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_2f9792ae.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>7.2</td><td class='r'>11,048</td><td class='lk'><a href='runs/transcripts/rig-4_75cb68ae.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_75cb68ae.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_75cb68ae.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>7.4</td><td class='r'>11,978</td><td class='lk'><a href='runs/transcripts/rig-4_18201d7e.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_18201d7e.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_18201d7e.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>3</td><td class='r'>7.5</td><td class='r'>12,251</td><td class='lk'><a href='runs/transcripts/rig-4_13d31c2f.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_13d31c2f.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_13d31c2f.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>3.7</td><td class='r'>9,362</td><td class='lk'><a href='runs/transcripts/rig-4_80e328d1.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_80e328d1.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_80e328d1.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>4.5</td><td class='r'>8,946</td><td class='lk'><a href='runs/transcripts/rig-4_86114266.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_86114266.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_86114266.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>4.9</td><td class='r'>9,432</td><td class='lk'><a href='runs/transcripts/rig-4_b23f225d.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_b23f225d.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_b23f225d.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>2</td><td class='r'>6.6</td><td class='r'>12,046</td><td class='lk'><a href='runs/transcripts/rig-4_93e6a606.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_93e6a606.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_93e6a606.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>3.9</td><td class='r'>9,341</td><td class='lk'><a href='runs/transcripts/rig-4_bc0ec864.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_bc0ec864.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_bc0ec864.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>4.3</td><td class='r'>9,597</td><td class='lk'><a href='runs/transcripts/rig-4_b483b6bb.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_b483b6bb.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_b483b6bb.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>5.5</td><td class='r'>12,735</td><td class='lk'><a href='runs/transcripts/rig-4_c9ce782a.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_c9ce782a.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_c9ce782a.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>1</td><td class='r'>10.0</td><td class='r'>9,111</td><td class='lk'><a href='runs/transcripts/rig-4_0c35809b.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_0c35809b.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_0c35809b.rrd' download>download</a></td></tr>
+<tr><td>Puzzle into groove</td><td>Fable 5.1</td><td class='r'>0</td><td class='r'>6.5</td><td class='r'>10,359</td><td class='lk'><a href='runs/transcripts/rig-4_e409c0ea.html' target='_blank' rel='noopener'>view</a></td><td class='lk'><a href='runs/videos/rig-4_e409c0ea.mp4' target='_blank' rel='noopener'>watch</a></td><td class='lk'><a href='runs/rrd/rig-4_e409c0ea.rrd' download>download</a></td></tr></tbody>
+  </table>
+  </div>
+
+  <hr>
+
+  <h2>Technical specifications</h2>
+  <table class="techsheet"><tr><td class='k'>Embodiment</td><td>Bimanual I2RT YAM arms, 6-DoF per arm with parallel-jaw grippers</td></tr>
+<tr><td class='k'>Control</td><td>Absolute end-effector poses (<code>move_to</code>): x, y, z, yaw, pitch, roll and gripper, per arm. The robot's IK converts poses to joint angles.</td></tr>
+<tr><td class='k'>Observation</td><td>Three camera views (top, left wrist, right wrist) plus proprioceptive state, each turn</td></tr>
+<tr><td class='k'>Policy</td><td><code>agent</code> policy, medium thinking effort, 20-LLM-call budget, 25% speed cap, default safety guardrails on</td></tr>
+<tr><td class='k'>Models</td><td><code>gpt-6-astra</code>, <code>claude-fable-5</code> and <code>claude-fable-5-1</code></td></tr>
+<tr><td class='k'>Harness</td><td><a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a> 0.58.0</td></tr>
+<tr><td class='k'>Trials</td><td>20 per model per task; puzzle on rig-4 for all models, bowl on rig-3 for the Fable models and rig-1 for Astra</td></tr>
+<tr><td class='k'>Token counts</td><td>Wire-level request and response tokens, not billed tokens; cost at list price, $10 / $50 per million input / output tokens for all three models</td></tr></table>
+
+  <hr>
+
+  <h2>Limitations</h2>
+  <ul class="limits"><li>Astra's trials were run two days after the Fable trials, and not interleaved with them. The puzzle comparison is on the same rig; the bowl comparison is not: the Fable bowl trials ran on rig-3, which was unavailable.</li>
+<li>Grading was operator-judged with the model known, so scores are open to unconscious bias.</li>
+<li>Costs are list price. Anthropic requests were sent without prompt caching; OpenAI cached about a fifth of Astra's input automatically, which is not discounted here, so Astra's cost is, if anything, overstated.</li>
+<li>Objects were reset by hand between trials, and all models ran at medium reasoning effort only.</li></ul>
+</main>
+</body>
+</html>

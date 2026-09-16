@@ -1,0 +1,22 @@
+[
+  {
+    "name": "kitchen",
+    "source_url": "https://x.com/frankzydou/status/2098460193319186578",
+    "download_url": "https://video.twimg.com/amplify_video/2098459103844847616/vid/avc1/1280x720/ajJEjaw679jXT-B8.mp4",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_17/kitchen_source.mp4",
+    "source_sha256": "379ddb0632a15315ccf1ca86b9d33aaabcedca9670f5fdd04991dc8f6f4b1917",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/kitchen.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_17/kitchen.jpg",
+    "start_seconds": 0,
+    "duration_seconds": 20.933333,
+    "speed_multiplier": 1,
+    "audio": "removed for narrated talk",
+    "width": 1280,
+    "height": 720,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "98db3ae24844ff38a33224dc0265e749beed7f24b1b0155b90fc2ac2e50bf9c5",
+    "full_decode": "passed",
+    "source_playback": "Complete author-posted scene viewer demo; no added speedup; input footage duration is not modelling latency"
+  }
+]

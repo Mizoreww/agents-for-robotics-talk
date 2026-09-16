@@ -1,0 +1,42 @@
+[
+  {
+    "name": "cube",
+    "source_url": "https://x.com/ZeYanjie/status/2098118164626501669",
+    "download_url": "https://video.twimg.com/amplify_video/2098116238937608192/vid/avc1/1280x720/b1xVc1jzZgqzidBc.mp4",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/cube_source.mp4",
+    "source_sha256": "f674cd542a8dc1cad7d7787c204f661707022925c42686ce418701173fbca8b9",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/cube.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/cube.jpg",
+    "start_seconds": 0,
+    "duration_seconds": 23.1,
+    "speed_multiplier": 1,
+    "audio": "removed for narrated talk",
+    "width": 1280,
+    "height": 720,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
+    "full_decode": "passed",
+    "source_playback": "Complete X-posted video, original playback retained; no added speedup."
+  },
+  {
+    "name": "claw",
+    "source_url": "https://qinengwang-aiden.github.io/demos/constraint_demos/?demo=claw",
+    "download_url": "https://qinengwang-aiden.github.io/demos/constraint_demos/media/robot-puzzle-demos-1080p.mp4",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/claw_source.mp4",
+    "source_sha256": "d6634869d3d7faa142e2a560ea6632a802a20d343fc21a8f740fe6ad19178974",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/claw.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/claw.jpg",
+    "start_seconds": 0,
+    "duration_seconds": 20.566016,
+    "speed_multiplier": 1,
+    "audio": "removed for narrated talk",
+    "width": 1280,
+    "height": 720,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
+    "full_decode": "passed",
+    "source_playback": "Entire Claw segment [0,20.566667) from official two-demo export; source overlay 8x retained. Cut is the title/scene change to Three-ring Threading, after final withdrawal."
+  }
+]

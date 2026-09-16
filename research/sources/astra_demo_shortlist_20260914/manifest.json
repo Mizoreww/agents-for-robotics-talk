@@ -1,0 +1,182 @@
+{
+  "checked_at": "2026-09-14T07:39:48.486732+00:00",
+  "repository_head": "61baafd5fc94ae2db32da8da57704310033a6210",
+  "scope": "public source texts and browser media snapshots only; no production edits",
+  "files": [
+    {
+      "file": "awesome_head.txt",
+      "bytes": 46,
+      "sha256": "d3600814bf6c502f782cd906444e3177fc3582fab3a1d9492e236e1a2f723773"
+    },
+    {
+      "file": "awesome_readme.md",
+      "bytes": 21836,
+      "sha256": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7"
+    },
+    {
+      "file": "backup_contact_sheet.jpg",
+      "bytes": 117075,
+      "sha256": "4f417f7317f2a33f3395ee6ad7ef7a12b95231f358efd28f796153da2bdaf364"
+    },
+    {
+      "file": "candidates.json",
+      "bytes": 6806,
+      "sha256": "3c548dc160792af65e2f3eb079199be319661ed4cafce435404ad91ddc550a3d"
+    },
+    {
+      "file": "dexgpt_readme.md",
+      "bytes": 10757,
+      "sha256": "c121768c5dae0258827adb7512892d8550856548a39892071b7ffbb4ad1dcbef"
+    },
+    {
+      "file": "duck_rl.html",
+      "bytes": 466547,
+      "sha256": "a0af7d4ab7a8c0183aab0b0d1ba10ae09a6a450b444ea89a319c6c684442bc46"
+    },
+    {
+      "file": "fetch_status.json",
+      "bytes": 803,
+      "sha256": "74caa6c835ae43eb068e83fade0b360942b516a25895f3391df2aa4f1684a215"
+    },
+    {
+      "file": "g1_cola.json",
+      "bytes": 8469,
+      "sha256": "ddf0b41e88284d97c3e8053d8c0914443e9cf46e21f8f46791833184fa0d59bd"
+    },
+    {
+      "file": "g1_cola_t14.png",
+      "bytes": 339124,
+      "sha256": "aad82d98795d5f156b908089a1f3cdb1ff5007bfd3a78d1df6f5cd1eef588882"
+    },
+    {
+      "file": "isaac_ppo.html",
+      "bytes": 466541,
+      "sha256": "be07fd14f483f939d6f9682b73a254805291860cb99e2c9a93d97d0f0edb9d75"
+    },
+    {
+      "file": "keyboard.json",
+      "bytes": 5780,
+      "sha256": "787a7e2af3eabd139a843e1150eec679a0e76d172fa8c0173b12a5e4b8d1959a"
+    },
+    {
+      "file": "keyboard_t1.png",
+      "bytes": 647490,
+      "sha256": "bb68957ab54cfb4f4a9f41da979fbcc60c1939986883d62e1fd0ad38cdb4c859"
+    },
+    {
+      "file": "keyboard_t133.png",
+      "bytes": 555835,
+      "sha256": "336adcfd48bb2da279880be29172965378773640bd76fe4e2bf00c2d1e2be00b"
+    },
+    {
+      "file": "keyboard_t67.png",
+      "bytes": 613023,
+      "sha256": "ca69ede3b6b22017666e01e748513a4675911a431a9b175b14aa8852f280fdb6"
+    },
+    {
+      "file": "mobile_icl.json",
+      "bytes": 6070,
+      "sha256": "2a363ca6ee8cbc7cd209396120d4ef0d7d11285fb1e1f424e8086ebad1ab4d72"
+    },
+    {
+      "file": "mobile_icl_t10.png",
+      "bytes": 336360,
+      "sha256": "9a955b6036c0f72ecbb88c0cf967d0a0c3b81c8b7264961b630e61f25af0dccc"
+    },
+    {
+      "file": "office_newton.json",
+      "bytes": 6017,
+      "sha256": "acdf0a020eed086d97622f484f3dd387e2ecbaaf3c844a29404f85935ae62761"
+    },
+    {
+      "file": "office_newton_t1.png",
+      "bytes": 340685,
+      "sha256": "8c1ca4a3ebd02cd4f7a5d52cd8e9f3bc81f8bd366f7bb04b9fcd9931546d435d"
+    },
+    {
+      "file": "office_newton_t152.png",
+      "bytes": 349421,
+      "sha256": "937d82d37c7a76ffada60e12f7a49e35c47aa4e3082f5b57d0bdce98bf6b8dbc"
+    },
+    {
+      "file": "office_newton_t302.png",
+      "bytes": 566684,
+      "sha256": "00ae1e50eb0d166eca04d7bc34510f4aad79b53c6330a9ff012b51b891fd7beb"
+    },
+    {
+      "file": "office_oembed.json",
+      "bytes": 1055,
+      "sha256": "a20a5259b59075ed953f67ff6778239d9aaae7e1649a7ede1e2024f615bb5f86"
+    },
+    {
+      "file": "playback_checks.json",
+      "bytes": 2649,
+      "sha256": "b8774c5907a6a8337cdf5d067a4e8eccfb95a6f7d3b96c7eefea66504933fd5b"
+    },
+    {
+      "file": "quadruped_header.png",
+      "bytes": 218384,
+      "sha256": "e4212122aca8035b68da6e04a900d6e69bb1014548942a9dc6157ee6bf7ed6c8"
+    },
+    {
+      "file": "quadruped_oembed.json",
+      "bytes": 1108,
+      "sha256": "cc323575fc6131d91c0828bfecf69aa9afd133665b0ef86ea25aade64b570974"
+    },
+    {
+      "file": "quadruped_rl.json",
+      "bytes": 6738,
+      "sha256": "b4b036935d3ff10832672c18076fa1206f0ac166d93430830cb27ae03793622d"
+    },
+    {
+      "file": "quadruped_rl_t1.png",
+      "bytes": 521533,
+      "sha256": "2ec147f152408e2a9977e1600406072c5ce3f1533aa927f54ebe3abf514a6e13"
+    },
+    {
+      "file": "quadruped_rl_t12.png",
+      "bytes": 500647,
+      "sha256": "fafce9b066d13ff10afa95ab5ff4a640d0c05bec9fdc823b59cc9c19b1e66a0f"
+    },
+    {
+      "file": "quadruped_rl_t7.png",
+      "bytes": 515580,
+      "sha256": "bb6fa46fa348aa7ff1d3a8d7e5958a03e5e8afbcb7f2a601f043780676d717ca"
+    },
+    {
+      "file": "top_three_contact_sheet.jpg",
+      "bytes": 266648,
+      "sha256": "3027bd60dbbd85daa0e62ad991c2763c038692fc938d6fd96a511b8142893b8b"
+    },
+    {
+      "file": "unseen_robot.json",
+      "bytes": 6756,
+      "sha256": "cd14fa5b6ef585138e31e96c6b82883d48045a3d981c94415a64d9b52438533c"
+    },
+    {
+      "file": "unseen_robot_t35.png",
+      "bytes": 255345,
+      "sha256": "4304ef448934a928085006c1cd51f0d914639a61969592a3e75ddd0c3349a79e"
+    },
+    {
+      "file": "video_physics.json",
+      "bytes": 5336,
+      "sha256": "66bf8d624c7e49e941104f54578f598855af6e4001ceb7d17b6d79b1be173c49"
+    },
+    {
+      "file": "video_physics_t10.png",
+      "bytes": 323347,
+      "sha256": "3d08c56ee75bdb7fa6015d38870b2d0ed8ba706660159c6a0041a31a6ebf80e4"
+    },
+    {
+      "file": "wuji_rollout.json",
+      "bytes": 6078,
+      "sha256": "e3a902cd0f7ad478c4aec1001a7abeacee04f57db77d1a56a777ee7790a38e38"
+    },
+    {
+      "file": "wuji_rollout_t17.png",
+      "bytes": 505737,
+      "sha256": "947b8ba6a66027c7a1d58c9bb7b0d089d93cf3785ad9d33e2176c06eaffbc47a"
+    }
+  ]
+}

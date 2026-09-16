@@ -1,0 +1,42 @@
+{
+  "baseline": "revision_0_11_baseline/manifest.json",
+  "html_sha256": "b9e1d61232d0306648b10734020103de4f9b6df116c595ca933cfd89ea1650e8",
+  "review_axes": {
+    "Standards": {
+      "findings": 0,
+      "final_delta_confirmed": true
+    },
+    "Spec": {
+      "findings": 0,
+      "final_delta_confirmed": true
+    }
+  },
+  "post_review_changes": "Only final verified status/hash documentation; all delivery-content deltas confirmed by both reviewers.",
+  "files": {
+    ".build/assets/noto_cjk_script.woff2": "213ab99a28eec89a76ddac11a912e061550e074ed4e5aef0ebef271064b2c58a",
+    ".build/browser_audit.mjs": "13e5a5e64ef7c89c9d71937d323257c4fe989bd6a0fead2589f6582a4673595c",
+    ".build/build_selfcontained.py": "6dd7467579142d5dccf4d01e8972468d00f4eb1e257c65c45103ed6654d08094",
+    ".build/evidence_v011.py": "cf74179ba68b5af6790190f0335c3b4e859f5f645b415ec41db86b8691ca21ba",
+    ".build/extended_visual_audit.mjs": "de3479e6806fe47432d5238edba460f5d984612b9a61abc46a065ee2d5606df3",
+    ".build/script_revised.md": "9a3339b4f1efdc76b5230354744ba0a700f0ca40f679452719daf0647d8082ec",
+    ".build/standalone_delivery_audit.json": "85190ff9cf0640a73d1b48950cf10dae68ea658434a9b632fe9d69ca3ba3060b",
+    ".build/standalone_visual_audit.json": "7af4b5ad94fe15180ae875df57b646bbe82d3723f0adff4751249a1dbb6f0209",
+    ".build/test_evidence_v011.py": "3dcb18b0da919caaf73bf6f95aeed3b464f801a0f4e6b809ca122bac371e91c3",
+    ".build/v0_11_extended_audit.json": "4553fe77fb7ec05bf96bdee17e39321edff86e3becd8f13a7dc4f56977b3dcc5",
+    ".build/validate_standalone.py": "6594c1fa3cc18f133a1d009f1813da499e68ae809bfb0ba03e21671cf4d4bfc3",
+    "AGENTS.md": "8a4b0f0b0946676c08fdc89524081baaaca5f99eed93dc08de0d5d6b04f2a6d4",
+    "CHANGELOG.md": "7f8560e33181de9a317ee5f577b92c9b7942baec214a1a7c277ac119a9a91dd1",
+    "README.md": "5e263421397ba8eba1b940146b8d3fa325d6a45dd830b1e31c5bd34f9af285cf",
+    "WORKPLAN.md": "d9630b66afcc46cb86ded7f9c6859a4d92c73f5f223d237db340968c3d106340",
+    "output/Chapter_Spine.md": "b01d2dd4ff5cce58c1c1f83565aa12dc54ce4f84dc158ed38e41060f416ad3b4",
+    "output/README.md": "1f1fcc705b562996cdd9c53aa742b30dcfa4815fbb506435ddd871aea192422c",
+    "output/Speaker_Script_Revised.md": "ef2d2b4a23e28f92730de186fcf82e6b8c29d7c886f4d1f620893b9cf7b4141d",
+    "research/astra_interfaces_frequency_2026-09-15.md": "b6312362d24d422a4a3835e7cb0aca04d91ae342acc3366cf701afd8e95aaa5c",
+    "research/data_taxonomy_2026-09-15.md": "2efe4470b96431f4e7f0964c2c614049bd5ac60bff59a35a599bc97d5eeec8a5",
+    "research/evidence_v0_11_sources.json": "c5b6d94132e17d186e1c7db956791547766e0986d644b2a7b43ddf08c365b108",
+    "research/revision_0_11_review.md": "087d3947e933cddfdb087fef1f275ef60fe0e365de6c27631df680ddf5add927",
+    "research/revision_0_11_spec.md": "14e4ad076f472ff9117a2823e77d777118f22dd1583be2ad3364511c17cf9e08",
+    "research/sources.json": "d34b75f0d9ebd424e092dcd4c84fc181c2e588cab884223530a0afa263c62d1d",
+    "talk_outline.md": "a648e402ec38a12ecf062c1fe6b4a66d548b5cb8130b462f31a5c335aaf00400"
+  }
+}

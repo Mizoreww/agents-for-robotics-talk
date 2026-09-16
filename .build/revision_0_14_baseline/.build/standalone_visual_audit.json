@@ -1,0 +1,12 @@
+{
+  "html_sha256": "9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c",
+  "status": "passed",
+  "date": "2026-09-15",
+  "manually_reviewed_slides": [
+    8
+  ],
+  "scope": "P8 demo title, removed large summary band, two gray source-grounded interface notes. Chinese narration and CJK subset synchronized. Full browser layout/media controls/UI/mobile rerun; prior extended full-length playback and two-axis review not rerun.",
+  "screenshots": {
+    ".build/v0_13_p8_visual/08.png": "e89dd1f5f58eb7985e534ac85d02ea03002b0b422ea06d9fdc3acc8a73edc359"
+  }
+}

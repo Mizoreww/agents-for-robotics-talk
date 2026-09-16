@@ -1,0 +1,38 @@
+[
+  {
+    "file": "research/sources/control_results_20260914/control/robolab-baselines.json",
+    "url": "https://raw.githubusercontent.com/anonymous-report-421/public-website/9ac494dce8fcd7333eb2ea685fee5b4cddf19eb1/robolab-baselines.json",
+    "sha256": "2f931c6cd982a14baccfbb9d79c46cb778f6a22eca30e356da4a297cd431e48e",
+    "bytes": 59186
+  },
+  {
+    "file": "research/sources/control_results_20260914/control/robolab-leaderboard.csv",
+    "url": "https://raw.githubusercontent.com/anonymous-report-421/public-website/9ac494dce8fcd7333eb2ea685fee5b4cddf19eb1/robolab-leaderboard.csv",
+    "sha256": "30827d821c2bd3d6316a5999b78f13bc27ee24f5d4ce2d3601b1e7dec8e30476",
+    "bytes": 2583
+  },
+  {
+    "file": "research/sources/control_results_20260914/control/robolab-scores.csv",
+    "url": "https://raw.githubusercontent.com/anonymous-report-421/public-website/9ac494dce8fcd7333eb2ea685fee5b4cddf19eb1/robolab-scores.csv",
+    "sha256": "c7cfcd9c774ad66a1579f2531b787715a265cf01dad57f0300e16787f1fd6356",
+    "bytes": 690
+  },
+  {
+    "file": "research/sources/control_results_20260914/control/robolab.json",
+    "url": "https://raw.githubusercontent.com/anonymous-report-421/public-website/9ac494dce8fcd7333eb2ea685fee5b4cddf19eb1/robolab.json",
+    "sha256": "9cbd12354be634adb68ecaffe93e1ab132b7859935c5e942ca845741ed6916fe",
+    "bytes": 5750
+  },
+  {
+    "file": "research/sources/control_results_20260914/control/robocurve_current.html",
+    "url": "https://openai.robocurve.org/gpt-6-astra/",
+    "sha256": "bab32ae6497b93079677112c3f0b43bd0405a60718cf396899155885c8ffb478",
+    "bytes": 121210
+  },
+  {
+    "file": "research/sources/control_results_20260914/control/claude_current.html",
+    "url": "https://www.anthropic.com/research/claude-plays-robotics",
+    "sha256": "7c338e6a2e72a30c88db59e1fdd752ef8889ca51241577c57a05188ee0b12666",
+    "bytes": 381351
+  }
+]

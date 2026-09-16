@@ -1,0 +1,11 @@
+{
+  "html_sha256": "ae50f078af71bb8f931b4ea421359411b72483073032bd68130c7f173a51dee9",
+  "files": {
+    ".build/build_selfcontained.py": "c027c742de85d5afd148d354f90bdd07344ed17fa94e04f2c66015cd0d598b80",
+    ".build/script_revised.md": "e1ac414277eff39ad387a4181cdb4ce4230be7d56e7b4f3088906f8a2ce42a7a",
+    ".build/validate_standalone.py": "35a091d5868e73a8ac860d63391d441dfcffa142509be0842f90e78e29f156e0",
+    ".build/standalone_visual_audit.json": "edf6d7e45d7fa3298009bf89b07956326cfb4bc4064b7f9986bb197b36d11728",
+    ".build/standalone_delivery_audit.json": "5d0294d98019f313cac408b7f5d90b3eaacf2681530c20edbb8f3e7c7d8c26df",
+    "output/Speaker_Script_Revised.md": "c47a7ff285ddf812ba6bf4ef216fcb47d63e27a3c99a555bd4e4b59c339964b9"
+  }
+}

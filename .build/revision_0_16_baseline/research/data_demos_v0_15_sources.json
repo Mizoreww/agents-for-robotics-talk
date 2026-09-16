@@ -1,0 +1,13 @@
+{
+  "awesome_commit": "61baafd5fc94ae2db32da8da57704310033a6210",
+  "dexgpt_commit": "03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+  "sha256": {
+    ".build/assets/v0_15/dexgpt_source.mp4": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+    ".build/assets/v0_15/dexgpt.jpg": "b230b84b7b7147c943fe0de98e5fedab8b0056859b58c476563734c42497daf6",
+    ".build/clips/dexgpt.mp4": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+    ".build/clip_manifest_v6.json": "0001b7f988a094b81de45c2520e6cc58edf7cb99cc904da4bef91150aad25d8a",
+    "research/sources/data_demos_20260915/awesome_readme.md": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7",
+    "research/sources/data_taxonomy_20260915/dexgpt_readme.md": "c121768c5dae0258827adb7512892d8550856548a39892071b7ffbb4ad1dcbef",
+    "research/sources/data_taxonomy_20260915/dexgpt_outputs_physics_report.json": "8091561f48e3fd91afa781bb32d727b54d177d1c1d0aaed62c77477a01a16018"
+  }
+}

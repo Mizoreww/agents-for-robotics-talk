@@ -1,0 +1,54 @@
+{
+  "html_sha256": "a310089992e6969c0434b56aa7dc293419760bf5947565e9f3092d8b2994f1df",
+  "loaded_deck_data_sha256": "c0232e3b1816b71aeb90733237fd33539c878d01c98a3f1f149fd4e2ead7b709",
+  "footers": [
+    {
+      "number": 31,
+      "text": "W. Xiao et al., “ENPIRE: Agentic Robot Policy Self-Improvement in the Real World,” arXiv:2606.19980, 2026. Fig. 7; project website, interactive plot data.",
+      "left": 64,
+      "top": 678,
+      "bottom": 692,
+      "width": 1090,
+      "scrollWidth": 1090,
+      "fontSize": "11px",
+      "fontFamily": "\"Noto Sans\", \"Noto Sans CJK SC\", sans-serif",
+      "color": "rgb(119, 119, 111)"
+    },
+    {
+      "number": 34,
+      "text": "W. Xiao et al., “ENPIRE: Agentic Robot Policy Self-Improvement in the Real World,” arXiv:2606.19980, 2026. Project website, Limitations.",
+      "left": 64,
+      "top": 678,
+      "bottom": 692,
+      "width": 1090,
+      "scrollWidth": 1090,
+      "fontSize": "11px",
+      "fontFamily": "\"Noto Sans\", \"Noto Sans CJK SC\", sans-serif",
+      "color": "rgb(119, 119, 111)"
+    },
+    {
+      "number": 35,
+      "text": "W. Xiao et al., “ENPIRE: Agentic Robot Policy Self-Improvement in the Real World,” arXiv:2606.19980, 2026. Sec. 3.4; App. B.1. RSI discussion: this talk.",
+      "left": 64,
+      "top": 678,
+      "bottom": 692,
+      "width": 1090,
+      "scrollWidth": 1090,
+      "fontSize": "11px",
+      "fontFamily": "\"Noto Sans\", \"Noto Sans CJK SC\", sans-serif",
+      "color": "rgb(119, 119, 111)"
+    },
+    {
+      "number": 37,
+      "text": "Agents for Robotics",
+      "left": 64,
+      "top": 678,
+      "bottom": 692,
+      "width": 1090,
+      "scrollWidth": 1090,
+      "fontSize": "11px",
+      "fontFamily": "\"Noto Sans\", \"Noto Sans CJK SC\", sans-serif",
+      "color": "rgb(119, 119, 111)"
+    }
+  ]
+}

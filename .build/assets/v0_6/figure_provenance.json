@@ -1,0 +1,18 @@
+[
+  {
+    "name": "roborsi_consolidation",
+    "source_url": "https://lab.noematrix.ai/assets/roborsi/figures/roborsi-eta-cap-consolidation-v1.svg?v=20260830-1",
+    "source_sha256": "61ad32c347bdf3804808ed4f5622fbb82e3e52e4381d3934767caf38125b1b1e",
+    "render_sha256": "efd875193267c5f5bb8eaaab40e7133d39b075b23c657f239d33015b48320f38",
+    "transformation": "Uncropped original SVG rasterized by Chrome at 1600px; no content redraw",
+    "used_in_slides": true
+  },
+  {
+    "name": "roborsi_training",
+    "source_url": "https://lab.noematrix.ai/assets/roborsi/figures/roborsi-policy-corrective-training-v2.svg?v=20260904-1",
+    "source_sha256": "f121685ddfb6ffa2e77766a890dffc20349c1407f88bc4c87b09e2d188029083",
+    "render_sha256": "3cbf7c5444416f84d7a03fb31d7682ae7a1269ae0609afa1ad3ba076feb2ce0a",
+    "transformation": "Uncropped original SVG rasterized by Chrome at 1600px; no content redraw",
+    "used_in_slides": false
+  }
+]

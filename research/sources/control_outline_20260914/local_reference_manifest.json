@@ -1,0 +1,29 @@
+[
+  {
+    "name": "hirobot.png",
+    "path": "/home/limx/Desktop/steerableVLA/steerable-vla-talk/assets/figs/hirobot.png",
+    "sha256": "fc307d2d240556863b3a60fd06bce0de869e9b7019cb9cc3dab2c09579d8969b"
+  },
+  {
+    "name": "helix01.png",
+    "path": "/home/limx/Desktop/steerableVLA/steerable-vla-talk/assets/figs/helix01.png",
+    "sha256": "dee9f51122028c2f6547db81446c0c52e5ca1e54ce2d0ceef7621a163cbb5197"
+  },
+  {
+    "name": "helix02.png",
+    "path": "/home/limx/Desktop/steerableVLA/steerable-vla-talk/assets/figs/helix02.png",
+    "sha256": "a1fe99598192bd20106ef5bb8ef2ef33b0a75ee3a001dcb08339567fa9384a12"
+  },
+  {
+    "original_control_framework": "HEAD:.build/build_selfcontained.py::execution_tools",
+    "commit": "3e64b1f0246b9fa5240b79e900ae9ed888842e73",
+    "direct_branch": "q / EEF Pose",
+    "tool_branches": [
+      "IK / motion planner",
+      "Controller code",
+      "VLA / learned policy",
+      "WAM"
+    ],
+    "low_level_runtime": "servo / controller"
+  }
+]

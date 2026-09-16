@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-09-15T12:58:44.290033+00:00",
+  "git_commit": "43929f0ee3673da67393fcbe85d43c58eb15db59",
+  "files": [
+    {
+      "file": "policy_repo.json",
+      "retrieval_url": "https://api.github.com/repos/cheng-haha/GPT-Policy-Eval",
+      "sha256": "f37e73ea4e8468bc88b4b9128d78069946e693abae62359930d146452518cab8",
+      "bytes": 5391
+    },
+    {
+      "file": "policy_tree.json",
+      "retrieval_url": "https://api.github.com/repos/cheng-haha/GPT-Policy-Eval/git/trees/main?recursive=1",
+      "sha256": "9702f7b396ecc97b2b62689aa9a18abd4a827bafb0d8218622840c85a4368bcd",
+      "bytes": 3356
+    },
+    {
+      "file": "policy_readme.md",
+      "retrieval_url": "https://raw.githubusercontent.com/cheng-haha/GPT-Policy-Eval/main/README.md",
+      "sha256": "0b810a43c142f88cf13609bc7159a9d05020ad3001599032445064dc8f609739",
+      "bytes": 4391
+    },
+    {
+      "file": "policy_readme_zh.md",
+      "retrieval_url": "https://raw.githubusercontent.com/cheng-haha/GPT-Policy-Eval/main/README.zh-CN.md",
+      "sha256": "c2311ec30ee1b1501391a86089221a008aaf0f5f32287675d89d47e04808bf6f",
+      "bytes": 4265
+    },
+    {
+      "file": "policy_commits.json",
+      "retrieval_url": "https://api.github.com/repos/cheng-haha/GPT-Policy-Eval/commits?per_page=1",
+      "sha256": "e32b5e885c94f3d9db82a37aa6de93938765a197848cb8d0da9126182837b029",
+      "bytes": 3421
+    },
+    {
+      "file": "keyboard_live.json",
+      "retrieval_url": "https://api.fxtwitter.com/kaiwynd/status/2098823484474348008",
+      "sha256": "dbcdfd77cf3287deccacf723485947e41fab7cc4726c89444a71a12183fe0e0b",
+      "bytes": 5780
+    },
+    {
+      "file": "policy_author_post.json",
+      "retrieval_url": "https://api.fxtwitter.com/z_code68632/status/2098401554676269236",
+      "sha256": "b31db7562ce267c76306214a63d730d0a4b4520eac79af887bb47b607a1cbaa8",
+      "bytes": 10416
+    }
+  ],
+  "limitations": [
+    "X original post text retrieved through FxTwitter API; this is a mirror of author text, not an independent technical disclosure.",
+    "CUA browser inventory failed: Unable to load browser request-header policy. X replies were not audited."
+  ]
+}

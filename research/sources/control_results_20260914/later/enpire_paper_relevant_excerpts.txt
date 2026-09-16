@@ -1,0 +1,181 @@
+[#S2.SS1]
+
+[#S2.SS1.p1]
+
+[#S2.SS1.p1.1] For coding agents to conduct autonomous physical autoresearch, we need to first construct an agent-friendly abstraction of physical interaction and feedback as a structured environment. This includes task-specific safety constraints to support long-term operation, a real-time automated verification process for feedback and credit assignment, and a robust automatic reset mechanism to ensure fast iteration. To improve reliability, agents construct the environment APIs with procedural tool calls and refine their implementation according to human assessment. Human effort is a one-time cost that will be amortized across all implementations on all robots during subsequent automatic policy improvement in Sec. 2.2.
+
+[#S2.SS1.SSS0.Px1]
+
+[#S2.SS1.SSS0.Px1.p1]
+
+[#S2.SS1.SSS0.Px1.p1.1] We restrict the configuration space and kinematic behaviors of the robot to a safe operational limit. The safety regions are sufficient for task completion and serve as hard constraints: violating these limits triggers an immediate task failure and an automated reset. This serves as a safeguard for real-world interaction, also as a source of episode termination or truncation.
+
+[#S2.SS1.SSS0.Px2]
+
+[#S2.SS1.SSS0.Px2.p1]
+
+[#S2.SS1.SSS0.Px2.p1.1] During real-world experiments, robot learning needs real-time verification from sensor inputs to quantify experimental progress. To minimize human engineering efforts, coding agents are tasked with synthesizing a binary reward function from procedural tool calls to distinguish task outcomes. Given only a few minutes of success and failure demonstrations, the agents use the videos and proprioception recordings to maximize the prediction accuracy score while minimizing processing latency. For example, autoresearch discovers a robust reward function for pin insertion that is based on visual alignment, end-effector height, and force estimates.
+
+[#S2.SS1.SSS0.Px3]
+
+[#S2.SS1.SSS0.Px3.p1]
+
+[#S2.SS1.SSS0.Px3.p1.1] Once a task is completed or fails, the agent executes a series of tool calls to restore the environment to its initial state. For contact-rich tasks, we employ procedural tool calls inspired by CaP-X (15), using modular manipulation skills to reset the environment directly to the start of the most challenging phase. By positioning the robot at the precise onset of critical actions, such as inserting a pin, seating a GPU, or grasping scissors, we strategically focus the learning system on these precision bottlenecks.
+
+[#S2.SS1.SSS0.Px3.p2]
+
+[#S2.SS1.SSS0.Px3.p2.1] The safety constraints, automated verification, and automated reset constitute our Environment module ( [#S2.SS1.SSS0.Px3.p2.1.1] EN in [#S2.SS1.SSS0.Px3.p2.1.2] ENPIRE). Policies also receive visual-proprioception sensor inputs and submit action commands to the robot controller, which, combined with our reward, constitutes the Rollout module ( [#S2.SS1.SSS0.Px3.p2.1.3] R in [#S2.SS1.SSS0.Px3.p2.1.4] ENPIRE). Once constructed, coding agents have access to these modules through immutable Gym APIs (7), which provide feedback signals and debugging information for automated policy improvement.
+
+[#S2.SS2]
+
+[#S2.SS2.p1]
+
+[#S2.SS2.p1.1] The second stage leverages automated research to train a policy for a specific task. Upon initialization, the coding agent receives the task description with the ultimate objective of maximizing the task’s success rate through autonomous experimentation. To achieve this, the agent is granted write permissions to a streamlined training codebase that supports basic end-to-end policy training and code-based policy synthesis.
+
+[#S2.SS2.SSS0.Px1]
+
+[#S2.SS2.SSS0.Px1.p1]
+
+[#S2.SS2.SSS0.Px1.p1.1] We illustrate this process using a pin insertion task, where the policy must insert a pin into a hole with a tight 4mm clearance (Fig. 2). During this automated research phase, the agent operates through a Policy Improvement module ( [#S2.SS2.SSS0.Px1.p1.1.1] PI in [#S2.SS2.SSS0.Px1.p1.1.2] ENPIRE), where it reviews the literature to generate insights, formulates hypotheses, and directly modifies the training code—such as behavior cloning or RL algorithms—to optimize performance based on real-world automatic verification results. To gather rich evidence, the agent invokes environment APIs to log robot trajectories, video recordings, and reward signals during rollouts, and inspects these statistics to guide continued improvement.
+
+[#S2.SS2.SSS0.Px2]
+
+[#S2.SS2.SSS0.Px2.p1]
+
+[#S2.SS2.SSS0.Px2.p1.1] While automatic reset and verification mechanisms enhance the scalability of a single deployment loop, physical autoresearch can be further accelerated by launching a parallel, multi-agent decentralized collaboration protocol. This protocol deploys [#S2.SS2.SSS0.Px2.p1.m1] NN agents across [#S2.SS2.SSS0.Px2.p1.m2] NN physical robots to test [#S2.SS2.SSS0.Px2.p1.m3] NN hypotheses asynchronously. Each agent branches off from the same baseline policy training codebase, collaborating autonomously via Git to scale this Evolution module ( [#S2.SS2.SSS0.Px2.p1.1.1] E in [#S2.SS2.SSS0.Px2.p1.1.2] PIRE). Without human intervention, agents spontaneously cherry-pick, copy, or merge successful training recipes from their peers to optimize their code search. Empirically, we observe that scaling the number of parallel agent-robot pairs drastically reduces the wall-clock time required to discover a high-success-rate policy recipe, as illustrated in Fig. 3.
+
+[#S2.SS2.SSS0.Px2.p2]
+
+[#S2.SS2.SSS0.Px2.p2.1] To quantify how efficiently a coding agent converts its allocated physical resources into research progress, we propose two utilization metrics that complement task-level outcomes. Mean Robot Utilization (MRU) is the fraction of research wall-clock time during which the robot is actively executing an experiment. GPU utilization is the fraction of research wall-clock time during which the GPU is actively in use.
+
+[#S3]
+
+[#S3.p1]
+
+[#S3.p1.1] We show that [#S3.p1.1.1] ENPIRE is a capable and scalable agentic autoresearch framework.
+
+[#S3.I1]
+
+[#S3.I1.i1] •
+
+[#S3.I1.i1.p1]
+
+[#S3.I1.i1.p1.1] [#S3.I1.i1.p1.1.1] First, [#S3.I1.i1.p1.1.1.1] ENPIRE supports the autonomous policy learning after environment construction.
+
+[#S3.I1.i2] •
+
+[#S3.I1.i2.p1]
+
+[#S3.I1.i2.p1.1] [#S3.I1.i2.p1.1.1] Second, the convergence speed of the success rate [#S3.I1.i2.p1.1.1.1] ENPIRE scales with robot and token resources.
+
+[#S3.p1.2] We will focus on the following dexterous tasks, which require precise and reactive control from perceptual feedback: [#S3.p1.2.1] Push-T (12), where the robot uses non-prehensile movement to align a T-shape block to a goal region; [#S3.p1.2.2] Pin insertion, where the robot organizes a pin box by plugging in pins into 4mm-diameter holes; [#S3.p1.2.3] GPU-insertion, where the robot seats GPU chips in thin sockets on the motherboard, and [#S3.p1.2.4] Ziptie-cutting, where the robot grabs and closes scissors to cut the tail of a zip tie. A visualization of these tasks is provided in Fig. 2.
+
+[#S3.p2]
+
+[#S3.p2.1] We measure success as the chance of completing a task in one rollout, given a fixed number of retries (here, eight). Unlike measuring success by i.i.d. best-of-N sampling, where each attempt is independent, our retries happen after witnessing the previous failure, implying that our metric captures both precision and in-context recovery in the face of environment uncertainty. We stress that recovery, not just one-shot precision, matters for highly dexterous tasks and reflects the robustness needed for reliable deployment in the real world.
+
+[#S3.p3]
+
+[#S3.p3.1] We use [#S3.p3.1.1] ENPIRE to conduct autoresearch in various policy learning paradigms. Coding agents have the freedom to choose various methods and their combinations to solve a task, including end-to-end neural network training such as behavior cloning (BC) (36) or real-world reinforcement learning (RL) (18), as well as gradient-free learning methods such as heuristic learning (47) and code-based policy synthesis (25). Our real robot platform is the bimanual 6-DoF YAM robot. We benchmark three coding agents in our physical autoresearch experiments, namely, Codex with GPT-5.5 xhigh (35), Claude Code with Opus 4.7 High (3), and Kimi Code with Kimi K2.6 thinking (33).
+
+[#S3.SS1]
+
+[#S3.F5] [#S3.F5.g1]
+
+[#S3.F5.4] Figure 5: [#S3.F5.5] Autonomous heuristic learning in simulation [#S3.F5.5.1] . On the Gym-PushT (10) benchmark, Claude Code (orange) and Codex (blue) achieve 95% success rate within approximately 2 hours, while Kimi Code (black) takes twice the time.
+
+[#S3.SS1.p1]
+
+[#S3.SS1.p1.1] We tested [#S3.SS1.p1.1.1] ENPIRE’s ability to drive automatic policy improvement in its simplest form: learning heuristics (47) by synthesizing perception and control tool calls (25). To this end, we built a real-world [#S3.SS1.p1.1.2] Push-T environment with its simulation counterpart for comparison.
+
+[#S3.SS1.SSS0.Px1]
+
+[#S3.SS1.SSS0.Px1.p1]
+
+[#S3.SS1.SSS0.Px1.p1.1] As illustrated in Figs. 5 and 3, all coding agents successfully solve the Push-T task in simulation using heuristic learning. However, the real-world environment proves significantly more challenging, causing two of the three agents to fail. While simulators offer consistent, predictable physics for low-variance hypothesis testing, real-world conditions are non-deterministic and time-varying: factors such as robot dynamics, contact friction, and object movements are inherently less predictable and vary across trials and hardware.
+
+[#S3.SS1.SSS0.Px1.p2]
+
+[#S3.SS1.SSS0.Px1.p2.1] To improve real-world robustness, in subsequent tasks, we encourage agents to explore and even combine diverse learning methods that span heuristics and gradient-based learning, to tackle the corner cases in real-world deployment. We also propose scaling up a physical agent team to test hypotheses in diverse and nondeterministic real-world physics. We will elaborate on these designs in subsequent sections.
+
+[#S3.SS2]
+
+[#S3.SS2.p1]
+
+[#S3.SS2.p1.1] Apart from supporting heuristic learning, [#S3.SS2.p1.1.1] ENPIRE is also capable of training end-to-end policies in a precision-critical task, pin insertion, as shown in Fig. 3. In this task, coding agents are required to achieve 50 consecutive successes in real-world evaluations. The agents tested multiple methods to improve the policy, including behavior cloning (BC), iterative BC with online rollout data aggregation, and online, offline, and offline-to-online RL with a BC regularization term. The agents also tuned parameters such as batch size, the actor-critic policy update rate, and the BC-term hyperparameters.
+
+[#S3.SS3]
+
+[#S3.SS3.p1]
+
+[#S3.SS3.p1.1] We further study whether scaling the number of robots and agents reduces the wall-clock time required to achieve the same target task performance. We assign one coding agent to one robot, and set up identical environment interfaces, reward functions, and reset mechanisms on this robot fleet. We consider fleet sizes of 1, 4, and 8 robots in Push-T and pin insertion tasks.
+
+[#S3.SS3.p2]
+
+[#S3.SS3.p2.1] In Push-T, scaling from one to eight agents reduces the time to reach a 1.0 normalized score from roughly five to two hours. In pin insertion, scaling from one to eight agents reduces the time to reach a near-perfect success rate from more than 1.5 hours to approximately 40 minutes.
+
+[#S3.SS3.p3]
+
+[#S3.SS3.p3.1] In a multiagent setting, [#S3.SS3.p3.1.1] ENPIRE can also leverage code-based policies to automatically apply domain randomization during reset. For example, the variations in spatial configurations during GPU insertion span a significantly broader range than prior work (48), which enforces stronger policy robustness.
+
+[#S3.F6] [#S3.F6.g1]
+
+[#S3.F6.5] Figure 6: [#S3.F6.6] Simulation results [#S3.F6.6.1] . On RoboCasa365 (34) benchmark, ENPIRE [#S3.F6.6.2] outperforms end-to-end VLA (GR00T (5)) and zero-shot agentic tool use without autoresearch (CaP-X (15)).
+
+[#S3.SS4]
+
+[#S3.SS4.p1]
+
+[#S3.SS4.p1.1] We observe that the insights accumulated by multi-agent physical autoresearch are also transferable to similar, novel dexterous tasks. Following the autonomous exploration phase in pin insertion, agents are prompted to document and reflect on the evolution of their training recipes. When we instantiate a new round of autoresearch for the GPU insertion task, appending this knowledge to the new task’s instructions allows coding agents to achieve a high success rate. A detailed analysis is provided in the Appendix.
+
+[#S3.SS5]
+
+[#S3.SS5.p1]
+
+[#S3.SS5.p1.1] Beyond end-to-end or heuristic training, [#S3.SS5.p1.1.1] ENPIRE can automatically integrate vision-language-action models (VLAs) (8) with procedural tool calls for long-horizon manipulation. In the RoboCasa365 simulator (34), the agent boosted the success rate of the GR00T VLA (5) by using motion planning and detection tools to hover above an object before grasping. We successfully transferred this strategy to the real world, where the agent learned to hover over scissors, grasp them, and cut a zip tie, as shown in Figure 2.
+
+[#S3.SS6]
+
+[#S3.F7] [#S3.F7.g1]
+
+[#S3.F7.4] Figure 7: [#S3.F7.5] Quantifying agent resource utilization [#S3.F7.5.1] . Scaling from 1 to 8 agents raises GPU utilization and token consumption but lowers per-robot utilization.
+
+[#S3.SS6.p1]
+
+[#S3.SS6.p1.1] Figure 7 summarizes the resource-scaling behavior of ENPIRE on the pin insertion task across single-, four-, and eight-agent fleets. We report Mean Robot Utilization (MRU) and GPU utilization using the definitions introduced above. In addition, we measure Mean Token Utilization (MTU), defined as the number of tokens consumed per minute. We further measure Tokens to Success and Time to Success, which quantify the token budget and wall-clock time required to complete the autoresearch objective.
+
+[#A2.SS6]
+
+[#A2.SS6.p1]
+
+[#A2.SS6.p1.1] Figure 12 visualizes an agent-team autoresearch run on the pin
+
+[#A4.SS2]
+
+[#A4.SS2.p1]
+
+[#A4.SS2.p1.1] We evaluate each RoboCasa task in simulation using the same environment wrapper
+
+[#A4.SS2.SSS0.Px1]
+
+[#A4.SS2.SSS0.Px1.p1]
+
+[#A4.SS2.SSS0.Px1.p1.1] For each reported 40-episode evaluation, we use a fixed list of seed triplets.
+
+[#A4.SS2.SSS0.Px2]
+
+[#A4.SS2.SSS0.Px2.p1]
+
+[#A4.SS2.SSS0.Px2.p1.1] When comparing generated vision scripts with GR00T, we use the same task name,
+
+[#A4.SS2.SSS0.Px3]
+
+[#A4.SS2.SSS0.Px3.p1]
+
+[#A4.SS2.SSS0.Px3.p1.1] In addition to the matched-seed success rates reported in the main paper, the
+
+[#A4.SS2.SSS0.Px4]
+
+[#A4.SS2.SSS0.Px4.p1]
+
+[#A4.SS2.SSS0.Px4.p1.1] We identified a perception bottleneck in which SAM3 can return an incorrect mask or no usable mask for small or ambiguous RoboCasa objects. Figures 16 and 18 isolate this effect by varying image resolution and prompt wording on the same counter-to-cabinet diagnostic set. Increasing the top-camera resolution from [#A4.SS2.SSS0.Px4.p1.m1] 256×256256\times 256 to [#A4.SS2.SSS0.Px4.p1.m2] 480×640480\times 640 improves detection, but resolution alone does not solve all failures. Allowing the coding agent to rewrite object prompts further improves target detection and recovers several cases where the original task wording produces a distractor mask. This analysis shows that generated RoboCasa scripts are limited not only by planning and control, but also by the reliability of the perception API exposed to the agent; prompt search and resolution selection are therefore useful parts of the agent’s simulation-side tool use.

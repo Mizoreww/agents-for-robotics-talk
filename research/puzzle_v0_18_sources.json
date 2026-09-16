@@ -1,0 +1,24 @@
+{
+  "retrieved": "2026-09-16",
+  "cube_site_status": "403 Forbidden; no bypass attempted. Original public post/video used; action interface not disclosed.",
+  "claw_boundary_seconds": 20.566667,
+  "sha256": {
+    ".build/assets/v0_18_control/claw_transition.jpg": "0afbbf77f3c239e3a0e2a37d7f1227992473f9af6a213d31bf580e514def62dd",
+    ".build/assets/v0_18_control/cube_source.mp4": "f674cd542a8dc1cad7d7787c204f661707022925c42686ce418701173fbca8b9",
+    ".build/assets/v0_18_control/claw.jpg": "eedfbdac26dbd96e3c4f227fefa8bb07e1b0db1fbcda448e47934fb93a634db2",
+    ".build/assets/v0_18_control/cube.jpg": "52630cb3c0fc41d9edb344b9550e88a730f7bdd259d4cf5f5ebcbf48478ddd11",
+    ".build/assets/v0_18_control/claw_source.mp4": "d6634869d3d7faa142e2a560ea6632a802a20d343fc21a8f740fe6ad19178974",
+    ".build/assets/v0_18_control/claw_contact.jpg": "fa51dad1d144fb9c3c5210abc670e984071db00e453cb7e73d40fbd5a850b8c7",
+    ".build/assets/v0_18_control/cube_contact.jpg": "258e58565e911a6d349656af07132f42f9831bf1d006f0b3e4c5b87f30ca93cf",
+    ".build/clips/cube.mp4": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
+    ".build/clips/claw.mp4": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
+    ".build/clip_manifest_v10.json": "1745a1e248c2059603854308697cae1585867adeff8fd2339b6cd6d0ff0ec082",
+    "research/sources/control_extra_20260916/cube_syndication.json": "02b80aa8d2421cc0422da3d5bb285d100f6e5a4e33946f4ba0e1069eab078556",
+    "research/sources/control_extra_20260916/claw_app.js": "98614045cab090e2b3c01f590d80004a4b1ed86085eca50902e610207ae25e76",
+    "research/sources/control_extra_20260916/claw_methods.html": "a3633b458ba94bb1ae3d89b43921d381a91281d1357466c4d21ef6a77baf6809",
+    "research/sources/control_extra_20260916/awesome.md": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7",
+    "research/sources/control_extra_20260916/claw_manifest.json": "54c40935da50ed1e1cb1be6f0a3279feb58ef6f12178c22e3a64837550b2e9c2",
+    "research/sources/control_extra_20260916/download_urls.json": "4cac3ef296217a60bd8f9ae6fb8ebffcbfb96481a70d95b2fcafa5689e949c20",
+    "research/sources/control_extra_20260916/claw.html": "ba8672cc8f7a32fa95ffd8246671ed2dd9a39be551285b623d35581d764ecb22"
+  }
+}

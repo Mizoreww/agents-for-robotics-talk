@@ -1,0 +1,2505 @@
+{
+  "source_url": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+  "source_sha256": "50af836616bef6dfaed22e142702d37da7e5884c85954e9cb9ae3e7d685d4851",
+  "source_commit": "1e7952c26e0a8783e4eca48514b3a1cc03e2c5df",
+  "description": "Derived from per-query displayed seconds; not an independently timed experiment, not end-to-end feedback Hz. prompt v3, proprio, Lift/Can/Square, 20 episodes per task/interface; excludes historical runs, none and privileged.",
+  "summary": [
+    {
+      "interface": "delta",
+      "task": "Lift",
+      "episodes": 20,
+      "queries": 44,
+      "mean_s": 33.179477272727276,
+      "median_s": 31.3805,
+      "min_s": 25.761,
+      "max_s": 66.057,
+      "sum_s": 1459.897,
+      "inverse_mean_s": 0.03013911255383085
+    },
+    {
+      "interface": "delta",
+      "task": "Can",
+      "episodes": 20,
+      "queries": 170,
+      "mean_s": 26.007570588235293,
+      "median_s": 25.7935,
+      "min_s": 19.435,
+      "max_s": 55.002,
+      "sum_s": 4421.287,
+      "inverse_mean_s": 0.038450342626479575
+    },
+    {
+      "interface": "delta",
+      "task": "Square",
+      "episodes": 20,
+      "queries": 200,
+      "mean_s": 34.24103,
+      "median_s": 33.113,
+      "min_s": 24.574,
+      "max_s": 59.976,
+      "sum_s": 6848.206,
+      "inverse_mean_s": 0.029204728946529937
+    },
+    {
+      "interface": "delta",
+      "task": "ALL",
+      "episodes": 60,
+      "queries": 414,
+      "mean_s": 30.74731884057971,
+      "median_s": 29.37,
+      "min_s": 19.435,
+      "max_s": 66.057,
+      "sum_s": 12729.39,
+      "inverse_mean_s": 0.032523160968436035
+    },
+    {
+      "interface": "waypoint",
+      "task": "Lift",
+      "episodes": 20,
+      "queries": 34,
+      "mean_s": 28.4785,
+      "median_s": 27.5455,
+      "min_s": 22.94,
+      "max_s": 42.956,
+      "sum_s": 968.269,
+      "inverse_mean_s": 0.03511420896465755
+    },
+    {
+      "interface": "waypoint",
+      "task": "Can",
+      "episodes": 20,
+      "queries": 68,
+      "mean_s": 26.233779411764704,
+      "median_s": 25.7315,
+      "min_s": 17.103,
+      "max_s": 45.89,
+      "sum_s": 1783.897,
+      "inverse_mean_s": 0.03811879273298851
+    },
+    {
+      "interface": "waypoint",
+      "task": "Square",
+      "episodes": 20,
+      "queries": 139,
+      "mean_s": 25.4208345323741,
+      "median_s": 24.274,
+      "min_s": 14.617,
+      "max_s": 47.39,
+      "sum_s": 3533.496,
+      "inverse_mean_s": 0.0393378116177293
+    },
+    {
+      "interface": "waypoint",
+      "task": "ALL",
+      "episodes": 60,
+      "queries": 241,
+      "mean_s": 26.081585062240663,
+      "median_s": 25.718,
+      "min_s": 14.617,
+      "max_s": 47.39,
+      "sum_s": 6285.662,
+      "inverse_mean_s": 0.0383412280202149
+    },
+    {
+      "interface": "code",
+      "task": "Lift",
+      "episodes": 20,
+      "queries": 20,
+      "mean_s": 41.579750000000004,
+      "median_s": 38.647999999999996,
+      "min_s": 25.417,
+      "max_s": 74.668,
+      "sum_s": 831.595,
+      "inverse_mean_s": 0.024050168651807667
+    },
+    {
+      "interface": "code",
+      "task": "Can",
+      "episodes": 20,
+      "queries": 29,
+      "mean_s": 35.730586206896554,
+      "median_s": 33.532,
+      "min_s": 25.518,
+      "max_s": 54.006,
+      "sum_s": 1036.187,
+      "inverse_mean_s": 0.027987226243911572
+    },
+    {
+      "interface": "code",
+      "task": "Square",
+      "episodes": 20,
+      "queries": 27,
+      "mean_s": 49.002037037037034,
+      "median_s": 48.54,
+      "min_s": 37.884,
+      "max_s": 64.207,
+      "sum_s": 1323.055,
+      "inverse_mean_s": 0.020407314888647866
+    },
+    {
+      "interface": "code",
+      "task": "ALL",
+      "episodes": 60,
+      "queries": 76,
+      "mean_s": 41.98469736842105,
+      "median_s": 41.016,
+      "min_s": 25.417,
+      "max_s": 74.668,
+      "sum_s": 3190.837,
+      "inverse_mean_s": 0.02381820193259637
+    }
+  ],
+  "episodes": [
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep00.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        37.365,
+        29.877
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep01.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        39.061,
+        32.23
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep02.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        33.322,
+        31.109
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep03.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        28.117,
+        28.989
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep04.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        30.654,
+        28.838
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep05.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.905,
+        33.007
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep06.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        30.58,
+        31.679
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep07.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        44.131,
+        40.462
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep08.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        35.618,
+        29.49
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep09.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.61,
+        31.807
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep10.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.625,
+        29.582
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep11.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        35.535,
+        32.803
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep12.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        28.479,
+        28.607
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep13.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        28.227,
+        26.85
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep14.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.135,
+        28.385,
+        33.248,
+        26.293,
+        27.72,
+        25.761
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep15.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        31.652,
+        32.222
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep16.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        31.003,
+        29.896
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep17.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.66,
+        34.52
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep18.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        66.057,
+        52.697
+      ]
+    },
+    {
+      "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+      "episode": "ep19.mp4",
+      "task": "Lift",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        40.233,
+        35.856
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep00.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        24.82,
+        26.332
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep01.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        30.744,
+        23.208
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep02.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        29.029,
+        32.178
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep03.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        29.276,
+        28.203
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep04.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        42.956
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep05.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        28.18,
+        28.909
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep06.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.841,
+        26.186
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep07.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        29.327
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep08.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        24.76,
+        24.52
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep09.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        33.616
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep10.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        33.504,
+        27.288
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep11.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.765,
+        24.446
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep12.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.02,
+        22.94
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep13.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        34.484
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep14.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        34.615,
+        27.122
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep15.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        27.803
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep16.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.043,
+        28.479
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep17.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        28.17
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep18.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        27.107,
+        32.339
+      ]
+    },
+    {
+      "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+      "episode": "ep19.mp4",
+      "task": "Lift",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        27.128,
+        26.931
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep00.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        30.97
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep01.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.901
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep02.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        41.747
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep03.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        31.337
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep04.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        44.007
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep05.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        49.89
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep06.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        53.282
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep07.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        25.417
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep08.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        31.358
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep09.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.375
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep10.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        37.636
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep11.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.511
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep12.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        41.392
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep13.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        68.013
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep14.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        74.668
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep15.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        46.949
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep16.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        39.66
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep17.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.079
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep18.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        40.55
+      ]
+    },
+    {
+      "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+      "episode": "ep19.mp4",
+      "task": "Lift",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        32.853
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep00.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.94,
+        25.966,
+        22.17,
+        24.557,
+        22.091,
+        24.167,
+        24.879
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep01.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        25.832,
+        27.899,
+        27.544,
+        29.273,
+        26.155,
+        22.635,
+        22.966,
+        23.66,
+        25.863,
+        23.345
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep02.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        37.997,
+        28.746,
+        28.583,
+        26.153,
+        31.117,
+        33.528,
+        25.755,
+        27.28,
+        29.118,
+        22.398
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep03.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        23.061,
+        23.038,
+        26.735,
+        24.318,
+        22.206,
+        20.895,
+        24.673,
+        27.348
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep04.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        26.234,
+        26.51,
+        29.778,
+        27.638,
+        23.888,
+        22.388,
+        25.396,
+        23.251
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep05.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        23.974,
+        29.033,
+        26.928,
+        25.585,
+        25.184,
+        25.893,
+        29.411,
+        30.319,
+        29.609,
+        26.229
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep06.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        30.194,
+        25.117,
+        26.077,
+        23.87,
+        21.538,
+        23.619,
+        26.284
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep07.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.781,
+        26.505,
+        25.675,
+        27.458,
+        29.812,
+        22.848,
+        26.391,
+        26.339
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep08.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        24.704,
+        26.164,
+        26.093,
+        25.988,
+        30.11,
+        24.878,
+        22.505,
+        23.477,
+        28.002,
+        25.958
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep09.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        26.863,
+        28.376,
+        26.603,
+        23.089,
+        19.956,
+        25.144,
+        21.85
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep10.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        31.288,
+        27.266,
+        25.047,
+        28.476,
+        32.365,
+        25.886,
+        20.6,
+        27.334,
+        28.218,
+        24.756
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep11.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        25.255,
+        26.82,
+        28.488,
+        23.607,
+        19.435,
+        20.548,
+        26.789
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep12.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.212,
+        24.475,
+        23.718,
+        21.937,
+        19.852,
+        24.866,
+        23.655,
+        19.771
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep13.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.598,
+        26.574,
+        32.633,
+        25.052,
+        27.16,
+        23.832,
+        29.067,
+        28.38
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep14.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        23.999,
+        25.877,
+        23.593,
+        24.183,
+        25.383,
+        21.6,
+        23.862,
+        31.137
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep15.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        23.528,
+        29.564,
+        26.308,
+        26.478,
+        25.608,
+        25.066,
+        21.869,
+        25.007,
+        25.4
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep16.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        27.465,
+        24.385,
+        27.624,
+        29.381,
+        28.334,
+        24.584,
+        24.271,
+        22.342,
+        27.064,
+        55.002
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep17.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        31.489,
+        27.656,
+        24.515,
+        24.451,
+        22.1,
+        24.185,
+        24.366,
+        24.346
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep18.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        24.33,
+        26.248,
+        27.046,
+        23.989,
+        34.002,
+        30.797,
+        22.993,
+        19.749,
+        26.417
+      ]
+    },
+    {
+      "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+      "episode": "ep19.mp4",
+      "task": "Can",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        26.691,
+        32.811,
+        25.064,
+        26.456,
+        20.345,
+        22.332,
+        25.484,
+        22.144
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep00.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.894,
+        25.745,
+        28.762
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep01.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.718,
+        33.137,
+        33.166,
+        33.01
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep02.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        35.963,
+        30.266,
+        28.931
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep03.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        21.785,
+        27.726,
+        25.525
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep04.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        33.59,
+        22.434,
+        31.676
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep05.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        27.614,
+        24.256
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep06.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.402,
+        21.676,
+        26.294
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep07.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        32.146,
+        34.688,
+        21.525
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep08.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.579,
+        31.177,
+        17.103
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep09.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.58,
+        34.017,
+        21.066
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep10.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.195,
+        28.799,
+        27.417
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep11.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        22.39,
+        32.118,
+        25.938,
+        22.768,
+        19.576,
+        20.766,
+        30.948,
+        31.797
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep12.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.4,
+        45.89,
+        23.241,
+        21.743
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep13.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.848,
+        21.802,
+        19.448
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep14.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        24.19,
+        18.146,
+        20.09
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep15.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        22.021,
+        26.964,
+        21.256
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep16.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        19.385,
+        29.607,
+        23.259,
+        21.587
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep17.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        27.349,
+        27.267,
+        23.561
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep18.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        22.088,
+        29.905,
+        19.796
+      ]
+    },
+    {
+      "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+      "episode": "ep19.mp4",
+      "task": "Can",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.341,
+        29.818,
+        21.45,
+        30.282
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep00.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        54.006
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep01.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        43.067
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep02.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.72
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep03.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        28.661
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep04.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        42.032,
+        25.518
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep05.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        27.93,
+        37.612
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep06.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        29.008
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep07.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        33.278
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep08.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        32.596,
+        28.98
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep09.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        33.41
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep10.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        39.029,
+        52.256
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep11.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        27.055,
+        28.628
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep12.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        39.788,
+        38.793
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep13.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        33.532
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep14.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        35.357
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep15.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        31.312,
+        40.693
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep16.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        27.214,
+        32.335
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep17.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        48.693
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep18.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        34.091,
+        30.32
+      ]
+    },
+    {
+      "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+      "episode": "ep19.mp4",
+      "task": "Can",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        45.273
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep00.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.198,
+        24.574,
+        29.537,
+        27.878,
+        37.952,
+        31.602,
+        27.109,
+        27.259,
+        49.698,
+        31.612
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep01.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        33.172,
+        26.796,
+        30.26,
+        33.819,
+        25.36,
+        32.472,
+        30.435,
+        31.137,
+        48.678,
+        31.996
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep02.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        28.293,
+        32.529,
+        37.633,
+        33.019,
+        30.274,
+        31.361,
+        31.937,
+        59.976,
+        36.833,
+        36.978
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep03.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.075,
+        30.732,
+        39.46,
+        28.051,
+        28.524,
+        29.051,
+        43.736,
+        29.359,
+        33.407,
+        33.06
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep04.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        27.596,
+        38.73,
+        43.076,
+        32.931,
+        27.431,
+        38.281,
+        33.981,
+        38.885,
+        33.197,
+        47.858
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep05.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        30.063,
+        34.74,
+        29.332,
+        29.084,
+        29.952,
+        44.965,
+        38.156,
+        35.199,
+        38.808,
+        45.929
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep06.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        33.72,
+        30.842,
+        32.039,
+        26.255,
+        33.166,
+        25.693,
+        33.782,
+        30.707,
+        40.633,
+        45.687
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep07.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        32.662,
+        38.165,
+        29.859,
+        36.813,
+        27.496,
+        35.97,
+        27.835,
+        29.944,
+        40.16,
+        37.297
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep08.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.752,
+        26.571,
+        33.386,
+        29.664,
+        33.663,
+        34.801,
+        38.963,
+        40.192,
+        48.211,
+        40.027
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep09.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        36.086,
+        28.936,
+        34.702,
+        38.046,
+        32.316,
+        40.056,
+        31.625,
+        31.33,
+        44.397,
+        48.248
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep10.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        33.452,
+        25.631,
+        26.411,
+        25.031,
+        34.252,
+        29.491,
+        49.909,
+        42.216,
+        41.595,
+        41.041
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep11.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        32.321,
+        24.6,
+        37.188,
+        30.209,
+        26.305,
+        27.541,
+        29.383,
+        38.749,
+        36.865,
+        39.009
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep12.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        27.562,
+        30.384,
+        31.791,
+        42.242,
+        38.185,
+        39.051,
+        39.066,
+        43.183,
+        53.824,
+        40.475
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep13.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        35.893,
+        25.711,
+        44.809,
+        35.297,
+        56.089,
+        33.279,
+        28.827,
+        36.808,
+        30.818,
+        28.737
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep14.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        28.932,
+        30.507,
+        28.545,
+        32.323,
+        38.547,
+        29.774,
+        33.652,
+        41.921,
+        42.582,
+        28.358
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep15.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.411,
+        28.546,
+        28.121,
+        24.698,
+        28.468,
+        27.938,
+        32.988,
+        42.344,
+        38.844,
+        24.796
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep16.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        32.553,
+        34.878,
+        26.744,
+        27.582,
+        31.226,
+        28.266,
+        27.892,
+        36.652,
+        37.158,
+        33.032
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep17.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        29.556,
+        34.835,
+        37.633,
+        36.81,
+        30.926,
+        31.352,
+        30.708,
+        39.267,
+        28.868,
+        33.96
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep18.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        34.599,
+        29.44,
+        34.47,
+        38.121,
+        30.172,
+        28.292,
+        45.464,
+        30.882,
+        43.323,
+        40.897
+      ]
+    },
+    {
+      "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+      "episode": "ep19.mp4",
+      "task": "Square",
+      "interface": "delta",
+      "state": "proprio",
+      "query_seconds": [
+        30.765,
+        36.776,
+        27.407,
+        27.503,
+        38.033,
+        34.428,
+        27.782,
+        41.722,
+        36.345,
+        40.639
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep00.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        24.205,
+        15.249,
+        26.683,
+        20.988,
+        23.994,
+        27.75
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep01.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        28.26,
+        27.601,
+        21.38,
+        18.391,
+        21.721,
+        25.003,
+        23.495
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep02.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        25.521,
+        31.267,
+        27.915,
+        23.349,
+        32.557,
+        33.284,
+        17.617
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep03.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.847,
+        19.326,
+        26.915,
+        30.264,
+        16.44,
+        33.051,
+        22.763,
+        23.933,
+        28.18,
+        23.556
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep04.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        20.988,
+        27.77,
+        25.951,
+        16.651,
+        19.308
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep05.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.894,
+        24.274,
+        26.557,
+        40.321,
+        36.588,
+        30.606
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep06.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        22.253,
+        23.307,
+        24.99,
+        32.542,
+        21.978,
+        16.416,
+        32.119,
+        41.047,
+        17.762,
+        37.179,
+        35.183,
+        26.594
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep07.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        29.189,
+        26.35,
+        27.04,
+        25.691,
+        32.584,
+        30.414,
+        32.157,
+        38.364,
+        23.23
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep08.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        30.266,
+        25.415,
+        26.15,
+        45.535,
+        37.588,
+        28.736,
+        23.881,
+        15.343
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep09.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        20.665,
+        28.034,
+        22.782,
+        22.764,
+        17.585
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep10.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.678,
+        14.617,
+        26.373,
+        18.699,
+        17.529
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep11.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        19.854,
+        25.787,
+        22.719,
+        22.887,
+        23.163,
+        23.639
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep12.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.952,
+        16.003,
+        24.198,
+        30.176,
+        18.826,
+        16.738
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep13.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        24.123,
+        25.43,
+        22.937,
+        20.458,
+        22.369,
+        28.082
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep14.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.433,
+        20.789,
+        47.39,
+        27.539,
+        34.099,
+        26.91,
+        21.034
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep15.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        26.386,
+        18.612,
+        24.777,
+        19.37,
+        14.804,
+        22.796,
+        25.471
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep16.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        20.321,
+        19.061,
+        34.471,
+        42.198,
+        28.304,
+        24.569,
+        28.989,
+        21.267
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep17.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        30.147,
+        17.348,
+        28.179,
+        29.885,
+        18.505,
+        27.826,
+        20.408
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep18.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        22.392,
+        24.911,
+        26.316,
+        23.978,
+        22.702,
+        36.941
+      ]
+    },
+    {
+      "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+      "episode": "ep19.mp4",
+      "task": "Square",
+      "interface": "waypoint",
+      "state": "proprio",
+      "query_seconds": [
+        23.951,
+        23.277,
+        28.104,
+        17.136,
+        22.039,
+        20.078
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep00.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        41.339
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep01.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        64.207
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep02.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        50.206,
+        61.752,
+        62.049
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep03.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        42.257,
+        50.032
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep04.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        37.884
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep05.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        57.158,
+        48.781
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep06.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        48.54
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep07.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        50.608,
+        49.487
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep08.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        42.48
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep09.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        42.1
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep10.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        58.992
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep11.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        43.17
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep12.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        42.609
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep13.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        53.421
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep14.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        40.409
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep15.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        47.978,
+        49.173
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep16.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        47.24,
+        61.287
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep17.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        46.452
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep18.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        45.308
+      ]
+    },
+    {
+      "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+      "episode": "ep19.mp4",
+      "task": "Square",
+      "interface": "code",
+      "state": "proprio",
+      "query_seconds": [
+        38.136
+      ]
+    }
+  ]
+}

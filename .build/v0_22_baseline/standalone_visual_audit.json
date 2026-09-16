@@ -1,0 +1,24 @@
+{
+  "html_sha256": "085ddbf4a6519f1335fa5d54b50b7cd3c22815d35053b550028861eaa4831abe",
+  "date": "2026-09-16",
+  "status": "passed",
+  "scope": "Docked script only; desktop split and mobile stacked reader. All deck and media bytes unchanged from v0.20.",
+  "screenshots": [
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/desktop-open.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/desktop-closed.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/1280-open.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/390-open.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/568-open.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_21_visual/full-script.png"
+  ],
+  "screenshot_sha256": {
+    "desktop-open.png": "998047cea2534caf65de37e853ebb5bd466a8976c8b24d44015eb9a89444c497",
+    "desktop-closed.png": "07fd5ce17a3429b17eba3d0151af70533c68ae5b6416a717fe6e889ddae08316",
+    "1280-open.png": "3dc2c79b777073079bf7a9167fe042af2e2eeadab2a235e9def1f5a6924c96a8",
+    "390-open.png": "8a95b5de4c4d1f1299606e4c2e596349a4320d01f3bacceebbe08b5b33bb384b",
+    "568-open.png": "188faee0b3d056126c10fa5fc4890f7f28cd02a91906c739a13dbc77606379a8",
+    "full-script.png": "a8103acf6e12ecbb6c761ae5ad65d155f2764a8d71f5563f88702cb8d1269579"
+  },
+  "targeted_browser_audit": ".build/v0_21_sidebar_audit.json",
+  "baseline": ".build/v0_21_baseline/identity.json"
+}

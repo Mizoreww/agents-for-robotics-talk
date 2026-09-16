@@ -1,0 +1,22 @@
+[
+  {
+    "name": "rope_hand",
+    "source_url": "https://x.com/dimentary/status/2097857980150763900",
+    "download_url": "https://video.twimg.com/amplify_video/2097853948313124864/vid/avc1/1440x1016/doJuLL3zdxEDE8sJ.mp4?tag=29",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_16/rope_hand_source.mp4",
+    "source_sha256": "ba469f105401222b160fd389a3853c17985c4926fe8a7de601fbdc907d6cab0d",
+    "source_playback": "Complete original24.67-second clip; no added speedup; simplified mechanics, not full tendon physics",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/rope_hand.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_16/rope_hand.jpg",
+    "start_seconds": 0,
+    "duration_seconds": 24.666667,
+    "speed_multiplier": 1,
+    "audio": "removed for narrated talk",
+    "width": 1020,
+    "height": 720,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "a330c8730e689c479202ae929da6ca6318da5d5644e2340aac62165a8fbfe143",
+    "full_decode": "passed"
+  }
+]

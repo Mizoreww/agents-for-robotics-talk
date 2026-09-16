@@ -1,0 +1,324 @@
+{
+ "schema": "robot-rsi.libero-task-iteration.v1",
+ "status": "derived",
+ "source": "first-success import journal (adaptive-pass10-v1/episodes.jsonl), 95 tasks, skill-tree releases r82-r146",
+ "note": "curve = cumulative first-passed tasks among the 95 imported successes, by skill-tree release; denominator for pass rate is 120 tasks",
+ "total_tasks": 120,
+ "imported_successes": 95,
+ "curve": [
+  {
+   "release": 82,
+   "cumulative": 12
+  },
+  {
+   "release": 83,
+   "cumulative": 21
+  },
+  {
+   "release": 86,
+   "cumulative": 23
+  },
+  {
+   "release": 89,
+   "cumulative": 35
+  },
+  {
+   "release": 95,
+   "cumulative": 43
+  },
+  {
+   "release": 98,
+   "cumulative": 60
+  },
+  {
+   "release": 99,
+   "cumulative": 61
+  },
+  {
+   "release": 102,
+   "cumulative": 63
+  },
+  {
+   "release": 105,
+   "cumulative": 67
+  },
+  {
+   "release": 112,
+   "cumulative": 73
+  },
+  {
+   "release": 113,
+   "cumulative": 82
+  },
+  {
+   "release": 114,
+   "cumulative": 84
+  },
+  {
+   "release": 117,
+   "cumulative": 85
+  },
+  {
+   "release": 123,
+   "cumulative": 86
+  },
+  {
+   "release": 127,
+   "cumulative": 88
+  },
+  {
+   "release": 128,
+   "cumulative": 90
+  },
+  {
+   "release": 130,
+   "cumulative": 91
+  },
+  {
+   "release": 133,
+   "cumulative": 93
+  },
+  {
+   "release": 146,
+   "cumulative": 95
+  }
+ ],
+ "groups": {
+  "bowl": {
+   "label_zh": "碗类操作",
+   "label_en": "Bowl manipulation",
+   "desc_zh": "将黑碗 / 白碗移动到盘子或柜顶",
+   "desc_en": "Move black / white bowls onto plates or the cabinet top"
+  },
+  "food": {
+   "label_zh": "食品包装类操作",
+   "label_en": "Packaged-food manipulation",
+   "desc_zh": "将食品罐、瓶和盒放入篮子",
+   "desc_en": "Place food cans, bottles, and boxes into the basket"
+  },
+  "cabinet": {
+   "label_zh": "柜体部件操作",
+   "label_en": "Cabinet manipulation",
+   "desc_zh": "抓取抽屉把手并开合柜体",
+   "desc_en": "Grasp the drawer handle and operate the cabinet"
+  }
+ },
+ "items": {
+  "random-libero-spatial-1-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "bowl",
+   "goal_object": "akita black bowl next to the ramekin",
+   "goal_target": "plate"
+  },
+  "random-libero-spatial-8-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "bowl",
+   "goal_object": "the akita black bowl next to the plate",
+   "goal_target": "yellow_plate_1"
+  },
+  "random-libero-object-7-seed-1": {
+   "release": 89,
+   "release_index": 4,
+   "releases_total": 19,
+   "cumulative": 35,
+   "group": "food",
+   "goal_object": "milk",
+   "goal_target": ""
+  },
+  "random-libero-goal-6-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "food",
+   "goal_object": "cream cheese",
+   "goal_target": ""
+  },
+  "random-libero-90-7-seed-1": {
+   "release": 89,
+   "release_index": 4,
+   "releases_total": 19,
+   "cumulative": 35,
+   "group": "cabinet",
+   "goal_object": "handle of the top drawer of the cabinet",
+   "goal_target": ""
+  },
+  "random-libero-90-10-seed-0": {
+   "release": 83,
+   "release_index": 2,
+   "releases_total": 19,
+   "cumulative": 21,
+   "group": "bowl",
+   "goal_object": "black bowl",
+   "goal_target": "top of the cabinet"
+  },
+  "random-libero-90-36-seed-2": {
+   "release": 95,
+   "release_index": 5,
+   "releases_total": 19,
+   "cumulative": 43,
+   "group": "bowl",
+   "goal_object": "white bowl",
+   "goal_target": "plate"
+  },
+  "random-libero-object-4-seed-5": {
+   "release": 98,
+   "release_index": 6,
+   "releases_total": 19,
+   "cumulative": 60,
+   "group": "food",
+   "goal_object": "ketchup",
+   "goal_target": ""
+  },
+  "random-libero-90-46-seed-9": {
+   "release": 114,
+   "release_index": 12,
+   "releases_total": 19,
+   "cumulative": 84,
+   "group": "food",
+   "goal_object": "alphabet soup",
+   "goal_target": ""
+  },
+  "random-libero-spatial-0-seed-2": {
+   "release": 95,
+   "release_index": 5,
+   "releases_total": 19,
+   "cumulative": 43,
+   "group": "bowl",
+   "goal_object": "akita black bowl between the plate and the ramekin",
+   "goal_target": "pink-rimmed plate"
+  },
+  "random-libero-spatial-2-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "bowl",
+   "goal_object": "akita black bowl from table center",
+   "goal_target": "the plate"
+  },
+  "random-libero-spatial-3-seed-5": {
+   "release": 98,
+   "release_index": 6,
+   "releases_total": 19,
+   "cumulative": 60,
+   "group": "bowl",
+   "goal_object": "akita black bowl on the cookies box",
+   "goal_target": "plate"
+  },
+  "random-libero-spatial-5-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "bowl",
+   "goal_object": "akita black bowl on the ramekin",
+   "goal_target": "plate"
+  },
+  "random-libero-spatial-6-seed-2": {
+   "release": 95,
+   "release_index": 5,
+   "releases_total": 19,
+   "cumulative": 43,
+   "group": "bowl",
+   "goal_object": "akita black bowl next to the cookies box",
+   "goal_target": "plate"
+  },
+  "random-libero-spatial-7-seed-1": {
+   "release": 89,
+   "release_index": 4,
+   "releases_total": 19,
+   "cumulative": 35,
+   "group": "bowl",
+   "goal_object": "akita black bowl on the stove",
+   "goal_target": "plate"
+  },
+  "random-libero-spatial-9-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "bowl",
+   "goal_object": "akita black bowl on the wooden cabinet",
+   "goal_target": "the plate"
+  },
+  "random-libero-object-0-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "food",
+   "goal_object": "alphabet soup",
+   "goal_target": ""
+  },
+  "random-libero-object-1-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "food",
+   "goal_object": "cream cheese",
+   "goal_target": ""
+  },
+  "random-libero-object-2-seed-3": {
+   "release": 98,
+   "release_index": 6,
+   "releases_total": 19,
+   "cumulative": 60,
+   "group": "food",
+   "goal_object": "salad dressing",
+   "goal_target": ""
+  },
+  "random-libero-object-3-seed-3": {
+   "release": 98,
+   "release_index": 6,
+   "releases_total": 19,
+   "cumulative": 60,
+   "group": "food",
+   "goal_object": "bbq sauce",
+   "goal_target": ""
+  },
+  "random-libero-object-5-seed-5": {
+   "release": 98,
+   "release_index": 6,
+   "releases_total": 19,
+   "cumulative": 60,
+   "group": "food",
+   "goal_object": "tomato sauce",
+   "goal_target": ""
+  },
+  "random-libero-object-6-seed-0": {
+   "release": 82,
+   "release_index": 1,
+   "releases_total": 19,
+   "cumulative": 12,
+   "group": "food",
+   "goal_object": "butter",
+   "goal_target": ""
+  },
+  "random-libero-object-8-seed-7": {
+   "release": 102,
+   "release_index": 8,
+   "releases_total": 19,
+   "cumulative": 63,
+   "group": "food",
+   "goal_object": "the chocolate pudding",
+   "goal_target": ""
+  },
+  "random-libero-object-9-seed-2": {
+   "release": 95,
+   "release_index": 5,
+   "releases_total": 19,
+   "cumulative": 43,
+   "group": "food",
+   "goal_object": "orange juice",
+   "goal_target": "basket"
+  }
+ }
+}

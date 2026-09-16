@@ -1,0 +1,1717 @@
+{
+  "title": "Robotics Agents Survey — Curated Primary Sources",
+  "cutoff": "2026-09-15",
+  "timezone": "Asia/Shanghai",
+  "selection": "Astra-first Control; demo-only Data from Awesome-Astra; ENPIRE as Improvement representative.",
+  "status": "v0.16 verified:35 slides,19 clips; Data6 demos; Standards0 / Spec0, no unresolved findings.",
+  "records": [
+    {
+      "id": "S01",
+      "title": "SayCan",
+      "author_or_publisher": "Ahn et al. / Google",
+      "publication_date": "2022",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://say-can.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Language relevance combined with skill affordance; requires a supplied skill library.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/saycan.html",
+          "sha256": "efa67e52e79f4792d8e673ae04fffed3155037e8bb094d7ce3d3da7161993a90"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/saycan.txt",
+          "sha256": "0938846af42a2b5efe97c67a3304883a249c55a79128000a47e0189c4ee77b0a"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/saycan.metadata.json",
+          "sha256": "53c77f975e55d41f7a03cea4e5be9788b8fd71cc9135ca85dcbbfcbd279df55a"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S02",
+      "title": "Inner Monologue: Embodied Reasoning through Planning with Language Models",
+      "author_or_publisher": "Huang et al. / Google",
+      "publication_date": "2022",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://innermonologue.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Environment feedback returned to language planning; not low-level policy learning.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/inner_monologue.html",
+          "sha256": "58ef4c9c80d4aedcb7b84f3ceea06ba52f260958817ba9623e498e7b7b2af273"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/inner_monologue.txt",
+          "sha256": "e03895fa7406686c97d61f110008bf45c23923edc05db6e7c347b0d43a328735"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/inner_monologue.metadata.json",
+          "sha256": "5861b3a7be4fe442b19c605f128cfdfd3f8e897939263ce886523f4f8dfb57c6"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S03",
+      "title": "Code as Policies: Language Model Programs for Embodied Control",
+      "author_or_publisher": "Liang et al. / Google",
+      "publication_date": "2022",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://code-as-policies.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Executable programs compose perception and control APIs; API capability remains load-bearing.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/code_as_policies.html",
+          "sha256": "417ba914a2ae50bea9bfc95a6fee4188d32f62bbedf82c1ea6cb617359584e31"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/code_as_policies.txt",
+          "sha256": "fad31adfb89becb1ef2442bb89873d9fea18ee1303f5b91c2510ea85a27e10dd"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/code_as_policies.metadata.json",
+          "sha256": "969ff85619447ba8a44b6a5220ed61f1e34a4ab6c744f61051db4120a38cf8fc"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S04",
+      "title": "VoxPoser: Composable 3D Value Maps for Robotic Manipulation with Language Models",
+      "author_or_publisher": "Huang et al.",
+      "publication_date": "2023",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://voxposer.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Spatial value maps and motion planning; not an end-to-end motor policy.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/voxposer.html",
+          "sha256": "c1f5f798c7686fec3796257c0d686bec073742f17e8be1819523f29787be79f1"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/voxposer.txt",
+          "sha256": "1e43de58f06afd2c0b1db6398fc9450f9ecaaedde7ffc89658993688c83e74f9"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/voxposer.metadata.json",
+          "sha256": "fff839e7b75b01eb6d8327444e45f91d2aa00be44ce777d5369fc73d31aff9ec"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S05",
+      "title": "Eureka: Human-Level Reward Design via Coding Large Language Models",
+      "author_or_publisher": "Ma et al. / NVIDIA-led collaboration",
+      "publication_date": "2023",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://eureka-research.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Reward-code generation and RL feedback; training compute belongs in the improvement budget.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/eureka.html",
+          "sha256": "d37258ca3878cb02f8e6bd5824cc1a8cba429ab3a2ffa645e1e60389ca05a511"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/eureka.txt",
+          "sha256": "f3251e4822058911f85a88da1619713fcb859524505a231a63f077cc0ef2b630"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/eureka.metadata.json",
+          "sha256": "0ada631880dda25675bf581cbb6655fe557cf826c171a3135f36ea50dd20d697"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S06",
+      "title": "DrEureka: Language Model Guided Sim-To-Real Transfer",
+      "author_or_publisher": "Ma et al.",
+      "publication_date": "2024",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://eureka-research.github.io/dr-eureka/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Reward and domain-randomization design; not elimination of simulation or hardware validation.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/dreureka.html",
+          "sha256": "a617b1d5fcb6c763abd9a77524d27750179dad66b1e127ee11592036f7b25c8b"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/dreureka.txt",
+          "sha256": "9493d7aaef8706a42119ea03197b585c507c5c9b71af4c6bf204458d9a078fdb"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/dreureka.metadata.json",
+          "sha256": "d93cb7fc20176d6510d278c12c46a4eef462234b49da7da50a44ee15f9919404"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S07",
+      "title": "RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation",
+      "author_or_publisher": "Wang et al.",
+      "publication_date": "2023",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://robogen-ai.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Generated tasks, environments and skill acquisition in simulation; 2023 preprint / ICML 2024 project.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/robogen.html",
+          "sha256": "1406e5b708a50acc36ce3dbd477fa148ffd651b4e41e466838f57aa89ca4ae3c"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/robogen.txt",
+          "sha256": "3287eff229c1d3b61e36e170d6c4a9b02ee43095561910b5ad90f79f3cdde74c"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/robogen.metadata.json",
+          "sha256": "4db545aed073c7ac0c658dbc66227bb171c87c0b3d1aa7ab0793c03e7b2c8bc5"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S08",
+      "title": "AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents",
+      "author_or_publisher": "Ahn et al. / Google DeepMind",
+      "publication_date": "2024",
+      "date_precision": "year",
+      "source_type": "foundation",
+      "talk_role": "historical",
+      "url": "https://auto-rt.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "project page",
+      "evidence_boundary": "Fleet task generation and real-world data collection; human involvement and safety infrastructure remain.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/autort.html",
+          "sha256": "5dd540b661a57e277791ca718df51e97fc5a6debbbc5378e51b9fcfbed0fd119"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/autort.txt",
+          "sha256": "c25db5579ea597514bca7ccb357b7525042a6cfcfed2bf9141bedeb5910df159"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/autort.metadata.json",
+          "sha256": "f9fd8a6058f05b091c39412810164f3ae568ad471ffa128b1a6df4e497237ce1"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "main",
+      "active_slides": []
+    },
+    {
+      "id": "S09",
+      "title": "Claude Plays Robotics",
+      "author_or_publisher": "Berman, Ilie, Deng and Freeman / Anthropic",
+      "publication_date": "2026-07-09",
+      "date_precision": "day",
+      "source_type": "industrial_research_report",
+      "talk_role": "historical",
+      "url": "https://www.anthropic.com/research/claude-plays-robotics",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "report methods, results and limitations",
+      "evidence_boundary": "Strong interface dependence; paused-simulation experiments are not real-time-control proof.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/claude_robotics.html",
+          "sha256": "a4029d0aadde68f7565555e30a2a2bf631f1151e3d826b777f2c0969eed3b453"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/claude_robotics.txt",
+          "sha256": "d6e25b68dc6e966ff79d5f4edd338624c213e6de60e7aadc3dfccf18992edf4a"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/claude_robotics.metadata.json",
+          "sha256": "c8a4b416e747e6b0b2331f6a79286b4b0dc935b2f065f0b6d5ce3320ad89d703"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [],
+      "current_use": "Control overview and four-interface synthesis; concrete LIBERO-40 protocol and original quantitative panels on slides 6–7; bounded summary on slide 13. Opus 4.6: 3.5% Direct, 76% supervised, 86% MolmoAct alone; different y-axis scales retained."
+    },
+    {
+      "id": "S10",
+      "title": "GPT-6 Astra on robotic manipulation",
+      "author_or_publisher": "Robocurve (independent evaluator)",
+      "publication_date": "2026-09-04",
+      "date_precision": "day",
+      "source_type": "independent_evaluation",
+      "talk_role": "historical",
+      "url": "https://openai.robocurve.org/gpt-6-astra/",
+      "related_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "https://github.com/robocurve/inspect-robots"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "evaluation protocol and results; official model identity; repository metadata only",
+      "evidence_boundary": "19/20 bowl versus 2/20 insertion; rig differences and non-interleaved trials limit causal interpretation. Not an OpenAI official report.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_user.html",
+          "sha256": "bab32ae6497b93079677112c3f0b43bd0405a60718cf396899155885c8ffb478"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_user.txt",
+          "sha256": "32e920b3fa3b5898b009690160bf820e47c30f42fb8d390432ef182157d257b3"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_model_docs.html",
+          "sha256": "c799d5053fa337ca714e75296a6fbee1e33648ea9c872aeb41c5c820663b1b43"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_model_docs.txt",
+          "sha256": "6b39706941eb4e13a8fc8856fc96e141f2101bed345249b0d02068734b8da89f"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_model_docs.metadata.json",
+          "sha256": "174a40e5519e8ae4f8d4cd1f3543febe5486678e2923a81a01e8ad8d93b9708e"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/robocurve_code.html",
+          "sha256": "3ff46fa657ef327bb33e0ed98395ee6daa78470edbeceb9bca2493e510c73bd6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/robocurve_code.txt",
+          "sha256": "3ff46fa657ef327bb33e0ed98395ee6daa78470edbeceb9bca2493e510c73bd6"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
+    },
+    {
+      "id": "S11",
+      "title": "Astra paints the Golden Gate Bridge with SO-101",
+      "author_or_publisher": "thijs / @cdngdev",
+      "publication_date": "2026-09-08",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "active",
+      "url": "https://x.com/cdngdev/status/2097339677128982873",
+      "related_urls": [
+        "https://x.com/cdngdev/status/2097339677745516710"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "original post and methodological follow-up",
+      "evidence_boundary": "One-minute action plans, author feedback and initial anchor points; instruction/calibration updates, not demonstrated weight learning.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_paint_snapshot.txt",
+          "sha256": "6c0e78dcf838fe5201f59914aed5c3b42b96cdbaab21946ce59a8ebfd0a3a643"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_paint_method_snapshot.txt",
+          "sha256": "22edf14e7035f1ea34918503fb3daadc64c10695d36aab0b11352b646a19f8c2"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        2
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "Astra Real2Sim thread",
+      "author_or_publisher": "Lingxiao Guo / @Lingxiao234",
+      "publication_date": "2026-09-08",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "active",
+      "url": "https://x.com/Lingxiao234/status/2096992059731443923",
+      "related_urls": [
+        "https://x.com/Lingxiao234/status/2096992132527702382",
+        "https://x.com/Lingxiao234/status/2096992076105998454"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "original thread including failure disclosure",
+      "evidence_boundary": "Multiview RGB and robot actions to simulation; microphone example explicitly kinematic replay after physical-model failure.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_real2sim_snapshot.txt",
+          "sha256": "784c2a35e24d2dd0df2c7eb106e2d1d3c1613ce6482bf23299ba62523f26a440"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        22
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents",
+      "author_or_publisher": "Guanxiong Chen et al.",
+      "publication_date": "2026-07",
+      "date_precision": "month",
+      "source_type": "research_preprint",
+      "talk_role": "historical_removed_v0_15",
+      "url": "https://arxiv.org/html/2607.19190v3",
+      "related_urls": [
+        "https://agentic-real2sim.github.io/",
+        "https://github.com/agentic-real2sim/agentic_real2sim"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "full main paper including methods, evaluation rubric and limitations",
+      "evidence_boundary": "DROID-100 replay acceptance: best backend 48 success / 8 partial / 44 failure; any-judge best-of-candidates criterion, not counterfactual physics validation.",
+      "captured_versions": [
+        {
+          "version": "2607.19190v3",
+          "version_date_as_displayed": "24 Jul 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim.html",
+          "sha256": "41fb37404ed303f4d0b666f819bc0f106dfb57f228095544b0c0563c6b840270"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim.txt",
+          "sha256": "fce1b0c4e009ab2baae7f0b8f02b6803928f1c6fa37d27178778cf8736d5fcd5"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim.metadata.json",
+          "sha256": "65bff227c8e61dc9022943d76761a625a4f68c70b686e70b7a753055f8723880"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim_paper.html",
+          "sha256": "28b754220df60c1daae167f6fcdbab5e3a02bffb1962d0630ebc2da3e5a00250"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim_paper.txt",
+          "sha256": "fd9ac5a345c7fd2f77b2f93ccc505c52fef0c08cb2ee22844dbff3ffb0975f7d"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/agentic_real2sim_paper.metadata.json",
+          "sha256": "62ddb400d24b30f11e47339d4c73cd0841182c0b4f1251bde8ba31cb645bfc7e"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
+    },
+    {
+      "id": "S14",
+      "title": "SceneMosaic: Efficient and Diverse Simulation-Ready Scene Generation via Hybrid Agentic Layout Evolution",
+      "author_or_publisher": "Xingjian Ran et al.",
+      "publication_date": "2026-09-04",
+      "date_precision": "day",
+      "source_type": "research_preprint",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2609.05594v1",
+      "related_urls": [
+        "https://rxjfighting.github.io/SceneMosaic/",
+        "https://github.com/rxjfighting/SceneMosaic"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "main method, evaluation and limitations",
+      "evidence_boundary": "Local agentic refinement and compositional diversity; 24x is a particular SceneEval-100 comparison, not universal Real2Sim acceleration.",
+      "captured_versions": [
+        {
+          "version": "2609.05594v1",
+          "version_date_as_displayed": "04 Sep 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic.html",
+          "sha256": "23a000b902496c70cab35d1fea4e984d7ceb4697d12bb599519f098a0a8055e7"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic.txt",
+          "sha256": "a4f98d0b401a76a7db7781980636430f99f7b3ab0501b4da0dcf64b90e91cddf"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic.metadata.json",
+          "sha256": "2d68e4276429ce992ed2d3c4c6e5c735b4357ab4cb82340b0fdcacf7a8f313a6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic_paper.html",
+          "sha256": "1f3e0e1f912ac6cb8d1ae5b099e9ef3adfbddc35a2d91c3e8e4805c8019759c6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic_paper.txt",
+          "sha256": "d8b94d791bb242764f233de7b5c17b774b3bcc4c43fb0008524149d0bb943ddd"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/scenemosaic_paper.metadata.json",
+          "sha256": "3b8a3490885269bd127dc891454b13dd75b296a1718976133ae942d4698cc87e"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "trend",
+      "active_slides": []
+    },
+    {
+      "id": "S15",
+      "title": "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
+      "author_or_publisher": "Wenli Xiao et al. / NVIDIA, CMU, UC Berkeley",
+      "publication_date": "2026-06-18",
+      "date_precision": "day",
+      "source_type": "research_preprint",
+      "talk_role": "active",
+      "url": "https://arxiv.org/html/2606.19980v1",
+      "related_urls": [
+        "https://research.nvidia.com/labs/gear/enpire/"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "main methods, experiment protocol, results and limitations",
+      "evidence_boundary": "Human-guided environment construction precedes autonomous improvement; up to eight conditional retries, difficult-phase resets, and utilization/token trade-offs.",
+      "captured_versions": [
+        {
+          "version": "2606.19980v1",
+          "version_date_as_displayed": "18 Jun 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire.html",
+          "sha256": "1c7d7c7095d5ccc03ce0e7dbd6b3ab6f2c2a9abf08928b67e4eed7479fc73295"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire.txt",
+          "sha256": "1f354276d216dc76473677e61d4829d21a6386e2f415dc50a603e01496f1b967"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire.metadata.json",
+          "sha256": "3a87d9c698fc56c3d6c37593b3244a6c90cdce83ed0f9f07e998222d2df1fff6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire_paper.html",
+          "sha256": "5715b47a38edacaf9a7d4db7d192590aa0e3ce1ce92e7ba044d2a102878bb5fc"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire_paper.txt",
+          "sha256": "5a0a3c8721d4af6d010478bc01dffdba89ab1f6c5902ee06ceb7867bdfeb8fec"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/enpire_paper.metadata.json",
+          "sha256": "f36a57525d5059e3970e0442d64f497a04c69388f73ab131c8d1992289c379ce"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        33,
+        34
+      ]
+    },
+    {
+      "id": "S16",
+      "title": "CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation",
+      "author_or_publisher": "Letian Fu et al.",
+      "publication_date": "2026-03",
+      "date_precision": "month",
+      "source_type": "research_preprint",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2603.22435v2",
+      "related_urls": [
+        "https://capgym.github.io/"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "main methods, benchmark protocol, post-training and selected appendix",
+      "evidence_boundary": "Pass@1 can include multiple turns without resets; distinguish CaP-Agent0 test-time improvements from CaP-RL GRPO training.",
+      "captured_versions": [
+        {
+          "version": "2603.22435v2",
+          "version_date_as_displayed": "02 Jul 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx.html",
+          "sha256": "272092ad26293cb93c1f0b286208ef306bf19ae13be4857ca1454c22c43925ba"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx.txt",
+          "sha256": "2da06eae8fb9a9bbdb35e71b1f83e5f3b4c18f4a4976aeec9622e0482e61aed7"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx.metadata.json",
+          "sha256": "fe33bc1dae805b00523bd74abb5a1054f76f1d31dcc60d0eae81e387658c6514"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx_paper.html",
+          "sha256": "094f90292cbd5350fc7414aa17a28f428c987703904cfff871352fb7d130327c"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx_paper.txt",
+          "sha256": "411a034395bfa8c443ae7f0f35b9cfaf205d1b8165442316c946251b51f712c0"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/capx_paper.metadata.json",
+          "sha256": "794dfd65011dd612aea1de76342354eb892dd7cf5eb1062e0646270170220e8e"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
+    },
+    {
+      "id": "S17",
+      "title": "ASPIRE: Agentic /Skills Discovery for Robotics",
+      "author_or_publisher": "Runyu Lu et al.",
+      "publication_date": "2026-06-30",
+      "date_precision": "day",
+      "source_type": "research_preprint",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2607.00272v1",
+      "related_urls": [
+        "https://research.nvidia.com/labs/gear/aspire/",
+        "https://github.com/NVlabs/ASPIRE"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "main methods, held-out evaluation, real transfer and limitations",
+      "evidence_boundary": "Execution-trace-driven persistent skills; 31% versus 4% belongs to LIBERO-Pro Long; real transfer is preliminary and bounded.",
+      "captured_versions": [
+        {
+          "version": "2607.00272v1",
+          "version_date_as_displayed": "30 Jun 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire.html",
+          "sha256": "215c889cb4f0e607084863df9ca39d292ef1f2611b5094e7cc171da4650f7fe3"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire.txt",
+          "sha256": "2323b9de25da733c8f999af9cc611bcd4d30c73d2d4de555fea45d8369a4f3c8"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire.metadata.json",
+          "sha256": "6b1339e37cd07ce3632dac39445451b7796b92621aa323501b2b54d85231ae84"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire_paper.html",
+          "sha256": "d80566ba1d39d24570759d33ccca03bf674245f2dfcd139d6ad834efaf49f8e9"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire_paper.txt",
+          "sha256": "2498e3d59a26f173df1bf497b6ab9f2d0d3ec0601f771dd8eaecf88c2bf92064"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/aspire_paper.metadata.json",
+          "sha256": "6111495e23f6444fc00fac6d92474e304c398d6f09104f586f7ecb5c78c78ce1"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "deep_dive",
+      "active_slides": []
+    },
+    {
+      "id": "S18",
+      "title": "Playful Agentic Robot Learning (RATs)",
+      "author_or_publisher": "Junyi Zhang et al. / UC Berkeley and Impossible Research",
+      "publication_date": "2026-06-17",
+      "date_precision": "day",
+      "source_type": "research_preprint",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2606.19419v1",
+      "related_urls": [
+        "https://Playful-RATs.github.io/",
+        "https://github.com/Playful-RATs/rats"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "main method and evaluation/limitation sections",
+      "evidence_boundary": "Self-directed play before downstream tasks; skill library frozen for testing, primarily simulation, retrieval can hurt.",
+      "captured_versions": [
+        {
+          "version": "2606.19419v1",
+          "version_date_as_displayed": "17 Jun 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful.html",
+          "sha256": "3611ec6dd6c1d323220e2cdf39e454417fc940d8ca526ac57fda3241d6d503a4"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful.txt",
+          "sha256": "cc3c5f123bcd94dc482ba2748a4272b44d75798400295270d7367cd05ee1cc8c"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful.metadata.json",
+          "sha256": "e4807fa09002eed484a32d331a1b57a7dddd3bfd6ec4daa084147964dd600e72"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful_paper.html",
+          "sha256": "8907deb3f10b519262d4878dbb7f3125cdd5b8a1b0dd7f2b2e22f6ff04e39a98"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful_paper.txt",
+          "sha256": "cb836720404b19d62468da8d605d4ed9b542696c9bcc9b3a234658749d7c3cd6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/playful_paper.metadata.json",
+          "sha256": "65d8393bad03a0e1d0ea8543a6a978e98a05a4a83f62442fc4c0d6b1a30d8ccb"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S19",
+      "title": "Gemini Robotics ER 2 and Gemini Robotics 2",
+      "author_or_publisher": "Google DeepMind",
+      "publication_date": null,
+      "date_precision": "unknown",
+      "source_type": "official_product_pages",
+      "talk_role": "historical",
+      "url": "https://deepmind.google/models/gemini-robotics/",
+      "related_urls": [
+        "https://deepmind.google/models/gemini-robotics/vla/",
+        "https://deepmind.google/models/gemini-robotics/embodied-reasoning/",
+        "https://arxiv.org/html/2503.20020"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "current product interface descriptions; earlier report retained separately",
+      "evidence_boundary": "ER 2 hands off motor execution to a VLA; dynamic pages accessed 2026-09-10, release dates unverified. Do not transfer 2025 report metrics to version 2.",
+      "captured_versions": [
+        {
+          "version": "2503.20020v1",
+          "version_date_as_displayed": "25 Mar 2025"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_current.html",
+          "sha256": "9aa06f47fc3842197f28adcdd450da9b7fccbfd3785a5a3adf3a0e2dc8a83471"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_current.txt",
+          "sha256": "e474de062d1efe168f23c1f5b16e505918cda28cf249d0fd491047e1580148e6"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_current.metadata.json",
+          "sha256": "aee601422ffdf254b65574ff0667780474c49b9e129e6e6ce92dbd18f940c029"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_vla_current.html",
+          "sha256": "8c5201db68f877205ef9aa24d3db429790e3463360e67ddef1f92a88185b0c94"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_vla_current.txt",
+          "sha256": "b534e7831dff6b2148305031a04e8354599920a904e7458d3b808a407d3b76b9"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_vla_current.metadata.json",
+          "sha256": "c9caf5e4c67bdfbdd283a437a1b4cd698a5c17d7bd1413b69606d582f16becee"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_er_current.html",
+          "sha256": "98355ccc2288082d8b7b853474c4472ef62201cec111744586b3b18f1e0aa8fc"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_er_current.txt",
+          "sha256": "240f96b96deb080d9994c1cc54c21a366a13c4755e5cee02ca606dc397e91c90"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_er_current.metadata.json",
+          "sha256": "cb1448eefc40670940ade5c8aeaeeadaa051ef74410601dc6f41425f5a085a6e"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_paper.html",
+          "sha256": "7ae850a8f661bfbb5096db9b485dfdc6dd2c42c7c1768febb5d9743d9305fdb3"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_paper.txt",
+          "sha256": "02a8211902bc433cc2f7eaa18458972fef289503dae7b0357fe11a0344647522"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gemini_paper.metadata.json",
+          "sha256": "e009c19be8d0812c41d0f656e3a48d1f558e64845a0b3c9a78b2dd674c0f4003"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
+    },
+    {
+      "id": "S20",
+      "title": "π0.7: a Steerable Model with Emergent Capabilities",
+      "author_or_publisher": "Physical Intelligence",
+      "publication_date": "2026-04-16",
+      "date_precision": "day",
+      "source_type": "industrial_research_blog",
+      "talk_role": "historical",
+      "url": "https://www.pi.website/blog/pi07",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "training/inference description and selected generalization examples",
+      "evidence_boundary": "Multimodal prompting and action-expert interface; company-reported results are not independent head-to-head comparisons.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/pi07.html",
+          "sha256": "69a9bcffd175b6aba8fdbe712f1775e1efb2a5bf11c18d4a1cfa1e5a31054b98"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/pi07.txt",
+          "sha256": "abf52057d9f548dfbb163b84b53d9462aaccafe77a87f77a8ae25b996c4797e9"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/pi07.metadata.json",
+          "sha256": "651a8c6759adb8d2ecac710b501607ecdcc78bc9ad6ff1f5bbe263bb07de4ddd"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
+    },
+    {
+      "id": "S21",
+      "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
+      "author_or_publisher": "NVIDIA",
+      "publication_date": "2025-03",
+      "date_precision": "month",
+      "source_type": "technical_report",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2503.14734v2",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "abstract and architecture context",
+      "evidence_boundary": "Jointly trained vision-language and diffusion-action systems; retained as an architectural foundation, not claimed to be latest GR00T release.",
+      "captured_versions": [
+        {
+          "version": "2503.14734v2",
+          "version_date_as_displayed": "27 Mar 2025"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gr00t_paper.html",
+          "sha256": "ffb556ea87ad372017400641e068c6cdf5af40f83f8af1536c65b702b5963ea8"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gr00t_paper.txt",
+          "sha256": "ccbd99bfa695d0332b5e968e0fd25eeb0c953160514435427af126f99047f87a"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/gr00t_paper.metadata.json",
+          "sha256": "9ae3866ef82ec06a30dad846c686efe2576303d878ab36fba30b4d6ad098e09c"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
+    },
+    {
+      "id": "S22",
+      "title": "MolmoAct2: Action Reasoning Models for Real-World Deployment",
+      "author_or_publisher": "Haoquan Fang et al.",
+      "publication_date": "2026-05",
+      "date_precision": "month",
+      "source_type": "technical_report",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/html/2605.02881v2",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "architecture and action-reasoning context",
+      "evidence_boundary": "Open action-reasoning reference; this survey does not independently reproduce its policy benchmarks.",
+      "captured_versions": [
+        {
+          "version": "2605.02881v2",
+          "version_date_as_displayed": "08 May 2026"
+        }
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/molmoact2_paper.html",
+          "sha256": "a6c92d0fb02a3778307ed9fbb64966fa60df9ee7b16a168a9a96bcccacd5ae83"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/molmoact2_paper.txt",
+          "sha256": "8122203e4a16ed1e638218728acc585ccba7fb4d8e8f6496a52f669cfbf71067"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/molmoact2_paper.metadata.json",
+          "sha256": "b4499427d9b7ad70efa3e4e6a3c20aeff4cdbad4eada2ad42eaf3daa2bb01adc"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "context",
+      "active_slides": []
+    },
+    {
+      "id": "S23",
+      "title": "Astra trying to wipe the table",
+      "author_or_publisher": "atharva / @k7agar",
+      "publication_date": "2026-09-06",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/k7agar/status/2096593654320341027",
+      "related_urls": [],
+      "accessed": "2026-09-10",
+      "verification_scope": "original post and visible replies",
+      "evidence_boundary": "Qualitative sustained-operation demo; control interface, contact forces, trial denominator and independence are not established by visible post.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_wipe_snapshot.txt",
+          "sha256": "7112107d90f55fe9f0386768e2caad0ebaa950e92c7aabcdb3f73d3bb6932df2"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S24",
+      "title": "Astra designed a tendon-driven robot hand",
+      "author_or_publisher": "Jake Fitzgerald / @earthtojake",
+      "publication_date": "2026-09-10",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "active",
+      "url": "https://x.com/earthtojake/status/2097789988670709821",
+      "related_urls": [
+        "https://x.com/earthtojake/status/2097789991426335015",
+        "https://x.com/earthtojake/status/2097801101890207893"
+      ],
+      "accessed": "2026-09-10",
+      "verification_scope": "original post and author follow-ups",
+      "evidence_boundary": "Author reports CAD/code/animation generation and explicitly says the current model would not work in reality; not a validated fabricated hand.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_hand_snapshot.txt",
+          "sha256": "2e34e6d7584a1a877f8d18a73987dfff547c65235714e29dd560458640b2e151"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "appendix",
+      "active_slides": [
+        20
+      ]
+    },
+    {
+      "id": "S25",
+      "title": "GPT6 Astra solved Rubik’s Cube with robot hands",
+      "author_or_publisher": "Yanjie Ze / @ZeYanjie (Stanford)",
+      "publication_date": "2026-09-10",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/ZeYanjie/status/2098118164626501669",
+      "related_urls": [
+        "https://dex-rubik-cube.yanjieze.com/"
+      ],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "MuJoCo physics replay of one fixed 10-move scramble with two dexterous hands; learned-vs-scripted motion and real-hand transfer not stated.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_ze_rubik_fxtwitter.json",
+          "sha256": "7387917d0e45e1dd31c3ccf05c5ad9ef637d007eb8915eebf64781047263f4a3"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S26",
+      "title": "GPT-6 Astra physical in-context learning: human video to robot arm",
+      "author_or_publisher": "Wenli Xiao / @_wenlixiao (CMU)",
+      "publication_date": "2026-09-09",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/_wenlixiao/status/2097801944119349455",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "Author-reported first-pass success; existing motion-planning tools execute; 8× playback; no trial counts.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_wenli_icl_fxtwitter.json",
+          "sha256": "a6eef88b9c91cedefdfdacdc11eb8ecd5898edfa73ba663a37c8b012f3f61696"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S27",
+      "title": "GPT-6 Astra turns a washing-machine knob",
+      "author_or_publisher": "ARX Robotics / @ARXrobotics",
+      "publication_date": "2026-09-05",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/ARXrobotics/status/2096328304794210604",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "One instruction, one task, 16× playback (about four minutes wall-clock); interface not disclosed.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_arx_knob_fxtwitter.json",
+          "sha256": "0909c914c311a80884a7d63d6cc7772d409aab6c95eb4db1f8a8862d7d09d853"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S28",
+      "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+      "author_or_publisher": "Chen, Bai et al. / Show Lab, NUS",
+      "publication_date": "2026-09-09",
+      "date_precision": "day",
+      "source_type": "paper",
+      "talk_role": "historical",
+      "url": "https://arxiv.org/abs/2609.10522",
+      "related_urls": [
+        "https://x.com/ZechenBai/status/2097879130356498603",
+        "https://github.com/showlab/Show-Harness"
+      ],
+      "accessed": "2026-09-11",
+      "verification_scope": "arXiv HTML and PDF Table 2",
+      "evidence_boundary": "Table 2: ZS (Gemini 3.1 Pro) 89/100/93%, FT (Qwen3.5-2B LoRA) 86/88/87%, sim-to-real 13/20; parallel-jaw arms only; authors’ own task set.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_show_harness_fxtwitter.json",
+          "sha256": "7589841affb58e82ed136218d836143c5fcff1219b9d971276a061c326428c71"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S29",
+      "title": "Two robots juggling in MuJoCo with GPT-6 Astra",
+      "author_or_publisher": "@thermalpastor (anyact.ai)",
+      "publication_date": "2026-09-09",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/thermalpastor/status/2097496200631210136",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "MuJoCo simulation at 1× speed; demonstration only.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_juggle_fxtwitter.json",
+          "sha256": "192452ef25d8d5c2839a37b27e922c3c797c32d3705f2c3c7ebd7d762bc049e1"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S30",
+      "title": "Piper + RealSense carrot pick-and-place with Codex + GPT-6",
+      "author_or_publisher": "虽然不但是 (小红书)",
+      "publication_date": "2026-09-06",
+      "date_precision": "day",
+      "source_type": "xiaohongshu_note",
+      "talk_role": "historical",
+      "url": "https://www.xiaohongshu.com/explore/6a9bd4c80000000028037f67",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "note page via logged-in browser; text/HTML snapshot",
+      "evidence_boundary": "Author-reported; three failed grasps then success; 70× playback; only arm and camera SDKs provided.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/xhs_piper_note.html",
+          "sha256": "cf46d56e4428a604163b0e9ad92d16bc81dd7f056cd759f50283f4e8b144b1ad"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S31",
+      "title": "GPT6-Astra Real2Sim 初试流程",
+      "author_or_publisher": "Hello燕Sir (小红书)",
+      "publication_date": "2026-09-07",
+      "date_precision": "day",
+      "source_type": "xiaohongshu_note",
+      "talk_role": "historical",
+      "url": "https://www.xiaohongshu.com/explore/6a9e29e6000000002603a68a",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "note page via logged-in browser; text/HTML snapshot",
+      "evidence_boundary": "Blender scene modeling and motion replay from three-view frames (InternData, DROID); prompts published; qualitative.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/xhs_real2sim_note.txt",
+          "sha256": "4d6d9999656ffcbcfdf1574e7731586817d87aa3290cf19e755b2bb4d8658597"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S32",
+      "title": "Comment: demonstrated tasks show planning; dexterity and dynamics need high-frequency control",
+      "author_or_publisher": "Jitendra Malik / @JitendraMalikCV (UC Berkeley)",
+      "publication_date": "2026-09-08",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/JitendraMalikCV/status/2097173961264284039",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "Opinion post; used for the gaps slide only.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_malik_fxtwitter.json",
+          "sha256": "d20cb5bb1a9a17d9e3fc83d2e99628d89661f2678778c8173f7088a74d821601"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S33",
+      "title": "Comment: harnesses + tool calls are cheaper and more reliable; self-evolving skill libraries",
+      "author_or_publisher": "Max Fu / @letian_fu (Google DeepMind)",
+      "publication_date": "2026-09-06",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/letian_fu/status/2096673034325381268",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "Opinion post quoting the Robocurve thread.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_maxfu_fxtwitter.json",
+          "sha256": "943d982a0951a4761807330ec2943909634df9886251aa13e554454e966aa52d"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S34",
+      "title": "Comment: Astra is a VLA in the broad sense",
+      "author_or_publisher": "Yu Xiang / @YuXiang_IRVL (UT Dallas)",
+      "publication_date": "2026-09-10",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/YuXiang_IRVL/status/2098085522182664439",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "Opinion post; direction slide only.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_yuxiang_fxtwitter.json",
+          "sha256": "06aa7d3c4035cebd3562edd31a1767e22cb57c102bd6f0376738598b042f6df4"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S35",
+      "title": "GPT-6 Astra on HumanCLAW-Bench",
+      "author_or_publisher": "Jiawei Gu / @Kuvvius",
+      "publication_date": "2026-09-10",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/Kuvvius/status/2098038921301311753",
+      "related_urls": [
+        "https://arxiv.org/abs/2607.27180"
+      ],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "Find/Nav/Interact SR 75.5/57.1/46.6 vs previous best 64.9/42.4/16.8; single run, low-thinking setting.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_humanclaw_results_fxtwitter.json",
+          "sha256": "24e80ab8ddf6ca5dfb5fe683db671c17dc2fd00d41f7ad2768e3875164a789b8"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S36",
+      "title": "One GPT-6 Astra run on RoboDojo",
+      "author_or_publisher": "@XuefW82242",
+      "publication_date": "2026-09-10",
+      "date_precision": "day",
+      "source_type": "first_party_x_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/XuefW82242/status/2097972885860311314",
+      "related_urls": [],
+      "accessed": "2026-09-11",
+      "verification_scope": "post metadata via fxtwitter API and page text",
+      "evidence_boundary": "20 tasks × 3 seeds, 11/60 full successes; author notes published policies are around 20%; single community run.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/x_robodojo_fxtwitter.json",
+          "sha256": "95040cb242a2e0dca82e32c759e0fab5f93a9668a969dccc36dee8a7e95c3f0f"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "historical_talk_role": "supporting",
+      "active_slides": []
+    },
+    {
+      "id": "S37",
+      "title": "GPT-Policy-Eval",
+      "source_type": "project demonstration",
+      "talk_role": "historical",
+      "url": "https://github.com/cheng-haha/GPT-Policy-Eval",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Selected individual trials; no trial denominator; 12× / 24× source playback; code release pending.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": []
+    },
+    {
+      "id": "S38",
+      "title": "GPT 6 Astra as an Embodied Policy",
+      "source_type": "anonymous technical report",
+      "talk_role": "historical",
+      "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "RoboDojo selected 10-task panel only: 13/50 Direct, 24/50 Hybrid. Action prior, generation interface and segment length vary together. RoboLab selected final slots are not pooled. Video excludes model waiting time. Internal Astra training details are undisclosed. Keep anonymous.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": [],
+      "architecture_provenance": ".build/assets/v0_7/provenance.json"
+    },
+    {
+      "id": "S39",
+      "title": "RoboRSI",
+      "source_type": "research blog and code",
+      "talk_role": "historical",
+      "url": "https://lab.noematrix.ai/blog/2-roborsi/",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Code-on/off same Base Skills:174/600 vs129/600. ACT corrective single-task example; adaptive coverage not frozen-policy SR.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "supporting example",
+      "active_slides": []
+    },
+    {
+      "id": "S40",
+      "title": "Awesome-Astra-Embodied-AI",
+      "source_type": "curated discovery list",
+      "talk_role": "historical",
+      "url": "https://github.com/zjwzcx/Awesome-Astra-Embodied-AI",
+      "accessed": "2026-09-14",
+      "evidence_boundary": "Discovery aid, not an independent evaluation; mixed direct actions, code and delegated-policy workflows.",
+      "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+      "historical_talk_role": "discovery",
+      "active_slides": []
+    },
+    {
+      "id": "S41",
+      "title": "RPent: Recursive Physical Agent",
+      "author_or_publisher": "RLinf",
+      "source_type": "official repository",
+      "talk_role": "historical",
+      "active_slides": [],
+      "url": "https://github.com/RLinf/RPent",
+      "accessed": "2026-09-14",
+      "verification_scope": "Read-only repository snapshot and motion-interface notes; no implementation executed.",
+      "evidence_boundary": "Composable service organization, not a proof that LLMs must delegate actions. The inspected move_to motion example uses OSC, not IK.",
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_readme.md",
+          "sha256": "bde62f684fe85092e561c7691bb459d1e3c9033dceea172637aae889774c6848"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_tree.json",
+          "sha256": "6c348478acceda2f31d443aa0912c1218f7df76aa85407c5875ff46054b784a1"
+        },
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/rpent_revision.json",
+          "sha256": "cc8661a9bea806ba74d39604805fda5449e798f62a8d8d4f1ea6ffc37c4b2cae"
+        }
+      ],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "S42",
+      "title": "Hi Robot",
+      "author_or_publisher": "Physical Intelligence",
+      "publication_date": "2025-02",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical",
+      "url": "https://www.pi.website/research/hirobot",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Two-level inference; high-level VLM outputs subtask language for pi0, not an explicit S0 network.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/hirobot.html",
+          "sha256": "8a3ba4bb5ab79246d6e7c4afe7192cfb055bdc4c0e5d5022b96d8c51d0ae8a5c"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S43",
+      "title": "Helix",
+      "author_or_publisher": "Figure",
+      "publication_date": "2025-02",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical",
+      "url": "https://www.figure.ai/news/helix",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "S2 semantic latent to S1 visuomotor control; architecture, not a controlled comparison.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/helix.html",
+          "sha256": "5b6adc2b7c0ecc16dc1822ac6da290ea110cea2c2f3f395c0059f6a51f1e89a2"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S44",
+      "title": "Helix 02",
+      "author_or_publisher": "Figure",
+      "publication_date": "2026-01",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical",
+      "url": "https://www.figure.ai/news/helix-02",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "S2/S1/S0; S1 200 Hz and internal S0 1 kHz are different rates.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_outline_20260914/helix02.html",
+          "sha256": "d88cc3c9af23943e834a3e55a793e53f2fa4c9fd21ef447ea7595f237efc54a9"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S45",
+      "title": "Astra control dashboard",
+      "author_or_publisher": "Asimfish",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "primary_source",
+      "talk_role": "historical",
+      "url": "https://asimfish.github.io/astra-control-dashboard/#sec3",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Same-model Square 1/20 delta EEF, 18/20 waypoint, 16/20 code; unequal budgets; proprio includes visual aids; no pure representation attribution.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_action_interfaces_20260914/asim_index_pinned.html",
+          "sha256": "50af836616bef6dfaed22e142702d37da7e5884c85954e9cb9ae3e7d685d4851"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S46",
+      "title": "Astra keyboard feedback demo",
+      "author_or_publisher": "Kaifeng Zhang (@kaiwynd)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/kaiwynd/status/2098823484474348008",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "20x author playback, no denominator or disclosed persistent weight update; retry still holds key too long.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/keyboard.json",
+          "sha256": "787a7e2af3eabd139a843e1150eec679a0e76d172fa8c0173b12a5e4b8d1959a"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S47",
+      "title": "Office reference to Newton / G1",
+      "author_or_publisher": "Jiarui Xu (@Jiarui_X)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/Jiarui_X/status/2098439950991806804",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Author-reported construction workflow; clip shows final simulation, not full build or newly trained locomotion.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/office_newton.json",
+          "sha256": "acdf0a020eed086d97622f484f3dd387e2ecbaaf3c844a29404f85935ae62761"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S48",
+      "title": "Astra quadruped CAD / RL preview",
+      "author_or_publisher": "Akira Sasaki (@gclue_akira)",
+      "publication_date": "2026-09",
+      "date_precision": "month",
+      "source_type": "community_demo",
+      "talk_role": "historical",
+      "url": "https://x.com/gclue_akira/status/2098300921658868185",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Four separate experts; FULL EVAL NOT MET and partial Wave/Sit CUT retained; no nine-skill or physical-deployment claim.",
+      "captured_versions": [],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/astra_demo_shortlist_20260914/quadruped_rl.json",
+          "sha256": "b4b036935d3ff10832672c18076fa1206f0ac166d93430830cb27ae03793622d"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "S49",
+      "title": "DreamZero / World Action Models",
+      "author_or_publisher": "DreamZero project",
+      "publication_date": "2026",
+      "date_precision": "year",
+      "source_type": "primary_source",
+      "talk_role": "historical",
+      "url": "https://dreamzero0.github.io/",
+      "related_urls": [],
+      "accessed": "2026-09-14",
+      "verification_scope": "Public source snapshots and local original media; no experiment reproduction.",
+      "evidence_boundary": "Reference for WAM category in overview only, not a new detailed study or tested RPent backend.",
+      "captured_versions": [],
+      "snapshots": [],
+      "code_execution_or_replication": false,
+      "complete_video_visual_audit": false,
+      "active_slides": []
+    },
+    {
+      "id": "HARNESS",
+      "title": "Harness VLA v4 · Table 3, LIBERO-Pro; RPent publication (2 Sep 2026)",
+      "url": "https://arxiv.org/html/2607.08448v4#S3.T3",
+      "accessed": "2026-09-14",
+      "source_type": "primary_results",
+      "code_execution_or_replication": false,
+      "snapshots": [],
+      "active_slides": [],
+      "talk_role": "historical"
+    },
+    {
+      "id": "ENPIRE_SITE",
+      "title": "ENPIRE official interactive plots · model and resource data (accessed 14 Sep 2026)",
+      "url": "https://research.nvidia.com/labs/gear/enpire/",
+      "accessed": "2026-09-14",
+      "source_type": "primary_results",
+      "code_execution_or_replication": false,
+      "snapshots": [],
+      "active_slides": [
+        30,
+        33
+      ],
+      "talk_role": "active"
+    },
+    {
+      "id": "HIROBOT_DISCUSSION",
+      "title": "Hi Robot v2 Discussion",
+      "author_or_publisher": "Physical Intelligence",
+      "publication_date": "2025",
+      "date_precision": "year",
+      "source_type": "primary_source",
+      "talk_role": "control_summary",
+      "url": "https://arxiv.org/html/2502.19417v2#S6",
+      "related_urls": [
+        "https://www.pi.website/research/hirobot"
+      ],
+      "accessed": "2026-09-14",
+      "verification_scope": "Previously captured paper, section 6; no new retrieval or execution.",
+      "evidence_boundary": "Model-level role separation is not fundamental. Our three capability angles are synthesis, not the paper taxonomy.",
+      "captured_versions": [
+        "v2"
+      ],
+      "snapshots": [
+        {
+          "file": "/home/limx/Desktop/agent_for_robotics/research/sources/control_results_20260914/background/hirobot_paper_v2.html",
+          "sha256": "ed6645c3a64806328a49c484bc74cebb04e3ff6b34f4996240cfa4224fe5e66b"
+        }
+      ],
+      "code_execution_or_replication": false,
+      "active_slides": [
+        6,
+        16
+      ]
+    },
+    {
+      "id": "DOG",
+      "title": "GPT Dog Eval · bounded Go1 joint-chunk loop, source pinned 15 Sep 2026",
+      "url": "https://github.com/guajun/gpt-dog-eval/tree/04ef36d8120545341f6f1e77a464327c801e03aa",
+      "accessed": "2026-09-15",
+      "source_type": "primary_source",
+      "talk_role": "current_reference",
+      "active_slides": [],
+      "code_execution_or_replication": false,
+      "evidence_boundary": "Bounded joint chunks with paused inference, not real-time humanoid control."
+    },
+    {
+      "id": "DEXGPT",
+      "title": "DexGPT · recorded contact rollout; physical acceptance not met",
+      "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+      "accessed": "2026-09-15",
+      "source_type": "primary_source",
+      "talk_role": "current_reference",
+      "active_slides": [
+        17,
+        23,
+        24
+      ],
+      "code_execution_or_replication": false,
+      "evidence_boundary": "One recorded physics rollout; physical acceptance not met; training value not evaluated."
+    },
+    {
+      "id": "G1_SONIC",
+      "title": "Flood G1 demo · official SONIC planner/policy; overlay rate is not LLM timing",
+      "url": "https://x.com/RotekSong/status/2099104628562608371",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "current_reference",
+      "active_slides": [],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "MOBILE_ICL",
+      "title": "Axel Peytavin · mobile ICL demo; author-reported spatial transfer, no trial denominator",
+      "url": "https://x.com/ax_pey/status/2098216469012283681",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "current_reference",
+      "active_slides": [
+        16
+      ],
+      "code_execution_or_replication": false
+    },
+    {
+      "id": "KITCHEN",
+      "title": "Frank ZY Dou · articulated lab kitchen reconstruction (12 Sep 2026); source image via Awesome-Astra",
+      "url": "https://www.rednote.com/discovery/item/6aa4d64c000000000b037809",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "current_reference",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        19
+      ]
+    },
+    {
+      "id": "KITCHEN_PROJECT",
+      "title": "Frank ZY Dou · public kitchen-twin output and workflow description",
+      "url": "https://github.com/frank-zy-dou/kitchen-twin/tree/d34e0f8983bcb6ce040130d023cac9623d0efce7",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "current_reference",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        19
+      ]
+    },
+    {
+      "id": "ROPE",
+      "title": "Dmytro Hrybov (@dimentary) · simplified rope-driven hand reconstruction (10 Sep 2026)",
+      "url": "https://x.com/dimentary/status/2097857980150763900",
+      "accessed": "2026-09-15",
+      "source_type": "community_demo",
+      "talk_role": "current_reference",
+      "code_execution_or_replication": false,
+      "active_slides": [
+        21
+      ]
+    }
+  ],
+  "limitations": [
+    "Public X content only; unavailable replies may contain additional context.",
+    "Product pages are date-of-access snapshots, not versioned technical reports.",
+    "Paper/project assertions were not experimentally reproduced or fully code-audited.",
+    "Hugging Face and search snippets are discovery channels; factual claims cite original sources."
+  ],
+  "results_authority": "research/results_v0_9.json",
+  "results_research_notes": [
+    "research/control_background_results_2026-09-14.md",
+    "research/data_improvement_results_2026-09-14.md",
+    "research/astra_interfaces_frequency_2026-09-15.md",
+    "research/data_taxonomy_2026-09-15.md"
+  ],
+  "new_evidence_authority": "research/evidence_v0_11_sources.json",
+  "report_figure_authority": "research/report_figures_v0_13_sources.json",
+  "code_video_authority": "research/code_video_v0_14_sources.json",
+  "data_demo_authority": "research/data_demos_v0_15_sources.json",
+  "data_extra_authority": "research/data_extra_v0_16_sources.json"
+}

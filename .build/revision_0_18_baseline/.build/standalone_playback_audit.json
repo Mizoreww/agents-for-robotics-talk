@@ -1,0 +1,675 @@
+{
+  "html_sha256": "38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88",
+  "slides": [
+    {
+      "slide": 2,
+      "playing": [
+        {
+          "clip": "painting",
+          "time": 1.502554,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "painting",
+          "time": 1.504227,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "painting",
+          "time": 1.504227,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "painting",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "playing": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.5019,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.501833,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.502772,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.502742,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.502772,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.502742,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "astra_bowl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "playing": [
+        {
+          "clip": "policy_plug",
+          "time": 1.503036,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.532445,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "policy_plug",
+          "time": 1.503979,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.533452,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "policy_plug",
+          "time": 1.503979,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.533452,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "policy_plug",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 0.033,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "playing": [
+        {
+          "clip": "asim_delta",
+          "time": 1.502767,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.502701,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.502657,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "asim_delta",
+          "time": 1.503588,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.503593,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.503562,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "asim_delta",
+          "time": 1.503588,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.503593,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.503562,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "asim_delta",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "playing": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.502405,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.502374,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.503204,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.503209,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.503204,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.503209,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "playing": [
+        {
+          "clip": "office_newton",
+          "time": 1.503435,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "kitchen",
+          "time": 1.499327,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "office_newton",
+          "time": 1.504471,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "kitchen",
+          "time": 1.500405,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "office_newton",
+          "time": 1.504471,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "kitchen",
+          "time": 1.500405,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "office_newton",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "kitchen",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 19,
+      "playing": [
+        {
+          "clip": "hand",
+          "time": 1.502858,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.502706,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "hand",
+          "time": 1.503745,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.503617,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "hand",
+          "time": 1.503745,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.503617,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "hand",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "playing": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.502729,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.502616,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.503719,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.503638,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.503719,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.503638,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "astra_real2sim",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 24,
+      "playing": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.50312,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.500732,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.503843,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.501484,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.503843,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.501484,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "enpire_reset",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 29,
+      "playing": [
+        {
+          "clip": "quad_rl",
+          "time": 1.502673,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.500024,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "quad_rl",
+          "time": 1.50345,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.50083,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "quad_rl",
+          "time": 1.50345,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.50083,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "quad_rl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    }
+  ]
+}

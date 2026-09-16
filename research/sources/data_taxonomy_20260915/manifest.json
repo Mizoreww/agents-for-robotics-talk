@@ -1,0 +1,86 @@
+{
+  "checked_date": "2026-09-15",
+  "role": "read-only source research; no experiments or model calls",
+  "files": [
+    {
+      "file": "awesome_commit.json",
+      "bytes": 5142,
+      "sha256": "45075942e7f1c1671c0d493ddce41a018df931c79c9bb713a8e4e875537cc6ce"
+    },
+    {
+      "file": "awesome_readme.md",
+      "bytes": 21836,
+      "sha256": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7"
+    },
+    {
+      "file": "dexgpt_commit.json",
+      "bytes": 68870,
+      "sha256": "f3464ebeb53caf8e76990deb816aaf5393dd7ba200cb2f13bdb81620ab03ff3d"
+    },
+    {
+      "file": "dexgpt_dexgpt_simulation_rollout.py",
+      "bytes": 9351,
+      "sha256": "1d327ce1e2783c54cb80219b265d606a19d6a350565f56c3bf30cda5be0adfbf"
+    },
+    {
+      "file": "dexgpt_oembed.json",
+      "bytes": 964,
+      "sha256": "72a1d363a295a3da4fbe13595b1244d542decaa3ca854ca4cb9948e115043a54"
+    },
+    {
+      "file": "dexgpt_outputs_audit.json",
+      "bytes": 423,
+      "sha256": "c7cda66bc3db168035575e96c0eebcda58a8478ce58dea1fee252de3382d1b92"
+    },
+    {
+      "file": "dexgpt_outputs_physics_report.json",
+      "bytes": 2422,
+      "sha256": "8091561f48e3fd91afa781bb32d727b54d177d1c1d0aaed62c77477a01a16018"
+    },
+    {
+      "file": "dexgpt_readme.md",
+      "bytes": 10757,
+      "sha256": "c121768c5dae0258827adb7512892d8550856548a39892071b7ffbb4ad1dcbef"
+    },
+    {
+      "file": "dexgpt_tree.json",
+      "bytes": 56508,
+      "sha256": "1374ec89e3e90f47406d6e5a1dae0950737899c08dd3104d664387cfe1224f6c"
+    },
+    {
+      "file": "hand_design_oembed.json",
+      "bytes": 659,
+      "sha256": "e1d32eb9a520f86d462cdd28f179f9eaf20d9942a8248a8c77f9e770cf5a3b15"
+    },
+    {
+      "file": "hand_limit_oembed.json",
+      "bytes": 638,
+      "sha256": "fa24fa530deada4ab2bef44ddec21304a27143ba7e36a49494b839af25ca075f"
+    },
+    {
+      "file": "hand_method_oembed.json",
+      "bytes": 756,
+      "sha256": "ed6faca8c303a483ef844a46221fc007aa202a134e14c3ce65bea9df69b7ef06"
+    },
+    {
+      "file": "microphone_oembed.json",
+      "bytes": 867,
+      "sha256": "f76834d1b72cda243a9049ad4bf9c44fc75f4c425570203bef1cbd9a5e73f07f"
+    },
+    {
+      "file": "multiview_oembed.json",
+      "bytes": 873,
+      "sha256": "e66a94074911f8d92ae1648ab349a9c889b328b069fc218ffd0f06b841e14183"
+    },
+    {
+      "file": "office_newton_oembed.json",
+      "bytes": 897,
+      "sha256": "bfb46d169f553014c9d44806f5b61756c1c66b601893405d48e97ef72fe771b2"
+    },
+    {
+      "file": "wuji_rollout_oembed.json",
+      "bytes": 913,
+      "sha256": "26f98ee9759cda7524fe56aa51c169cd4ac5303ac21e95d7ed186850c7e4c6d4"
+    }
+  ]
+}

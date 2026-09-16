@@ -1,0 +1,10 @@
+# v0.13 — Astra-first Control
+
+Fixed comparison: `.build/revision_0_13_baseline/manifest.json` (verified v0.12, HTML a37c40df984ba507afcf6fce78443bc9c6c208c1ca9e02218bd7fb3ae0fb202c).
+
+- Remove the four Claude Plays Robotics / RPent method and result pages. Retain the overview, original hierarchy page and responsibility-shift diagram. From that diagram proceed directly to Astra. Remove obsolete spoken transitions and active citations to those works.
+- Replace RoboDojo and RoboLab native big tables with original report result-card screenshots. RoboDojo retains both Score and success-rate panels; RoboLab uses the original overall success-rate panel. Keep full methods, axes and values in the originals, and make them enlargeable.
+- Add one original per-task Score heatmap page after the two results pages. Preserve all ten tasks, Overall, seven methods, color scale and metric label. The initial page-provided PNG clips scrollable content; an original-DOM capture may expand overflow for complete labels/values but must not change text, data or colors. Record that layout-only adjustment.
+- Freeze live report-card exports and complete query rows with source identity. Values must agree with prior pinned evidence for Direct/Hybrid and RoboLab. Public RoboDojo baselines are reweighted published references, not paired reruns. RoboLab retained/retry/history restrictions remain explicit despite the report's aggregate graphic. No pooled benchmark or pure-component causal claim.
+- Final order: 35 slides. Control4–16, Data17–24, Improvement25–33, closing34–35. 18 clips unchanged. English slides, Chinese notes, Noto styling and self-contained HTML remain. Suggested timing is recalculated from retained pages plus the heatmap, not silently kept at60.
+- Rebuild CJK subset, verify per-cell assertions for remaining native tables and source-image hashes, chapter/player/media mapping, complete layout and browser controls. Independent Standards/Spec review. No push/release or historical PPTX/PDF/ZIP export.

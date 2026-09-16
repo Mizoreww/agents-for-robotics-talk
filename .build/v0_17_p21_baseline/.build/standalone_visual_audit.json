@@ -1,0 +1,25 @@
+{
+  "html_sha256": "be67550534d0a2f2213ff8b6e0bf2fbc7222db04d16fdc4216a8a24b560bef38",
+  "date": "2026-09-16",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "scope": "Three paired showcases preserve uncropped source media, medium text and aligned headings/captions. Wider DexGPT region keeps its three source panels legible, with native fullscreen. Original fonts and desktop/mobile controls preserved. All Data clips completed in final-hash audit. Source kitchen frames were separately inspected. No training or physics validity inferred from playback.",
+  "screenshots": {
+    ".build/v0_17_visual/17.png": "3938ff92a2f32ee0a488a8433e3ccf101fc3e1f0ceeebb3c7c345e59d484d0fb",
+    ".build/v0_17_visual/18.png": "8c8e4128fb223934461cec9ce14fe41bf78e5d524988b467dde878b467432bd7",
+    ".build/v0_17_visual/19.png": "97f05a4649af713bfd6dc1fe4ed6c07db240da277d6962fbdd55c238ed3b9991",
+    ".build/v0_17_visual/20.png": "87df7cb1b26845a1d71b4b184003c50b1dc4a7e99bf92caf2b63d1344576170b",
+    ".build/v0_17_visual/21.png": "ef8483fea86f0e90282d12c96c78cf8e5ca6da322c58056a7aab57fc81cf5a21",
+    ".build/v0_17_visual/22.png": "feee2749d673819aa7a66818f9acc7703e731a27060b701e3aae80879680a199",
+    ".build/v0_17_visual/controls.png": "06c436b21becb6bb72c3e5b41657e232fe1bdf77945d6542ea4aa91d36a3a256",
+    ".build/v0_17_visual/mobile.png": "bcdd1c13da251929e88b263550de663bea6fc573b39ba884798a60bdbf124d5a",
+    ".build/v0_17_visual/script-mobile.png": "f47ea138c5b12b28b6710374b3ab530d369540fb242822103c34815332efe2b9"
+  }
+}

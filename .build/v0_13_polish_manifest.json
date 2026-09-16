@@ -1,0 +1,13 @@
+{
+  "html_sha256": "3eda1d3fbd2b8a92a4712d916c5916ae59d6cc6594bcab4477ab7393adae52f1",
+  "baseline_html_sha256": "614151be450e730e6cbd2b905af76143ac3aedb90fbfd4aa9d54287e5ab479a5",
+  "files": {
+    ".build/build_selfcontained.py": "09bd9928f20833f7b6ace7a989d2842cedeb4dc135b724ca55ddb7d7c9d8c03a",
+    ".build/standalone_visual_audit.json": "ed1603146a3452e2c64aa6adb2621bb9ce0f41d1de8e1ec54340a5a72855bfb3",
+    ".build/standalone_delivery_audit.json": "ea2c9ea7216b51b28d5dafb3be2e77ff0ab9e221ddb25c54cbd29183f4229ef3",
+    ".build/standalone_layout_audit.json": "88728d0ad9a12e84bc8dbedda6a468ec672ecd5f01acb55626d3e1f947445bad",
+    ".build/standalone_playback_audit.json": "9b01b7bcfd7796622fef985a2a25de322c94e2c91c672b2f1d95fc3cbca0dc60",
+    ".build/standalone_ui_audit.json": "17f1a9c976f2915a0bc4c0e6e40d35b964475ad57368a862e4955355d009437c",
+    ".build/standalone_mobile_audit.json": "8a31d4f658d5911fc1c9d175e944977960177d6c2b8a18bbfe194555ca5c89c6"
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "slides": 36,
+  "videos": 25,
+  "media_seconds": 641.921332,
+  "minutes": 59.0,
+  "chapter_opening_slides": [
+    4,
+    18,
+    23
+  ],
+  "bytes": 136708468,
+  "sha256": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+  "standalone_file": "/home/limx/Desktop/agent_for_robotics/output/Agents_for_Robotics_Self_Contained.html",
+  "media": [
+    {
+      "name": "painting",
+      "slide": 2,
+      "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+      "duration_seconds": 68.116667
+    },
+    {
+      "name": "astra_bowl",
+      "slide": 7,
+      "sha256": "08b7ca30dfd840d9a602fa6dcb581702a01c678dbf182e5c3bce0387a35e073a",
+      "duration_seconds": 14.3
+    },
+    {
+      "name": "astra_insertion",
+      "slide": 7,
+      "sha256": "e4089a3a778fefe428ac44e89bb42e32649b882927060a5bcbd3323a8a93ac99",
+      "duration_seconds": 13.8
+    },
+    {
+      "name": "policy_plug",
+      "slide": 8,
+      "sha256": "4ab601841dab2c479e206404360b4ea973a13b2f1d7d7e20c5c5f2a3771fe800",
+      "duration_seconds": 28.166667
+    },
+    {
+      "name": "keyboard",
+      "slide": 8,
+      "sha256": "f047faa2e68f9fbe5e1ee6b1608532b34bb6be21ea0c142a15576f57bf0aa8b3",
+      "duration_seconds": 25.992633
+    },
+    {
+      "name": "cube",
+      "slide": 9,
+      "sha256": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
+      "duration_seconds": 23.1
+    },
+    {
+      "name": "claw",
+      "slide": 9,
+      "sha256": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
+      "duration_seconds": 20.566016
+    },
+    {
+      "name": "asim_delta",
+      "slide": 10,
+      "sha256": "0a38501925b229f02ced43d54b48dbad0798f011f719dd18fb4fa453a7de2262",
+      "duration_seconds": 10.2
+    },
+    {
+      "name": "asim_waypoint",
+      "slide": 10,
+      "sha256": "9bd84e8ca1600812ea985609525370543184c08c74c73d66ed00426eafb928fc",
+      "duration_seconds": 17.3
+    },
+    {
+      "name": "asim_code",
+      "slide": 10,
+      "sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
+      "duration_seconds": 6.4
+    },
+    {
+      "name": "anon_direct_sort",
+      "slide": 12,
+      "sha256": "9860f94ce03b92bfd4bd28ea570dc7f43118442024753cc1faded74f2a7b1411",
+      "duration_seconds": 24.64
+    },
+    {
+      "name": "anon_hybrid_pack",
+      "slide": 12,
+      "sha256": "87a43a15cbef44fded03295d96510f6aa6ecb07c6b87857d67a8d0c5e4527fb9",
+      "duration_seconds": 15.44
+    },
+    {
+      "name": "office_newton",
+      "slide": 19,
+      "sha256": "5c0840014fd7d76e1299c5b4a1f5717e2211691e6eef194ef79aa6c45a979b95",
+      "duration_seconds": 25.0
+    },
+    {
+      "name": "kitchen",
+      "slide": 19,
+      "sha256": "98db3ae24844ff38a33224dc0265e749beed7f24b1b0155b90fc2ac2e50bf9c5",
+      "duration_seconds": 20.933333
+    },
+    {
+      "name": "hand",
+      "slide": 20,
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "duration_seconds": 28.833333
+    },
+    {
+      "name": "rope_hand",
+      "slide": 20,
+      "sha256": "a330c8730e689c479202ae929da6ca6318da5d5644e2340aac62165a8fbfe143",
+      "duration_seconds": 24.666667
+    },
+    {
+      "name": "astra_real2sim",
+      "slide": 21,
+      "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
+      "duration_seconds": 16.766667
+    },
+    {
+      "name": "dexgpt",
+      "slide": 21,
+      "sha256": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+      "duration_seconds": 20.3
+    },
+    {
+      "name": "enpire_reset_full",
+      "slide": 25,
+      "sha256": "e939319f9b2ca82557537fad1539758d34830cc9288e7a596f4da797379dcc13",
+      "duration_seconds": 7.733333
+    },
+    {
+      "name": "enpire_verify_full",
+      "slide": 25,
+      "sha256": "28b820ed3f0734e29a3c58f3681aadac9058cbd0aaf07649f35f93984b144096",
+      "duration_seconds": 11.133333
+    },
+    {
+      "name": "enpire_fleet",
+      "slide": 29,
+      "sha256": "19e9bcd92e3081f35e23e603f747d4f9c2fcb76c0e5b27fadb480886535cdf78",
+      "duration_seconds": 31.866667
+    },
+    {
+      "name": "enpire_pin",
+      "slide": 31,
+      "sha256": "bde252c3c2942c0ea3897bfef6029a8b96d0a93de75c4fdda0107a3002331391",
+      "duration_seconds": 51.666016
+    },
+    {
+      "name": "enpire_tie",
+      "slide": 31,
+      "sha256": "a9398923bdd46ed8eb514d1ebd7b61f888546ef68dd96551b643ae5dc3269616",
+      "duration_seconds": 47.666667
+    },
+    {
+      "name": "enpire_cut",
+      "slide": 31,
+      "sha256": "849d15eecb6135d5d47941c3830b65201ebf84a82cd62ebd165c10cf6da09695",
+      "duration_seconds": 27.433333
+    },
+    {
+      "name": "enpire_gpu",
+      "slide": 32,
+      "sha256": "245837a3058780b2f1e8e03c8157cf267807478bdca7376a49e200d0f1a4348b",
+      "duration_seconds": 59.9
+    }
+  ],
+  "images": [
+    {
+      "old_slide": 1,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 1,
+      "alt": "SUSTech logo",
+      "sha256": "219d51cd691d89454219ac42d1207c2da9d9fc8ccfd8257e889c24277cd5dce1"
+    },
+    {
+      "old_slide": 2,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 2,
+      "alt": "VIDEO:painting",
+      "sha256": "f3a4f628c9681d929f40f9211de67e3e311fa2e8dee2f36a81e155b73fdc2ae8"
+    },
+    {
+      "old_slide": 3,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 4,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 5,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 6,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 7,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 8,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 9,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 11,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 12,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 13,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 14,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "ENPIRE original framework, including human-assisted environment construction",
+      "sha256": "b26e41ce03c18eb21f45af22697a16dda5622eb0d7f090c025be8572a2571958"
+    },
+    {
+      "old_slide": 16,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 17,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 17,
+      "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+      "sha256": "07331a2787d65566e8e5bfe44113424e1c490489ea18929efd9e2907df1d5be3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+      "sha256": "affffe53fd56289ab7897819d4cc219492dad61fb98de61976b987027b03c2e3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "old_slide": 20,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 21,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 22,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#S1.F3",
+      "alt": "ENPIRE complete original Figure 3; model curves, traces and fleet scaling",
+      "sha256": "e700a03681fc7e7d754ed71365633cf36c22b1418fd5943dd80dd099d87f4650"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#S3.F6",
+      "alt": "ENPIRE original Figure 6; RoboCasa task examples and aggregate baseline bars",
+      "sha256": "5f643f7eba7c44db67f49ca6a15d0827d183328f0b4b149682ddc78a6458ba60"
+    },
+    {
+      "source": "https://www.pi.website/research/hirobot",
+      "alt": "Hi Robot original architecture: high-level VLM and pi0",
+      "sha256": "fc307d2d240556863b3a60fd06bce0de869e9b7019cb9cc3dab2c09579d8969b"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix",
+      "alt": "Figure Helix original architecture: System 2 to System 1",
+      "sha256": "dee9f51122028c2f6547db81446c0c52e5ca1e54ce2d0ceef7621a163cbb5197"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix-02",
+      "alt": "Figure Helix 02 original architecture with System 0",
+      "sha256": "a1fe99598192bd20106ef5bb8ef2ef33b0a75ee3a001dcb08339567fa9384a12"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_bowl",
+      "sha256": "e20f55d316e337c5acc193a4b7aa9e9a97c3f663becdaa911b68dcfd35125487"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_insertion",
+      "sha256": "7e67a55902ff079fabc7789adb5c0342840e09d7cc93d6b4c25a96d69962fa47"
+    },
+    {
+      "source": "https://github.com/cheng-haha/GPT-Policy-Eval",
+      "alt": "VIDEO:policy_plug",
+      "sha256": "0c20a3cf04d926bdc1bfc8d8a285b35e580740a268797b6ec4255943b7bfe9db"
+    },
+    {
+      "source": "https://x.com/kaiwynd/status/2098823484474348008",
+      "alt": "VIDEO:keyboard",
+      "sha256": "db4fa388e73b268c979f9f85e7a0ba4ff8e2af52ebf969a465ab6127e69d6581"
+    },
+    {
+      "source": "https://x.com/ZeYanjie/status/2098118164626501669",
+      "alt": "VIDEO:cube",
+      "sha256": "52630cb3c0fc41d9edb344b9550e88a730f7bdd259d4cf5f5ebcbf48478ddd11"
+    },
+    {
+      "source": "https://qinengwang-aiden.github.io/demos/constraint_demos/?demo=claw",
+      "alt": "VIDEO:claw",
+      "sha256": "eedfbdac26dbd96e3c4f227fefa8bb07e1b0db1fbcda448e47934fb93a634db2"
+    },
+    {
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_delta",
+      "sha256": "184eb61ef2a996e7a3d7ca5a1a7c3e216e6e4816b7323968690f7b9599b056fc"
+    },
+    {
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_waypoint",
+      "sha256": "3cf20b0fbe41754e33103aa6e7f5dcf549ade0d8b8aae0d283b2e4e9b64644a9"
+    },
+    {
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_code",
+      "sha256": "514bd122d67596d129cbfab76d79ed1dd2462ca10016053584c73adaf9dc71bb"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original anonymous Direct/Hybrid execution architecture; click to inspect inputs and step horizons",
+      "sha256": "4b9c06759d21fcfa3c71f409ce16ca609a4a2b7f5a6727d0e85c0ad22acf411a"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_direct_sort",
+      "sha256": "ca546f2189719da1456df9938140be8132567f0646c04bc329a0dec1e9826612"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_hybrid_pack",
+      "sha256": "9b13b091cacd3198de85aec1038590f682ec3f55331545277b04e344ebbe44a1"
+    },
+    {
+      "source": "https://x.com/Jiarui_X/status/2098439950991806804",
+      "alt": "VIDEO:office_newton",
+      "sha256": "1daa926a4c2b2984e756e70c84d9449e21c4e799b1537747d9d94469729cdf2f"
+    },
+    {
+      "source": "https://x.com/frankzydou/status/2098460193319186578",
+      "alt": "VIDEO:kitchen",
+      "sha256": "ffa4aaed990d7111b9a047394bd44667eac756fbd5015240ef1f60e21f3fa113"
+    },
+    {
+      "source": "https://x.com/earthtojake/status/2097789988670709821",
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "source": "https://x.com/dimentary/status/2097857980150763900",
+      "alt": "VIDEO:rope_hand",
+      "sha256": "74ab2779a4cdbde677db17affd68d079d69808eb3fc38be9b9f30c69276a30a7"
+    },
+    {
+      "source": "https://x.com/Lingxiao234/status/2096992059731443923",
+      "alt": "VIDEO:astra_real2sim",
+      "sha256": "2ce37c55de5d37a5662cf2c089cd00e61807963cf3593741e11e3f9093728c66"
+    },
+    {
+      "source": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+      "alt": "VIDEO:dexgpt",
+      "sha256": "b230b84b7b7147c943fe0de98e5fedab8b0056859b58c476563734c42497daf6"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#A2.F12",
+      "alt": "ENPIRE Figure 12: original idea tree and hill-climbing curve, including no-gain nodes",
+      "sha256": "3daf3e0a1221207b967fa5555d8f1fab8821e1926225fe03600e262b4824e359"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_reset_full",
+      "sha256": "3386d5881858b16514a809c1ecb1dad49328ab31c074abb7713c39344d9e9fed"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_verify_full",
+      "sha256": "166b233d82b001346970d9d09304e1b3f33f4b35e26a46c577652ec0757b2577"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "ENPIRE official task photograph: Push-T: heuristic code",
+      "sha256": "6a07257bf35622dd677f8265be99010eb87f06ad012a3b90465af7233f205380"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "ENPIRE official task photograph: Pin insertion: learned policy",
+      "sha256": "bdcf01db3ccf12f96bdb6fdb411b3626f258ec6a29bb41f1ca7004a1e163c5f0"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_fleet",
+      "sha256": "461d4b6914c98a29ac966732fc464e0150b80c6b2a31edae805750aa544a24d1"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_pin",
+      "sha256": "a43408b208fe9e9c0ad30cea1cce20abf3cc9a8a9978308d743e7529111ada5f"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_tie",
+      "sha256": "9204120a461bad78045b41aa82872c40d097e546438dce9d39e45eb70c3f561b"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_cut",
+      "sha256": "3e33e9490648051efecbca4a0dfbf4c8d7171f4b600f275845fe832326bbec3e"
+    },
+    {
+      "source": "https://research.nvidia.com/labs/gear/enpire/",
+      "alt": "VIDEO:enpire_gpu",
+      "sha256": "fac1220eb5a1b4f1a079ada2bbe4c47f4d15ad6ca5e98772e210fb04723e1fca"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboDojo panel-score-ranking.png",
+      "sha256": "948f4a6e92fee1b8dd33d8af4db909a0be8855a3ebc71afea993af41b3577984"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboDojo panel-sr-ranking.png",
+      "sha256": "855657a47b81fc0333be8aeff806aaee73c8d6ee616dd480bed81c4bbc3f6ed1"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report RoboLab success-rate result",
+      "sha256": "ad38b3487b1c4a28e4ec57bfb2c173164413e354b9a019c028ad9cdb7d63b284"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original report per-task Score heatmap; overflow expanded, data and colors unchanged",
+      "sha256": "f9b63070c6ca90df4a0249ff45bb2011ddd2c5926e2b7efcc85bbe1f37c79598"
+    }
+  ],
+  "native_text": true,
+  "all_fonts_embedded": true
+}

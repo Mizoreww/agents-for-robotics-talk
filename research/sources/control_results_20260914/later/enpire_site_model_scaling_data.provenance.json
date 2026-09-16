@@ -1,0 +1,14 @@
+{
+  "source": "https://research.nvidia.com/labs/gear/enpire/_next/static/chunks/11dgx9quo0zhy.js",
+  "source_sha256": "347643c2c2dfb3237bb2c0cbf6d1e93a59f8acd8b80d0d165108cd2dab29c86d",
+  "source_byte_range": [
+    15926,
+    21816
+  ],
+  "accessed": "2026-09-14",
+  "extraction": "Static literal parsing only; no JS evaluation or author code execution; quoted object keys and normalized leading decimal points.",
+  "source_character_range": [
+    15926,
+    21816
+  ]
+}

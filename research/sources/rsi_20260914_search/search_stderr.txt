@@ -1,0 +1,12 @@
+[arxiv] HTTP 429; retrying in 3s (attempt 2/2)
+[arxiv] Error on query 'robot self-improvement': 429 Client Error: Unknown Error for url: https://export.arxiv.org/api/query?search_query=%28all%3Arobot+self-improvement%29+AND+submittedDate%3A%5B202401010000+TO+202612312359%5D&sortBy=relevance&sortOrder=descending&max_results=3
+[arxiv] Error on query 'robot recursive self-improvement': HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=%28all%3Arobot+recursive+self-improvement%29+AND+submittedDate%3A%5B202401010000+TO+202612312359%5D&sortBy=relevance&sortOrder=descending&max_results=3 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+[dblp] Error on query 'robot self-improvement': Expecting value: line 1 column 1 (char 0)
+[dblp] Error on query 'robot recursive self-improvement': Expecting value: line 1 column 1 (char 0)
+[open_alex] HTTP 504; retrying in 3s (attempt 2/2)
+[openreview] Error on query 'robot self-improvement': openreview not installed. pip install openreview-py
+[openreview] Error on query 'robot recursive self-improvement': openreview not installed. pip install openreview-py
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/2)
+[semantic_scholar] Error on query 'robot self-improvement': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=robot+self-improvement&offset=0&limit=3&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026
+[semantic_scholar] HTTP 429; retrying in 3s (attempt 2/2)
+[semantic_scholar] Error on query 'robot recursive self-improvement': 429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=robot+recursive+self-improvement&offset=0&limit=3&fields=title%2Cauthors%2Cyear%2Cabstract%2CcitationCount%2Curl%2Cvenue%2CpublicationDate%2CexternalIds&year=2024-2026

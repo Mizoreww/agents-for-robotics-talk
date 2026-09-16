@@ -1,0 +1,192 @@
+Table Bussing
+
+100
+
+80
+
+60
+
+40
+
+20
+
+0
+
+Instruction Accuracy
+
+Instruction Accuracy
+
+Flat VLA
+36
+
+GPT-4o High-Level
+35
+
+Hi Robot
+74
+
+Expert Human
+100
+
+Task Progress
+
+Task Progress
+
+Flat VLA
+61
+
+GPT-4o High-Level
+63
+
+Hi Robot
+77
+
+Expert Human
+82
+
+Sandwich Making
+
+100
+
+80
+
+60
+
+40
+
+20
+
+0
+
+Instruction Accuracy
+
+Instruction Accuracy
+
+Flat VLA
+34
+
+GPT-4o High-Level
+13
+
+Hi Robot
+83
+
+Expert Human
+100
+
+Task Progress
+
+Task Progress
+
+Flat VLA
+42
+
+GPT-4o High-Level
+56
+
+Hi Robot
+80
+
+Expert Human
+92
+
+Grocery Shopping
+
+100
+
+80
+
+60
+
+40
+
+20
+
+0
+
+Instruction Accuracy
+
+Instruction Accuracy
+
+Flat VLA
+39
+
+GPT-4o High-Level
+41
+
+Hi Robot
+72
+
+Expert Human
+100
+
+Task Progress
+
+Task Progress
+
+Flat VLA
+28
+
+GPT-4o High-Level
+72
+
+Hi Robot
+85
+
+Expert Human
+93
+
+Average
+
+100
+
+80
+
+60
+
+40
+
+20
+
+0
+
+Instruction Accuracy
+
+Instruction Accuracy
+
+Flat VLA
+36
+
+GPT-4o High-Level
+30
+
+Hi Robot
+76
+
+Expert Human
+100
+
+Task Progress
+
+Task Progress
+
+Flat VLA
+44
+
+GPT-4o High-Level
+64
+
+Hi Robot
+81
+
+Expert Human
+89
+
+Flat VLA
+
+GPT-4o High-Level
+
+Hi Robot
+
+Expert Human High-Level (Oracle)
+

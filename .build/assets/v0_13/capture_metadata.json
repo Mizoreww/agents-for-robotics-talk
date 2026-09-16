@@ -1,0 +1,67 @@
+{
+  "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+  "capturedAt": "2026-09-15T03:59:36.498Z",
+  "view": {
+    "filters": {},
+    "surface": "report",
+    "tabId": null
+  },
+  "images": [
+    {
+      "cardId": "panel-score-ranking",
+      "encoding": "base64",
+      "filename": "panel-score-ranking.png",
+      "height": 1159,
+      "kind": "chart",
+      "mimeType": "image/png",
+      "queryIds": [
+        "models"
+      ],
+      "scopeFilters": [],
+      "title": "Mean Score (0–100)",
+      "width": 1520
+    },
+    {
+      "cardId": "panel-sr-ranking",
+      "encoding": "base64",
+      "filename": "panel-sr-ranking.png",
+      "height": 1159,
+      "kind": "chart",
+      "mimeType": "image/png",
+      "queryIds": [
+        "models"
+      ],
+      "scopeFilters": [],
+      "title": "Success rate (%)",
+      "width": 1520
+    },
+    {
+      "cardId": "robolab-success-ranking",
+      "encoding": "base64",
+      "filename": "robolab-success-ranking.png",
+      "height": 696,
+      "kind": "chart",
+      "mimeType": "image/png",
+      "queryIds": [
+        "robolab_models"
+      ],
+      "scopeFilters": [],
+      "title": "Success rate (%)",
+      "width": 1440
+    },
+    {
+      "cardId": "task-score-table",
+      "encoding": "base64",
+      "filename": "task-score-table.png",
+      "height": 1464,
+      "mimeType": "image/png",
+      "queryIds": [
+        "tasks",
+        "models"
+      ],
+      "scopeFilters": [],
+      "title": "Per-task Score (0–100)",
+      "width": 1520
+    }
+  ]
+}

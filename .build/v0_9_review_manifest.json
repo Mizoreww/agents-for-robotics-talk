@@ -1,0 +1,17 @@
+{
+  ".build/build_selfcontained.py": "26c3e03b8fefb0718316e8ac464a555cf629c4a3a1e3c1a0376e7c5aa4f790e6",
+  ".build/results_slides_v09.py": "2d204a894b32807cee40f727fa9d05a56fde7b87b3ab9aa5954560f212881258",
+  ".build/derive_results_v09.py": "17ac2cb742ad30c27c96c361c2d116bbd5d476b86489649e4d746f59077cb283",
+  ".build/script_revised.md": "f71dd635732aa25e6b482978dd5b06aa9596ff2e095c9fe819895aaa7d044a15",
+  ".build/validate_standalone.py": "2a23a1161ea5f07e0d0790c55f4b32e6ca5c27d2c1f25cf7e25b9feabdf253a2",
+  ".build/browser_audit.mjs": "f781658b74932a4376aaa17442c79b2ab01b31c4ccd0e285271e9b1f46b73073",
+  ".build/extended_visual_audit.mjs": "44c8835e9bcda0864faf83f43bed6d7abfb9321958641b2fdf2a2e2e4a61e720",
+  ".build/render_static_revision.py": "33b42c6842f19fa49c2f9580966ca85514d323d9e355d57285c0822a41dd7c46",
+  "AGENTS.md": "9d945fb036659912e996543fc7a69435563c87cb7b14820d02545b7f77b92c00",
+  "README.md": "3df64c088f02f70bd1a79fe57a03739ed5a8080372885793b295db093f7f5107",
+  "WORKPLAN.md": "a0671d5dd2cf9f08d12ca57fe2811049debbbfd6d4fada4a7a8c817c9e9a4217",
+  "output/Chapter_Spine.md": "7cf4127af135732a5c04d8e4dcfb8b1f134c190b289c6a9d60c5c0f013e4c3f4",
+  "output/README.md": "72fd661f320c46e71e26bb7769acb3d8c893be64666b070bc95bd89f636049a0",
+  "talk_outline.md": "2bfe92affca7543e891b219a2a12ad4d7f74d5ecd2a3b18a052f9c9b524efd5c",
+  "research/revision_0_9_spec.md": "84d6c4f3aac166be984d5f9fe65a2646039d63399372701b3da6d531054d6c35"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "claude",
+    "existing_source": "research/sources/control_results_20260914/control/claude_current.html",
+    "existing_source_sha256": "7c338e6a2e72a30c88db59e1fdd752ef8889ca51241577c57a05188ee0b12666",
+    "derived_extract": "claude_existing_primary_extract.txt",
+    "retrieved_fresh": false,
+    "reason": "Reuse of previously verified first-chapter source; no relation to unread WeChat article asserted."
+  },
+  {
+    "name": "robocurve",
+    "existing_source": "research/sources/control_results_20260914/control/robocurve_current.html",
+    "existing_source_sha256": "bab32ae6497b93079677112c3f0b43bd0405a60718cf396899155885c8ffb478",
+    "derived_extract": "robocurve_existing_primary_extract.txt",
+    "retrieved_fresh": false,
+    "reason": "Reuse of previously verified first-chapter source; no relation to unread WeChat article asserted."
+  }
+]

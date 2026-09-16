@@ -1,0 +1,24 @@
+{
+  "html_sha256": "e3b2d420b01fe153c34ef0336b41b16d11dbb6aa9ea20027c14ef571e0fbd210",
+  "date": "2026-09-15",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "scope": "Data demo-only. Final P22 screenshot independently confirmed all three question labels; earlier reviewer screenshot observation superseded. Desktop controls and source DexGPT sampled frames reviewed. Current-hash browser and extended audits pass.",
+  "screenshots": {
+    ".build/v0_15_visual/17.png": "3938ff92a2f32ee0a488a8433e3ccf101fc3e1f0ceeebb3c7c345e59d484d0fb",
+    ".build/v0_15_visual/18.png": "c5e5ac6cfd02cc04a0e4bfd67aa11df1f623866bbc788dd9a105eab1ac1a933d",
+    ".build/v0_15_visual/19.png": "ac74b4a9461b1eb7405520979b0a4c16a33e2c6de6ce6c82b88d31b71e1ee5df",
+    ".build/v0_15_visual/20.png": "a65bd765bf793853bb6dd74e44a9261fb85e8e195f311ce984fa6c20cd35c5f3",
+    ".build/v0_15_visual/21.png": "0219842a70e03bd2e78ea9bcf133fd560b1e30f60f48d9b3505ffcec9c808b23",
+    ".build/v0_15_visual/22.png": "813f790225caa8d47488d7d8da2f4cf1609861dfbfb3cd40692beeef02a98863",
+    ".build/v0_15_visual/controls.png": "cd5af6cf056bca9f5b1e1d9c1b78f2dff3f54b9b88cba20b9530716bdb7dde01",
+    ".build/v0_15_visual/script-mobile.png": "a4fba9b7a926d8807f4f1aa03f2f48574792c4ffcab9ea9923b577e8618bf05d"
+  }
+}

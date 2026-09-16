@@ -1,0 +1,24 @@
+{
+  "baseline": "revision_0_11_baseline/manifest.json",
+  "commits": "None; dirty working source vs verified v0.10 snapshot, not old Git HEAD",
+  "html_sha256": "6e3752ab7b755b919471758ca2b5ada09a58dcb4073ba2a22bd554cfdff8460b",
+  "files": {
+    ".build/build_selfcontained.py": "bf6301d6cecc47d8b735a61bb93eee943f085789085e6304704bbee1ad037903",
+    ".build/script_revised.md": "40711edbef6cd4502e23372418d71d88dd5d25af22e126c06074c7ce1496b32c",
+    ".build/evidence_v011.py": "cf74179ba68b5af6790190f0335c3b4e859f5f645b415ec41db86b8691ca21ba",
+    ".build/test_evidence_v011.py": "3dcb18b0da919caaf73bf6f95aeed3b464f801a0f4e6b809ca122bac371e91c3",
+    ".build/validate_standalone.py": "3cfef56881f74468cf2430ce652d09634ad0e9b85bb8cb69cc6a3cf3ef71e9f7",
+    ".build/browser_audit.mjs": "13e5a5e64ef7c89c9d71937d323257c4fe989bd6a0fead2589f6582a4673595c",
+    ".build/extended_visual_audit.mjs": "de3479e6806fe47432d5238edba460f5d984612b9a61abc46a065ee2d5606df3",
+    "research/evidence_v0_11_sources.json": "c5b6d94132e17d186e1c7db956791547766e0986d644b2a7b43ddf08c365b108",
+    "research/revision_0_11_spec.md": "14e4ad076f472ff9117a2823e77d777118f22dd1583be2ad3364511c17cf9e08",
+    "research/astra_interfaces_frequency_2026-09-15.md": "b6312362d24d422a4a3835e7cb0aca04d91ae342acc3366cf701afd8e95aaa5c",
+    "research/data_taxonomy_2026-09-15.md": "2efe4470b96431f4e7f0964c2c614049bd5ac60bff59a35a599bc97d5eeec8a5",
+    "README.md": "68eaef436e95eb66894bbc9b2475e83c7fe48192af7b6a074b95541777550c7f",
+    "AGENTS.md": "1a9333935ce51876ef9d5f00f07e8eaebfd66aae4037ab27b8c646d1864ecf98",
+    "output/README.md": "9cc121adb0d2e6bceaff45e1e3b5db1e517eaedffe2214a42a48d65f221ec5b2",
+    "output/Chapter_Spine.md": "b01d2dd4ff5cce58c1c1f83565aa12dc54ce4f84dc158ed38e41060f416ad3b4",
+    "talk_outline.md": "a648e402ec38a12ecf062c1fe6b4a66d548b5cb8130b462f31a5c335aaf00400",
+    "CHANGELOG.md": "7f8560e33181de9a317ee5f577b92c9b7942baec214a1a7c277ac119a9a91dd1"
+  }
+}

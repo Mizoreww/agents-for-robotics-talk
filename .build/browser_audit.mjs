@@ -62,9 +62,15 @@ await page.click('#fullscreen'); await page.waitForTimeout(400);
 ui.focusView = await page.evaluate(() => ({ enabled: document.body.classList.contains('focus-view'), native: !!document.fullscreenElement }));
 await page.keyboard.press('f'); await page.waitForTimeout(400);
 ui.keyboard.focusExited = await page.evaluate(() => !document.body.classList.contains('focus-view'));
-await goto(7); await page.click('#slide img.original'); await page.waitForTimeout(600);
+await goto(5); await page.click('#slide img.original'); await page.waitForTimeout(600);
 ui.figureDialog = await page.evaluate(() => ({ open: $('figure-dialog').open, loaded: $('large-figure').complete && $('large-figure').naturalWidth > 0 }));
 await page.keyboard.press('Escape'); await page.waitForTimeout(200); ui.figureDialog.closed = await page.evaluate(() => !$('figure-dialog').open);
+ui.addedFigures = [];
+for (const n of [12, 13, 14, 15, 24, 27, 28, 29, 30, 32]) {
+ await goto(n); await page.click('#slide img.original'); await page.waitForTimeout(300);
+ ui.addedFigures.push(await page.evaluate(n => ({slide:n,open:$('figure-dialog').open,loaded:$('large-figure').complete && $('large-figure').naturalWidth>0}),n));
+ await page.keyboard.press('Escape');
+}
 await goto(5); await page.keyboard.press('n'); await page.waitForTimeout(200);
 ui.currentScript = await page.evaluate(() => ({ heading: $('note-title').textContent, text: $('note-body').textContent.slice(0, 120) }));
 await page.click('#all-script'); await page.waitForTimeout(300);

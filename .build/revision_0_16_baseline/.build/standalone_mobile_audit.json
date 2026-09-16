@@ -1,0 +1,166 @@
+{
+  "html_sha256": "e3b2d420b01fe153c34ef0336b41b16d11dbb6aa9ea20027c14ef571e0fbd210",
+  "viewport": 390,
+  "documentWidth": 390,
+  "buttons": [
+    {
+      "label": "Previous",
+      "rect": {
+        "left": 14,
+        "right": 101.125,
+        "width": 87.125,
+        "height": 40
+      }
+    },
+    {
+      "label": "01 / 33 · Agents for Robotics0",
+      "rect": {
+        "left": 104.125,
+        "right": 307.65625,
+        "width": 203.53125,
+        "height": 40
+      }
+    },
+    {
+      "label": "Next",
+      "rect": {
+        "left": 310.65625,
+        "right": 376,
+        "width": 65.34375,
+        "height": 40
+      }
+    },
+    {
+      "label": "Play videos",
+      "rect": {
+        "left": 62.015625,
+        "right": 165.703125,
+        "width": 103.6875,
+        "height": 40
+      }
+    },
+    {
+      "label": "Pause",
+      "rect": {
+        "left": 168.703125,
+        "right": 243.640625,
+        "width": 74.9375,
+        "height": 40
+      }
+    },
+    {
+      "label": "Restart",
+      "rect": {
+        "left": 246.640625,
+        "right": 327.984375,
+        "width": 81.34375,
+        "height": 40
+      }
+    },
+    {
+      "label": "Speaker script",
+      "rect": {
+        "left": 87.984375,
+        "right": 204.984375,
+        "width": 117,
+        "height": 40
+      }
+    },
+    {
+      "label": "Fullscreen",
+      "rect": {
+        "left": 207.984375,
+        "right": 302,
+        "width": 94.015625,
+        "height": 40
+      }
+    }
+  ],
+  "script": {
+    "viewport": 390,
+    "documentWidth": 390,
+    "buttons": [
+      {
+        "label": "Previous",
+        "rect": {
+          "left": 14,
+          "right": 101.125,
+          "width": 87.125,
+          "height": 40
+        }
+      },
+      {
+        "label": "01 / 33 · Agents for Robotics0",
+        "rect": {
+          "left": 104.125,
+          "right": 307.65625,
+          "width": 203.53125,
+          "height": 40
+        }
+      },
+      {
+        "label": "Next",
+        "rect": {
+          "left": 310.65625,
+          "right": 376,
+          "width": 65.34375,
+          "height": 40
+        }
+      },
+      {
+        "label": "Play videos",
+        "rect": {
+          "left": 62.015625,
+          "right": 165.703125,
+          "width": 103.6875,
+          "height": 40
+        }
+      },
+      {
+        "label": "Pause",
+        "rect": {
+          "left": 168.703125,
+          "right": 243.640625,
+          "width": 74.9375,
+          "height": 40
+        }
+      },
+      {
+        "label": "Restart",
+        "rect": {
+          "left": 246.640625,
+          "right": 327.984375,
+          "width": 81.34375,
+          "height": 40
+        }
+      },
+      {
+        "label": "Hide script",
+        "rect": {
+          "left": 97.71875,
+          "right": 195.25,
+          "width": 97.53125,
+          "height": 40
+        }
+      },
+      {
+        "label": "Fullscreen",
+        "rect": {
+          "left": 198.25,
+          "right": 292.265625,
+          "width": 94.015625,
+          "height": 40
+        }
+      },
+      {
+        "label": "Full script",
+        "rect": {
+          "left": 21,
+          "right": 129.75,
+          "width": 108.75,
+          "height": 38
+        }
+      }
+    ]
+  }
+}

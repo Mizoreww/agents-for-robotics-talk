@@ -1,0 +1,169 @@
+[
+  {
+    "file": "hirobot.html",
+    "url": "https://www.pi.website/research/hirobot",
+    "resolved_url": "https://www.pi.website/research/hirobot",
+    "bytes": 121761,
+    "sha256": "8a3ba4bb5ab79246d6e7c4afe7192cfb055bdc4c0e5d5022b96d8c51d0ae8a5c",
+    "retrieved_utc": "2026-09-14T09:32:33.337903+00:00"
+  },
+  {
+    "file": "hirobot_paper.html",
+    "url": "https://arxiv.org/html/2502.19417v1",
+    "resolved_url": "https://arxiv.org/html/2502.19417v1",
+    "bytes": 158156,
+    "sha256": "3a9d1e68fa2d37b1a4a660051fafc67b55f6d9c3399621ed71c659df5c249c6b",
+    "retrieved_utc": "2026-09-14T09:32:32.300075+00:00"
+  },
+  {
+    "file": "hirobot_abs.html",
+    "url": "https://arxiv.org/abs/2502.19417",
+    "resolved_url": "https://arxiv.org/abs/2502.19417",
+    "bytes": 44222,
+    "sha256": "045388ed60202d27ac6846ca1852221a9e83b1d97a5f7018302a3a3ed6c4e147",
+    "retrieved_utc": "2026-09-14T09:32:32.260248+00:00"
+  },
+  {
+    "file": "helix.html",
+    "url": "https://www.figure.ai/news/helix",
+    "resolved_url": "https://www.figure.ai/news/helix",
+    "bytes": 90615,
+    "sha256": "ee286f5a822c43e973ccb79c7c2f140473bb470e8925814f49af62428eb39f61",
+    "retrieved_utc": "2026-09-14T09:32:33.102472+00:00"
+  },
+  {
+    "file": "helix02.html",
+    "url": "https://www.figure.ai/news/helix-02",
+    "resolved_url": "https://www.figure.ai/news/helix-02",
+    "bytes": 72614,
+    "sha256": "4d9330660596bb6b1348f7e6e3fabfa541322c136225aeec24490487e826ea08",
+    "retrieved_utc": "2026-09-14T09:32:33.106802+00:00"
+  },
+  {
+    "file": "rpent_readme.md",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/main/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/main/README.md",
+    "bytes": 12000,
+    "sha256": "bde62f684fe85092e561c7691bb459d1e3c9033dceea172637aae889774c6848",
+    "retrieved_utc": "2026-09-14T09:32:32.920216+00:00"
+  },
+  {
+    "file": "rpent_paper.html",
+    "url": "https://arxiv.org/html/2607.08448v1",
+    "resolved_url": "https://arxiv.org/html/2607.08448v1",
+    "bytes": 773054,
+    "sha256": "ac4274e7d916256ecebc9a45ce7924eaab856c0e03f471dcb0c06b5f809a4043",
+    "retrieved_utc": "2026-09-14T09:32:33.226194+00:00"
+  },
+  {
+    "file": "rpent_abs.html",
+    "url": "https://arxiv.org/abs/2607.08448",
+    "resolved_url": "https://arxiv.org/abs/2607.08448",
+    "bytes": 45216,
+    "sha256": "1f79050d19d351636aa3a442b994f331eebd3652a737b6ac226a7bbce2eee55b",
+    "retrieved_utc": "2026-09-14T09:32:33.192213+00:00"
+  },
+  {
+    "file": "hirobot_paper_v2.html",
+    "url": "https://arxiv.org/html/2502.19417v2",
+    "resolved_url": "https://arxiv.org/html/2502.19417v2",
+    "bytes": 244656,
+    "sha256": "ed6645c3a64806328a49c484bc74cebb04e3ff6b34f4996240cfa4224fe5e66b",
+    "retrieved_utc": "2026-09-14T09:35:04.345179+00:00"
+  },
+  {
+    "file": "hirobot_paper_v2.pdf",
+    "url": "https://arxiv.org/pdf/2502.19417v2",
+    "resolved_url": "https://arxiv.org/pdf/2502.19417v2",
+    "bytes": 11395915,
+    "sha256": "a6400a0353705ae3974dec493bb21867885159133586d53da98bacf055fa4333",
+    "retrieved_utc": "2026-09-14T09:35:12.266854+00:00"
+  },
+  {
+    "file": "rpent_paper_v4.html",
+    "url": "https://arxiv.org/html/2607.08448v4",
+    "resolved_url": "https://arxiv.org/html/2607.08448v4",
+    "bytes": 789874,
+    "sha256": "7d3317b2bb185654d2282fdc5540d715b841ac33f76dfa25be4df3ffaea1d717",
+    "retrieved_utc": "2026-09-14T09:35:04.915724+00:00"
+  },
+  {
+    "file": "rpent_paper_v4.pdf",
+    "url": "https://arxiv.org/pdf/2607.08448v4",
+    "resolved_url": "https://arxiv.org/pdf/2607.08448v4",
+    "bytes": 9802222,
+    "sha256": "717c1717e6cfb6842ef646750f289ac957ed8fa4901376d50997ed1ab916d269",
+    "retrieved_utc": "2026-09-14T09:35:11.053993+00:00"
+  },
+  {
+    "file": "rpent_readme_328645ee.md",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/README.md",
+    "bytes": 12000,
+    "sha256": "bde62f684fe85092e561c7691bb459d1e3c9033dceea172637aae889774c6848",
+    "retrieved_utc": "2026-09-14T09:35:05.080913+00:00"
+  },
+  {
+    "file": "rpent_robots__robocasa__eval__target50_codex_results.md",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robocasa/eval/target50_codex_results.md",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robocasa/eval/target50_codex_results.md",
+    "bytes": 4360,
+    "sha256": "e76ce4b08377af601801d4575254eeba1d6caaa78aef516e6c1cbcd9d037f572",
+    "retrieved_utc": "2026-09-14T09:36:23.421030+00:00"
+  },
+  {
+    "file": "rpent_robots__robocasa__README.md",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robocasa/README.md",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robocasa/README.md",
+    "bytes": 11064,
+    "sha256": "c83341010bcc0f10b3334082510462441c9c48bf76606422f856e990bd025ec6",
+    "retrieved_utc": "2026-09-14T09:36:23.443320+00:00"
+  },
+  {
+    "file": "rpent_rpent__evaluation__result.py",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/rpent/evaluation/result.py",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/rpent/evaluation/result.py",
+    "bytes": 1890,
+    "sha256": "8c6d123eecd2d194fd477df4d1bd4ec0fb023761ae756e222ec818770e2dec21",
+    "retrieved_utc": "2026-09-14T09:36:23.551585+00:00"
+  },
+  {
+    "file": "rpent_robots__libero__prompts__local_eval.py",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/libero/prompts/local_eval.py",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/libero/prompts/local_eval.py",
+    "bytes": 3354,
+    "sha256": "8b6e9d0e3cde6d2363ff3d521a11332e75d2d5ddc0cf7e8a9d98c0e3c890b600",
+    "retrieved_utc": "2026-09-14T09:36:23.414858+00:00"
+  },
+  {
+    "file": "rpent_robots__libero__prompts__explore.py",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/libero/prompts/explore.py",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/libero/prompts/explore.py",
+    "bytes": 23996,
+    "sha256": "77f37b457a584753c2ff61059a0f84cafffbc87857be55051cbba691d762120a",
+    "retrieved_utc": "2026-09-14T09:36:24.062847+00:00"
+  },
+  {
+    "file": "rpent_robots__robotwin__eval__demo_randomized.json",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robotwin/eval/demo_randomized.json",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/robots/robotwin/eval/demo_randomized.json",
+    "bytes": 41706,
+    "sha256": "c7c6ee4847d8b39838af281be6de3517d039c76451bb78bb454f52f81470b306",
+    "retrieved_utc": "2026-09-14T09:36:24.165457+00:00"
+  },
+  {
+    "file": "rpent_docs__source-en__rst_source__usage__libero.rst",
+    "url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/docs/source-en/rst_source/usage/libero.rst",
+    "resolved_url": "https://raw.githubusercontent.com/RLinf/RPent/328645ee9eeeb24c4cbbff030045e7efcddc4dab/docs/source-en/rst_source/usage/libero.rst",
+    "bytes": 11428,
+    "sha256": "5f441611db1e4261702f5c9fb692cc9262694f3859a20809ce121254ccc3b9d8",
+    "retrieved_utc": "2026-09-14T09:36:24.159709+00:00"
+  },
+  {
+    "file": "hirobot_figure5_original.svg",
+    "url": "https://arxiv.org/html/2502.19417v2/baselines_v2.svg",
+    "bytes": 151456,
+    "sha256": "3cd7929d796a73a931751d52f52557d9358ceb443eab043f68d35305778bdd3c",
+    "retrieved_utc": "2026-09-14T09:39:44.585890+00:00"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "purpose": "Reviewed v0.9 source identities. Change only after an explicit source-update review, never during normal derivation.",
+  "created": "2026-09-14",
+  "sources": {
+    "research/sources/anonymous_report_421_public_results__evaluation_cases.json": "b2ef651cc5d4c90375165a852030a3864b33d9410986dafedde7b04253f1c39a",
+    "research/sources/anonymous_report_421_data.json": "8dc3f70d852cda713799d152c2459aa2011a8c6bb9e94690b830c5f1eb8298ff",
+    "research/sources/control_results_20260914/control/robolab.json": "9cbd12354be634adb68ecaffe93e1ab132b7859935c5e942ca845741ed6916fe",
+    "research/sources/control_results_20260914/control/robolab-baselines.json": "2f931c6cd982a14baccfbb9d79c46cb778f6a22eca30e356da4a297cd431e48e",
+    "research/sources/control_action_interfaces_20260914/asim_tables.json": "0ac64ca4949d5a14eb18c7c8774dc207ffd187f77cee5117b0ee3a2d21f153c0",
+    "research/sources/control_action_interfaces_20260914/robocurve.txt": "1ca7d139c4277713a4ef8aadab1355fc9007a89f464699acd7b105628e36dbbb",
+    "research/sources/control_results_20260914/background/rpent_paper_v4.txt": "737917d6fd7fba83dc45ca1fa7824e7c1ded5a0021e5f7b4f6639632c52e07bb",
+    "research/sources/control_results_20260914/later/enpire_site_model_scaling_data.json": "3caad954ab30a35a55cc51a8b681864e3de0dfe38412159e59f3588e82fba2aa",
+    "research/sources/control_results_20260914/later/enpire_site_resource_data.json": "20a4a2374d1b223026f551a2a0066330c85b1e5608595e02cfb7ee7e7c2affa1",
+    "research/sources/control_results_20260914/later/enpire_site_model_scaling_data.provenance.json": "34256662dd978d3319f93395f43c788304b365df6acda96f4c452b8643cc4fff",
+    "research/sources/control_results_20260914/later/enpire_site_resource_data.provenance.json": "ef747b99b83e09cfb6480c66412dbad4d30e927290c70d827a099253871920d7",
+    "research/sources/control_results_20260914/background/hirobot_chart_values.json": "1b69ab9cfa66a84f0bd55dfb86dc6ddd93729bfb0a026274b8092722941a0d68",
+    "research/sources/control_results_20260914/later/agentic_replay_results_original.png": "048010fa2871941a94f6228946d59fd97134b85235e606bb8f792642c5da682b"
+  }
+}

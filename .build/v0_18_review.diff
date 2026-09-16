@@ -1,0 +1,2105 @@
+--- baseline/.build/build_selfcontained.py
++++ current/.build/build_selfcontained.py
+@@ -7,7 +7,7 @@
+ old=json.loads((B/'slide_records_focus.json').read_text())
+ media=json.loads((OUT/'offline_player/media_credits.json').read_text())
+ community=[]
+-for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json']:
++for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json']:
+  community += json.loads((B/manifest).read_text())
+ for c in community:
+  c.setdefault('source_url',next((m['sourceUrl'] for m in media if m['name']==c['name']),''))
+@@ -25,6 +25,9 @@
+ verify_data_demos(ROOT)
+ verify_data_extra(ROOT)
+ verify_kitchen_video(ROOT)
++from enpire_v018 import verify_enpire, verify_puzzles, build_slides as enpire_slides
++verify_enpire(ROOT)
++verify_puzzles(ROOT)
+ assets={}; layouts={}; image_audit=[]
+ def asset(data,mime):
+  key=hashlib.sha256(data).hexdigest()
+@@ -117,7 +120,7 @@
+ 
+ def questions():
+  els=page('Three Roles for Robotics Agents')
+- rows=[('Control','Who generates the next action?','Direct commands, tools and learned policies'),('Data','What data can an Agent help create?','Assets, real-to-sim replay and data rollout'),('Improvement','What makes the next policy better?','ENPIRE + training and in-context adaptation')]
++ rows=[('Control','Who generates the next action?','Direct commands, tools and learned policies'),('Data','What data can an Agent help create?','Assets, real-to-sim replay and data rollout'),('Improvement','What makes the next policy better?','ENPIRE + reusable research experience')]
+  for i,(role,q,work) in enumerate(rows):
+   y=173+i*130
+   els += [text(str(i+1),80,y,70,42,32,'#2ba39b',True,True),text(role,168,y,230,38,28,'#1d7d76',True),text(q,422,y,785,38,27,bold=True),text(work,422,y+48,785,32,21,'#646464')]
+@@ -199,6 +202,9 @@
+ def control_demos():
+  return pair_videos('control_demos','Astra: More Real-Robot Demos',1,'policy_plug','keyboard',['Plug insertion · real robot · 12×','Keyboard correction · real robot · 20×'],'',interface_notes=['Control interface: not disclosed','Control interface: not disclosed'])
+ 
++def puzzle_demos():
++ return pair_videos('puzzle_demos','Robot Puzzle Demos in Simulation',1,'cube','claw',['Rubik’s Cube · Yanjie Ze','Unlocking the Claw'], '', interface_notes=['Simulation · action interface not disclosed', 'IK / joint path · ideal grasps · source 8×'])
++
+ def action_interfaces():
+  els=page('One Model, Different Control Interfaces',1)
+  labels=['ΔEEF chunks','EEF waypoints','Code → waypoints']
+@@ -304,8 +310,6 @@
+  els += [text('Filled nodes improve the best score.\nOpen nodes show no gain.',830,586,386,68,20,'#646464')]
+  return els
+ 
+-def improvement_demos():
+- return pair_videos('improvement_demos','Astra: Training and Context',3,'quad_rl','wenli_icl',['CAD + RL · development preview','Physical in-context learning · 8×'],'Different mechanisms: training/code revision versus adaptation through context.')
+ 
+ def conclusion():
+  els=page('Takeaways')
+@@ -364,6 +368,7 @@
+  'responsibility_shift':('Where Does Generalization Live?',responsibility_shift(),['HIROBOT_DISCUSSION','ROBOCURVE','ASIM','ANON']),
+  'astra_direct':('Astra: Stronger Real-Robot Performance',astra_direct(),['ROBOCURVE']),
+  'control_demos':('Astra: More Real-Robot Demos',control_demos(),['POLICYEVAL','KEYBOARD','AWESOME']),
++ 'puzzle_demos':('Robot Puzzle Demos in Simulation',puzzle_demos(),['CUBE','CLAW']),
+  'interfaces':('One Model, Different Control Interfaces',action_interfaces(),['ASIM']),
+  'hybrid':('Astra: Introducing a Hybrid Architecture',direct_hybrid(),['ANON']),
+  'interface_timing':('High Latency Limits Real-Time Control',interface_timing(),['ASIM']),
+@@ -381,29 +386,29 @@
+  'world_summary':('Data: From Demos to Useful Data',world_summary(),['AWESOME','DEXGPT']),
+  'improve':('Agent Improves Policy',summary('Agent Improves Policy',3,[('Task + API','fixed environment'),('Agent','policy / training edits'),('Real rollout','robot experiment'),('Verifier + logs','outcome and trace')],'Evidence guides the next policy change','Policy / code changes that persist into later trials.','Can real experiments drive reusable improvement?','Chapter overview · ENPIRE: improve the next policy, not just the next action'),['S15']),
+  'idea_tree':('ENPIRE: What Did the Agent Change?',idea_tree(),['S15']),
+- 'improvement_demos':('Astra: Training and Context',improvement_demos(),['QUAD','WENLI','AWESOME']),
+  'end':('Takeaways',conclusion(),['ANON','S15','AWESOME']),
+  'thanks':('Thank You',thank_you(),[])
+ }
++summaries.update(enpire_slides(ROOT, page, text, rect, connector, figure, video_el, band, layouts, new_placements))
+ summaries.update(result_slides)
+ summaries.update({
+  'robodojo_results':('RoboDojo: Overall Results',report_dojo_results(),['ANON']),
+  'robolab_results':('RoboLab: Overall Results',report_lab_results(),['ANON']),
+  'report_heatmap':('RoboDojo: Task-Level Patterns',report_task_heatmap(),['ANON']),
+ })
+-order=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 16, 'idea_tree', 17, 'enpire_results', 'enpire_robocasa', 'improvement_demos', 18, 'end', 'thanks']
+-assert len(order)==32
++order=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 'enpire_env', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 'enpire_robocasa', 'enpire_demos', 'enpire_transfer', 18, 'rsi_summary', 'end', 'thanks']
++assert len(order)==36
+ chapter_keys={'control','world','improve'}
+-new_titles={1:'Agents for Robotics',2:'Demo: Painting with Feedback',10:'Real Episode and Its Twin',11:'Agentic Real2Sim: Method',12:'DROID-100: Protocol and Results',15:'ENPIRE: Environment and Improvement',16:'ENPIRE: Reset and Verification',17:'ENPIRE: Pin Insertion Curve',18:'ENPIRE: Cost and Chapter Summary',19:'Data: Mechanism and CAD Assets'}
+-minutes=[0.5, 1, 1, 1.5, 2, 2, 2, 1, 2, 1.5, 2.5, 2, 2, 1.5, 1.5, 1, 1, 2, 2, 2, 1, 1, 2, 1.5, 2.5, 2, 2.5, 1.5, 1, 2.5, 1, 0.5]
+-assert len(minutes)==32 and sum(minutes)==51,sum(minutes)
++new_titles={1:'Agents for Robotics',2:'Demo: Painting with Feedback',10:'Real Episode and Its Twin',11:'Agentic Real2Sim: Method',12:'DROID-100: Protocol and Results',15:'ENPIRE: Environment and Improvement',16:'ENPIRE: Reset and Verification',17:'ENPIRE: Pin Insertion Curve',18:'ENPIRE: Cost of Physical Research',19:'Data: Mechanism and CAD Assets'}
++minutes=[0.5, 1, 1, 1.5, 2, 2, 2, 1, 1, 2, 1.5, 2.5, 2, 2, 1.5, 1.5, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 2.5, 2.5, 2, 1.5, 2, 2, 2.5, 1.5, 1, 0.5]
++assert len(minutes)==36 and sum(minutes)==59,sum(minutes)
+ script_text=(B/'script_revised.md').read_text()
+ chunks=re.split(r'^## (\d{2})\. (.+)\n',script_text,flags=re.M)
+ script_sections={int(chunks[i]):chunks[i+2].strip() for i in range(1,len(chunks),3)}
+ script_titles={int(chunks[i]):chunks[i+1] for i in range(1,len(chunks),3)}
+ assert len(script_sections)==len(order),(len(script_sections),len(order))
+ def group_of(n):
+- return 'Introduction' if n<=3 else '1 · Agent Controls Robot' if n<=16 else '2 · Agent Creates Data' if n<=21 else '3 · Agent Improves Policy' if n<=30 else 'Closing'
++ return 'Introduction' if n<=3 else '1 · Agent Controls Robot' if n<=17 else '2 · Agent Creates Data' if n<=22 else '3 · Agent Improves Policy' if n<=34 else 'Closing'
+ def is_title(e):
+  return e['kind']=='shape' and 'text' in e and abs(e['bbox'][1]-57)<1 and e.get('resolvedTextStyle',{}).get('fontSize')==36 and e['text'] not in ('1','2','3','4')
+ def clip_media(name,slide_number,bx):
+@@ -480,7 +485,13 @@
+ source_map['DEXGPT']={'label':'DexGPT · recorded contact rollout; physical acceptance not met','url':'https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b'}
+ source_map['G1_SONIC']={'label':'Flood G1 demo · official SONIC planner/policy; overlay rate is not LLM timing','url':'https://x.com/RotekSong/status/2099104628562608371'}
+ source_map['MOBILE_ICL']={'label':'Axel Peytavin · mobile ICL demo; author-reported spatial transfer, no trial denominator','url':'https://x.com/ax_pey/status/2098216469012283681'}
+-source_map['ENPIRE_SITE']={'label':'ENPIRE official interactive plots · model and resource data (accessed 14 Sep 2026)','url':'https://research.nvidia.com/labs/gear/enpire/'}
++source_map['CUBE']={'label':'Yanjie Ze · GPT6 Astra Rubik’s Cube robot-hand simulation demo · 10 Sep 2026','url':'https://x.com/ZeYanjie/status/2098118164626501669'}
++source_map['CLAW']={'label':'Unlocking the Claw · methods, reference path attribution and kinematic limits','url':'https://qinengwang-aiden.github.io/demos/constraint_demos/methods.html'}
++source_map['ENPIRE_CODE']={'label':'ENPIRE public autoresearch contract · pinned source 99ee90a','url':'https://github.com/NVlabs/ENPIRE/blob/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/autoresearch_instruction.md'}
++source_map['ENPIRE_TRANSFER']={'label':'ENPIRE §3.4 and Appendix B.1 · written experience transfer from pin to GPU insertion','url':'https://arxiv.org/html/2606.19980v1#S3.SS4'}
++source_map['ROBORSI']={'label':'RoboRSI · Noematrix research report, September 2026 · conceptual context only','url':'https://lab.noematrix.ai/blog/2-roborsi/'}
++source_map['DGM']={'label':'Darwin Gödel Machine · self-modifying coding agent, not a robotics evaluation','url':'https://sakana.ai/dgm/'}
++source_map['ENPIRE_SITE']={'label':'ENPIRE official interactive plots · model and resource data (accessed 16 Sep 2026)','url':'https://research.nvidia.com/labs/gear/enpire/'}
+ source_map['ROSA']={'label':'ROSA · Robot Operating System Agent (NASA JPL)','url':'https://github.com/nasa-jpl/rosa'}
+ source_map['ROS_MCP']={'label':'ROS-MCP Server · MCP–ROS bridge','url':'https://github.com/robotmcp/ros-mcp-server'}
+ source_map['WENLI']={'label':'Wenli Xiao (@_wenlixiao), X · human video to robot arm with GPT-6 Astra (9 Sep 2026)','url':'https://x.com/_wenlixiao/status/2097801944119349455'}
+@@ -547,7 +558,13 @@
+  'simulation_demos':'Community demonstrations · source speed unspecified; workflow and physical fidelity are not independently validated',
+  'real2sim_results':'Agentic Real2Sim v3 Figure 3 · partial: score 7; failed: ≤6 or no valid record · not a total-cost or predictive-validity metric',
+  'idea_tree':'ENPIRE Appendix B.6, original Figure 12 · one team run, best-score trajectory; not independent causal ablations',
+- 'improvement_demos':'Quadruped: 4 experts, some FULL EVAL NOT MET, Wave/Sit CUT · ICL: existing motion tools, 8×, no trial denominator',
++ 'puzzle_demos':'Cube: author-posted simulation demo · Claw: recorded IK/joint path with pregrasped ideal grasps, not contact-dynamics evidence',
++ 'enpire_env':'ENPIRE official reset and verification recordings · full sequences; 8× reset, 1× verification',
++ 'enpire_methods':'ENPIRE §2, §3.1–3.2 and Appendix B.5 · official task photographs; policy and training code are editable',
++ 'enpire_fleet_page':'ENPIRE §3.3 and Figure 3 pin panel · full official fleet sequence at 8×; research time, not control latency',
++ 'enpire_demos':'ENPIRE official learned-policy demonstrations · full recordings at 8×; no independent trial counts inferred from clips',
++ 'enpire_transfer':'ENPIRE §3.4 + Appendix B.1 · GPU demo illustrates the task, not a paired transfer ablation',
++ 'rsi_summary':'Our synthesis · ENPIRE supports policy improvement and recipe reuse; stronger recursive capability remains an open test',
+  'enpire_results':'ENPIRE Figure 3 + official plot data · Codex/GPT-5.5 xhigh; Claude/Opus 4.7 High; Kimi/K2.6 thinking',
+  'enpire_robocasa':'ENPIRE Figure 6 + Appendix D.2 · autoresearch improves tool/policy programs; aggregate pooling details not fully disclosed',
+  'end':'Different artifacts and different tests · community demos motivate questions, not cross-paper rankings',
+@@ -651,7 +668,7 @@
+  payloads.append(f'<script id="{m["payloadId"]}" type="application/octet-stream" data-sha256="{m["sha256"]}">{base64.b64encode(raw).decode()}</script>')
+ page_html=page_html.replace('<!-- VIDEO_PAYLOADS -->','\n'.join(payloads))
+ dest=OUT/'Agents_for_Robotics_Self_Contained.html';dest.write_text(page_html)
+-assert len(new_media)==20,len(new_media)
++assert len(new_media)==25,len(new_media)
+ report={'slides':len(slides),'videos':len(new_media),'media_seconds':sum(m['duration_seconds'] for m in new_media),'minutes':sum(minutes),'chapter_opening_slides':[n for n,key in enumerate(order,1) if key in chapter_keys],'bytes':dest.stat().st_size,'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'standalone_file':str(dest),'media':[{k:m[k] for k in ['name','slide','sha256','duration_seconds']} for m in new_media],'images':image_audit,'native_text':True,'all_fonts_embedded':True}
+ (B/'standalone_build_audit.json').write_text(json.dumps(report,indent=2))
+ (B/'slide_records_revised.json').write_text(json.dumps([{k:v for k,v in r.items() if k not in ['html','notesHtml']} for r in slides],ensure_ascii=False,indent=2))
+--- baseline/.build/enpire_v018.py
++++ current/.build/enpire_v018.py
+@@ -0,0 +1,117 @@
++"""Official ENPIRE media and the scoped RSI discussion for chapter three."""
++import hashlib
++import json
++
++SITE = 'https://research.nvidia.com/labs/gear/enpire/'
++PAPER = 'https://arxiv.org/html/2606.19980v1'
++NEW_CLIPS = {'enpire_pin', 'enpire_gpu', 'enpire_tie', 'enpire_cut',
++             'enpire_fleet', 'enpire_reset_full', 'enpire_verify_full'}
++
++
++def verify_enpire(root):
++    pins = json.loads((root / 'research/enpire_v0_18_sources.json').read_text())
++    for relative, expected in pins['sha256'].items():
++        if hashlib.sha256((root / relative).read_bytes()).hexdigest() != expected:
++            raise ValueError(f'ENPIRE source drift: {relative}')
++    clips = json.loads((root / '.build/clip_manifest_v9.json').read_text())
++    if {c['name'] for c in clips} != NEW_CLIPS:
++        raise ValueError('Incomplete ENPIRE clip set')
++    for c in clips:
++        if abs(c['duration_seconds'] * c['presentation_speed'] - c['source_duration_seconds']) > .4:
++            raise ValueError(f'Full-sequence duration mismatch: {c["name"]}')
++        if c['start_seconds'] != 0 or c['full_decode'] != 'passed':
++            raise ValueError('ENPIRE clips must preserve complete source sequences')
++    return pins
++
++
++def verify_puzzles(root):
++    pins = json.loads((root / 'research/puzzle_v0_18_sources.json').read_text())
++    for relative, expected in pins['sha256'].items():
++        if hashlib.sha256((root / relative).read_bytes()).hexdigest() != expected:
++            raise ValueError(f'Puzzle source drift: {relative}')
++    clips = json.loads((root / '.build/clip_manifest_v10.json').read_text())
++    if {c['name'] for c in clips} != {'cube', 'claw'}:
++        raise ValueError('Incomplete puzzle clip set')
++    claw = next(c for c in clips if c['name'] == 'claw')
++    if abs(claw['duration_seconds'] - pins['claw_boundary_seconds']) > .05:
++        raise ValueError('Claw clip must end at the documented source scene boundary')
++    return pins
++
++
++def build_slides(root, page, text, rect, connector, figure, video_el, band, layouts, placements):
++    """Use the existing deck's typography, diagrams and player placement contract."""
++    assets = root / '.build/assets/v0_18'
++
++    def video(key, name, x, y, w, h, caption):
++        els, box = video_el(name, x, y, w, h, caption)
++        placements.setdefault(key, []).append((name, box))
++        return els
++
++    env = page('ENPIRE: Reset and Verification', 3)
++    env += [text('Automatic reset', 64, 151, 560, 36, 26, '#1d7d76', True),
++            text('Two-view verification', 656, 151, 560, 36, 26, '#1d7d76', True)]
++    env += video('enpire_env', 'enpire_reset_full', 64, 210, 560, 327, 'Pin reset · complete sequence · 8×')
++    env += video('enpire_env', 'enpire_verify_full', 656, 210, 560, 327, 'Zip-tie detector views · complete sequence · 1×')
++    env += band('Reset and verifier stay fixed during policy improvement.')
++
++    methods = page('ENPIRE: Two Ways to Improve Policy', 3)
++    for x, title, file, equation, detail in [
++        (64, 'Push-T: heuristic code', 'push_t.min.jpg', 'a = f(o)', 'Revise geometry and feedback logic'),
++        (656, 'Pin insertion: learned policy', 'pin_insertion_2.min.jpg', 'πθ(a | o)', 'Revise BC / RL recipes and train θ')]:
++        methods += [text(title, x, 151, 560, 38, 26, '#1d7d76', True),
++                    figure(assets / file, 'ENPIRE official task photograph: ' + title, x, 211, 560, 245, SITE),
++                    text(equation, x, 478, 560, 43, 31, '#1d7d76', True, align='center'),
++                    text(detail, x, 539, 560, 40, 23, align='center')]
++    methods += band('The Agent chooses and revises the algorithm; the policy executes the motion.')
++
++    fleet = page('ENPIRE: Parallel Physical Research', 3)
++    fleet += video('enpire_fleet_page', 'enpire_fleet', 64, 177, 560, 328, 'Official fleet recording · complete sequence · 8×')
++    original = next(e.copy() for e in layouts[17] if e.get('alt', '').startswith('Original ENPIRE pin'))
++    x, y, w, h = original['bbox']
++    scale = min(560 / w, 328 / h)
++    original['bbox'] = [656 + (560-w*scale)/2, 177 + (328-h*scale)/2, w*scale, h*scale]
++    fleet += [original, text('1 pair: >1.5 h', 100, 551, 490, 42, 30, '#646464', True, align='center'),
++              text('8 pairs: ~40 min', 690, 551, 490, 42, 30, '#1d7d76', True, align='center'),
++              text('Time to near-perfect pin performance · conditional retries allowed', 64, 615, 1152, 35, 21, '#646464', align='center')]
++
++    demos = page('ENPIRE: Learned Manipulation Demos', 3)
++    for x, name, label in [(64, 'enpire_pin', 'Pin insertion'), (460, 'enpire_tie', 'Tie zip-tie'), (856, 'enpire_cut', 'Cut zip-tie')]:
++        demos += [text(label, x, 155, 360, 37, 26, '#1d7d76', True)]
++        demos += video('enpire_demos', name, x, 222, 360, 312, 'Complete official sequence · 8×')
++    demos += band('Observe recovery across attempts; physical pass@8 includes conditional retries.')
++
++    transfer = page('ENPIRE: Experience Across Tasks', 3)
++    for i, (label, sub) in enumerate([('Pin autoresearch', 'Experiments + reflection'), ('Written recipes', 'Persistent experience'), ('GPU autoresearch', 'New task instructions')]):
++        x = 64 + 404*i
++        transfer += [rect(x, 158, 344, 100, '#eaf5f3' if i == 1 else '#f4f6f5', '#c6d9d6'),
++                     text(label, x+10, 177, 324, 32, 24, '#1d7d76', True, align='center'),
++                     text(sub, x+10, 216, 324, 28, 19, '#646464', align='center')]
++        if i < 2:
++            transfer += [connector(x+344, 208, x+404, 208)]
++    transfer += video('enpire_transfer', 'enpire_gpu', 64, 298, 650, 307, 'GPU insertion · complete official sequence · 8×')
++    transfer += [text('What carries over?', 764, 339, 444, 40, 28, '#1d7d76', True),
++                 text('A written summary\nof training experience', 764, 397, 444, 87, 27),
++                 text('No prior checkpoints or raw trajectories', 764, 511, 444, 71, 21, '#646464')]
++
++    rsi = page('Toward Recursive Self-Improvement', 3)
++    rsi += [text('RSI: can experience improve the improver?', 64, 151, 1152, 44, 29, '#1d7d76', True)]
++    for x, w, label, sub, accent in [(64, 260, 'Agent', 'Hypothesis + edits', True),
++                                    (438, 330, 'Policy / training code', 'New version', False),
++                                    (884, 332, 'Physical experiments', 'Fixed tests + logs', False)]:
++        rsi += [rect(x, 259, w, 107, '#2ba39b' if accent else '#f4f6f5', '#c6d9d6'),
++                text(label, x+10, 277, w-20, 34, 25, '#ffffff' if accent else '#1a1a1a', True, align='center'),
++                text(sub, x+10, 321, w-20, 28, 19, '#e2f3ef' if accent else '#646464', align='center')]
++    rsi += [connector(324, 312, 438, 312), connector(768, 312, 884, 312),
++            connector(1050, 366, 1050, 428, '#2ba39b', False), connector(1050, 428, 194, 428, '#2ba39b', False),
++            connector(194, 428, 194, 366, '#2ba39b'), text('ENPIRE: feedback improves the next policy', 362, 385, 622, 32, 22, '#1d7d76', align='center'),
++            text('Retained recipes / memory', 64, 481, 465, 42, 27, '#1d7d76', True),
++            connector(532, 504, 625, 504), text('Better future research?', 658, 481, 558, 44, 29, '#aa514a', True),
++            text('Open test: held-out tasks, matched budgets, no regression', 64, 575, 1152, 45, 27, '#646464', align='center')]
++    return {
++        'enpire_env': ('ENPIRE: Reset and Verification', env, ['S15', 'ENPIRE_SITE']),
++        'enpire_methods': ('ENPIRE: Two Ways to Improve Policy', methods, ['S15', 'ENPIRE_SITE', 'ENPIRE_CODE']),
++        'enpire_fleet_page': ('ENPIRE: Parallel Physical Research', fleet, ['S15', 'ENPIRE_SITE']),
++        'enpire_demos': ('ENPIRE: Learned Manipulation Demos', demos, ['S15', 'ENPIRE_SITE']),
++        'enpire_transfer': ('ENPIRE: Experience Across Tasks', transfer, ['ENPIRE_TRANSFER', 'ENPIRE_SITE']),
++        'rsi_summary': ('Toward Recursive Self-Improvement', rsi, ['ENPIRE_TRANSFER', 'ROBORSI', 'DGM']),
++    }
+--- baseline/.build/script_revised.md
++++ current/.build/script_revised.md
+@@ -1,8 +1,8 @@
+ # Agents for Robotics — 中文讲稿
+ 
+-讲者：Zimo Huang · 2026-09-16 · 本地修订 0.17（2026-09-16）
+-
+-英文 slides，中文讲解，专有名词保留英文。建议 51 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图。Control 看能力与接口证据；Data 只看 Awesome-Astra 收录的社区 demos；Improvement 细讲 ENPIRE。
++讲者：Zimo Huang · 2026-09-16 · 本地修订 0.18（2026-09-16）
++
++英文 slides，中文讲解，专有名词保留英文。建议 59 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图。Control 看能力与接口证据；Data 只看 Awesome-Astra 收录的社区 demos；Improvement 细讲 ENPIRE。
+ 
+ 
+ 本版以职责迁移串起 Control：从 generalist VLA / WAM 承担泛化，直接进入 Astra 的能力、接口与 Direct/Hybrid 证据。表格加粗各自比较组内的最优显示值，并列值同样加粗；human oracle、样本数和实验边界另行说明。RoboDojo/RoboLab使用原报告结果图，RoboLab仍是retained slots口径，资源表只标利用率最高或 token rate 最低，不代表统计显著性或统一效率冠军。
+@@ -103,9 +103,19 @@
+ 
+ 接口备注需要保守：截至2026年9月15日，GPT-Policy-Eval的公开仓库只提供README和媒体，没有action schema或控制实现；keyboard作者原帖也没有说明接口。因此不能仅从Franka外观或末端运动判断使用了IK goal，图中标注Control interface: not disclosed。没有公开接口细节，不等于没有底层controller。
+ 
+-这两段比单纯说“能力更强了”具体得多：输入可以是示范或语义目标，输出已经落到真实动作。但接口仍然影响结果。下一页就固定为同一个 Astra，看不同 action 输出的公开比较。
+-
+-## 09. One Model, Different Control Interfaces
++这两段比单纯说“能力更强了”具体得多：输入可以是示范或语义目标，输出已经落到真实动作。但接口仍然影响结果。下一页先看两个 simulation puzzle，再回到同一 Astra 的不同 action interface 比较。
++
++## 09. Robot Puzzle Demos in Simulation
++
++> 播放提示：左边是作者发布的完整 Rubik’s Cube 视频，未额外加速；右边是作者网站导出视频中的完整 Claw 段。两边分别播放，先看动作，再区分验证条件。
++
++前一页是真机 demo，这一页补两个更复杂的 simulation puzzle。左边 Yanjie Ze 展示 Astra 用 robot hands 操作 Rubik’s Cube。Awesome-Astra 将它描述为 zero-shot manipulation，但本次可核验的原帖只明确写了解魔方，没有公开完整 trial denominator 和 action API。这里不把 zero-shot 当成经过独立验证的评测结论，也不猜测它是直接 joint q、IK goal 或 atomic skill。
++
++右边 Unlocking the Claw 展示双臂如何绕开相互锁住的几何约束，把两部分分离、放到支架、松手和撤离。它从已有 object-space reference path 出发，实现局部路径修正、grasp 选择、full-robot IK 和 motion planning。起始时物体已经抓住，使用 ideal rigid grasps，记录的是 kinematic joint motion。
++
++所以这两个例子展示了很强的空间任务表现，但不是相同证据。尤其 Claw 验证的是特定路径的几何可行性，不是接触动力学、frictional force closure，也不是能从任意新初态在线解题的 policy。下面继续看同一个基础模型使用不同 action interface，表现会怎样改变。
++
++## 10. One Model, Different Control Interfaces
+ 
+ > 读图提示：先读三种输出，再看三段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。
+ 
+@@ -119,7 +129,7 @@
+ 
+ 另两个任务也提醒我们不要找统一赢家：Lift 三者都是 20/20；Can 则是 18/20、17/20、7/20。暂不讨论 latency，不等于忽略控制步数与反馈预算。下一页把完整三任务与不同 observation settings 放在一起，避免只挑 Square 这一行。
+ 
+-## 10. Astra Interfaces: Three Tasks
++## 11. Astra Interfaces: Three Tasks
+ 
+ > 读表提示：先比较中间三个 proprio 列，再看没有 proprio 和 privileged observation 两列；不要逐格念数字。
+ 
+@@ -129,7 +139,7 @@
+ 
+ Script upper 与 random lower 只是这个实验的控制项。所有格子都是20 episodes，但控制步数与查询预算不同，特别是 Square 的waypoint平均256.6 steps已超过ΔEEF上限。当前结果说明 interface、observations 和预算都值得研究，不构成某种表达的纯因果优势。
+ 
+-## 11. Astra: Introducing a Hybrid Architecture
++## 12. Astra: Introducing a Hybrid Architecture
+ 
+ > 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。
+ 
+@@ -143,7 +153,7 @@
+ 
+ 这组结果说明新能力并不自动让 learned prior 失去价值。但 prior、action interface 和 executed segment length 一起变化，不能归因为单一因素。接下来先看 RoboDojo 与 RoboLab 的两组整体结果，再用 RoboDojo 逐任务热力图检查差异；两组实验不能混池。
+ 
+-## 12. RoboDojo: Overall Results
++## 13. RoboDojo: Overall Results
+ 
+ > 读图提示：两张都是报告原始结果图，左边Score，右边success rate；可以点击放大。两图沿用同一Score排序，不要按右图行次误读为success-rate排名。
+ 
+@@ -155,7 +165,7 @@
+ 
+ 下一页换到RoboLab，排序会反过来。我们要看任务与prior的适配，而不是从一个汇总图宣布一种架构普遍最好。
+ 
+-## 13. RoboLab: Overall Results
++## 14. RoboLab: Overall Results
+ 
+ > 读图提示：这是报告原始整体结果图。先说明selected final slots的口径，再看Direct与Hybrid的位置；可点击放大。
+ 
+@@ -167,7 +177,7 @@
+ 
+ 随后回到RoboDojo的逐任务热力图，检查整体均值背后的任务差异。
+ 
+-## 14. RoboDojo: Task-Level Patterns
++## 15. RoboDojo: Task-Level Patterns
+ 
+ > 读图提示：先看右侧Hybrid与Direct两列，再横向比较对应任务。颜色越深Score越高；这是partial-completion Score，不是success rate。可点击放大原图。
+ 
+@@ -179,7 +189,7 @@
+ 
+ 最后核对视频容易掩盖的另一个问题：这些系统具体输出什么，模型多久才返回一次？
+ 
+-## 15. High Latency Limits Real-Time Control
++## 16. High Latency Limits Real-Time Control
+ 
+ > 读图提示：这一页只看latency。三张卡是同一个公开harness的平均model-query time，不是所有Astra部署的统一速度。
+ 
+@@ -191,7 +201,7 @@
+ 
+ 因此，下一页的第一个open problem是如何降低foundation model的latency，让更强的决策能力真正进入及时的交互闭环，而不只是在省略等待的视频中完成任务。
+ 
+-## 16. Control: Strengths and Open Gaps
++## 17. Control: Strengths and Open Gaps
+ 
+ > 读图提示：先看左边已经展示的能力，再看右边尚不可靠或尚未证实的能力。这不是三种独立神经模块，也不是把任务机械地分成 System 2 / 1 / 0。
+ 
+@@ -209,7 +219,7 @@
+ 
+ 接下来从“怎样生成下一步 action”，转向“Agent 可以帮助生成哪些 Data”。
+ 
+-## 17. Agent Creates Data
++## 18. Agent Creates Data
+ 
+ > 读图提示：三条分支是产物分类，不代表每个 demo 都完成了整条链。
+ 
+@@ -217,7 +227,7 @@
+ 
+ Agent 把工程工具组织起来，交出可检查的场景、模型和轨迹。顺着这三组看，我们要区分“生成了产物”和“产物已经适合训练”。
+ 
+-## 18. Astra: Scene Reconstruction
++## 19. Astra: Scene Reconstruction
+ 
+ > 播放与读图提示：先看左边 Office，再看右边 kitchen。右侧为作者 X 原帖的完整20.9秒展示。20秒指输入 footage，不是重建耗时。
+ 
+@@ -227,7 +237,7 @@
+ 
+ 这里从“复原外观”推进到了“表达哪些部分能动”。作者描述产物可输出 MJCF / URDF with joints，但仍在 adding simulation，thin / shiny objects 也有不足。因此这是一组可交互的候选资产，不是已经验证的 simulation dynamics 或 training data。公开仓库提供输出和 metadata，不是完整 pipeline。
+ 
+-## 19. Astra: Hand Assets
++## 20. Astra: Hand Assets
+ 
+ > 播放提示：先播放左侧 Jake，再播放右侧 Dmytro；两段都可以单独全屏。
+ 
+@@ -237,7 +247,7 @@
+ 
+ 从可编辑的资产，接下来进入随时间变化的行为和数据。
+ 
+-## 20. Astra: Replay and Data Rollout
++## 21. Astra: Replay and Data Rollout
+ 
+ > 播放提示：先看左侧 replay；再将右侧 DexGPT 单独全屏播放，原片20.3秒。其三栏是 source、imposed-hinge kinematic reference、passive-hinge contact physics，只有最后一栏检验接触驱动的物体运动。
+ 
+@@ -247,7 +257,7 @@
+ 
+ 不过它的 physical validation not met：task_success=false，maximum penetration 为5.623 mm，超过小于5 mm的要求。203个 logged states 来自一条轨迹，不是203次试验，也没有报告 downstream training 收益。这里最值得强调的区别就是：有数据，与有物理可信、对训练有用的数据，不是同一件事。
+ 
+-## 21. Data: From Demos to Useful Data
++## 22. Data: From Demos to Useful Data
+ 
+ > 读图提示：三种产物对应三类检查，最后汇到 training value。
+ 
+@@ -255,17 +265,17 @@
+ 
+ 最后还有共同的一问：如何利用这些产物帮助 downstream training？下一步要探索如何把候选资产、replay 和 rollout 转化为可用的训练数据，并验证它们的实际价值。第三章换到另一个位置：Agent 直接组织实验，修改下一版 policy，再用反馈验证改进。
+ 
+-## 22. Agent Improves Policy
+-
+-> 读图提示：从固定 Task + API 出发，沿 Agent → rollout → verifier / logs → Agent 走一圈。强调更新对象是后续 trial 的 policy。
+-
+-第三章的问题是：一次实验的反馈，怎样成为下次仍能使用的能力？这不同于 Control 里临时修正下一条 action。Agent 现在可以修改 policy code、training recipe，或训练 neural policy，让之后的 trial 使用新的版本。
+-
+-ENPIRE 把这个过程放在真实机器人上。Environment 的 action、安全、reset 和 verification 接口先在人的反馈下建立，进入 improvement 阶段后固定下来。
+-
+-这可以放在 robot self-improvement 的方向下讨论，但具体要看留下什么：是 policy weights、代码，还是 context？存在一个循环，并不自动意味着改进者自身获得了递归增强能力。下面先看实验环境怎样搭建。
+-
+-## 23. ENPIRE: Environment and Improvement
++## 23. Agent Improves Policy
++
++> 读图提示：沿 Task + API、Agent、真实 rollout、Verifier + logs 走一圈。先问改进留下了什么。
++
++第三章的问题是：一次实验的反馈，怎样成为下次仍能使用的能力？Control 关心这一步怎么动，这里关心下一版 policy 怎样变好。Agent 可以修改 policy code、training recipe，或训练 neural policy，让后续 trial 使用新的版本。
++
++ENPIRE 的切入点是，软件实验可以自动重跑，机器人实验却常常需要人收拾现场、判断成功、调代码。只要这些环节还依赖人工，autonomous research 就无法真正持续。
++
++因此它先建立可重复、可验证的环境，再让 Agent 提出假设、组织实验和保留有效修改。章末我们再把这件事接到 RSI，也就是本 talk 所说的 Recursive Self-Improvement：能否连“如何改进”的经验也留下来，让以后做研究更有效？
++
++## 24. ENPIRE: Environment and Improvement
+ 
+ > 读图提示：沿原图区分 human-assisted environment setup 与 autonomous improvement；不要把两阶段压成无人参与的一步。
+ 
+@@ -277,19 +287,29 @@
+ 
+ 多个 agent–robot pairs 还可以异步试验不同想法，并通过代码协作保留有效修改。它是否真的更快、是否更省，要留给实验回答。先把支持反复试验的 reset 和 verification 看具体。
+ 
+-## 24. ENPIRE: Reset and Verification
+-
+-> 播放提示：依次播放 pin reset 和 zip-tie verification，两段来自不同任务，不是同一个 rollout 的同步镜头。
+-
+-Automatic reset 让一次机器人实验变成可重复过程。如果每次失败都需要人恢复现场，Agent 的自主实验就在这里停住。
+-
+-Pin reset 展示怎样准备下一次 trial。ENPIRE 的部分任务从最困难的 subphase 开始，这是把研究聚焦到关键操作，但不能改述成任意初始状态下的完整任务能力。Reset 的状态分布也影响实验是否可比。
+-
+-Zip-tie 例子展示如何检查结果。论文讨论结合多个 camera view 降低视觉 verifier 的 false positives，其他任务还可结合 proprioception 或 torque 信号。
+-
+-所以 safety、reset 和 verification 是不同职责：安全不等于做对，能够 reset 也不证明 success test 可靠。把这些条件建立好后，我们终于可以看 Agent 实际改了哪些东西。
+-
+-## 25. ENPIRE: What Did the Agent Change?
++## 25. ENPIRE: Reset and Verification
++
++> 播放提示：左边为完整 pin reset，压缩到 8×；右边为完整 zip-tie detector 视频，1×。两段来自不同任务，不是同一 rollout 的同步画面。
++
++Automatic reset 解决下一次试验从哪里开始。Agent 组合 SAM3 的物体检测、pose tracking、cuRobo motion planning 和 gripper torque 检查，把现场恢复到指定起点。部分任务直接从最难的 subphase 开始，不能解释成从任意初态解决完整任务。
++
++Verification 解决结果到底有没有变好。右边展示 top/right 两个视角的检测框；完整判定还包括 segmentation 和几何测试，避免一个视角看起来穿过、实际上没有穿过的 false positive。Pin insertion 则结合视觉对齐、插入深度与力矩信号。
++
++环境构造仍需要 human feedback，也需要成功和失败样例。之后进入 policy improvement，reset、verifier、安全约束和评测规则固定，不能为了得高分而修改成功定义。有了稳定的实验接口，才谈得上自动改进。
++
++## 26. ENPIRE: Two Ways to Improve Policy
++
++> 读图提示：两张官网原图分别对应 Push-T 和 Pin insertion。对比下方 f(o) 与 πθ(a | o)，不要把 coding Agent 和部署 policy 混成同一个模型。
++
++ENPIRE 没有规定必须使用某一个 RL 算法。左边 Push-T 的改进对象可以直接是 heuristic code：根据 observation 算接触位置、推的方向和反馈修正，写成可执行函数 f。
++
++右边 Pin insertion 则会训练 neural policy。Agent 可以选择 BC、iterative BC / data aggregation、offline RL、online RL，或带 BC regularization 的组合。它修改学习目标、数据混合和训练程序，再用实机结果判断这一版值不值得保留。
++
++训练栈把 robot deployment、learner 和 actor 分开。Rollout buffer 保存 observation、action 来源和视频；online transitions 与 demonstrations 分开进入 buffer，再按训练配方混合。这里更新的 θ 是机器人 policy 的参数，不是 coding foundation model 的权重。
++
++原论文的 robot policy 以 30 Hz 运行，底层 joint controller 为 100 Hz；这也不是 coding Agent 的推理频率。Agent 在更慢的研究循环中组织改进，训练出的 policy 在执行循环中产生动作。下面看它实际提出过什么修改。
++
++## 27. ENPIRE: What Did the Agent Change?
+ 
+ > 读图提示：放大 Figure 12。先读 idea tree 的实心与空心节点，再跟随虚线读下面的 best-score curve；不要逐个念所有节点。
+ 
+@@ -299,21 +319,9 @@
+ 
+ 这里的重点不是记住三个数，而是看见修改对象：Agent 可以改变学习目标和训练程序，也可以改变执行补偿，而不是只负责启动训练。没有收益的分支同样是这段探索过程的一部分。
+ 
+-这不是三项独立随机消融，不能把这些增量当成在所有条件下都能复现的平均因果效果。下图也不是每个当前 policy 的性能，而是随 research wall-clock 推进的 team-average best score。接下来用正式 learning curve 和 scaling 实验看总体表现。
+-
+-## 26. ENPIRE: Pin Insertion Curve
+-
+-> 读图提示：先看随 research time 变化的性能，再看不同 fleet size；横轴不是 action inference latency。
+-
+-这组结果回答两个问题：真实反馈能否支持 policy improvement，以及更多并行实验能否更早找到高性能策略。
+-
+-Pin insertion 中，从一个 agent–robot pair 扩到八个，达到接近完美 success rate 的 research time，从超过一个半小时缩短到大约四十分钟。这里研究的是发现好策略需要多久，不是机器人执行一次动作有多快。
+-
+-Success rate 的口径也必须保留。每个 rollout 允许最多八次 conditional retries，后续尝试可以利用前面失败的信息。因此它包含 precision 和 recovery，不是 one-shot insertion precision，也不是相互独立的 best-of-eight；不能套独立 Bernoulli 假设反推单次成功率。
+-
+-在这个固定环境和 protocol 内，实验支持策略随研究推进改善，也支持并行资源带来更短 time-to-target。更快是否更省，最后再看资源图。在那之前，先补两页正式结果：两个真实任务的模型对照，以及 RoboCasa 中 tools、VLA 与 autoresearch 的对照。
+-
+-## 27. ENPIRE: Two Physical Tasks
++这不是三项独立随机消融，不能把这些增量当成在所有条件下都能复现的平均因果效果。下图也不是每个当前 policy 的性能，而是随 research wall-clock 推进的 team-average best score。接下来用正式的模型对照和 fleet scaling 看总体表现。
++
++## 28. ENPIRE: Two Physical Tasks
+ 
+ > 读图提示：左侧保留完整Figure 3和原曲线，右侧列官网实际绘图数据的终点均值。两列不是同一种分数。
+ 
+@@ -323,9 +331,21 @@
+ 
+ 官网每个configuration提供四条plotted traces及means，但没有充分披露独立seed数量或专门held-out test set的大小。我们没有把四条线叫四次独立复现。Physical rollout仍允许最多八次conditional retries，因此也不是pass@1 precision。
+ 
+-这些结果回答在固定实机环境中能否改进策略。下一页换到RoboCasa，观察autoresearch如何改善工具和VLA的组合，注意评测协议也会改变。
+-
+-## 28. ENPIRE: Autoresearch in RoboCasa
++这些结果回答在固定实机环境中能否改进策略。下一页先看扩大并行实验，能否更早找到高性能策略。
++
++## 29. ENPIRE: Parallel Physical Research
++
++> 播放提示：左边是完整的官方 pin fleet 视频，8×。右边原曲线保留 axes 和 legend，可以点击放大。
++
++每个 station 有自己的 robot、compute 和 coding Agent。不同 Agent 异步探索训练思路，通过 Git 分支共享代码、读取其他分支的结果，把有用的修改继续试下去。这不仅是把一个固定策略复制到八台机器上评估，而是并行寻找更好的策略。
++
++Pin insertion 从一个 agent–robot pair 扩到八个，达到接近完美表现的 research time，从超过一个半小时缩短到大约四十分钟。横轴是研究时间，不是 action inference latency。
++
++这里的物理 rollout 允许最多八次 conditional retries，后一次尝试能利用前面失败的信息。因此不是 one-shot precision，也不是相互独立的 best-of-eight，不能由此反推 pass@1。Fleet 视频展示并行执行的形态，不给视频里的动作自行统计新成功率。
++
++这组证据支持更多资源缩短 time-to-target，但更快不等于更省。后面会回到成本，现在先看同一套 autoresearch 思路在 RoboCasa 中怎样使用。
++
++## 30. ENPIRE: Autoresearch in RoboCasa
+ 
+ > 读图提示：上方保留原Figure 6，包括task示例和三个aggregate bars。原图未给精确数字标签，不从柱高补造百分比。
+ 
+@@ -337,19 +357,27 @@
+ 
+ 图里八张task图片是示例，不等于已披露八行数表，也不能据此乘出320 pooled trials。我们能陈述的结果是原图的相对表现，aggregate pooling的细节和精确百分比没有充分公布。
+ 
+-## 29. Astra: Training and Context
+-
+-> 播放提示：左边四足完整 14 秒，点击原生 fullscreen 可以读九宫格状态；不要裁掉 FULL EVAL NOT MET。右边是 8× 的 physical ICL 展示，两者分别播放。
+-
+-左边作者报告 Astra 参与 Fusion360 / STL 设计、simulation 和 RL 迭代。视频是九种行为的开发预览，不是九种行为全部通过验证：原片明确保留 FULL EVAL NOT MET，Wave 和 Sit 还只展示 partial first cycles，并标注四个 separate experts。实机部署仍属于后续计划。
+-
+-它展示的方向是 Agent 开始覆盖设计、环境、训练和修错的一整段工程工作。开发过程来自作者描述，视频本身是训练产物预览，不是完整过程记录。
+-
+-右边是 Astra 的 physical in-context learning。人给出示范，Agent 利用 context，通过已有 motion-planning tools 产生行为。作者报告 first-pass success，但没有完整试验分母；也没有由此证明模型权重更新或技能已持久化。
+-
+-把它们放在一起，是为了区分 training、code revision 和 in-context adaptation。它们都可能让行为变化，但不是同一种 post-training。ENPIRE 的正式结果仍按原论文的 policy-improvement protocol 理解，不借社区 demo 增加它的成功率。
+-
+-## 30. ENPIRE: Cost and Chapter Summary
++## 31. ENPIRE: Learned Manipulation Demos
++
++> 播放提示：依次看 Pin insertion、Tie zip-tie、Cut zip-tie，均为官网下载原文件完整内容，统一转为 8×。可单独全屏观察接触与恢复，不必三段同时解说。
++
++这页只看 ENPIRE 自己的任务 demo，不再放 CAD + RL 开发预览或另一个 physical ICL 项目。关注点不只是最后有没有做成，也包括接触失败后如何继续尝试、调整，再走向完成。
++
++官网把这些任务的结果描述为高 pass@8，其中 retry 不是八个互相独立的随机样本，而是同一长程 rollout 内利用失败信息恢复。这里没有把片段裁到只剩成功动作，也不从几个展示视频额外推算成功率。
++
++这些是作者展示的已得到的行为。它们不能单独证明训练算法更强，也不自动证明跨物体、跨任务的泛化。更接近自进化的问题是：在一个任务里学会如何做实验，能不能帮助下一个任务？
++
++## 32. ENPIRE: Experience Across Tasks
++
++> 读图提示：沿 Pin autoresearch、Written recipes、GPU autoresearch 看传递的是什么。下方 GPU insertion 为官网完整原片转 8×，它展示目标任务，不是迁移消融视频。
++
++ENPIRE §3.4 给了一个很有意思的桥梁。完成 Pin insertion 的 autoresearch 后，Agent 被要求总结和反思有效的 training recipes，再把这份经验加入 GPU insertion 新任务的 instructions。作者报告这些经验可以转移到相似的新 dexterous task。
++
++Appendix B.1 进一步说明，传过去的是明确的 Markdown summary，旧任务的 raw trajectories、hidden logs 和 checkpoints 都没有直接带过去。所以这不是把旧 policy 换个名字部署，也不是 foundation model 的 weights 更新，而是把研究经验放进下次能够读到的外部记忆。
++
++这已经比“只让下一版 policy 更好”更接近 self-improving Agent：过去的实验能影响以后怎样提出和选择方法。不过，当前证据还不能说明改进者的能力会不断增强，更没有证明递归加速。要支持更强的 RSI 结论，还需要 held-out tasks 上有无记忆的比较、相同预算以及重复验证。
++
++## 33. ENPIRE: Cost of Physical Research
+ 
+ > 读图提示：不逐项介绍所有指标，重点看 time-to-success 与 token-to-success 为什么可能朝相反方向变化。
+ 
+@@ -361,11 +389,21 @@
+ 
+ 如果最稀缺的是研究周期，增加资源可能值得；如果预算更紧，最合适的配置就不一样。图中的实测曲线与 linear projection 也要区分，不能都当成实际运行结果。
+ 
+-本章可以收束为：在可重复、可验证的真实实验接口内，Agent 能把 feedback 转成后续 policy 或 training code 的改进；扩大并行度还可以缩短研究周期。Human-assisted setup、conditional retries、verifier 的可靠性与成本，都是这项结果成立的条件。
+-
+-这是一种具体的 robot self-improvement 实践，不等于已证明开放世界的 recursive self-improvement。最后把三个角色的产物与验证要求放回同一张图。
+-
+-## 31. Takeaways
++因此，把经验保存下来并减少重复探索，可能不仅是能力问题，也是成本问题。最后用一张框图把 ENPIRE 已经做到的部分和 RSI 的下一步分开。
++
++## 34. Toward Recursive Self-Improvement
++
++> 读图提示：先看上面已运行的 policy improvement 循环，再看下方从 retained recipes / memory 指向 Better future research 的问号。问号不能省掉。
++
++本章已经看到，Agent 能把实机反馈转成下一版 policy 或训练程序，在固定接口内持续搜索。ENPIRE 还把一个任务的经验整理成 recipes，影响下一项研究。两部分合在一起，确实开始接近 self-improving Agent 的方向。
++
++这里把 RSI 展开为 Recursive Self-Improvement，强调的不只是产物变好，而是改进后的系统是否更擅长做下一轮改进。改进对象不一定是 LLM weights，也可能是 memory、tools、workflow 或研究代码。不能因为基础模型 frozen 就排除所有 RSI，也不能因为有循环就宣布 RSI 已成立。
++
++最近的 RoboRSI 报告也讨论把交互沉淀成可复用 skill 和 policy；更早的 Darwin Gödel Machine 则在 coding 任务中修改 Agent 自身代码。它们帮助说明这个概念，但这里不展开另一套结果，更不把 coding benchmark 当成机器人实证。
++
++我想留下的 open question 是：积累的经验，能否在 held-out tasks 和相同研究预算下，让 Agent 更快找到更好的策略，同时不损害旧能力？ENPIRE 提供了可运行的物理反馈循环，也给出经验复用的起点；开放世界、持续可验证的 recursive improvement 仍需要下一步实验。
++
++## 35. Takeaways
+ 
+ > 读图提示：从 Agent 分别沿三条支路看 Role、Artifact 和 Evidence。三章是不同工作位置，不是一条已打通的端到端流水线。
+ 
+@@ -373,6 +411,7 @@
+ 
+ 更强模型让这些分工值得重测，但新 demo 不能替代相应的验证。我们真正要问的是：在自己的机器人工作中，哪些信息、判断和执行责任，现在可以重新分配给 Agent？
+ 
+-## 32. Thank You
++## 36. Thank You
+ 
+ 谢谢大家。欢迎讨论，也欢迎结合你们自己的机器人系统，说说最想让 Agent 接手哪一部分，以及需要什么实验才能放心交给它。
++
+--- baseline/.build/validate_standalone.py
++++ current/.build/validate_standalone.py
+@@ -26,29 +26,29 @@
+ assert text.startswith('<!DOCTYPE html>') and p.charset
+ assert len(p.ids)==len(set(p.ids))
+ assert not p.external,p.external
+-deck=json.loads(p.scripts['deck-data']);N=32;V=20
++deck=json.loads(p.scripts['deck-data']);N=36;V=25
+ assert len(deck['slides'])==N and len(deck['media'])==V
+ assert [r['number'] for r in deck['slides']]==list(range(1,N+1))
+-expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 16, 'idea_tree', 17, 'enpire_results', 'enpire_robocasa', 'improvement_demos', 18, 'end', 'thanks']
++expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'puzzle_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary', 'improve', 15, 'enpire_env', 'enpire_methods', 'idea_tree', 'enpire_results', 'enpire_fleet_page', 'enpire_robocasa', 'enpire_demos', 'enpire_transfer', 18, 'rsi_summary', 'end', 'thanks']
+ assert [(r['old_slide'] if r['old_slide'] is not None else r['new_slide_key']) for r in deck['slides']]==expected_keys
+ opening_slides=[r['number'] for r in deck['slides'] if r['chapter_opening']]
+-assert opening_slides==[4,17,22]
++assert opening_slides==[4,18,23]
+ assert [r['diagram_key'] for r in deck['slides'] if r['diagram_key']]==['control','world','improve']
+ for number in opening_slides:
+  chapter=deck['slides'][number-1]
+  assert next(r['number'] for r in deck['slides'] if r['group']==chapter['group'])==number
+  assert 'Chapter overview' in chapter['html']
+-assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*13+['2 · Agent Creates Data']*5+['3 · Agent Improves Policy']*9+['Closing']*2
+-expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Astra: Scene Reconstruction', 'Astra: Hand Assets', 'Astra: Replay and Data Rollout', 'Data: From Demos to Useful Data', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Pin Insertion Curve', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Autoresearch in RoboCasa', 'Astra: Training and Context', 'ENPIRE: Cost and Chapter Summary', 'Takeaways', 'Thank You']
++assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*14+['2 · Agent Creates Data']*5+['3 · Agent Improves Policy']*12+['Closing']*2
++expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'Robot Puzzle Demos in Simulation', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Astra: Scene Reconstruction', 'Astra: Hand Assets', 'Astra: Replay and Data Rollout', 'Data: From Demos to Useful Data', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: Two Ways to Improve Policy', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Parallel Physical Research', 'ENPIRE: Autoresearch in RoboCasa', 'ENPIRE: Learned Manipulation Demos', 'ENPIRE: Experience Across Tasks', 'ENPIRE: Cost of Physical Research', 'Toward Recursive Self-Improvement', 'Takeaways', 'Thank You']
+ assert [r['title'] for r in deck['slides']]==expected_titles
+ assert all(len(t)<=40 for t in expected_titles)
+ def slide(n):return deck['slides'][n-1]
+ # Each promised source remains scoped to its role: architecture, evidence, or community demo.
+ assert slide(5)['ids']==['HIROBOT','HELIX','HELIX02']
+ assert len(re.findall(r'class="art original"',slide(5)['html']))==3
+-assert slide(11)['ids']==['ANON']
+-for n in [22, 23, 24, 25, 26]:assert slide(n)['ids']==['S15']
+-assert slide(30)['ids']==['S15','ENPIRE_SITE']
++assert slide(12)['ids']==['ANON']
++for n in [23,24,27]:assert slide(n)['ids']==['S15']
++assert slide(33)['ids']==['S15','ENPIRE_SITE']
+ assert all(t in slide(4)['html'] for t in ['q / EEF Pose','Agent Tools','IK / motion planner','VLA / WAM / Learned policy','servo / controller'])
+ assert all(t in slide(7)['html'] for t in ['19 / 20','2 / 20','Astra: Stronger Real-Robot Performance'])
+ assert '20 calls/run;' not in slide(7)['html'] and 'No independent VLA.' not in slide(7)['html']
+@@ -56,25 +56,25 @@
+ assert 'Selected demonstrations, not success-rate estimates.' not in slide(8)['html']
+ assert slide(8)['html'].count('Control interface: not disclosed')==2
+ assert '不能仅从Franka外观' in slide(8)['script']
+-assert all(t in slide(9)['html'] for t in ['1 / 20','18 / 20','16 / 20','200 steps','500 steps'])
+-assert all(t in slide(9)['script'] for t in ['256.6','不是 joint q','proprio','没有重跑'])
+-assert all(t in slide(11)['script'] for t in ['50×14','1–15','1–5','25 Hz','14D','OR','FK trajectory','内部网络'])
+-assert all(t in slide(11)['html'] for t in ['13 / 50','24 / 50'])
+-assert 'simulation' in slide(11)['html'] and 'omit LLM waiting' in slide(11)['footer']
+-assert 'control-time playback' in slide(11)['script'] and '不能用来比较端到端 latency' in slide(11)['script']
+-assert all(t in slide(25)['script'] for t in ['I37','10.8','I66','I76','不是三项独立'])
+-assert 'one-shot' in slide(26)['script'] and 'tokens' in slide(30)['script']
+-assert all(t in slide(29)['footer'] for t in ['4 experts','FULL EVAL NOT MET','8×'])
+-assert 'Not a validated' in slide(19)['html']
++assert all(t in slide(10)['html'] for t in ['1 / 20','18 / 20','16 / 20','200 steps','500 steps'])
++assert all(t in slide(10)['script'] for t in ['256.6','不是 joint q','proprio','没有重跑'])
++assert all(t in slide(12)['script'] for t in ['50×14','1–15','1–5','25 Hz','14D','OR','FK trajectory','内部网络'])
++assert all(t in slide(12)['html'] for t in ['13 / 50','24 / 50'])
++assert 'simulation' in slide(12)['html'] and 'omit LLM waiting' in slide(12)['footer']
++assert 'control-time playback' in slide(12)['script'] and '不能用来比较端到端 latency' in slide(12)['script']
++assert all(t in slide(27)['script'] for t in ['I37','10.8','I66','I76','不是三项独立'])
++assert 'one-shot' in slide(29)['script'] and 'tokens' in slide(33)['script']
++assert '8×' in slide(31)['footer'] and 'ENPIRE' in slide(31)['title']
++assert 'Not a validated' in slide(20)['html']
+ # v0.10: shared-start interface layout, capability diagnosis and sparse closing.
+-assert all(t in slide(16)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Still difficult','Open problems','Lower foundation-model latency','Better interfaces / action primitives'])
+-assert all(t in slide(16)['script'] for t in ['不是三种独立','is not fundamental','因果对照仍未披露'])
+-assert slide(16)['ids'][0]=='HIROBOT_DISCUSSION'
+-assert len(re.sub('<[^>]+>',' ',slide(31)['html']).split())<65
+-assert all(t in slide(31)['html'] for t in ['Takeaways','Reliable execution','Physics + training value','Held-out gain + cost'])
+-assert '不是一条已打通' in slide(31)['script']
+-assert 'Thank you' in slide(32)['html'] and 'Questions &amp; discussion' in slide(32)['html']
+-assert len(re.sub('<[^>]+>',' ',slide(32)['html']).split())<25
++assert all(t in slide(17)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Still difficult','Open problems','Lower foundation-model latency','Better interfaces / action primitives'])
++assert all(t in slide(17)['script'] for t in ['不是三种独立','is not fundamental','因果对照仍未披露'])
++assert slide(17)['ids'][0]=='HIROBOT_DISCUSSION'
++assert len(re.sub('<[^>]+>',' ',slide(35)['html']).split())<65
++assert all(t in slide(35)['html'] for t in ['Takeaways','Reliable execution','Physics + training value','Held-out gain + cost'])
++assert '不是一条已打通' in slide(35)['script']
++assert 'Thank you' in slide(36)['html'] and 'Questions &amp; discussion' in slide(36)['html']
++assert len(re.sub('<[^>]+>',' ',slide(36)['html']).split())<25
+ # v0.12: Hi Robot results are replaced, not the original architecture figures.
+ assert slide(6)['new_slide_key']=='responsibility_shift'
+ assert 'data-table-cell' not in slide(6)['html']
+@@ -85,72 +85,70 @@
+ assert all(t in slide(6)['script'] for t in ['设计目标','不是某个已有模型的能力保证','部分职责迁移','因果对照尚未披露'])
+ assert 'functional synthesis' in slide(6)['footer']
+ assert '不是整层搬走' in slide(6)['script'] and '简称' in slide(6)['script']
+-assert all(t in slide(16)['script'] for t in ['第6页','generalist VLA / WAM','motor competence'])
++assert all(t in slide(17)['script'] for t in ['第6页','generalist VLA / WAM','motor competence'])
+ 
+ # v0.11: distinguish inference time, local control and candidate-data validity.
+ from evidence_v011 import load_evidence
+ new_evidence=load_evidence(ROOT)
+-assert slide(15)['ids']==['ASIM']
++assert slide(16)['ids']==['ASIM']
+ for term in ['30.75 s','26.08 s','41.98 s','414 queries','241 queries','76 queries','Tens of seconds per query make rapid feedback difficult.']:
+- assert term in slide(15)['html'],term
+-assert all(term in slide(15)['script'] for term in ['180回合','731次','不是完整闭环latency','Controller Hz不等于Agent inference Hz'])
+-assert '12-joint chunks' not in slide(15)['html']
+-assert slide(16)['html'].count('class="art capability-icon"')==4
+-assert 'Model + interface + feedback budget' not in slide(16)['html']
+-assert 'Evidence-limited boundaries' not in slide(16)['html']
+-assert all(term in slide(16)['script'] for term in ['open problems','动作段之间衔接更流畅','contact-rich'])
+-assert slide(17)['ids']==['AWESOME','DEXGPT']
+-assert all(term in slide(17)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','Validate physics'])
+-assert 'Not a validated' in slide(19)['html'] and '190个STEP' in slide(19)['script']
+-assert slide(21)['ids']==['AWESOME','DEXGPT']
+-assert all(term in slide(21)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','How can we use it for downstream training?'])
+-assert all(term in slide(20)['script'] for term in ['5.623 mm','203个','不是203次','downstream training'])
++ assert term in slide(16)['html'],term
++assert all(term in slide(16)['script'] for term in ['180回合','731次','不是完整闭环latency','Controller Hz不等于Agent inference Hz'])
++assert '12-joint chunks' not in slide(16)['html']
++assert slide(17)['html'].count('class="art capability-icon"')==4
++assert 'Model + interface + feedback budget' not in slide(17)['html']
++assert 'Evidence-limited boundaries' not in slide(17)['html']
++assert all(term in slide(17)['script'] for term in ['open problems','动作段之间衔接更流畅','contact-rich'])
++assert slide(18)['ids']==['AWESOME','DEXGPT']
++assert all(term in slide(18)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','Validate physics'])
++assert 'Not a validated' in slide(20)['html'] and '190个STEP' in slide(20)['script']
++assert slide(22)['ids']==['AWESOME','DEXGPT']
++assert all(term in slide(22)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','How can we use it for downstream training?'])
++assert all(term in slide(21)['script'] for term in ['5.623 mm','203个','不是203次','downstream training'])
+ assert 'Beyond' not in ' '.join(r['title'] for r in deck['slides'])
+-# v0.17 pairs all six cases and adds the author's original kitchen video.
+-baseline=json.loads((B/'revision_0_17_baseline/.build/standalone_build_audit.json').read_text())
+-expected_retained={r['name']:r['sha256'] for r in baseline['media']}
+-assert expected_retained=={r['name']:r['sha256'] for r in deck['media'] if r['name']!='kitchen'}
++# v0.18 retains every pre-existing Control/Data clip byte-for-byte.
++baseline=json.loads((B/'revision_0_18_baseline/.build/standalone_build_audit.json').read_text())
++expected_retained={r['name']:r['sha256'] for r in baseline['media'] if r['slide']<=21}
++assert expected_retained=={r['name']:r['sha256'] for r in deck['media'] if r['name'] in expected_retained}
++from enpire_v018 import verify_enpire, verify_puzzles
++verify_enpire(ROOT);verify_puzzles(ROOT)
+ from data_demos_v015 import verify_data_demos, verify_data_extra, verify_kitchen_video
+ verify_data_demos(ROOT);verify_data_extra(ROOT);verify_kitchen_video(ROOT)
+ assert all('S13' not in r['ids'] for r in deck['slides'])
+ assert all(term not in deck['scriptMarkdown'] for term in ['Agentic Real2Sim','DROID-100','48 accepted'])
+-assert [r['new_slide_key'] or r['old_slide'] for r in deck['slides'][16:21]]==['world','data_scenes','data_hands','data_motion','world_summary']
+-assert 'physical validation not met' in slide(20)['html']
+-assert slide(18)['ids']==['OFFICE','KITCHEN_X','KITCHEN_LINKEDIN','KITCHEN_PROJECT','AWESOME']
+-assert slide(19)['ids']==['S24','ROPE','AWESOME']
+-assert all(t in slide(18)['html'] for t in ['20 s monocular RGB','articulated assets'])
+-assert all(t in slide(18)['script'] for t in ['adding simulation','human-in-the-loop','20秒不是建模耗时'])
+-assert 'Source image' not in slide(18)['html']
+-assert 'illustrative cable deformation' in slide(19)['html']
+-assert '不是9月12日的后续版本' in slide(19)['script']
++assert [r['new_slide_key'] or r['old_slide'] for r in deck['slides'][17:22]]==['world','data_scenes','data_hands','data_motion','world_summary']
++assert 'physical validation not met' in slide(21)['html']
++assert slide(19)['ids']==['OFFICE','KITCHEN_X','KITCHEN_LINKEDIN','KITCHEN_PROJECT','AWESOME']
++assert slide(20)['ids']==['S24','ROPE','AWESOME']
++assert all(t in slide(19)['html'] for t in ['20 s monocular RGB','articulated assets'])
++assert all(t in slide(19)['script'] for t in ['adding simulation','human-in-the-loop','20秒不是建模耗时'])
++assert 'Source image' not in slide(19)['html']
++assert 'illustrative cable deformation' in slide(20)['html']
++assert '不是9月12日的后续版本' in slide(20)['script']
+ from report_figures_v013 import load_report_figures
+ captures=load_report_figures(ROOT)
+ new_image_keys={name:hashlib.sha256(file.read_bytes()).hexdigest() for name,file in captures.items()}
+-old_text=(B/'revision_0_17_baseline/output/Agents_for_Robotics_Self_Contained.html').read_text()
+-old_deck=json.loads(re.search(r'<script type="application/json" id="deck-data">(.*?)</script>',old_text,re.S)[1])
+-expected_assets=(set(old_deck['assets'])-{hashlib.sha256((B/'assets/v0_16/kitchen.jpg').read_bytes()).hexdigest()})|{hashlib.sha256((B/'assets/v0_17/kitchen.jpg').read_bytes()).hexdigest()}
+-assert set(deck['assets'])==expected_assets
+-for n,names in {12:['panel-score-ranking.png','panel-sr-ranking.png'],13:['robolab-success-ranking.png'],14:['task-score-table-complete.png']}.items():
++for n,names in {13:['panel-score-ranking.png','panel-sr-ranking.png'],14:['robolab-success-ranking.png'],15:['task-score-table-complete.png']}.items():
+  assert 'data-table-cell' not in slide(n)['html']
+  assert slide(n)['ids']==['ANON']
+  for name in names:assert new_image_keys[name] in slide(n)['html']
+-assert all(t in slide(12)['html'] for t in ['24/50','13/50'])
+-assert all(t in slide(12)['script'] for t in ['48个scored episodes','分母都保持50','执行段长'])
+-assert all(t in slide(13)['script'] for t in ['authorized retries','180提高到500','June cohort','49/50','46/50'])
+-assert all(t in slide(14)['script'] for t in ['不是success rate','64与12','十个任务','七种方法'])
++assert all(t in slide(13)['html'] for t in ['24/50','13/50'])
++assert all(t in slide(13)['script'] for t in ['48个scored episodes','分母都保持50','执行段长'])
++assert all(t in slide(14)['script'] for t in ['authorized retries','180提高到500','June cohort','49/50','46/50'])
++assert all(t in slide(15)['script'] for t in ['不是success rate','64与12','十个任务','七种方法'])
+ assert slide(7)['new_slide_key']=='astra_direct'
+-for r in deck['slides'][:16]:
++for r in deck['slides'][:17]:
+  assert 'S09' not in r['ids'] and 'RPENT' not in r['ids']
+  assert 'Claude' not in r['script'] and 'RPent' not in r['script']
+ 
+ 
+-assert all(term not in slide(10)['html'] for term in ['Square is sensitive','Unequal budgets:'])
+-assert 'highlighted Waypoint proprio column' in slide(10)['footer']
+-assert all(term in slide(10)['script'] for term in ['不表示它在每个任务都最好','18/20','17/20','预算不同'])
+-assert 'Public baselines are reweighted references, not paired reruns.' not in slide(12)['html']
+-assert 'Selected final slots + retries / historical baselines; not fresh paired trials.' not in slide(13)['html']
+-assert '重算了' in slide(12)['script'] and 'retained final slots' in slide(13)['script']
+-assert 'Square · same model / proprio setting · unequal control and query budgets.' not in slide(9)['html']
++assert all(term not in slide(11)['html'] for term in ['Square is sensitive','Unequal budgets:'])
++assert 'highlighted Waypoint proprio column' in slide(11)['footer']
++assert all(term in slide(11)['script'] for term in ['不表示它在每个任务都最好','18/20','17/20','预算不同'])
++assert 'Public baselines are reweighted references, not paired reruns.' not in slide(13)['html']
++assert 'Selected final slots + retries / historical baselines; not fresh paired trials.' not in slide(14)['html']
++assert '重算了' in slide(13)['script'] and 'retained final slots' in slide(14)['script']
++assert 'Square · same model / proprio setting · unequal control and query budgets.' not in slide(10)['html']
+ from code_video_v014 import verify_code_video
+ verify_code_video(ROOT)
+ 
+@@ -166,15 +164,15 @@
+  assert values[start:start+len(expected)]==expected,(number,values[start:],expected)
+ table_cells(7,['Completions','Fable 5','Fable 5.1','GPT-6 Astra'],
+  [[t]+[f"{r['successes']} / {r['n']}" for r in results['robocurve'] if r['task']==t] for t in ['Block into bowl','Puzzle into groove']])
+-table_cells(10,['Task','Script\nupper','Random\nlower','ΔEEF\nproprio','Waypoint\nnone','Waypoint\nproprio','Code\nproprio','Code\nprivileged'],results['asim'])
+-table_cells(27,['Coding agent','Push-T @ 8 h\nNormalized score','Pin @ 4 h\nSuccess rate'],
++table_cells(11,['Task','Script\nupper','Random\nlower','ΔEEF\nproprio','Waypoint\nnone','Waypoint\nproprio','Code\nproprio','Code\nprivileged'],results['asim'])
++table_cells(28,['Coding agent','Push-T @ 8 h\nNormalized score','Pin @ 4 h\nSuccess rate'],
+  [['Codex','0.938','95.5%'],['Claude','0.750','97.5%'],['Kimi','0.625','79.0%']])
+-table_cells(28,['Method','What changes','Reported evidence'],
++table_cells(30,['Method','What changes','Reported evidence'],
+  [['GR00T N1.5','End-to-end VLA','Baseline'],['CaP-X*','Zero-shot agentic tool use','No autoresearch'],['ENPIRE','Tool / VLA code + feedback','Highest aggregate bar']])
+-table_cells(30,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
++table_cells(33,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
+  [[str(r['agentCount']),f"{r['robotMean']:.1f} ± {r['robotStd']:.1f}%",f"{r['gpuMean']:.1f} ± {r['gpuStd']:.1f}%",f"{t['mean']/1000:.1f} ± {t['std']/1000:.1f}k"] for r,t in zip(results['enpire_resources']['utilization'],results['enpire_resources']['tokenRate'])])
+ # Independent expected coordinates: body rows/columns are zero-based. All ties retained.
+-expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 10: {(0, 7), (0, 4), (2, 7), (1, 5), (0, 3), (0, 6), (1, 7), (0, 5), (2, 5)}, 27: {(0, 1), (1, 2)}, 28: {(2, 2)}, 30: {(0, 1), (0, 3), (2, 2)}}
++expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 11: {(0, 7), (0, 4), (2, 7), (1, 5), (0, 3), (0, 6), (1, 7), (0, 5), (2, 5)}, 28: {(0, 1), (1, 2)}, 30: {(2, 2)}, 33: {(0, 1), (0, 3), (2, 2)}}
+ for number,wanted in expected_bold.items():
+  observed=set();all_coordinates=set()
+  for tag in re.findall(r'<div class="text"[^>]+>',slide(number)['html']):
+@@ -189,15 +187,15 @@
+  assert observed==wanted,(number,observed,wanted)
+  assert 'Bold:' in slide(number)['footer']
+ assert {s['number'] for s in deck['slides'] if 'data-table-cell=' in s['html']}==set(expected_bold)
+-for number,terms in {27: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 28: ['40-episode', 'No reset/retry', 'not published']}.items():
++for number,terms in {28: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 30: ['40-episode', 'No reset/retry', 'not published']}.items():
+  assert all(term in slide(number)['html'] for term in terms),(number,terms)
+-assert all(term in slide(30)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
++assert all(term in slide(33)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
+ assert all(len(slide(n)['title'])<=40 for n in range(1,N+1))
+ # Demo slides stay sparse and labels retain medium/speed boundaries.
+-for n in [8, 18, 19, 20, 29]:
++for n in [8, 9, 19, 20, 21, 31]:
+  assert len(re.sub('<[^>]+>',' ',slide(n)['html']).split())<100
+ assert '20×' in slide(8)['html'] and '12×' in slide(8)['html']
+-assert sum(r['minutes'] for r in deck['slides'])==51
++assert sum(r['minutes'] for r in deck['slides'])==59
+ assert deck['scriptMarkdown']==(out/'Speaker_Script_Revised.md').read_text()
+ assert all(re.search(r'[一-鿿]',r['script']) for r in deck['slides'])
+ headings=dict((int(n),t) for n,t in re.findall(r'^## (\d{2})\. (.+)$',deck['scriptMarkdown'],re.M))
+@@ -216,10 +214,10 @@
+ old_media=json.loads((out/'offline_player/media_credits.json').read_text())
+ original_by_name={m['name']:m for m in old_media}
+ community=[]
+-for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json']:
++for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json','clip_manifest_v6.json','clip_manifest_v7.json','clip_manifest_v8.json','clip_manifest_v9.json','clip_manifest_v10.json']:
+  community+=json.loads((B/name).read_text())
+ community_by_name={c['name']:c for c in community}
+-expected_media={2: {'painting'}, 7: {'astra_insertion', 'astra_bowl'}, 8: {'policy_plug', 'keyboard'}, 9: {'asim_delta', 'asim_waypoint', 'asim_code'}, 11: {'anon_hybrid_pack', 'anon_direct_sort'}, 18: {'office_newton', 'kitchen'}, 19: {'rope_hand', 'hand'}, 20: {'dexgpt', 'astra_real2sim'}, 24: {'enpire_reset', 'enpire_verify'}, 29: {'quad_rl', 'wenli_icl'}}
++expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'claw', 'cube'}, 10: {'asim_waypoint', 'asim_delta', 'asim_code'}, 12: {'anon_hybrid_pack', 'anon_direct_sort'}, 19: {'kitchen', 'office_newton'}, 20: {'rope_hand', 'hand'}, 21: {'astra_real2sim', 'dexgpt'}, 25: {'enpire_verify_full', 'enpire_reset_full'}, 29: {'enpire_fleet'}, 31: {'enpire_tie', 'enpire_cut', 'enpire_pin'}, 32: {'enpire_gpu'}}
+ assert set(m['slide'] for m in deck['media'])==set(expected_media)
+ for number,names in expected_media.items():
+  assert {m['name'] for m in deck['media'] if m['slide']==number}==names
+@@ -272,6 +270,6 @@
+ assert ui['focusView']['enabled'] and ui['keyboard']['focusExited']
+ assert ui['figureDialog']['open'] and ui['figureDialog']['loaded'] and ui['figureDialog']['closed']
+ assert ui['keyboard']['endSlide']==N
+-assert [r['slide'] for r in ui['addedFigures']]==[11,12,13,14,23,25,27,28] and all(r['open'] and r['loaded'] for r in ui['addedFigures'])
++assert [r['slide'] for r in ui['addedFigures']]==[12,13,14,15,24,26,27,28,29,30] and all(r['open'] and r['loaded'] for r in ui['addedFigures'])
+ report.update(browser_audits='passed for this hash',desktop_text_overflow=0,mobile_button_overflow=0)
+ (B/'standalone_delivery_audit.json').write_text(json.dumps(report,indent=2,ensure_ascii=False));print(json.dumps(report,indent=2,ensure_ascii=False))
+--- baseline/.build/browser_audit.mjs
++++ current/.build/browser_audit.mjs
+@@ -66,7 +66,7 @@
+ ui.figureDialog = await page.evaluate(() => ({ open: $('figure-dialog').open, loaded: $('large-figure').complete && $('large-figure').naturalWidth > 0 }));
+ await page.keyboard.press('Escape'); await page.waitForTimeout(200); ui.figureDialog.closed = await page.evaluate(() => !$('figure-dialog').open);
+ ui.addedFigures = [];
+-for (const n of [11, 12, 13, 14, 23, 25, 27, 28]) {
++for (const n of [12, 13, 14, 15, 24, 26, 27, 28, 29, 30]) {
+  await goto(n); await page.click('#slide img.original'); await page.waitForTimeout(300);
+  ui.addedFigures.push(await page.evaluate(n => ({slide:n,open:$('figure-dialog').open,loaded:$('large-figure').complete && $('large-figure').naturalWidth>0}),n));
+  await page.keyboard.press('Escape');
+--- baseline/.build/extended_visual_audit.mjs
++++ current/.build/extended_visual_audit.mjs
+@@ -1,4 +1,4 @@
+-// Additional v0.17 verification: original-figure screenshots and whole new-clip playback.
++// Additional v0.18 verification: original-figure screenshots and whole new-clip playback.
+ // Visual inspection is recorded separately; playback progression is not experiment validation.
+ import {createRequire} from 'node:module';
+ import {readFileSync, writeFileSync} from 'node:fs';
+@@ -31,22 +31,22 @@
+   if (loadedDeckHash !== sha(expectedDeck)) throw new Error('Loaded deck data differs from delivery');
+   const go = async n => {await page.evaluate(n=>show(n),n);await page.waitForFunction(()=>!loading);await page.waitForTimeout(200);};
+   const figures=[];
+-  for (const [n,index] of [[5,0],[5,1],[5,2],[11,0],[12,0],[12,1],[13,0],[14,0],[23,0],[25,0],[27,0],[28,0]]) {
++  for (const [n,index] of [[5,0],[5,1],[5,2],[12,0],[13,0],[13,1],[14,0],[15,0],[24,0],[26,0],[26,1],[27,0],[28,0],[29,0],[30,0]]) {
+     await go(n);await page.locator('#slide img.original').nth(index).click();
+     await page.waitForFunction(()=>document.getElementById('large-figure').complete);
+-    const file=`${root}/.build/v0_17_visual/figure-${n}-${index}.png`;
++    const file=`${root}/.build/v0_18_visual/figure-${n}-${index}.png`;
+     await page.screenshot({path:file});
+     figures.push({slide:n,index,file});
+     await page.keyboard.press('Escape');
+   }
+   const playback=[];
+-  for (const [n,name] of [[18,'office_newton'],[18,'kitchen'],[19,'hand'],[19,'rope_hand'],[20,'astra_real2sim'],[20,'dexgpt']]) {
++  for (const [n,name] of [[9,'cube'],[9,'claw'],[25,'enpire_reset_full'],[25,'enpire_verify_full'],[29,'enpire_fleet'],[31,'enpire_pin'],[31,'enpire_tie'],[31,'enpire_cut'],[32,'enpire_gpu']]) {
+     await go(n);
+     const video=page.locator(`video[data-clip="${name}"]`);
+     await video.evaluate(async v=>{v.loop=false;v.currentTime=0;v.playbackRate=1;await v.play();});
+     const samples=[];
+     let ended=false;
+-    for (let i=0;i<45;i++) {
++    for (let i=0;i<90;i++) {
+       await page.waitForTimeout(1000);
+       const sample=await video.evaluate(v=>({time:v.currentTime,duration:v.duration,ended:v.ended,paused:v.paused,error:v.error?.code??null,frames:v.getVideoPlaybackQuality().totalVideoFrames}));
+       samples.push(sample);
+@@ -57,12 +57,12 @@
+     if (!ended) throw new Error(`Playback did not complete: ${name}`);
+     playback.push({slide:n,clip:name,samples,ended});
+   }
+-  await go(19);await page.keyboard.press('n');
+-  await page.screenshot({path:`${root}/.build/v0_17_visual/script-desktop.png`});
++  await go(34);await page.keyboard.press('n');
++  await page.screenshot({path:`${root}/.build/v0_18_visual/script-desktop.png`});
+   await page.setViewportSize({width:390,height:844});
+-  await page.screenshot({path:`${root}/.build/v0_17_visual/script-mobile.png`,fullPage:true});
++  await page.screenshot({path:`${root}/.build/v0_18_visual/script-mobile.png`,fullPage:true});
+   if (await streamServedHash() !== html_sha256) throw new Error('Served HTML changed during audit');
+   const report={html_sha256,served_html_byte_identity:true,loaded_deck_data_sha256:loadedDeckHash,identity_check:'Streamed HTTP bytes before/after browser run plus SHA-256 of actual loaded deck-data DOM',figures,playback,scope:'Complete uninterrupted playback at 1x presentation rate; source speedups retained. Separate visual review uses sequential 1-second samples.'};
+-  writeFileSync(`${root}/.build/v0_17_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
++  writeFileSync(`${root}/.build/v0_18_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
+   console.log(JSON.stringify({html_sha256,figures:figures.length,completeClips:playback.map(x=>x.clip)}));
+ } finally {await browser.close();}
+--- baseline/.build/test_enpire_v018.py
++++ current/.build/test_enpire_v018.py
+@@ -0,0 +1,70 @@
++"""Revision-specific evidence and scope gates, independent of slide construction."""
++import json
++from pathlib import Path
++import re
++import shutil
++import tempfile
++import unittest
++
++from enpire_v018 import NEW_CLIPS, verify_enpire, verify_puzzles
++
++ROOT = Path(__file__).resolve().parent.parent
++
++
++def deck(file):
++    return json.loads(re.search(r'<script type="application/json" id="deck-data">(.*?)</script>', file.read_text(), re.S)[1])
++
++
++class EnpireTests(unittest.TestCase):
++    def test_source_pins(self):
++        self.assertEqual(verify_enpire(ROOT)['commit'], '99ee90acf65b5b18957c8382ad580db999528be3')
++        self.assertEqual(verify_puzzles(ROOT)['claw_boundary_seconds'], 20.566667)
++
++    def test_media_drift_fails_closed(self):
++        for manifest, media, verify in [
++            ('research/enpire_v0_18_sources.json', '.build/clips/enpire_pin.mp4', verify_enpire),
++            ('research/puzzle_v0_18_sources.json', '.build/clips/claw.mp4', verify_puzzles)]:
++            with self.subTest(manifest=manifest), tempfile.TemporaryDirectory() as directory:
++                mirror = Path(directory)
++                pins = json.loads((ROOT / manifest).read_text())
++                for relative in [manifest, *pins['sha256']]:
++                    target = mirror / relative
++                    target.parent.mkdir(parents=True, exist_ok=True)
++                    shutil.copyfile(ROOT / relative, target)
++                (mirror / media).write_bytes(b'not-the-pinned-video')
++                with self.assertRaises(ValueError):
++                    verify(mirror)
++
++    def test_baseline_control_data_and_closing_preserved(self):
++        before = deck(ROOT / '.build/revision_0_18_baseline/output/Agents_for_Robotics_Self_Contained.html')
++        after = deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
++        current = after['slides'][:8] + after['slides'][9:22] + after['slides'][-2:]
++        original = before['slides'][:21] + before['slides'][-2:]
++        self.assertEqual(len(current), len(original))
++        for old, new in zip(original, current):
++            for field in ('title', 'html', 'script'):
++                expected = old[field]
++                if old['number'] == 3 and field == 'html':
++                    expected = expected.replace('ENPIRE + training and in-context adaptation', 'ENPIRE + reusable research experience')
++                if old['number'] == 8 and field == 'script':
++                    expected = expected.replace('下一页就固定为同一个 Astra，看不同 action 输出的公开比较。', '下一页先看两个 simulation puzzle，再回到同一 Astra 的不同 action interface 比较。')
++                self.assertEqual(expected, new[field], (old['number'], field))
++        base_media = {m['name']: m['sha256'] for m in before['media'] if m['slide'] <= 21}
++        self.assertEqual(base_media, {m['name']: m['sha256'] for m in after['media'] if m['name'] in base_media})
++
++    def test_chapter_and_rsi_boundaries(self):
++        d = deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
++        self.assertEqual(len(d['slides']), 36)
++        self.assertEqual({m['name'] for m in d['media'] if m['slide'] >= 23}, NEW_CLIPS)
++        text = d['scriptMarkdown']
++        for term in ['Markdown summary', 'held-out tasks', 'Recursive Self-Improvement', '不是 coding foundation model', 'conditional retries']:
++            self.assertIn(term, text)
++        self.assertNotIn('Astra: Training and Context', text)
++        self.assertEqual(d['slides'][8]['new_slide_key'], 'puzzle_demos')
++        self.assertIn('ideal grasps', d['slides'][8]['html'])
++        self.assertIn('action interface not disclosed', d['slides'][8]['html'])
++        self.assertIn('How can we use it for downstream training?', d['slides'][21]['html'])
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- baseline/.build/test_data_demos_v015.py
++++ current/.build/test_data_demos_v015.py
+@@ -50,45 +50,31 @@
+             with self.assertRaises(ValueError):
+                 verify_data_extra(mirror)
+ 
+-    def test_non_data_pages_unchanged(self):
+-        before = load_deck(ROOT / '.build/revision_0_17_baseline/output/Agents_for_Robotics_Self_Contained.html')
+-        after = load_deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
+-        pairs = list(zip(before['slides'][:16], after['slides'][:16]))
+-        pairs += list(zip(before['slides'][24:], after['slides'][21:]))
+-        self.assertEqual(len(pairs), 27)
+-        for old, new in pairs:
+-            self.assertEqual(old['html'], new['html'], new['title'])
+-            self.assertEqual(old['title'], new['title'])
+-            if new['number'] != 3:
+-                self.assertEqual(old['script'], new['script'], new['title'])
+-            else:
+-                self.assertIn('Data 只看 Awesome-Astra 收录的六个 demo', new['script'])
+-
+     def test_chapter_is_demo_only(self):
+         deck = load_deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
+-        self.assertEqual(len(deck['slides']), 32)
+-        self.assertEqual([s['new_slide_key'] or s['old_slide'] for s in deck['slides'][16:21]],
++        self.assertEqual(len(deck['slides']), 36)
++        self.assertEqual([s['new_slide_key'] or s['old_slide'] for s in deck['slides'][17:22]],
+                          ['world', 'data_scenes', 'data_hands', 'data_motion', 'world_summary'])
+-        self.assertEqual({m['name'] for m in deck['media'] if 17 <= m['slide'] <= 21},
++        self.assertEqual({m['name'] for m in deck['media'] if 18 <= m['slide'] <= 22},
+                          {'office_newton', 'kitchen', 'hand', 'rope_hand','astra_real2sim', 'dexgpt'})
+         self.assertFalse(any('S13' in s['ids'] for s in deck['slides']))
+ 
+     def test_pair_media_and_source_boundaries(self):
+         deck = load_deck(ROOT / 'output/Agents_for_Robotics_Self_Contained.html')
+         self.assertEqual({n: {m['name'] for m in deck['media'] if m['slide'] == n}
+-                          for n in [18, 19, 20]},
+-                         {18: {'office_newton', 'kitchen'}, 19: {'hand', 'rope_hand'},
+-                          20: {'astra_real2sim', 'dexgpt'}})
+-        self.assertNotIn('Source image', deck['slides'][17]['html'])
+-        self.assertIn('adding simulation', deck['slides'][17]['script'])
+-        self.assertIn('可编辑的3D场景资产', deck['slides'][17]['script'])
+-        self.assertNotIn('这两个案例都把现实空间变成 simulator', deck['slides'][17]['script'])
+-        self.assertIn('Not a validated physical hand', deck['slides'][18]['html'])
+-        self.assertIn('illustrative cable deformation', deck['slides'][18]['html'])
+-        self.assertIn('physical validation not met', deck['slides'][19]['html'])
++                          for n in [19, 20, 21]},
++                         {19: {'office_newton', 'kitchen'}, 20: {'hand', 'rope_hand'},
++                          21: {'astra_real2sim', 'dexgpt'}})
++        self.assertNotIn('Source image', deck['slides'][18]['html'])
++        self.assertIn('adding simulation', deck['slides'][18]['script'])
++        self.assertIn('可编辑的3D场景资产', deck['slides'][18]['script'])
++        self.assertNotIn('这两个案例都把现实空间变成 simulator', deck['slides'][18]['script'])
++        self.assertIn('Not a validated physical hand', deck['slides'][19]['html'])
++        self.assertIn('illustrative cable deformation', deck['slides'][19]['html'])
++        self.assertIn('physical validation not met', deck['slides'][20]['html'])
+         before = load_deck(ROOT / '.build/revision_0_17_baseline/output/Agents_for_Robotics_Self_Contained.html')
+-        self.assertEqual({m['name']: m['sha256'] for m in before['media']},
+-                         {m['name']: m['sha256'] for m in deck['media'] if m['name'] != 'kitchen'})
++        self.assertEqual({m['name']: m['sha256'] for m in before['media'] if m['slide']<=24},
++                         {m['name']: m['sha256'] for m in deck['media'] if m['slide']<=22 and m['name'] not in {'kitchen','cube','claw'}})
+ 
+ 
+ if __name__ == '__main__':
+--- baseline/research/revision_0_18_spec.md
++++ current/research/revision_0_18_spec.md
+@@ -0,0 +1,51 @@
++# v0.18 — ENPIRE and the RSI question
++
++## Authority and scope
++- Fixed baseline: `.build/revision_0_18_baseline`, verified against v0.17 final manifest, including P21 wording follow-up.
++- Preserve the content/scripts/media of baseline slides 1–21. User follow-up adds one Control demo page immediately after baseline P8; subsequent pages renumber. Preserve closing content, renumber only.
++- Third chapter remains a single representative study: ENPIRE (the official spelling of the user's EMPIRE).
++- Remove the active CAD + RL preview and unrelated physical ICL clip. Retain historical source files.
++- Use official original figures, official task/reset/verification/fleet videos, English slides and Chinese script with English technical terms. All media and fonts stay embedded.
++
++## Narrative and layout
++9 simulation puzzle demos (Rubik cube + claw).
++23 chapter flowchart; 24 original two-stage architecture; 25 reset and verification;
++26 policy/code versus gradient-based improvement; 27 idea tree; 28 physical results;
++29 fleet scaling; 30 RoboCasa results; 31 official task demos;
++32 experience transfer and RSI bridge; 33 resource cost; 34 chapter summary / RSI question;
++35 Takeaways; 36 Thank You.
++Claw is a kinematic replay with ideal grasps, not validated contact dynamics. Cube interfaces and conditions must follow its original project, not the Awesome summary alone.
++
++Keep Noto fonts, white canvas, teal `#2ba39b` / dark teal `#1d7d76`, pale `#eaf5f3`,
++gray `#646464` and quiet red `#aa514a`. Diagrams encode actual interfaces and feedback.
++Few words, large original media. No decorative scientific graphics.
++
++## Evidence contract
++- ENPIRE §2 / Figure 2: human-assisted environment construction precedes autonomous PIRE.
++- Fixed safety, reset, verifier and evaluation contract during policy improvement.
++- PI changes heuristic code or training recipe/weights; it does not update the coding foundation model.
++- Preserve exact pinned Figure 3 / Figure 6 / Figure 7 results and uncertainty.
++- Physical pass@8 uses conditional retries, not iid sampling or pass@1 precision.
++- RoboCasa: once-per-episode script, matched fixed settings, no reset/retry/oracle APIs.
++- §3.4 + Appendix B.1: pin autoresearch is distilled into a written recipe for GPU insertion;
++  no raw prior trajectories/checkpoints/hidden logs are carried over. The GPU demo illustrates
++  the target task, not an ablation proving transfer gains.
++- RSI means Recursive Self-Improvement in this talk's discussion. Policy improvement is established;
++  recipe/memory reuse is a partial bridge. Improved ability to improve future tasks under fixed
++  compute and held-out evaluation remains unproven here. No claim of self-improving LLM weights,
++  open-ended acceleration or solved autonomous lifelong learning.
++- RoboRSI September 2026 report and DGM provide brief conceptual context in notes/citations only,
++  not new paper deep-dives or mixed result tables.
++- Official video playback speed is a player setting. Encode explicitly documented presentation
++  speedups, preserve each complete chosen file without cutting failed attempts, and record source
++  duration, derived duration and hashes. No independent experiment reproduction.
++
++## Verification
++Source/hash and semantic regressions, full build/font cycle, isolated-copy static audit,
++all-slide layout/media/UI/mobile checks, complete playback of all seven new clips,
++visual inspection of third chapter and controls, Standards/Spec review against this fixed baseline.
++No push, release, PPTX/PDF/ZIP regeneration or ENPIRE execution.
++
++## Review corrections
++- P8 transition explicitly points to the new puzzle page, not the former interface page.
++- P3 roadmap uses “ENPIRE + reusable research experience” instead of the removed training/ICL demo description. Only these two exact text replacements are permitted by baseline preservation tests.
+--- baseline/research/enpire_rsi_evidence_2026-09-16.md
++++ current/research/enpire_rsi_evidence_2026-09-16.md
+@@ -0,0 +1,40 @@
++# ENPIRE / RSI evidence ledger
++
++Format: revisions to the existing self-contained HTML talk and Chinese script, not a separate report template.
++Paper type: Systems; secondary module: empirical evaluation. Primary paper, materially relevant appendices A–D, official site, and pinned public code read read-only. No code import, installation, training or robot execution.
++
++## Claim / evidence / limits
++
++| Claim | Primary evidence | Boundary |
++|---|---|---|
++| ENPIRE makes repeated physical experiments accessible to coding agents | Paper §2, original Figure 2 | Human-feedback environment construction precedes autonomous improvement |
++| EN fixes reset, verifier and safety while PI edits policy/training | §2, Appendix A; `autoresearch_instruction.md` lines 3–6, 10–15 | Public contract corroborates the intended interface; it is not an independent reproduction |
++| PI can edit a function or train a policy | §3.1–3.2; `interface.py` Policy.act / FunctionPolicy; PLD README, Appendix B.5 | Updating robot policy θ does not imply updating coding LLM weights |
++| Rollout and learner communicate through recorded episodes | Appendix B.5; `rl/runner.py`, `rl/auto_eval.py`, `autoresearch.py` | Disk buffers separate action sources; user/teleop data cannot be counted as pure RL |
++| E selects and shares useful hypotheses | §2, Figure 12, Appendix B.6 | Figure 12 traces one team's search, not independent causal ablations |
++| More pairs reduce pin research time | §3.3 / Figure 3 | >1.5 h to ~40 min under conditional retries; not action latency; separate from Figure 7 |
++| ENPIRE improves RoboCasa programs | §3.5 / Figure 6 / Appendix D | One script per fixed episode, no reset/retry/oracle; no estimated bar percentages |
++| Pin experience is reusable in GPU autoresearch | §3.4 and Appendix B.1 | Explicit Markdown summary only; prior raw trajectories/checkpoints/hidden logs removed. Video illustrates GPU task, not a transfer ablation |
++| RSI can include external memory/code rather than only model weights | DGM official article; September 2026 RoboRSI report | Conceptual background. No robot RSI benchmark inferred from DGM, no new result comparison |
++| Stronger recursive improvement needs a better improver | This talk's synthesis | Held-out tasks, matched compute, retention and repeated gains remain open tests |
++
++## Engineering anatomy retained in narration
++
++- EN inputs: task, RGB-D/proprioception and human feedback. It builds safety/reset/reward tools using SAM3, tracking and cuRobo. Outputs fixed Gym-style interfaces and verification signals. Reward-design stage uses human-labelled success/failure snapshots; thresholds and latency requirements are task-specific. Code: saved Push-T reset and reward/evaluation modules.
++- PI inputs: observations, demonstrations/online transitions, selected training recipe. Transformation: heuristic code edits or BC/RL training, with separate robot/learner/actor processes. Output: callable policy/program or checkpoint. No single policy network architecture is imposed by the harness; numerical settings from a particular idea are not universal defaults. Code: Policy protocol, PLD runtime, autoresearch contract.
++- R inputs: candidate policy plus fixed reset and trial budget. Outputs synchronized state/action-source/video/result artifacts. Runtime consumes these for scoring and buffer ingestion. The paper reports 30 Hz policy and 100 Hz low-level joint tracking, not LLM inference rates.
++- E inputs: results, logs, literature and other branches. Outputs next hypothesis, code diff, training recipe and retained experience. Learning is code/recipe search; coding-model fine-tuning is not reported. Git sharing and gated retention form the update path. Code: `autoresearch.py` and contract. Core scalar success and source validity remain fixed.
++
++## Media authority
++
++`research/enpire_v0_18_sources.json` pins the 2026-09-16 official website, JS, paper, code and downloads. Code commit: `99ee90acf65b5b18957c8382ad580db999528be3`. Seven selected official videos are used. Each is preserved in full, transcoded to H.264/yuv420p with source audio omitted. Success/reset/fleet recordings encode 8× source-time playback; two-view verification remains 1×. Manifest duration arithmetic checks no temporal cuts. Official JS `W` sets a default playbackRate of 8: this is a player setting, not proof the file itself was sped up. Website statement of an “uncut 5-minute” video is not adopted as an exact duration: downloaded files range from 219.5 to 479.2 seconds.
++
++Eight official site images were archived; two task photographs enter the talk. Original Figure 2, Figure 3, Figure 6, Figure 7 and Figure 12 remain source-grounded. No new numbers extracted from bar heights.
++
++## Added Control puzzles
++
++`research/puzzle_v0_18_sources.json` pins the original X public syndication/video and the supplied Claw site/methods/app/manifest. The cube project returns HTTP 403, so no access bypass was attempted and no unverified API is asserted. The original X video is available independently. Its action interface and true timing are undisclosed; Awesome's zero-shot label is attributed, not promoted to a controlled experiment.
++
++Claw's supplied website links a two-demo MP4. The entire Claw segment is [0, 20.566667) seconds, ending at the hard title/scene cut to Three-ring Threading after release/withdrawal. The visible source overlay says 8×; no further speedup is added. Methods state pregrasped rigid transforms, an attributed object-space reference solution, local path corrections and full-robot IK. It is kinematic joint replay, not contact dynamics or a fresh solution found from scratch. No claim that this site discloses the implementation model as Astra.
++
++Sources: [ENPIRE](https://research.nvidia.com/labs/gear/enpire/), [paper](https://arxiv.org/html/2606.19980v1), [pinned code](https://github.com/NVlabs/ENPIRE/tree/99ee90acf65b5b18957c8382ad580db999528be3), [RoboRSI](https://lab.noematrix.ai/blog/2-roborsi/), [DGM](https://sakana.ai/dgm/), [Cube post](https://x.com/ZeYanjie/status/2098118164626501669), [Claw methods](https://qinengwang-aiden.github.io/demos/constraint_demos/methods.html).
+--- baseline/README.md
++++ current/README.md
+@@ -1,54 +1,44 @@
+ # Agents for Robotics
+ 
+-32 页英文技术分享，中文逐页讲稿。主交付是**一个全部内嵌的 HTML**：20 段视频、论文原图、Noto Serif / Noto Sans / CJK 字体、播放器与讲稿均在文件内。
++36 页英文 slides，中文逐页讲稿。**一个全部内嵌的 HTML**：25段视频、论文原图、Noto字体、播放器和讲稿均在文件内，可离线移动。
+ 
+-- Zimo Huang · 2026-09-16；当前本地版 **0.17 · 2026-09-16**。
+-- HTML：`output/Agents_for_Robotics_Self_Contained.html`，约 137.9 MB。
+-- 职责迁移图预览：`output/Control_Responsibility_Shift.png`。
+-- 中文讲稿：`output/Speaker_Script_Revised.md`，与 HTML 内嵌稿一致。
+-- 章节问题—方法—结果提纲：`output/Chapter_Spine.md`。
+-- SHA-256：`38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88`。本次未发布 GitHub Release。
+-- 51 分钟为包含视频、读图与讨论的建议安排，尚未彩排计时。
++- Zimo Huang · 2026-09-16 · 本地版 **0.18**。
++- 主文件：`output/Agents_for_Robotics_Self_Contained.html`，约 136.7 MB。
++- 中文稿：`output/Speaker_Script_Revised.md`，与HTML一致。
++- 章节主线：`output/Chapter_Spine.md`；逐页时间：`talk_outline.md`。
++- SHA-256：`dbe02f333398eabbf6259d77726f9669b954b0f61a7872673263332c9c12cc82`。
++- 建议59分钟含读图、视频与讨论，尚未彩排计时。
+ 
+-## 主线
++| 页 | 部分 | 主线 |
++|---|---|---|
++|1–3|Introduction|Painting 与三个角色|
++|4–17|Control|职责迁移、Astra能力与接口、Direct/Hybrid、latency|
++|18–22|Data|三组双案例视频与downstream training问题|
++|23–34|Improvement|ENPIRE方法、原图/结果、官方demo、经验迁移与RSI|
++|35–36|Closing|Takeaways与感谢|
+ 
+-| 页 | 部分 | 讲解顺序 |
+-|---|---|---|
+-|1–3|Introduction|Painting demo 与三个不同角色|
+-|4–16|Agent Controls Robot|总框图 → 分层架构与职责迁移 → Astra 直接能力、interface 与 Direct/Hybrid → 总结|
+-|17–21|Agent Creates Data|章首框图 → Office + kitchen → hand CAD + rope-hand → Replay + Rollout → 总结|
+-|22–30|Agent Improves Policy|ENPIRE 的环境、实验、idea tree、效果 → Astra training / ICL demos → 成本与总结|
+-|31–32|Closing|Takeaways 与感谢|
++## v0.18
+ 
+-章首框图在 4 / 17 / 22；总结在 16 / 21 / 30。第 5 页合并上一场 Hi Robot、Helix、Helix 02 三张原图。第 11 页保留匿名 Direct/Hybrid 原执行架构；第 25 页保留 ENPIRE 原始 idea tree。论文图可点击放大。
+-
+-Control 保留已确认内容；Data 只展示 Awesome-Astra 收录的六个 demo，不再讲 Agentic Real2Sim 论文；Improvement 保留 ENPIRE。20 段视频合计约 7 分 39 秒，不是全部视频都需要完整播放。
+-
+-## 本版调整
+-
+-- 从作者 X 原帖取得完整20.93秒厨房视频，与指定 Case22 一致；LinkedIn补充完整 workflow 与 human-in-the-loop 状态。
+-- 第二章从8页压至5页：框图、场景双视频、hand双视频、Replay/Rollout双视频、总结。保留六个案例。
+-- Kitchen 是 articulated assets 展示；作者仍在 adding simulation，不冒称完整物理验证。
+-- 中文讲稿压缩重复内容并同步页序；Control和Improvement内容、原19段视频字节保持不变。
+-- 全稿32页、20段内嵌视频，保留字体、原图放大和独立视频全屏。
++- P8后新增Cube / Claw双视频，区分仿真展示与理想grasp下的kinematic replay。
++- 第三章集中讲ENPIRE。官网下载的reset、verification、fleet、pin/tie/cut/GPU共七段视频均内嵌。完整保留所选视频时间段，清楚标注8×或1×。
++- 删除active CAD + RL / physical ICL视频，历史文件保留。新增两张官网任务照片，保留原Figure 2/3/6/7/12。
++- 用Pin→written recipes→GPU解释经验迁移，最后引出RSI的held-out、matched-budget验证问题。
++- 原Control/Data内容与媒体字节、Takeaways/Thank You内容保持不变，仅插页后顺延编号。
+ 
+ ## 证据边界
+ 
+-- 不预设 LLM 必须调用 learned tools，也不宣布 Direct 普遍胜出。Astra 的内部网络及机器人预训练配方未披露，能力变化与训练因果须分开。
+-- Robocurve：bowl 19/20、insertion 2/20；Asim Square：ΔEEF 1/20、waypoint 18/20、code 16/20，但 control/query budgets 不齐，不能归因于纯 interface 效应。
+-- RoboDojo：10 selected tasks × 5 aligned cases，Direct 13/50、Hybrid 24/50。Score有效分母48/50；公开baseline为重加权历史结果，不是配对重跑。Prior、interface 和执行段长同时变化。RoboLab 原图保留5方法，保留历史与 retries、180→500预算变化、未配对与设置未验证等限制，不混池。
+-- Go1 的12-joint residual chunks 经 interpolation / PD执行，推理时仿真暂停。Asim平均query time为30.75 / 26.08 / 41.98秒，来自180回合731次查询；不是全链路decision rate，也不是Controller Hz。
+-- DexGPT：有 states/actions/contacts 记录，但 physical validation 未通过；其203个记录状态不是203次试验。
+-- ENPIRE：human-assisted setup 后固定 APIs；conditional retries 和资源成本属于实验条件。Idea tree 不是独立因果消融，不等于已证明 recursive enhancement。
+-- 社区视频为定性展示，有加速/等待剪除及未完成验证的情况；Office 不证明新训练 locomotion，四足不等于九种验证技能，hand 是未经物理验证的 CAD。
++Astra训练配方未披露；不把模型能力变化写成机器人数据训练的因果结论。Asim预算不同，RoboDojo/RoboLab历史基线和retained slots不混池。社区demo不构成成功率评测。Cube的action接口未披露，Claw不证明真实接触控制。
+ 
+-## 构建、来源与验证
++ENPIRE的environment setup有人参与。物理pass@8含conditional retries，RoboCasa则每episode只执行一次script。Figure 3与Figure 7的时间不拼接。经验总结迁移不等于coding模型权重更新，也不证明持续递归增强。
+ 
+-完整入口见 `AGENTS.md`。只编辑 `.build/` 源文件，不手改生成 HTML。结果数据推导 → 构建 → CJK subset → 重建 → 隔离复制 → 静态检查 → Chrome layout/playback/UI/mobile → 最终 hash-bound validator。
++## 构建与核验
+ 
+-- `WORKPLAN.md`：状态；`talk_outline.md`：页序与建议时间。
+-- `.build/standalone_delivery_audit.json`：实际静态/浏览器状态；`.build/standalone_visual_audit.json`：实际视觉验收，须与当前 hash 一致。
+-- `research/revision_0_17_spec.md`：当前范围；`research/revision_0_17_review.md`：Standards / Spec 复核。
+-- `research/sources.json`：当前引用和历史来源；`.build/assets/v0_8/` 与研究快照保留新增媒体 provenance。
++按`AGENTS.md`执行：结果来源检查→构建→CJK subset→重建→隔离复制→静态→Chrome layout/playback/UI/mobile→完整播放新增视频→视觉检查。不要手改生成HTML。
+ 
+-旧 PPTX/PDF/ZIP 保留历史，不对应当前页序；本次不更新。最新v0.16基线保存在 `.build/revision_0_17_baseline/`，不与更早 Git HEAD 混同。保留既有 dirty work，不调用 Claude / Anthropic 服务。
++当前范围：`research/revision_0_18_spec.md`。固定基线：`.build/revision_0_18_baseline/`，包含v0.17和P21文字修改，不使用dirty Git HEAD。新来源冻结：`research/enpire_v0_18_sources.json`、`research/puzzle_v0_18_sources.json`。
++
++以`.build/standalone_delivery_audit.json`、`.build/standalone_visual_audit.json`、`.build/v0_18_extended_audit.json`和`research/revision_0_18_review.md`的当前hash状态为准。核验尚在进行。
++
++旧PPTX/PDF/ZIP保持历史，不对应本版。没有push/release，也没有执行ENPIRE或调用Claude/Anthropic服务。
++
++本次保留范围例外：P8过渡句指向新增puzzle页，P3第三章提示同步为ENPIRE与可复用研究经验；其他原Control/Data正文不改。
+--- baseline/AGENTS.md
++++ current/AGENTS.md
+@@ -1,7 +1,7 @@
+ # Agents for Robotics
+ 
+-One self-contained HTML technical talk — 32 English slides, Chinese speaker script, 20 embedded clips,
+-~138 MB — plus its research notes and build scripts. Speaker Zimo Huang, talk date 2026-09-16.
++One self-contained HTML technical talk — 36 English slides, Chinese speaker script, 25 embedded clips,
++~137 MB — plus its research notes and build scripts. Speaker Zimo Huang, talk date 2026-09-16.
+ 
+ ## Build and verify
+ 
+@@ -62,7 +62,7 @@
+   page; responsibility-shift diagram; then Astra capability, interface and
+   Direct/Hybrid evidence; summary. Data is demo-only: Office scene, articulated kitchen, tendon-hand CAD,
+   rope-driven hand reconstruction, multi-view replay and DexGPT rollout, all discovered through Awesome-Astra. No Agentic Real2Sim paper pages.
+-  Improvement retains ENPIRE.
++  Improvement deep-dives ENPIRE with official media and a scoped RSI synthesis; no CAD/RL or unrelated ICL clip. P9 adds Cube and Claw simulation demos.
+ - Community demos from X and 小红书 are qualitative: author-reported, sped up, no trial counts. Never
+   present them as measurements.
+ - Slide titles are at most 40 characters, and the added demo slides keep a sparse layout — both are
+@@ -71,12 +71,12 @@
+ 
+ ## Status
+ 
+-Version 0.17 (2026-09-16): Control 4–16, Data 17–21, Improvement 22–30, closing 31–32.
+-32 slides, 20 clips, 51-minute suggested timing. HTML SHA-256 `38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88`.
++Version 0.18 (2026-09-16): Control 4–17, Data 18–22, Improvement 23–34, closing 35–36.
++36 slides, 25 clips, 59-minute suggested timing. HTML SHA-256 `dbe02f333398eabbf6259d77726f9669b954b0f61a7872673263332c9c12cc82`.
+ 
+-Current scope: `research/revision_0_17_spec.md`. Fixed comparison is `.build/revision_0_17_baseline/`,
+-not older Git HEAD. Chapter spine: `output/Chapter_Spine.md`. Overview diagrams open 4/17/22;
+-three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 11; original results are 12–14; ENPIRE idea tree is 25.
++Current scope: `research/revision_0_18_spec.md`. Fixed comparison is `.build/revision_0_18_baseline/`,
++not older Git HEAD. Chapter spine: `output/Chapter_Spine.md`. Overview diagrams open 4/18/23;
++three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 12; original results are 13–15; ENPIRE idea tree is 27.
+ Results come from `research/results_v0_9.json`, generated by `.build/derive_results_v09.py`.
+ The independent `research/results_v0_9_sources.json` pins reviewed source identities and is never regenerated by the normal build.
+ New source authority: `research/evidence_v0_11_sources.json`; loader `.build/evidence_v011.py` rejects byte drift.
+@@ -93,7 +93,7 @@
+ Original curves retain uncertainty; no estimated RoboCasa bar values. Community demos remain qualitative.
+ 
+ Use `.build/standalone_delivery_audit.json`, `.build/standalone_visual_audit.json` and
+-`.build/v0_17_extended_audit.json` for actual hash-bound status. v0.17 QA/review passed; Standards0 / Spec0, no unresolved findings; see `research/revision_0_17_review.md`. Prior v0.9 source-freeze P2 remains resolved.
++`.build/v0_18_extended_audit.json` for actual hash-bound status. v0.18 QA/review pending; check current hash-bound audits; see `research/revision_0_18_review.md`. Prior v0.9 source-freeze P2 remains resolved.
+ No measured rehearsal duration, new GitHub release, push, or PPTX/PDF/ZIP regeneration.
+ 
+ 
+@@ -104,14 +104,16 @@
+ 
+ No previous sessions found.
+ </claude-mem-context>
+-Slide 16 now uses our independently grounded diagnostic synthesis, approved by the user. The WeChat article itself remains safety-blocked and unread; do not bypass it or attribute this synthesis to it. Await supplied article text/figures for article-specific claims.
++Slide 17 now uses our independently grounded diagnostic synthesis, approved by the user. The WeChat article itself remains safety-blocked and unread; do not bypass it or attribute this synthesis to it. Await supplied article text/figures for article-specific claims.
+ 
+-Current presentation polish: merged learned tools on 4; Astra begins on 7; capability summary on 16; Takeaways on 31 and Thank You on 32. Native table emphasis is tested per cell; resources and retained slots are descriptive, not an overall winner.
++Current presentation polish: merged learned tools on 4; Astra begins on 7; capability summary on 17; Takeaways on 35 and Thank You on 36. Native table emphasis is tested per cell; resources and retained slots are descriptive, not an overall winner.
+ 
+-Data pairs six demos: Office + kitchen (18), hand CAD + rope-hand (19), multi-view replay + DexGPT rollout (20), opening (17) and summary (21). Control timing (15) separates Asim published query seconds from controller Hz and Go1 simulation-time feedback.
++Data pairs six demos: Office + kitchen (19), hand CAD + rope-hand (20), multi-view replay + DexGPT rollout (21), opening (18) and summary (22). Control timing (16) separates Asim published query seconds from controller Hz and Go1 simulation-time feedback.
+ 
+-P15 is now latency-only (ASIM); P16 has four authored inline SVG icons and two open problems. Page-number typos in user edits are resolved by the exact quoted text. P10 Waypoint proprio is a highlighted column, not a universal winner; Can delta18/20 exceeds waypoint17/20. Current polish/build scope is v0.17.
++P16 is now latency-only (ASIM); P17 has four authored inline SVG icons and two open problems. Page-number typos in user edits are resolved by the exact quoted text. P11 Waypoint proprio is a highlighted column, not a universal winner; Can delta18/20 exceeds waypoint17/20. Current polish/build scope is v0.18.
+ 
+-Data demo provenance: `research/data_demos_v0_15_sources.json`; `.build/data_demos_v015.py` fails closed on byte drift. Run `.build/test_data_demos_v015.py` after rebuilding to verify unchanged other chapters and demo-only scope.
++Data demo provenance: `research/data_demos_v0_15_sources.json`; `.build/data_demos_v015.py` fails closed on byte drift. Run `.build/test_data_demos_v015.py` after rebuilding to verify Data demo-only scope. `.build/test_enpire_v018.py` owns the current cross-chapter preservation checks.
+ 
+ Case22/23 authority: `research/data_extra_v0_16_sources.json`; same loader checks both source manifests. Kitchen now uses the complete author-posted X video, pinned by `research/kitchen_v0_17_sources.json`; LinkedIn confirms human-in-the-loop modelling and simulation still being added. The original Rednote browser tool was unavailable; no login bypass was used. Rope video is the original10 Sep24.67-second clip, not the12 Sep follow-up.
++
++ENPIRE v0.18 media and read-only source pins: `research/enpire_v0_18_sources.json`. P9 puzzle media: `research/puzzle_v0_18_sources.json`. Both checked by `.build/enpire_v018.py`. Run `.build/test_enpire_v018.py`; all nine added videos require complete playback. RSI is a discussion framing, not a claim of self-updating foundation-model weights.
+--- baseline/output/Chapter_Spine.md
++++ current/output/Chapter_Spine.md
+@@ -1,57 +1,41 @@
+-# Agents for Robotics — 章节主线 v0.17
++# Agents for Robotics — 章节主线 v0.18
+ 
+-讲者：Zimo Huang · 2026-09-16。32页，20段内嵌视频。英文slides，中文讲稿；建议51分钟含读图、视频与讨论，未彩排。
++Zimo Huang · 2026-09-16。36页英文 slides，25段内嵌视频，中文讲稿。建议59分钟，未彩排。
+ 
+-## Introduction（1–3）
++## 1. Control（4–17）：动作决策应该放在哪一层？
+ 
+-Painting demo引出三个问题：谁产生下一条action？谁生成候选资产、回放或rollout Data？谁让下一版policy更好？三章产出不同，不是一套已经端到端打通的系统。
++- **4–6 导图与问题**：Agent 直接 q / EEF 命令及工具分支；Hi Robot / Helix / Helix 02 原架构；泛化责任从 generalist VLA / WAM 部分上移到 System 2 的功能示意。System 0 / Controller 保留。
++- **7–9 新能力展示**：Robocurve 两任务完成数；plug/keyboard 真机 demo；新增 Rubik’s Cube 与 Claw 仿真 puzzle。Cube 的 action API 未披露。Claw 是预抓取、理想刚性 grasp 下的 IK/joint path，参考 object-space 解来自既有工作，不能称为已验证的接触动力学或任意初态 online policy。
++- **10–11 接口探索**：同一 Astra 的 ΔEEF、waypoint、code 对比及三任务结果。控制和查询预算不齐。Waypoint proprio 的整列强调不是所有任务上的统一最优。
++- **12–15 Direct/Hybrid**：原始执行架构，RoboDojo/RoboLab 原结果图及热力图。历史基线、retained slots、retries 与不同 horizon 保留各自口径，不混池。
++- **16–17 瓶颈与总结**：平均 query 数十秒，不能承担高频反馈；语义理解和部分空间迁移已有展示，可靠物理泛化仍是问题。研究方向是降低 latency 和设计更连贯、更稳定的 action primitives。
+ 
+-## 1. Control：动作决策应放在哪一层？（4–16）
++## 2. Data（18–22）：怎样利用这些产物帮助训练？
+ 
+-**导图（4）**：保留Agent直接输出q/EEF与多种Agent Tools分支，VLA / WAM / Learned policy 合为一个 learned tools 节点。Direct不等于跳过低层servo/controller。
++- **18 导图**：Assets / scenes、Real-to-sim Replay、Data Rollout。
++- **19 场景**：Office / Newton 与 articulated kitchen 原视频；kitchen 仍在 adding simulation。
++- **20 手部资产**：CAD 与 rope-hand reconstruction，后者采用 simplified mechanics / illustrative cable deformation。
++- **21 行为与数据**：multi-view replay 与 DexGPT contact rollout。记录了状态/动作/接触不意味着 physical validation 通过。
++- **22 总结**：检验资产可用性、replay matching 和 physics，问“How can we use it for downstream training?”。
+ 
+-**常见分工（5）**：保留Hi Robot、Helix和Helix 02三张原架构图。高层推理、visuomotor policy和低层tracking是常见分工，不是所有模型必须遵守的定律。
++保持原五页紧凑组织，不恢复 Agentic Real2Sim 论文深讲。
+ 
+-**职责迁移（6）**：接口标注为上方l→π(a | o,l)→a，下方c=(k,g)→π(a | o,c)→a；o是observation，k/g是primitive选择及目标，a为Controller target。π是功能表达，不要求所有primitive都是learned网络。删除Hi Robot结果页。上方是原先的设计假设：System 2给semantic/subtask信息，System 1 VLA/WAM作为steerable generalist policy，承担π(a | o,l)的广泛泛化。下方是正在出现的能力模式：部分spatial grounding、action selection与参数化上移到System 2，System 1可提供更窄的primitives，System 0中的Controller保留servo/tracking。这是功能性简称，analytic tools不等于learned neural System 1。“任意输入”是理想目标，robot-data对Astra的具体训练因果仍未披露。
++## 3. Improvement（23–34）：实验反馈能否改善下一次研究？
+ 
+-**新能力与接口（7–10）**：第7页先突出Astra真实机器人任务表现提升，不以Direct action作为主论点；bowl的提升不外推为所有精细操作均有提升。Robocurve两任务×三模型完整完成数，保留Direct EEF→IK实机视频。Astra bowl19/20、puzzle2/20，模型差异并不均匀。Bowl rigs与日期不同、评分不盲。Plug/keyboard是更多真实机器人操作的定性demo；公开材料没有披露具体action interface，不将它们猜测成IK goal。P9增加真实code/proprio ep00（6.4秒replay，不是42.42秒wall-clock），与delta/waypoint并列。P10整列加粗Waypoint proprio仅作接口高亮，Square中非privileged最好，Can中却低于delta。Asim完整三任务×七条件表解释同一Astra仍受interface、observations与预算影响；ΔEEF不是q，waypoint256.6平均steps超过delta200上限。
++**问题（23）**：不仅改下一条 action，还要改下一版 policy；先用框图看完整物理反馈循环。
+ 
+-**Direct/Hybrid代表报告（11–14）**：第11页原架构解释π0.5的50×14 joint proposal，Astra接受1–15 steps或改为1–5 steps EEF correction，Direct也是1–5 steps。第12页并列原报告的RoboDojo Score与SR图：Direct 13/50、Hybrid 24/50；有效Score分母分别48和50。公开baseline为重加权历史结果，不是配对重跑。第13页RoboLab原图保留五种方法：98/92/36/36/34%，每方法50 retained slots；含history/retries、Direct BlocksInBin的180→500决策预算变化，历史baseline取June前五次包括失败，设置未核实一致。第14页原报告Score热力图完整呈现十任务、Overall与七方法；只展开原DOM滚动区，未改数值/颜色。聚合改善不代表每个任务改善，更不能拆出prior、interface、horizon的独立因果。
++**方法（24–27）**：ENPIRE 原 Figure 2，先 human-assisted environment setup，后固定 safety/reset/verifier 的 autonomous improvement。完整 reset / verification 视频解释重复实验如何成立。两张官网任务照片区分 heuristic code 与 BC/RL policy training。Figure 12 原 idea tree 展示 objective、batch size 和 controller compensation 等真实修改；保留无收益分支，不当独立因果消融。
+ 
+-**高latency（15）**：移除左侧接口清单，只展示Asim prompt-v3、medium、proprio设置下180回合731次query的平均30.75 / 26.08 / 41.98秒。强调数十秒等待让快速反馈困难，不将query time冒称完整闭环latency，也不将不同工作量的query排成统一速度榜。
++**实验（28–30）**：Figure 3 与官方终点均值保留 Push-T normalized score、Pin success rate 的不同指标。Fleet 完整视频配原 learning/scaling 曲线，1→8 pairs 从 >1.5 h 到 ~40 min，指 research time。物理 pass@8 含 conditional retries，不是 iid sampling。RoboCasa Figure 6 与表格保持40个固定 matched episodes、每episode一次script、禁 reset/retry/oracle 的协议，不估计柱高。
+ 
+-**总结（16）**：四项能力/短板配风格一致的原生SVG小图，箭头收束到降低foundation-model latency，以及设计更好的interface/action primitive来获得更流畅、更稳定的contact-rich执行。回到第6页，讨论更强System 2需要多通用的System 1，而不是判定tools或Direct唯一正确。语义理解和有限范围的空间迁移已有展示；实时高频反馈和跨接触/动力学条件的可靠物理泛化尚未确立。成功demo不能证明全部物理问题已解决，失败也不能唯一归因于“物理理解”。更强模型改变能力前提，仍需重测model、interface与feedback budget；不推测未披露的训练配方。
++**行为与迁移（31–32）**：Pin / tie / cut 三段官方完整视频，8×，替代 CAD/RL 与 physical ICL。GPU insertion 完整视频配 Pin→written recipes→GPU autoresearch 图。§3.4 / Appendix B.1 的迁移对象是经验总结，不是旧 checkpoint / raw trajectories；视频不是 transfer ablation。
+ 
+-**过渡**：从下一步action，转向Agent能帮助构建什么Data。
++**成本（33）**：Figure 7 及精确均值/std。更多机器人缩短研究时间，却提高 fleet token rate；utilization 是 active-time fraction。该图4.5/3.2/2h与40min曲线不是同一组实验。
+ 
+-## 2. Data：三组双案例展示（17–21）
++**RSI 与总结（34）**：上方闭环说明 ENPIRE 的 policy improvement；下方 memory/recipes 指向“Better future research?”。RSI 指 Recursive Self-Improvement，改进者可以通过 tools、memory、workflow/code 改变，不局限于 LLM weight updates。是否在 held-out tasks 和 matched budgets 下更擅长改进、且不遗忘，仍是开放检验。RoboRSI 与 DGM 只在讲稿中提供概念背景，不再展开新标杆。
+ 
+-**导图（17）**：Assets / scenes、Real-to-sim Replay、Data Rollout 三分支与各自验证要求。
++## Closing（35–36）
+ 
+-**场景（18）**：Office / Newton 与 articulated kitchen 两段原视频。Kitchen 约20秒输入经 ViPE、segmentation / measurement、Astra-Blender modeller 和 independent verifier 构建资产。作者说明约一天、human-in-the-loop，simulation仍在添加。
++Takeaways 保留三条 Role→Artifact→Evidence 支路，再感谢与讨论。三章不是一条已经打通的端到端流水线。
+ 
+-**Hand assets（19）**：Jake 的 build123d / STEP / GLB 候选设计，与 Dmytro 原9月10日的 MuJoCo rope-hand reconstruction。后者是 simplified mechanics / illustrative cable deformation，二者都不是硬件或完整传动力学验证。
+-
+-**Replay / Rollout（20）**：Lingxiao 的 multi-view RGB + actions replay，与 DexGPT 完整20.3秒三联片。DexGPT实际记录 states/actions/contacts，但 task_success=false；203 states是一条轨迹。
+-
+-**总结（21）**：分别检验资产可用性、replay matching 与 physical validity，进一步讨论如何利用这些产物帮助 downstream training，并检验实际价值。
+-
+-## 3. Improvement：反馈怎样成为下一版策略？（22–30）
+-
+-**问题与方法（22–24）**：导图后，[ENPIRE](https://arxiv.org/html/2606.19980v1)先在人参与下建立环境，再固定safety/reset/verifier/Gym APIs。Coding Agent修改policy/training code，运行实验并分析反馈。Reset与verification视频来自不同任务。
+-
+-**具体修改（25）**：保留Figure12完整idea tree，包括无收益分支。I37、I66、I76分别改objective、batch size、controller compensation。增量来自同一次best-score轨迹，不是独立因果消融。
+-
+-**物理结果（26–27）**：Pin曲线保留1→8pairs的research time改善，near-perfect从>1.5h到约40min。新表读取官方plot means：Push-T@8h normalized score为0.938/0.750/0.625；Pin@4h SR为95.5/97.5/79.0%（Codex/Claude/Kimi）。每配置四条plotted traces，不声称四次独立复现。物理rollout含≤8conditional retries，不是pass@1或独立best-of-eight。
+-
+-**Simulation对照（28）**：RoboCasa原Figure6比较GR00T N1.5、CaP-X* zero-shot tools和ENPIRE autoresearch。保留原图最高aggregate bar，不估计未公开的精确数值。Reported evaluations为40个固定matched episodes，每episode一次script execution，禁reset/retry/oracle。八张示例图片不代表可推导320 pooled trials。
+-
+-**新范围（29）**：四足CAD/RL开发预览和physical ICL保留。四足有四个experts与未通过状态；ICL不是权重训练或持久技能的验证。
+-
+-**成本与总结（30）**：保留原Figure7并补均值±官网std：1/4/8pairs的robot/GPU active-time fractions与fleet tokens/min。更多资源能缩短研究周期，不必提高per-robot利用率；Figure7的4.5/3.2/2h不能与Figure3的40min拼接。固定协议下的policy/code improvement已有证据，不等于开放世界recursive enhancement。
+-
+-## Closing（31–32）
+-
+-第31页用Agent三分支框图对应Control / Data / Improvement，以及Action / Assets & rollouts / Policy update。验证要求分别是可靠执行、physics与training value、held-out gain与成本。第32页感谢与讨论。
+-
+-详稿：`Speaker_Script_Revised.md`。旧结果来源：`research/results_v0_9.json`；新来源冻结：`research/evidence_v0_11_sources.json`。新原图来源：`research/report_figures_v0_13_sources.json`。原图可放大；挑关键差异讲，不逐格朗读。
++证据：`research/enpire_rsi_evidence_2026-09-16.md`。中文逐页稿：`Speaker_Script_Revised.md`。
+--- baseline/output/README.md
++++ current/output/README.md
+@@ -1,14 +1,11 @@
+-# Current delivery — v0.17
++# Current delivery — v0.18
+ 
+-- **Agents_for_Robotics_Self_Contained.html**: 32 English slides, 20 embedded clips, original figures, fonts and Chinese script. One file, about 137.9 MB; no runtime network dependency.
+-- **Kitchen_Reconstruction_Original.mp4**: downloaded author-posted720p original, including original audio; HTML embeds a full-length muted remux.
+-- **Speaker_Script_Revised.md**: synchronized Chinese narration with English terminology.
+-- **Control_Responsibility_Shift.png**: preview of the sparse slide-6 diagram with System 0 / Controller endpoints.
+-- **Astra_Report_Results.png**, **Astra_Task_Heatmap.png**: previews of the original report result graphics.
+-- **Chapter_Spine.md**: question, method, results and boundaries for each chapter.
++- **Agents_for_Robotics_Self_Contained.html**: 36 English slides, 25 embedded clips, original figures, fonts and synchronized Chinese script. One file, about 136.7 MB, offline.
++- **Speaker_Script_Revised.md**: Chinese narration with English technical terms.
++- **Chapter_Spine.md**: chapter question, method, results and limits.
+ 
+-HTML SHA-256: `38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88`. 51-minute timing is suggested, not rehearsed.
+-Control 4–16; Data 17–21; Improvement 22–30; closing 31–32.
+-Latest hash-bound audit files in `.build/` determine actual verification status. v0.17 QA/review passed; Standards0 / Spec0, no unresolved findings.
++HTML SHA-256: `dbe02f333398eabbf6259d77726f9669b954b0f61a7872673263332c9c12cc82`. Suggested 59 minutes, not rehearsed.
++Control 4–17; Data 18–22; Improvement 23–34; closing 35–36.
++Current hash-bound audits determine QA status. Verification is in progress.
+ 
+-Other PPTX, PDF and ZIP files are historical and do not match this page order. This local revision is not a new public release.
++Historical preview images and PPTX/PDF/ZIP are not re-numbered deliverables. No public release was made.
+--- baseline/talk_outline.md
++++ current/talk_outline.md
+@@ -1,6 +1,6 @@
+-# Agents for Robotics — v0.17 page order
++# Agents for Robotics — v0.18 page order
+ 
+-32 English slides, Chinese narration,20 embedded clips. Suggested51 minutes includes media/discussion; not rehearsed.
++36 English slides, Chinese narration, 25 embedded clips. Suggested 59 minutes; not rehearsed.
+ 
+ | Page | Title | Chapter | Minutes |
+ |---:|---|---|---:|
+@@ -12,27 +12,31 @@
+ | 6 | Where Does Generalization Live? | 1 · Agent Controls Robot | 2 |
+ | 7 | Astra: Stronger Real-Robot Performance | 1 · Agent Controls Robot | 2 |
+ | 8 | Astra: More Real-Robot Demos | 1 · Agent Controls Robot | 1 |
+-| 9 | One Model, Different Control Interfaces | 1 · Agent Controls Robot | 2 |
+-| 10 | Astra Interfaces: Three Tasks | 1 · Agent Controls Robot | 1.5 |
+-| 11 | Astra: Introducing a Hybrid Architecture | 1 · Agent Controls Robot | 2.5 |
+-| 12 | RoboDojo: Overall Results | 1 · Agent Controls Robot | 2 |
+-| 13 | RoboLab: Overall Results | 1 · Agent Controls Robot | 2 |
+-| 14 | RoboDojo: Task-Level Patterns | 1 · Agent Controls Robot | 1.5 |
+-| 15 | High Latency Limits Real-Time Control | 1 · Agent Controls Robot | 1.5 |
+-| 16 | Control: Strengths and Open Gaps | 1 · Agent Controls Robot | 1 |
+-| 17 | Agent Creates Data | 2 · Agent Creates Data | 1 |
+-| 18 | Astra: Scene Reconstruction | 2 · Agent Creates Data | 2 |
+-| 19 | Astra: Hand Assets | 2 · Agent Creates Data | 2 |
+-| 20 | Astra: Replay and Data Rollout | 2 · Agent Creates Data | 2 |
+-| 21 | Data: From Demos to Useful Data | 2 · Agent Creates Data | 1 |
+-| 22 | Agent Improves Policy | 3 · Agent Improves Policy | 1 |
+-| 23 | ENPIRE: Environment and Improvement | 3 · Agent Improves Policy | 2 |
+-| 24 | ENPIRE: Reset and Verification | 3 · Agent Improves Policy | 1.5 |
+-| 25 | ENPIRE: What Did the Agent Change? | 3 · Agent Improves Policy | 2.5 |
+-| 26 | ENPIRE: Pin Insertion Curve | 3 · Agent Improves Policy | 2 |
+-| 27 | ENPIRE: Two Physical Tasks | 3 · Agent Improves Policy | 2.5 |
+-| 28 | ENPIRE: Autoresearch in RoboCasa | 3 · Agent Improves Policy | 1.5 |
+-| 29 | Astra: Training and Context | 3 · Agent Improves Policy | 1 |
+-| 30 | ENPIRE: Cost and Chapter Summary | 3 · Agent Improves Policy | 2.5 |
+-| 31 | Takeaways | Closing | 1 |
+-| 32 | Thank You | Closing | 0.5 |
++| 9 | Robot Puzzle Demos in Simulation | 1 · Agent Controls Robot | 1 |
++| 10 | One Model, Different Control Interfaces | 1 · Agent Controls Robot | 2 |
++| 11 | Astra Interfaces: Three Tasks | 1 · Agent Controls Robot | 1.5 |
++| 12 | Astra: Introducing a Hybrid Architecture | 1 · Agent Controls Robot | 2.5 |
++| 13 | RoboDojo: Overall Results | 1 · Agent Controls Robot | 2 |
++| 14 | RoboLab: Overall Results | 1 · Agent Controls Robot | 2 |
++| 15 | RoboDojo: Task-Level Patterns | 1 · Agent Controls Robot | 1.5 |
++| 16 | High Latency Limits Real-Time Control | 1 · Agent Controls Robot | 1.5 |
++| 17 | Control: Strengths and Open Gaps | 1 · Agent Controls Robot | 1 |
++| 18 | Agent Creates Data | 2 · Agent Creates Data | 1 |
++| 19 | Astra: Scene Reconstruction | 2 · Agent Creates Data | 2 |
++| 20 | Astra: Hand Assets | 2 · Agent Creates Data | 2 |
++| 21 | Astra: Replay and Data Rollout | 2 · Agent Creates Data | 2 |
++| 22 | Data: From Demos to Useful Data | 2 · Agent Creates Data | 1 |
++| 23 | Agent Improves Policy | 3 · Agent Improves Policy | 1 |
++| 24 | ENPIRE: Environment and Improvement | 3 · Agent Improves Policy | 2 |
++| 25 | ENPIRE: Reset and Verification | 3 · Agent Improves Policy | 2 |
++| 26 | ENPIRE: Two Ways to Improve Policy | 3 · Agent Improves Policy | 2 |
++| 27 | ENPIRE: What Did the Agent Change? | 3 · Agent Improves Policy | 2.5 |
++| 28 | ENPIRE: Two Physical Tasks | 3 · Agent Improves Policy | 2.5 |
++| 29 | ENPIRE: Parallel Physical Research | 3 · Agent Improves Policy | 2 |
++| 30 | ENPIRE: Autoresearch in RoboCasa | 3 · Agent Improves Policy | 1.5 |
++| 31 | ENPIRE: Learned Manipulation Demos | 3 · Agent Improves Policy | 2 |
++| 32 | ENPIRE: Experience Across Tasks | 3 · Agent Improves Policy | 2 |
++| 33 | ENPIRE: Cost of Physical Research | 3 · Agent Improves Policy | 2.5 |
++| 34 | Toward Recursive Self-Improvement | 3 · Agent Improves Policy | 1.5 |
++| 35 | Takeaways | Closing | 1 |
++| 36 | Thank You | Closing | 0.5 |
+--- baseline/CHANGELOG.md
++++ current/CHANGELOG.md
+@@ -1,3 +1,17 @@
++## [0.18] - 2026-09-16
++### Features
++- Added the requested Cube/Claw simulation demo page after P8.
++- Expanded ENPIRE into a focused problem/method/results narrative with seven full official videos and two task photos; retained original evidence figures.
++- Removed CAD/RL preview and unrelated physical ICL media from the active talk.
++- Added Pin-to-GPU experience transfer and an explicitly open RSI discussion; synchronized Chinese narration.
++### Design Rationale
++- Keep one representative study, use media to explain repeatable experiments, and distinguish policy improvement from a more capable improver.
++- Preserve existing Control/Data/closing content and media, while renumbering after insertion.
++### Notes & Caveats
++- 36 slides / 25 clips / suggested59min, not rehearsed. Static, browser and independent review status is recorded by current-hash audits.
++- Physical retries, RoboCasa single-execution evaluation, historical baseline limits and kinematic puzzle assumptions remain separate.
++- No PPTX/PDF/ZIP rebuild, release, push, robot execution or foundation-model training.
++
+ # Changelog
+ 
+ ## [0.17] - 2026-09-16
+@@ -255,3 +269,5 @@
+ ### Notes & Caveats
+ - Demonstration footage and measured research evidence remain explicitly distinct.
+ - PDF is static; browser playback passed for every clip, while PowerPoint-native playback still needs a pre-talk check on the presentation computer.
++
++本次保留范围例外：P8过渡句指向新增puzzle页，P3第三章提示同步为ENPIRE与可复用研究经验；其他原Control/Data正文不改。
+--- baseline/.build/clip_manifest_v9.json
++++ current/.build/clip_manifest_v9.json
+@@ -0,0 +1,156 @@
++[
++  {
++    "name": "enpire_pin",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/pin-success.mp4",
++    "source_sha256": "36d2086646c82349c5e5b1c12d829a8b14e7d0ce2f171e2e4d86a824e28b5a8d",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_pin.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_pin.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 51.666016,
++    "source_duration_seconds": 413.36,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "bde252c3c2942c0ea3897bfef6029a8b96d0a93de75c4fdda0107a3002331391",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_gpu",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-success.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/gpu-success.mp4",
++    "source_sha256": "259c5a6b8e04018a37b472cb863e48d47ae4f9fbd8c6bf73b246a29786e1f6a9",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_gpu.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_gpu.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 59.9,
++    "source_duration_seconds": 479.245433,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "245837a3058780b2f1e8e03c8157cf267807478bdca7376a49e200d0f1a4348b",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_tie",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-success.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/ziptie-success.mp4",
++    "source_sha256": "e0e0c3a5a82f810017e2f67f0efcf193b04f62d819a0c9f0d5cd1077bfd712ec",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_tie.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_tie.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 47.666667,
++    "source_duration_seconds": 381.2809,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "a9398923bdd46ed8eb514d1ebd7b61f888546ef68dd96551b643ae5dc3269616",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_cut",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/cut-ziptie-success.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/cut-ziptie-success.mp4",
++    "source_sha256": "49947c1d0f419fbc13c66b2b2ca39fe7e83e38a2b76bbb57a84cd618d71811b1",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_cut.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_cut.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 27.433333,
++    "source_duration_seconds": 219.5193,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "849d15eecb6135d5d47941c3830b65201ebf84a82cd62ebd165c10cf6da09695",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_fleet",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-fleet.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/pin-fleet.mp4",
++    "source_sha256": "9183f46967b58f85edc3e8406624e4c22cb1273a8e99fe1baa775256d1ca89bb",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_fleet.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_fleet.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 31.866667,
++    "source_duration_seconds": 254.88,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "19e9bcd92e3081f35e23e603f747d4f9c2fcb76c0e5b27fadb480886535cdf78",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_reset_full",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/pin-reset-only-1.mp4",
++    "source_sha256": "84b491d37f2dae856ebd629ef2a2aa57e5ccb0e264585e084f252530a748ce12",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_reset_full.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_reset_full.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 7.733333,
++    "source_duration_seconds": 61.92,
++    "presentation_speed": 8,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 540,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "e939319f9b2ca82557537fad1539758d34830cc9288e7a596f4da797379dcc13",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 8x source time, without temporal cuts. Player rate 1x."
++  },
++  {
++    "name": "enpire_verify_full",
++    "source_url": "https://research.nvidia.com/labs/gear/enpire/",
++    "download_url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/ziptie-reward-bbox.mp4",
++    "source_sha256": "cbdf5d1540492b49f5a26793e65af9d836ddc4f1d1e5bc0bf12b645ff148aedd",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/enpire_verify_full.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18/enpire_verify_full.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 11.133333,
++    "source_duration_seconds": 11.133333,
++    "presentation_speed": 1,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 960,
++    "height": 1224,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "28b820ed3f0734e29a3c58f3681aadac9058cbd0aaf07649f35f93984b144096",
++    "full_decode": "passed",
++    "source_playback": "Complete original file; encoded at 1x source time, without temporal cuts. Player rate 1x."
++  }
++]--- baseline/.build/clip_manifest_v10.json
++++ current/.build/clip_manifest_v10.json
+@@ -0,0 +1,42 @@
++[
++  {
++    "name": "cube",
++    "source_url": "https://x.com/ZeYanjie/status/2098118164626501669",
++    "download_url": "https://video.twimg.com/amplify_video/2098116238937608192/vid/avc1/1280x720/b1xVc1jzZgqzidBc.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/cube_source.mp4",
++    "source_sha256": "f674cd542a8dc1cad7d7787c204f661707022925c42686ce418701173fbca8b9",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/cube.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/cube.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 23.1,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 1280,
++    "height": 720,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
++    "full_decode": "passed",
++    "source_playback": "Complete X-posted video, original playback retained; no added speedup."
++  },
++  {
++    "name": "claw",
++    "source_url": "https://qinengwang-aiden.github.io/demos/constraint_demos/?demo=claw",
++    "download_url": "https://qinengwang-aiden.github.io/demos/constraint_demos/media/robot-puzzle-demos-1080p.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/claw_source.mp4",
++    "source_sha256": "d6634869d3d7faa142e2a560ea6632a802a20d343fc21a8f740fe6ad19178974",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/claw.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_18_control/claw.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 20.566016,
++    "speed_multiplier": 1,
++    "audio": "removed for narrated talk",
++    "width": 1280,
++    "height": 720,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
++    "full_decode": "passed",
++    "source_playback": "Entire Claw segment [0,20.566667) from official two-demo export; source overlay 8x retained. Cut is the title/scene change to Three-ring Threading, after final withdrawal."
++  }
++]--- baseline/research/enpire_v0_18_sources.json
++++ current/research/enpire_v0_18_sources.json
+@@ -0,0 +1,67 @@
++{
++  "retrieved": "2026-09-16",
++  "commit": "99ee90acf65b5b18957c8382ad580db999528be3",
++  "sha256": {
++    ".build/assets/v0_18/zip_tie.min.jpg": "57be52d14283250aafd0527649022705eec089e4be134835ade28bf13385df9b",
++    ".build/assets/v0_18/robot_farm.min.jpg": "a4aacc2dd99cf9e2cb5ef83335e2db4ffcfd0be3374b60d22039c30bed2d3281",
++    ".build/assets/v0_18/enpire_pin.jpg": "a43408b208fe9e9c0ad30cea1cce20abf3cc9a8a9978308d743e7529111ada5f",
++    ".build/assets/v0_18/ziptie-success.mp4": "e0e0c3a5a82f810017e2f67f0efcf193b04f62d819a0c9f0d5cd1077bfd712ec",
++    ".build/assets/v0_18/enpire_tie.jpg": "9204120a461bad78045b41aa82872c40d097e546438dce9d39e45eb70c3f561b",
++    ".build/assets/v0_18/gpu_insertion.min.jpg": "6cf5618e83727792789b5db39fb89a332897e5114ffc91a04d42fb40aab46139",
++    ".build/assets/v0_18/enpire_reset_full.jpg": "3386d5881858b16514a809c1ecb1dad49328ab31c074abb7713c39344d9e9fed",
++    ".build/assets/v0_18/enpire_fleet.jpg": "461d4b6914c98a29ac966732fc464e0150b80c6b2a31edae805750aa544a24d1",
++    ".build/assets/v0_18/pin-success.mp4": "36d2086646c82349c5e5b1c12d829a8b14e7d0ce2f171e2e4d86a824e28b5a8d",
++    ".build/assets/v0_18/control.min.jpg": "744c9315b4c99e63160858c80552fd01b0f66c050ea6a9ef61ef591d5a8f313f",
++    ".build/assets/v0_18/cut-ziptie-success.mp4": "49947c1d0f419fbc13c66b2b2ca39fe7e83e38a2b76bbb57a84cd618d71811b1",
++    ".build/assets/v0_18/pin-fleet.mp4": "9183f46967b58f85edc3e8406624e4c22cb1273a8e99fe1baa775256d1ca89bb",
++    ".build/assets/v0_18/push_t.min.jpg": "6a07257bf35622dd677f8265be99010eb87f06ad012a3b90465af7233f205380",
++    ".build/assets/v0_18/gpu-success.mp4": "259c5a6b8e04018a37b472cb863e48d47ae4f9fbd8c6bf73b246a29786e1f6a9",
++    ".build/assets/v0_18/enpire_gpu.jpg": "fac1220eb5a1b4f1a079ada2bbe4c47f4d15ad6ca5e98772e210fb04723e1fca",
++    ".build/assets/v0_18/ziptie-reward-bbox.mp4": "cbdf5d1540492b49f5a26793e65af9d836ddc4f1d1e5bc0bf12b645ff148aedd",
++    ".build/assets/v0_18/sam.min.jpg": "632b868cf710715c0269d066aa7ce3b0becd236b59cedfb408cd0425e4ea4530",
++    ".build/assets/v0_18/pin_insertion_2.min.jpg": "bdcf01db3ccf12f96bdb6fdb411b3626f258ec6a29bb41f1ca7004a1e163c5f0",
++    ".build/assets/v0_18/curobo.min.jpg": "f8809c3d7f8053dd118f3575ea6a63dea644a378a75c9ce4da9e02824e87655f",
++    ".build/assets/v0_18/enpire_verify_full.jpg": "166b233d82b001346970d9d09304e1b3f33f4b35e26a46c577652ec0757b2577",
++    ".build/assets/v0_18/pin-reset-only-1.mp4": "84b491d37f2dae856ebd629ef2a2aa57e5ccb0e264585e084f252530a748ce12",
++    ".build/assets/v0_18/enpire_cut.jpg": "3e33e9490648051efecbca4a0dfbf4c8d7171f4b600f275845fe832326bbec3e",
++    ".build/clips/enpire_pin.mp4": "bde252c3c2942c0ea3897bfef6029a8b96d0a93de75c4fdda0107a3002331391",
++    ".build/clips/enpire_gpu.mp4": "245837a3058780b2f1e8e03c8157cf267807478bdca7376a49e200d0f1a4348b",
++    ".build/clips/enpire_tie.mp4": "a9398923bdd46ed8eb514d1ebd7b61f888546ef68dd96551b643ae5dc3269616",
++    ".build/clips/enpire_cut.mp4": "849d15eecb6135d5d47941c3830b65201ebf84a82cd62ebd165c10cf6da09695",
++    ".build/clips/enpire_fleet.mp4": "19e9bcd92e3081f35e23e603f747d4f9c2fcb76c0e5b27fadb480886535cdf78",
++    ".build/clips/enpire_reset_full.mp4": "e939319f9b2ca82557537fad1539758d34830cc9288e7a596f4da797379dcc13",
++    ".build/clips/enpire_verify_full.mp4": "28b820ed3f0734e29a3c58f3681aadac9058cbd0aaf07649f35f93984b144096",
++    ".build/clip_manifest_v9.json": "1893d7cdd2af7d500e791f0369104c2fd0b00aa097816ca4e96dfb5f7bc4d2c3",
++    "research/sources/enpire_20260916/downloaded_media.json": "03b4427e359c661a087c35838ca87094bb89c2cc3ee040eb83d2ece076a2ba5b",
++    "research/sources/enpire_20260916/11qk_vpw_zwkf.js": "cc3273c1a58f89af78184ebb484071a77d9dddb7feef40161848b9f67ce5bf0f",
++    "research/sources/enpire_20260916/repo_tree.json": "9226f414081e414e273e5249e6352713413288ccb609ba23c459e91372c09191",
++    "research/sources/enpire_20260916/media_inventory.json": "27cc4a394528e83f03f20b2f783364ef884355893f8bc5ea0e2d245030e63817",
++    "research/sources/enpire_20260916/code__enpire__env__forge__cap__saved_scripts__pusht__reset_t_skill.py": "490fd88eb267777dfb45e7126e4d1ba5047a27d4ae22dff447e917dc0520e181",
++    "research/sources/enpire_20260916/paper_clean.txt": "d4e89a639cd445f1a7a48e60c3879111da341444762c285f0ff8cf28aa2b9aec",
++    "research/sources/enpire_20260916/paper.html": "5715b47a38edacaf9a7d4db7d192590aa0e3ce1ce92e7ba044d2a102878bb5fc",
++    "research/sources/enpire_20260916/code__enpire__policy__autoresearch_instruction.md": "bc46b5dc68d7d2492ac33444a077d85567525bb750866ac9880d31248f72c40a",
++    "research/sources/enpire_20260916/turbopack-0h4ruw6wmw4n6.js": "e60263016ba30a36bd45ac92fb2d0aab5a6479adf54a676d5e50c026587424bd",
++    "research/sources/enpire_20260916/code__enpire__policy__rl__auto_reward.py": "e295a41b747af7c70fbe2558e592a412b0c1bac823c2e8670fa4329e2dc57f00",
++    "research/sources/enpire_20260916/website.html": "1c7d7c7095d5ccc03ce0e7dbd6b3ab6f2c2a9abf08928b67e4eed7479fc73295",
++    "research/sources/enpire_20260916/search_rsi_2026.txt": "95f539ff256b45efaeffffa680159e7ef6db367178da2d579d23f7186e0266ac",
++    "research/sources/enpire_20260916/roborsi_current.html": "28f22dfc98c624ce742534d48e5d538b2cfd833d34cc0623298e4e4710cf5ab1",
++    "research/sources/enpire_20260916/code__enpire__policy__interface.py": "3cef7217372899d5fec600bdf4586fdefac9b3d199c93743b9989a59ca4e2817",
++    "research/sources/enpire_20260916/code_manifest.json": "ddb3b65a507f158026307d4a89d70fbe871aa3e83a9b846f55963161559b305c",
++    "research/sources/enpire_20260916/code__enpire__policy__rl__runner.py": "192620c170ae2eb837be470d345cc8fea3223875a81092f08fba404d841b8da3",
++    "research/sources/enpire_20260916/code__enpire__policy__autoresearch.py": "94c7c1250c53357360ad4bf4f43e8b573017129df6c70e92b9b353070075b0f3",
++    "research/sources/enpire_20260916/dgm_current.html": "733a2bad5c922cf25d1530d9a42951dcf14b2b8febb9af418862e6ebcfdd9a7b",
++    "research/sources/enpire_20260916/roborsi_current.txt": "82a5be0cda11c5987ba88a6ec1e8a495c51ca7741ab91fee5ee36eaa7336562f",
++    "research/sources/enpire_20260916/dgm_current.txt": "3617202d08a06835c6e623e41ffeba55b1037522b88e9055a9f96eaaf893201e",
++    "research/sources/enpire_20260916/0d3tkj33oycf2.js": "2a4653e53a56ac6ea963b296eda9626a685c9838a9603e3ad0280975e118a717",
++    "research/sources/enpire_20260916/code__enpire__policy__pld__runtime__README.md": "3be28d38cf9f906e14bd4cc7f36a184cfa3dcce91006bb845baea5f545cd05ec",
++    "research/sources/enpire_20260916/website.txt": "0f276b94a09136b0e1be00600693ce0eaba9895018c82cd0663e2921588d7bb9",
++    "research/sources/enpire_20260916/0fsi8lw5utejl.js": "e9786b1305894e4119bb9811a816dac9cf576755596dd989ee15b455749fc35e",
++    "research/sources/enpire_20260916/code__enpire__policy__rl__auto_eval.py": "c366f98f3d530031d52e2f1863fc1f3589e158322395fe509d5ab3e24ddb8c52",
++    "research/sources/enpire_20260916/repo.json": "0c5988a5f9349429ac7a271807e57de70706e32210e48d34766c221b4d243b66",
++    "research/sources/enpire_20260916/search_rsi_2026.html": "ca1e876309123d56815e7be28c5fb8871e011ffac326e2b06ff7673aa598e1a0",
++    "research/sources/enpire_20260916/03~yq9q893hmn.js": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
++    "research/sources/enpire_20260916/0pjq-hlddzx4h.js": "03e0e4b438e782e496d5669b0d8d29e9c7155540260671aaa986191cfcc4eae9",
++    "research/sources/enpire_20260916/0h4bq73pogmtb.js": "b17064eac667723a6b3eee82861cca94184eff50fda0a0ff13ad7a44a1950d8a",
++    "research/sources/enpire_20260916/11dgx9quo0zhy.js": "347643c2c2dfb3237bb2c0cbf6d1e93a59f8acd8b80d0d165108cd2dab29c86d"
++  }
++}--- baseline/research/puzzle_v0_18_sources.json
++++ current/research/puzzle_v0_18_sources.json
+@@ -0,0 +1,24 @@
++{
++  "retrieved": "2026-09-16",
++  "cube_site_status": "403 Forbidden; no bypass attempted. Original public post/video used; action interface not disclosed.",
++  "claw_boundary_seconds": 20.566667,
++  "sha256": {
++    ".build/assets/v0_18_control/claw_transition.jpg": "0afbbf77f3c239e3a0e2a37d7f1227992473f9af6a213d31bf580e514def62dd",
++    ".build/assets/v0_18_control/cube_source.mp4": "f674cd542a8dc1cad7d7787c204f661707022925c42686ce418701173fbca8b9",
++    ".build/assets/v0_18_control/claw.jpg": "eedfbdac26dbd96e3c4f227fefa8bb07e1b0db1fbcda448e47934fb93a634db2",
++    ".build/assets/v0_18_control/cube.jpg": "52630cb3c0fc41d9edb344b9550e88a730f7bdd259d4cf5f5ebcbf48478ddd11",
++    ".build/assets/v0_18_control/claw_source.mp4": "d6634869d3d7faa142e2a560ea6632a802a20d343fc21a8f740fe6ad19178974",
++    ".build/assets/v0_18_control/claw_contact.jpg": "fa51dad1d144fb9c3c5210abc670e984071db00e453cb7e73d40fbd5a850b8c7",
++    ".build/assets/v0_18_control/cube_contact.jpg": "258e58565e911a6d349656af07132f42f9831bf1d006f0b3e4c5b87f30ca93cf",
++    ".build/clips/cube.mp4": "95795114f7260fa7f5a05397314f246b165a7db757ef334dec1075a48339b6c0",
++    ".build/clips/claw.mp4": "20438ce8d6ebbf1f889cff859bdcd94a7d9470bfb4f4c0122abd892874a56052",
++    ".build/clip_manifest_v10.json": "1745a1e248c2059603854308697cae1585867adeff8fd2339b6cd6d0ff0ec082",
++    "research/sources/control_extra_20260916/cube_syndication.json": "02b80aa8d2421cc0422da3d5bb285d100f6e5a4e33946f4ba0e1069eab078556",
++    "research/sources/control_extra_20260916/claw_app.js": "98614045cab090e2b3c01f590d80004a4b1ed86085eca50902e610207ae25e76",
++    "research/sources/control_extra_20260916/claw_methods.html": "a3633b458ba94bb1ae3d89b43921d381a91281d1357466c4d21ef6a77baf6809",
++    "research/sources/control_extra_20260916/awesome.md": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7",
++    "research/sources/control_extra_20260916/claw_manifest.json": "54c40935da50ed1e1cb1be6f0a3279feb58ef6f12178c22e3a64837550b2e9c2",
++    "research/sources/control_extra_20260916/download_urls.json": "4cac3ef296217a60bd8f9ae6fb8ebffcbfb96481a70d95b2fcafa5689e949c20",
++    "research/sources/control_extra_20260916/claw.html": "ba8672cc8f7a32fa95ffd8246671ed2dd9a39be551285b623d35581d764ecb22"
++  }
++}--- baseline/research/sources.json
++++ current/research/sources.json
+@@ -3,7 +3,7 @@
+   "cutoff": "2026-09-16",
+   "timezone": "Asia/Shanghai",
+   "selection": "Astra-first Control; demo-only Data from Awesome-Astra; ENPIRE as Improvement representative.",
+-  "status": "v0.17 verified:32 slides,20 clips; Data6 demos in3 paired pages; Standards0 / Spec0, no unresolved findings.",
++  "status": "v0.18 content built; current audit files determine QA status",
+   "records": [
+     {
+       "id": "S01",
+@@ -362,7 +362,7 @@
+       "publication_date": "2026-09-08",
+       "date_precision": "day",
+       "source_type": "first_party_x_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "url": "https://x.com/cdngdev/status/2097339677128982873",
+       "related_urls": [
+         "https://x.com/cdngdev/status/2097339677745516710"
+@@ -395,7 +395,7 @@
+       "publication_date": "2026-09-08",
+       "date_precision": "day",
+       "source_type": "first_party_x_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "url": "https://x.com/Lingxiao234/status/2096992059731443923",
+       "related_urls": [
+         "https://x.com/Lingxiao234/status/2096992132527702382",
+@@ -415,7 +415,7 @@
+       "complete_video_visual_audit": false,
+       "historical_talk_role": "deep_dive",
+       "active_slides": [
+-        20
++        21
+       ]
+     },
+     {
+@@ -531,7 +531,7 @@
+       "publication_date": "2026-06-18",
+       "date_precision": "day",
+       "source_type": "research_preprint",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "url": "https://arxiv.org/html/2606.19980v1",
+       "related_urls": [
+         "https://research.nvidia.com/labs/gear/enpire/"
+@@ -575,15 +575,17 @@
+       "complete_video_visual_audit": false,
+       "historical_talk_role": "deep_dive",
+       "active_slides": [
+-        22,
+         23,
+         24,
+         25,
+         26,
+         27,
+         28,
++        29,
+         30,
+-        31
++        31,
++        33,
++        35
+       ]
+     },
+     {
+@@ -963,7 +965,7 @@
+       "publication_date": "2026-09-10",
+       "date_precision": "day",
+       "source_type": "first_party_x_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "url": "https://x.com/earthtojake/status/2097789988670709821",
+       "related_urls": [
+         "https://x.com/earthtojake/status/2097789991426335015",
+@@ -983,7 +985,7 @@
+       "complete_video_visual_audit": false,
+       "historical_talk_role": "appendix",
+       "active_slides": [
+-        19
++        20
+       ]
+     },
+     {
+@@ -1576,10 +1578,15 @@
+       "code_execution_or_replication": false,
+       "snapshots": [],
+       "active_slides": [
+-        27,
+-        30
+-      ],
+-      "talk_role": "current_reference"
++        25,
++        26,
++        28,
++        29,
++        31,
++        32,
++        33
++      ],
++      "talk_role": "active"
+     },
+     {
+       "id": "HIROBOT_DISCUSSION",
+@@ -1588,7 +1595,7 @@
+       "publication_date": "2025",
+       "date_precision": "year",
+       "source_type": "primary_source",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "url": "https://arxiv.org/html/2502.19417v2#S6",
+       "related_urls": [
+         "https://www.pi.website/research/hirobot"
+@@ -1608,7 +1615,7 @@
+       "code_execution_or_replication": false,
+       "active_slides": [
+         6,
+-        16
++        17
+       ]
+     },
+     {
+@@ -1628,11 +1635,11 @@
+       "url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+       "accessed": "2026-09-15",
+       "source_type": "primary_source",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "active_slides": [
+-        17,
+-        20,
+-        21
++        18,
++        21,
++        22
+       ],
+       "code_execution_or_replication": false,
+       "evidence_boundary": "One recorded physics rollout; physical acceptance not met; training value not evaluated."
+@@ -1653,9 +1660,9 @@
+       "url": "https://x.com/ax_pey/status/2098216469012283681",
+       "accessed": "2026-09-15",
+       "source_type": "community_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "active_slides": [
+-        16
++        17
+       ],
+       "code_execution_or_replication": false
+     },
+@@ -1675,10 +1682,10 @@
+       "url": "https://github.com/frank-zy-dou/kitchen-twin/tree/d34e0f8983bcb6ce040130d023cac9623d0efce7",
+       "accessed": "2026-09-15",
+       "source_type": "community_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "code_execution_or_replication": false,
+       "active_slides": [
+-        18
++        19
+       ]
+     },
+     {
+@@ -1687,10 +1694,10 @@
+       "url": "https://x.com/dimentary/status/2097857980150763900",
+       "accessed": "2026-09-15",
+       "source_type": "community_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "code_execution_or_replication": false,
+       "active_slides": [
+-        19
++        20
+       ]
+     },
+     {
+@@ -1699,10 +1706,10 @@
+       "url": "https://x.com/frankzydou/status/2098460193319186578",
+       "accessed": "2026-09-16",
+       "source_type": "community_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "code_execution_or_replication": false,
+       "active_slides": [
+-        18
++        19
+       ]
+     },
+     {
+@@ -1711,11 +1718,90 @@
+       "url": "https://lnkd.in/p/e8YszUkv",
+       "accessed": "2026-09-16",
+       "source_type": "community_demo",
+-      "talk_role": "current_reference",
++      "talk_role": "active",
+       "code_execution_or_replication": false,
+       "active_slides": [
+-        18
++        19
+       ]
++    },
++    {
++      "id": "CUBE",
++      "title": "Rubik’s Cube simulation demo",
++      "url": "https://x.com/ZeYanjie/status/2098118164626501669",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        9
++      ],
++      "talk_role": "active"
++    },
++    {
++      "id": "CLAW",
++      "title": "Unlocking the Claw methods and recorded replay",
++      "url": "https://qinengwang-aiden.github.io/demos/constraint_demos/methods.html",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        9
++      ],
++      "talk_role": "active"
++    },
++    {
++      "id": "ENPIRE_CODE",
++      "title": "ENPIRE pinned policy research contract",
++      "url": "https://github.com/NVlabs/ENPIRE/blob/99ee90acf65b5b18957c8382ad580db999528be3/enpire/policy/autoresearch_instruction.md",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        26
++      ],
++      "talk_role": "active"
++    },
++    {
++      "id": "ENPIRE_TRANSFER",
++      "title": "ENPIRE experience transfer",
++      "url": "https://arxiv.org/html/2606.19980v1#S3.SS4",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        32,
++        34
++      ],
++      "talk_role": "active"
++    },
++    {
++      "id": "ROBORSI",
++      "title": "RoboRSI September 2026 report",
++      "url": "https://lab.noematrix.ai/blog/2-roborsi/",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        34
++      ],
++      "talk_role": "active"
++    },
++    {
++      "id": "DGM",
++      "title": "Darwin Gödel Machine",
++      "url": "https://sakana.ai/dgm/",
++      "accessed": "2026-09-16",
++      "source_type": "primary",
++      "code_execution_or_replication": false,
++      "verification_scope": "research/enpire_rsi_evidence_2026-09-16.md",
++      "active_slides": [
++        34
++      ],
++      "talk_role": "active"
+     }
+   ],
+   "limitations": [
+@@ -1736,5 +1822,7 @@
+   "code_video_authority": "research/code_video_v0_14_sources.json",
+   "data_demo_authority": "research/data_demos_v0_15_sources.json",
+   "data_extra_authority": "research/data_extra_v0_16_sources.json",
+-  "kitchen_video_authority": "research/kitchen_v0_17_sources.json"
++  "kitchen_video_authority": "research/kitchen_v0_17_sources.json",
++  "enpire_media_authority": "research/enpire_v0_18_sources.json",
++  "puzzle_video_authority": "research/puzzle_v0_18_sources.json"
+ }

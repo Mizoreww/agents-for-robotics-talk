@@ -1,0 +1,249 @@
+{
+  "html_sha256": "01505a9c7b51801eb5593b8113fcd3a3b21ca05053e2c79122977d08b9b3b868",
+  "reviewed_at": "2026-09-14T08:43:21.837879+00:00",
+  "slides_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "preserved_style": "Noto Serif / Noto Sans / subset Noto Sans CJK SC; white/teal; original logos and toolbar",
+  "result": "passed",
+  "checks": [
+    "All 28 slide layouts reviewed; final changed pages 5, 12, 23 reinspected at full size",
+    "Overview diagrams at 4/14/20; summaries at 13/19/26",
+    "Hi Robot, Helix, Helix 02 originals together; all three enlargement views inspected",
+    "Anonymous architecture, Real2Sim and ENPIRE framework and Figure 12 enlarged and inspected",
+    "Original axes, uncertainty, baselines, legends and no-gain branches retained",
+    "Desktop/390px toolbar and Chinese-script controls inspected; no clipping or overflow",
+    "Keyboard, Office and quadruped excerpts reviewed using sequential 1-second frames across the entire excerpt",
+    "Five new clips completed uninterrupted playback with real decoded frames; distinct from source experiment validation"
+  ],
+  "screenshots": [
+    {
+      "file": ".build/v0_8_visual/01.png",
+      "sha256": "234e121d28b85808b173cdc091365efa2b3f7b4019d1265f0e21722583ae53cc"
+    },
+    {
+      "file": ".build/v0_8_visual/02.png",
+      "sha256": "6a96a253735746ff812b3ab452acb166f4c4657fb5e05b8e92448d2374a801cc"
+    },
+    {
+      "file": ".build/v0_8_visual/03.png",
+      "sha256": "4b4e719dd988f981cef14ee858a04c3351f2d8c0f22cce2e4b564a166ac0351a"
+    },
+    {
+      "file": ".build/v0_8_visual/04.png",
+      "sha256": "6d03bdf57fa9af41d8b9820f0c23e84fd7d6d843669413263e0406235d539915"
+    },
+    {
+      "file": ".build/v0_8_visual/05.png",
+      "sha256": "8f90c323213619979ab5925aa670e88ae2eccc46f31e2ab7a7afb4cea7edffe2"
+    },
+    {
+      "file": ".build/v0_8_visual/06.png",
+      "sha256": "705f9f5b741275ed9e71b309419dec80ebd5373fccdd5974b39956a4ce156270"
+    },
+    {
+      "file": ".build/v0_8_visual/07.png",
+      "sha256": "398b4266637da7020ad1cf92983aba1fbd15b2ec3a2a242bbcec7ddc3d9af21b"
+    },
+    {
+      "file": ".build/v0_8_visual/08.png",
+      "sha256": "783cdb893b3734aa6d710cbc6a7a6d254aa9d99ef8046a8f5ee641ce4994e7e5"
+    },
+    {
+      "file": ".build/v0_8_visual/09.png",
+      "sha256": "5fd03ca7acb4ff4fbf91bc111d023a1f741f700d67a3da3fe208db2b61123adc"
+    },
+    {
+      "file": ".build/v0_8_visual/10.png",
+      "sha256": "4b1310a36aeefa0f30bcaea95d36940ec28b5e043f5576bf1506af58f9f2bc09"
+    },
+    {
+      "file": ".build/v0_8_visual/11.png",
+      "sha256": "7597c7d89fed669acdd897ec43d81b456c2b3b78376ba9c923c8f9b309c705df"
+    },
+    {
+      "file": ".build/v0_8_visual/12.png",
+      "sha256": "31b961038a7224e446e21cdc8d216cafe81a054fb64188317576c77e466d9193"
+    },
+    {
+      "file": ".build/v0_8_visual/13.png",
+      "sha256": "c6859df9ec23891b72c202baecef8201431b0d1837bce8823847550f0045572b"
+    },
+    {
+      "file": ".build/v0_8_visual/14.png",
+      "sha256": "44fa65c28efc0bd01b2cb2e22789d624c5b8686e7abdf26165977f13785badb6"
+    },
+    {
+      "file": ".build/v0_8_visual/15.png",
+      "sha256": "ddb8dc430f4c25815caf911b31aec2e082808b77cf5221fd4a20c7eb44bc1573"
+    },
+    {
+      "file": ".build/v0_8_visual/16.png",
+      "sha256": "fd1ad92b84c13deaff304bb72175ccf2db3e166bb19ea3ba5833f00855cd4ff0"
+    },
+    {
+      "file": ".build/v0_8_visual/17.png",
+      "sha256": "48bc2044b90a05f07d8046031ffc221286ab8110cc36b6d09ddb6171e7e5ee5c"
+    },
+    {
+      "file": ".build/v0_8_visual/18.png",
+      "sha256": "1fb609da3aaf9f7eced638fd6bdc9f52ffcd4a8356a2e32c3b4b19730aa263f9"
+    },
+    {
+      "file": ".build/v0_8_visual/19.png",
+      "sha256": "126bc2fb12852c39c13471f6b2a733e4a31833e52a7cf4408f0f0bb7f53b21f5"
+    },
+    {
+      "file": ".build/v0_8_visual/20.png",
+      "sha256": "958a7a35dd429dcb1c044dddf7654c9d2a962edf93ad33ec66295eb2ab0d4424"
+    },
+    {
+      "file": ".build/v0_8_visual/21.png",
+      "sha256": "f6bd55c42bc00d061bfe192c04d8f40be80ea7fea6fdf169650edf6180473aa3"
+    },
+    {
+      "file": ".build/v0_8_visual/22.png",
+      "sha256": "dec743229b6e09d7345da14a0def8ed142e2984355d683e3cb4edd2b425571bd"
+    },
+    {
+      "file": ".build/v0_8_visual/23.png",
+      "sha256": "b71a080d929e2696bacdd24a1ed2d72e04d318208a6f2f42a9e7c48fc79e46f7"
+    },
+    {
+      "file": ".build/v0_8_visual/24.png",
+      "sha256": "8638ac25c1753e4f192d9e4230957117d83e759c3448fb8d22c573fb4f45c434"
+    },
+    {
+      "file": ".build/v0_8_visual/25.png",
+      "sha256": "f5477ad8a98f6aae316579f82633bc1ebcc48470461580c26486b8d861d0dfdc"
+    },
+    {
+      "file": ".build/v0_8_visual/26.png",
+      "sha256": "6a85e1f0bcf7fa0afa7e1629ddddb1af945ea70fc61d45cb4aa417ba699f0430"
+    },
+    {
+      "file": ".build/v0_8_visual/27.png",
+      "sha256": "fd03c834508691aeeddc594d077307946a4a499bed34ff342acfb0e460bb7e4b"
+    },
+    {
+      "file": ".build/v0_8_visual/28.png",
+      "sha256": "858bf5a2e2ff4e7e01f0186bd530b449e09b12f3d5da1c2276d6ff8c7203ac26"
+    },
+    {
+      "file": ".build/v0_8_visual/controls.png",
+      "sha256": "bad57a026aaf6adab64f01899b772148fe1f0d40803672ca1b6a682e1f14385b"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-12-0.png",
+      "sha256": "e3d67f464248f2f7b261419672fbf5400f2786b85581fc7acb7cbfef0709542e"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-16-0.png",
+      "sha256": "4305b077750d47ce0dabe0a22f5dcedc772938053d0c26683e5e58a64ff84c1b"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-21-0.png",
+      "sha256": "598a3fdedaf37d768ea5f0fd14109a81fd589545468501f66b856e38148b52fb"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-23-0.png",
+      "sha256": "7566a8dccfb04106a53153cf564105f704cf728b93a8928d386c231c93d5c79c"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-5-0.png",
+      "sha256": "a9c5d7c034870327eec03fd1f8fa0f9980759c2416287d9f60febfaeccbf2f2c"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-5-1.png",
+      "sha256": "db77d8c87658c8a130e724c735b0975fdffba867ee70e1d3191cf7912735f9e0"
+    },
+    {
+      "file": ".build/v0_8_visual/figure-5-2.png",
+      "sha256": "6c3e9fb72bc219dd736c95ef1c700baa3cd874e4fa066c16c5e98efa8e3d415a"
+    },
+    {
+      "file": ".build/v0_8_visual/mobile.png",
+      "sha256": "ff54bce85011141731d56b6dd22a3fddcf5b84b52e82dbcfb6654d32dc7ec08f"
+    },
+    {
+      "file": ".build/v0_8_visual/script-desktop.png",
+      "sha256": "3d9ca0672a74c74ab684b6ee5225ae702bd10578672217fd30f01cd068750890"
+    },
+    {
+      "file": ".build/v0_8_visual/script-mobile.png",
+      "sha256": "16f1540869354225f6c7f7b63002eddbc6c13f45e536c9c91e93e94da17f3498"
+    }
+  ],
+  "video_review": {
+    "method": "Sequential 1-second sampled frames across full presentation excerpts; not every original source frame",
+    "sheets": [
+      {
+        "file": ".build/v0_8_video_review/keyboard-1.jpg",
+        "sha256": "1f6e2a429ec59f3b7dbacf18aa32e13b7b0d5545bc3befc2127d0e71dc32fcb8"
+      },
+      {
+        "file": ".build/v0_8_video_review/keyboard-2.jpg",
+        "sha256": "c66316b5e969763744c4b56cb466a507596324a4513ea1efe7bf28c60fab3ed1"
+      },
+      {
+        "file": ".build/v0_8_video_review/keyboard-3.jpg",
+        "sha256": "d7abfc43057cecc344885bcb7d75f3793bfae0aa0f6a332a300c04528ad00045"
+      },
+      {
+        "file": ".build/v0_8_video_review/office_newton-1.jpg",
+        "sha256": "02b2edb4469bf18780245e802388d1f285d793d18605a29b43b0ac5e6843c16f"
+      },
+      {
+        "file": ".build/v0_8_video_review/office_newton-2.jpg",
+        "sha256": "0a4012a4dea261f6e0f97084cce9edc96b8bc7c02a31507c747877c436372f1b"
+      },
+      {
+        "file": ".build/v0_8_video_review/office_newton-3.jpg",
+        "sha256": "83a6814e457900f25925a153ad4ae6b426125c1d9b5962389f2a4cc596613916"
+      },
+      {
+        "file": ".build/v0_8_video_review/quad_rl-1.jpg",
+        "sha256": "763e10f4556b966c6de11eedb42fed9e30c33094c4849e5e034086c0e23ace7c"
+      },
+      {
+        "file": ".build/v0_8_video_review/quad_rl-2.jpg",
+        "sha256": "6d682fb4f9a1c71d7d2d8f2172a5ab3c8ad2a9a280fb3c33bb4bba98da77304f"
+      }
+    ],
+    "whole_clip_playback_audit": ".build/v0_8_extended_audit.json"
+  },
+  "not_claimed": [
+    "Measured rehearsal timing",
+    "Source-experiment reproduction",
+    "Every frame of full original source videos reviewed",
+    "Updated PPTX/PDF/ZIP",
+    "New GitHub release"
+  ]
+}

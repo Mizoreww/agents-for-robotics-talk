@@ -1,0 +1,23 @@
+{
+  ".build/build_selfcontained.py": "dd6af81287a74e2e9edb450f2e0a9b8ca713e5f0417b0611bbc8696ecaf60585",
+  ".build/script_revised.md": "04af53d64ad56e6f6f67245fe401964ae2cc30e0ba3bc98a5c31bed33fbc9d3f",
+  ".build/validate_standalone.py": "4758cede7c40fe70d55a9f911aff2ebe581ee518f6c64aaf57690976c7af9b76",
+  ".build/results_slides_v09.py": "d32d44490643883937b03928ad80febacff7957fc070fafdc2cf637daab7ae6b",
+  ".build/test_table_emphasis.py": "a7b4b279b572c5c9ffe5ed08fda847bc834ab2b42fb148b317964a7364745277",
+  ".build/browser_audit.mjs": "d90d0047d59c8fd016f2a7cb640feeba6292b1192b5051efd383d822b4c6e585",
+  ".build/extended_visual_audit.mjs": "61635934d5e2afd9567ae4e53081904f8c6d46b7c5c2ed1dfc21c142dab16b76",
+  ".build/standalone_build_audit.json": "0b2aa45c4dca3eebdf43a365277d028b6668443f63e10f01b15c24ba646a66e3",
+  ".build/standalone_delivery_audit.json": "ecd28e88bc970ce967f915413fc3555d468a66c72357bde0cc96add3ea7c4da5",
+  ".build/standalone_visual_audit.json": "d2f28484e92e90de70a74043f0610dcaacde5ea29d87e9d414f044204c9c6cda",
+  ".build/slide_records_revised.json": "deee557e8a371c13abc6ff741442c585b8f56cb989aa5d2559144d6842c4e326",
+  "output/Agents_for_Robotics_Self_Contained.html": "9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c",
+  "output/Speaker_Script_Revised.md": "5ef97ef7d645e98c392053c3fa27c7ae07b1d5f072cfd39081ed95b5a5ca1aca",
+  "README.md": "a04f60d573ca654ccd51c8ed6510fd66bd81c675a5842ebe1b23dc48f6553b3c",
+  "AGENTS.md": "f46b5110dbce713531ccff4e455f1edd3e050d1c654b9178e449d70cdf876365",
+  "output/README.md": "dd9a6d22188fe2e681f29063430438aeb4ce6987413d55c4e02c4226dc040222",
+  "output/Chapter_Spine.md": "72b229350a2dc22cb999b2ba715dc14494efdb4d2ca9927c003f27032a1fe150",
+  "talk_outline.md": "ab840be5ee38506bad39614fd14306b337d7c9e2d75bd25f02e11f66bac699d6",
+  "CHANGELOG.md": "5d0364a18956baf4637bb71141261617331e020722bcb853e0b4346a81d4710c",
+  "WORKPLAN.md": "d8e5820f5a72c54f699883c99d8f4095176433b5deeb3fc44076f70d82f2cac8",
+  "research/sources.json": "61de30f32375d3cee34e63a930d5677ab935c31bb97df1ea44df7bf51b1db1cd"
+}

@@ -1,0 +1,12 @@
+{
+  "html_sha256": "7dd72dc9dc888b6edd7aac19d5b64220770c1fb94e02ce386872d0157d87e3cf",
+  "status": "passed",
+  "date": "2026-09-15",
+  "manually_reviewed_slides": [
+    6
+  ],
+  "scope": "Interface symbols on all four System2\u21921\u21920 links and primitive conditional-policy notation. Chinese narration and CJK subset synchronized. Full browser geometry/media controls/UI/mobile rerun. Earlier extended full-length playback and two-axis review not rerun.",
+  "screenshots": {
+    ".build/v0_13_notation_visual/06.png": "89d2a87d68726638853a94b44258cc21a17ba641d96b4b9825d8ff109507ac74"
+  }
+}

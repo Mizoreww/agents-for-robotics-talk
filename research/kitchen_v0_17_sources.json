@@ -1,0 +1,22 @@
+{
+  "source": {
+    "author": "Zhiyang (Frank) Dou",
+    "x_post_id": "2098460193319186578",
+    "created_at_utc": "2026-09-11T17:14:32.000Z",
+    "local_date": "2026-09-12",
+    "x_url": "https://x.com/frankzydou/status/2098460193319186578",
+    "linkedin_user_link": "https://lnkd.in/p/e8YszUkv",
+    "method": "Public X oEmbed and syndication; no logged-in browser session used",
+    "scope": "Scene/asset viewer demo with articulated objects; author says simulation being added; human-in-the-loop"
+  },
+  "sha256": {
+    "research/sources/kitchen_20260916/x_syndication.json": "b82054e0814b91086e52c2a21ae82e9835c22a9151186cbffd0f4bfbc934e408",
+    "research/sources/kitchen_20260916/x_oembed.json": "6cc82df2b782a7103d7c79954a6b6bb8d9c849ab333e152f08d23e730472d225",
+    "research/sources/kitchen_20260916/linkedin.html": "558b63420224bcd52e255b7054763ca1f706620fd0faecea6107ec8ade57057d",
+    "research/sources/kitchen_20260916/download.json": "09da917c45842a99bd5e6612698d3a5e3019829ffc2512be4e06d44bab63ac18",
+    ".build/assets/v0_17/kitchen_source.mp4": "379ddb0632a15315ccf1ca86b9d33aaabcedca9670f5fdd04991dc8f6f4b1917",
+    ".build/assets/v0_17/kitchen.jpg": "ffa4aaed990d7111b9a047394bd44667eac756fbd5015240ef1f60e21f3fa113",
+    ".build/clips/kitchen.mp4": "98db3ae24844ff38a33224dc0265e749beed7f24b1b0155b90fc2ac2e50bf9c5",
+    ".build/clip_manifest_v8.json": "a4b6222fc7403d6a685cccc8154dfea9565edf3c07a0f9e05aba2a683a98ffd0"
+  }
+}

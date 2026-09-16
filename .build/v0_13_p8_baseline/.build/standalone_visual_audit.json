@@ -1,0 +1,14 @@
+{
+  "html_sha256": "ae50f078af71bb8f931b4ea421359411b72483073032bd68130c7f173a51dee9",
+  "status": "passed",
+  "date": "2026-09-15",
+  "manually_reviewed_slides": [
+    4,
+    7
+  ],
+  "scope": "P7 capability-framed title and removed on-slide paragraph; synchronized Chinese narration. P4 IK and perception share light-teal styling. Full layout/media-controls/UI/mobile audits rerun. Extended full-length playback and independent two-axis review not rerun for this follow-up.",
+  "screenshots": {
+    ".build/v0_13_p7_visual/04.png": "d0c819646ae4446569ae5d4e8aba49f17b8e734624afb9c5e93122b594314df0",
+    ".build/v0_13_p7_visual/07.png": "4b6a2fcd096f297c75e03ebf23ade865a37be70f5d150aa8fda2fc40d711de70"
+  }
+}

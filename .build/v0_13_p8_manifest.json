@@ -1,0 +1,12 @@
+{
+  "html_sha256": "9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c",
+  "files": {
+    ".build/build_selfcontained.py": "dd6af81287a74e2e9edb450f2e0a9b8ca713e5f0417b0611bbc8696ecaf60585",
+    ".build/script_revised.md": "04af53d64ad56e6f6f67245fe401964ae2cc30e0ba3bc98a5c31bed33fbc9d3f",
+    ".build/validate_standalone.py": "4758cede7c40fe70d55a9f911aff2ebe581ee518f6c64aaf57690976c7af9b76",
+    ".build/standalone_visual_audit.json": "d2f28484e92e90de70a74043f0610dcaacde5ea29d87e9d414f044204c9c6cda",
+    ".build/standalone_delivery_audit.json": "ecd28e88bc970ce967f915413fc3555d468a66c72357bde0cc96add3ea7c4da5",
+    "output/Speaker_Script_Revised.md": "5ef97ef7d645e98c392053c3fa27c7ae07b1d5f072cfd39081ed95b5a5ca1aca",
+    "research/p8_control_interfaces_2026-09-15.md": "5ddbe476b353770b788b5dca12aaed5d4178adef943438f1c1f5fe09bdc32323"
+  }
+}

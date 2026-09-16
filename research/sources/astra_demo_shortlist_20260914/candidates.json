@@ -1,0 +1,129 @@
+[
+  {
+    "id": "mobile_icl",
+    "url": "https://x.com/ax_pey/status/2098216469012283681",
+    "text": "Gpt-6 astra can do in-context learning on mobile manipulation!\n\n• Different environment\n• Different camera angle\n• Different layout\n\nNo text prompt, it infers from video\n\nIt even chooses when to use end-effector or joint space\n\nTrace recording after  ⬇️",
+    "date": "Fri Sep 11 01:06:03 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2098212559770013696/vid/avc1/1920x1080/BC4m4aPH1EDY6cor.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2098212559770013696/img/neTOctu-ZjIamRtG.jpg",
+        "duration": 20.67,
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "id": "keyboard",
+    "url": "https://x.com/kaiwynd/status/2098823484474348008",
+    "text": "I asked Astra to express itself using a keyboard.\n\n40 minutes, several accidental long presses, and a lot of backspace later, it learned how to type.\n\nVideo at 20× speed. Watch till the end!",
+    "date": "Sat Sep 12 17:18:07 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2098821014465519616/vid/avc1/1920x1080/IP4sVHPj3QwCbR61.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2098821014465519616/img/plfeqoCgIRWkoVYX.jpg",
+        "duration": 134.534,
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "id": "office_newton",
+    "url": "https://x.com/Jiarui_X/status/2098439950991806804",
+    "text": "Gave GPT-6 Astra a few renders of our office scan. It came back with a full Blender rebuild — 50 desks, 62 chairs, walls, blinds — aligned to the scan within 2 cm and exported to USD. Dropped it straight into Newton with a G1 walking through it. One prompt → a humanoid gym. 🤯",
+    "date": "Fri Sep 11 15:54:06 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2098439638574870528/vid/avc1/1920x1080/aM02cJ2Fu0It7w4P.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2098439638574870528/img/Yvy-kZtPAJqf7XFC.jpg",
+        "duration": 303.733,
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "id": "g1_cola",
+    "url": "https://x.com/RotekSong/status/2099104628562608371",
+    "text": "OK, the GPT-6 Codex agent controlled the G1 in Isaac Sim and picked up the cola bottle.",
+    "date": "Sun Sep 13 11:55:17 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2099104580227543040/vid/avc1/640x480/XxrNgFrj_J9QTQRM.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2099104580227543040/img/xes3jU199QujnRaP.jpg",
+        "duration": 27.52,
+        "width": 640,
+        "height": 480
+      },
+      {
+        "url": "https://video.twimg.com/amplify_video/2099104580219117569/vid/avc1/960x600/Odva_XeSxXrVDMF6.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2099104580219117569/img/H91Nhtr9lcDPRaom.jpg",
+        "duration": 27.52,
+        "width": 960,
+        "height": 600
+      }
+    ]
+  },
+  {
+    "id": "video_physics",
+    "url": "https://x.com/huxiao93612565/status/2097815230105399402",
+    "text": "Video in → physics out. 🤖\nI gave GPT-6 Astra one video of a human hand. \nIt wrote this entire real2sim pipeline itself — hand tracking, IK retargeting to a 44-DOF dexterous hand, grasp refinement.\n\nZero code from me. Open-sourcing everything 👇\nhttps://github.com/Hu-xiao-max/dexgpt",
+    "date": "Wed Sep 09 22:31:41 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2097815161298141184/vid/avc1/794x720/Bz63pAwAG782zssb.mp4?tag=14",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2097815161298141184/img/zApY88_WLFgvtdTc.jpg",
+        "duration": 20.2,
+        "width": 1192,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "id": "quadruped_rl",
+    "url": "https://x.com/gclue_akira/status/2098300921658868185",
+    "text": "GPT-6 Astraを用いて5日間で25ループを回し、ヨチヨチ歩きから、強化学習で9モーションまで習得\n\nロボ犬デザインもAstraがFusion360で設計(QDDはRS05, BatteryはMakita 40V, BoardはJetsonを想定）。各ループで発生した問題箇所を逐次修正。\n\n30ループ目以降は実機でデバック予定。AstraがSTLデータを作ったので、次の5ループで寸法合わせして実機へDeploy(これはAstraの指示を受けて人間の仕事)",
+    "date": "Fri Sep 11 06:41:38 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2098297480752607232/vid/avc1/1440x1200/fDFQ9O6Z9JvGebZx.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2098297480752607232/img/Wn0NcGWBxngznKmZ.jpg",
+        "duration": 14,
+        "width": 1440,
+        "height": 1200
+      }
+    ]
+  },
+  {
+    "id": "unseen_robot",
+    "url": "https://x.com/lucascassiano/status/2097830777438486557",
+    "text": "I want to sleep and woke up to a robot moving!\n\nI gave full access for the new @openai GPT-6 Astra model to control the hardware and OS (@Vitrus_ai ) and it earned to control a new kind of robot it never saw before. \n\n❌ ZERO human egocentric data\n❌ ZERO VLA\n✅ A new robotics OS designed for AI (@Vitrus_ai )\n✅ GPT-6 Astra\n\nIncluding using our physics simulation pipelines to self-teach tasks.\n\nThere is a lot to improve, but this is a new age of robotics.",
+    "date": "Wed Sep 09 23:33:27 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2097828478884429825/vid/avc1/1920x1080/7BMccxFYEHHOqjBx.mp4?tag=29",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2097828478884429825/img/kigsMCN3O-NhdrE9.jpg",
+        "duration": 70.4,
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "id": "wuji_rollout",
+    "url": "https://x.com/Lingxiao234/status/2097717020540481630",
+    "text": "I wanted to find whether GPT-6 hits its limit on robot dexterity.\n\nSo I just gave it two videos, without states or actions, and told it to do real2sim and physical retarget to Wuji hands.\n\nHere are the successful physical rollouts — a Rubik's cube, then an egocentric human video.",
+    "date": "Wed Sep 09 16:01:26 +0000 2026",
+    "videos": [
+      {
+        "url": "https://video.twimg.com/amplify_video/2097716973899780096/vid/avc1/1920x1080/gsFWFgb-G3egibZw.mp4?tag=16",
+        "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2097716973899780096/img/IgOqn00YQoSzMzG7.jpg",
+        "duration": 33.9,
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  }
+]

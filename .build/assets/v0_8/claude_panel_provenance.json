@@ -1,0 +1,26 @@
+[
+  {
+    "source": ".build/assets/claude_direct.png",
+    "source_sha256": "f128ac0134f286b13c2f4b29f0f2eb3a3c54b0da779c30a7d4c8949fecd99abd",
+    "crop": [
+      0,
+      0,
+      3225,
+      2400
+    ],
+    "file": ".build/assets/v0_8/claude_direct_sr.png",
+    "sha256": "64c084ae9a1c275618763cf0a2c256930eaeff140c2d38f530ca7f248e84d8d5"
+  },
+  {
+    "source": "research/assets/claude_vla.png",
+    "source_sha256": "622a88ab0da2fc9c6eaf95e367a22207ab2eafc5ee9f63f35f9f3d6d7aabb0a3",
+    "crop": [
+      0,
+      0,
+      3225,
+      2550
+    ],
+    "file": ".build/assets/v0_8/claude_vla_sr.png",
+    "sha256": "1a7b1b2b648172e85f73cfb74d0816b8ac374f601fc946ed9af98df8c7b7f126"
+  }
+]

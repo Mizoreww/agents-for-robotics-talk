@@ -1,0 +1,22 @@
+[
+  {
+    "name": "dexgpt",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_15/dexgpt_source.mp4",
+    "download_url": "https://raw.githubusercontent.com/Hu-xiao-max/dexgpt/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b/outputs/comparison.mp4",
+    "source_url": "https://github.com/Hu-xiao-max/dexgpt/tree/03ba8a26eaef9dfd272ac1a22c0fd06ccb9b2e5b",
+    "source_sha256": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+    "start_seconds": 0,
+    "duration_seconds": 20.3,
+    "speed_multiplier": 1,
+    "audio": "source has no audio",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/dexgpt.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_15/dexgpt.jpg",
+    "width": 1920,
+    "height": 540,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "a44512d59d55f5eeb20e22138c64cea585bcc692b0ba5b98ddb5eba4b07c403a",
+    "full_decode": "passed",
+    "source_playback": "Original 20.3-second replay; not model latency or success-rate measurement"
+  }
+]

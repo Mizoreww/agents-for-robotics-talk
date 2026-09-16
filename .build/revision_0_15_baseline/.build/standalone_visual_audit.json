@@ -1,0 +1,26 @@
+{
+  "html_sha256": "dca813ac76e82ccf8e504fefe007df3c970afdbc2795e151a3a4f8f640dabe90",
+  "status": "passed",
+  "date": "2026-09-15",
+  "manually_reviewed_slides": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16
+  ],
+  "scope": "Final v0.14 modified slide captures, desktop controls and mobile narration inspected. Complete hash-bound browser and extended playback checks passed. Standards0 / Spec0. Independent spec review confirms all other slide DOMs unchanged and original 18 clips retained.",
+  "screenshots": {
+    ".build/v0_14_visual/09.png": "2ae13620609ff4f2951c760933831283f9b11a5a22a624a7deb4242bde22bd1d",
+    ".build/v0_14_visual/10.png": "80cc3e28a6019046d87d2df50f86dfe80c01ca34822ce2e7fe7a8a96625f3a4b",
+    ".build/v0_14_visual/11.png": "fea2b85f376f62f79a0ac8900064cb132bc20bcec6b4b3154b8d7059734b6558",
+    ".build/v0_14_visual/12.png": "5c64c75d727ca782d6e29ee0d05854f9c9174d97afd2eb1337b41cb61eb0b54a",
+    ".build/v0_14_visual/13.png": "9b7612c49f191599ea2b319cb285ee48e4a36452a01b631ba2eb14967a208914",
+    ".build/v0_14_visual/15.png": "1d14ee4bb3944e28474c6a60821b3abe8c5d31159a904a3e75420c59ce749c5c",
+    ".build/v0_14_visual/16.png": "04c53c8e592f9bb0de4668aa8fe53fdd79f0b1b001078b119a4d60f9f4dd980d",
+    ".build/v0_14_visual/controls.png": "71b674823e50734605d0c616641a4e2a14cc27542da3b6f9e88a3e505e351d91",
+    ".build/v0_14_visual/script-mobile.png": "765dd944b5e80688c47d19e01fb8fd39463fa00b813d8bb3da9e4edc6a2a1694"
+  }
+}

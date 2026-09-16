@@ -1,0 +1,23 @@
+{
+  "html_sha256": "9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c",
+  "chapter_opening_slides": [
+    4,
+    17,
+    25
+  ],
+  "slide_count": 35,
+  "embedded_video_count": 18,
+  "embedded_image_count": 37,
+  "font_faces": 4,
+  "all_media_byte_identical": true,
+  "media_slide_mapping_verified": true,
+  "external_runtime_resources": 0,
+  "all_scripts_chinese": true,
+  "script_file_equals_embedded_script": true,
+  "isolated_directory_only_html": true,
+  "cjk_glyphs_used": 780,
+  "html_bytes": 134568574,
+  "browser_audits": "passed for this hash",
+  "desktop_text_overflow": 0,
+  "mobile_button_overflow": 0
+}

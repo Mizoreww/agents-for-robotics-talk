@@ -1,0 +1,41 @@
+{
+  "images": [
+    {
+      "src": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-1.png&w=640&q=75",
+      "alt": "Hi Robot 1",
+      "srcset": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-1.png&w=256&q=75 1x, /_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-1.png&w=640&q=75 2x"
+    },
+    {
+      "src": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-2.png&w=640&q=75",
+      "alt": "Hi Robot 2",
+      "srcset": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-2.png&w=256&q=75 1x, /_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-2.png&w=640&q=75 2x"
+    },
+    {
+      "src": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-3.png&w=640&q=75",
+      "alt": "Hi Robot 3",
+      "srcset": "/_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-3.png&w=256&q=75 1x, /_next/image?url=%2Fimages%2Fhi-robot%2Fsandwich-3.png&w=640&q=75 2x"
+    }
+  ],
+  "links": [
+    "/",
+    "/",
+    "/blog",
+    "/join-us",
+    "https://arxiv.org/abs/2502.19417",
+    "https://www.physicalintelligence.company/blog/pi0",
+    "https://www.physicalintelligence.company/blog/pi0",
+    "https://www.physicalintelligence.company/blog/pi0",
+    "https://www.physicalintelligence.company/blog/pi0",
+    "https://www.physicalintelligence.company/blog/pi0",
+    "#why-is-this-a-good-idea",
+    "#robots-that-talk-to-themselves",
+    "#training-high-level-policy-with-synthetic-data",
+    "https://arxiv.org/abs/2502.19417",
+    "https://arxiv.org/abs/2502.19417",
+    "#where-is-this-going",
+    "mailto:research@physicalintelligence.company",
+    "/",
+    "/blog",
+    "/join-us"
+  ]
+}

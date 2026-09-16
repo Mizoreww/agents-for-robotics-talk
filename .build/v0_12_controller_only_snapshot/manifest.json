@@ -1,0 +1,10 @@
+{
+  ".build/build_selfcontained.py": "0cf8729f00e73b837ac1176f89af776e99b3b42e17f3e8748afad1e21b742899",
+  ".build/validate_standalone.py": "3e33407869fd79569bd64101dcb5bebaad0fe32722c57485c422b5f13e2b8f5e",
+  ".build/script_revised.md": "e195adbb47ecadce48278b7194aae79cf25a26d23f605cc79b868ffc3e86a57b",
+  "research/revision_0_12_spec.md": "853907deb4a8d7f5ebe3fee446535a9cbef980a07b319cc07d5741338d8e4e29",
+  "research/revision_0_12_review.md": "5c8c1cc688fcb6b20efd3c4615417ba9ee56b4aab02468788ca643af9be8cee9",
+  ".build/standalone_visual_audit.json": "ba0be145ba2dd0ad20a1384bc614cfa5721339977267901033f4fc8a5047ac3b",
+  ".build/standalone_delivery_audit.json": "9e9825e68e6d6982cf0f17116cfa0c1772e913e48bff8ba51bba0923f5fbd0ab",
+  ".build/v0_12_final_review_manifest.json": "521751569ae665b9e620113897291ea4ae6f7b6a68237c3613dbfc1b6951afe2"
+}

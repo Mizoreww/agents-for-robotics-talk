@@ -1,0 +1,2548 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="./">
+    <meta name="theme-color" content="#fbfbfa">
+    <meta
+      name="description"
+      content="RoboRSI: stable, efficient, and reusable robot self-evolution in complex real-world environments."
+    >
+    <script>
+      (function () {
+        var match = /(?:^|[?&])lang=(zh|en)(?:&|$)/.exec(
+          window.location.search,
+        );
+        var language = match && match[1] === "zh" ? "zh" : "en";
+        document.documentElement.setAttribute("data-lang", language);
+        document.documentElement.setAttribute(
+          "lang",
+          language === "zh" ? "zh-CN" : "en",
+        );
+      })();
+    </script>
+    <title>RoboRSI | NOEMATRIX LAB</title>
+    <link
+      rel="canonical"
+      href="https://lab.noematrix.ai/blog/2-roborsi/"
+    >
+    <script defer src="../../arms.js?v=20260826-2"></script>
+    <script defer src="../../assets/roborsi/media-lightbox.js?v=20260904-5"></script>
+    <link
+      rel="icon"
+      href="../../assets/brand/qiongche-favicon.ico?v=20260822-2"
+      type="image/x-icon"
+    >
+    <link
+      rel="icon"
+      href="../../assets/brand/qiongche-favicon-32.png?v=20260822-2"
+      type="image/png"
+      sizes="32x32"
+    >
+    <link
+      rel="apple-touch-icon"
+      href="../../assets/brand/qiongche-apple-touch-icon.png?v=20260822-1"
+      sizes="180x180"
+    >
+    <link
+      rel="preload"
+      href="../../assets/brand/qiongche-logo-english-light.png"
+      as="image"
+    >
+    <link
+      rel="preload"
+      href="../../assets/brand/qiongche-logo-chinese-light.png"
+      as="image"
+    >
+    <link rel="stylesheet" href="../../assets/fonts/source-serif-4/index.css">
+    <link rel="stylesheet" href="../../assets/fonts/source-sans-3/index.css">
+    <link rel="stylesheet" href="../../assets/fonts/noto-serif-sc/index.css">
+    <link rel="stylesheet" href="../../assets/fonts/noto-sans-sc/index.css">
+    <link rel="stylesheet" href="../../assets/fonts/jetbrains-mono/index.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260826-35">
+    <link rel="stylesheet" href="../../density.css?v=20260826-8">
+    <link rel="stylesheet" href="../../roborsi.css?v=20260905-1">
+    <link rel="stylesheet" href="../../assets/roborsi/media-lightbox.css?v=20260904-7">
+  </head>
+  <body class="roborsi-page">
+    <a class="skip-link" href="#article">
+      <span class="lang-zh">跳到正文</span>
+      <span class="lang-en">Skip to article</span>
+    </a>
+
+    <header class="site-header" data-header>
+      <a
+        class="brand"
+        href="../../index.html"
+        aria-label="NOEMATRIX LAB home"
+        data-label-zh="返回 NOEMATRIX LAB 首页"
+        data-label-en="Return to the NOEMATRIX LAB home"
+      >
+        <img
+          class="lang-en"
+          src="../../assets/brand/qiongche-logo-english-light.png"
+          alt="NOEMATRIX"
+        >
+        <img
+          class="lang-zh"
+          src="../../assets/brand/qiongche-logo-chinese-light.png"
+          alt="穹彻智能"
+        >
+        <span class="brand-lab" aria-hidden="true">LAB</span>
+      </a>
+      <div class="language-switch" role="group" aria-label="Language / 语言">
+        <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      </div>
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="lang-zh">目录</span>
+        <span class="lang-en">Menu</span>
+      </button>
+      <nav
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-label="Mobile article navigation"
+        data-label-zh="移动端文章导航"
+        data-label-en="Mobile article navigation"
+      >
+        <a class="mobile-menu-main" href="#chapter-introduction">
+          <span class="lang-zh">01　引言</span>
+          <span class="lang-en">01　Introduction</span>
+        </a>
+        <a class="mobile-menu-main" href="#chapter-method">
+          <span class="lang-zh">02　方法</span>
+          <span class="lang-en">02　Method</span>
+        </a>
+        <a class="mobile-menu-sub" href="#architecture">
+          <span>02.A</span>
+          <span class="lang-zh">整体框架</span>
+          <span class="lang-en">Overall Framework</span>
+        </a>
+        <a class="mobile-menu-sub" href="#multi-agent-operation">
+          <span>02.B</span>
+          <span class="lang-zh">多智能体设计</span>
+          <span class="lang-en">Multi-Agent Design</span>
+        </a>
+        <a class="mobile-menu-sub" href="#feature-autonomy">
+          <span>02.C</span>
+          <span class="lang-zh">自顶向下的技能进化</span>
+          <span class="lang-en">Top-down Skill Evolution</span>
+        </a>
+        <a class="mobile-menu-sub" href="#design-philosophy">
+          <span>02.D</span>
+          <span class="lang-zh">设计哲学</span>
+          <span class="lang-en">Design Philosophy</span>
+        </a>
+        <a class="mobile-menu-main" href="#chapter-applications">
+          <span class="lang-zh">03　实验与应用</span>
+          <span class="lang-en">03　Experiments & Applications</span>
+        </a>
+        <a class="mobile-menu-sub" href="#application-navigation">
+          <span>03.A</span>
+          <span class="lang-zh">真机部署</span>
+          <span class="lang-en">Real-World Deployment</span>
+        </a>
+        <a class="mobile-menu-sub" href="#application-zero-shot">
+          <span>03.B</span>
+          <span class="lang-zh">零样本学习</span>
+          <span class="lang-en">Zero-shot Learning</span>
+        </a>
+        <a class="mobile-menu-sub" href="#application-code">
+          <span>03.C</span>
+          <span class="lang-zh">将技能固化为代码</span>
+          <span class="lang-en">Solidifying Skills as Code</span>
+        </a>
+        <a class="mobile-menu-sub" href="#application-policy">
+          <span>03.D</span>
+          <span class="lang-zh">策略训练和应用</span>
+          <span class="lang-en">Policy Training &amp; Application</span>
+        </a>
+        <a class="mobile-menu-sub" href="#application-robustness">
+          <span>03.E</span>
+          <span class="lang-zh">扰动鲁棒性</span>
+          <span class="lang-en">Perturbation Robustness</span>
+        </a>
+        <a class="mobile-menu-main" href="#chapter-outlook">
+          <span class="lang-zh">04　展望</span>
+          <span class="lang-en">04　Outlook</span>
+        </a>
+        <a class="mobile-menu-main" href="#citation">
+          <span class="lang-zh">05　引用</span>
+          <span class="lang-en">05　References</span>
+        </a>
+      </nav>
+    </header>
+
+    <nav
+      class="site-nav"
+      aria-label="Article navigation"
+      data-label-zh="文章导航"
+      data-label-en="Article navigation"
+    >
+      <p class="toc-kicker">
+        <span class="lang-zh">本文目录</span>
+        <span class="lang-en">In this article</span>
+      </p>
+      <div class="toc-group" data-toc-group="introduction">
+        <a class="toc-main" href="#chapter-introduction">
+          <span class="toc-number">01</span>
+          <span class="lang-zh">引言</span>
+          <span class="lang-en">Introduction</span>
+        </a>
+      </div>
+      <div class="toc-group" data-toc-group="method">
+        <a class="toc-main" href="#chapter-method">
+          <span class="toc-number">02</span>
+          <span class="lang-zh">方法</span>
+          <span class="lang-en">Method</span>
+        </a>
+        <div class="toc-sub">
+          <a href="#architecture">
+            <span>02.A</span>
+            <span class="lang-zh">整体框架</span>
+            <span class="lang-en">Overall Framework</span>
+          </a>
+          <a href="#multi-agent-operation">
+            <span>02.B</span>
+            <span class="lang-zh">多智能体设计</span>
+            <span class="lang-en">Multi-Agent Design</span>
+          </a>
+          <a href="#feature-autonomy">
+            <span>02.C</span>
+            <span class="lang-zh">自顶向下的技能进化</span>
+            <span class="lang-en">Top-down Skill Evolution</span>
+          </a>
+          <a href="#design-philosophy">
+            <span>02.D</span>
+            <span class="lang-zh">设计哲学</span>
+            <span class="lang-en">Design Philosophy</span>
+          </a>
+        </div>
+      </div>
+      <div class="toc-group" data-toc-group="experiments">
+        <a class="toc-main" href="#chapter-applications">
+          <span class="toc-number">03</span>
+          <span class="lang-zh">实验与应用</span>
+          <span class="lang-en">Experiments</span>
+        </a>
+        <div class="toc-sub">
+          <a href="#application-navigation">
+            <span>03.A</span>
+            <span class="lang-zh">真机部署</span>
+            <span class="lang-en">Real-World Deployment</span>
+          </a>
+          <a href="#application-zero-shot">
+            <span>03.B</span>
+            <span class="lang-zh">零样本学习</span>
+            <span class="lang-en">Zero-shot Learning</span>
+          </a>
+          <a href="#application-code">
+            <span>03.C</span>
+            <span class="lang-zh">将技能固化为代码</span>
+            <span class="lang-en">Skills as Code</span>
+          </a>
+          <a href="#application-policy">
+            <span>03.D</span>
+            <span class="lang-zh">策略训练和应用</span>
+            <span class="lang-en">Policy Training &amp; Application</span>
+          </a>
+          <a href="#application-robustness">
+            <span>03.E</span>
+            <span class="lang-zh">扰动鲁棒性</span>
+            <span class="lang-en">Perturbation Robustness</span>
+          </a>
+        </div>
+      </div>
+      <div class="toc-group" data-toc-group="outlook">
+        <a class="toc-main" href="#chapter-outlook">
+          <span class="toc-number">04</span>
+          <span class="lang-zh">展望</span>
+          <span class="lang-en">Outlook</span>
+        </a>
+      </div>
+      <div class="toc-group" data-toc-group="citation">
+        <a class="toc-main" href="#citation">
+          <span class="toc-number">05</span>
+          <span class="lang-zh">引用</span>
+          <span class="lang-en">References</span>
+        </a>
+      </div>
+    </nav>
+
+    <main id="article" tabindex="-1">
+      <article>
+        <header class="article-hero" id="top">
+          <div class="hero-title-stage">
+            <p class="edition reveal">
+              <span>NOEMATRIX LAB</span>
+            </p>
+            <h1 class="reveal">
+              <span>RoboRSI</span>
+            </h1>
+            <p class="hero-thesis reveal">
+              <span class="lang-zh">
+                <span class="accent">在真实复杂场景中实现稳定、高效、可复用的机器人自进化</span>
+              </span>
+              <span class="lang-en">
+                <span class="accent">Stable, efficient, and reusable robot self-evolution in complex real-world environments.</span>
+              </span>
+            </p>
+            <a
+              class="github-repo-strip reveal"
+              href="https://github.com/nssmd/RoboRSI"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-label-zh="在 GitHub 查看 RoboRSI 开源仓库"
+              data-label-en="View the RoboRSI open-source repository on GitHub"
+              aria-label="View the RoboRSI open-source repository on GitHub"
+            >
+              <svg
+                class="github-repo-strip-mark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.3 3.5 6.5 6.8 7A4.8 4.8 0 0 0 8 18v4"></path>
+                <path d="M8 19c-3 .9-3-1.5-4-2"></path>
+              </svg>
+              <span class="github-repo-strip-label">GITHUB</span>
+              <strong class="github-repo-strip-title lang-zh">查看 RoboRSI 开源仓库</strong>
+              <strong class="github-repo-strip-title lang-en">Explore RoboRSI on GitHub</strong>
+              <code>nssmd/RoboRSI</code>
+              <svg
+                class="github-repo-strip-arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m13 6 6 6-6 6"></path>
+              </svg>
+            </a>
+            <p class="dek reveal">
+              <span class="lang-zh">
+                软件行业的工程范式在过去数年经历了革命。<br>
+                得益于日益强大的 AI Coding 工具，软件工程师从底层代码编写、架构设计、日志诊断与版本迭代这些底层工作中解放出来，专注于宏观目标、价值判断、安全边界上。在此之上，我们也开始看到：当 AI 接管了虚拟生产环境中的执行、评估与修订闭环后，系统已然能够从完整的尝试与反馈中持续改进<a href="https://lilianweng.github.io/posts/2026-07-04-harness/">[1]</a>。<br>
+                我们相信，物理世界的 Agent 也应当经历相同的进化。但物理世界的复杂度远高于计算机内。机器人本体有着高维、连续且受动力学约束的动作空间；真实场景则开放、非结构化，不断随人、物和外部条件变化。直接尝试将 Agent 部署在机器人上难以完成长程复杂任务，过程中遇到的多种问题与不完整的反馈也极易让 Agent 陷入混乱。<br>
+                在此背景下，我们推出 RoboRSI，这是第一次将一个多智能体框架部署在一个真实世界的移动机器人上，并表现出稳定的自主迭代进化能力，最终完成了包括目标搜索、移动接近、抓取与运送放置的长程复杂任务。
+              </span>
+              <span class="lang-en">
+                Software engineering has undergone a major paradigm shift over the past few years.<br>
+                Thanks to increasingly powerful AI Coding tools, software engineers have been freed from low-level code writing, architecture implementation, log diagnosis, and version iteration, allowing them to focus on high-level objectives, value judgments, and safety boundaries. Beyond that, we are also beginning to see that when AI takes over execution, evaluation, and revision loops in virtual production environments, systems can already improve through complete cycles of attempts and feedback<a href="https://lilianweng.github.io/posts/2026-07-04-harness/">[1]</a>.<br>
+                We believe physical agents should undergo the same evolution. However, the world is far more complex than a computer environment. A robot embodiment has a high-dimensional, continuous action space constrained by dynamics; real-world scenes are open, unstructured, and constantly reshaped by people, objects, and external conditions. Directly deploying an agent on a robot struggles to complete long-horizon complex tasks, and the diverse problems and incomplete feedback encountered during execution can easily push the agent into confusion.<br>
+                Against this backdrop, we present RoboRSI: the first deployment of a Multi-Agent framework on a real-world mobile robot, demonstrating stable autonomous iterative self-improvement and ultimately completing long-horizon complex tasks that include target search, mobile approach, grasping, transport, and placement.
+              </span>
+            </p>
+
+            <div class="ambient-orbit ambient-orbit-hero" aria-hidden="true"></div>
+
+            <div class="article-meta reveal">
+              <div data-meta="author">
+                <span class="lang-zh">作者</span>
+                <span class="lang-en">Author</span>
+                <strong>Noematrix Team</strong>
+              </div>
+              <div data-meta="keywords">
+                <span class="lang-zh">关键词</span>
+                <span class="lang-en">Keywords</span>
+                <strong>
+                  <span class="lang-zh">自进化 · 技能分层 · 多智能体</span>
+                  <span class="lang-en">Self-Improvement · Skill Hierarchy · Multi-Agent</span>
+                </strong>
+              </div>
+              <div data-meta="published">
+                <span class="lang-zh">发布</span>
+                <span class="lang-en">Published</span>
+                <strong>
+                  <span class="lang-zh">2026 年 9 月</span>
+                  <span class="lang-en">September 2026</span>
+                </strong>
+              </div>
+            </div>
+          </div>
+
+        </header>
+
+        <section
+          class="engineering-history reveal"
+          aria-labelledby="engineering-history-title"
+        >
+          <div class="engineering-history-copy">
+            <h2 id="engineering-history-title">
+              <span class="lang-zh">从两名工程师一个月，到 RoboRSI 的一天技能迭代。</span>
+              <span class="lang-en">From one month with two engineers to one day of skill iteration with RoboRSI.</span>
+            </h2>
+
+            <div class="engineering-video-morph-stage" data-engineering-morph>
+              <div class="engineering-video-comparison">
+                <figure class="engineering-history-media is-before">
+                <video
+                  class="evidence-video"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  data-expandable-video
+                  data-title-zh="2024 年公司地面清理 Demo"
+                  data-title-en="Company ground-cleaning demo, 2024"
+                  data-label-zh="打开 2024 年公司地面清理 Demo"
+                  data-label-en="Open the 2024 company ground-cleaning demo"
+                  aria-label="Open the 2024 company ground-cleaning demo"
+                  poster="../../assets/roborsi/real-world/physical-engineered-pipeline-v1.jpg"
+                >
+                  <source
+                    src="../../assets/roborsi/real-world/physical-engineered-pipeline-v1.mp4"
+                    type="video/mp4"
+                  >
+                </video>
+                <figcaption>
+                  <span class="lang-zh">早期纯地面清理系统依赖工程师逐项连接感知、导航、抓取与异常处理。</span>
+                  <span class="lang-en">The earlier ground-cleaning system connected perception, navigation, grasping, and recovery through task-specific engineering.</span>
+                </figcaption>
+                </figure>
+
+                <i class="engineering-comparison-arrow" aria-hidden="true"></i>
+
+                <figure class="engineering-history-media is-after">
+                <video
+                  id="roborsi-film"
+                  class="evidence-video"
+                  data-expandable-video
+                  data-physical-video
+                  data-tool-trace-id="physical-final-demo"
+                  data-title-zh="从两名工程师一个月，到 RoboRSI 的一天技能迭代"
+                  data-title-en="From one month with two engineers to one day of skill iteration with RoboRSI"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="../../assets/roborsi/real-world/physical-final-demo-robot-v1.jpg?v=20260901-9"
+                  data-src-en="../../assets/roborsi/real-world/physical-final-demo-robot-v1.mp4?v=20260901-9"
+                  data-src-zh="../../assets/roborsi/real-world/physical-final-demo-robot-v1.mp4?v=20260901-9"
+                  data-poster-en="../../assets/roborsi/real-world/physical-final-demo-robot-v1.jpg?v=20260901-9"
+                  data-poster-zh="../../assets/roborsi/real-world/physical-final-demo-robot-v1.jpg?v=20260901-9"
+                  data-label-en="Open the final real-robot demonstration"
+                  data-label-zh="打开最终真机演示"
+                  aria-label="Open the final real-robot demonstration"
+                >
+                  <source
+                    src="../../assets/roborsi/real-world/physical-final-demo-robot-v1.mp4?v=20260901-9"
+                    type="video/mp4"
+                  >
+                </video>
+                <figcaption>
+                  <span class="lang-zh">经过约一天的能力迭代，RoboRSI 已经可以在开放的真实场景中自主完成目标搜索、移动接近、抓取、运送与放置，并在场景发生变化后再次搜索和清理。</span>
+                  <span class="lang-en">After roughly one day of capability iteration, RoboRSI can autonomously search for targets, approach, pick up, transport, and place them in an open real-world environment, then search and clean again after the scene changes.</span>
+                </figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="engineering-history-prose">
+              <p>
+                <span class="lang-zh">2024 年，为了完成同类纯地面清理 Demo，两名工程师连续投入约一个月，编写了约 2,000–3,000 行任务代码。如果需要适配新场景、新物体或出现新的失败模式，通常意味着需要同样的人力投入继续补写流程。</span>
+                <span class="lang-en">In 2024, a comparable ground-cleaning demo required two engineers for roughly one month and about 2,000–3,000 lines of task-specific code. Adapting to new scenes, new objects, or new failure modes usually meant investing comparable engineering effort to extend the pipeline by hand.</span>
+              </p>
+              <p>
+                <span class="lang-zh">现在，同类能力可以交给 RoboRSI 完成任务拆解、技能实现、真机执行、诊断和修订，约一天即可完成从需求到可执行能力的迭代。产生的基础技能、任务代码和失败诊断会继续留在 RoboRSI 框架中，供下一项任务复用。这展示了经适当设计的 Agent 框架令人惊讶的真实场景学习效率，为机器人进入更广泛的实用场景提供了一条新的路径。</span>
+                <span class="lang-en">With RoboRSI, the same class of capability can move through task decomposition, Skill implementation, physical execution, diagnosis, and revision in about one day, from request to executable capability. The resulting Base Skills, task code, and failure diagnoses remain in the RoboRSI framework for reuse by later tasks. This demonstrates the striking real-world learning efficiency of a properly designed agent framework and opens a new path toward broader practical applications for robots.</span>
+              </p>
+            </div>
+
+            <div
+              class="engineering-history-facts"
+              data-label-zh="历史工程流程与 RoboRSI 迭代周期对比"
+              data-label-en="Historical engineering workflow and RoboRSI iteration comparison"
+              aria-label="Historical engineering workflow and RoboRSI iteration comparison"
+            >
+              <div>
+                <span>2024 / MANUAL PIPELINE</span>
+                <strong>
+                  <span class="lang-zh">2 名工程师 · 约 1 个月</span>
+                  <span class="lang-en">2 engineers · about 1 month</span>
+                </strong>
+                <small>
+                  <span class="lang-zh">约 2,000–3,000 行任务代码</span>
+                  <span class="lang-en">About 2,000–3,000 task-specific lines</span>
+                </small>
+              </div>
+              <div>
+                <span>2026 / RoboRSI</span>
+                <strong>
+                  <span class="lang-zh">约 1 天完成一轮能力迭代</span>
+                  <span class="lang-en">About 1 day per capability iteration</span>
+                </strong>
+                <small>
+                  <span class="lang-zh">拆解、实现、执行、诊断与修订进入同一闭环</span>
+                  <span class="lang-en">Decomposition, implementation, execution, diagnosis, and revision in one loop</span>
+                </small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="evolution-evidence reveal"
+        >
+          <h3 class="evolution-evidence-title">
+            <span class="lang-zh">在仿真陌生环境下可以持续迭代提升能力</span>
+            <span class="lang-en">Continuous iteration improves capability in unfamiliar simulation environments</span>
+          </h3>
+          <div class="evolution-evidence-grid">
+            <figure
+              class="hero-capability-radar"
+              data-capability-radar
+            >
+              <section class="capability-radar-panel">
+                <div class="capability-radar-header">
+                  <span>PASS 1–5 / CAPABILITY RADAR</span>
+                  <strong data-radar-round>PASS 1</strong>
+                </div>
+                <svg
+                  class="capability-radar-svg"
+                  viewBox="0 0 640 570"
+                  role="img"
+                  data-label-zh="Pass 1 到 Pass 5 的 Token、时间、技能树与工具调用相对进展，以及 LIBERO-PRO 和 LIBERO 累计任务通过率雷达图"
+                  data-label-en="Pass 1 to Pass 5 radar showing relative progress in tokens, runtime, Skill Tree, and tool calls, plus cumulative LIBERO-PRO and LIBERO task pass rates"
+                  aria-label="Pass 1 to Pass 5 radar showing relative progress in tokens, runtime, Skill Tree, and tool calls, plus cumulative LIBERO-PRO and LIBERO task pass rates"
+                >
+                <defs>
+                  <linearGradient id="capability-radar-fill" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#00bfe8" stop-opacity="0.32"></stop>
+                    <stop offset="1" stop-color="#007dce" stop-opacity="0.13"></stop>
+                  </linearGradient>
+                  <filter id="capability-radar-glow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+                    <feMerge>
+                      <feMergeNode in="blur"></feMergeNode>
+                      <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <g class="radar-grid" aria-hidden="true">
+                  <polygon points="320,223.8 368.7,251.9 368.7,308.1 320,336.3 271.3,308.1 271.3,251.9"></polygon>
+                  <polygon points="320,167.5 417.4,223.8 417.4,336.3 320,392.5 222.6,336.3 222.6,223.8"></polygon>
+                  <polygon points="320,111.3 466.1,195.6 466.1,364.4 320,448.8 173.9,364.4 173.9,195.6"></polygon>
+                  <polygon points="320,55 514.9,167.5 514.9,392.5 320,505 125.1,392.5 125.1,167.5"></polygon>
+                  <line x1="320" y1="280" x2="320" y2="55"></line>
+                  <line x1="320" y1="280" x2="514.9" y2="167.5"></line>
+                  <line x1="320" y1="280" x2="514.9" y2="392.5"></line>
+                  <line x1="320" y1="280" x2="320" y2="505"></line>
+                  <line x1="320" y1="280" x2="125.1" y2="392.5"></line>
+                  <line x1="320" y1="280" x2="125.1" y2="167.5"></line>
+                </g>
+                <polygon
+                  class="radar-shape"
+                  data-radar-shape
+                  points="320.0,212.5 378.5,246.3 378.5,313.8 320.0,347.5 250.2,320.3 268.0,250.0"
+                  filter="url(#capability-radar-glow)"
+                ></polygon>
+                <g class="radar-points" aria-hidden="true">
+                  <circle data-radar-point="0" cx="320.0" cy="212.5" r="5"></circle>
+                  <circle data-radar-point="1" cx="378.5" cy="246.3" r="5"></circle>
+                  <circle data-radar-point="2" cx="378.5" cy="313.8" r="5"></circle>
+                  <circle data-radar-point="3" cx="320.0" cy="347.5" r="5"></circle>
+                  <circle data-radar-point="4" cx="250.2" cy="320.3" r="5"></circle>
+                  <circle data-radar-point="5" cx="268.0" cy="250.0" r="5"></circle>
+                </g>
+                <circle class="radar-center" cx="320" cy="280" r="38"></circle>
+                <text class="radar-center-label" x="320" y="287" text-anchor="middle" data-radar-center>ROUND 1</text>
+                <text class="radar-axis-label lang-zh" x="320" y="30" text-anchor="middle">Token 消耗 ↓</text>
+                <text class="radar-axis-label lang-en" x="320" y="18" text-anchor="middle">
+                  <tspan x="320" dy="0">Token</tspan><tspan x="320" dy="18">consumption ↓</tspan>
+                </text>
+                <text class="radar-axis-value" x="344" y="64" text-anchor="start" data-radar-axis-value="0">≤ 398.7M</text>
+                <text class="radar-axis-label lang-zh" x="530" y="135" text-anchor="start">时间消耗 ↓</text>
+                <text class="radar-axis-label lang-en" x="530" y="127" text-anchor="start">
+                  <tspan x="530" dy="0">Time</tspan><tspan x="530" dy="18">consumption ↓</tspan>
+                </text>
+                <text class="radar-axis-value" x="530" y="178" text-anchor="start" data-radar-axis-value="1">≤ 21.3 h</text>
+                <text class="radar-axis-label lang-zh" x="530" y="414" text-anchor="start">技能树</text>
+                <text class="radar-axis-label lang-en" x="530" y="414" text-anchor="start">Skill Tree</text>
+                <text class="radar-axis-value" x="530" y="440" text-anchor="start" data-radar-axis-value="2">1 / 6 releases</text>
+                <text class="radar-axis-label lang-zh" x="320" y="526" text-anchor="middle">工具调用次数 ↓</text>
+                <text class="radar-axis-label lang-en" x="320" y="526" text-anchor="middle">Tool calls ↓</text>
+                <text class="radar-axis-value" x="320" y="552" text-anchor="middle" data-radar-axis-value="3">≤ 3,246 calls</text>
+                <text class="radar-axis-label lang-zh" x="110" y="408" text-anchor="end">
+                  <tspan x="110" dy="0">LIBERO-PRO</tspan><tspan x="110" dy="18">任务通过率</tspan>
+                </text>
+                <text class="radar-axis-label lang-en" x="110" y="408" text-anchor="end">
+                  <tspan x="110" dy="0">LIBERO-PRO</tspan><tspan x="110" dy="18">task pass rate</tspan>
+                </text>
+                <text class="radar-axis-value" x="110" y="450" text-anchor="end" data-radar-axis-value="4">43 / 120</text>
+                <text class="radar-axis-label lang-zh" x="110" y="127" text-anchor="end">
+                  <tspan x="110" dy="0">LIBERO</tspan><tspan x="110" dy="18">任务通过率</tspan>
+                </text>
+                <text class="radar-axis-label lang-en" x="110" y="127" text-anchor="end">
+                  <tspan x="110" dy="0">LIBERO</tspan><tspan x="110" dy="18">task pass rate</tspan>
+                </text>
+                <text class="radar-axis-value" x="110" y="178" text-anchor="end" data-radar-axis-value="5">32 / 120</text>
+                </svg>
+                <div class="capability-radar-controls">
+                  <button
+                    type="button"
+                    class="round-play-button"
+                    data-radar-play
+                    data-label-zh="暂停雷达图动画"
+                    data-label-en="Pause radar animation"
+                    aria-label="Pause radar animation"
+                    title="Pause radar animation"
+                  >
+                    <span data-radar-play-icon aria-hidden="true">Ⅱ</span>
+                  </button>
+                  <div>
+                    <input
+                      type="range"
+                      min="1"
+                      max="5"
+                      step="0.01"
+                      value="1"
+                      data-radar-range
+                      data-label-zh="选择能力雷达轮次"
+                      data-label-en="Select capability radar round"
+                      aria-label="Select capability radar round"
+                    >
+                    <div class="capability-radar-ticks" aria-hidden="true">
+                      <span>ROUND 1</span><span>ROUND 2</span><span>ROUND 3</span><span>ROUND 4</span><span>ROUND 5</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <figcaption class="compact-chart-note">
+                <span class="lang-zh">雷达图展示累计任务通过率与执行效率随迭代提升。任务通过率按通过任务数除以任务总数统计；时间为有效 episode 的累计执行时长，实际运行由多个 worker 并行完成。</span>
+                <span class="lang-en">The radar shows cumulative task pass rate and execution efficiency improving across iterations. Task pass rate counts passed tasks over all tasks; time is cumulative runtime across valid episodes, with multiple workers running in parallel.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="zero-shot-evolution-curve reveal">
+              <div class="zero-shot-curve-header">
+                <span>ZERO-SHOT TASK ADAPTATION</span>
+                <strong>
+                  <span class="lang-zh">初始 → 约一天并行迭代后</span>
+                  <span class="lang-en">Initial → after ~1 day in parallel</span>
+                </strong>
+              </div>
+              <svg
+                class="zero-shot-curve-svg"
+                viewBox="0 0 640 570"
+                role="img"
+                data-label-zh="LIBERO 和 RoboTwin 从初始能力到约一天并行迭代后的累计任务通过率折线图"
+                data-label-en="Line chart of cumulative LIBERO and RoboTwin task pass rates from the initial state to after approximately one day of parallel iteration"
+                aria-label="Line chart of cumulative LIBERO and RoboTwin task pass rates from the initial state to after approximately one day of parallel iteration"
+              >
+                <g class="zero-shot-grid" aria-hidden="true">
+                  <line x1="92" y1="440" x2="548" y2="440"></line>
+                  <line x1="92" y1="350" x2="548" y2="350"></line>
+                  <line x1="92" y1="260" x2="548" y2="260"></line>
+                  <line x1="92" y1="170" x2="548" y2="170"></line>
+                  <line x1="92" y1="80" x2="548" y2="80"></line>
+                  <text x="66" y="445" text-anchor="end">0</text>
+                  <text x="66" y="355" text-anchor="end">25</text>
+                  <text x="66" y="265" text-anchor="end">50</text>
+                  <text x="66" y="175" text-anchor="end">75</text>
+                  <text x="66" y="85" text-anchor="end">100</text>
+                </g>
+                <path class="zero-shot-line libero-line" d="M140 344 L500 155"></path>
+                <path class="zero-shot-line robotwin-line" d="M140 375 L500 181"></path>
+                <g class="zero-shot-points" aria-hidden="true">
+                  <circle class="libero-point" cx="140" cy="344" r="6"></circle>
+                  <circle class="libero-point" cx="500" cy="155" r="6"></circle>
+                  <circle class="robotwin-point" cx="140" cy="375" r="6"></circle>
+                  <circle class="robotwin-point" cx="500" cy="181" r="6"></circle>
+                </g>
+                <g class="zero-shot-values">
+                  <text class="libero-value" x="140" y="322" text-anchor="middle">32 / 120</text>
+                  <text class="robotwin-value" x="140" y="405" text-anchor="middle">9 / 50</text>
+                </g>
+                <g class="zero-shot-series-labels">
+                  <text class="libero-value" x="520" y="140">
+                    <tspan x="520" dy="0">LIBERO</tspan>
+                    <tspan x="520" dy="19">95 / 120</tspan>
+                  </text>
+                  <text class="robotwin-value" x="520" y="191">
+                    <tspan x="520" dy="0">RoboTwin</tspan>
+                    <tspan x="520" dy="19">36 / 50</tspan>
+                  </text>
+                </g>
+                <g class="zero-shot-x-labels">
+                  <text class="lang-zh" x="140" y="505" text-anchor="middle">初始能力</text>
+                  <text class="lang-en" x="140" y="505" text-anchor="middle">INITIAL</text>
+                  <text class="lang-zh" x="500" y="505" text-anchor="middle">约一天后</text>
+                  <text class="lang-en" x="500" y="505" text-anchor="middle">AFTER ~1 DAY</text>
+                </g>
+              </svg>
+              <figcaption class="compact-chart-note">
+                <span class="lang-zh">通过并行执行，约一天后，LIBERO 的累计任务通过率达到 95/120，RoboTwin 从 9/50 提升至 36/50。这一口径不同于单次 episode 通过率。</span>
+                <span class="lang-en">With parallel execution, cumulative task pass rate reaches 95/120 on LIBERO after approximately one day, while RoboTwin improves from 9/50 to 36/50. This differs from per-episode pass rate.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section
+          class="chapter-divider chapter-introduction"
+          id="chapter-introduction"
+          data-section
+          data-chapter="introduction"
+          aria-labelledby="chapter-introduction-title"
+        >
+          <div class="chapter-heading">
+            <span class="chapter-number" aria-hidden="true">01</span>
+            <h2 id="chapter-introduction-title">
+              <span class="lang-zh">引言</span>
+              <span class="lang-en">Introduction</span>
+            </h2>
+            <p class="chapter-subtitle">
+              <span class="lang-zh">在循环迭代中管理上下文</span>
+              <span class="lang-en">Managing context across repeated iteration</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section roborsi-introduction"
+          id="introduction"
+          data-section
+          data-chapter="introduction"
+        >
+          <div class="section-index reveal">
+            <span>01</span>
+            <span class="lang-zh">引言 / 稳定自进化的两个开放问题</span>
+            <span class="lang-en">Introduction / Two Open Problems for Stable Self-Improvement</span>
+          </div>
+          <div class="section-intro multi-paragraph-intro reveal">
+            <h2>
+              <span class="lang-zh">智能体机器人需要的不是单次使用工具的能力，而是在多轮迭代中稳定形成可复用的技能。</span>
+              <span class="lang-en">Agentic robots need more than one-off tool use; they need to form reusable skills reliably across repeated iterations.</span>
+            </h2>
+            <p>
+              <span class="lang-zh">
+                Context 管理是新时代的代码管理。把 Code Agent 接入 MCP 后，机器人已经可以看图、调用工具并执行动作，也可能在陌生任务上取得一次成功。但连续运行很快会暴露两个问题：谁来处理复位、成功判断、异常恢复和安全决策？这次执行留下的轨迹、视频与代码，下一次怎样被真正复用？如果处理不当，上下文将在不断迭代中持续累计冗余信息，最终让系统陷入混乱。<strong class="roborsi-goal-callout">因此，RoboRSI 把目标归结为两件事：尽可能减少人类介入，并让 Agent 用更少的 Token 从有价值的历史经验中完成更稳定、更快速的迭代。</strong>
+              </span>
+              <span class="lang-en">
+                Context management is the new code management. After connecting a Code Agent to an MCP, a robot can already inspect images, invoke tools, and execute actions, and it may occasionally succeed on an unfamiliar task. Continuous operation quickly exposes two questions: who handles reset, success judgment, exception recovery, and safety decisions? And how can the trajectories, videos, and code left by this execution be genuinely reused next time? If handled poorly, context keeps accumulating redundant information through repeated iterations and eventually drives the system into confusion. <strong class="roborsi-goal-callout">Therefore, RoboRSI focuses on two goals: reducing human intervention as much as possible, and helping agents use fewer tokens to complete more stable and faster iterations from valuable historical experience.</strong>
+              </span>
+              <span class="ambient-orbit ambient-orbit-section" aria-hidden="true"></span>
+            </p>
+            <p>
+              <span class="lang-zh">
+                人工成本发生在哪？机器人报错停止、抓空或走偏以后，环境复位、结果检查、日志阅读和代码诊断等执行细节在过去是需要机器人工程师耗费时间持续理解并跟进解决的。RoboRSI 先让 Manager、Planner、Engineer 和 Reviewer 接管这些细节，再通过面向人类的高层引导（Human-Friendly Steering），让人把注意力放在目标、方向、价值判断、专业知识和安全边界上。真机上，人仍然负责安全监管和必要的方向调整，但不必跟进每一次底层执行；仿真中，系统更可以自动完成更多检查与复位。
+              </span>
+              <span class="lang-en">
+                Where does human cost arise? In the past, after a robot stopped with an error, missed a grasp, or drifted off course, execution details such as environment reset, outcome checks, log reading, and code diagnosis required robotics engineers to spend time understanding, tracking, and resolving the issue. RoboRSI assigns these details to Manager, Planner, Engineer, and Reviewer, then provides Human-Friendly Steering so people can focus on objectives, direction, value judgments, domain expertise, and safety boundaries. On real hardware, people still supervise safety and provide necessary course adjustments without following every low-level action; in simulation, the system can automate even more checks and resets.
+              </span>
+            </p>
+            <p>
+              <span class="lang-zh">
+                历史经验如何管理？如果每次都让 Agent 参考过去的完整 rollouts，Token 会越来越多；如果每次遇到局部失败都重写整套流程，系统也很难收敛。TSR 提供面向智能体的结构（Agent-Friendly Structure）：它固定高层任务骨架，再把具体能力放进职责范围明确、归属清晰的技能节点。我们注意到，Coding 模型擅长处理局部细节，却容易在连续修改中忽略全局；这棵任务—技能树为它提供结构性约束，使每次局部修订都与总体目标保持一致，并让多轮迭代更稳定。执行结果沿调用路径回到对应节点，失败在哪里就修哪里；稳定分支继续组合并固化为代码。这样，历史经验才会变成下一轮真正可用的能力。
+              </span>
+              <span class="lang-en">
+                How should historical experience be managed? If the agent references complete past rollouts every time, token use keeps growing; if the system rewrites the whole workflow after every local failure, it also becomes difficult to converge. TSR (Top-down Skill Refinement) provides an Agent-Friendly Structure: it fixes the high-level task structure and places concrete capabilities in clearly scoped Skill nodes with explicit ownership. We observe that coding models are strong at local detail but can lose the global objective across repeated edits; the task-skill tree provides structural constraints so each local revision stays aligned with the overall goal and multi-round iteration becomes more stable. Outcomes return along the invoked path: the system repairs the branch where the failure occurred, and stable branches continue to compose and consolidate into code. Historical experience then becomes genuinely usable capability for the next round.
+              </span>
+            </p>
+          </div>
+
+          <div class="problem-ledger problem-ledger-two reveal">
+            <article>
+              <span class="card-sequence" aria-hidden="true">01</span>
+              <h3>
+                <span class="lang-zh">人类处理宏观判断</span>
+                <span class="lang-en">Keep human attention on high-level judgment</span>
+              </h3>
+              <p class="lang-zh">多智能体接管任务组织、执行、日志诊断和代码修订。人类只需要给出目标、价值判断、专业知识、安全边界和必要的操作建议。</p>
+              <p class="lang-en">Multi-Agent operation hides system and code complexity, allowing people to use a high-level interface to focus on values, overall direction, domain expertise, risk boundaries, and essential operational guidance.</p>
+            </article>
+            <article>
+              <span class="card-sequence" aria-hidden="true">02</span>
+              <h3>
+                <span class="lang-zh">Agent 基于稳定的技能树迭代</span>
+                <span class="lang-en">Let agents iterate through a stable Skill Tree</span>
+              </h3>
+              <p class="lang-zh">TSR 给出自顶向下的任务结构和清晰的模块边界。Agent 可以专注于实现、诊断和修订具体节点，不必每次从头理解整个系统。</p>
+              <p class="lang-en">TSR lets agents plan top-down, focus on implementing, diagnosing, and locally revising concrete nodes, and achieve self-improvement while the tree-structured skill framework constrains the overall direction.</p>
+            </article>
+          </div>
+
+        </section>
+
+        <section
+          class="chapter-divider chapter-architecture"
+          id="chapter-method"
+          data-section
+          data-chapter="method"
+          aria-labelledby="chapter-method-title"
+        >
+          <div class="chapter-heading">
+            <span class="chapter-number" aria-hidden="true">02</span>
+            <h2 id="chapter-method-title">
+              <span class="lang-zh">方法</span>
+              <span class="lang-en">Method</span>
+            </h2>
+            <p class="chapter-subtitle">
+              <span class="lang-zh">分工、执行、迭代、复用。</span>
+              <span class="lang-en">Divide work, execute, iterate, and reuse.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section architecture-section"
+          id="architecture"
+          data-section
+          data-chapter="method"
+        >
+          <div class="section-index reveal">
+            <span>02.A</span>
+            <span class="lang-zh">方法 / 整体框架</span>
+            <span class="lang-en">Method / Overall Framework</span>
+          </div>
+          <div class="section-intro reveal">
+            <h2>
+              <span class="lang-zh">RoboRSI 把执行、诊断、技能更新和再次运行整合为一个连续闭环。</span>
+              <span class="lang-en">RoboRSI integrates execution, diagnosis, skill updates, and reruns into one continuous loop.</span>
+            </h2>
+            <p>
+              <span class="ambient-orbit ambient-orbit-section" aria-hidden="true"></span>
+              <span class="lang-zh">OpenETA<a href="https://arxiv.org/abs/2608.03924">[2]</a>、Voyager<a href="https://arxiv.org/abs/2305.16291">[3]</a>、Code as Policies<a href="https://arxiv.org/abs/2209.07753">[4]</a> 等工作分别从具身交互闭环、可执行技能库和语言模型生成机器人策略等方向推进了 Agent 与环境的持续交互。然而，对于持续运行的机器人，仅有单次技能执行与交互闭环并不充分：任务管理、诊断失败、维护技能版本以及如何将跨轮经验压缩复用，这些都应当作为系统中的独立模块由不同的 Agent 管理。RoboRSI 的设计哲学可以概括为两种互补抽象：面向人类的高层引导把人类输入集中在目标、方向、价值和安全判断上；面向智能体的结构用层级化技能树约束局部实现，使多智能体运维、验证通过后的能力固化和下一轮复用能够在同一流程中持续推进。</span>
+              <span class="lang-en">OpenETA<a href="https://arxiv.org/abs/2608.03924">[2]</a>, Voyager<a href="https://arxiv.org/abs/2305.16291">[3]</a>, Code as Policies<a href="https://arxiv.org/abs/2209.07753">[4]</a>, and related work have advanced continual agent-environment interaction through embodied interaction loops, executable skill libraries, and language-model-generated robot policies. For continuously operating robots, however, one-off skill execution and interaction loops are not sufficient: task management, failure diagnosis, skill-version maintenance, and compressed reuse of cross-round experience should all be handled as distinct system modules by different agents. RoboRSI's design philosophy combines two complementary abstractions: Human-Friendly Steering concentrates human input on objectives, direction, values, and safety judgment, while Agent-Friendly Structure uses a hierarchical Skill Tree to constrain local implementation so Multi-Agent operation, validation-gated release, and next-round reuse can advance in one continuous process.</span>
+            </p>
+          </div>
+
+          <figure class="ppt-architecture paper-figure reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="paper-figure-art lang-en" role="img" aria-label="RoboRSI self-evolution loop" viewBox="0 0 1760 1000" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+<rect width="1760" height="1000" fill="#fcfcfb"/>
+<defs><pattern id="gp-inline-en" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#e8ecee" stroke-width="1"/></pattern></defs>
+<rect width="1760" height="1000" fill="url(#gp-inline-en)"/>
+<style>
+@keyframes stagePulse {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  15% { opacity: 1; }
+  21% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.stage-ring { opacity: 0; animation: stagePulse 12s linear infinite; pointer-events: none; }
+.d0 { animation-delay: 0s; } .d1 { animation-delay: 2s; } .d2 { animation-delay: 4s; }
+.d3 { animation-delay: 6s; } .d4 { animation-delay: 8s; } .d5 { animation-delay: 10s; }
+@keyframes dashMarch { to { stroke-dashoffset: -26; } }
+@keyframes arrowFlash {
+  0% { opacity: 0; }
+  2% { opacity: 1; }
+  9% { opacity: 1; }
+  13% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.arrow-flash { opacity: 0; animation: arrowFlash 12s linear infinite; pointer-events: none; }
+.f0 { animation-delay: 1.5s; } .f1 { animation-delay: 3.5s; } .f2 { animation-delay: 5.5s; }
+.f3 { animation-delay: 7.5s; } .f4 { animation-delay: 9.5s; } .f5 { animation-delay: 11.5s; }
+.dashflow { animation: dashMarch 1.1s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .stage-ring, .dashflow, .arrow-flash { animation: none; } .stage-ring, .arrow-flash { opacity: 0; } }
+</style>
+<defs><marker id="ab-inline-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1878be"/></marker></defs>
+<defs><marker id="ao-inline-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f05a28"/></marker></defs>
+<defs><marker id="ag-inline-en" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#93af23"/></marker></defs>
+<text x="70" y="44" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#8a97a0" letter-spacing="2">ROBO RSI SELF-EVOLUTION / OVERALL FRAMEWORK</text>
+<text x="70" y="98" font-size="46" font-weight="640" fill="#1d2b33" letter-spacing="1">SELF-EVOLUTION LOOP</text>
+<text x="1690" y="92" text-anchor="end" font-size="15"><tspan font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#1878be">BLUE: </tspan><tspan fill="#1d2b33">online execution</tspan><tspan dx="26" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#f05a28">ORANGE: </tspan><tspan fill="#1d2b33">diagnosis + revision</tspan><tspan dx="26" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#6c8317">GREEN: </tspan><tspan fill="#1d2b33">released capability</tspan></text>
+<line x1="70" y1="116" x2="1690" y2="116" stroke="#1d2b33" stroke-opacity="0.25" stroke-width="1"/>
+<text x="70" y="152" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="1">ONLINE EXECUTION</text>
+<line x1="260" y1="148" x2="1620" y2="148" stroke="#12629c" stroke-width="1" opacity="0.45"/>
+<text x="70" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">01 / TASK INPUT</text>
+<rect x="70" y="196" width="320" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="90" y="222" width="280" height="116" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="94" y="226" width="272" height="108" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="103" y="235" width="9" height="9" fill="#1878be"/>
+<text x="230.0" y="272.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">Task + current observation</text>
+<text x="230.0" y="298.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">new · unresolved · repeated</text>
+<rect x="90" y="358" width="280" height="116" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="94" y="362" width="272" height="108" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="103" y="371" width="9" height="9" fill="#93af23"/>
+<text x="230.0" y="408.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">Reusable context</text>
+<text x="230.0" y="434.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">catalog · released skills · history</text>
+<text x="430" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">02 / MULTI-AGENT COLLABORATION</text>
+<rect x="430" y="196" width="420" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<text x="640" y="224" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="11.5" font-weight="700" fill="#8a97a0" letter-spacing="1">SHARED WORKSPACE</text>
+<rect x="454" y="238" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="263" r="13" fill="#1878be"/>
+<text x="480" y="268" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">M</text>
+<text x="504" y="269" font-size="16.5" font-weight="650" fill="#1d2b33">Manager</text>
+<text x="814" y="268" text-anchor="end" font-size="11.5" fill="#8a97a0">task scheduling · version management</text>
+<line x1="640" y1="288" x2="640" y2="300" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-en)"/>
+<rect x="454" y="300" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="325" r="13" fill="#1878be"/>
+<text x="480" y="330" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">P</text>
+<text x="504" y="331" font-size="16.5" font-weight="650" fill="#1d2b33">Planner</text>
+<text x="814" y="330" text-anchor="end" font-size="11.5" fill="#8a97a0">goal understanding · plan generation</text>
+<line x1="640" y1="350" x2="640" y2="362" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-en)"/>
+<rect x="454" y="362" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="387" r="13" fill="#1878be"/>
+<text x="480" y="392" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">E</text>
+<text x="504" y="393" font-size="16.5" font-weight="650" fill="#1d2b33">Engineer</text>
+<text x="814" y="392" text-anchor="end" font-size="11.5" fill="#8a97a0">tool execution · candidate implementation</text>
+<line x1="640" y1="412" x2="640" y2="424" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-en)"/>
+<rect x="454" y="424" width="372" height="50" rx="8" fill="#fdeee6" stroke="#f05a28" stroke-width="1.4"/>
+<circle cx="480" cy="449" r="13" fill="#f05a28"/>
+<text x="480" y="454" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">R</text>
+<text x="504" y="455" font-size="16.5" font-weight="650" fill="#1d2b33">Reviewer</text>
+<text x="814" y="454" text-anchor="end" font-size="11.5" fill="#8a97a0">outcome review · revision proposals</text>
+<text x="890" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">03 / HIERARCHICAL SKILL EXECUTION</text>
+<rect x="890" y="196" width="420" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="910" y="216" width="380" height="74" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="914" y="220" width="372" height="66" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="923" y="229" width="9" height="9" fill="#93af23"/>
+<text x="1100.0" y="245.0" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Long-Horizon Task</text>
+<text x="1100.0" y="271.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">composes multiple Atomic Tasks</text>
+<line x1="1100" y1="304" x2="1100" y2="288" stroke="#93af23" stroke-width="1.8" marker-end="url(#ag-inline-en)"/>
+<rect x="910" y="302" width="380" height="74" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="914" y="306" width="372" height="66" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="923" y="315" width="9" height="9" fill="#1878be"/>
+<text x="1100.0" y="331.0" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Atomic Task</text>
+<text x="1100.0" y="357.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">clear scope · verifiable outcome</text>
+<line x1="1100" y1="390" x2="1100" y2="374" stroke="#93af23" stroke-width="1.8" marker-end="url(#ag-inline-en)"/>
+<rect x="914" y="392" width="372" height="80" rx="8" fill="#f7fae8" stroke="#93af23" stroke-width="1.4"/>
+<text x="1100" y="418" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Base Skills</text>
+<rect x="922.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="960.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">perception</text>
+<rect x="1015.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1053.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">motion</text>
+<rect x="1108.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1146.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">grasp</text>
+<rect x="1201.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1239.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">place</text>
+<text x="1350" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#c74214" letter-spacing="0.8">04 / EVIDENCE + DIAGNOSIS</text>
+<rect x="1350" y="196" width="340" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="1368" y="214" width="304" height="82" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="218" width="296" height="74" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="1381" y="227" width="9" height="9" fill="#1878be"/>
+<text x="1520.0" y="247.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Execution record</text>
+<text x="1520.0" y="273.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">plan · trace · video · final verdict</text>
+<line x1="1520" y1="306" x2="1520" y2="294" stroke="#f05a28" stroke-width="1.8" marker-end="url(#ao-inline-en)"/>
+<rect x="1368" y="304" width="304" height="82" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="308" width="296" height="74" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1381" y="317" width="9" height="9" fill="#f05a28"/>
+<text x="1520.0" y="337.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Diagnose or distill stable paths</text>
+<text x="1520.0" y="363.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">attribution · stable-path distillation</text>
+<line x1="1520" y1="396" x2="1520" y2="384" stroke="#f05a28" stroke-width="1.8" marker-end="url(#ao-inline-en)"/>
+<rect x="1368" y="394" width="304" height="82" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="398" width="296" height="74" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1381" y="407" width="9" height="9" fill="#f05a28"/>
+<text x="1520.0" y="427.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Candidate capability updates</text>
+<text x="1520.0" y="453.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">PATCH · NEW BASE · NEW ATOMIC · COMPOUND</text>
+<line x1="390" y1="346" x2="428" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-en)"/>
+<line x1="850" y1="346" x2="888" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-en)"/>
+<line x1="1310" y1="346" x2="1348" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-en)"/>
+<text x="70" y="570" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="1">CROSS-EPISODE EVOLUTION</text>
+<line x1="337" y1="566" x2="1620" y2="566" stroke="#6c8317" stroke-width="1" opacity="0.45"/>
+<text x="820" y="600" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="0.8">05 / VALIDATION + RELEASE</text>
+<rect x="820" y="614" width="870" height="240" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="1466" y="676" width="204" height="118" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1470" y="680" width="196" height="110" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1479" y="689" width="9" height="9" fill="#f05a28"/>
+<text x="1568.0" y="727.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Evaluation Gate</text>
+<text x="1568.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">tests · audit · no regression</text>
+<line x1="1468" y1="735" x2="1420" y2="735" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-en)"/>
+<rect x="1220" y="676" width="202" height="118" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1224" y="680" width="194" height="110" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="1233" y="689" width="9" height="9" fill="#93af23"/>
+<text x="1321.0" y="727.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Capability release</text>
+<text x="1321.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">released only after validation</text>
+<line x1="1222" y1="735" x2="1174" y2="735" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-en)"/>
+<rect x="946" y="634" width="230" height="100" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="950" y="638" width="222" height="92" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="959" y="647" width="9" height="9" fill="#93af23"/>
+<text x="1061.0" y="676.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Code Skill</text>
+<text x="1061.0" y="702.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">stable path → SKILL.md + policy.py</text>
+<rect x="946" y="738" width="230" height="100" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="950" y="742" width="222" height="92" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="959" y="751" width="9" height="9" fill="#1878be"/>
+<text x="1061.0" y="780.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Learning-based Policy</text>
+<text x="1061.0" y="806.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">execution data → policy training</text>
+<path d="M948 684 H900 V726 H784" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-en)"/>
+<path d="M948 788 H900 V744 H784" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-en)"/>
+<text x="430" y="600" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="0.8">06 / NEXT-ROUND REUSE</text>
+<rect x="430" y="614" width="350" height="240" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="448" y="676" width="314" height="118" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="452" y="680" width="306" height="110" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="461" y="689" width="9" height="9" fill="#93af23"/>
+<text x="605.0" y="727.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">Back to the runtime</text>
+<text x="605.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">new capabilities enter the next round</text>
+<path d="M1520 474 V536 H1724 V735 H1694" fill="none" stroke="#f05a28" stroke-width="2.2" marker-end="url(#ao-inline-en)"/>
+<path d="M428 735 H230 V500" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-en)" stroke-dasharray="7 6" class="dashflow"/>
+<rect class="stage-ring d0" x="64" y="190" width="332" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d1" x="424" y="190" width="432" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d2" x="884" y="190" width="432" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d3" x="1344" y="190" width="352" height="312" rx="16" fill="#f05a28" fill-opacity="0.05" stroke="#f05a28" stroke-width="3.4"/>
+<rect class="stage-ring d4" x="814" y="608" width="882" height="252" rx="16" fill="#93af23" fill-opacity="0.05" stroke="#93af23" stroke-width="3.4"/>
+<rect class="stage-ring d5" x="424" y="608" width="362" height="252" rx="16" fill="#93af23" fill-opacity="0.05" stroke="#93af23" stroke-width="3.4"/>
+<path class="arrow-flash f0" d="M390 346 H428" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-en)"/>
+<path class="arrow-flash f1" d="M850 346 H888" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-en)"/>
+<path class="arrow-flash f2" d="M1310 346 H1348" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-en)"/>
+<path class="arrow-flash f3" d="M1520 474 V536 H1724 V735 H1694" fill="none" stroke="#f05a28" stroke-width="5" marker-end="url(#ao-inline-en)"/>
+<path class="arrow-flash f4" d="M948 684 H900 V726 H784" fill="none" stroke="#93af23" stroke-width="5" marker-end="url(#ag-inline-en)"/>
+<path class="arrow-flash f5" d="M428 735 H230 V500" fill="none" stroke="#93af23" stroke-width="5" marker-end="url(#ag-inline-en)"/>
+<rect x="70" y="912" width="14" height="14" rx="3" fill="#1878be"/>
+<text x="92" y="924" font-size="13" fill="#1d2b33">online execution</text>
+<rect x="252.0" y="912" width="14" height="14" rx="3" fill="#f05a28"/>
+<text x="274.0" y="924" font-size="13" fill="#1d2b33">diagnosis + revision</text>
+<rect x="464.0" y="912" width="14" height="14" rx="3" fill="#93af23"/>
+<text x="486.0" y="924" font-size="13" fill="#1d2b33">released capability</text>
+<text x="1690" y="924" text-anchor="end" font-size="13" fill="#8a97a0">solid = within-episode flow · dashed = cross-episode evolution + reuse</text>
+</svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="paper-figure-art lang-zh" role="img" aria-label="RoboRSI 自进化闭环：任务输入、Multi-Agent 协作、技能分层执行、证据与诊断、验证与发布、下一轮复用" viewBox="0 0 1760 1000" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+<rect width="1760" height="1000" fill="#fcfcfb"/>
+<defs><pattern id="gp-inline-zh" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#e8ecee" stroke-width="1"/></pattern></defs>
+<rect width="1760" height="1000" fill="url(#gp-inline-zh)"/>
+<style>
+@keyframes stagePulse {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  15% { opacity: 1; }
+  21% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.stage-ring { opacity: 0; animation: stagePulse 12s linear infinite; pointer-events: none; }
+.d0 { animation-delay: 0s; } .d1 { animation-delay: 2s; } .d2 { animation-delay: 4s; }
+.d3 { animation-delay: 6s; } .d4 { animation-delay: 8s; } .d5 { animation-delay: 10s; }
+@keyframes dashMarch { to { stroke-dashoffset: -26; } }
+@keyframes arrowFlash {
+  0% { opacity: 0; }
+  2% { opacity: 1; }
+  9% { opacity: 1; }
+  13% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.arrow-flash { opacity: 0; animation: arrowFlash 12s linear infinite; pointer-events: none; }
+.f0 { animation-delay: 1.5s; } .f1 { animation-delay: 3.5s; } .f2 { animation-delay: 5.5s; }
+.f3 { animation-delay: 7.5s; } .f4 { animation-delay: 9.5s; } .f5 { animation-delay: 11.5s; }
+.dashflow { animation: dashMarch 1.1s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .stage-ring, .dashflow, .arrow-flash { animation: none; } .stage-ring, .arrow-flash { opacity: 0; } }
+</style>
+<defs><marker id="ab-inline-zh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1878be"/></marker></defs>
+<defs><marker id="ao-inline-zh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f05a28"/></marker></defs>
+<defs><marker id="ag-inline-zh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#93af23"/></marker></defs>
+<text x="70" y="44" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="15" font-weight="700" fill="#8a97a0" letter-spacing="2">ROBO RSI SELF-EVOLUTION / OVERALL FRAMEWORK</text>
+<text x="70" y="98" font-size="46" font-weight="640" fill="#1d2b33" letter-spacing="1">SELF-EVOLUTION LOOP</text>
+<text x="1690" y="92" text-anchor="end" font-size="15"><tspan font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#1878be">BLUE: </tspan><tspan fill="#1d2b33">在线执行</tspan><tspan dx="26" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#f05a28">ORANGE: </tspan><tspan fill="#1d2b33">诊断与修订</tspan><tspan dx="26" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-weight="700" fill="#6c8317">GREEN: </tspan><tspan fill="#1d2b33">已发布能力</tspan></text>
+<line x1="70" y1="116" x2="1690" y2="116" stroke="#1d2b33" stroke-opacity="0.25" stroke-width="1"/>
+<text x="70" y="152" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="1">在线执行</text>
+<line x1="144" y1="148" x2="1620" y2="148" stroke="#12629c" stroke-width="1" opacity="0.45"/>
+<text x="70" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">01 / 任务输入</text>
+<rect x="70" y="196" width="320" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="90" y="222" width="280" height="116" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="94" y="226" width="272" height="108" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="103" y="235" width="9" height="9" fill="#1878be"/>
+<text x="230.0" y="272.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">任务 + 当前观察</text>
+<text x="230.0" y="298.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">新任务 · 未解决 · 重复任务</text>
+<rect x="90" y="358" width="280" height="116" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="94" y="362" width="272" height="108" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="103" y="371" width="9" height="9" fill="#93af23"/>
+<text x="230.0" y="408.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">可复用上下文</text>
+<text x="230.0" y="434.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">技能目录 · 已发布能力 · 历史经验</text>
+<text x="430" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">02 / MULTI-AGENT 协作</text>
+<rect x="430" y="196" width="420" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<text x="640" y="224" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="11.5" font-weight="700" fill="#8a97a0" letter-spacing="1">共享工作区</text>
+<rect x="454" y="238" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="263" r="13" fill="#1878be"/>
+<text x="480" y="268" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">M</text>
+<text x="504" y="269" font-size="16.5" font-weight="650" fill="#1d2b33">Manager</text>
+<text x="814" y="268" text-anchor="end" font-size="11.5" fill="#8a97a0">任务调度 · 版本管理</text>
+<line x1="640" y1="288" x2="640" y2="300" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-zh)"/>
+<rect x="454" y="300" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="325" r="13" fill="#1878be"/>
+<text x="480" y="330" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">P</text>
+<text x="504" y="331" font-size="16.5" font-weight="650" fill="#1d2b33">Planner</text>
+<text x="814" y="330" text-anchor="end" font-size="11.5" fill="#8a97a0">目标理解 · 计划生成</text>
+<line x1="640" y1="350" x2="640" y2="362" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-zh)"/>
+<rect x="454" y="362" width="372" height="50" rx="8" fill="#eaf4fc" stroke="#1878be" stroke-width="1.4"/>
+<circle cx="480" cy="387" r="13" fill="#1878be"/>
+<text x="480" y="392" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">E</text>
+<text x="504" y="393" font-size="16.5" font-weight="650" fill="#1d2b33">Engineer</text>
+<text x="814" y="392" text-anchor="end" font-size="11.5" fill="#8a97a0">工具执行 · 候选实现</text>
+<line x1="640" y1="412" x2="640" y2="424" stroke="#1878be" stroke-width="1.8" marker-end="url(#ab-inline-zh)"/>
+<rect x="454" y="424" width="372" height="50" rx="8" fill="#fdeee6" stroke="#f05a28" stroke-width="1.4"/>
+<circle cx="480" cy="449" r="13" fill="#f05a28"/>
+<text x="480" y="454" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">R</text>
+<text x="504" y="455" font-size="16.5" font-weight="650" fill="#1d2b33">Reviewer</text>
+<text x="814" y="454" text-anchor="end" font-size="11.5" fill="#8a97a0">结果复盘 · 修订建议</text>
+<text x="890" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#12629c" letter-spacing="0.8">03 / 技能分层执行</text>
+<rect x="890" y="196" width="420" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="910" y="216" width="380" height="74" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="914" y="220" width="372" height="66" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="923" y="229" width="9" height="9" fill="#93af23"/>
+<text x="1100.0" y="245.0" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Long-Horizon Task</text>
+<text x="1100.0" y="271.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">组合多个 Atomic Task</text>
+<line x1="1100" y1="304" x2="1100" y2="288" stroke="#93af23" stroke-width="1.8" marker-end="url(#ag-inline-zh)"/>
+<rect x="910" y="302" width="380" height="74" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="914" y="306" width="372" height="66" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="923" y="315" width="9" height="9" fill="#1878be"/>
+<text x="1100.0" y="331.0" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Atomic Task</text>
+<text x="1100.0" y="357.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">边界明确 · 结果可验证</text>
+<line x1="1100" y1="390" x2="1100" y2="374" stroke="#93af23" stroke-width="1.8" marker-end="url(#ag-inline-zh)"/>
+<rect x="914" y="392" width="372" height="80" rx="8" fill="#f7fae8" stroke="#93af23" stroke-width="1.4"/>
+<text x="1100" y="418" text-anchor="middle" font-size="16" font-weight="650" fill="#1d2b33">Base Skills</text>
+<rect x="922.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="960.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">视觉感知</text>
+<rect x="1015.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1053.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">运动控制</text>
+<rect x="1108.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1146.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">抓取</text>
+<rect x="1201.0" y="432" width="77.0" height="26" rx="6" fill="#ffffff" stroke="#93af23" stroke-width="1"/>
+<text x="1239.5" y="449" text-anchor="middle" font-size="11.5" fill="#6c8317">放置</text>
+<text x="1350" y="182" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#c74214" letter-spacing="0.8">04 / 证据与诊断</text>
+<rect x="1350" y="196" width="340" height="300" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="1368" y="214" width="304" height="82" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="218" width="296" height="74" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="1381" y="227" width="9" height="9" fill="#1878be"/>
+<text x="1520.0" y="247.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">执行记录</text>
+<text x="1520.0" y="273.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">计划 · 工具调用链 · 视频 / 轨迹 · 最终判定</text>
+<line x1="1520" y1="306" x2="1520" y2="294" stroke="#f05a28" stroke-width="1.8" marker-end="url(#ao-inline-zh)"/>
+<rect x="1368" y="304" width="304" height="82" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="308" width="296" height="74" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1381" y="317" width="9" height="9" fill="#f05a28"/>
+<text x="1520.0" y="337.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">诊断或提炼稳定路径</text>
+<text x="1520.0" y="363.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">失败归因 · 稳定路径提炼</text>
+<line x1="1520" y1="396" x2="1520" y2="384" stroke="#f05a28" stroke-width="1.8" marker-end="url(#ao-inline-zh)"/>
+<rect x="1368" y="394" width="304" height="82" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1372" y="398" width="296" height="74" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1381" y="407" width="9" height="9" fill="#f05a28"/>
+<text x="1520.0" y="427.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">候选能力更新</text>
+<text x="1520.0" y="453.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">PATCH · NEW BASE · NEW ATOMIC · COMPOUND</text>
+<line x1="390" y1="346" x2="428" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-zh)"/>
+<line x1="850" y1="346" x2="888" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-zh)"/>
+<line x1="1310" y1="346" x2="1348" y2="346" stroke="#1878be" stroke-width="2.2" marker-end="url(#ab-inline-zh)"/>
+<text x="70" y="570" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="1">跨回合进化</text>
+<line x1="159" y1="566" x2="1620" y2="566" stroke="#6c8317" stroke-width="1" opacity="0.45"/>
+<text x="820" y="600" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="0.8">05 / 验证与发布</text>
+<rect x="820" y="614" width="870" height="240" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="1466" y="676" width="204" height="118" rx="9" fill="none" stroke="#f05a28" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1470" y="680" width="196" height="110" rx="6" fill="#fdeee6" stroke="#f05a28" stroke-width="1.8"/>
+<rect x="1479" y="689" width="9" height="9" fill="#f05a28"/>
+<text x="1568.0" y="727.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Evaluation Gate</text>
+<text x="1568.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">测试 · 审计 · 不回退</text>
+<line x1="1468" y1="735" x2="1420" y2="735" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-zh)"/>
+<rect x="1220" y="676" width="202" height="118" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="1224" y="680" width="194" height="110" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="1233" y="689" width="9" height="9" fill="#93af23"/>
+<text x="1321.0" y="727.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">能力发布</text>
+<text x="1321.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">验证通过后发布</text>
+<line x1="1222" y1="735" x2="1174" y2="735" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-zh)"/>
+<rect x="946" y="634" width="230" height="100" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="950" y="638" width="222" height="92" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="959" y="647" width="9" height="9" fill="#93af23"/>
+<text x="1061.0" y="676.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">代码技能（Code Skill）</text>
+<text x="1061.0" y="702.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">稳定路径 → SKILL.md + policy.py</text>
+<rect x="946" y="738" width="230" height="100" rx="9" fill="none" stroke="#1878be" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="950" y="742" width="222" height="92" rx="6" fill="#eaf4fc" stroke="#1878be" stroke-width="1.8"/>
+<rect x="959" y="751" width="9" height="9" fill="#1878be"/>
+<text x="1061.0" y="780.0" text-anchor="middle" font-size="15" font-weight="650" fill="#1d2b33">Learning-based Policy</text>
+<text x="1061.0" y="806.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">执行数据 → 策略训练</text>
+<path d="M948 684 H900 V726 H784" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-zh)"/>
+<path d="M948 788 H900 V744 H784" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-zh)"/>
+<text x="430" y="600" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="13" font-weight="700" fill="#6c8317" letter-spacing="0.8">06 / 下一轮复用</text>
+<rect x="430" y="614" width="350" height="240" rx="12" fill="#ffffff" stroke="#d7dde1" stroke-width="1.4"/>
+<rect x="448" y="676" width="314" height="118" rx="9" fill="none" stroke="#93af23" stroke-opacity="0.28" stroke-width="1.4"/>
+<rect x="452" y="680" width="306" height="110" rx="6" fill="#f7fae8" stroke="#93af23" stroke-width="1.8"/>
+<rect x="461" y="689" width="9" height="9" fill="#93af23"/>
+<text x="605.0" y="727.0" text-anchor="middle" font-size="17" font-weight="650" fill="#1d2b33">回到运行时</text>
+<text x="605.0" y="753.0" text-anchor="middle" font-family="'SFMono-Regular','JetBrains Mono',Consolas,monospace" font-size="10.5" fill="#8a97a0">新能力进入下一轮任务</text>
+<path d="M1520 474 V536 H1724 V735 H1694" fill="none" stroke="#f05a28" stroke-width="2.2" marker-end="url(#ao-inline-zh)"/>
+<path d="M428 735 H230 V500" fill="none" stroke="#93af23" stroke-width="2.2" marker-end="url(#ag-inline-zh)" stroke-dasharray="7 6" class="dashflow"/>
+<rect class="stage-ring d0" x="64" y="190" width="332" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d1" x="424" y="190" width="432" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d2" x="884" y="190" width="432" height="312" rx="16" fill="#1878be" fill-opacity="0.05" stroke="#1878be" stroke-width="3.4"/>
+<rect class="stage-ring d3" x="1344" y="190" width="352" height="312" rx="16" fill="#f05a28" fill-opacity="0.05" stroke="#f05a28" stroke-width="3.4"/>
+<rect class="stage-ring d4" x="814" y="608" width="882" height="252" rx="16" fill="#93af23" fill-opacity="0.05" stroke="#93af23" stroke-width="3.4"/>
+<rect class="stage-ring d5" x="424" y="608" width="362" height="252" rx="16" fill="#93af23" fill-opacity="0.05" stroke="#93af23" stroke-width="3.4"/>
+<path class="arrow-flash f0" d="M390 346 H428" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-zh)"/>
+<path class="arrow-flash f1" d="M850 346 H888" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-zh)"/>
+<path class="arrow-flash f2" d="M1310 346 H1348" fill="none" stroke="#1878be" stroke-width="5" marker-end="url(#ab-inline-zh)"/>
+<path class="arrow-flash f3" d="M1520 474 V536 H1724 V735 H1694" fill="none" stroke="#f05a28" stroke-width="5" marker-end="url(#ao-inline-zh)"/>
+<path class="arrow-flash f4" d="M948 684 H900 V726 H784" fill="none" stroke="#93af23" stroke-width="5" marker-end="url(#ag-inline-zh)"/>
+<path class="arrow-flash f5" d="M428 735 H230 V500" fill="none" stroke="#93af23" stroke-width="5" marker-end="url(#ag-inline-zh)"/>
+<rect x="70" y="912" width="14" height="14" rx="3" fill="#1878be"/>
+<text x="92" y="924" font-size="13" fill="#1d2b33">在线执行</text>
+<rect x="188" y="912" width="14" height="14" rx="3" fill="#f05a28"/>
+<text x="210" y="924" font-size="13" fill="#1d2b33">诊断与修订</text>
+<rect x="320" y="912" width="14" height="14" rx="3" fill="#93af23"/>
+<text x="342" y="924" font-size="13" fill="#1d2b33">已发布能力</text>
+<text x="1690" y="924" text-anchor="end" font-size="13" fill="#8a97a0">实线 = 单回合执行流；虚线 = 跨回合进化与复用</text>
+</svg>
+            <div class="overall-harness-mobile">
+              <div>
+                <span>ROBORSI FRAMEWORK</span>
+                <strong class="lang-zh">六阶段自进化闭环</strong>
+                <strong class="lang-en">Six-stage self-improvement loop</strong>
+              </div>
+              <ol>
+                <li>
+                  <span>01</span>
+                  <strong class="lang-zh">任务输入</strong>
+                  <strong class="lang-en">Task Input</strong>
+                  <small class="lang-zh">任务、当前观察与已验证技能</small>
+                  <small class="lang-en">Task, current observation, and released skills</small>
+                </li>
+                <li>
+                  <span>02</span>
+                  <strong class="lang-zh">多智能体</strong>
+                  <strong class="lang-en">Multi-Agent</strong>
+                  <small class="lang-zh">Manager、Planner、Engineer 与 Reviewer</small>
+                  <small class="lang-en">Manager, Planner, Engineer, and Reviewer</small>
+                </li>
+                <li>
+                  <span>03</span>
+                  <strong class="lang-zh">技能细化</strong>
+                  <strong class="lang-en">Skill Refinement</strong>
+                  <small class="lang-zh">任务族、原子任务与基础技能</small>
+                  <small class="lang-en">Task Family, Atomic Task, and Base Skill</small>
+                </li>
+                <li>
+                  <span>04</span>
+                  <strong class="lang-zh">执行证据</strong>
+                  <strong class="lang-en">Execution Evidence</strong>
+                  <small class="lang-zh">计划、调用链、视频、轨迹与结果</small>
+                  <small class="lang-en">Plans, tool traces, video, trajectories, and outcomes</small>
+                </li>
+                <li>
+                  <span>05</span>
+                  <strong class="lang-zh">验证与自进化</strong>
+                  <strong class="lang-en">Validation + Evolution</strong>
+                  <small class="lang-zh">对技能进行更新修订，并固化为代码或 learning-based policy</small>
+                  <small class="lang-en">Update and revise skills, then consolidate them into Code or a learning-based policy</small>
+                </li>
+                <li>
+                  <span>06</span>
+                  <strong class="lang-zh">下一轮复用</strong>
+                  <strong class="lang-en">Next-round Reuse</strong>
+                  <small class="lang-zh">持续迭代，继续产生经验</small>
+                  <small class="lang-en">Continue iterating and generating experience</small>
+                </li>
+              </ol>
+            </div>
+            <figcaption>
+              <span class="figure-number">Figure 01A</span>
+              <span class="lang-zh">整体框架依次连接任务输入、多智能体协作、技能分层、执行证据、验证固化与下一轮能力复用。蓝色为单回合在线执行，橙色为诊断与修订，绿色为已验证 / 已发布能力；实线是单回合执行流，虚线是跨回合进化与复用。</span>
+              <span class="lang-en">The overall framework connects task input, Multi-Agent collaboration, skill organization, execution evidence, validated release, and next-round capability reuse. Blue marks within-episode online execution, orange marks diagnosis and revision, and green marks validated / released capability; solid lines are the within-episode flow and dashed lines are cross-episode evolution and reuse.</span>
+            </figcaption>
+          </figure>
+
+        </section>
+
+        <section
+          class="article-section multi-agent-section"
+          id="multi-agent-operation"
+          data-section
+          data-chapter="method"
+        >
+          <div class="section-index reveal">
+            <span>02.B</span>
+            <span class="lang-zh">方法 / 多智能体设计</span>
+            <span class="lang-en">Method / Multi-Agent Design</span>
+          </div>
+          <div class="section-intro multi-agent-method-intro reveal">
+            <h2>
+              <span class="lang-zh">四个角色接力完成并共同维护多轮任务。</span>
+              <span class="lang-en">Four roles relay execution and jointly maintain tasks across repeated rounds.</span>
+            </h2>
+            <p>
+              <span class="ambient-orbit ambient-orbit-section" aria-hidden="true"></span>
+              <span class="lang-zh">RoboRSI 的多智能体集群包括 4 个 sub-agent：Manager、Planner、Engineer 与 Reviewer。接收到任务指令后，Manager 把这些信息变成任务队列，管理并发 Worker、断点和技能版本；Planner 结合当前观察与已有 Skill 形成计划；Engineer 调用工具、执行动作并实现候选；Reviewer 根据结果定位问题，把修订建议送回 Manager，开启下一轮。真机保留必要的安全监管和方向调整；仿真可以自动完成复位与结果判断。</span>
+              <span class="lang-en">RoboRSI's Multi-Agent cluster includes four sub-agents: Manager, Planner, Engineer, and Reviewer. After receiving a task instruction, Manager turns it into a task queue and maintains concurrent workers, resume points, and skill versions; Planner forms a plan from the current observation and existing skills; Engineer invokes tools, executes actions, and implements candidates; Reviewer locates problems from the outcome and sends revision proposals back to Manager for the next round. Physical deployment retains necessary safety supervision and course adjustment, while simulation can automate reset and outcome checks.</span>
+            </p>
+          </div>
+
+          <figure
+            class="agent-architecture multi-agent-operation paper-figure reveal"
+            data-agent-animation
+          >
+            <div class="agent-architecture-board">
+              <div class="architecture-source multi-agent-human-source">
+                <span class="lang-zh">人类高层输入</span>
+                <span class="lang-en">HUMAN CONTRIBUTION</span>
+                <strong class="lang-zh">目标 · 价值判断 · 专业知识 · 操作建议</strong>
+                <strong class="lang-en">Objectives · Values · Expertise · Operational Guidance</strong>
+              </div>
+
+              <div class="agent-role-track">
+                <article
+                  class="agent-role-card"
+                  style="--role-order: 0; --pulse-delay: 2.8s; --role-accent: #1672b8; --role-soft: #e8f3fa"
+                >
+                  <span>01</span>
+                  <div class="role-mark">M</div>
+                  <h3>Manager</h3>
+                  <p class="lang-zh">维护任务队列、并发 Worker、断点恢复与技能版本。</p>
+                  <p class="lang-en">Maintain task queues, concurrent workers, resume state, and skill versions.</p>
+                  <small class="agent-role-state">
+                    <i></i>
+                    <span class="lang-zh">调度</span>
+                    <span class="lang-en">SCHEDULE</span>
+                  </small>
+                </article>
+                <i
+                  class="agent-flow-line"
+                  style="--role-order: 0; --pulse-delay: 3.7s"
+                  aria-hidden="true"
+                ></i>
+                <article
+                  class="agent-role-card"
+                  style="--role-order: 1; --pulse-delay: 4.1s; --role-accent: #138984; --role-soft: #e8f5f3"
+                >
+                  <span>02</span>
+                  <div class="role-mark">P</div>
+                  <h3>Planner</h3>
+                  <p class="lang-zh">结合目标、当前观察和已有 Skill，形成边界明确的计划。</p>
+                  <p class="lang-en">Form a clearly scoped plan from the objective, current observation, and existing skills.</p>
+                  <small class="agent-role-state">
+                    <i></i>
+                    <span class="lang-zh">计划</span>
+                    <span class="lang-en">PLAN</span>
+                  </small>
+                </article>
+                <i
+                  class="agent-flow-line"
+                  style="--role-order: 1; --pulse-delay: 5s"
+                  aria-hidden="true"
+                ></i>
+                <article
+                  class="agent-role-card"
+                  style="--role-order: 2; --pulse-delay: 5.4s; --role-accent: #23845b; --role-soft: #e9f5ee"
+                >
+                  <span>03</span>
+                  <div class="role-mark">E</div>
+                  <h3>Engineer</h3>
+                  <p class="lang-zh">调用机器人工具、读取日志，并实现或修订候选能力。</p>
+                  <p class="lang-en">Invoke robot tools, inspect logs, and implement or revise candidate capabilities.</p>
+                  <small class="agent-role-state">
+                    <i></i>
+                    <span class="lang-zh">执行 + 实现</span>
+                    <span class="lang-en">EXECUTE + BUILD</span>
+                  </small>
+                </article>
+                <i
+                  class="agent-flow-line"
+                  style="--role-order: 2; --pulse-delay: 6.3s"
+                  aria-hidden="true"
+                ></i>
+                <article
+                  class="agent-role-card"
+                  style="--role-order: 3; --pulse-delay: 6.7s; --role-accent: #d86a32; --role-soft: #fff1e9"
+                >
+                  <span>04</span>
+                  <div class="role-mark">R</div>
+                  <h3>Reviewer</h3>
+                  <p class="lang-zh">复盘执行结果、定位问题，并提出下一轮修订。</p>
+                  <p class="lang-en">Review execution outcomes, locate problems, and propose the next revision.</p>
+                  <small class="agent-role-state">
+                    <i></i>
+                    <span class="lang-zh">复盘</span>
+                    <span class="lang-en">REVIEW</span>
+                  </small>
+                </article>
+              </div>
+
+              <div class="architecture-evidence-bus">
+                <div style="--pulse-delay: 3.1s">
+                  <span class="lang-zh">任务队列</span>
+                  <span class="lang-en">QUEUE</span>
+                  <strong class="lang-zh">待解决任务</strong>
+                  <strong class="lang-en">Unresolved Tasks</strong>
+                  <small>Manager</small>
+                </div>
+                <div style="--pulse-delay: 4.4s">
+                  <span class="lang-zh">计划</span>
+                  <span class="lang-en">PLAN</span>
+                  <strong class="lang-zh">计划与技能选择</strong>
+                  <strong class="lang-en">Plan + Skill Selection</strong>
+                  <small>Planner</small>
+                </div>
+                <div style="--pulse-delay: 5.7s">
+                  <span class="lang-zh">执行</span>
+                  <span class="lang-en">EXECUTION</span>
+                  <strong class="lang-zh">工具调用与候选实现</strong>
+                  <strong class="lang-en">Tool Calls + Candidate</strong>
+                  <small>Engineer</small>
+                </div>
+                <div style="--pulse-delay: 6.4s">
+                  <span class="lang-zh">执行证据</span>
+                  <span class="lang-en">EVIDENCE</span>
+                  <strong class="lang-zh">日志、视频与轨迹</strong>
+                  <strong class="lang-en">Logs, Video + Trajectory</strong>
+                  <small>Robot / Simulator</small>
+                </div>
+                <div style="--pulse-delay: 7s">
+                  <span class="lang-zh">复盘</span>
+                  <span class="lang-en">REVIEW</span>
+                  <strong class="lang-zh">问题归因与修订建议</strong>
+                  <strong class="lang-en">Attribution + Revision</strong>
+                  <small>Reviewer</small>
+                </div>
+              </div>
+
+              <div class="agent-execution-plane">
+                <article style="--pulse-delay: 5.9s">
+                  <span class="lang-zh">真机</span>
+                  <span class="lang-en">REAL ROBOT</span>
+                  <strong class="lang-zh">安全监管与方向调整</strong>
+                  <strong class="lang-en">Safety Supervision + Course Adjustment</strong>
+                  <small class="lang-zh">人类只在必要时介入</small>
+                  <small class="lang-en">Human intervention only when needed</small>
+                </article>
+                <article style="--pulse-delay: 6.4s">
+                  <span class="lang-zh">仿真</span>
+                  <span class="lang-en">SIMULATION</span>
+                  <strong class="lang-zh">自动复位与结果判断</strong>
+                  <strong class="lang-en">Automatic Reset + Outcome Check</strong>
+                  <small class="lang-zh">连续进入下一回合</small>
+                  <small class="lang-en">Continue into the next episode</small>
+                </article>
+                <article style="--pulse-delay: 7.2s">
+                  <span class="lang-zh">下一轮</span>
+                  <span class="lang-en">NEXT ROUND</span>
+                  <strong class="lang-zh">更新任务与技能修订队列</strong>
+                  <strong class="lang-en">Update Task + Skill Revision Queues</strong>
+                  <small class="lang-zh">Reviewer 结果返回 Manager</small>
+                  <small class="lang-en">Reviewer output returns to Manager</small>
+                </article>
+              </div>
+
+              <div class="architecture-return-loop">
+                <i aria-hidden="true"></i>
+                <span class="lang-zh">下一轮任务 ← Manager ← Reviewer ← 执行结果</span>
+                <span class="lang-en">NEXT ROUND ← MANAGER ← REVIEWER ← OUTCOME</span>
+              </div>
+            </div>
+            <figcaption>
+              <span class="figure-number">Figure 01B</span>
+              <span class="lang-zh">四个角色围绕同一任务和反馈闭环持续协作，实现自主循环迭代。</span>
+              <span class="lang-en">Four roles collaborate around the same task and evidence, moving human participation toward objectives, values, and expert judgment. Hardware and simulation share the iteration logic but use different reset and supervision paths.</span>
+            </figcaption>
+          </figure>
+
+        </section>
+
+        <section
+          class="article-section features-section"
+          id="feature-autonomy"
+          data-section
+          data-chapter="method"
+        >
+          <div class="section-index reveal">
+            <span>02.C</span>
+            <span class="lang-zh">方法 / TSR：自顶向下的技能细化</span>
+            <span class="lang-en">Method / TSR: Top-down Skill Refinement</span>
+          </div>
+          <div class="section-intro multi-paragraph-intro reveal">
+            <h2>
+              <span class="lang-zh">TSR 先搭好任务骨架，再将每次结果落到具体的技能节点。</span>
+              <span class="lang-en">TSR fixes the task structure first, then routes each outcome to a specific skill node.</span>
+            </h2>
+            <p>
+              <span class="lang-zh">TSR（Top-down Skill Refinement）即自顶向下的技能细化。它是面向 Coding 模型的关键结构抽象。<br><br>RoboRSI 按四个层级组织技能：任务族（Task Family）定义一类任务的总体目标和约束；复合技能（Compound Skill）组合可复用的多步能力；原子任务（Atomic Task）描述职责范围明确、结果可验证的最小任务单元；基础技能（Base Skill）封装感知、移动、抓取、放置等与机器人直接交互的基础能力。<br><br>通过固定全局骨架、限定技能边界并明确节点所有权，TSR 约束模型在专注局部代码细节时不偏离总体目标，使多轮修订保持稳定和一致。执行结果沿实际调用路径返回：稳定节点继续组合与复用，出错的节点在原分支内修订；成熟路径可以固化为代码，轨迹数据也可以训练 learning-based policy。</span>
+              <span class="lang-en">TSR (Top-down Skill Refinement) is a critical structural abstraction for coding models. <br><br>RoboRSI organizes skills in four levels: a Task Family defines the shared objective and constraints for a class of tasks; a Compound Skill composes reusable multi-step capabilities; an Atomic Task specifies the smallest task unit with clear scope and a verifiable outcome; and a Base Skill encapsulates direct robot interactions such as perception, movement, grasping, and placement. <br><br>By fixing the global structure, scoping each skill, and assigning explicit ownership, TSR keeps detail-focused coding models aligned with the overall objective and makes repeated revision more stable and consistent. Outcomes return along the invoked path: stable nodes remain composable and reusable, while failed nodes are revised inside their owning branch. Mature paths can consolidate into Code, and trajectory data can train a learning-based policy.</span>
+            </p>
+            <p class="related-work-note">
+              <span class="lang-zh">近年的相关工作中有许多也将 Code 作为与机器人的交互中间层，例如 Voyager<a href="https://arxiv.org/abs/2305.16291">[3]</a> 证明了代码技能可以在长期交互中积累和复用，Code as Policies<a href="https://arxiv.org/abs/2209.07753">[4]</a> 则展示了语言模型如何把感知与控制 API 组合成机器人策略。CaP-X<a href="https://arxiv.org/abs/2603.22435">[5]</a> 进一步指出，机器人 Coding Agent 对人类预先设计的抽象层级高度敏感，而多轮反馈和自动技能合成可以缓解这一问题；ASPIRE<a href="https://arxiv.org/abs/2607.00272">[6]</a> 将失败诊断、程序修复、验证和持续扩展的技能库放进开放式循环。RoboRSI 关注的重点不是再增加一种代码生成方式，而是用自顶向下的技能树规定这些能力的层级、所有权和回流路径：在线探索寻找解法，稳定流程固化为代码，执行数据进入 learning-based policy，失败则回到最早出错的节点修订。这样才能让多轮迭代逐步收敛，避免让技能库随着任务增加失去结构。</span>
+              <span class="lang-en">Many recent systems also use Code as an intermediate layer for robot interaction. Voyager<a href="https://arxiv.org/abs/2305.16291">[3]</a> showed that executable code skills can accumulate and be reused over long interactions, while Code as Policies<a href="https://arxiv.org/abs/2209.07753">[4]</a> demonstrated how language models can compose perception and control APIs into robot policies. CaP-X<a href="https://arxiv.org/abs/2603.22435">[5]</a> further showed that robot Coding Agents are highly sensitive to the abstraction level designed by people, and that multi-turn feedback and automatic skill synthesis can mitigate this dependence; ASPIRE<a href="https://arxiv.org/abs/2607.00272">[6]</a> places failure diagnosis, program repair, validation, and an expanding reusable skill library inside an open-ended loop. RoboRSI therefore focuses less on adding another code-generation mechanism and more on defining hierarchy, ownership, and return paths through a top-down Skill Tree: online exploration finds a solution, stable workflows consolidate into Code, execution data enters learning-based policies, and failures return to the earliest responsible node. This structure is intended to make repeated refinement converge rather than letting the skill library lose organization as tasks accumulate.</span>
+            </p>
+          </div>
+
+          <div class="skill-trust-region reveal">
+            <article>
+              <span class="card-sequence" aria-hidden="true">01</span>
+              <h3 class="lang-zh">让最终反馈沿调用路径完成归因</h3>
+              <h3 class="lang-en">Route final feedback along the call path for attribution</h3>
+              <p class="lang-zh">最终反馈沿本轮技能调用路径逐级传导，定位最早出错的节点，并修正对应分支。</p>
+              <p class="lang-en">Final feedback propagates through the invoked skill path to identify the earliest failing node and correct its branch.</p>
+            </article>
+            <article>
+              <span class="card-sequence" aria-hidden="true">02</span>
+              <h3 class="lang-zh">把稳定经验沉淀为可复用能力</h3>
+              <h3 class="lang-en">Consolidate stable experience</h3>
+              <p class="lang-zh">稳定分支可以组合为复合技能、固化为代码，或进一步以 rollout 数据的形式训练 learning-based policy。</p>
+              <p class="lang-en">Stable branches can compose into compound skills, consolidate into code, or further train learning-based policies from rollout data.</p>
+            </article>
+          </div>
+
+          <div class="section-intro method-code-intro reveal">
+            <h2>
+              <span class="lang-zh">当分支稳定以后，Agent 从逐步执行转向调用 Code。</span>
+              <span class="lang-en">Once a branch stabilizes, the agent shifts from step-by-step execution to invoking code.</span>
+            </h2>
+            <p>
+              <span class="ambient-orbit ambient-orbit-section" aria-hidden="true"></span>
+              <span class="lang-zh">RoboRSI 从成功的调用链中提取稳定结构，把物体、目标区域和空间关系变成参数。相似任务再次出现时，Agent 选择并监控复合技能，Code 承担重复的工具步骤；仅当环境变化或执行失败时再恢复在线 Agent 推理。随着稳定分支的增加，Agent 的参与度逐渐降低，任务执行耗时与 Token 消耗量均减少。</span>
+              <span class="lang-en">RoboRSI extracts stable structure from successful traces and parameterizes objects, target regions, and spatial relations. On similar tasks, the agent selects and monitors a Compound Skill while Code handles repeated tool steps; online agent reasoning resumes only when the environment changes or execution fails. As stable branches accumulate, agent involvement declines, and both task execution time and token use decrease.</span>
+            </p>
+          </div>
+
+          <figure class="code-figure paper-figure reveal">
+            <img
+              class="paper-figure-art lang-en"
+              src="../../assets/roborsi/figures/roborsi-eta-cap-consolidation-v1.svg?v=20260830-1"
+              alt="ETA-to-CAP mechanism showing an online tool trace becoming a verified visual_pick_place code skill"
+            >
+            <img
+              class="paper-figure-art lang-zh"
+              src="../../assets/roborsi/figures/roborsi-eta-cap-consolidation-v1-zh.svg?v=20260830-1"
+              alt="ETA 在线工具调用链固化为经过验证的 visual_pick_place CAP 代码技能"
+            >
+            <figcaption>
+              <span class="figure-number">Figure 03A</span>
+              <span class="lang-zh">随着路径稳定，Agent 介入从逐工具决策转为选择、监控和修订整条技能，Code 承担更多重复执行。</span>
+              <span class="lang-en">As the path stabilizes, agent involvement moves from per-tool decisions to selecting, monitoring, and revising the skill while code handles repeated execution.</span>
+            </figcaption>
+          </figure>
+
+          <div class="solidification-shift reveal">
+            <article style="--agent-share: 88%">
+              <span>01 / DISCOVER</span>
+              <strong class="lang-zh">首次任务</strong>
+              <strong class="lang-en">First execution</strong>
+              <div class="solidification-share" aria-hidden="true"><i></i></div>
+              <small class="lang-zh">Agent 逐步选择工具，Code 只提供基础接口</small>
+              <small class="lang-en">Agent chooses each tool; code exposes primitives</small>
+            </article>
+            <article style="--agent-share: 52%">
+              <span>02 / CONSOLIDATE</span>
+              <strong class="lang-zh">稳定分支</strong>
+              <strong class="lang-en">Stable branch</strong>
+              <div class="solidification-share" aria-hidden="true"><i></i></div>
+              <small class="lang-zh">Agent 参数化路径，Code 开始承担重复步骤</small>
+              <small class="lang-en">Agent parameterizes the path; code absorbs repeated steps</small>
+            </article>
+            <article style="--agent-share: 24%">
+              <span>03 / REUSE</span>
+              <strong class="lang-zh">重复任务</strong>
+              <strong class="lang-en">Repeated task</strong>
+              <div class="solidification-share" aria-hidden="true"><i></i></div>
+              <small class="lang-zh">Agent 选择并监控技能，Code 执行主要流程</small>
+              <small class="lang-en">Agent selects and monitors; code executes the main path</small>
+            </article>
+          </div>
+
+        </section>
+
+        <section
+          class="article-section real-robot-protocol-section design-philosophy-section"
+          id="design-philosophy"
+          data-section
+          data-chapter="method"
+        >
+          <div class="section-index reveal">
+            <span>02.D</span>
+            <span class="lang-zh">方法 / 设计哲学</span>
+            <span class="lang-en">Method / Design Philosophy</span>
+          </div>
+          <div class="section-intro multi-paragraph-intro reveal">
+              <h2>
+                <span class="lang-zh">约束智能体的边界与成长路径，实现高效交互与迭代。</span>
+                <span class="lang-en">Constrain agents' boundaries and growth paths to enable efficient interaction and iteration.</span>
+              </h2>
+              <p>
+                <span class="lang-zh">为了处理现实世界的工程问题，执行的细节往往繁琐而细碎。随着任务与系统的复杂度上升，任务拆解、数据采集、日志读取、代码诊断和技能维护等执行细节很难由人持续理解和跟进，而 Coding 模型虽然擅长处理局部细节，却容易在连续修改中偏离全局目标。RoboRSI 因此把执行细节交给多智能体，把方向性判断留给人，并用技能树约束 Agent 的实现与修订。面向人类的高层引导和面向智能体的结构由此形成一组互补设计：人不必钻进底层实现，Agent 也不必在范围不清的代码空间里反复试错。</span>
+                <span class="lang-en">Real-world engineering problems are full of small, tedious execution details. As tasks and systems grow more complex, task decomposition, data collection, log inspection, code diagnosis, and skill maintenance become difficult for people to understand and follow continuously, while Coding models are strong at local detail but can drift from the global objective across repeated edits. RoboRSI therefore assigns execution detail to Multi-Agent operation, keeps directional judgment with people, and uses the Skill Tree to constrain agent implementation and revision. Human-Friendly Steering and Agent-Friendly Structure form a complementary pair: people do not need to enter low-level implementation, and agents do not need to search an ill-defined code space.</span>
+              </p>
+              <p>
+                <span class="lang-zh">这套设计从高层判断落到可执行任务流：当人类提出一个新任务，Manager 先把它拆成更小的原子任务，并找出所需的基础技能；Planner 为每个原子任务写出可执行计划；Engineer 根据计划实现基于代码的策略；机器人完成真实执行后，Reviewer 形成任务总结，指出问题最早出现在哪个节点。修订随后回到负责该功能的 Manager 与 Engineer 分支，完成诊断、调试、基础测试和下一轮运行。</span>
+                <span class="lang-en">When a person requests a new task, the Manager decomposes it into smaller Atomic Tasks and identifies the required Base Skills. The Planner produces an executable plan for each Atomic Task. The Engineer implements the corresponding code-based policies. The robot executes those skills, and the Reviewer turns the physical outcome into a task summary and revision proposal. The issue then returns to the responsible Manager and Engineer branch for diagnosis, debugging, focused tests, and the next revision.</span>
+              </p>
+          </div>
+
+            <figure
+              class="skill-tree-evolution real-robot-skill-tree reveal"
+              data-real-robot-skill-tree
+            >
+              <video
+                class="evidence-video"
+                data-real-robot-tree-video
+                data-expandable-video
+                data-title-zh="真机技能树 104 轮演化"
+                data-title-en="104-round real-robot Skill Tree evolution"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="../../assets/roborsi/evolution/roborsi-skill-tree-final.jpg?v=20260901-5"
+              >
+                <source
+                  src="../../assets/roborsi/evolution/roborsi-skill-tree-evolution.mp4?v=20260901-5"
+                  type="video/mp4"
+                >
+              </video>
+              <div class="skill-tree-scrubber-controls real-robot-tree-controls">
+                <div class="skill-tree-scrubber-readout">
+                  <span data-real-robot-tree-round>ROUND 001 / 104</span>
+                  <strong>
+                    <span class="lang-zh">真机技能树演化</span>
+                    <span class="lang-en">Real-robot Skill Tree evolution</span>
+                  </strong>
+                  <p>
+                    <span class="lang-zh">拖动轮次条查看任意阶段；继续播放时，轮次会随视频同步推进。</span>
+                    <span class="lang-en">Drag to inspect any round; the Round readout follows the video during playback.</span>
+                  </p>
+                </div>
+                <div class="skill-tree-control-head">
+                  <button
+                    type="button"
+                    class="round-play-button"
+                    data-real-robot-tree-play
+                    data-label-zh="暂停真机技能树动画"
+                    data-label-en="Pause real-robot Skill Tree animation"
+                    aria-label="Pause real-robot Skill Tree animation"
+                    title="Pause real-robot Skill Tree animation"
+                  >
+                    <span data-real-robot-tree-play-icon aria-hidden="true">Ⅱ</span>
+                  </button>
+                  <label for="real-robot-skill-tree-range">
+                    <span class="lang-zh">选择或拖动轮次条</span>
+                    <span class="lang-en">Select or drag a Round</span>
+                  </label>
+                </div>
+                <input
+                  id="real-robot-skill-tree-range"
+                  data-real-robot-tree-range
+                  type="range"
+                  min="1"
+                  max="104"
+                  step="1"
+                  value="1"
+                  data-label-zh="选择真机技能树轮次"
+                  data-label-en="Select a real-robot Skill Tree round"
+                  aria-label="Select a real-robot Skill Tree round"
+                  aria-valuetext="Round 1 of 104"
+                >
+                <div class="skill-tree-scrubber-ticks real-robot-tree-ticks" aria-hidden="true">
+                  <span>ROUND 1</span>
+                  <span>ROUND 26</span>
+                  <span>ROUND 52</span>
+                  <span>ROUND 78</span>
+                  <span>ROUND 104</span>
+                </div>
+              </div>
+              <figcaption>
+                <span class="figure-number">Figure 03B</span>
+                <span class="lang-zh">真机整理任务的 104 轮技能树：蓝色表示新增能力，橙色表示本轮修订，黄绿色表示已经稳定的技能。拖动轮次条可查看任意阶段，点击视频可放大查看。</span>
+                <span class="lang-en">The 104-round physical cleanup Skill Tree uses blue for new capability, orange for the branch revised in the current round, and yellow-green for stabilized skills. Drag the Round timeline to inspect any stage, or open the video for a larger view.</span>
+              </figcaption>
+            </figure>
+
+          <div
+            class="real-robot-protocol-flow reveal"
+            role="img"
+            data-label-zh="真机新任务从人类需求，经 Manager 分解、Planner 规划、Engineer 实现、机器人执行和 Reviewer 复盘，再回到责任技能分支"
+            data-label-en="A real-robot task flows from a human request through Manager decomposition, Planner planning, Engineer implementation, robot execution, and Reviewer feedback before returning to the responsible skill branch"
+            aria-label="A real-robot task flows from a human request through Manager decomposition, Planner planning, Engineer implementation, robot execution, and Reviewer feedback before returning to the responsible skill branch"
+          >
+            <div class="protocol-flow-heading">
+              <span>REAL-ROBOT TASK EXPANSION</span>
+              <strong class="lang-zh">新任务沿技能所有权逐层展开</strong>
+              <strong class="lang-en">A new task unfolds through explicit skill ownership</strong>
+            </div>
+            <ol>
+              <li style="--protocol-accent: #1672b8">
+                <span>01 / REQUEST</span>
+                <strong class="lang-zh">人类提出任务</strong>
+                <strong class="lang-en">Human request</strong>
+                <small class="lang-zh">给出目标、约束、专业知识与操作建议</small>
+                <small class="lang-en">Provide objectives, constraints, expertise, and operational guidance</small>
+              </li>
+              <li style="--protocol-accent: #007dce">
+                <span>02 / MANAGER</span>
+                <strong class="lang-zh">分解任务</strong>
+                <strong class="lang-en">Decompose</strong>
+                <small class="lang-zh">形成原子任务，并定位所需基础技能</small>
+                <small class="lang-en">Define Atomic Tasks and identify the required Base Skills</small>
+              </li>
+              <li style="--protocol-accent: #138984">
+                <span>03 / PLANNER</span>
+                <strong class="lang-zh">编排计划</strong>
+                <strong class="lang-en">Plan</strong>
+                <small class="lang-zh">为每个原子任务生成边界明确的执行方案</small>
+                <small class="lang-en">Create a clearly scoped execution plan for each Atomic Task</small>
+              </li>
+              <li style="--protocol-accent: #23845b">
+                <span>04 / ENGINEER</span>
+                <strong class="lang-zh">实现技能</strong>
+                <strong class="lang-en">Implement</strong>
+                <small class="lang-zh">为相关技能编写和测试基于代码的策略</small>
+                <small class="lang-en">Implement and test code-based policies for the relevant skills</small>
+              </li>
+              <li style="--protocol-accent: #7b9b20">
+                <span>05 / ROBOT</span>
+                <strong class="lang-zh">真实执行</strong>
+                <strong class="lang-en">Execute</strong>
+                <small class="lang-zh">返回观测、动作、日志与物理结果</small>
+                <small class="lang-en">Return observations, actions, logs, and physical outcomes</small>
+              </li>
+              <li style="--protocol-accent: #d86a32">
+                <span>06 / REVIEWER</span>
+                <strong class="lang-zh">复盘与归因</strong>
+                <strong class="lang-en">Review</strong>
+                <small class="lang-zh">形成任务总结，并把建议送回责任分支</small>
+                <small class="lang-en">Produce a task summary and route revisions to the owning branch</small>
+              </li>
+            </ol>
+            <div class="protocol-return-line">
+              <i aria-hidden="true"></i>
+              <span class="lang-zh">Reviewer 反馈回到责任节点，进入诊断、调试、测试与下一轮修订</span>
+              <span class="lang-en">Reviewer feedback returns to the owning node for diagnosis, debugging, tests, and the next revision</span>
+            </div>
+          </div>
+
+          <div class="protocol-principles-intro reveal">
+            <h3 class="lang-zh">让技能树在适当的人类引导和正确的迭代框架下趋于收敛</h3>
+            <h3 class="lang-en">Let the Skill Tree converge under appropriate human guidance and a sound iteration framework</h3>
+            <p class="lang-zh">为了让技能库（Skill Library）与任务库（Task Library）稳定地自迭代、自进化，我们通过技能树来约束整体结构和责任边界。在此基础上，还需要一组贯穿设计与迭代的原则。</p>
+            <p class="lang-en">To let the Skill Library and Task Library iterate and improve themselves reliably, RoboRSI uses the Skill Tree to constrain the overall structure and ownership boundaries. On that foundation, stable convergence still requires a set of principles that run through both design and iteration.</p>
+          </div>
+
+          <div class="protocol-principles reveal">
+            <article>
+              <span class="card-sequence" aria-hidden="true">01</span>
+              <h3 class="lang-zh">职责清晰与相互信任</h3>
+              <h3 class="lang-en">Clear responsibility and mutual trust</h3>
+              <p class="lang-zh">每项技能只负责一项职责范围明确、结果可验证的闭环功能，并只通过结构化数据交换必要信息。成熟上游的结论由下游检查是否仍然有效、适用和安全，而不是重复实现、反复验证，或不断叠加 try / verify / catch 与兜底分支。验证通过后的运行时应能独立完成任务，不依赖开发者在执行途中临时修改代码。</p>
+              <p class="lang-en">Each skill owns one clearly scoped, verifiable closed-loop function and exchanges only necessary information through structured data. Downstream skills check whether a mature upstream result remains valid, applicable, and safe; they do not reimplement it, repeatedly reverify it, or accumulate <code>try / verify / catch</code> loops and fallback branches. A released runtime should complete the task without developer hot-patching during execution.</p>
+            </article>
+            <article>
+              <span class="card-sequence" aria-hidden="true">02</span>
+              <h3 class="lang-zh">正确归因与收敛迭代</h3>
+              <h3 class="lang-en">Correct attribution and convergent iteration</h3>
+              <p class="lang-zh">系统依据实际执行结果与物理证据，定位最早出现问题的责任节点，并在负责该问题的模块内修复，而不是把临时补丁（workaround）推到下游。一次修改是否有效，不只看当前任务是否成功，还看重复执行、额外验证、模型回退（fallback）、人工介入和代码分支是否随着迭代持续减少。</p>
+              <p class="lang-en">The system uses physical evidence and observed execution outcomes to locate the earliest responsible node, then repairs the module that owns the failure instead of pushing a workaround downstream. A revision is judged not only by whether the current task succeeds, but also by whether repeated execution, extra verification, model fallback, human intervention, and code branching decrease over subsequent iterations.</p>
+            </article>
+            <article>
+              <span class="card-sequence" aria-hidden="true">03</span>
+              <h3 class="lang-zh">程序参数化与窗口化修复</h3>
+              <h3 class="lang-en">Program parameterization and windowed repair</h3>
+              <p class="lang-zh">物体类别、环境条件、目标关系和执行顺序被抽象为可配置参数与通用接口；当前观测中的像素、坐标、姿态和其他临时信息只服务本次运行，不进入通用程序。普通代码修改在最近若干次成功与失败组成的经验回放窗口（history replay buffer）中共同评估，避免修好最新样例，却破坏此前已经成立的行为。</p>
+              <p class="lang-en">Object classes, environment conditions, target relations, and execution order become configurable parameters and general interfaces. Pixels, coordinates, poses, and other transient observations belong only to the current run and do not enter the reusable program. Routine code revisions are evaluated together within a history replay window composed of recent successes and failures, so that fixing the newest case does not break behavior that already worked.</p>
+            </article>
+            <article>
+              <span class="card-sequence" aria-hidden="true">04</span>
+              <h3 class="lang-zh">人类知识蒸馏与维护</h3>
+              <h3 class="lang-en">Human knowledge distillation and maintenance</h3>
+              <p class="lang-zh">每次人工纠正都要判断系统是否原本已有足够证据自行发现问题，并把可复用的知识固化为自动检测、结构化状态、运行规则、测试或长期维护的文档，而不是只留在对话里。确实需要人类判断时，机器人先进入安全、稳定且可以等待的状态；人类保留方向、价值与安全控制，日常执行对人工干预的依赖则逐步降低。</p>
+              <p class="lang-en">Every human correction first asks whether the system already had enough evidence to detect the issue itself. Reusable knowledge is then consolidated into automatic checks, structured state, runtime rules, tests, or maintained documentation and memory instead of remaining only in conversation history. When human judgment is genuinely required, the robot first enters a safe, stable state that can wait. People retain control over direction, values, and safety while routine execution becomes progressively less dependent on intervention.</p>
+            </article>
+          </div>
+
+        </section>
+
+        <section
+          class="chapter-divider chapter-applications"
+          id="chapter-applications"
+          data-section
+          data-chapter="experiments"
+          aria-labelledby="chapter-applications-title"
+        >
+          <div class="chapter-heading">
+            <span class="chapter-number" aria-hidden="true">03</span>
+            <h2 id="chapter-applications-title">
+              <span class="lang-zh">实验与应用</span>
+              <span class="lang-en">Experiments & Applications</span>
+            </h2>
+          </div>
+        </section>
+
+        <section
+          class="article-section application-detail zero-shot-application"
+          id="application-zero-shot"
+          data-section
+          data-chapter="experiments"
+        >
+          <div class="application-detail-heading reveal">
+            <div>
+              <div class="section-index application-section-index">
+                <span>03.B</span>
+                <span class="lang-zh">实验与应用 / 零样本任务适配</span>
+                <span class="lang-en">Experiments & Applications / Zero-shot Task Adaptation</span>
+              </div>
+              <h2>
+                <span class="lang-zh">没有现成任务代码时，系统从基础技能开始寻找可行解法。</span>
+                <span class="lang-en">When no task code exists, the system starts from Base Skills to search for a feasible solution.</span>
+              </h2>
+              <p class="section-support-copy lang-zh">RoboHarness<a href="https://arxiv.org/abs/2607.18060">[7]</a> 研究异构策略的编排，LIBERO<a href="https://arxiv.org/abs/2306.03310">[8]</a> 则用 130 个任务和知识迁移协议评估终身学习中的知识保留与复用。本节结合 LIBERO-PRO<a href="https://arxiv.org/abs/2510.03827">[9]</a> 与 RoboTwin 2.0<a href="https://arxiv.org/abs/2506.18088">[10]</a>，展示 RoboRSI 在没有现成任务代码时如何从基础技能开始迭代；后续扰动实验使用 LIBERO-Plus<a href="https://arxiv.org/abs/2510.13626">[11]</a>。</p>
+              <p class="section-support-copy lang-en">RoboHarness<a href="https://arxiv.org/abs/2607.18060">[7]</a> studies heterogeneous policy orchestration, while LIBERO<a href="https://arxiv.org/abs/2306.03310">[8]</a> uses 130 tasks and knowledge-transfer protocols to evaluate retention and reuse in lifelong learning. This section combines LIBERO-PRO<a href="https://arxiv.org/abs/2510.03827">[9]</a> and RoboTwin 2.0<a href="https://arxiv.org/abs/2506.18088">[10]</a> to show how RoboRSI begins iterating from Base Skills when no task code exists; the later perturbation study uses LIBERO-Plus<a href="https://arxiv.org/abs/2510.13626">[11]</a>.</p>
+            </div>
+            <a href="#simulation-gallery">
+              <span class="lang-zh">查看仿真视频与工具调用链</span>
+              <span class="lang-en">View simulator videos and tool paths</span>
+            </a>
+          </div>
+          <div class="random-gallery-toolbar reveal">
+            <button type="button" data-randomize-successes>
+              <span class="lang-zh">换一组</span>
+              <span class="lang-en">Show another set</span>
+            </button>
+          </div>
+          <div class="random-success-grid reveal" id="simulation-gallery" data-random-success-grid aria-live="polite">
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+            <article class="random-success-card" data-random-slot>
+              <video class="evidence-video" muted loop playsinline preload="metadata"><source type="video/mp4"></video>
+              <div><span data-random-meta></span><h3 class="lang-zh" data-random-title-zh></h3><h3 class="lang-en" data-random-title-en></h3><p><code data-random-trace></code></p></div>
+            </article>
+          </div>
+          <div class="robotwin-showcase reveal">
+            <div class="study-heading">
+              <div>
+                <h3>
+                  <span class="lang-zh">RoboTwin 任务结果与执行视频</span>
+                  <span class="lang-en">RoboTwin episodes with exact tool traces</span>
+                </h3>
+              </div>
+            </div>
+            <div class="paired-bars robotwin-role-bars">
+              <article>
+                <div>
+                  <span>ENGINEER-ONLY</span>
+                  <strong>9/50</strong>
+                </div>
+                <div class="bar-track"><i style="--bar: 18%"></i></div>
+                <small class="lang-zh">累计任务通过率 · 单角色 baseline</small>
+                <small class="lang-en">Cumulative task pass rate · Single-role baseline</small>
+              </article>
+              <article>
+                <div>
+                  <span>PLANNER + ENGINEER + REVIEWER</span>
+                  <strong>36/50</strong>
+                </div>
+                <div class="bar-track"><i style="--bar: 72%"></i></div>
+                <small class="lang-zh">累计任务通过率 · RoboRSI</small>
+                <small class="lang-en">Cumulative task pass rate · RoboRSI</small>
+              </article>
+            </div>
+            <div class="random-gallery-toolbar robotwin-gallery-toolbar">
+              <button type="button" data-randomize-robotwin>
+                <span class="lang-zh">换一组</span>
+                <span class="lang-en">Show another set</span>
+              </button>
+            </div>
+            <div
+              class="robotwin-showcase-grid"
+              data-robotwin-showcase
+              aria-live="polite"
+            >
+              <p class="showcase-loading">
+                <span class="lang-zh">正在载入 RoboTwin 回合…</span>
+                <span class="lang-en">Loading RoboTwin episodes…</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="article-section application-detail code-application"
+          id="application-code"
+          data-section
+          data-chapter="experiments"
+        >
+          <div class="application-detail-heading reveal">
+            <div>
+              <div class="section-index application-section-index">
+                <span>03.C</span>
+                <span class="lang-zh">实验与应用 / 重复任务自动化</span>
+                <span class="lang-en">Experiments & Applications / Repeated Task Automation</span>
+              </div>
+              <h2>
+                <span class="lang-zh">代码固化让重复任务执行得更稳定，也更省推理成本。</span>
+                <span class="lang-en">Code consolidation makes repeated task execution more stable and reduces reasoning cost.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="matched-study reveal">
+            <div class="study-heading">
+              <div>
+                <h3>
+                  <span class="lang-zh">两组使用相同基础工具，区别在于是否调用已固化的复合技能。</span>
+                  <span class="lang-en">Both groups use the same Base Skills; the difference is whether the consolidated Compound Skill is available.</span>
+                </h3>
+              </div>
+              <strong>120 tasks × 5 initial layouts · 600 episodes</strong>
+            </div>
+            <div class="paired-bars">
+              <article>
+                <div>
+                  <span>CODE-OFF</span>
+                  <strong>129/600</strong>
+                </div>
+                <div class="bar-track"><i style="--bar: 21.5%"></i></div>
+                <small><span class="lang-zh">回合通过率 21.5%</span><span class="lang-en">Episode pass rate 21.5%</span></small>
+              </article>
+              <article>
+                <div>
+                  <span>CODE-ON</span>
+                  <strong>174/600</strong>
+                </div>
+                <div class="bar-track"><i style="--bar: 29%"></i></div>
+                <small><span class="lang-zh">回合通过率 29.0% · 提升 7.5 个百分点</span><span class="lang-en">Episode pass rate 29.0% · +7.5 points</span></small>
+              </article>
+            </div>
+            <div class="efficiency-strip">
+              <p><span class="lang-zh">中位 Token</span><span class="lang-en">Median tokens</span><strong>-29.4%</strong></p>
+              <p><span class="lang-zh">中位 VLM 调用</span><span class="lang-en">Median VLM calls</span><strong>-27.2%</strong></p>
+              <p><span class="lang-zh">中位墙钟时间</span><span class="lang-en">Median wall time</span><strong>-17.0%</strong></p>
+            </div>
+            <div class="study-heading code-showcase-heading">
+              <div>
+                <span>CODE-ON / EXACT EPISODES</span>
+                <h3>
+                  <span class="lang-zh">调用固化 code 成功的案例</span>
+                  <span class="lang-en">Successful episodes invoking consolidated code</span>
+                </h3>
+              </div>
+            </div>
+            <div class="random-gallery-toolbar code-gallery-toolbar">
+              <button type="button" data-randomize-code>
+                <span class="lang-zh">换一组</span>
+                <span class="lang-en">Show another set</span>
+              </button>
+            </div>
+            <div class="random-success-grid code-showcase-grid" data-code-showcase aria-live="polite">
+              <p class="showcase-loading">
+                <span class="lang-zh">正在载入回合…</span>
+                <span class="lang-en">Loading episodes…</span>
+              </p>
+            </div>
+            <p class="study-note">
+              <span class="lang-zh">Code-on 可以把稳定流程写成固化代码（code policy）；Code-off 不能写 code policy，只能每次在线调用 skill 完成任务。</span>
+              <span class="lang-en">Code-on can write stable workflows into consolidated code policies; Code-off cannot, and has to call skills online every time.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section application-detail policy-application"
+          id="application-policy"
+          data-section
+          data-chapter="experiments"
+        >
+          <div class="application-detail-heading reveal">
+            <div>
+              <div class="section-index application-section-index">
+                <span>03.D</span>
+                <span class="lang-zh">实验与应用 / 策略训练与应用</span>
+                <span class="lang-en">Experiments & Applications / Policy Training and Application</span>
+              </div>
+              <h2>
+                <span class="lang-zh">执行轨迹可以训练 learning-based policy，再与代码技能协同完成任务。</span>
+                <span class="lang-en">Train a learning-based policy from retained trajectories, then compose it with code-backed skills.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="act-study reveal">
+            <div class="study-heading">
+              <div>
+                <span>LEARNING-BASED POLICY / SAME TASK · MATCHED SETUP</span>
+                <h3>
+                  <span class="lang-zh">通过 TSR 采集数据轨迹，训练 learning-based policy</span>
+                  <span class="lang-en">Collect trajectories via TSR, then train a learning-based policy</span>
+                </h3>
+              </div>
+              <strong>libero_spatial_swap/0</strong>
+            </div>
+            <figure class="paper-figure evolution-comparison-film act-trace-comparison">
+              <video
+                class="paper-figure-art evidence-video"
+                data-trace-id="act-corrective-seed3"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="../../assets/roborsi/demo/act-corrective-comparison-raw-v2.jpg?v=20260904-1"
+              >
+                <source src="../../assets/roborsi/demo/act-corrective-comparison-raw-v2.mp4?v=20260904-1" type="video/mp4">
+              </video>
+              <figcaption>
+                <span class="figure-number">BEFORE / AFTER</span>
+                <span class="lang-zh">同一任务、同一初始条件下，纠正数据训练前后的策略执行对比。点击画面可查看成功回合的执行调用链。</span>
+                <span class="lang-en">Matched executions of the policy trained before and after the corrective data. Select the video to inspect the successful execution trace.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="paper-figure act-training-figure">
+              <img
+                class="paper-figure-art lang-en"
+                src="../../assets/roborsi/figures/roborsi-policy-corrective-training-v2.svg?v=20260904-1"
+                alt="Learning-based policy fine-tuning loss and a three-stage flow from corrective trajectory to matched hybrid execution"
+              >
+              <img
+                class="paper-figure-art lang-zh"
+                src="../../assets/roborsi/figures/roborsi-policy-corrective-training-v2-zh.svg?v=20260904-1"
+                alt="learning-based policy 微调损失以及从纠正轨迹到同任务混合执行的三阶段流程"
+              >
+              <figcaption>
+                <span class="figure-number">LEARNING-BASED POLICY / TRAINING + DATA LINEAGE</span>
+                <span class="lang-zh">真实训练曲线与三阶段数据闭环：304 帧纠正轨迹形成 2,432 个样本，完成 1,000 步 learning-based policy 微调，再回到同任务的混合执行。</span>
+                <span class="lang-en">Logged training loss and a three-stage data loop: a 304-frame corrective trajectory becomes 2,432 samples, trains the learning-based policy for 1,000 steps, and returns to matched hybrid execution.</span>
+              </figcaption>
+            </figure>
+
+            <div class="act-source-line">
+              <span>DATA SOURCE</span>
+              <p>
+                <span class="lang-zh">1 条纠正轨迹 · 304 帧 · 8 组训练序列 · 2432 个样本 · 1000-step 微调</span>
+                <span class="lang-en">1 corrective trajectory · 304 frames · 8 training sequences · 2,432 samples · 1,000-step fine-tune</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="article-section application-detail robustness-application"
+          id="application-robustness"
+          data-section
+          data-chapter="experiments"
+        >
+          <div class="application-detail-heading reveal">
+            <div>
+              <div class="section-index application-section-index">
+                <span>03.E</span>
+                <span class="lang-zh">实验与应用 / 扰动鲁棒性</span>
+                <span class="lang-en">Experiments & Applications / Perturbation Robustness</span>
+              </div>
+              <h2>
+                <span class="lang-zh">环境发生变化后，RoboRSI 可以继续修订技能并恢复任务覆盖。</span>
+                <span class="lang-en">After the environment changes, RoboRSI can continue revising skills and recover task coverage.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="robustness-result reveal">
+            <div class="robustness-heading">
+              <div>
+                <span>LIBERO-PLUS / 840 INSTANCES</span>
+                <h3>
+                  <span class="lang-zh">分层扰动面板：840 = 7 类扰动 × 每类 120 个实例</span>
+                  <span class="lang-en">Stratified perturbation panel: 840 = 7 categories × 120 instances</span>
+                </h3>
+              </div>
+              <strong>+137 instances</strong>
+            </div>
+            <div class="paired-bars robustness-bars">
+              <article>
+                <div><span>FIXED</span><strong>261/840</strong></div>
+                <div class="bar-track"><i style="--bar: 31.1%"></i></div>
+                <small><span class="lang-zh">扰动实例通过率 31.1%</span><span class="lang-en">Perturbation-instance pass rate 31.1%</span></small>
+              </article>
+              <article>
+                <div><span>ADAPTIVE PASS@2</span><strong>398/840</strong></div>
+                <div class="bar-track"><i style="--bar: 47.4%"></i></div>
+                <small><span class="lang-zh">扰动实例通过率 47.4% · 提升 16.3 个百分点</span><span class="lang-en">Perturbation-instance pass rate 47.4% · +16.3 points</span></small>
+              </article>
+            </div>
+            <div
+              class="perturbation-list"
+              aria-label="Seven perturbation categories"
+              data-label-zh="七类扰动"
+              data-label-en="Seven perturbation categories"
+            >
+              <span><b>01</b><i class="lang-zh">视觉纹理</i><i class="lang-en">Visual Texture</i></span>
+              <span><b>02</b><i class="lang-zh">相机视角</i><i class="lang-en">Camera Viewpoints</i></span>
+              <span><b>03</b><i class="lang-zh">语言指令</i><i class="lang-en">Language Instructions</i></span>
+              <span><b>04</b><i class="lang-zh">光照条件</i><i class="lang-en">Light Conditions</i></span>
+              <span><b>05</b><i class="lang-zh">物体布局</i><i class="lang-en">Objects Layout</i></span>
+              <span><b>06</b><i class="lang-zh">机器人初态</i><i class="lang-en">Robot Initial States</i></span>
+              <span><b>07</b><i class="lang-zh">传感器噪声</i><i class="lang-en">Sensor Noise</i></span>
+            </div>
+            <div class="perturbation-video-grid">
+              <figure>
+                <video
+                  data-expandable-video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="../../assets/roborsi/posters/plus-camera-black-bowl-plate.jpg"
+                >
+                  <source src="../../assets/roborsi/videos/plus-camera-black-bowl-plate.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                  <strong class="lang-zh">相机视角变化</strong>
+                  <strong class="lang-en">Camera viewpoint</strong>
+                  <span class="lang-zh">将黑碗放到盘子上</span>
+                  <span class="lang-en">Black bowl onto the plate</span>
+                </figcaption>
+              </figure>
+              <figure>
+                <video
+                  data-expandable-video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="../../assets/roborsi/posters/plus-light-ketchup-basket.jpg"
+                >
+                  <source src="../../assets/roborsi/videos/plus-light-ketchup-basket.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                  <strong class="lang-zh">光照条件变化</strong>
+                  <strong class="lang-en">Lighting condition</strong>
+                  <span class="lang-zh">将番茄酱放入篮筐</span>
+                  <span class="lang-en">Ketchup into the basket</span>
+                </figcaption>
+              </figure>
+              <figure>
+                <video
+                  data-expandable-video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="../../assets/roborsi/posters/plus-layout-black-bowl-plate.jpg"
+                >
+                  <source src="../../assets/roborsi/videos/plus-layout-black-bowl-plate.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                  <strong class="lang-zh">物体布局变化</strong>
+                  <strong class="lang-en">Object layout</strong>
+                  <span class="lang-zh">在变化后的布局中完成放置</span>
+                  <span class="lang-en">Placement under a shifted layout</span>
+                </figcaption>
+              </figure>
+              <figure>
+                <video
+                  data-expandable-video
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="../../assets/roborsi/posters/plus-init-black-bowl-plate.jpg"
+                >
+                  <source src="../../assets/roborsi/videos/plus-init-black-bowl-plate.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                  <strong class="lang-zh">机器人初始状态变化</strong>
+                  <strong class="lang-en">Robot initial state</strong>
+                  <span class="lang-zh">从变化后的初态恢复操作</span>
+                  <span class="lang-en">Recover manipulation from a shifted start</span>
+                </figcaption>
+              </figure>
+            </div>
+            <p class="study-note">
+              <span class="lang-zh">840 个扰动实例由七类扰动组成，每类 120 个；每个实例是在一个 LIBERO 任务上施加一种具体扰动后的独立评测单元。扰动实例通过率按通过的实例数除以 840 统计。</span>
+              <span class="lang-en">The 840 perturbation instances comprise seven perturbation categories with 120 instances each; every instance is an independent evaluation unit created by applying one concrete perturbation to a LIBERO task. The perturbation-instance pass rate counts passed instances over 840.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section application-detail navigation-application physical-application"
+          id="application-navigation"
+          data-section
+          data-chapter="experiments"
+        >
+          <div class="application-detail-heading reveal">
+            <div>
+              <div class="section-index application-section-index">
+                <span>03.A</span>
+                <span class="lang-zh">实验与应用 / 真机移动操作</span>
+                <span class="lang-en">Experiments & Applications / Real-World Mobile Manipulation</span>
+              </div>
+              <h2>
+                <span class="lang-zh">从零迭代出可泛化的家庭场景移动操作能力。</span>
+                <span class="lang-en">Iterating a generalizable household mobile-manipulation capability from scratch.</span>
+              </h2>
+              <p class="mobile-manipulation-copy lang-zh">RoboRSI 可以在真实机器人场景中从零开始，通过持续迭代目标搜索、移动底盘导航、机械臂抓取与放置，形成一套完整且可泛化的家庭场景移动操作任务能力。下面的真机地面清理 Demo 展示了机器人如何在场景变化前后完成两轮搜索、移动与清理。</p>
+              <p class="mobile-manipulation-copy lang-en">In real-robot environments, RoboRSI can start from scratch and iteratively develop a complete, generalizable household mobile-manipulation capability spanning target search, mobile-base navigation, grasping, and placement. The physical floor-cleanup demo below shows two rounds of search, movement, and cleanup before and after the scene changes.</p>
+            </div>
+          </div>
+
+          <div class="physical-prototype reveal">
+            <div class="study-heading">
+              <div>
+                <h3>
+                  <span class="lang-zh">家庭场景中的两轮地面清理</span>
+                  <span class="lang-en">Two-round floor cleanup in a household scene</span>
+                </h3>
+              </div>
+            </div>
+            <div class="real-world-grid">
+              <article>
+                <div class="real-world-video">
+                  <video
+                    class="evidence-video"
+                    data-expandable-video
+                    data-physical-video
+                    data-tool-trace-id="physical-first-target-search"
+                    data-title-zh="第一轮目标搜索"
+                    data-title-en="First-round target search"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="../../assets/roborsi/real-world/physical-first-target-search-robot-v1.jpg?v=20260901-4"
+                  >
+                    <source src="../../assets/roborsi/real-world/physical-first-target-search-robot-v1.mp4?v=20260901-4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="real-world-copy">
+                  <span class="card-sequence" aria-hidden="true">01</span>
+                  <h3 class="lang-zh">第一轮目标搜索</h3>
+                  <h3 class="lang-en">First-round target search</h3>
+                  <p class="lang-zh">机器人先扫描地面，确认第一轮清理需要处理的物体总数、目标位置是否可操作，并据此编排后续处理顺序。</p>
+                  <p class="lang-en">The robot first scans the floor to determine how many objects require handling, verify that each target location is actionable, and order the cleanup sequence.</p>
+                </div>
+              </article>
+              <article>
+                <div class="real-world-video">
+                  <video
+                    class="evidence-video"
+                    data-expandable-video
+                    data-physical-video
+                    data-tool-trace-id="physical-first-collection"
+                    data-title-zh="第一轮地面清理过程"
+                    data-title-en="First-round floor cleanup"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="../../assets/roborsi/real-world/physical-first-collection-robot-v1.jpg?v=20260901-4"
+                  >
+                    <source src="../../assets/roborsi/real-world/physical-first-collection-robot-v1.mp4?v=20260901-4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="real-world-copy">
+                  <span class="card-sequence" aria-hidden="true">02</span>
+                  <h3 class="lang-zh">第一轮地面清理过程</h3>
+                  <h3 class="lang-en">First-round floor cleanup</h3>
+                  <p class="lang-zh">机器人从停靠位加速驶出，再按照搜索阶段确认的目标与顺序，逐一执行接近、抓取、运送和放置，完成第一轮地面清理。</p>
+                  <p class="lang-en">The robot accelerates away from the dock, then follows the targets and order established during search to approach, pick up, transport, and place each object.</p>
+                </div>
+              </article>
+              <article>
+                <div class="real-world-video">
+                  <video
+                    class="evidence-video"
+                    data-expandable-video
+                    data-physical-video
+                    data-tool-trace-id="physical-second-target-search"
+                    data-title-zh="第二轮目标搜索"
+                    data-title-en="Second-round target search"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="../../assets/roborsi/real-world/physical-second-target-search-robot-v1.jpg?v=20260901-4"
+                  >
+                    <source src="../../assets/roborsi/real-world/physical-second-target-search-robot-v1.mp4?v=20260901-4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="real-world-copy">
+                  <span class="card-sequence" aria-hidden="true">03</span>
+                  <h3 class="lang-zh">第二轮目标搜索</h3>
+                  <h3 class="lang-en">Second-round target search</h3>
+                  <p class="lang-zh">人在场景中交谈和休息后留下了新的待清理物体，机器人因此再次扫描地面，更新目标清单、位置与处理顺序。</p>
+                  <p class="lang-en">After people chat and relax in the room, new objects remain on the floor. The robot scans again to update the target list, locations, and handling order.</p>
+                </div>
+              </article>
+              <article>
+                <div class="real-world-video">
+                  <video
+                    class="evidence-video"
+                    data-expandable-video
+                    data-physical-video
+                    data-tool-trace-id="physical-second-collection"
+                    data-title-zh="第二轮地面清理过程"
+                    data-title-en="Second-round floor cleanup"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="../../assets/roborsi/real-world/physical-second-collection-robot-v1.jpg?v=20260901-9"
+                  >
+                    <source src="../../assets/roborsi/real-world/physical-second-collection-robot-v1.mp4?v=20260901-9" type="video/mp4">
+                  </video>
+                </div>
+                <div class="real-world-copy">
+                  <span class="card-sequence" aria-hidden="true">04</span>
+                  <h3 class="lang-zh">第二轮地面清理过程</h3>
+                  <h3 class="lang-en">Second-round floor cleanup</h3>
+                  <p class="lang-zh">机器人再次从停靠位加速驶出，根据第二轮搜索结果重新组合移动与机械臂技能，逐一处理新增目标。</p>
+                  <p class="lang-en">The robot again accelerates away from the dock, then recomposes mobility and arm skills from the second search result to handle each new target.</p>
+                </div>
+              </article>
+            </div>
+            <p class="study-note">
+              <span class="lang-zh">点击任一画面可查看对应的执行调用链；选择其中一步，视频会跳转到相应的执行时刻。</span>
+              <span class="lang-en">Select any video to inspect its execution trace; choosing a step seeks the video to the corresponding moment.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="chapter-divider chapter-outlook"
+          id="chapter-outlook"
+          data-section
+          data-chapter="outlook"
+          aria-labelledby="chapter-outlook-title"
+        >
+          <div class="chapter-heading">
+            <span class="chapter-number" aria-hidden="true">04</span>
+            <h2 id="chapter-outlook-title">
+              <span class="lang-zh">展望</span>
+              <span class="lang-en">Outlook</span>
+            </h2>
+            <p class="chapter-subtitle">
+              <span class="lang-zh">探索 sim-to-real、多机器人协作，并适配更多真机。</span>
+              <span class="lang-en">Explore sim-to-real, multi-robot collaboration, and adaptation to more physical robots.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section outlook-section"
+          id="outlook"
+          data-section
+          data-chapter="outlook"
+        >
+          <div class="section-index reveal">
+            <span>04</span>
+            <span class="lang-zh">展望 / 下一阶段</span>
+            <span class="lang-en">Outlook / Next Stage</span>
+          </div>
+          <div class="section-intro reveal">
+            <h2>
+              <span class="lang-zh">让智能体机器人把仿真中的经验更直接地带到真实世界。</span>
+              <span class="lang-en">Let agentic robots carry experience from simulation into the real world more directly.</span>
+            </h2>
+            <p>
+              <span class="ambient-orbit ambient-orbit-section" aria-hidden="true"></span>
+              <span class="lang-zh">下一阶段，RoboRSI 将探索仿真到现实学习（Sim-to-Real Learning）。我们认为，对于在真实环境中持续感知、规划、执行和纠错的智能体框架而言，仿真环境与现实之间的差距比端到端策略更小。我们还将探索多机器人之间共享传感器信息、任务上下文与技能，让不同机器人协同完成更长、更复杂的任务，并把 RoboRSI 适配到更多真机平台。更多严谨的结论仍需要通过更多真机实验验证。</span>
+              <span class="lang-en">The next stage will explore Sim-to-Real Learning. We think that for agentic frameworks that continuously perceive, plan, act, and correct errors in real environments, the gap between simulation and reality is smaller than it is for end-to-end policies. We will also study how multiple robots can share sensor observations, task context, and skills so different robots can coordinate on longer, more complex tasks, while adapting RoboRSI to more physical platforms. More rigorous conclusions still require more physical experiments.</span>
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="article-section citation-section"
+          id="citation"
+          data-section
+          data-chapter="citation"
+          aria-labelledby="citation-title"
+        >
+          <div class="section-index reveal" id="citation-title">
+            <span>05</span>
+            <span class="lang-zh">引用</span>
+            <span class="lang-en">References</span>
+          </div>
+          <div class="citation-copy reveal">
+            <div class="research-reference-list">
+              <article>
+                <span>[1] HARNESS ENGINEERING</span>
+                <a href="https://lilianweng.github.io/posts/2026-07-04-harness/">Harness Engineering for Self-Improvement</a>
+                <small>Weng, 2026</small>
+              </article>
+              <article>
+                <span>[2] EMBODIED AGENT</span>
+                <a href="https://arxiv.org/abs/2608.03924">ETA: A New Agentic Paradigm for Embodied Tasks</a>
+                <small>Chen et al., 2026</small>
+              </article>
+              <article>
+                <span>[3] EXECUTABLE SKILLS</span>
+                <a href="https://arxiv.org/abs/2305.16291">Voyager: An Open-Ended Embodied Agent with Large Language Models</a>
+                <small>Wang et al., 2023</small>
+              </article>
+              <article>
+                <span>[4] CODE POLICY</span>
+                <a href="https://arxiv.org/abs/2209.07753">Code as Policies: Language Model Programs for Embodied Control</a>
+                <small>Liang et al., ICRA 2023</small>
+              </article>
+              <article>
+                <span>[5] CODING AGENT BENCHMARK</span>
+                <a href="https://arxiv.org/abs/2603.22435">CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation</a>
+                <small>Fu et al., 2026</small>
+              </article>
+              <article>
+                <span>[6] SKILL DISCOVERY</span>
+                <a href="https://arxiv.org/abs/2607.00272">ASPIRE: Agentic Skills Discovery for Robotics</a>
+                <small>Lu et al., 2026</small>
+              </article>
+              <article>
+                <span>[7] POLICY ORCHESTRATION</span>
+                <a href="https://arxiv.org/abs/2607.18060">RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning</a>
+                <small>Huang et al., 2026</small>
+              </article>
+              <article>
+                <span>[8] BENCHMARK</span>
+                <a href="https://arxiv.org/abs/2306.03310">LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning</a>
+                <small>Liu et al., NeurIPS 2023</small>
+              </article>
+              <article>
+                <span>[9] BENCHMARK</span>
+                <a href="https://arxiv.org/abs/2510.03827">LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization</a>
+                <small>Zhou et al., 2025</small>
+              </article>
+              <article>
+                <span>[10] BENCHMARK</span>
+                <a href="https://arxiv.org/abs/2506.18088">RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation</a>
+                <small>Chen et al., ICML 2026</small>
+              </article>
+              <article>
+                <span>[11] BENCHMARK</span>
+                <a href="https://arxiv.org/abs/2510.13626">LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models</a>
+                <small>Fei et al., 2025</small>
+              </article>
+            </div>
+          </div>
+          <div class="citation-layout citation-bibtex-layout reveal">
+            <div class="citation-lead">
+              <p>BibTeX</p>
+              <h2>
+                <span class="lang-zh">引用本文</span>
+                <span class="lang-en">Cite this work</span>
+              </h2>
+              <p>
+                <span class="lang-zh">复制以下 BibTeX 条目即可引用本文。</span>
+                <span class="lang-en">Use the BibTeX entry below to cite this research preview.</span>
+              </p>
+            </div>
+            <div class="citation-bibtex-card">
+              <button
+                type="button"
+                data-copy-bibtex
+                data-label-zh="复制 BibTeX"
+                data-label-en="Copy BibTeX"
+                aria-label="Copy BibTeX"
+              >
+                <span class="lang-zh">复制</span>
+                <span class="lang-en">Copy</span>
+              </button>
+              <pre
+                class="bibtex-card"
+                tabindex="0"
+                aria-label="BibTeX citation for the RoboRSI Research Preview"
+                data-label-zh="RoboRSI Research Preview 的 BibTeX 引用条目"
+                data-label-en="BibTeX citation for the RoboRSI Research Preview"
+              ><code id="bibtex">@misc{noematrix2026roborsi,
+  author       = {{Noematrix Team}},
+  title        = {RoboRSI: Stable, Efficient, and Reusable Robot Self-Evolution in Complex Real-World Environments},
+  year         = {2026},
+  month        = sep,
+  howpublished = {Research Blog},
+  url          = {https://lab.noematrix.ai/blog/2-roborsi/}
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="closing reveal">
+          <p>NOEMATRIX LAB</p>
+          <h2>
+            <span class="lang-zh">在真实复杂场景中实现稳定、高效、可复用的机器人自进化</span>
+            <span class="lang-en">Stable, efficient, and reusable robot self-evolution in complex real-world environments.</span>
+          </h2>
+          <a href="#top">
+            <span class="lang-zh">返回文章开头</span>
+            <span class="lang-en">Return to the beginning</span>
+          </a>
+        </section>
+      </article>
+    </main>
+
+    <dialog
+      class="trace-dialog"
+      data-trace-dialog
+      aria-labelledby="trace-dialog-title"
+    >
+      <div class="trace-dialog-shell">
+        <header>
+          <div>
+            <span data-trace-platform></span>
+            <h2 id="trace-dialog-title" data-trace-title></h2>
+          </div>
+          <button
+            type="button"
+            data-close-trace
+            title="Close trace"
+            data-label-zh="关闭工具调用链"
+            data-label-en="Close tool trace"
+            aria-label="Close tool trace"
+          >×</button>
+        </header>
+        <div class="trace-dialog-body">
+          <video muted loop playsinline controls preload="metadata" data-trace-video>
+            <source type="video/mp4">
+          </video>
+          <dl class="trace-metadata">
+            <div><dt><span class="lang-zh">任务</span><span class="lang-en">Task</span></dt><dd data-trace-task></dd></div>
+            <div><dt><span class="lang-zh">轨迹</span><span class="lang-en">Trace</span></dt><dd data-trace-scope></dd></div>
+            <div><dt><span class="lang-zh">判定</span><span class="lang-en">Verdict</span></dt><dd data-trace-verdict></dd></div>
+          </dl>
+          <div class="trace-iteration" data-trace-iteration hidden>
+            <div class="trace-iteration-head">
+              <span>
+                <span class="lang-zh">任务迭代与累计任务通过率</span>
+                <span class="lang-en">Task iteration and cumulative task pass rate</span>
+              </span>
+              <strong data-trace-iteration-release></strong>
+            </div>
+            <svg
+              class="trace-iteration-curve"
+              viewBox="0 0 340 148"
+              role="img"
+              data-trace-iteration-curve
+              data-label-zh="95 个首次通过任务随技能树 release 的累计任务通过率曲线，圆点为当前任务的首次通过位置"
+              data-label-en="Cumulative task pass rate across skill-tree releases for the 95 first-passed tasks; the dot marks this task's first pass"
+              aria-label="Cumulative task pass rate across skill-tree releases for the 95 first-passed tasks; the dot marks this task's first pass"
+            ></svg>
+            <p class="trace-iteration-note">
+              <span class="lang-zh">曲线为 95 个已通过任务的首次通过记录随技能树 release 序列的累计任务通过率（分母为 120 个任务）；圆点标出当前任务的首次通过位置。</span>
+              <span class="lang-en">The curve shows the cumulative task pass rate (over 120 tasks) of the 95 first-pass records across the skill-tree release sequence; the dot marks where this task first passed.</span>
+            </p>
+          </div>
+          <ol class="trace-step-list" data-trace-steps></ol>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="site-footer">
+      <p>© 2026 NOEMATRIX LAB</p>
+    </footer>
+
+    <script src="../../roborsi.js?v=20260904-8"></script>
+  </body>
+</html>

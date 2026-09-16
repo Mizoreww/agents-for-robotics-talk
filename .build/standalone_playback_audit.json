@@ -1,12 +1,12 @@
 {
-  "html_sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
   "slides": [
     {
       "slide": 2,
       "playing": [
         {
           "clip": "painting",
-          "time": 1.504009,
+          "time": 1.499846,
           "paused": false,
           "error": null,
           "ready": 4
@@ -15,7 +15,7 @@
       "pause": [
         {
           "clip": "painting",
-          "time": 1.505385,
+          "time": 1.500741,
           "paused": true,
           "error": null,
           "ready": 4
@@ -24,7 +24,7 @@
       "pauseLater": [
         {
           "clip": "painting",
-          "time": 1.505385,
+          "time": 1.500741,
           "paused": true,
           "error": null,
           "ready": 4
@@ -41,18 +41,18 @@
       ]
     },
     {
-      "slide": 6,
+      "slide": 7,
       "playing": [
         {
-          "clip": "claude_humanoid",
-          "time": 1.502014,
+          "clip": "astra_bowl",
+          "time": 1.503412,
           "paused": false,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "claude_manip",
-          "time": 1.501969,
+          "clip": "astra_insertion",
+          "time": 1.503382,
           "paused": false,
           "error": null,
           "ready": 4
@@ -60,15 +60,15 @@
       ],
       "pause": [
         {
-          "clip": "claude_humanoid",
-          "time": 1.502715,
+          "clip": "astra_bowl",
+          "time": 1.505444,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "claude_manip",
-          "time": 1.502729,
+          "clip": "astra_insertion",
+          "time": 1.505534,
           "paused": true,
           "error": null,
           "ready": 4
@@ -76,15 +76,15 @@
       ],
       "pauseLater": [
         {
-          "clip": "claude_humanoid",
-          "time": 1.502715,
+          "clip": "astra_bowl",
+          "time": 1.505444,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "claude_manip",
-          "time": 1.502729,
+          "clip": "astra_insertion",
+          "time": 1.505534,
           "paused": true,
           "error": null,
           "ready": 4
@@ -92,15 +92,82 @@
       ],
       "restart": [
         {
-          "clip": "claude_humanoid",
+          "clip": "astra_bowl",
           "time": 0,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "claude_manip",
+          "clip": "astra_insertion",
           "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "playing": [
+        {
+          "clip": "policy_plug",
+          "time": 1.50361,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.531395,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "policy_plug",
+          "time": 1.504343,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.53216,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "policy_plug",
+          "time": 1.504343,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.53216,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "policy_plug",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 0.033,
           "paused": true,
           "error": null,
           "ready": 4
@@ -111,15 +178,15 @@
       "slide": 9,
       "playing": [
         {
-          "clip": "astra_bowl",
-          "time": 1.502317,
+          "clip": "cube",
+          "time": 1.50199,
           "paused": false,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_insertion",
-          "time": 1.502333,
+          "clip": "claw",
+          "time": 1.498552,
           "paused": false,
           "error": null,
           "ready": 4
@@ -127,15 +194,15 @@
       ],
       "pause": [
         {
-          "clip": "astra_bowl",
-          "time": 1.502968,
+          "clip": "cube",
+          "time": 1.502702,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_insertion",
-          "time": 1.503015,
+          "clip": "claw",
+          "time": 1.499305,
           "paused": true,
           "error": null,
           "ready": 4
@@ -143,15 +210,15 @@
       ],
       "pauseLater": [
         {
-          "clip": "astra_bowl",
-          "time": 1.502968,
+          "clip": "cube",
+          "time": 1.502702,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_insertion",
-          "time": 1.503015,
+          "clip": "claw",
+          "time": 1.499305,
           "paused": true,
           "error": null,
           "ready": 4
@@ -159,14 +226,14 @@
       ],
       "restart": [
         {
-          "clip": "astra_bowl",
+          "clip": "cube",
           "time": 0,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_insertion",
+          "clip": "claw",
           "time": 0,
           "paused": true,
           "error": null,
@@ -178,82 +245,22 @@
       "slide": 10,
       "playing": [
         {
-          "clip": "wenli_icl",
-          "time": 1.503069,
+          "clip": "asim_delta",
+          "time": 1.502821,
           "paused": false,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "arx_knob",
-          "time": 1.503061,
-          "paused": false,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pause": [
-        {
-          "clip": "wenli_icl",
-          "time": 1.50426,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "arx_knob",
-          "time": 1.504276,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pauseLater": [
-        {
-          "clip": "wenli_icl",
-          "time": 1.50426,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "arx_knob",
-          "time": 1.504276,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "restart": [
-        {
-          "clip": "wenli_icl",
-          "time": 0,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "arx_knob",
-          "time": 0,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ]
-    },
-    {
-      "slide": 11,
-      "playing": [
-        {
-          "clip": "ze_rubik",
-          "time": 1.50207,
+          "clip": "asim_waypoint",
+          "time": 1.502795,
           "paused": false,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "juggle",
-          "time": 1.502014,
+          "clip": "asim_code",
+          "time": 1.502763,
           "paused": false,
           "error": null,
           "ready": 4
@@ -261,15 +268,22 @@
       ],
       "pause": [
         {
-          "clip": "ze_rubik",
-          "time": 1.503214,
+          "clip": "asim_delta",
+          "time": 1.503722,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "juggle",
-          "time": 1.503188,
+          "clip": "asim_waypoint",
+          "time": 1.503732,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.503712,
           "paused": true,
           "error": null,
           "ready": 4
@@ -277,15 +291,22 @@
       ],
       "pauseLater": [
         {
-          "clip": "ze_rubik",
-          "time": 1.503214,
+          "clip": "asim_delta",
+          "time": 1.503722,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "juggle",
-          "time": 1.503188,
+          "clip": "asim_waypoint",
+          "time": 1.503732,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.503712,
           "paused": true,
           "error": null,
           "ready": 4
@@ -293,14 +314,21 @@
       ],
       "restart": [
         {
-          "clip": "ze_rubik",
+          "clip": "asim_delta",
           "time": 0,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "juggle",
+          "clip": "asim_waypoint",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
           "time": 0,
           "paused": true,
           "error": null,
@@ -312,8 +340,15 @@
       "slide": 12,
       "playing": [
         {
-          "clip": "show_harness",
-          "time": 1.500214,
+          "clip": "anon_direct_sort",
+          "time": 1.502657,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.502625,
           "paused": false,
           "error": null,
           "ready": 4
@@ -321,8 +356,15 @@
       ],
       "pause": [
         {
-          "clip": "show_harness",
-          "time": 1.501314,
+          "clip": "anon_direct_sort",
+          "time": 1.503449,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.503454,
           "paused": true,
           "error": null,
           "ready": 4
@@ -330,8 +372,15 @@
       ],
       "pauseLater": [
         {
-          "clip": "show_harness",
-          "time": 1.501314,
+          "clip": "anon_direct_sort",
+          "time": 1.503449,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.503454,
           "paused": true,
           "error": null,
           "ready": 4
@@ -339,113 +388,14 @@
       ],
       "restart": [
         {
-          "clip": "show_harness",
-          "time": 0,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ]
-    },
-    {
-      "slide": 14,
-      "playing": [
-        {
-          "clip": "xhs_piper",
-          "time": 1.500599,
-          "paused": false,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pause": [
-        {
-          "clip": "xhs_piper",
-          "time": 1.501617,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pauseLater": [
-        {
-          "clip": "xhs_piper",
-          "time": 1.501617,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "restart": [
-        {
-          "clip": "xhs_piper",
-          "time": 0,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ]
-    },
-    {
-      "slide": 16,
-      "playing": [
-        {
-          "clip": "ar2s_real",
-          "time": 1.502281,
-          "paused": false,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "ar2s_sim",
-          "time": 1.502213,
-          "paused": false,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pause": [
-        {
-          "clip": "ar2s_real",
-          "time": 1.503754,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "ar2s_sim",
-          "time": 1.503723,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "pauseLater": [
-        {
-          "clip": "ar2s_real",
-          "time": 1.503754,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "ar2s_sim",
-          "time": 1.503723,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        }
-      ],
-      "restart": [
-        {
-          "clip": "ar2s_real",
+          "clip": "anon_direct_sort",
           "time": 0,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "ar2s_sim",
+          "clip": "anon_hybrid_pack",
           "time": 0,
           "paused": true,
           "error": null,
@@ -457,15 +407,15 @@
       "slide": 19,
       "playing": [
         {
-          "clip": "astra_real2sim",
-          "time": 1.503024,
+          "clip": "office_newton",
+          "time": 1.503444,
           "paused": false,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_microphone",
-          "time": 1.502999,
+          "clip": "kitchen",
+          "time": 1.501173,
           "paused": false,
           "error": null,
           "ready": 4
@@ -473,15 +423,15 @@
       ],
       "pause": [
         {
-          "clip": "astra_real2sim",
-          "time": 1.503865,
+          "clip": "office_newton",
+          "time": 1.504226,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_microphone",
-          "time": 1.503872,
+          "clip": "kitchen",
+          "time": 1.501994,
           "paused": true,
           "error": null,
           "ready": 4
@@ -489,15 +439,15 @@
       ],
       "pauseLater": [
         {
-          "clip": "astra_real2sim",
-          "time": 1.503865,
+          "clip": "office_newton",
+          "time": 1.504226,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_microphone",
-          "time": 1.503872,
+          "clip": "kitchen",
+          "time": 1.501994,
           "paused": true,
           "error": null,
           "ready": 4
@@ -505,14 +455,81 @@
       ],
       "restart": [
         {
-          "clip": "astra_real2sim",
+          "clip": "office_newton",
           "time": 0,
           "paused": true,
           "error": null,
           "ready": 4
         },
         {
-          "clip": "astra_microphone",
+          "clip": "kitchen",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "playing": [
+        {
+          "clip": "hand",
+          "time": 1.502685,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.502616,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "hand",
+          "time": 1.503376,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.503339,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "hand",
+          "time": 1.503376,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
+          "time": 1.503339,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "hand",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "rope_hand",
           "time": 0,
           "paused": true,
           "error": null,
@@ -524,8 +541,15 @@
       "slide": 21,
       "playing": [
         {
-          "clip": "enpire_task",
-          "time": 1.502152,
+          "clip": "astra_real2sim",
+          "time": 1.501892,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.501686,
           "paused": false,
           "error": null,
           "ready": 4
@@ -533,8 +557,15 @@
       ],
       "pause": [
         {
-          "clip": "enpire_task",
-          "time": 1.502802,
+          "clip": "astra_real2sim",
+          "time": 1.502526,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.502347,
           "paused": true,
           "error": null,
           "ready": 4
@@ -542,8 +573,15 @@
       ],
       "pauseLater": [
         {
-          "clip": "enpire_task",
-          "time": 1.502802,
+          "clip": "astra_real2sim",
+          "time": 1.502526,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
+          "time": 1.502347,
           "paused": true,
           "error": null,
           "ready": 4
@@ -551,7 +589,14 @@
       ],
       "restart": [
         {
-          "clip": "enpire_task",
+          "clip": "astra_real2sim",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "dexgpt",
           "time": 0,
           "paused": true,
           "error": null,
@@ -560,18 +605,11 @@
       ]
     },
     {
-      "slide": 23,
+      "slide": 25,
       "playing": [
         {
-          "clip": "enpire_reset",
-          "time": 1.502415,
-          "paused": false,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "enpire_verify",
-          "time": 1.499772,
+          "clip": "enpire_verify_full",
+          "time": 1.497646,
           "paused": false,
           "error": null,
           "ready": 4
@@ -579,15 +617,8 @@
       ],
       "pause": [
         {
-          "clip": "enpire_reset",
-          "time": 1.503001,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "enpire_verify",
-          "time": 1.500391,
+          "clip": "enpire_verify_full",
+          "time": 1.498448,
           "paused": true,
           "error": null,
           "ready": 4
@@ -595,15 +626,8 @@
       ],
       "pauseLater": [
         {
-          "clip": "enpire_reset",
-          "time": 1.503001,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "enpire_verify",
-          "time": 1.500391,
+          "clip": "enpire_verify_full",
+          "time": 1.498448,
           "paused": true,
           "error": null,
           "ready": 4
@@ -611,14 +635,7 @@
       ],
       "restart": [
         {
-          "clip": "enpire_reset",
-          "time": 0,
-          "paused": true,
-          "error": null,
-          "ready": 4
-        },
-        {
-          "clip": "enpire_verify",
+          "clip": "enpire_verify_full",
           "time": 0,
           "paused": true,
           "error": null,
@@ -630,8 +647,29 @@
       "slide": 26,
       "playing": [
         {
-          "clip": "aspire_trace",
-          "time": 1.500284,
+          "clip": "enpire_reset_pusht",
+          "time": 1.503089,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_full",
+          "time": 1.503013,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_tie",
+          "time": 1.502901,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_gpu",
+          "time": 1.500998,
           "paused": false,
           "error": null,
           "ready": 4
@@ -639,8 +677,29 @@
       ],
       "pause": [
         {
-          "clip": "aspire_trace",
-          "time": 1.501188,
+          "clip": "enpire_reset_pusht",
+          "time": 1.503892,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_full",
+          "time": 1.503843,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_tie",
+          "time": 1.503746,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_gpu",
+          "time": 1.50186,
           "paused": true,
           "error": null,
           "ready": 4
@@ -648,8 +707,29 @@
       ],
       "pauseLater": [
         {
-          "clip": "aspire_trace",
-          "time": 1.501188,
+          "clip": "enpire_reset_pusht",
+          "time": 1.503892,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_full",
+          "time": 1.503843,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_tie",
+          "time": 1.503746,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_gpu",
+          "time": 1.50186,
           "paused": true,
           "error": null,
           "ready": 4
@@ -657,7 +737,28 @@
       ],
       "restart": [
         {
-          "clip": "aspire_trace",
+          "clip": "enpire_reset_pusht",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_full",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_tie",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_reset_gpu",
           "time": 0,
           "paused": true,
           "error": null,
@@ -666,11 +767,11 @@
       ]
     },
     {
-      "slide": 27,
+      "slide": 30,
       "playing": [
         {
-          "clip": "hand",
-          "time": 1.498488,
+          "clip": "enpire_fleet",
+          "time": 1.501141,
           "paused": false,
           "error": null,
           "ready": 4
@@ -678,8 +779,8 @@
       ],
       "pause": [
         {
-          "clip": "hand",
-          "time": 1.499173,
+          "clip": "enpire_fleet",
+          "time": 1.502398,
           "paused": true,
           "error": null,
           "ready": 4
@@ -687,8 +788,8 @@
       ],
       "pauseLater": [
         {
-          "clip": "hand",
-          "time": 1.499173,
+          "clip": "enpire_fleet",
+          "time": 1.502398,
           "paused": true,
           "error": null,
           "ready": 4
@@ -696,7 +797,130 @@
       ],
       "restart": [
         {
-          "clip": "hand",
+          "clip": "enpire_fleet",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 33,
+      "playing": [
+        {
+          "clip": "enpire_pin",
+          "time": 1.503322,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_gpu",
+          "time": 1.503271,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_tie",
+          "time": 1.50322,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_cut",
+          "time": 1.500728,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "enpire_pin",
+          "time": 1.504612,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_gpu",
+          "time": 1.504599,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_tie",
+          "time": 1.504563,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_cut",
+          "time": 1.502084,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "enpire_pin",
+          "time": 1.504612,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_gpu",
+          "time": 1.504599,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_tie",
+          "time": 1.504563,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_cut",
+          "time": 1.502084,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "enpire_pin",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_gpu",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_tie",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_cut",
           "time": 0,
           "paused": true,
           "error": null,

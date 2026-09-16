@@ -1,0 +1,87 @@
+{
+  "title": "ENPIRE Figure 12: Idea tree and hill-climbing curve for pin insertion",
+  "retrieved_utc": "2026-09-14T07:56:37.430346+00:00",
+  "source": {
+    "paper_title": "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
+    "pdf_url": "https://arxiv.org/pdf/2606.19980v1",
+    "arxiv_id": "2606.19980v1",
+    "pdf_local": ".build/assets/v0_8/enpire_idea_tree_source.pdf",
+    "pdf_sha256": "7e91d8c80166286bd26a67c3b4ee1be1a7e059d25bcb8816aa769822c07bf549",
+    "pdf_bytes": 37876167,
+    "pdf_page_1_based": 25,
+    "printed_page": 25,
+    "figure": 12,
+    "explanatory_section": "Appendix B.6. Idea Tree for Pin Insertion",
+    "explanatory_pdf_page_1_based": 20,
+    "html_issue": "Public arXiv HTML represented this figure as ltx_missing_image with an empty src; the original PDF contains the complete figure."
+  },
+  "extraction": {
+    "method": "Poppler pdfimages: decoded full embedded RGB bitmap, written as PNG; no redraw, crop, or compositing",
+    "command": "pdfimages -f 25 -l 25 -png .build/assets/v0_8/enpire_idea_tree_source.pdf .build/assets/v0_8/enpire_idea_tree",
+    "pdf_image_index_on_page": 0,
+    "pdf_object": "582 0",
+    "source_dimensions": [
+      2400,
+      2032
+    ],
+    "source_color": "RGB 8 bits per component",
+    "source_ppi": [
+      367,
+      367
+    ],
+    "crop": "none; entire embedded image retained",
+    "original_extracted_filename": "enpire_idea_tree-000.png",
+    "output": ".build/assets/v0_8/enpire_idea_tree_original.png",
+    "output_dimensions": [
+      2400,
+      2032
+    ],
+    "output_bytes": 281120,
+    "output_sha256": "3daf3e0a1221207b967fa5555d8f1fab8821e1926225fe03600e262b4824e359"
+  },
+  "visual_verification": {
+    "complete_figure_inspected": true,
+    "axes_retained": true,
+    "legend_retained": true,
+    "hollow_no_gain_nodes_retained": true,
+    "green_improvement_nodes_retained": true,
+    "thick_black_best_lineage_retained": true,
+    "both_panels_retained": true,
+    "milestone_annotations_and_dashed_alignments_retained": true,
+    "y_axis": "team-avg best success rate",
+    "x_axis": "research wall-clock time",
+    "annotations_verified": [
+      {
+        "id": "I16",
+        "text": "Online RL mix Demo",
+        "gain_pp": 3.8
+      },
+      {
+        "id": "I37",
+        "text": "BC regularization",
+        "gain_pp": 10.8
+      },
+      {
+        "id": "I56",
+        "text": "Tweak BC term weight",
+        "gain_pp": 0.4
+      },
+      {
+        "id": "I66",
+        "text": "Tune batch size 1024 → 512",
+        "gain_pp": 0.9
+      },
+      {
+        "id": "I76",
+        "text": "Compensate controller",
+        "gain_pp": 1.3
+      }
+    ]
+  },
+  "interpretation_boundaries": [
+    "One agent-team autoresearch run on the pin insertion task.",
+    "The curve reports team-average best success rate versus research wall-clock time, not raw per-trial success and not inference-time latency.",
+    "Hollow nodes were evaluated with no gain; retain them to show unsuccessful ideas.",
+    "The figure does not establish recursive improvement of the foundation model itself."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "html_sha256": "4ee50b540fe42314e9e14774da37504da8790d66b1ef944c258abf4ca9987e49",
+  "date": "2026-09-15",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    19,
+    21,
+    24
+  ],
+  "scope": "Kitchen source image and complete original rope-hand clip. P21 middle label shortened to Model + motion after browser detected wrapping; latest screenshot and mobile narration checked. All current-hash audits pass.",
+  "screenshots": {
+    ".build/v0_16_visual/19.png": "a1cb984335992e8b56a846fad723406e16d73d2eaece73682c302daa07f7b199",
+    ".build/v0_16_visual/21.png": "6ca0a8850332f4d9fb0fa6909b751ca48ea3dc62cc75cc36282ba05692a6151e",
+    ".build/v0_16_visual/24.png": "59d5dec888cf31470e522fc064869ddb9a7f5f6a0f598568b97ee00aaeecf2cb",
+    ".build/v0_16_visual/controls.png": "71b674823e50734605d0c616641a4e2a14cc27542da3b6f9e88a3e505e351d91",
+    ".build/v0_16_visual/script-mobile.png": "d5e641002e64eb79b1e088858facd142c6ab0e6de91b23793da749e500de88a0"
+  }
+}

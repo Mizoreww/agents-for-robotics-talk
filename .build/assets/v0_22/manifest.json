@@ -1,0 +1,16 @@
+{
+  "captures": [
+    {
+      "slide": 6,
+      "file": "p6.png",
+      "sha256": "6e9056d1ee3488d7bc76241276d1a206400ca2a393edfe82ce809a1a2f1a705c",
+      "source_html_sha256": "600174e4de1e31a8fecd6dd74d6cb39bd3bf625ec6fc8e542b461023c4855512"
+    },
+    {
+      "slide": 17,
+      "file": "p17.png",
+      "sha256": "9db4c45427381c1376149ee20e4235de2a37c10983f25a4063624bd03ebcd6b1",
+      "source_html_sha256": "9748b729a758b5d79768b413192a1f252180012d920362500d5743cf86078493"
+    }
+  ]
+}

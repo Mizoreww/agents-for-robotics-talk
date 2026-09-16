@@ -1,0 +1,43 @@
+{
+  "html_sha256": "eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749",
+  "date": "2026-09-16",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    24,
+    26,
+    27,
+    30,
+    32,
+    33,
+    34
+  ],
+  "chapter_contact_sheet_reviewed_slides": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+  ],
+  "scope": "Official ENPIRE order, original figures, sparse demo layouts, aligned diagrams and controls. P1–23/P35–36 remain exact slide-object matches to the frozen baseline. Detailed inspections inherited from the completed review and verified together in the final chapter contact sheet.",
+  "screenshots": [
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/24.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/26.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/27.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/30.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/32.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/33.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/34.png"
+  ],
+  "contact_sheet": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_visual/chapter-contact-sheet.jpg",
+  "baseline_html_sha256": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+  "unchanged_visual_basis": ".build/revision_0_19_baseline/ and .build/test_enpire_order_v019.py",
+  "layout_audit": ".build/standalone_layout_audit.json",
+  "playback_audit": ".build/v0_19_extended_audit.json"
+}

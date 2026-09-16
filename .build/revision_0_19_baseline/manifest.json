@@ -1,0 +1,25 @@
+{
+  "html_sha256": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+  "files": {
+    ".build/build_selfcontained.py": "62ffc391049b1aea4dd8c542ceb475bb353eaff7f1f459564719d66be1a3e56a",
+    ".build/enpire_v018.py": "dae87209dd7efb518fe1143cf5f8e333bbfdcb2fb8a4d9585df56760184b6a44",
+    ".build/script_revised.md": "882ddde02d510d0c3592fd15fdce4084b249c2e1df4429965f943d7329406ec7",
+    ".build/validate_standalone.py": "0121219cfb9697108244845be3f8d1abfc5fef4c2070d3e3488935f06e459fb4",
+    ".build/browser_audit.mjs": "f7b38e952400e5f8ef8d372b717e1af92a72704de54e943dc67730db3f054f49",
+    ".build/extended_visual_audit.mjs": "b3a8f4ddd605b142f2a0778e0e6b075d55d77283e8026eb01051dc1a13c13c6c",
+    ".build/test_enpire_v018.py": "6d7be6454733fa686a3ef9fb7ef840e2eb687dd7fb6be4a2080d876d2107cc18",
+    ".build/test_centering_v018.py": "d025590313794446c80ac9e0632f4a1b1ae575dabb7790cd85c7fc17e1ed0ed3",
+    ".build/standalone_build_audit.json": "edfb906aa45d8a87c7cfeb968c717e8d5f590807ddf6c784f7eb2438eea5a74e",
+    ".build/v0_18_centering_manifest.json": "55f144c63bd9aae5d93665d268cf69f567c6538f1bc6db508e654b5aa89812bd",
+    "output/Agents_for_Robotics_Self_Contained.html": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+    "output/Speaker_Script_Revised.md": "6f305c6653fe0bb73398d58e9839c0e539a3cb0d542016e42a5deeec1e0af054",
+    "README.md": "f1d9234ec4a5787cffac944144688a025054e55dba80c45cb54bde9a89df4256",
+    "AGENTS.md": "b5b268b8ade1a7b72df9b214290c0379ec093b43325d1f0306a74f676f7423b2",
+    "output/README.md": "d6311caaa23a8c99d244e0de31dd7f834060cf3e29ebf95ea81470213ab7848d",
+    "WORKPLAN.md": "34d0fb6c6ed3a1ba25e1fab8bb6a2c42180ffa33b91e7fb8f71dff8626e33d70",
+    "CHANGELOG.md": "48a3298f12c40e1a6ec0a97dbdda0cb159b37aa1ebc277cd614c91d05a9d77d2",
+    "talk_outline.md": "d2a92e7a3373ebd0f1c1f249d6f96ba9e5d4a60cac7ba9e455efe977b113585e",
+    "output/Chapter_Spine.md": "1033261fd49f60b3d7be545225d587c1af06b47f175a32db0021919d57f0c993",
+    ".build/results_slides_v09.py": "862f975da7d420e4514e431d777174a9b914440116788232f1ed6f0ec97611f8"
+  }
+}

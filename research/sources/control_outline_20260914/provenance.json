@@ -1,0 +1,30 @@
+[
+  {
+    "name": "hirobot",
+    "url": "https://www.physicalintelligence.company/research/hirobot",
+    "final_url": "https://www.pi.website/research/hirobot",
+    "bytes": 121761,
+    "sha256": "8a3ba4bb5ab79246d6e7c4afe7192cfb055bdc4c0e5d5022b96d8c51d0ae8a5c"
+  },
+  {
+    "name": "helix",
+    "url": "https://www.figure.ai/news/helix",
+    "final_url": "https://www.figure.ai/news/helix",
+    "bytes": 90617,
+    "sha256": "5b6adc2b7c0ecc16dc1822ac6da290ea110cea2c2f3f395c0059f6a51f1e89a2"
+  },
+  {
+    "name": "helix02",
+    "url": "https://www.figure.ai/news/helix-02",
+    "final_url": "https://www.figure.ai/news/helix-02",
+    "bytes": 72616,
+    "sha256": "d88cc3c9af23943e834a3e55a793e53f2fa4c9fd21ef447ea7595f237efc54a9"
+  },
+  {
+    "name": "claude",
+    "url": "https://www.anthropic.com/research/claude-plays-robotics",
+    "final_url": "https://www.anthropic.com/research/claude-plays-robotics",
+    "bytes": 380119,
+    "sha256": "00b5184fec277f72860d67647984608640ae1cd1ae5b30ccf9db4f267a00e290"
+  }
+]

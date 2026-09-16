@@ -1,0 +1,803 @@
+
+    RoboRSI | NOEMATRIX LAB
+      跳到正文
+      Skip to article
+        LAB
+        中文
+        /
+        EN
+        目录
+        Menu
+          01　引言
+          01　Introduction
+          02　方法
+          02　Method
+          02.A
+          整体框架
+          Overall Framework
+          02.B
+          多智能体设计
+          Multi-Agent Design
+          02.C
+          自顶向下的技能进化
+          Top-down Skill Evolution
+          02.D
+          设计哲学
+          Design Philosophy
+          03　实验与应用
+          03　Experiments & Applications
+          03.A
+          真机部署
+          Real-World Deployment
+          03.B
+          零样本学习
+          Zero-shot Learning
+          03.C
+          将技能固化为代码
+          Solidifying Skills as Code
+          03.D
+          策略训练和应用
+          Policy Training & Application
+          03.E
+          扰动鲁棒性
+          Perturbation Robustness
+          04　展望
+          04　Outlook
+          05　引用
+          05　References
+        本文目录
+        In this article
+          01
+          引言
+          Introduction
+          02
+          方法
+          Method
+            02.A
+            整体框架
+            Overall Framework
+            02.B
+            多智能体设计
+            Multi-Agent Design
+            02.C
+            自顶向下的技能进化
+            Top-down Skill Evolution
+            02.D
+            设计哲学
+            Design Philosophy
+          03
+          实验与应用
+          Experiments
+            03.A
+            真机部署
+            Real-World Deployment
+            03.B
+            零样本学习
+            Zero-shot Learning
+            03.C
+            将技能固化为代码
+            Skills as Code
+            03.D
+            策略训练和应用
+            Policy Training & Application
+            03.E
+            扰动鲁棒性
+            Perturbation Robustness
+          04
+          展望
+          Outlook
+          05
+          引用
+          References
+              NOEMATRIX LAB
+              RoboRSI
+                在真实复杂场景中实现稳定、高效、可复用的机器人自进化
+                Stable, efficient, and reusable robot self-evolution in complex real-world environments.
+              GITHUB
+              查看 RoboRSI 开源仓库
+              Explore RoboRSI on GitHub
+              nssmd/RoboRSI
+                软件行业的工程范式在过去数年经历了革命。
+                得益于日益强大的 AI Coding 工具，软件工程师从底层代码编写、架构设计、日志诊断与版本迭代这些底层工作中解放出来，专注于宏观目标、价值判断、安全边界上。在此之上，我们也开始看到：当 AI 接管了虚拟生产环境中的执行、评估与修订闭环后，系统已然能够从完整的尝试与反馈中持续改进[1]。
+                我们相信，物理世界的 Agent 也应当经历相同的进化。但物理世界的复杂度远高于计算机内。机器人本体有着高维、连续且受动力学约束的动作空间；真实场景则开放、非结构化，不断随人、物和外部条件变化。直接尝试将 Agent 部署在机器人上难以完成长程复杂任务，过程中遇到的多种问题与不完整的反馈也极易让 Agent 陷入混乱。
+                在此背景下，我们推出 RoboRSI，这是第一次将一个多智能体框架部署在一个真实世界的移动机器人上，并表现出稳定的自主迭代进化能力，最终完成了包括目标搜索、移动接近、抓取与运送放置的长程复杂任务。
+                Software engineering has undergone a major paradigm shift over the past few years.
+                Thanks to increasingly powerful AI Coding tools, software engineers have been freed from low-level code writing, architecture implementation, log diagnosis, and version iteration, allowing them to focus on high-level objectives, value judgments, and safety boundaries. Beyond that, we are also beginning to see that when AI takes over execution, evaluation, and revision loops in virtual production environments, systems can already improve through complete cycles of attempts and feedback[1].
+                We believe physical agents should undergo the same evolution. However, the world is far more complex than a computer environment. A robot embodiment has a high-dimensional, continuous action space constrained by dynamics; real-world scenes are open, unstructured, and constantly reshaped by people, objects, and external conditions. Directly deploying an agent on a robot struggles to complete long-horizon complex tasks, and the diverse problems and incomplete feedback encountered during execution can easily push the agent into confusion.
+                Against this backdrop, we present RoboRSI: the first deployment of a Multi-Agent framework on a real-world mobile robot, demonstrating stable autonomous iterative self-improvement and ultimately completing long-horizon complex tasks that include target search, mobile approach, grasping, transport, and placement.
+                作者
+                Author
+                Noematrix Team
+                关键词
+                Keywords
+                  自进化 · 技能分层 · 多智能体
+                  Self-Improvement · Skill Hierarchy · Multi-Agent
+                发布
+                Published
+                  2026 年 9 月
+                  September 2026
+              从两名工程师一个月，到 RoboRSI 的一天技能迭代。
+              From one month with two engineers to one day of skill iteration with RoboRSI.
+                  早期纯地面清理系统依赖工程师逐项连接感知、导航、抓取与异常处理。
+                  The earlier ground-cleaning system connected perception, navigation, grasping, and recovery through task-specific engineering.
+                  经过约一天的能力迭代，RoboRSI 已经可以在开放的真实场景中自主完成目标搜索、移动接近、抓取、运送与放置，并在场景发生变化后再次搜索和清理。
+                  After roughly one day of capability iteration, RoboRSI can autonomously search for targets, approach, pick up, transport, and place them in an open real-world environment, then search and clean again after the scene changes.
+                2024 年，为了完成同类纯地面清理 Demo，两名工程师连续投入约一个月，编写了约 2,000–3,000 行任务代码。如果需要适配新场景、新物体或出现新的失败模式，通常意味着需要同样的人力投入继续补写流程。
+                In 2024, a comparable ground-cleaning demo required two engineers for roughly one month and about 2,000–3,000 lines of task-specific code. Adapting to new scenes, new objects, or new failure modes usually meant investing comparable engineering effort to extend the pipeline by hand.
+                现在，同类能力可以交给 RoboRSI 完成任务拆解、技能实现、真机执行、诊断和修订，约一天即可完成从需求到可执行能力的迭代。产生的基础技能、任务代码和失败诊断会继续留在 RoboRSI 框架中，供下一项任务复用。这展示了经适当设计的 Agent 框架令人惊讶的真实场景学习效率，为机器人进入更广泛的实用场景提供了一条新的路径。
+                With RoboRSI, the same class of capability can move through task decomposition, Skill implementation, physical execution, diagnosis, and revision in about one day, from request to executable capability. The resulting Base Skills, task code, and failure diagnoses remain in the RoboRSI framework for reuse by later tasks. This demonstrates the striking real-world learning efficiency of a properly designed agent framework and opens a new path toward broader practical applications for robots.
+                2024 / MANUAL PIPELINE
+                  2 名工程师 · 约 1 个月
+                  2 engineers · about 1 month
+                  约 2,000–3,000 行任务代码
+                  About 2,000–3,000 task-specific lines
+                2026 / RoboRSI
+                  约 1 天完成一轮能力迭代
+                  About 1 day per capability iteration
+                  拆解、实现、执行、诊断与修订进入同一闭环
+                  Decomposition, implementation, execution, diagnosis, and revision in one loop
+            在仿真陌生环境下可以持续迭代提升能力
+            Continuous iteration improves capability in unfamiliar simulation environments
+                  PASS 1–5 / CAPABILITY RADAR
+                  PASS 1
+                ROUND 1
+                Token 消耗 ↓
+                  Tokenconsumption ↓
+                ≤ 398.7M
+                时间消耗 ↓
+                  Timeconsumption ↓
+                ≤ 21.3 h
+                技能树
+                Skill Tree
+                1 / 6 releases
+                工具调用次数 ↓
+                Tool calls ↓
+                ≤ 3,246 calls
+                  LIBERO-PRO任务通过率
+                  LIBERO-PROtask pass rate
+                43 / 120
+                  LIBERO任务通过率
+                  LIBEROtask pass rate
+                32 / 120
+                    Ⅱ
+                      ROUND 1ROUND 2ROUND 3ROUND 4ROUND 5
+                雷达图展示累计任务通过率与执行效率随迭代提升。任务通过率按通过任务数除以任务总数统计；时间为有效 episode 的累计执行时长，实际运行由多个 worker 并行完成。
+                The radar shows cumulative task pass rate and execution efficiency improving across iterations. Task pass rate counts passed tasks over all tasks; time is cumulative runtime across valid episodes, with multiple workers running in parallel.
+                ZERO-SHOT TASK ADAPTATION
+                  初始 → 约一天并行迭代后
+                  Initial → after ~1 day in parallel
+                  0
+                  25
+                  50
+                  75
+                  100
+                  32 / 120
+                  9 / 50
+                    LIBERO
+                    95 / 120
+                    RoboTwin
+                    36 / 50
+                  初始能力
+                  INITIAL
+                  约一天后
+                  AFTER ~1 DAY
+                通过并行执行，约一天后，LIBERO 的累计任务通过率达到 95/120，RoboTwin 从 9/50 提升至 36/50。这一口径不同于单次 episode 通过率。
+                With parallel execution, cumulative task pass rate reaches 95/120 on LIBERO after approximately one day, while RoboTwin improves from 9/50 to 36/50. This differs from per-episode pass rate.
+            01
+              引言
+              Introduction
+              在循环迭代中管理上下文
+              Managing context across repeated iteration
+            01
+            引言 / 稳定自进化的两个开放问题
+            Introduction / Two Open Problems for Stable Self-Improvement
+              智能体机器人需要的不是单次使用工具的能力，而是在多轮迭代中稳定形成可复用的技能。
+              Agentic robots need more than one-off tool use; they need to form reusable skills reliably across repeated iterations.
+                Context 管理是新时代的代码管理。把 Code Agent 接入 MCP 后，机器人已经可以看图、调用工具并执行动作，也可能在陌生任务上取得一次成功。但连续运行很快会暴露两个问题：谁来处理复位、成功判断、异常恢复和安全决策？这次执行留下的轨迹、视频与代码，下一次怎样被真正复用？如果处理不当，上下文将在不断迭代中持续累计冗余信息，最终让系统陷入混乱。因此，RoboRSI 把目标归结为两件事：尽可能减少人类介入，并让 Agent 用更少的 Token 从有价值的历史经验中完成更稳定、更快速的迭代。
+                Context management is the new code management. After connecting a Code Agent to an MCP, a robot can already inspect images, invoke tools, and execute actions, and it may occasionally succeed on an unfamiliar task. Continuous operation quickly exposes two questions: who handles reset, success judgment, exception recovery, and safety decisions? And how can the trajectories, videos, and code left by this execution be genuinely reused next time? If handled poorly, context keeps accumulating redundant information through repeated iterations and eventually drives the system into confusion. Therefore, RoboRSI focuses on two goals: reducing human intervention as much as possible, and helping agents use fewer tokens to complete more stable and faster iterations from valuable historical experience.
+                人工成本发生在哪？机器人报错停止、抓空或走偏以后，环境复位、结果检查、日志阅读和代码诊断等执行细节在过去是需要机器人工程师耗费时间持续理解并跟进解决的。RoboRSI 先让 Manager、Planner、Engineer 和 Reviewer 接管这些细节，再通过面向人类的高层引导（Human-Friendly Steering），让人把注意力放在目标、方向、价值判断、专业知识和安全边界上。真机上，人仍然负责安全监管和必要的方向调整，但不必跟进每一次底层执行；仿真中，系统更可以自动完成更多检查与复位。
+                Where does human cost arise? In the past, after a robot stopped with an error, missed a grasp, or drifted off course, execution details such as environment reset, outcome checks, log reading, and code diagnosis required robotics engineers to spend time understanding, tracking, and resolving the issue. RoboRSI assigns these details to Manager, Planner, Engineer, and Reviewer, then provides Human-Friendly Steering so people can focus on objectives, direction, value judgments, domain expertise, and safety boundaries. On real hardware, people still supervise safety and provide necessary course adjustments without following every low-level action; in simulation, the system can automate even more checks and resets.
+                历史经验如何管理？如果每次都让 Agent 参考过去的完整 rollouts，Token 会越来越多；如果每次遇到局部失败都重写整套流程，系统也很难收敛。TSR 提供面向智能体的结构（Agent-Friendly Structure）：它固定高层任务骨架，再把具体能力放进职责范围明确、归属清晰的技能节点。我们注意到，Coding 模型擅长处理局部细节，却容易在连续修改中忽略全局；这棵任务—技能树为它提供结构性约束，使每次局部修订都与总体目标保持一致，并让多轮迭代更稳定。执行结果沿调用路径回到对应节点，失败在哪里就修哪里；稳定分支继续组合并固化为代码。这样，历史经验才会变成下一轮真正可用的能力。
+                How should historical experience be managed? If the agent references complete past rollouts every time, token use keeps growing; if the system rewrites the whole workflow after every local failure, it also becomes difficult to converge. TSR (Top-down Skill Refinement) provides an Agent-Friendly Structure: it fixes the high-level task structure and places concrete capabilities in clearly scoped Skill nodes with explicit ownership. We observe that coding models are strong at local detail but can lose the global objective across repeated edits; the task-skill tree provides structural constraints so each local revision stays aligned with the overall goal and multi-round iteration becomes more stable. Outcomes return along the invoked path: the system repairs the branch where the failure occurred, and stable branches continue to compose and consolidate into code. Historical experience then becomes genuinely usable capability for the next round.
+              01
+                人类处理宏观判断
+                Keep human attention on high-level judgment
+              多智能体接管任务组织、执行、日志诊断和代码修订。人类只需要给出目标、价值判断、专业知识、安全边界和必要的操作建议。
+              Multi-Agent operation hides system and code complexity, allowing people to use a high-level interface to focus on values, overall direction, domain expertise, risk boundaries, and essential operational guidance.
+              02
+                Agent 基于稳定的技能树迭代
+                Let agents iterate through a stable Skill Tree
+              TSR 给出自顶向下的任务结构和清晰的模块边界。Agent 可以专注于实现、诊断和修订具体节点，不必每次从头理解整个系统。
+              TSR lets agents plan top-down, focus on implementing, diagnosing, and locally revising concrete nodes, and achieve self-improvement while the tree-structured skill framework constrains the overall direction.
+            02
+              方法
+              Method
+              分工、执行、迭代、复用。
+              Divide work, execute, iterate, and reuse.
+            02.A
+            方法 / 整体框架
+            Method / Overall Framework
+              RoboRSI 把执行、诊断、技能更新和再次运行整合为一个连续闭环。
+              RoboRSI integrates execution, diagnosis, skill updates, and reruns into one continuous loop.
+              OpenETA[2]、Voyager[3]、Code as Policies[4] 等工作分别从具身交互闭环、可执行技能库和语言模型生成机器人策略等方向推进了 Agent 与环境的持续交互。然而，对于持续运行的机器人，仅有单次技能执行与交互闭环并不充分：任务管理、诊断失败、维护技能版本以及如何将跨轮经验压缩复用，这些都应当作为系统中的独立模块由不同的 Agent 管理。RoboRSI 的设计哲学可以概括为两种互补抽象：面向人类的高层引导把人类输入集中在目标、方向、价值和安全判断上；面向智能体的结构用层级化技能树约束局部实现，使多智能体运维、验证通过后的能力固化和下一轮复用能够在同一流程中持续推进。
+              OpenETA[2], Voyager[3], Code as Policies[4], and related work have advanced continual agent-environment interaction through embodied interaction loops, executable skill libraries, and language-model-generated robot policies. For continuously operating robots, however, one-off skill execution and interaction loops are not sufficient: task management, failure diagnosis, skill-version maintenance, and compressed reuse of cross-round experience should all be handled as distinct system modules by different agents. RoboRSI's design philosophy combines two complementary abstractions: Human-Friendly Steering concentrates human input on objectives, direction, values, and safety judgment, while Agent-Friendly Structure uses a hierarchical Skill Tree to constrain local implementation so Multi-Agent operation, validation-gated release, and next-round reuse can advance in one continuous process.
+ROBO RSI SELF-EVOLUTION / OVERALL FRAMEWORK
+SELF-EVOLUTION LOOP
+BLUE: online executionORANGE: diagnosis + revisionGREEN: released capability
+ONLINE EXECUTION
+01 / TASK INPUT
+Task + current observation
+new · unresolved · repeated
+Reusable context
+catalog · released skills · history
+02 / MULTI-AGENT COLLABORATION
+SHARED WORKSPACE
+M
+Manager
+task scheduling · version management
+P
+Planner
+goal understanding · plan generation
+E
+Engineer
+tool execution · candidate implementation
+R
+Reviewer
+outcome review · revision proposals
+03 / HIERARCHICAL SKILL EXECUTION
+Long-Horizon Task
+composes multiple Atomic Tasks
+Atomic Task
+clear scope · verifiable outcome
+Base Skills
+perception
+motion
+grasp
+place
+04 / EVIDENCE + DIAGNOSIS
+Execution record
+plan · trace · video · final verdict
+Diagnose or distill stable paths
+attribution · stable-path distillation
+Candidate capability updates
+PATCH · NEW BASE · NEW ATOMIC · COMPOUND
+CROSS-EPISODE EVOLUTION
+05 / VALIDATION + RELEASE
+Evaluation Gate
+tests · audit · no regression
+Capability release
+released only after validation
+Code Skill
+stable path → SKILL.md + policy.py
+Learning-based Policy
+execution data → policy training
+06 / NEXT-ROUND REUSE
+Back to the runtime
+new capabilities enter the next round
+online execution
+diagnosis + revision
+released capability
+solid = within-episode flow · dashed = cross-episode evolution + reuse
+ROBO RSI SELF-EVOLUTION / OVERALL FRAMEWORK
+SELF-EVOLUTION LOOP
+BLUE: 在线执行ORANGE: 诊断与修订GREEN: 已发布能力
+在线执行
+01 / 任务输入
+任务 + 当前观察
+新任务 · 未解决 · 重复任务
+可复用上下文
+技能目录 · 已发布能力 · 历史经验
+02 / MULTI-AGENT 协作
+共享工作区
+M
+Manager
+任务调度 · 版本管理
+P
+Planner
+目标理解 · 计划生成
+E
+Engineer
+工具执行 · 候选实现
+R
+Reviewer
+结果复盘 · 修订建议
+03 / 技能分层执行
+Long-Horizon Task
+组合多个 Atomic Task
+Atomic Task
+边界明确 · 结果可验证
+Base Skills
+视觉感知
+运动控制
+抓取
+放置
+04 / 证据与诊断
+执行记录
+计划 · 工具调用链 · 视频 / 轨迹 · 最终判定
+诊断或提炼稳定路径
+失败归因 · 稳定路径提炼
+候选能力更新
+PATCH · NEW BASE · NEW ATOMIC · COMPOUND
+跨回合进化
+05 / 验证与发布
+Evaluation Gate
+测试 · 审计 · 不回退
+能力发布
+验证通过后发布
+代码技能（Code Skill）
+稳定路径 → SKILL.md + policy.py
+Learning-based Policy
+执行数据 → 策略训练
+06 / 下一轮复用
+回到运行时
+新能力进入下一轮任务
+在线执行
+诊断与修订
+已发布能力
+实线 = 单回合执行流；虚线 = 跨回合进化与复用
+                ROBORSI FRAMEWORK
+                六阶段自进化闭环
+                Six-stage self-improvement loop
+                  01
+                  任务输入
+                  Task Input
+                  任务、当前观察与已验证技能
+                  Task, current observation, and released skills
+                  02
+                  多智能体
+                  Multi-Agent
+                  Manager、Planner、Engineer 与 Reviewer
+                  Manager, Planner, Engineer, and Reviewer
+                  03
+                  技能细化
+                  Skill Refinement
+                  任务族、原子任务与基础技能
+                  Task Family, Atomic Task, and Base Skill
+                  04
+                  执行证据
+                  Execution Evidence
+                  计划、调用链、视频、轨迹与结果
+                  Plans, tool traces, video, trajectories, and outcomes
+                  05
+                  验证与自进化
+                  Validation + Evolution
+                  对技能进行更新修订，并固化为代码或 learning-based policy
+                  Update and revise skills, then consolidate them into Code or a learning-based policy
+                  06
+                  下一轮复用
+                  Next-round Reuse
+                  持续迭代，继续产生经验
+                  Continue iterating and generating experience
+              Figure 01A
+              整体框架依次连接任务输入、多智能体协作、技能分层、执行证据、验证固化与下一轮能力复用。蓝色为单回合在线执行，橙色为诊断与修订，绿色为已验证 / 已发布能力；实线是单回合执行流，虚线是跨回合进化与复用。
+              The overall framework connects task input, Multi-Agent collaboration, skill organization, execution evidence, validated release, and next-round capability reuse. Blue marks within-episode online execution, orange marks diagnosis and revision, and green marks validated / released capability; solid lines are the within-episode flow and dashed lines are cross-episode evolution and reuse.
+            02.B
+            方法 / 多智能体设计
+            Method / Multi-Agent Design
+              四个角色接力完成并共同维护多轮任务。
+              Four roles relay execution and jointly maintain tasks across repeated rounds.
+              RoboRSI 的多智能体集群包括 4 个 sub-agent：Manager、Planner、Engineer 与 Reviewer。接收到任务指令后，Manager 把这些信息变成任务队列，管理并发 Worker、断点和技能版本；Planner 结合当前观察与已有 Skill 形成计划；Engineer 调用工具、执行动作并实现候选；Reviewer 根据结果定位问题，把修订建议送回 Manager，开启下一轮。真机保留必要的安全监管和方向调整；仿真可以自动完成复位与结果判断。
+              RoboRSI's Multi-Agent cluster includes four sub-agents: Manager, Planner, Engineer, and Reviewer. After receiving a task instruction, Manager turns it into a task queue and maintains concurrent workers, resume points, and skill versions; Planner forms a plan from the current observation and existing skills; Engineer invokes tools, executes actions, and implements candidates; Reviewer locates problems from the outcome and sends revision proposals back to Manager for the next round. Physical deployment retains necessary safety supervision and course adjustment, while simulation can automate reset and outcome checks.
+                人类高层输入
+                HUMAN CONTRIBUTION
+                目标 · 价值判断 · 专业知识 · 操作建议
+                Objectives · Values · Expertise · Operational Guidance
+                  01
+                  M
+                  Manager
+                  维护任务队列、并发 Worker、断点恢复与技能版本。
+                  Maintain task queues, concurrent workers, resume state, and skill versions.
+                    调度
+                    SCHEDULE
+                  02
+                  P
+                  Planner
+                  结合目标、当前观察和已有 Skill，形成边界明确的计划。
+                  Form a clearly scoped plan from the objective, current observation, and existing skills.
+                    计划
+                    PLAN
+                  03
+                  E
+                  Engineer
+                  调用机器人工具、读取日志，并实现或修订候选能力。
+                  Invoke robot tools, inspect logs, and implement or revise candidate capabilities.
+                    执行 + 实现
+                    EXECUTE + BUILD
+                  04
+                  R
+                  Reviewer
+                  复盘执行结果、定位问题，并提出下一轮修订。
+                  Review execution outcomes, locate problems, and propose the next revision.
+                    复盘
+                    REVIEW
+                  任务队列
+                  QUEUE
+                  待解决任务
+                  Unresolved Tasks
+                  Manager
+                  计划
+                  PLAN
+                  计划与技能选择
+                  Plan + Skill Selection
+                  Planner
+                  执行
+                  EXECUTION
+                  工具调用与候选实现
+                  Tool Calls + Candidate
+                  Engineer
+                  执行证据
+                  EVIDENCE
+                  日志、视频与轨迹
+                  Logs, Video + Trajectory
+                  Robot / Simulator
+                  复盘
+                  REVIEW
+                  问题归因与修订建议
+                  Attribution + Revision
+                  Reviewer
+                  真机
+                  REAL ROBOT
+                  安全监管与方向调整
+                  Safety Supervision + Course Adjustment
+                  人类只在必要时介入
+                  Human intervention only when needed
+                  仿真
+                  SIMULATION
+                  自动复位与结果判断
+                  Automatic Reset + Outcome Check
+                  连续进入下一回合
+                  Continue into the next episode
+                  下一轮
+                  NEXT ROUND
+                  更新任务与技能修订队列
+                  Update Task + Skill Revision Queues
+                  Reviewer 结果返回 Manager
+                  Reviewer output returns to Manager
+                下一轮任务 ← Manager ← Reviewer ← 执行结果
+                NEXT ROUND ← MANAGER ← REVIEWER ← OUTCOME
+              Figure 01B
+              四个角色围绕同一任务和反馈闭环持续协作，实现自主循环迭代。
+              Four roles collaborate around the same task and evidence, moving human participation toward objectives, values, and expert judgment. Hardware and simulation share the iteration logic but use different reset and supervision paths.
+            02.C
+            方法 / TSR：自顶向下的技能细化
+            Method / TSR: Top-down Skill Refinement
+              TSR 先搭好任务骨架，再将每次结果落到具体的技能节点。
+              TSR fixes the task structure first, then routes each outcome to a specific skill node.
+              TSR（Top-down Skill Refinement）即自顶向下的技能细化。它是面向 Coding 模型的关键结构抽象。RoboRSI 按四个层级组织技能：任务族（Task Family）定义一类任务的总体目标和约束；复合技能（Compound Skill）组合可复用的多步能力；原子任务（Atomic Task）描述职责范围明确、结果可验证的最小任务单元；基础技能（Base Skill）封装感知、移动、抓取、放置等与机器人直接交互的基础能力。通过固定全局骨架、限定技能边界并明确节点所有权，TSR 约束模型在专注局部代码细节时不偏离总体目标，使多轮修订保持稳定和一致。执行结果沿实际调用路径返回：稳定节点继续组合与复用，出错的节点在原分支内修订；成熟路径可以固化为代码，轨迹数据也可以训练 learning-based policy。
+              TSR (Top-down Skill Refinement) is a critical structural abstraction for coding models. RoboRSI organizes skills in four levels: a Task Family defines the shared objective and constraints for a class of tasks; a Compound Skill composes reusable multi-step capabilities; an Atomic Task specifies the smallest task unit with clear scope and a verifiable outcome; and a Base Skill encapsulates direct robot interactions such as perception, movement, grasping, and placement. By fixing the global structure, scoping each skill, and assigning explicit ownership, TSR keeps detail-focused coding models aligned with the overall objective and makes repeated revision more stable and consistent. Outcomes return along the invoked path: stable nodes remain composable and reusable, while failed nodes are revised inside their owning branch. Mature paths can consolidate into Code, and trajectory data can train a learning-based policy.
+              近年的相关工作中有许多也将 Code 作为与机器人的交互中间层，例如 Voyager[3] 证明了代码技能可以在长期交互中积累和复用，Code as Policies[4] 则展示了语言模型如何把感知与控制 API 组合成机器人策略。CaP-X[5] 进一步指出，机器人 Coding Agent 对人类预先设计的抽象层级高度敏感，而多轮反馈和自动技能合成可以缓解这一问题；ASPIRE[6] 将失败诊断、程序修复、验证和持续扩展的技能库放进开放式循环。RoboRSI 关注的重点不是再增加一种代码生成方式，而是用自顶向下的技能树规定这些能力的层级、所有权和回流路径：在线探索寻找解法，稳定流程固化为代码，执行数据进入 learning-based policy，失败则回到最早出错的节点修订。这样才能让多轮迭代逐步收敛，避免让技能库随着任务增加失去结构。
+              Many recent systems also use Code as an intermediate layer for robot interaction. Voyager[3] showed that executable code skills can accumulate and be reused over long interactions, while Code as Policies[4] demonstrated how language models can compose perception and control APIs into robot policies. CaP-X[5] further showed that robot Coding Agents are highly sensitive to the abstraction level designed by people, and that multi-turn feedback and automatic skill synthesis can mitigate this dependence; ASPIRE[6] places failure diagnosis, program repair, validation, and an expanding reusable skill library inside an open-ended loop. RoboRSI therefore focuses less on adding another code-generation mechanism and more on defining hierarchy, ownership, and return paths through a top-down Skill Tree: online exploration finds a solution, stable workflows consolidate into Code, execution data enters learning-based policies, and failures return to the earliest responsible node. This structure is intended to make repeated refinement converge rather than letting the skill library lose organization as tasks accumulate.
+              01
+              让最终反馈沿调用路径完成归因
+              Route final feedback along the call path for attribution
+              最终反馈沿本轮技能调用路径逐级传导，定位最早出错的节点，并修正对应分支。
+              Final feedback propagates through the invoked skill path to identify the earliest failing node and correct its branch.
+              02
+              把稳定经验沉淀为可复用能力
+              Consolidate stable experience
+              稳定分支可以组合为复合技能、固化为代码，或进一步以 rollout 数据的形式训练 learning-based policy。
+              Stable branches can compose into compound skills, consolidate into code, or further train learning-based policies from rollout data.
+              当分支稳定以后，Agent 从逐步执行转向调用 Code。
+              Once a branch stabilizes, the agent shifts from step-by-step execution to invoking code.
+              RoboRSI 从成功的调用链中提取稳定结构，把物体、目标区域和空间关系变成参数。相似任务再次出现时，Agent 选择并监控复合技能，Code 承担重复的工具步骤；仅当环境变化或执行失败时再恢复在线 Agent 推理。随着稳定分支的增加，Agent 的参与度逐渐降低，任务执行耗时与 Token 消耗量均减少。
+              RoboRSI extracts stable structure from successful traces and parameterizes objects, target regions, and spatial relations. On similar tasks, the agent selects and monitors a Compound Skill while Code handles repeated tool steps; online agent reasoning resumes only when the environment changes or execution fails. As stable branches accumulate, agent involvement declines, and both task execution time and token use decrease.
+              Figure 03A
+              随着路径稳定，Agent 介入从逐工具决策转为选择、监控和修订整条技能，Code 承担更多重复执行。
+              As the path stabilizes, agent involvement moves from per-tool decisions to selecting, monitoring, and revising the skill while code handles repeated execution.
+              01 / DISCOVER
+              首次任务
+              First execution
+              Agent 逐步选择工具，Code 只提供基础接口
+              Agent chooses each tool; code exposes primitives
+              02 / CONSOLIDATE
+              稳定分支
+              Stable branch
+              Agent 参数化路径，Code 开始承担重复步骤
+              Agent parameterizes the path; code absorbs repeated steps
+              03 / REUSE
+              重复任务
+              Repeated task
+              Agent 选择并监控技能，Code 执行主要流程
+              Agent selects and monitors; code executes the main path
+            02.D
+            方法 / 设计哲学
+            Method / Design Philosophy
+                约束智能体的边界与成长路径，实现高效交互与迭代。
+                Constrain agents' boundaries and growth paths to enable efficient interaction and iteration.
+                为了处理现实世界的工程问题，执行的细节往往繁琐而细碎。随着任务与系统的复杂度上升，任务拆解、数据采集、日志读取、代码诊断和技能维护等执行细节很难由人持续理解和跟进，而 Coding 模型虽然擅长处理局部细节，却容易在连续修改中偏离全局目标。RoboRSI 因此把执行细节交给多智能体，把方向性判断留给人，并用技能树约束 Agent 的实现与修订。面向人类的高层引导和面向智能体的结构由此形成一组互补设计：人不必钻进底层实现，Agent 也不必在范围不清的代码空间里反复试错。
+                Real-world engineering problems are full of small, tedious execution details. As tasks and systems grow more complex, task decomposition, data collection, log inspection, code diagnosis, and skill maintenance become difficult for people to understand and follow continuously, while Coding models are strong at local detail but can drift from the global objective across repeated edits. RoboRSI therefore assigns execution detail to Multi-Agent operation, keeps directional judgment with people, and uses the Skill Tree to constrain agent implementation and revision. Human-Friendly Steering and Agent-Friendly Structure form a complementary pair: people do not need to enter low-level implementation, and agents do not need to search an ill-defined code space.
+                这套设计从高层判断落到可执行任务流：当人类提出一个新任务，Manager 先把它拆成更小的原子任务，并找出所需的基础技能；Planner 为每个原子任务写出可执行计划；Engineer 根据计划实现基于代码的策略；机器人完成真实执行后，Reviewer 形成任务总结，指出问题最早出现在哪个节点。修订随后回到负责该功能的 Manager 与 Engineer 分支，完成诊断、调试、基础测试和下一轮运行。
+                When a person requests a new task, the Manager decomposes it into smaller Atomic Tasks and identifies the required Base Skills. The Planner produces an executable plan for each Atomic Task. The Engineer implements the corresponding code-based policies. The robot executes those skills, and the Reviewer turns the physical outcome into a task summary and revision proposal. The issue then returns to the responsible Manager and Engineer branch for diagnosis, debugging, focused tests, and the next revision.
+                  ROUND 001 / 104
+                    真机技能树演化
+                    Real-robot Skill Tree evolution
+                    拖动轮次条查看任意阶段；继续播放时，轮次会随视频同步推进。
+                    Drag to inspect any round; the Round readout follows the video during playback.
+                    Ⅱ
+                    选择或拖动轮次条
+                    Select or drag a Round
+                  ROUND 1
+                  ROUND 26
+                  ROUND 52
+                  ROUND 78
+                  ROUND 104
+                Figure 03B
+                真机整理任务的 104 轮技能树：蓝色表示新增能力，橙色表示本轮修订，黄绿色表示已经稳定的技能。拖动轮次条可查看任意阶段，点击视频可放大查看。
+                The 104-round physical cleanup Skill Tree uses blue for new capability, orange for the branch revised in the current round, and yellow-green for stabilized skills. Drag the Round timeline to inspect any stage, or open the video for a larger view.
+              REAL-ROBOT TASK EXPANSION
+              新任务沿技能所有权逐层展开
+              A new task unfolds through explicit skill ownership
+                01 / REQUEST
+                人类提出任务
+                Human request
+                给出目标、约束、专业知识与操作建议
+                Provide objectives, constraints, expertise, and operational guidance
+                02 / MANAGER
+                分解任务
+                Decompose
+                形成原子任务，并定位所需基础技能
+                Define Atomic Tasks and identify the required Base Skills
+                03 / PLANNER
+                编排计划
+                Plan
+                为每个原子任务生成边界明确的执行方案
+                Create a clearly scoped execution plan for each Atomic Task
+                04 / ENGINEER
+                实现技能
+                Implement
+                为相关技能编写和测试基于代码的策略
+                Implement and test code-based policies for the relevant skills
+                05 / ROBOT
+                真实执行
+                Execute
+                返回观测、动作、日志与物理结果
+                Return observations, actions, logs, and physical outcomes
+                06 / REVIEWER
+                复盘与归因
+                Review
+                形成任务总结，并把建议送回责任分支
+                Produce a task summary and route revisions to the owning branch
+              Reviewer 反馈回到责任节点，进入诊断、调试、测试与下一轮修订
+              Reviewer feedback returns to the owning node for diagnosis, debugging, tests, and the next revision
+            让技能树在适当的人类引导和正确的迭代框架下趋于收敛
+            Let the Skill Tree converge under appropriate human guidance and a sound iteration framework
+            为了让技能库（Skill Library）与任务库（Task Library）稳定地自迭代、自进化，我们通过技能树来约束整体结构和责任边界。在此基础上，还需要一组贯穿设计与迭代的原则。
+            To let the Skill Library and Task Library iterate and improve themselves reliably, RoboRSI uses the Skill Tree to constrain the overall structure and ownership boundaries. On that foundation, stable convergence still requires a set of principles that run through both design and iteration.
+              01
+              职责清晰与相互信任
+              Clear responsibility and mutual trust
+              每项技能只负责一项职责范围明确、结果可验证的闭环功能，并只通过结构化数据交换必要信息。成熟上游的结论由下游检查是否仍然有效、适用和安全，而不是重复实现、反复验证，或不断叠加 try / verify / catch 与兜底分支。验证通过后的运行时应能独立完成任务，不依赖开发者在执行途中临时修改代码。
+              Each skill owns one clearly scoped, verifiable closed-loop function and exchanges only necessary information through structured data. Downstream skills check whether a mature upstream result remains valid, applicable, and safe; they do not reimplement it, repeatedly reverify it, or accumulate try / verify / catch loops and fallback branches. A released runtime should complete the task without developer hot-patching during execution.
+              02
+              正确归因与收敛迭代
+              Correct attribution and convergent iteration
+              系统依据实际执行结果与物理证据，定位最早出现问题的责任节点，并在负责该问题的模块内修复，而不是把临时补丁（workaround）推到下游。一次修改是否有效，不只看当前任务是否成功，还看重复执行、额外验证、模型回退（fallback）、人工介入和代码分支是否随着迭代持续减少。
+              The system uses physical evidence and observed execution outcomes to locate the earliest responsible node, then repairs the module that owns the failure instead of pushing a workaround downstream. A revision is judged not only by whether the current task succeeds, but also by whether repeated execution, extra verification, model fallback, human intervention, and code branching decrease over subsequent iterations.
+              03
+              程序参数化与窗口化修复
+              Program parameterization and windowed repair
+              物体类别、环境条件、目标关系和执行顺序被抽象为可配置参数与通用接口；当前观测中的像素、坐标、姿态和其他临时信息只服务本次运行，不进入通用程序。普通代码修改在最近若干次成功与失败组成的经验回放窗口（history replay buffer）中共同评估，避免修好最新样例，却破坏此前已经成立的行为。
+              Object classes, environment conditions, target relations, and execution order become configurable parameters and general interfaces. Pixels, coordinates, poses, and other transient observations belong only to the current run and do not enter the reusable program. Routine code revisions are evaluated together within a history replay window composed of recent successes and failures, so that fixing the newest case does not break behavior that already worked.
+              04
+              人类知识蒸馏与维护
+              Human knowledge distillation and maintenance
+              每次人工纠正都要判断系统是否原本已有足够证据自行发现问题，并把可复用的知识固化为自动检测、结构化状态、运行规则、测试或长期维护的文档，而不是只留在对话里。确实需要人类判断时，机器人先进入安全、稳定且可以等待的状态；人类保留方向、价值与安全控制，日常执行对人工干预的依赖则逐步降低。
+              Every human correction first asks whether the system already had enough evidence to detect the issue itself. Reusable knowledge is then consolidated into automatic checks, structured state, runtime rules, tests, or maintained documentation and memory instead of remaining only in conversation history. When human judgment is genuinely required, the robot first enters a safe, stable state that can wait. People retain control over direction, values, and safety while routine execution becomes progressively less dependent on intervention.
+            03
+              实验与应用
+              Experiments & Applications
+                03.B
+                实验与应用 / 零样本任务适配
+                Experiments & Applications / Zero-shot Task Adaptation
+                没有现成任务代码时，系统从基础技能开始寻找可行解法。
+                When no task code exists, the system starts from Base Skills to search for a feasible solution.
+              RoboHarness[7] 研究异构策略的编排，LIBERO[8] 则用 130 个任务和知识迁移协议评估终身学习中的知识保留与复用。本节结合 LIBERO-PRO[9] 与 RoboTwin 2.0[10]，展示 RoboRSI 在没有现成任务代码时如何从基础技能开始迭代；后续扰动实验使用 LIBERO-Plus[11]。
+              RoboHarness[7] studies heterogeneous policy orchestration, while LIBERO[8] uses 130 tasks and knowledge-transfer protocols to evaluate retention and reuse in lifelong learning. This section combines LIBERO-PRO[9] and RoboTwin 2.0[10] to show how RoboRSI begins iterating from Base Skills when no task code exists; the later perturbation study uses LIBERO-Plus[11].
+              查看仿真视频与工具调用链
+              View simulator videos and tool paths
+              换一组
+              Show another set
+                  RoboTwin 任务结果与执行视频
+                  RoboTwin episodes with exact tool traces
+                  ENGINEER-ONLY
+                  9/50
+                累计任务通过率 · 单角色 baseline
+                Cumulative task pass rate · Single-role baseline
+                  PLANNER + ENGINEER + REVIEWER
+                  36/50
+                累计任务通过率 · RoboRSI
+                Cumulative task pass rate · RoboRSI
+                换一组
+                Show another set
+                正在载入 RoboTwin 回合…
+                Loading RoboTwin episodes…
+                03.C
+                实验与应用 / 重复任务自动化
+                Experiments & Applications / Repeated Task Automation
+                代码固化让重复任务执行得更稳定，也更省推理成本。
+                Code consolidation makes repeated task execution more stable and reduces reasoning cost.
+                  两组使用相同基础工具，区别在于是否调用已固化的复合技能。
+                  Both groups use the same Base Skills; the difference is whether the consolidated Compound Skill is available.
+              120 tasks × 5 initial layouts · 600 episodes
+                  CODE-OFF
+                  129/600
+                回合通过率 21.5%Episode pass rate 21.5%
+                  CODE-ON
+                  174/600
+                回合通过率 29.0% · 提升 7.5 个百分点Episode pass rate 29.0% · +7.5 points
+              中位 TokenMedian tokens-29.4%
+              中位 VLM 调用Median VLM calls-27.2%
+              中位墙钟时间Median wall time-17.0%
+                CODE-ON / EXACT EPISODES
+                  调用固化 code 成功的案例
+                  Successful episodes invoking consolidated code
+                换一组
+                Show another set
+                正在载入回合…
+                Loading episodes…
+              Code-on 可以把稳定流程写成固化代码（code policy）；Code-off 不能写 code policy，只能每次在线调用 skill 完成任务。
+              Code-on can write stable workflows into consolidated code policies; Code-off cannot, and has to call skills online every time.
+                03.D
+                实验与应用 / 策略训练与应用
+                Experiments & Applications / Policy Training and Application
+                执行轨迹可以训练 learning-based policy，再与代码技能协同完成任务。
+                Train a learning-based policy from retained trajectories, then compose it with code-backed skills.
+                LEARNING-BASED POLICY / SAME TASK · MATCHED SETUP
+                  通过 TSR 采集数据轨迹，训练 learning-based policy
+                  Collect trajectories via TSR, then train a learning-based policy
+              libero_spatial_swap/0
+                BEFORE / AFTER
+                同一任务、同一初始条件下，纠正数据训练前后的策略执行对比。点击画面可查看成功回合的执行调用链。
+                Matched executions of the policy trained before and after the corrective data. Select the video to inspect the successful execution trace.
+                LEARNING-BASED POLICY / TRAINING + DATA LINEAGE
+                真实训练曲线与三阶段数据闭环：304 帧纠正轨迹形成 2,432 个样本，完成 1,000 步 learning-based policy 微调，再回到同任务的混合执行。
+                Logged training loss and a three-stage data loop: a 304-frame corrective trajectory becomes 2,432 samples, trains the learning-based policy for 1,000 steps, and returns to matched hybrid execution.
+              DATA SOURCE
+                1 条纠正轨迹 · 304 帧 · 8 组训练序列 · 2432 个样本 · 1000-step 微调
+                1 corrective trajectory · 304 frames · 8 training sequences · 2,432 samples · 1,000-step fine-tune
+                03.E
+                实验与应用 / 扰动鲁棒性
+                Experiments & Applications / Perturbation Robustness
+                环境发生变化后，RoboRSI 可以继续修订技能并恢复任务覆盖。
+                After the environment changes, RoboRSI can continue revising skills and recover task coverage.
+                LIBERO-PLUS / 840 INSTANCES
+                  分层扰动面板：840 = 7 类扰动 × 每类 120 个实例
+                  Stratified perturbation panel: 840 = 7 categories × 120 instances
+              +137 instances
+                FIXED261/840
+                扰动实例通过率 31.1%Perturbation-instance pass rate 31.1%
+                ADAPTIVE PASS@2398/840
+                扰动实例通过率 47.4% · 提升 16.3 个百分点Perturbation-instance pass rate 47.4% · +16.3 points
+              01视觉纹理Visual Texture
+              02相机视角Camera Viewpoints
+              03语言指令Language Instructions
+              04光照条件Light Conditions
+              05物体布局Objects Layout
+              06机器人初态Robot Initial States
+              07传感器噪声Sensor Noise
+                  相机视角变化
+                  Camera viewpoint
+                  将黑碗放到盘子上
+                  Black bowl onto the plate
+                  光照条件变化
+                  Lighting condition
+                  将番茄酱放入篮筐
+                  Ketchup into the basket
+                  物体布局变化
+                  Object layout
+                  在变化后的布局中完成放置
+                  Placement under a shifted layout
+                  机器人初始状态变化
+                  Robot initial state
+                  从变化后的初态恢复操作
+                  Recover manipulation from a shifted start
+              840 个扰动实例由七类扰动组成，每类 120 个；每个实例是在一个 LIBERO 任务上施加一种具体扰动后的独立评测单元。扰动实例通过率按通过的实例数除以 840 统计。
+              The 840 perturbation instances comprise seven perturbation categories with 120 instances each; every instance is an independent evaluation unit created by applying one concrete perturbation to a LIBERO task. The perturbation-instance pass rate counts passed instances over 840.
+                03.A
+                实验与应用 / 真机移动操作
+                Experiments & Applications / Real-World Mobile Manipulation
+                从零迭代出可泛化的家庭场景移动操作能力。
+                Iterating a generalizable household mobile-manipulation capability from scratch.
+              RoboRSI 可以在真实机器人场景中从零开始，通过持续迭代目标搜索、移动底盘导航、机械臂抓取与放置，形成一套完整且可泛化的家庭场景移动操作任务能力。下面的真机地面清理 Demo 展示了机器人如何在场景变化前后完成两轮搜索、移动与清理。
+              In real-robot environments, RoboRSI can start from scratch and iteratively develop a complete, generalizable household mobile-manipulation capability spanning target search, mobile-base navigation, grasping, and placement. The physical floor-cleanup demo below shows two rounds of search, movement, and cleanup before and after the scene changes.
+                  家庭场景中的两轮地面清理
+                  Two-round floor cleanup in a household scene
+                  01
+                  第一轮目标搜索
+                  First-round target search
+                  机器人先扫描地面，确认第一轮清理需要处理的物体总数、目标位置是否可操作，并据此编排后续处理顺序。
+                  The robot first scans the floor to determine how many objects require handling, verify that each target location is actionable, and order the cleanup sequence.
+                  02
+                  第一轮地面清理过程
+                  First-round floor cleanup
+                  机器人从停靠位加速驶出，再按照搜索阶段确认的目标与顺序，逐一执行接近、抓取、运送和放置，完成第一轮地面清理。
+                  The robot accelerates away from the dock, then follows the targets and order established during search to approach, pick up, transport, and place each object.
+                  03
+                  第二轮目标搜索
+                  Second-round target search
+                  人在场景中交谈和休息后留下了新的待清理物体，机器人因此再次扫描地面，更新目标清单、位置与处理顺序。
+                  After people chat and relax in the room, new objects remain on the floor. The robot scans again to update the target list, locations, and handling order.
+                  04
+                  第二轮地面清理过程
+                  Second-round floor cleanup
+                  机器人再次从停靠位加速驶出，根据第二轮搜索结果重新组合移动与机械臂技能，逐一处理新增目标。
+                  The robot again accelerates away from the dock, then recomposes mobility and arm skills from the second search result to handle each new target.
+              点击任一画面可查看对应的执行调用链；选择其中一步，视频会跳转到相应的执行时刻。
+              Select any video to inspect its execution trace; choosing a step seeks the video to the corresponding moment.
+            04
+              展望
+              Outlook
+              探索 sim-to-real、多机器人协作，并适配更多真机。
+              Explore sim-to-real, multi-robot collaboration, and adaptation to more physical robots.
+            04
+            展望 / 下一阶段
+            Outlook / Next Stage
+              让智能体机器人把仿真中的经验更直接地带到真实世界。
+              Let agentic robots carry experience from simulation into the real world more directly.
+              下一阶段，RoboRSI 将探索仿真到现实学习（Sim-to-Real Learning）。我们认为，对于在真实环境中持续感知、规划、执行和纠错的智能体框架而言，仿真环境与现实之间的差距比端到端策略更小。我们还将探索多机器人之间共享传感器信息、任务上下文与技能，让不同机器人协同完成更长、更复杂的任务，并把 RoboRSI 适配到更多真机平台。更多严谨的结论仍需要通过更多真机实验验证。
+              The next stage will explore Sim-to-Real Learning. We think that for agentic frameworks that continuously perceive, plan, act, and correct errors in real environments, the gap between simulation and reality is smaller than it is for end-to-end policies. We will also study how multiple robots can share sensor observations, task context, and skills so different robots can coordinate on longer, more complex tasks, while adapting RoboRSI to more physical platforms. More rigorous conclusions still require more physical experiments.
+            05
+            引用
+            References
+                [1] HARNESS ENGINEERING
+                Harness Engineering for Self-Improvement
+                Weng, 2026
+                [2] EMBODIED AGENT
+                ETA: A New Agentic Paradigm for Embodied Tasks
+                Chen et al., 2026
+                [3] EXECUTABLE SKILLS
+                Voyager: An Open-Ended Embodied Agent with Large Language Models
+                Wang et al., 2023
+                [4] CODE POLICY
+                Code as Policies: Language Model Programs for Embodied Control
+                Liang et al., ICRA 2023
+                [5] CODING AGENT BENCHMARK
+                CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation
+                Fu et al., 2026
+                [6] SKILL DISCOVERY
+                ASPIRE: Agentic Skills Discovery for Robotics
+                Lu et al., 2026
+                [7] POLICY ORCHESTRATION
+                RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning
+                Huang et al., 2026
+                [8] BENCHMARK
+                LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning
+                Liu et al., NeurIPS 2023
+                [9] BENCHMARK
+                LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization
+                Zhou et al., 2025
+                [10] BENCHMARK
+                RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation
+                Chen et al., ICML 2026
+                [11] BENCHMARK
+                LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models
+                Fei et al., 2025
+              BibTeX
+                引用本文
+                Cite this work
+                复制以下 BibTeX 条目即可引用本文。
+                Use the BibTeX entry below to cite this research preview.
+                复制
+                Copy
+              @misc{noematrix2026roborsi,
+  author       = {{Noematrix Team}},
+  title        = {RoboRSI: Stable, Efficient, and Reusable Robot Self-Evolution in Complex Real-World Environments},
+  year         = {2026},
+  month        = sep,
+  howpublished = {Research Blog},
+  url          = {https://lab.noematrix.ai/blog/2-roborsi/}
+}
+          NOEMATRIX LAB
+            在真实复杂场景中实现稳定、高效、可复用的机器人自进化
+            Stable, efficient, and reusable robot self-evolution in complex real-world environments.
+            返回文章开头
+            Return to the beginning
+          ×
+            任务Task
+            轨迹Trace
+            判定Verdict
+                任务迭代与累计任务通过率
+                Task iteration and cumulative task pass rate
+              曲线为 95 个已通过任务的首次通过记录随技能树 release 序列的累计任务通过率（分母为 120 个任务）；圆点标出当前任务的首次通过位置。
+              The curve shows the cumulative task pass rate (over 120 tasks) of the 95 first-pass records across the skill-tree release sequence; the dot marks where this task first passed.
+      © 2026 NOEMATRIX LAB

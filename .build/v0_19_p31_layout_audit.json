@@ -1,0 +1,18 @@
+{
+  "html_sha256": "af875ba3287d3e805baa042bfe4af4bfccf06060acd054ae960f8d3476af0642",
+  "loaded_deck_data_sha256": "7c7d4f11a3efe7c2748f209b75d8472623ebee590c5920c2d6273a59d0a6078c",
+  "footers": [
+    {
+      "number": 31,
+      "text": "W. Xiao et al., “ENPIRE: Agentic Robot Policy Self-Improvement in the Real World,” arXiv:2606.19980, 2026. Fig. 7; project website, interactive plot data.",
+      "left": 64,
+      "top": 678,
+      "bottom": 692,
+      "width": 1090,
+      "scrollWidth": 1090,
+      "fontSize": "11px",
+      "fontFamily": "\"Noto Sans\", \"Noto Sans CJK SC\", sans-serif",
+      "color": "rgb(119, 119, 111)"
+    }
+  ]
+}

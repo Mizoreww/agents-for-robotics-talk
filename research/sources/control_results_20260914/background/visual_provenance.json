@@ -1,0 +1,64 @@
+{
+  "hirobot_figure5": {
+    "source_pdf": "hirobot_paper_v2.pdf",
+    "source_url": "https://arxiv.org/pdf/2502.19417v2",
+    "pdf_page_1based": 7,
+    "figure": 5,
+    "original_svg": {
+      "file": "hirobot_figure5_original.svg",
+      "bytes": 151456,
+      "sha256": "3cd7929d796a73a931751d52f52557d9358ceb443eab043f68d35305778bdd3c"
+    },
+    "original_svg_url": "https://arxiv.org/html/2502.19417v2/baselines_v2.svg",
+    "original_svg_viewbox": [
+      0,
+      0,
+      1265,
+      344
+    ],
+    "full_page": {
+      "file": "hirobot_page7.png",
+      "bytes": 686147,
+      "sha256": "bf6902fb1ede759f5f5c81fe1a7b21dbfff0d9ccbd2f4b72146c3c867268f17f",
+      "dimensions": [
+        1700,
+        2200
+      ]
+    },
+    "render_dpi": 200,
+    "figure_crop": {
+      "file": "hirobot_figure5_pdf_crop.png",
+      "bytes": 29905,
+      "sha256": "45402f1ef0c2aa490e5d961d00c5d45788df6990c6102627443d67d77decf570",
+      "dimensions": [
+        1385,
+        367
+      ]
+    },
+    "crop_bbox_pixels": [
+      145,
+      185,
+      1530,
+      552
+    ],
+    "visual_check": "Full four panels, axis ticks/labels, every method and oracle comparison, complete legend retained. Caption outside crop is retained in source full page. No redraw; no figure content altered."
+  },
+  "rpent_table3": {
+    "source_pdf": "rpent_paper_v4.pdf",
+    "source_url": "https://arxiv.org/pdf/2607.08448v4",
+    "pdf_page_1based": 8,
+    "table": 3,
+    "full_page": {
+      "file": "rpent_table3_page8.png",
+      "bytes": 281339,
+      "sha256": "500391e259c27d53a0bcee837aff7d1822f2ed8482a908a1ee8555d1672ec738",
+      "dimensions": [
+        1445,
+        1870
+      ]
+    },
+    "render_dpi": 170,
+    "crop": "none",
+    "visual_check": "Full original PDF page, including Table 3 caption, complete rows and column headers, retained."
+  }
+}

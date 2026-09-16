@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="takeaways-diagram" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="takeaways-title takeaways-desc" style="position:absolute;inset:0">
+  <title id="takeaways-title">Agent: Control, Data and Improvement</title>
+  <desc id="takeaways-desc">Control combines System 2 and action primitives. Semantic and spatial capabilities are stronger; fast, contact-rich execution remains open. Research questions: Latency? Better interface? Sim2Real? Efficiency?</desc>
+  <defs>
+    <marker id="takeaway-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9" fill="none" stroke="#8da8a2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- One quiet canvas per research direction; no raster thumbnails. -->
+  <g fill="#f7faf9" stroke="#dbe7e3" stroke-width="1.5">
+    <rect x="266" y="190" width="950" height="208" rx="14"/>
+    <rect x="266" y="438" width="950" height="88" rx="14"/>
+    <rect x="266" y="566" width="950" height="88" rx="14"/>
+  </g>
+  <g fill="none" stroke="#8da8a2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M198 452H224Q234 452 234 442V306Q234 294 246 294H256" marker-end="url(#takeaway-arrow)"/>
+    <path d="M234 442V598Q234 610 246 610H256" marker-end="url(#takeaway-arrow)"/>
+    <path d="M234 482H256" marker-end="url(#takeaway-arrow)"/>
+    <path d="M452 294H470" marker-end="url(#takeaway-arrow)"/>
+    <path d="M918 294H950" marker-end="url(#takeaway-arrow)"/>
+    <path d="M452 482H470" marker-end="url(#takeaway-arrow)"/>
+    <path d="M918 482H950" marker-end="url(#takeaway-arrow)"/>
+    <path d="M452 610H470" marker-end="url(#takeaway-arrow)"/>
+    <path d="M918 610H950" marker-end="url(#takeaway-arrow)"/>
+  </g>
+  <rect x="64" y="408" width="134" height="88" rx="12" fill="#2ba39b"/>
+  <g font-family="Noto Sans" font-size="24" dominant-baseline="middle">
+    <text x="131" y="452" text-anchor="middle" fill="#fff" font-weight="700">Agent</text>
+    <g fill="#1d7d76" font-weight="700">
+      <text x="354" y="294" text-anchor="middle">Control</text>
+      <text x="354" y="482" text-anchor="middle">Data</text>
+      <text x="354" y="610" text-anchor="middle">Improvement</text>
+    </g>
+    <text x="1080" y="161" text-anchor="middle" fill="#687973">Open problems</text>
+
+    <!-- P6 distilled: the stronger reasoning layer can use action primitives. -->
+    <g fill="#eaf5f3" stroke="#c6d9d6" stroke-width="1.5">
+      <rect x="482" y="215" width="176" height="58" rx="9"/>
+      <rect x="724" y="215" width="176" height="58" rx="9"/>
+    </g>
+    <path d="M670 244H712" fill="none" stroke="#8da8a2" stroke-width="2" stroke-linecap="round" marker-end="url(#takeaway-arrow)"/>
+    <g fill="#1d7d76">
+      <text x="570" y="244" text-anchor="middle">System 2</text>
+      <text x="812" y="244" text-anchor="middle">Primitives</text>
+    </g>
+    <!-- P17 distilled: keep strengths and gaps distinct, not a performance claim. -->
+    <text x="482" y="314" fill="#1d7d76">Semantic / spatial</text>
+    <text x="482" y="363" fill="#aa514a">Fast / contact-rich</text>
+    <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="878" cy="314" r="12" stroke="#2ba39b"/>
+      <path d="m872 314 4 4 8-9" stroke="#2ba39b"/>
+      <circle cx="878" cy="363" r="12" stroke="#aa514a" stroke-dasharray="3 4"/>
+      <path d="M878 357v7m0 5v.1" stroke="#aa514a"/>
+    </g>
+
+    <g fill="#526e66">
+      <text x="691" y="482" text-anchor="middle">Assets / replay / rollouts</text>
+      <text x="691" y="610" text-anchor="middle">Policy improvement loop</text>
+    </g>
+    <g fill="#1d7d76" font-weight="700">
+      <text x="1080" y="267" text-anchor="middle">Latency?</text>
+      <text x="1080" y="326" text-anchor="middle">Better interface?</text>
+      <text x="1080" y="482" text-anchor="middle">Sim2Real?</text>
+      <text x="1080" y="610" text-anchor="middle">Efficiency?</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,114 @@
+[
+  {
+    "url": "https://mp.weixin.qq.com/s/kxZrh-ihP4HN20w1RdieWA",
+    "retrieved_utc": "2026-09-14T10:26:04.576054+00:00",
+    "status": 200,
+    "resolved_url": "https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha [query omitted]",
+    "content_type": "text/html; charset=UTF-8",
+    "file": "wechat_article.html",
+    "bytes": 18164,
+    "sha256": "0879f3c76fec0c590577688c01f17a379d8721872713017b7723f42dfbf855aa",
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.bing.com/search?q=%22kxZrh-ihP4HN20w1RdieWA%22%202026",
+    "query": "\"kxZrh-ihP4HN20w1RdieWA\" 2026",
+    "retrieved_utc": "2026-09-14T10:28:16.488077+00:00",
+    "file": "search_exact.html",
+    "sha256": "e05b75e78e9fbea82c42059fde9a03d5c5c8404628dff0e6ce28264a8de9d05c",
+    "bytes": 117631,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.bing.com/search?q=%22%E8%AF%AD%E4%B9%89%22%20%22%E7%A9%BA%E9%97%B4%22%20%22%E7%89%A9%E7%90%86%22%20%22Astra%22%202026",
+    "query": "\"语义\" \"空间\" \"物理\" \"Astra\" 2026",
+    "retrieved_utc": "2026-09-14T10:28:16.488440+00:00",
+    "file": "search_terms.html",
+    "sha256": "653b405779dac65e7ac5a6366ec17304bcff0152a2942d865e8a785987b4ba35",
+    "bytes": 119407,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.bing.com/search?q=%22%E8%AF%AD%E4%B9%89%E7%90%86%E8%A7%A3%22%20%22%E7%A9%BA%E9%97%B4%E7%90%86%E8%A7%A3%22%20%22%E7%89%A9%E7%90%86%E7%90%86%E8%A7%A3%22%20%E6%9C%BA%E5%99%A8%E4%BA%BA%202026",
+    "query": "\"语义理解\" \"空间理解\" \"物理理解\" 机器人 2026",
+    "retrieved_utc": "2026-09-14T10:28:16.488697+00:00",
+    "file": "search_zh.html",
+    "sha256": "de06a43b90d3d963d25ae97e1eb7aa8a1a71f378d1b01dc51ba777a72c7d2591",
+    "bytes": 119184,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.bing.com/search?q=GPT-6%20Astra%20robotics%20semantic%20spatial%20physical%20understanding%20September%202026",
+    "query": "GPT-6 Astra robotics semantic spatial physical understanding September 2026",
+    "retrieved_utc": "2026-09-14T10:28:16.489000+00:00",
+    "file": "search_en.html",
+    "sha256": "f7ba2eeffbe59184fdfed7656f0cee49aeed0235488119154e81f1c60b4ee013",
+    "bytes": 118155,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.google.com/search?q=%22kxZrh-ihP4HN20w1RdieWA%22%202026",
+    "retrieved_utc": "2026-09-14T10:30:40.507452+00:00",
+    "status": 200,
+    "file": "google_exact.html",
+    "sha256": "628ee046f2bedf6202f3ebaf1d54d823c3f52922576e5afa419c437d488ff2f6",
+    "bytes": 92142,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://html.duckduckgo.com/html/?q=%22kxZrh-ihP4HN20w1RdieWA%22%202026",
+    "retrieved_utc": "2026-09-14T10:30:40.508031+00:00",
+    "status": 202,
+    "file": "ddg_exact.html",
+    "sha256": "d45c60f3910a648babd466aaa7d4455301d4a9fa3257c9ad32017b7b7e9bcec6",
+    "bytes": 14252,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://weixin.sogou.com/weixin?type=2&query=Astra%20%E8%AF%AD%E4%B9%89%20%E7%A9%BA%E9%97%B4%20%E7%89%A9%E7%90%86%202026",
+    "retrieved_utc": "2026-09-14T10:30:40.508362+00:00",
+    "status": 200,
+    "file": "sogou_terms.html",
+    "sha256": "9c6bd5fb929a7e54a156b35e26c4712cf8de4a5fc34a1efe7271d1dca68d5b50",
+    "bytes": 36116,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://www.google.com/search?q=%22Astra%22%20%22%E6%9C%BA%E5%99%A8%E4%BA%BA%22%20%22%E8%AF%AD%E4%B9%89%22%202026",
+    "retrieved_utc": "2026-09-14T10:30:40.508738+00:00",
+    "status": 200,
+    "file": "google_terms.html",
+    "sha256": "90929e4719ae93e9f9f6ef874936c0d6671cfcbb351830949e222ec6957e33c9",
+    "bytes": 92073,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zjwzcx/Awesome-Astra-Embodied-AI/main/README.md",
+    "retrieved_utc": "2026-09-14T10:30:40.509084+00:00",
+    "status": 200,
+    "file": "awesome_astra.md",
+    "sha256": "0a1022aff98ca6245ae38164a460ebf9ddc837cc64d169feba817a2aef5f3ab7",
+    "bytes": 21836,
+    "use_for_article_reconstruction": false,
+    "article_identity_verified": false,
+    "status_note": "Article retrieval stopped after parent reported browser site-safety block. Do not use cached search output to reconstruct blocked article or infer its links."
+  }
+]

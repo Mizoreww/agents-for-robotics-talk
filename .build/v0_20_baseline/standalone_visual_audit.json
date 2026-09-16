@@ -1,0 +1,15 @@
+{
+  "html_sha256": "af875ba3287d3e805baa042bfe4af4bfccf06060acd054ae960f8d3476af0642",
+  "date": "2026-09-16",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    31
+  ],
+  "scope": "P31 native table and takeaway removed; original figure/title/citation positions unchanged. All other slide objects and media match the immediate baseline exactly.",
+  "screenshots": [
+    "/home/limx/Desktop/agent_for_robotics/.build/p31-cleanup.png"
+  ],
+  "baseline": ".build/v0_19_p31_before.json",
+  "preservation_test": ".build/test_p31_cleanup.py",
+  "prior_media_full_playback_audit": ".build/v0_19_polish_extended_audit.json"
+}

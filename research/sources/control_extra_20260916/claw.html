@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Interactive robot puzzle demonstrations: Unlocking the Claw and Three-ring Threading.">
+  <title>Robot puzzle demos</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
+</head>
+<body class="demo-only">
+  <header class="demo-header wrap"><h1>Robot puzzle demos</h1><nav aria-label="Page links"><a href="/">Home</a><a href="./media/robot-puzzle-demos-1080p.mp4" download>Video <span aria-hidden="true">↓</span></a><a href="./methods.html">Notes</a></nav></header>
+  <main class="wrap" id="demos">
+    <div class="demo-tabs" role="tablist" aria-label="Choose a demonstration">
+      <button class="demo-tab active" id="tab-claw" role="tab" aria-selected="true" aria-controls="demo-stage" data-demo="claw"><span class="tab-number">01</span><strong>Unlocking the Claw</strong></button>
+      <button class="demo-tab" id="tab-threading" role="tab" aria-selected="false" aria-controls="demo-stage" data-demo="threading"><span class="tab-number">02</span><strong>Three-ring Threading</strong></button>
+    </div>
+    <div class="studio" id="demo-stage" role="tabpanel" aria-labelledby="tab-claw">
+      <div class="studio-toolbar"><div class="model-label"><span class="status-dot"></span><span id="model-label">Dual ALOHA · kinematic replay</span></div><div class="view-controls" aria-label="Camera presets"><button class="active" data-camera="task">Task</button><button data-camera="full">Full scene</button><button data-camera="top">Top</button><button id="fullscreen" aria-label="Toggle full screen" title="Full screen">⛶</button></div></div>
+      <div class="stage-body"><div class="viewport" id="view"><div class="loading" id="loading" role="status"><span class="spinner"></span><strong>Loading scene…</strong></div><div id="error" class="error" role="alert" hidden></div><div class="scene-tags" id="scene-tags" hidden><span class="ring-tag r1">R1</span><span class="ring-tag r2">R2</span><span class="ring-tag r3">R3</span></div><div class="scene-caption"><span class="caption-kicker" id="chapter-index"></span><strong id="chapter-title">Start with an interlocked pair</strong><p id="chapter-description" hidden></p></div><div class="camera-hint">Drag to orbit <span>·</span> Scroll to zoom</div></div>
+      <aside class="action-panel" id="action-panel" aria-label="Low-level robot actions" hidden><div class="panel-heading"><h3>Robot actions</h3><button id="close-actions" aria-label="Close action panel">×</button></div><p class="panel-intro" id="action-description"></p><div class="arm-switch"><button class="active" data-arm="left">Left arm</button><button data-arm="right">Right arm</button></div><div class="telemetry-key"><span><i class="actual-key"></i>Joint position</span><span><i class="target-key"></i>Reference</span></div><div id="joint-readout"></div><div class="grip-state" id="grip-state"></div><div class="control-detail"><span class="eyebrow">ACTUATOR COMMANDS</span><div id="control-readout"></div></div><p class="telemetry-note" id="telemetry-note"></p></aside></div>
+      <div class="transport"><div class="timeline-header"><span id="event-label">Full recorded run</span><span class="timecode"><b id="time-current">0:00.0</b><span> / </span><span id="time-total">2:36.5</span></span></div><div class="timeline" id="timeline"><div class="timeline-track"><div id="timeline-progress"></div></div><input id="scrub" type="range" min="0" max="156.5133" step="0.001" value="0" aria-label="Seek across the complete demonstration" disabled><div id="event-markers" aria-label="Timeline events"></div></div><div class="transport-row"><div class="playback-controls"><button id="restart" class="icon-button" aria-label="Restart demonstration" title="Restart">↺</button><button id="play" class="play-button" disabled><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play</span></button><label class="speed-label" for="speed">Speed <select id="speed" aria-label="Playback speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1">1×</option><option value="2">2×</option><option value="4" selected>4×</option><option value="5">5×</option><option value="6">6×</option><option value="8">8×</option><option value="16">16×</option></select></label><span class="watch-length" id="watch-length">~0m 40s at 4×</span></div><div class="display-controls"><label class="toggle"><input id="show-events" type="checkbox" checked><span>Events</span></label><label class="toggle"><input id="smooth" type="checkbox" checked><span>Smooth motion</span></label><button class="panel-toggle" id="toggle-actions" aria-expanded="false" aria-controls="action-panel"><span aria-hidden="true">≋</span> Robot actions</button></div></div><div class="playback-note"><span id="sample-note">Recorded motion · visual smoothing only</span><span>Space to play · ← → to seek</span></div></div>
+    </div>
+    <div class="chapter-strip" id="chapters" aria-label="Jump to a key event"></div>
+    <p class="demo-footnote"><span id="scope-note">Pregrasped kinematic motion with ideal grasps.</span> <a href="./methods.html">Details ↗</a></p>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

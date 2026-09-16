@@ -1,0 +1,774 @@
+--- v0.11/.build/build_selfcontained.py
++++ v0.12/.build/build_selfcontained.py
+@@ -134,6 +134,31 @@
+  els += [text('VLM → subtask language → π0 → action',64,552,510,45,20,'#646464')]
+  return els+band('Reasoning → visuomotor policy → low-level control: a common division, not a law.')
+ 
++def responsibility_shift():
++ els=page('Where Does Generalization Live?',1)
++ els += [text('Earlier hypothesis',64,152,450,38,26,'#646464',True),
++         text('Emerging pattern',64,414,450,38,26,'#646464',True)]
++ # Box widths show conceptual responsibility, not measured model capacity.
++ nodes=[(64,224,290,140,'System 2','Semantics',False),
++        (486,224,510,140,'System 1','Generalist VLA / WAM',True),
++        (1050,224,166,140,'','Controller',False),
++        (64,490,510,140,'System 2','Semantics +\nSpatial & action reasoning',True),
++        (706,490,290,140,'System 1','Action primitives',False),
++        (1050,490,166,140,'','Controller',False)]
++ for x,y,w,h,role,label,emphasis in nodes:
++  label_y = y+51 if emphasis or not role else y+69
++  els += [rect(x,y,w,h,'#2ba39b' if emphasis else '#f4f6f5',None if emphasis else '#d8e5e2'),
++          *([text(role,x+8,y+15,w-16,28,20,'#e2f3ef' if emphasis else '#646464',align='center')] if role else []),
++          text(label,x+14,label_y,w-28,77 if '\n' in label else 39,
++               28 if emphasis and role=='System 1' else (26 if role else 22),
++               '#ffffff' if emphasis else '#1a1a1a',True,align='center')]
++ els += [text('π(a | o, l)',502,318,478,31,25,'#e2f3ef',align='center'),
++         connector(354,294,486,294),connector(996,294,1050,294),
++         connector(574,560,706,560),connector(996,560,1050,560),
++         connector(715,364,430,490,'#aa514a'),
++         text('Partial shift',735,411,350,37,26,'#aa514a',True)]
++ return els
++
+ def claude_method():
+  els=page('Claude Plays Robotics: Interfaces',1)
+  els += [text('Foundation model',64,151,232,31,21,'#646464',align='center'),
+@@ -315,6 +340,7 @@
+  'questions':('Three Roles for Robotics Agents',questions(),[]),
+  'control':('Agent Controls Robot',execution_tools(),['S09','RPENT','WAM']),
+  'hierarchy':('Hierarchical Robot Control',hierarchy(),['HIROBOT','HELIX','HELIX02']),
++ 'responsibility_shift':('Where Does Generalization Live?',responsibility_shift(),['HIROBOT_DISCUSSION','ROBOCURVE','ASIM','ANON']),
+  'claude_method':('Claude Plays Robotics: Interfaces',claude_method(),['S09']),
+  'claude_results':('Claude: The Value of a Motor Prior',claude_results(),['S09']),
+  'rpent':('RPent: Organizing Robot Tools',rpent(),['RPENT']),
+@@ -334,7 +360,7 @@
+  'thanks':('Thank You',thank_you(),[])
+ }
+ summaries.update(result_slides)
+-order=[1,2,'questions','control','hierarchy','hirobot_results','claude_method','claude_results','rpent','rpent_results','astra_direct','control_demos','interfaces','interface_results','hybrid','robodojo_results','robolab_results','interface_timing','control_summary','world',10,11,12,'real2sim_results','simulation_demos',19,'world_summary','improve',15,16,'idea_tree',17,'enpire_results','enpire_robocasa','improvement_demos',18,'end','thanks']
++order=[1,2,'questions','control','hierarchy','responsibility_shift','claude_method','claude_results','rpent','rpent_results','astra_direct','control_demos','interfaces','interface_results','hybrid','robodojo_results','robolab_results','interface_timing','control_summary','world',10,11,12,'real2sim_results','simulation_demos',19,'world_summary','improve',15,16,'idea_tree',17,'enpire_results','enpire_robocasa','improvement_demos',18,'end','thanks']
+ assert len(order)==38
+ chapter_keys={'control','world','improve'}
+ new_titles={1:'Agents for Robotics',2:'Demo: Painting with Feedback',10:'Real Episode and Its Twin',11:'Agentic Real2Sim: Method',12:'DROID-100: Protocol and Results',15:'ENPIRE: Environment and Improvement',16:'ENPIRE: Reset and Verification',17:'ENPIRE: Pin Insertion Curve',18:'ENPIRE: Cost and Chapter Summary',19:'Data: Mechanism and CAD Assets'}
+@@ -454,6 +480,7 @@
+ footers={
+  'control':'Chapter overview · our synthesis; q/EEF are options, not all tested in every cited work',
+  'hierarchy':'Original figures · Hi Robot: two inference levels; Helix 02 adds S0 · checked Figure releases disclose no repeat-trial success table',
++ 'responsibility_shift':'Our functional synthesis · partial shift; low-level control remains local',
+  'hirobot_results':'Hi Robot v2 Figure 5 + official chart averages · 20 trials/task/method; IA and TP are not episode success rates',
+  'claude_method':'Claude Plays Robotics · interface synthesis grounded in report; manipulation is the detailed example',
+  'claude_results':'Original success-rate panels; different y-axis scales · all models, uncertainty and VLA-alone baseline retained',
+--- v0.11/.build/script_revised.md
++++ v0.12/.build/script_revised.md
+@@ -1,11 +1,11 @@
+ # Agents for Robotics — 中文讲稿
+ 
+-讲者：Zimo Huang · 2026-09-16 · 本地修订 0.11（2026-09-15）
++讲者：Zimo Huang · 2026-09-16 · 本地修订 0.12（2026-09-15）
+ 
+ 英文 slides，中文讲解，专有名词保留英文。建议 60 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图，再沿问题、方法与证据展开；community demos 用来观察新的工作范围，不与正式实验混成排行榜。
+ 
+ 
+-本版将第二类统一为 Data，合并设计资产，并核对 Astra 的动作接口与 query time。表格加粗各自比较组内的最优显示值，并列值同样加粗；human oracle、样本数和实验边界另行说明。RoboLab 加粗只表示 retained slots 的行最大值，资源表只标利用率最高或 token rate 最低，不代表统计显著性或统一效率冠军。
++本版以职责迁移串起 Control：从 generalist VLA / WAM 承担泛化，到更强 Agent 配合较窄 action primitives。表格加粗各自比较组内的最优显示值，并列值同样加粗；human oracle、样本数和实验边界另行说明。RoboLab 加粗只表示 retained slots 的行最大值，资源表只标利用率最高或 token rate 最低，不代表统计显著性或统一效率冠军。
+ 
+ ## 01. Agents for Robotics
+ 
+@@ -29,7 +29,7 @@
+ 
+ 今天有三个问题。第一，当前这一步应该怎么动，是 Agent 自己生成 action，还是交给 learned policy？第二，Agent 能帮助生成什么 Data：assets、Real-to-sim Replay，还是执行出来的 Data Rollout？第三，一次实验反馈怎样变成下一次还能复用的 policy 改进？
+ 
+-Control 从常见架构和 Claude Plays Robotics 讲起，再看 Astra 的能力、接口和真实查询耗时。Data 仍只细讲 Agentic Real2Sim，随后用几个 demo 区分场景、回放和设计资产。Improvement 以 ENPIRE 为代表。Tendon-hand 设计就是 Data 资产层的一个例子。
++Control 围绕一个问题展开：机器人泛化能力应该主要由哪一层承担？先看把希望寄托于 generalist VLA / WAM 的分工，再用旧接口实验与 Astra 的新表现，检查哪些空间理解和动作决策可以上移到 Agent。Data 仍只细讲 Agentic Real2Sim，随后用几个 demo 区分场景、回放和设计资产。Improvement 以 ENPIRE 为代表。Tendon-hand 设计就是 Data 资产层的一个例子。
+ 
+ 这三个角色可以联系起来，但不是已经验证的流水线。例如 ENPIRE 直接使用真实机器人，不需要先运行本报告中的 Real2Sim 方法。
+ 
+@@ -44,7 +44,7 @@
+ 
+ 无论选哪条路，机器人端仍然有 servo 或 controller，观测也仍然需要返回。今天说的 Direct，重点是是否需要一个独立 learned action policy，并不是跳过所有运动学和低层控制，直接让 LLM 输出电机力矩。
+ 
+-我们先看现在常见的分层方案，再问：大模型应该停在哪一层？
++这章不把工具多少作为主问题。我们关心的是：通用的任务理解、空间泛化和动作决策由谁完成，执行层又必须保留哪些能力？先看常见分层，再用一张示意图把这条主线说清楚。
+ 
+ 
+ ## 05. Hierarchical Robot Control
+@@ -57,25 +57,35 @@
+ 
+ 到了 Helix 02，三层分工更加明确：S2 给语义表示，S1 给 full-body joint targets，S0 进行 whole-body tracking 和 actuator control。官网说明 S1 是 200 Hz，S0 内部是 1 kHz；不要把原图接口上的 200 Hz 都解释成 S0 的执行频率。
+ 
+-可以把它概括为 reasoning、visuomotor policy、low-level control 的分工。但这是常见方案，不是一个已经证明任何模型都必须遵守的定律。先补一页 Hi Robot 的量化结果，再看 Claude 在不同接口上的实验。Figure 的两篇官方发布文展示了层次分工和演示效果，但没有公布带重复试验分母的系统成功率表；61 actions 或 1 kHz 都不能替代成功率。
+-
+-
+-## 06. Hi Robot: Instruction and Progress
+-
+-> 读图提示：上面保留完整原 Figure 5，可以放大；下面只提取作者给出的 cross-task average。
+-
+-这里先区分两个指标。Instruction Accuracy 衡量高层命令是否符合指令和当下观测；Task Progress 衡量有多少物体被放到正确位置或配置。它们都不是整段任务一次成功的概率。
+-
+-三类实机任务包括 Table Bussing、Sandwich Making 和 Grocery Shopping，每个任务、每个方法20次 trial。Hi Robot 的两个平均值是76和81；Flat VLA 是36和44，GPT-4o high-level 加相同 low-level VLA 是30和64。Human oracle 高层也只得到89的 Task Progress，说明动作执行还有自己的限制。
+-
+-这支持该系统中训练过的高层策略有价值。但 Hi Robot 的模型和 synthetic data 也变了，主图不是 data-matched hierarchy ablation。我们保留官网的整数显示值，不把76%转成成功 episodes。接下来 Claude 的实验转向另一种问题：固定某个通用模型，改变接口会怎样？
++可以把它概括为 reasoning、visuomotor policy、low-level control 的分工。但这是常见方案，不是一个已经证明任何模型都必须遵守的定律。接下来先抽象出这类设计把 generalization 放在哪里，再看 Claude 和 Astra 的实验怎样改变这一预期。Figure 的两篇官方发布文展示了层次分工和演示效果，但没有公布带重复试验分母的系统成功率表；61 actions 或 1 kHz 都不能替代成功率。
++
++
++## 06. Where Does Generalization Live?
++
++> 读图提示：深绿色表示被寄托广泛泛化能力的一侧。先读上方原先的设计设想，再沿红色箭头读到下方的新能力模式；箭头只表示部分职责迁移。
++
++我们原先有一个很自然的设想：System 2主要理解目标、分解任务，交出semantic information或subtask language。真正把观测和语言变成动作的工作，交给System 1，也就是VLA、WAM或其他learned visuomotor policy。
++
++我们希望它是一个steerable generalist policy。写成公式就是π(a | o, l)：o是当前observation，l是language instruction，a是希望执行的action。理想上，换一个场景、对象、指令，甚至新的任务组合，它都能生成符合意图的行为。但“任意(o,l)都得到正确a”在这里是设计目标，不是某个已有模型的能力保证。WAM还可能联合生成世界演化，图中只抽出其action职责。
++
++因此，过去我们把很多泛化与动作智能的希望寄托在System 1：不仅会动，还要把语义落到空间、选择运动方式，并应对新的任务。System 2则可以相对只负责高层语义。
++
++现在观察到的变化是，更强的foundation model开始自己做其中一部分工作：根据observation理解空间关系、选择动作、生成EEF目标或joint参数，再根据反馈继续调整。图中这些职责从上方System 1移向下方System 2。不是整层搬走，而是原来需要专门visuomotor policy承担的一部分决策，现在可以由Agent承担。
++
++机器人经验进入foundation-model训练，是理解这种变化的一条重要研究假设。不过，Astra的具体robot-data配方与因果对照尚未披露。我们能直接讨论的是能力变化，以及它怎样改变系统分工；不能把训练数据原因当作已经证明的结论。
++
++这样一来，在部分任务上，System 2加比较窄的action primitives就可能做得很好，未必需要一个独立、覆盖所有任务的generalist VLA。Primitive可以是受约束的EEF运动、joint chunk、局部控制程序，也可以是learned motor skill。这里把它们放在System 1，是本talk对执行职能的简称，不代表IK或OSC本身都是learned System 1网络。底层servo和tracking仍由Controller负责。
++
++这也不是说VLA失去价值。Narrow primitives仍然需要足够的动作能力，精细接触、高频反馈和跨动力学条件的泛化也没有因此自动解决。我们真正要检验的是：随着System 2变强，System 1还必须有多通用、多聪明？
++
++后面的证据沿这条问题走。先看旧模型为什么依赖motor prior，再看RPent怎样组织执行能力，最后看Astra哪些表现支持职责上移、哪些结果又提醒我们不能把执行层削得过头。
+ 
+ 
+ ## 07. Claude Plays Robotics: Interfaces
+ 
+ > 读图提示：从左侧单一 LLM 出发，沿中间四种 interface 读到右侧。上面三条在 execution 端进入 Controller，最下面一条产出 Learned policy；它们不是 Controller 再生成 Policy 的串联流水线。
+ 
+-这里不只比较模型大小，而是比较 model、embodiment 和 interface 的组合。报告涉及 classic control、Go2/G1 locomotion 和 Franka manipulation。图先概括四种接口，下一页只展开 manipulation 的结果。
++先把刚才的分工假设放到旧模型上检查。这里不只比较模型大小，而是比较 model、embodiment 和 interface 的组合。报告涉及 classic control、Go2/G1 locomotion 和 Franka manipulation。图先概括四种接口，下一页只展开 manipulation 的结果。
+ 
+ Direct action 是 LLM 输出 7D EEF motion，由低层 Controller 执行。Controller code 则让 LLM 写 Python feedback program，把快循环放到本地。Policy supervision 已有 MolmoAct 的动作提议，LLM 可以 accept、edit 或 replace，再交给 Controller。这三个分支承担的计算和反馈职责不同。
+ 
+@@ -96,7 +106,7 @@
+ 
+ 报告还测试了 novel goals，其中部分 supervisor 可以帮助原 policy 做不到的事情。它的任务和评测条件不同，不能并入这里的 LIBERO-40。这里强调收益取决于目标与 policy 已有能力。
+ 
+-我们能从这项工作得到的是：interface 和 prior 会显著改变某个模型的控制表现。不能据此推出所有未来 LLM 都必须停留在高层。先看工具路线怎样组织成系统，再看为什么 Astra 让这个问题值得重问。
++这组实验解释了为什么我们原来期待System 1拥有很强的motor intelligence：在这里，单靠高层模型直接出动作效果很差，已有policy提供了大部分执行能力。但这只是这组模型和任务下的责任分配，不是所有未来LLM都必须留在高层的证明。先看RPent如何把这些能力组织起来，再问更强System 2需要多宽的System 1。
+ 
+ 
+ ## 09. RPent: Organizing Robot Tools
+@@ -105,9 +115,9 @@
+ 
+ RPent 是 RLinf 的 Recursive Physical Agent 项目。它把机器人操作所需的能力组织成一个可组合系统：Agent 根据任务和反馈选择工具，memory 保留工作上下文，action primitives 和统一接口连接机器人或 simulator。
+ 
+-它解决的是工程组织问题。感知、运动、代码和 learned policy 不必都塞进同一个接口，Agent 可以在这些能力之间协调。
+-
+-这里要区分架构意图与已验证能力。图中画出的后端不代表每一个都完成了同样的评测。例如我们读过的 move_to 示例使用 OSC，不能因为名称是运动接口就一律叫 IK。
++从职责分配的角度看，它解决的是工程组织问题。感知、运动、代码和 learned policy 不必都塞进同一个接口，Agent 可以在这些能力之间协调。
++
++它不要求把全部动作智能都做成一个单体generalist policy，也不说明一个简单primitive就够了。这里要区分架构意图与已验证能力。图中画出的后端不代表每一个都完成了同样的评测。例如我们读过的 move_to 示例使用 OSC，不能因为名称是运动接口就一律叫 IK。
+ 
+ 接下来不只看架构图，再看 RPent 首篇正式工作 Harness VLA 的量化实验。它能说明这套组织方式在什么条件下有效，但不能证明工具委托是唯一可能。
+ 
+@@ -122,7 +132,7 @@
+ 
+ 这些整数由论文每个100-trial cell的百分数求和得到，不是我们重跑或重数 raw logs。更重要的是，Harness 用 seed 0 的探索构建 memory，再在 seeds 1–10 测试；它增加 planner、analytic primitives 和计算预算。因此结果属于 few-shot harness，不是纯接口消融，也不是 Astra 的实验。
+ 
+-它说明同一个 learned policy 可以通过不同组织方式获得更强适应性。接下来换一个方向：foundation model 自己产生动作的能力增强后，原来的分工还需要原样保留吗？
++它说明同一个 learned policy 可以通过不同组织方式获得更强适应性。接下来换一个方向：这些泛化与调整能力，哪些仍要来自独立learned policy，哪些已经可以由更强的foundation model直接承担？
+ 
+ 
+ ## 11. Astra: Direct Actions in Practice
+@@ -137,7 +147,7 @@
+ 
+ 协议也要看：每次最多 20 个 model calls，速度上限为 25%。Insertion 用同一个 rig；bowl 的 Astra 和 Fable 使用不同 rigs，Astra 还晚两天测试，人工评分知道模型身份。它不是完全隔离模型因素的随机对照。
+ 
+-这一页先不以 model latency 判胜负。我们关心的是能力边界：过去交给独立 System 1 的一部分 action 决策，现在是否可以由 foundation model 自己承担？
++这正是职责迁移的具体例子。Bowl里不需要独立VLA来决定每段动作，Astra自己根据视觉和proprio生成EEF目标，下面保留IK与controller。这说明一些任务的空间与动作决策可以上移，但puzzle的低成功率也提醒我们：更窄的执行接口并没有解决所有接触问题。下一页继续看这种路径的定性表现，稍后再单独核对latency。
+ 
+ 关于原因，公开资料没有披露足够的 Astra 机器人预训练配方或因果消融。因此我会说“能力前提变了，旧分工需要重测”，不会把“加入海量机器人数据导致这一提升”说成已证事实。
+ 
+@@ -161,7 +171,7 @@
+ 
+ 结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。
+ 
+-最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式。
++最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式，也不能单凭这一行断言哪种primitive最通用。
+ 
+ 这些是相同 proprio 档位，但该档位还包含 EEF 像素标记、相机尺度和固定地标，不是单纯只有关节状态。公开逐回合记录与表格数字一致，我们没有重跑实验。
+ 
+@@ -183,7 +193,7 @@
+ 
+ > 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。
+ 
+-用户提供的匿名报告进一步问：同一个 Astra，如果再给它一个 learned action prior 呢？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
++这份匿名报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
+ 
+ 共享输入包括三个 RGB views、14D proprioception、task instruction，以及 Astra 的 history / notes。Direct 由 Astra 生成双臂 EEF position、orientation 和 gripper targets，每次执行 1–5 control steps 后重新观察。
+ 
+@@ -239,13 +249,13 @@
+ 
+ > 读图提示：先看左边已经展示的能力，再看右边尚不可靠或尚未证实的能力。这不是三种独立神经模块，也不是把任务机械地分成 System 2 / 1 / 0。
+ 
+-第一章可以收束得更明确。Agent 已经能理解语义目标、识别任务对象并利用视觉反馈；在已测试的设置中，也展示了目标重定位和一定的 spatial generalization。左边说的是有条件的能力，不是任意新机器人、新相机和新环境都能成功。
++回到第6页的职责迁移图。我们不再预设System 2只传语义，也不要求所有泛化都由一个generalist VLA / WAM承担。部分空间与动作决策可以由更强Agent完成，下面的action primitives则保留必要的motor competence。Agent 已经能理解语义目标、识别任务对象并利用视觉反馈；在已测试的设置中，也展示了目标重定位和一定的 spatial generalization。左边说的是有条件的能力，不是任意新机器人、新相机和新环境都能成功。
+ 
+ 右边有两种不同的缺口。High-frequency control 是实时闭环问题：目前看到的系统仍依赖 local controller、interpolation、短动作片段或已有 policy。模拟器在 LLM 思考时暂停，并不能证明机器人在真实扰动下也来得及纠正。Physical generalization 则问接触、摩擦、质量、柔顺性或动力学变化后是否仍可靠。现有报告没有建立全面的跨物理条件泛化结论。
+ 
+ Robocurve 的 bowl 是19/20，puzzle只有2/20，说明成功的语义任务不能代替精细接触验证。但单次失败也不能唯一定位为物理理解不足，sensing、pose、controller和budget都可能参与。类似地，Claude 的 Cursor tool 实验从6%到32%，支持 spatial aids 的价值，不意味着所有失败都只是定位问题。
+ 
+-所以更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
++因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
+ 
+ Hi Robot 的 Discussion 本身就说模型层面的角色分离 is not fundamental。我们不是宣布旧实验失效，而是在模型能力变化后重新检验旧结论。Astra 的机器人预训练配方及因果对照仍未披露，不能由成功 demo 反推训练原因。
+ 
+--- v0.11/.build/validate_standalone.py
++++ v0.12/.build/validate_standalone.py
+@@ -29,7 +29,7 @@
+ deck=json.loads(p.scripts['deck-data']);N=38;V=18
+ assert len(deck['slides'])==N and len(deck['media'])==V
+ assert [r['number'] for r in deck['slides']]==list(range(1,N+1))
+-expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'hirobot_results', 'claude_method', 'claude_results', 'rpent', 'rpent_results', 'astra_direct', 'control_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'interface_timing', 'control_summary', 'world', 10, 11, 12, 'real2sim_results', 'simulation_demos', 19, 'world_summary', 'improve', 15, 16, 'idea_tree', 17, 'enpire_results', 'enpire_robocasa', 'improvement_demos', 18, 'end', 'thanks']
++expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'claude_method', 'claude_results', 'rpent', 'rpent_results', 'astra_direct', 'control_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'interface_timing', 'control_summary', 'world', 10, 11, 12, 'real2sim_results', 'simulation_demos', 19, 'world_summary', 'improve', 15, 16, 'idea_tree', 17, 'enpire_results', 'enpire_robocasa', 'improvement_demos', 18, 'end', 'thanks']
+ assert [(r['old_slide'] if r['old_slide'] is not None else r['new_slide_key']) for r in deck['slides']]==expected_keys
+ opening_slides=[r['number'] for r in deck['slides'] if r['chapter_opening']]
+ assert opening_slides==[4,20,28]
+@@ -39,7 +39,7 @@
+  assert next(r['number'] for r in deck['slides'] if r['group']==chapter['group'])==number
+  assert 'Chapter overview' in chapter['html']
+ assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*16+['2 · Agent Creates Data']*8+['3 · Agent Improves Policy']*9+['Closing']*2
+-expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Hi Robot: Instruction and Progress', 'Claude Plays Robotics: Interfaces', 'Claude: The Value of a Motor Prior', 'RPent: Organizing Robot Tools', 'RPent: Harness VLA Results', 'Astra: Direct Actions in Practice', 'Astra: Visual Feedback in Action', 'Same Astra, Different Action Outputs', 'Astra Interfaces: Three Tasks', 'Astra: Direct or Hybrid?', 'RoboDojo: Per-Task Results', 'RoboLab: Selected Final Slots', 'Astra Interfaces and Query Time', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Real Episode and Its Twin', 'Agentic Real2Sim: Method', 'DROID-100: Protocol and Results', 'Real2Sim: All Backend Results', 'Data: Replay and Scene Assets', 'Data: Mechanism and CAD Assets', 'Data: Physics and Training Value', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Pin Insertion Curve', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Autoresearch in RoboCasa', 'Astra: Training and Context', 'ENPIRE: Cost and Chapter Summary', 'Takeaways', 'Thank You']
++expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Claude Plays Robotics: Interfaces', 'Claude: The Value of a Motor Prior', 'RPent: Organizing Robot Tools', 'RPent: Harness VLA Results', 'Astra: Direct Actions in Practice', 'Astra: Visual Feedback in Action', 'Same Astra, Different Action Outputs', 'Astra Interfaces: Three Tasks', 'Astra: Direct or Hybrid?', 'RoboDojo: Per-Task Results', 'RoboLab: Selected Final Slots', 'Astra Interfaces and Query Time', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Real Episode and Its Twin', 'Agentic Real2Sim: Method', 'DROID-100: Protocol and Results', 'Real2Sim: All Backend Results', 'Data: Replay and Scene Assets', 'Data: Mechanism and CAD Assets', 'Data: Physics and Training Value', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Pin Insertion Curve', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Autoresearch in RoboCasa', 'Astra: Training and Context', 'ENPIRE: Cost and Chapter Summary', 'Takeaways', 'Thank You']
+ assert [r['title'] for r in deck['slides']]==expected_titles
+ assert all(len(t)<=40 for t in expected_titles)
+ def slide(n):return deck['slides'][n-1]
+@@ -78,6 +78,18 @@
+ assert '不是一条已打通' in slide(37)['script']
+ assert 'Thank you' in slide(38)['html'] and 'Questions &amp; discussion' in slide(38)['html']
+ assert len(re.sub('<[^>]+>',' ',slide(38)['html']).split())<25
++# v0.12: Hi Robot results are replaced, not the original architecture figures.
++assert slide(6)['new_slide_key']=='responsibility_shift'
++assert 'data-table-cell' not in slide(6)['html']
++assert 'System 0' not in slide(6)['html'] and 'Servo' not in slide(6)['html']
++assert re.sub('<[^>]+>',' ',slide(6)['html']).split().count('Controller')==2
++assert len(re.sub('<[^>]+>',' ',slide(6)['html']).split())<55
++assert all(t in slide(6)['html'] for t in ['Earlier','Generalist VLA / WAM','π(a | o, l)','Emerging','Action primitives','Controller','Partial shift'])
++assert all(t in slide(6)['script'] for t in ['设计目标','不是某个已有模型的能力保证','部分职责迁移','因果对照尚未披露'])
++assert 'functional synthesis' in slide(6)['footer']
++assert '不是整层搬走' in slide(6)['script'] and '简称' in slide(6)['script']
++assert all(t in slide(19)['script'] for t in ['第6页','generalist VLA / WAM','motor competence'])
++
+ # v0.11: distinguish inference time, local control and candidate-data validity.
+ from evidence_v011 import load_evidence
+ new_evidence=load_evidence(ROOT)
+@@ -93,8 +105,11 @@
+ assert all(term in slide(27)['script'] for term in ['5.623 mm','203个','不是203次','downstream training'])
+ assert 'Beyond' not in ' '.join(r['title'] for r in deck['slides'])
+ # No media payload was altered during reclassification.
+-baseline=json.loads((B/'revision_0_11_baseline/.build/standalone_build_audit.json').read_text())
++baseline=json.loads((B/'revision_0_12_baseline/.build/standalone_build_audit.json').read_text())
+ assert {r['name']:r['sha256'] for r in baseline['media']}=={r['name']:r['sha256'] for r in deck['media']}
++removed_figure={r['sha256'] for r in baseline['images'] if r.get('alt','').startswith('Hi Robot original Figure 5;')}
++assert len(removed_figure)==1
++assert set(deck['assets'])=={r['sha256'] for r in baseline['images']}-removed_figure
+ 
+ # v0.9: a result table is complete only when its cells and qualifying protocol travel together.
+ results=json.loads((ROOT/'research/results_v0_9.json').read_text())
+@@ -106,9 +121,6 @@
+  expected=headers+[str(cell) for row in rows for cell in row]
+  start=values.index(headers[0])
+  assert values[start:start+len(expected)]==expected,(number,values[start:],expected)
+-average=results['hirobot']['values']['Average']
+-table_cells(6,['Author-displayed average','Instruction Accuracy (%)','Task Progress (%)'],
+- [[m if m!='Expert Human' else 'Expert human high-level (oracle)',average['Instruction Accuracy'][m],average['Task Progress'][m]] for m in average['Instruction Accuracy']])
+ table_cells(8,['LIBERO-40','Opus 4.6 Direct','Opus 4.6 + MolmoAct','MolmoAct alone'],
+  [['Success rate','3.5%','76%','86%'],['Trials / condition','200','200','200']])
+ table_cells(10,['Method','Instruction redirect','Position swap','Overall'],
+@@ -131,7 +143,7 @@
+ table_cells(36,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
+  [[str(r['agentCount']),f"{r['robotMean']:.1f} ± {r['robotStd']:.1f}%",f"{r['gpuMean']:.1f} ± {r['gpuStd']:.1f}%",f"{t['mean']/1000:.1f} ± {t['std']/1000:.1f}k"] for r,t in zip(results['enpire_resources']['utilization'],results['enpire_resources']['tokenRate'])])
+ # Independent expected coordinates: body rows/columns are zero-based. All ties retained.
+-expected_bold={6: {(2, 1), (2, 2)}, 8: {(0, 3)}, 10: {(2, 3), (2, 1), (2, 2)}, 11: {(1, 2), (0, 3), (1, 3)}, 14: {(0, 7), (0, 4), (2, 7), (0, 3), (0, 6), (1, 7), (0, 5)}, 16: {(0, 1), (6, 2), (3, 1), (1, 1), (5, 1), (4, 2), (9, 2), (0, 2), (7, 2), (2, 2), (8, 2), (3, 2), (4, 1), (10, 2)}, 17: {(4, 3), (9, 2), (9, 5), (0, 2), (8, 3), (2, 2), (10, 3), (1, 3), (6, 2), (6, 5), (3, 3), (5, 3), (8, 2), (9, 1), (9, 4), (6, 4), (7, 3), (5, 2), (9, 3), (0, 3), (2, 3), (7, 2), (6, 3)}, 24: {(0, 1), (1, 3), (0, 3), (0, 4)}, 33: {(0, 1), (1, 2)}, 34: {(2, 2)}, 36: {(0, 1), (0, 3), (2, 2)}}
++expected_bold={8: {(0, 3)}, 10: {(2, 3), (2, 1), (2, 2)}, 11: {(1, 2), (1, 3), (0, 3)}, 14: {(0, 7), (0, 4), (2, 7), (0, 3), (0, 6), (1, 7), (0, 5)}, 16: {(0, 1), (6, 2), (3, 1), (1, 1), (5, 1), (4, 2), (9, 2), (0, 2), (7, 2), (2, 2), (8, 2), (3, 2), (4, 1), (10, 2)}, 17: {(4, 3), (9, 2), (9, 5), (8, 3), (0, 2), (2, 2), (10, 3), (1, 3), (6, 2), (6, 5), (3, 3), (5, 3), (8, 2), (9, 1), (9, 4), (6, 4), (7, 3), (5, 2), (9, 3), (0, 3), (2, 3), (7, 2), (6, 3)}, 24: {(0, 1), (0, 3), (1, 3), (0, 4)}, 33: {(0, 1), (1, 2)}, 34: {(2, 2)}, 36: {(0, 1), (0, 3), (2, 2)}}
+ for number,wanted in expected_bold.items():
+  observed=set();all_coordinates=set()
+  for tag in re.findall(r'<div class="text"[^>]+>',slide(number)['html']):
+@@ -146,7 +158,7 @@
+  assert observed==wanted,(number,observed,wanted)
+  assert 'Bold:' in slide(number)['footer']
+ assert {s['number'] for s in deck['slides'] if 'data-table-cell=' in s['html']}==set(expected_bold)
+-for number,terms in {6: ['not successful episodes', 'changes training data'], 10: ['Seed 0', '1–10', 'Extra compute'], 14: ['Unequal budgets', '200', '500'], 16: ['48 scored episodes', 'denominator stays 50'], 17: ['authorized retries', '180→500', 'not fresh', 'not verified identical'], 24: ['100 episodes', 'excluded'], 33: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 34: ['40-episode', 'No reset/retry', 'not published']}.items():
++for number,terms in {10: ['Seed 0', '1–10', 'Extra compute'], 14: ['Unequal budgets', '200', '500'], 16: ['48 scored episodes', 'denominator stays 50'], 17: ['authorized retries', '180→500', 'not fresh', 'not verified identical'], 24: ['100 episodes', 'excluded'], 33: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 34: ['40-episode', 'No reset/retry', 'not published']}.items():
+  assert all(term in slide(number)['html'] for term in terms),(number,terms)
+ assert all(term in slide(36)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
+ assert all(len(slide(n)['title'])<=40 for n in range(1,N+1))
+--- v0.11/.build/extended_visual_audit.mjs
++++ v0.12/.build/extended_visual_audit.mjs
+@@ -1,4 +1,4 @@
+-// Additional v0.11 verification: original-figure screenshots and whole new-clip playback.
++// Additional v0.12 verification: original-figure screenshots and whole new-clip playback.
+ // Visual inspection is recorded separately; playback progression is not experiment validation.
+ import {createRequire} from 'node:module';
+ import {readFileSync, writeFileSync} from 'node:fs';
+@@ -31,10 +31,10 @@
+   if (loadedDeckHash !== sha(expectedDeck)) throw new Error('Loaded deck data differs from delivery');
+   const go = async n => {await page.evaluate(n=>show(n),n);await page.waitForFunction(()=>!loading);await page.waitForTimeout(200);};
+   const figures=[];
+-  for (const [n,index] of [[5,0],[5,1],[5,2],[6,0],[15,0],[22,0],[27,0],[29,0],[31,0],[33,0],[34,0]]) {
++  for (const [n,index] of [[5,0],[5,1],[5,2],[15,0],[22,0],[27,0],[29,0],[31,0],[33,0],[34,0]]) {
+     await go(n);await page.locator('#slide img.original').nth(index).click();
+     await page.waitForFunction(()=>document.getElementById('large-figure').complete);
+-    const file=`${root}/.build/v0_11_visual/figure-${n}-${index}.png`;
++    const file=`${root}/.build/v0_12_visual/figure-${n}-${index}.png`;
+     await page.screenshot({path:file});
+     figures.push({slide:n,index,file});
+     await page.keyboard.press('Escape');
+@@ -58,11 +58,11 @@
+     playback.push({slide:n,clip:name,samples,ended});
+   }
+   await go(12);await page.keyboard.press('n');
+-  await page.screenshot({path:`${root}/.build/v0_11_visual/script-desktop.png`});
++  await page.screenshot({path:`${root}/.build/v0_12_visual/script-desktop.png`});
+   await page.setViewportSize({width:390,height:844});
+-  await page.screenshot({path:`${root}/.build/v0_11_visual/script-mobile.png`,fullPage:true});
++  await page.screenshot({path:`${root}/.build/v0_12_visual/script-mobile.png`,fullPage:true});
+   if (await streamServedHash() !== html_sha256) throw new Error('Served HTML changed during audit');
+   const report={html_sha256,served_html_byte_identity:true,loaded_deck_data_sha256:loadedDeckHash,identity_check:'Streamed HTTP bytes before/after browser run plus SHA-256 of actual loaded deck-data DOM',figures,playback,scope:'Complete uninterrupted playback at 1x presentation rate; source speedups retained. Separate visual review uses sequential 1-second samples.'};
+-  writeFileSync(`${root}/.build/v0_11_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
++  writeFileSync(`${root}/.build/v0_12_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
+   console.log(JSON.stringify({html_sha256,figures:figures.length,completeClips:playback.map(x=>x.clip)}));
+ } finally {await browser.close();}
+--- v0.11/research/revision_0_12_spec.md
++++ v0.12/research/revision_0_12_spec.md
+@@ -0,0 +1,18 @@
++# v0.12 — Control as a shift in responsibility
++
++Requested 2026-09-15. Fixed comparison: `.build/revision_0_12_baseline/manifest.json` (verified v0.11).
++
++- Delete slide 6 Hi Robot quantitative page, keeping all three original hierarchy figures on slide 5. Replace slide 6 with one editable responsibility-shift diagram, keeping 38 pages and chapter numbering stable.
++- Earlier design hypothesis: System 2 sends semantic/subtask information. System 1, a steerable generalist VLA/WAM policy π(a | o,l), is expected to supply broad visuomotor generalization. “Arbitrary” inputs are an aspiration, not a demonstrated guarantee.
++- Emerging pattern: foundation-model/Agent System 2 can take on more spatial grounding, action selection and parameterization. System 1 may supply narrower action primitives, with Controller/local servo still present. This is partial migration, not all dynamics/high-frequency feedback moving into an LLM.
++- System labels are functional shorthand for this talk; analytic tools are not all learned System 1 neural policies. Direct/Hybrid/tool implementations remain distinct.
++- Robot-data training is a plausible framing/conditional hypothesis; Astra training recipe and causal attribution are not disclosed. Do not present a proven training-data cause, universal primitive sufficiency, or all-task superiority.
++- Make Chinese narration and chapter transitions follow this spine: design hypothesis → older model/interface evidence → organizing primitives → stronger Agent evidence → remaining control gaps. Preserve English slides, original styling, videos, source boundaries and quantitative results elsewhere.
++- Main deliverable remains self-contained HTML plus synchronized Chinese script. Rebuild, refresh CJK subset, audit layout/UI/playback and visual diagram, independent Standards/Spec review.
++- No new external research claims, model calls, release/push or legacy PPTX/PDF/ZIP regeneration.
++
++## Visual follow-up
++
++The user rejected the initial diagram as wordy. Compress slide 6 into two sparse control chains: short role labels, generalist policy formula, a single transfer arrow and an area/color shift from System 1 to System 2. Move explanatory detail into the Chinese narration. Retain semantic accuracy and original fonts; do not weaken the source/causal caveats in narration.
++
++Latest naming correction: the two slide-6 endpoints are labeled **Controller** only, without System 0 / Servo. Preserve original terminology inside the unedited slide-5 source figures.
+--- v0.11/README.md
++++ v0.12/README.md
+@@ -2,11 +2,11 @@
+ 
+ 38 页英文技术分享，中文逐页讲稿。主交付是**一个全部内嵌的 HTML**：18 段视频、论文原图、Noto Serif / Noto Sans / CJK 字体、播放器与讲稿均在文件内。
+ 
+-- Zimo Huang · 2026-09-16；当前本地版 **0.11 · 2026-09-15**。
++- Zimo Huang · 2026-09-16；当前本地版 **0.12 · 2026-09-15**。
+ - HTML：`output/Agents_for_Robotics_Self_Contained.html`，约 135.2 MB。
+ - 中文讲稿：`output/Speaker_Script_Revised.md`，与 HTML 内嵌稿一致。
+ - 章节问题—方法—结果提纲：`output/Chapter_Spine.md`。
+-- SHA-256：`b9e1d61232d0306648b10734020103de4f9b6df116c595ca933cfd89ea1650e8`。本次未发布 GitHub Release。
++- SHA-256：`c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1`。本次未发布 GitHub Release。
+ - 60 分钟为包含视频、读图与讨论的建议安排，尚未彩排计时。
+ 
+ ## 主线
+@@ -14,7 +14,7 @@
+ | 页 | 部分 | 讲解顺序 |
+ |---|---|---|
+ |1–3|Introduction|Painting demo 与三个不同角色|
+-|4–19|Agent Controls Robot|总框图 → Hi Robot / Figure → Claude 实验 → RPent → Astra 直接能力、interface 与 Direct/Hybrid → 总结|
++|4–19|Agent Controls Robot|总框图 → 分层架构与职责迁移 → Claude 实验 → RPent → Astra 直接能力、interface 与 Direct/Hybrid → 总结|
+ |20–27|Agent Creates Data|Real2Sim → replay / scene demos → hand CAD asset → physics 与 training value|
+ |28–36|Agent Improves Policy|ENPIRE 的环境、实验、idea tree、效果 → Astra training / ICL demos → 成本与总结|
+ |37–38|Closing|Takeaways 与感谢|
+@@ -25,11 +25,12 @@
+ 
+ ## 本版调整
+ 
+-- 第二类统一为 Data：Assets / scenes、Real-to-sim Replay、Data Rollout。手部设计移到第26页，保留未验证物理可用性的说明。
+-- 第18页补实际 Astra 接口与 Asim query time；第19页明确语义理解、有限空间泛化与高频控制、物理泛化的证据边界。
+-- Data 第27页增加 DexGPT 原图：已经记录了 contact rollout，但 physical criteria 未通过。生成 Data 不等于证明训练价值。
+-- 保留18段视频、所有既有原图和11张原生结果表的可比最优值强调。Takeaways 为37页，感谢为38页。
+-- 原结果 authority `research/results_v0_9.json` 与13个固定来源不变。新证据单独冻结在 `research/evidence_v0_11_sources.json`。
++- 删除第6页 Hi Robot 量化结果，用“Where Does Generalization Live?”职责迁移图替换。第5页三个原架构图保留。
++- 以原先的设计设想开场：System 2传递语义，generalist VLA / WAM承担广泛visuomotor generalization；然后检验部分空间/动作决策是否可以上移到更强Agent。
++- 职责迁移页只保留上下两条控制链，用模块宽度、青绿色重点和一条箭头表达对比；解释留在讲稿。
++- 下方System 1可提供较窄action primitives，Controller仍负责servo/tracking。图是功能性综合，不断言所有primitive都是learned VLA，也不宣布全部控制上移。
++- 同步重写Control讲稿及过渡。保留10张原生结果表、18段视频、Data / Improvement与所有其他原图。
++- Astra robot-data训练配方及因果未披露；“任意(o,l)→a”是generalist目标，不是已有模型的能力保证。
+ 
+ ## 证据边界
+ 
+@@ -48,7 +49,7 @@
+ 
+ - `WORKPLAN.md`：状态；`talk_outline.md`：页序与建议时间。
+ - `.build/standalone_delivery_audit.json`：实际静态/浏览器状态；`.build/standalone_visual_audit.json`：实际视觉验收，须与当前 hash 一致。
+-- `research/revision_0_11_spec.md`：当前范围；`research/revision_0_11_review.md`：Standards / Spec 复核。
++- `research/revision_0_12_spec.md`：当前范围；`research/revision_0_12_review.md`：Standards / Spec 复核。
+ - `research/sources.json`：当前引用和历史来源；`.build/assets/v0_8/` 与研究快照保留新增媒体 provenance。
+ 
+-旧 PPTX/PDF/ZIP 保留历史，不对应当前页序；本次不更新。v0.10 基线保存在 `.build/revision_0_11_baseline/`，不与更早 Git HEAD 混同。保留既有 dirty work，不调用 Claude / Anthropic 服务。
++旧 PPTX/PDF/ZIP 保留历史，不对应当前页序；本次不更新。v0.11 基线保存在 `.build/revision_0_12_baseline/`，不与更早 Git HEAD 混同。保留既有 dirty work，不调用 Claude / Anthropic 服务。
+--- v0.11/AGENTS.md
++++ v0.12/AGENTS.md
+@@ -68,12 +68,12 @@
+ 
+ ## Status
+ 
+-Version 0.11 (2026-09-15): Control 4–19, Data 20–27, Improvement 28–36, closing 37–38.
+-38 slides, 18 clips, 60-minute suggested timing. HTML SHA-256 `b9e1d61232d0306648b10734020103de4f9b6df116c595ca933cfd89ea1650e8`.
++Version 0.12 candidate (2026-09-15): Control 4–19, Data 20–27, Improvement 28–36, closing 37–38.
++38 slides, 18 clips, 60-minute suggested timing. HTML SHA-256 `c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1`.
+ 
+-Current scope: `research/revision_0_11_spec.md`. Fixed comparison is `.build/revision_0_11_baseline/`,
++Current scope: `research/revision_0_12_spec.md`. Fixed comparison is `.build/revision_0_12_baseline/`,
+ not older Git HEAD. Chapter spine: `output/Chapter_Spine.md`. Overview diagrams open 4/20/28;
+-three original hierarchy figures share 5; report architecture is 15; ENPIRE idea tree is 31.
++three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 15; ENPIRE idea tree is 31.
+ Results come from `research/results_v0_9.json`, generated by `.build/derive_results_v09.py`.
+ The independent `research/results_v0_9_sources.json` pins reviewed source identities and is never regenerated by the normal build.
+ New source authority: `research/evidence_v0_11_sources.json`; loader `.build/evidence_v011.py` rejects byte drift.
+@@ -87,7 +87,7 @@
+ Original curves retain uncertainty; no estimated RoboCasa bar values. Community demos remain qualitative.
+ 
+ Use `.build/standalone_delivery_audit.json`, `.build/standalone_visual_audit.json` and
+-`.build/v0_11_extended_audit.json` for actual hash-bound status. Final v0.11 QA/review passed with no unresolved findings; see `research/revision_0_11_review.md`. Prior v0.9 source-freeze P2 remains resolved.
++`.build/v0_12_extended_audit.json` for actual hash-bound status. v0.12 final QA/review pending; see `research/revision_0_12_review.md`. Prior v0.9 source-freeze P2 remains resolved.
+ No measured rehearsal duration, new GitHub release, push, or PPTX/PDF/ZIP regeneration.
+ 
+ 
+--- v0.11/output/README.md
++++ v0.12/output/README.md
+@@ -1,11 +1,11 @@
+-# Current delivery — v0.11
++# Current delivery candidate — v0.12
+ 
+ - **Agents_for_Robotics_Self_Contained.html**: 38 English slides, 18 embedded clips, original figures, fonts and Chinese script. One file, about 135.2 MB; no runtime network dependency.
+ - **Speaker_Script_Revised.md**: synchronized Chinese narration with English terminology.
+ - **Chapter_Spine.md**: question, method, results and boundaries for each chapter.
+ 
+-HTML SHA-256: `b9e1d61232d0306648b10734020103de4f9b6df116c595ca933cfd89ea1650e8`. 60-minute timing is suggested, not rehearsed.
++HTML SHA-256: `c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1`. 60-minute timing is suggested, not rehearsed.
+ Control 4–19; Data 20–27; Improvement 28–36; closing 37–38.
+-Latest hash-bound audit files in `.build/` determine actual verification status. Standards / Spec review and final hash-bound QA passed.
++Latest hash-bound audit files in `.build/` determine actual verification status. Final v0.12 QA/review pending.
+ 
+ Other PPTX, PDF and ZIP files are historical and do not match this page order. This local revision is not a new public release.
+--- v0.11/output/Chapter_Spine.md
++++ v0.12/output/Chapter_Spine.md
+@@ -1,4 +1,4 @@
+-# Agents for Robotics — 章节主线 v0.11
++# Agents for Robotics — 章节主线 v0.12
+ 
+ 讲者：Zimo Huang · 2026-09-16。38页，18段内嵌视频。英文slides，中文讲稿；建议60分钟含读图、视频与讨论，未彩排。
+ 
+@@ -10,7 +10,9 @@
+ 
+ **导图（4）**：保留Agent直接输出q/EEF与多种Agent Tools分支，VLA / WAM / Learned policy 合为一个 learned tools 节点。Direct不等于跳过低层servo/controller。
+ 
+-**常见分工（5–6）**：上一场Hi Robot、Helix、Helix 02三张原架构图同页。Hi Robot是VLM → subtask language → π0 → action；Helix用semantic latent，Helix 02明确S2/S1/S0。Hi Robot原Figure 5与表格解释IA/TP收益，两项指标不等于episode success；主比较也改变了训练数据。所查Figure发布页没有带重复试验分母的成功率表。
++**常见分工（5）**：保留Hi Robot、Helix和Helix 02三张原架构图。高层推理、visuomotor policy和低层tracking是常见分工，不是所有模型必须遵守的定律。
++
++**职责迁移（6）**：删除Hi Robot结果页。上方是原先的设计假设：System 2给semantic/subtask信息，System 1 VLA/WAM作为steerable generalist policy，承担π(a | o,l)的广泛泛化。下方是正在出现的能力模式：部分spatial grounding、action selection与参数化上移到System 2，System 1可提供更窄的primitives，Controller保留servo/tracking。这是功能性简称，analytic tools不等于learned neural System 1。“任意输入”是理想目标，robot-data对Astra的具体训练因果仍未披露。
+ 
+ **旧模型的接口证据（7–8）**：Claude Plays Robotics集中讲LIBERO-40。40 tasks × 5 seeds：Opus4.6 Direct 3.5%，加MolmoAct supervision 76%，MolmoAct alone 86%。保留两张原图和不同y轴。Motor prior有用，不意味着额外Agent干预总有收益。
+ 
+@@ -22,7 +24,7 @@
+ 
+ **接口与耗时（18）**：Go1确实输出12D joint residual chunks，经interpolation/PD，推理时仿真暂停。Robocurve与报告Direct输出EEF；Asim输出ΔEEF、waypoints或生成waypoint的code；Hybrid审核π0.5候选。Asim prompt-v3、medium、proprio下，180回合731次查询，mean query time为30.75 / 26.08 / 41.98秒。20/25/50 Hz是底层执行，不能当LLM Hz。社媒tool call也不等于learned atomic skill。
+ 
+-**总结（19）**：语义理解和有限范围的空间迁移已有展示；实时高频反馈和跨接触/动力学条件的可靠物理泛化尚未确立。成功demo不能证明全部物理问题已解决，失败也不能唯一归因于“物理理解”。更强模型改变能力前提，仍需重测model、interface与feedback budget；不推测未披露的训练配方。
++**总结（19）**：回到第6页，讨论更强System 2需要多通用的System 1，而不是判定tools或Direct唯一正确。语义理解和有限范围的空间迁移已有展示；实时高频反馈和跨接触/动力学条件的可靠物理泛化尚未确立。成功demo不能证明全部物理问题已解决，失败也不能唯一归因于“物理理解”。更强模型改变能力前提，仍需重测model、interface与feedback budget；不推测未披露的训练配方。
+ 
+ **过渡**：从下一步action，转向Agent能帮助构建什么Data。
+ 
+--- v0.11/talk_outline.md
++++ v0.12/talk_outline.md
+@@ -1,4 +1,4 @@
+-# Agents for Robotics — v0.11 page order
++# Agents for Robotics — v0.12 page order
+ 
+ 38 English slides, Chinese narration, 18 embedded clips. Suggested 60 minutes includes video, figures and discussion; not rehearsed.
+ 
+@@ -9,7 +9,7 @@
+ | 3 | Three Roles for Robotics Agents | Introduction | 1 |
+ | 4 | Agent Controls Robot | 1 · Agent Controls Robot | 1.5 |
+ | 5 | Hierarchical Robot Control | 1 · Agent Controls Robot | 2 |
+-| 6 | Hi Robot: Instruction and Progress | 1 · Agent Controls Robot | 2 |
++| 6 | Where Does Generalization Live? | 1 · Agent Controls Robot | 2 |
+ | 7 | Claude Plays Robotics: Interfaces | 1 · Agent Controls Robot | 2 |
+ | 8 | Claude: The Value of a Motor Prior | 1 · Agent Controls Robot | 2 |
+ | 9 | RPent: Organizing Robot Tools | 1 · Agent Controls Robot | 1 |
+@@ -44,5 +44,5 @@
+ | 38 | Thank You | Closing | 0.5 |
+ 
+ Chapter openings: 4 / 20 / 28. Summaries: 19 / 27 / 36. Takeaways: 37. Thanks: 38.
+-Scope: research/revision_0_11_spec.md. Narration: output/Speaker_Script_Revised.md.
++Scope: research/revision_0_12_spec.md. Narration: output/Speaker_Script_Revised.md.
+ No cross-paper success leaderboard. Community demos remain qualitative.
+--- v0.11/CHANGELOG.md
++++ v0.12/CHANGELOG.md
+@@ -1,4 +1,15 @@
+ # Changelog
++
++## [0.12] - 2026-09-15
++### Features
++- 第6页Hi Robot结果替换为职责迁移示意图；保留第5页原架构。
++- Control讲稿围绕generalist能力的承载位置展开：从VLA/WAM到更强Agent配合较窄action primitives。
++### Design Rationale
++- 保持38页与现有章节页码，用同一页完成原假设、新模式与研究问题的对照。
++- 末端统一标Controller，保留低层tracking；角色迁移是部分、功能性的，不混同网络架构与工具实现。
++### Notes & Caveats
++- 未新增实验数据或训练因果声明；Astra robot-data配方未披露，generalist任意输入能力只是目标。
++- 18段视频与其他结果不变；无新Release或legacy导出。
+ 
+ ## [0.11] - 2026-09-15
+ ### Features
+--- v0.11/research/sources.json
++++ v0.12/research/sources.json
+@@ -3,7 +3,7 @@
+   "cutoff": "2026-09-15",
+   "timezone": "Asia/Shanghai",
+   "selection": "User-approved Control background and Astra evidence sequence; one detailed representative each for Data and Improvement; chapter-local qualitative demos.",
+-  "status": "v0.11 verified: 38 slides / 18 clips; Data taxonomy, interfaces and query timing. Final QA and Standards / Spec review passed. WeChat article remains unread.",
++  "status": "v0.12 candidate: Hi Robot results removed; responsibility-shift diagram and Control narration updated. Final QA/review pending.",
+   "records": [
+     {
+       "id": "S01",
+@@ -359,6 +359,7 @@
+       "complete_video_visual_audit": false,
+       "historical_talk_role": "deep_dive",
+       "active_slides": [
++        6,
+         11,
+         18,
+         19
+@@ -1337,6 +1338,7 @@
+       "verification_scope": "Primary surface and pinned source where available; see September14 research notes",
+       "historical_talk_role": "supporting example",
+       "active_slides": [
++        6,
+         15,
+         16,
+         17,
+@@ -1430,8 +1432,7 @@
+       "code_execution_or_replication": false,
+       "complete_video_visual_audit": false,
+       "active_slides": [
+-        5,
+-        6
++        5
+       ]
+     },
+     {
+@@ -1509,6 +1510,7 @@
+       "code_execution_or_replication": false,
+       "complete_video_visual_audit": false,
+       "active_slides": [
++        6,
+         13,
+         14,
+         18,
+--- v0.11/WORKPLAN.md
++++ v0.12/WORKPLAN.md
+@@ -1,13 +1,11 @@
+ # Agents for Robotics — current work
+ 
+-## Revision 0.11 · 2026-09-15
++## Revision 0.12 · 2026-09-15
+ 
+-- [x] Preserve v0.10 in `.build/revision_0_11_baseline/`.
+-- [x] Current primary-source research: Astra interfaces and decision timing.
+-- [x] Data taxonomy, replay / rollout / asset boundaries.
+-- [x] Slide, Chinese script and source-registry update.
+-- [x] Static, browser, media, visual and mobile verification.
+-- [x] Independent Standards / Spec review and final status synchronization.
++- [x] Preserve verified v0.11 baseline.
++- [x] Replace Hi Robot results with responsibility-shift diagram.
++- [x] Rewrite the Control narrative and transitions.
++- [ ] Rebuild and verify sources, layout, script, media and controls.
++- [ ] Standards / Spec review and final documentation.
+ 
+-Scope: `research/revision_0_11_spec.md`. Current delivery is verified v0.11, SHA-256 b9e1d61232d0306648b10734020103de4f9b6df116c595ca933cfd89ea1650e8.
+-No source experiment replication. No Claude/Anthropic service use. WeChat article still unread and safety-blocked. No push/release or historical PPTX/PDF/ZIP regeneration.
++Scope: `research/revision_0_12_spec.md`. v0.11 is the previous verified delivery; v0.12 built; final browser QA and review running. No model calls, external experiment replication, push/release, or legacy exports.
+--- v0.11/output/Speaker_Script_Revised.md
++++ v0.12/output/Speaker_Script_Revised.md
+@@ -1,11 +1,11 @@
+ # Agents for Robotics — 中文讲稿
+ 
+-讲者：Zimo Huang · 2026-09-16 · 本地修订 0.11（2026-09-15）
++讲者：Zimo Huang · 2026-09-16 · 本地修订 0.12（2026-09-15）
+ 
+ 英文 slides，中文讲解，专有名词保留英文。建议 60 分钟包含原图读图、视频、停顿和讨论，尚未彩排计时。每章先看总框图，再沿问题、方法与证据展开；community demos 用来观察新的工作范围，不与正式实验混成排行榜。
+ 
+ 
+-本版将第二类统一为 Data，合并设计资产，并核对 Astra 的动作接口与 query time。表格加粗各自比较组内的最优显示值，并列值同样加粗；human oracle、样本数和实验边界另行说明。RoboLab 加粗只表示 retained slots 的行最大值，资源表只标利用率最高或 token rate 最低，不代表统计显著性或统一效率冠军。
++本版以职责迁移串起 Control：从 generalist VLA / WAM 承担泛化，到更强 Agent 配合较窄 action primitives。表格加粗各自比较组内的最优显示值，并列值同样加粗；human oracle、样本数和实验边界另行说明。RoboLab 加粗只表示 retained slots 的行最大值，资源表只标利用率最高或 token rate 最低，不代表统计显著性或统一效率冠军。
+ 
+ 
+ ## 建议时间安排
+@@ -17,7 +17,7 @@
+ | 03 | Three Roles for Robotics Agents | 1 | 01:30 |
+ | 04 | Agent Controls Robot | 1.5 | 02:30 |
+ | 05 | Hierarchical Robot Control | 2 | 04:00 |
+-| 06 | Hi Robot: Instruction and Progress | 2 | 06:00 |
++| 06 | Where Does Generalization Live? | 2 | 06:00 |
+ | 07 | Claude Plays Robotics: Interfaces | 2 | 08:00 |
+ | 08 | Claude: The Value of a Motor Prior | 2 | 10:00 |
+ | 09 | RPent: Organizing Robot Tools | 1 | 12:00 |
+@@ -82,7 +82,7 @@
+ 
+ 今天有三个问题。第一，当前这一步应该怎么动，是 Agent 自己生成 action，还是交给 learned policy？第二，Agent 能帮助生成什么 Data：assets、Real-to-sim Replay，还是执行出来的 Data Rollout？第三，一次实验反馈怎样变成下一次还能复用的 policy 改进？
+ 
+-Control 从常见架构和 Claude Plays Robotics 讲起，再看 Astra 的能力、接口和真实查询耗时。Data 仍只细讲 Agentic Real2Sim，随后用几个 demo 区分场景、回放和设计资产。Improvement 以 ENPIRE 为代表。Tendon-hand 设计就是 Data 资产层的一个例子。
++Control 围绕一个问题展开：机器人泛化能力应该主要由哪一层承担？先看把希望寄托于 generalist VLA / WAM 的分工，再用旧接口实验与 Astra 的新表现，检查哪些空间理解和动作决策可以上移到 Agent。Data 仍只细讲 Agentic Real2Sim，随后用几个 demo 区分场景、回放和设计资产。Improvement 以 ENPIRE 为代表。Tendon-hand 设计就是 Data 资产层的一个例子。
+ 
+ 这三个角色可以联系起来，但不是已经验证的流水线。例如 ENPIRE 直接使用真实机器人，不需要先运行本报告中的 Real2Sim 方法。
+ 
+@@ -99,7 +99,7 @@
+ 
+ 无论选哪条路，机器人端仍然有 servo 或 controller，观测也仍然需要返回。今天说的 Direct，重点是是否需要一个独立 learned action policy，并不是跳过所有运动学和低层控制，直接让 LLM 输出电机力矩。
+ 
+-我们先看现在常见的分层方案，再问：大模型应该停在哪一层？
++这章不把工具多少作为主问题。我们关心的是：通用的任务理解、空间泛化和动作决策由谁完成，执行层又必须保留哪些能力？先看常见分层，再用一张示意图把这条主线说清楚。
+ 
+ ### 参考来源
+ 
+@@ -119,7 +119,7 @@
+ 
+ 到了 Helix 02，三层分工更加明确：S2 给语义表示，S1 给 full-body joint targets，S0 进行 whole-body tracking 和 actuator control。官网说明 S1 是 200 Hz，S0 内部是 1 kHz；不要把原图接口上的 200 Hz 都解释成 S0 的执行频率。
+ 
+-可以把它概括为 reasoning、visuomotor policy、low-level control 的分工。但这是常见方案，不是一个已经证明任何模型都必须遵守的定律。先补一页 Hi Robot 的量化结果，再看 Claude 在不同接口上的实验。Figure 的两篇官方发布文展示了层次分工和演示效果，但没有公布带重复试验分母的系统成功率表；61 actions 或 1 kHz 都不能替代成功率。
++可以把它概括为 reasoning、visuomotor policy、low-level control 的分工。但这是常见方案，不是一个已经证明任何模型都必须遵守的定律。接下来先抽象出这类设计把 generalization 放在哪里，再看 Claude 和 Astra 的实验怎样改变这一预期。Figure 的两篇官方发布文展示了层次分工和演示效果，但没有公布带重复试验分母的系统成功率表；61 actions 或 1 kHz 都不能替代成功率。
+ 
+ ### 参考来源
+ 
+@@ -127,21 +127,34 @@
+ - [Figure Helix · original S2/S1 architecture (Feb 2025)](https://www.figure.ai/news/helix)
+ - [Figure Helix 02 · original S2/S1/S0 architecture (Jan 2026)](https://www.figure.ai/news/helix-02)
+ 
+-## 06. Hi Robot: Instruction and Progress
+-
+-建议 2 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：上面保留完整原 Figure 5，可以放大；下面只提取作者给出的 cross-task average。
+-
+-这里先区分两个指标。Instruction Accuracy 衡量高层命令是否符合指令和当下观测；Task Progress 衡量有多少物体被放到正确位置或配置。它们都不是整段任务一次成功的概率。
+-
+-三类实机任务包括 Table Bussing、Sandwich Making 和 Grocery Shopping，每个任务、每个方法20次 trial。Hi Robot 的两个平均值是76和81；Flat VLA 是36和44，GPT-4o high-level 加相同 low-level VLA 是30和64。Human oracle 高层也只得到89的 Task Progress，说明动作执行还有自己的限制。
+-
+-这支持该系统中训练过的高层策略有价值。但 Hi Robot 的模型和 synthetic data 也变了，主图不是 data-matched hierarchy ablation。我们保留官网的整数显示值，不把76%转成成功 episodes。接下来 Claude 的实验转向另一种问题：固定某个通用模型，改变接口会怎样？
+-
+-### 参考来源
+-
+-- [Hi Robot · original hierarchical architecture (Feb 2025)](https://www.pi.website/research/hirobot)
++## 06. Where Does Generalization Live?
++
++建议 2 分钟（含读图、视频及停顿）。
++
++> 读图提示：深绿色表示被寄托广泛泛化能力的一侧。先读上方原先的设计设想，再沿红色箭头读到下方的新能力模式；箭头只表示部分职责迁移。
++
++我们原先有一个很自然的设想：System 2主要理解目标、分解任务，交出semantic information或subtask language。真正把观测和语言变成动作的工作，交给System 1，也就是VLA、WAM或其他learned visuomotor policy。
++
++我们希望它是一个steerable generalist policy。写成公式就是π(a | o, l)：o是当前observation，l是language instruction，a是希望执行的action。理想上，换一个场景、对象、指令，甚至新的任务组合，它都能生成符合意图的行为。但“任意(o,l)都得到正确a”在这里是设计目标，不是某个已有模型的能力保证。WAM还可能联合生成世界演化，图中只抽出其action职责。
++
++因此，过去我们把很多泛化与动作智能的希望寄托在System 1：不仅会动，还要把语义落到空间、选择运动方式，并应对新的任务。System 2则可以相对只负责高层语义。
++
++现在观察到的变化是，更强的foundation model开始自己做其中一部分工作：根据observation理解空间关系、选择动作、生成EEF目标或joint参数，再根据反馈继续调整。图中这些职责从上方System 1移向下方System 2。不是整层搬走，而是原来需要专门visuomotor policy承担的一部分决策，现在可以由Agent承担。
++
++机器人经验进入foundation-model训练，是理解这种变化的一条重要研究假设。不过，Astra的具体robot-data配方与因果对照尚未披露。我们能直接讨论的是能力变化，以及它怎样改变系统分工；不能把训练数据原因当作已经证明的结论。
++
++这样一来，在部分任务上，System 2加比较窄的action primitives就可能做得很好，未必需要一个独立、覆盖所有任务的generalist VLA。Primitive可以是受约束的EEF运动、joint chunk、局部控制程序，也可以是learned motor skill。这里把它们放在System 1，是本talk对执行职能的简称，不代表IK或OSC本身都是learned System 1网络。底层servo和tracking仍由Controller负责。
++
++这也不是说VLA失去价值。Narrow primitives仍然需要足够的动作能力，精细接触、高频反馈和跨动力学条件的泛化也没有因此自动解决。我们真正要检验的是：随着System 2变强，System 1还必须有多通用、多聪明？
++
++后面的证据沿这条问题走。先看旧模型为什么依赖motor prior，再看RPent怎样组织执行能力，最后看Astra哪些表现支持职责上移、哪些结果又提醒我们不能把执行层削得过头。
++
++### 参考来源
++
++- [Hi Robot v2 §6 · model-level separation is not fundamental](https://arxiv.org/html/2502.19417v2#S6)
++- [Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)](https://openai.robocurve.org/gpt-6-astra/)
++- [Astra control dashboard · prompt-v3, same-model interface records; unequal budgets](https://asimfish.github.io/astra-control-dashboard/#sec3)
++- [Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)](https://anonymous-report-421.github.io/public-website/?lang=en&view=1)
+ 
+ ## 07. Claude Plays Robotics: Interfaces
+ 
+@@ -149,7 +162,7 @@
+ 
+ > 读图提示：从左侧单一 LLM 出发，沿中间四种 interface 读到右侧。上面三条在 execution 端进入 Controller，最下面一条产出 Learned policy；它们不是 Controller 再生成 Policy 的串联流水线。
+ 
+-这里不只比较模型大小，而是比较 model、embodiment 和 interface 的组合。报告涉及 classic control、Go2/G1 locomotion 和 Franka manipulation。图先概括四种接口，下一页只展开 manipulation 的结果。
++先把刚才的分工假设放到旧模型上检查。这里不只比较模型大小，而是比较 model、embodiment 和 interface 的组合。报告涉及 classic control、Go2/G1 locomotion 和 Franka manipulation。图先概括四种接口，下一页只展开 manipulation 的结果。
+ 
+ Direct action 是 LLM 输出 7D EEF motion，由低层 Controller 执行。Controller code 则让 LLM 写 Python feedback program，把快循环放到本地。Policy supervision 已有 MolmoAct 的动作提议，LLM 可以 accept、edit 或 replace，再交给 Controller。这三个分支承担的计算和反馈职责不同。
+ 
+@@ -175,7 +188,7 @@
+ 
+ 报告还测试了 novel goals，其中部分 supervisor 可以帮助原 policy 做不到的事情。它的任务和评测条件不同，不能并入这里的 LIBERO-40。这里强调收益取决于目标与 policy 已有能力。
+ 
+-我们能从这项工作得到的是：interface 和 prior 会显著改变某个模型的控制表现。不能据此推出所有未来 LLM 都必须停留在高层。先看工具路线怎样组织成系统，再看为什么 Astra 让这个问题值得重问。
++这组实验解释了为什么我们原来期待System 1拥有很强的motor intelligence：在这里，单靠高层模型直接出动作效果很差，已有policy提供了大部分执行能力。但这只是这组模型和任务下的责任分配，不是所有未来LLM都必须留在高层的证明。先看RPent如何把这些能力组织起来，再问更强System 2需要多宽的System 1。
+ 
+ ### 参考来源
+ 
+@@ -189,9 +202,9 @@
+ 
+ RPent 是 RLinf 的 Recursive Physical Agent 项目。它把机器人操作所需的能力组织成一个可组合系统：Agent 根据任务和反馈选择工具，memory 保留工作上下文，action primitives 和统一接口连接机器人或 simulator。
+ 
+-它解决的是工程组织问题。感知、运动、代码和 learned policy 不必都塞进同一个接口，Agent 可以在这些能力之间协调。
+-
+-这里要区分架构意图与已验证能力。图中画出的后端不代表每一个都完成了同样的评测。例如我们读过的 move_to 示例使用 OSC，不能因为名称是运动接口就一律叫 IK。
++从职责分配的角度看，它解决的是工程组织问题。感知、运动、代码和 learned policy 不必都塞进同一个接口，Agent 可以在这些能力之间协调。
++
++它不要求把全部动作智能都做成一个单体generalist policy，也不说明一个简单primitive就够了。这里要区分架构意图与已验证能力。图中画出的后端不代表每一个都完成了同样的评测。例如我们读过的 move_to 示例使用 OSC，不能因为名称是运动接口就一律叫 IK。
+ 
+ 接下来不只看架构图，再看 RPent 首篇正式工作 Harness VLA 的量化实验。它能说明这套组织方式在什么条件下有效，但不能证明工具委托是唯一可能。
+ 
+@@ -211,7 +224,7 @@
+ 
+ 这些整数由论文每个100-trial cell的百分数求和得到，不是我们重跑或重数 raw logs。更重要的是，Harness 用 seed 0 的探索构建 memory，再在 seeds 1–10 测试；它增加 planner、analytic primitives 和计算预算。因此结果属于 few-shot harness，不是纯接口消融，也不是 Astra 的实验。
+ 
+-它说明同一个 learned policy 可以通过不同组织方式获得更强适应性。接下来换一个方向：foundation model 自己产生动作的能力增强后，原来的分工还需要原样保留吗？
++它说明同一个 learned policy 可以通过不同组织方式获得更强适应性。接下来换一个方向：这些泛化与调整能力，哪些仍要来自独立learned policy，哪些已经可以由更强的foundation model直接承担？
+ 
+ ### 参考来源
+ 
+@@ -232,7 +245,7 @@
+ 
+ 协议也要看：每次最多 20 个 model calls，速度上限为 25%。Insertion 用同一个 rig；bowl 的 Astra 和 Fable 使用不同 rigs，Astra 还晚两天测试，人工评分知道模型身份。它不是完全隔离模型因素的随机对照。
+ 
+-这一页先不以 model latency 判胜负。我们关心的是能力边界：过去交给独立 System 1 的一部分 action 决策，现在是否可以由 foundation model 自己承担？
++这正是职责迁移的具体例子。Bowl里不需要独立VLA来决定每段动作，Astra自己根据视觉和proprio生成EEF目标，下面保留IK与controller。这说明一些任务的空间与动作决策可以上移，但puzzle的低成功率也提醒我们：更窄的执行接口并没有解决所有接触问题。下一页继续看这种路径的定性表现，稍后再单独核对latency。
+ 
+ 关于原因，公开资料没有披露足够的 Astra 机器人预训练配方或因果消融。因此我会说“能力前提变了，旧分工需要重测”，不会把“加入海量机器人数据导致这一提升”说成已证事实。
+ 
+@@ -268,7 +281,7 @@
+ 
+ 结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。
+ 
+-最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式。
++最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式，也不能单凭这一行断言哪种primitive最通用。
+ 
+ 这些是相同 proprio 档位，但该档位还包含 EEF 像素标记、相机尺度和固定地标，不是单纯只有关节状态。公开逐回合记录与表格数字一致，我们没有重跑实验。
+ 
+@@ -300,7 +313,7 @@
+ 
+ > 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。
+ 
+-用户提供的匿名报告进一步问：同一个 Astra，如果再给它一个 learned action prior 呢？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
++这份匿名报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
+ 
+ 共享输入包括三个 RGB views、14D proprioception、task instruction，以及 Astra 的 history / notes。Direct 由 Astra 生成双臂 EEF position、orientation 和 gripper targets，每次执行 1–5 control steps 后重新观察。
+ 
+@@ -380,13 +393,13 @@
+ 
+ > 读图提示：先看左边已经展示的能力，再看右边尚不可靠或尚未证实的能力。这不是三种独立神经模块，也不是把任务机械地分成 System 2 / 1 / 0。
+ 
+-第一章可以收束得更明确。Agent 已经能理解语义目标、识别任务对象并利用视觉反馈；在已测试的设置中，也展示了目标重定位和一定的 spatial generalization。左边说的是有条件的能力，不是任意新机器人、新相机和新环境都能成功。
++回到第6页的职责迁移图。我们不再预设System 2只传语义，也不要求所有泛化都由一个generalist VLA / WAM承担。部分空间与动作决策可以由更强Agent完成，下面的action primitives则保留必要的motor competence。Agent 已经能理解语义目标、识别任务对象并利用视觉反馈；在已测试的设置中，也展示了目标重定位和一定的 spatial generalization。左边说的是有条件的能力，不是任意新机器人、新相机和新环境都能成功。
+ 
+ 右边有两种不同的缺口。High-frequency control 是实时闭环问题：目前看到的系统仍依赖 local controller、interpolation、短动作片段或已有 policy。模拟器在 LLM 思考时暂停，并不能证明机器人在真实扰动下也来得及纠正。Physical generalization 则问接触、摩擦、质量、柔顺性或动力学变化后是否仍可靠。现有报告没有建立全面的跨物理条件泛化结论。
+ 
+ Robocurve 的 bowl 是19/20，puzzle只有2/20，说明成功的语义任务不能代替精细接触验证。但单次失败也不能唯一定位为物理理解不足，sensing、pose、controller和budget都可能参与。类似地，Claude 的 Cursor tool 实验从6%到32%，支持 spatial aids 的价值，不意味着所有失败都只是定位问题。
+ 
+-所以更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
++因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
+ 
+ Hi Robot 的 Discussion 本身就说模型层面的角色分离 is not fundamental。我们不是宣布旧实验失效，而是在模型能力变化后重新检验旧结论。Astra 的机器人预训练配方及因果对照仍未披露，不能由成功 demo 反推训练原因。
+ 

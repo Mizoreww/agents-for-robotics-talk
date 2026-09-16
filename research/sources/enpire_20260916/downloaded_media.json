@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-success.mp4",
+    "file": ".build/assets/v0_18/pin-success.mp4",
+    "bytes": 67337757,
+    "sha256": "36d2086646c82349c5e5b1c12d829a8b14e7d0ce2f171e2e4d86a824e28b5a8d"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/gpu-success.mp4",
+    "file": ".build/assets/v0_18/gpu-success.mp4",
+    "bytes": 66844138,
+    "sha256": "259c5a6b8e04018a37b472cb863e48d47ae4f9fbd8c6bf73b246a29786e1f6a9"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-success.mp4",
+    "file": ".build/assets/v0_18/ziptie-success.mp4",
+    "bytes": 88817708,
+    "sha256": "e0e0c3a5a82f810017e2f67f0efcf193b04f62d819a0c9f0d5cd1077bfd712ec"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/cut-ziptie-success.mp4",
+    "file": ".build/assets/v0_18/cut-ziptie-success.mp4",
+    "bytes": 42311271,
+    "sha256": "49947c1d0f419fbc13c66b2b2ca39fe7e83e38a2b76bbb57a84cd618d71811b1"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-fleet.mp4",
+    "file": ".build/assets/v0_18/pin-fleet.mp4",
+    "bytes": 32819441,
+    "sha256": "9183f46967b58f85edc3e8406624e4c22cb1273a8e99fe1baa775256d1ca89bb"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/pin-reset-only-1.mp4",
+    "file": ".build/assets/v0_18/pin-reset-only-1.mp4",
+    "bytes": 53888857,
+    "sha256": "84b491d37f2dae856ebd629ef2a2aa57e5ccb0e264585e084f252530a748ce12"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/videos/ziptie-reward-bbox.mp4",
+    "file": ".build/assets/v0_18/ziptie-reward-bbox.mp4",
+    "bytes": 1876654,
+    "sha256": "cbdf5d1540492b49f5a26793e65af9d836ddc4f1d1e5bc0bf12b645ff148aedd"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/sam.min.jpg",
+    "file": ".build/assets/v0_18/sam.min.jpg",
+    "bytes": 44156,
+    "sha256": "632b868cf710715c0269d066aa7ce3b0becd236b59cedfb408cd0425e4ea4530"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/curobo.min.jpg",
+    "file": ".build/assets/v0_18/curobo.min.jpg",
+    "bytes": 29847,
+    "sha256": "f8809c3d7f8053dd118f3575ea6a63dea644a378a75c9ce4da9e02824e87655f"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/control.min.jpg",
+    "file": ".build/assets/v0_18/control.min.jpg",
+    "bytes": 68028,
+    "sha256": "744c9315b4c99e63160858c80552fd01b0f66c050ea6a9ef61ef591d5a8f313f"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/robot_farm.min.jpg",
+    "file": ".build/assets/v0_18/robot_farm.min.jpg",
+    "bytes": 208817,
+    "sha256": "a4aacc2dd99cf9e2cb5ef83335e2db4ffcfd0be3374b60d22039c30bed2d3281"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/gpu_insertion.min.jpg",
+    "file": ".build/assets/v0_18/gpu_insertion.min.jpg",
+    "bytes": 96330,
+    "sha256": "6cf5618e83727792789b5db39fb89a332897e5114ffc91a04d42fb40aab46139"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/pin_insertion_2.min.jpg",
+    "file": ".build/assets/v0_18/pin_insertion_2.min.jpg",
+    "bytes": 166085,
+    "sha256": "bdcf01db3ccf12f96bdb6fdb411b3626f258ec6a29bb41f1ca7004a1e163c5f0"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/push_t.min.jpg",
+    "file": ".build/assets/v0_18/push_t.min.jpg",
+    "bytes": 126550,
+    "sha256": "6a07257bf35622dd677f8265be99010eb87f06ad012a3b90465af7233f205380"
+  },
+  {
+    "url": "https://research.nvidia.com/labs/gear/enpire/zip_tie.min.jpg",
+    "file": ".build/assets/v0_18/zip_tie.min.jpg",
+    "bytes": 128227,
+    "sha256": "57be52d14283250aafd0527649022705eec089e4be134835ade28bf13385df9b"
+  }
+]

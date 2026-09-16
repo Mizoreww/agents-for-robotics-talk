@@ -1,0 +1,526 @@
+{
+  "html_sha256": "dca813ac76e82ccf8e504fefe007df3c970afdbc2795e151a3a4f8f640dabe90",
+  "slides": [
+    {
+      "number": 1,
+      "title": "Agents for Robotics",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "SUSTech logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 2,
+      "title": "Demo: Painting with Feedback",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "painting"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Three Roles for Robotics Agents",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 4,
+      "title": "Agent Controls Robot",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 5,
+      "title": "Hierarchical Robot Control",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Hi Robot original architecture: high-lev",
+          "loaded": true
+        },
+        {
+          "alt": "Figure Helix original architecture: Syst",
+          "loaded": true
+        },
+        {
+          "alt": "Figure Helix 02 original architecture wi",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 6,
+      "title": "Where Does Generalization Live?",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 7,
+      "title": "Astra: Stronger Real-Robot Performance",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "astra_bowl",
+        "astra_insertion"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Astra: More Real-Robot Demos",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "policy_plug",
+        "keyboard"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "One Model, Different Control Interfaces",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "asim_delta",
+        "asim_waypoint",
+        "asim_code"
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Astra Interfaces: Three Tasks",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 11,
+      "title": "Astra: Introducing a Hybrid Architecture",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original anonymous Direct/Hybrid executi",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "anon_direct_sort",
+        "anon_hybrid_pack"
+      ]
+    },
+    {
+      "number": 12,
+      "title": "RoboDojo: Overall Results",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report RoboDojo panel-score-ran",
+          "loaded": true
+        },
+        {
+          "alt": "Original report RoboDojo panel-sr-rankin",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 13,
+      "title": "RoboLab: Overall Results",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report RoboLab success-rate res",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 14,
+      "title": "RoboDojo: Task-Level Patterns",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report per-task Score heatmap; ",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 15,
+      "title": "High Latency Limits Real-Time Control",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 16,
+      "title": "Control: Strengths and Open Gaps",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 17,
+      "title": "Agent Creates Data",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 18,
+      "title": "Real Episode and Its Twin",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "ar2s_real",
+        "ar2s_sim"
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Agentic Real2Sim: Method",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Agentic Real2Sim original architecture: ",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 20,
+      "title": "DROID-100: Protocol and Results",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original DROID-100 outcomes and model-ca",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 21,
+      "title": "Real2Sim: All Backend Results",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 22,
+      "title": "Data: Replay and Scene Assets",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "astra_real2sim",
+        "office_newton"
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Data: Mechanism and CAD Assets",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "hand"
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Data: Physics and Training Value",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "DexGPT original comparison: source human",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 25,
+      "title": "Agent Improves Policy",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 26,
+      "title": "ENPIRE: Environment and Improvement",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE original framework, including hum",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 27,
+      "title": "ENPIRE: Reset and Verification",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "enpire_reset",
+        "enpire_verify"
+      ]
+    },
+    {
+      "number": 28,
+      "title": "ENPIRE: What Did the Agent Change?",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE Figure 12: original idea tree and",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 29,
+      "title": "ENPIRE: Pin Insertion Curve",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE pin-insertion learning a",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 30,
+      "title": "ENPIRE: Two Physical Tasks",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE complete original Figure 3; model",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 31,
+      "title": "ENPIRE: Autoresearch in RoboCasa",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE original Figure 6; RoboCasa task ",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 32,
+      "title": "Astra: Training and Context",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "quad_rl",
+        "wenli_icl"
+      ]
+    },
+    {
+      "number": 33,
+      "title": "ENPIRE: Cost and Chapter Summary",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original ENPIRE resource utilization, to",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 34,
+      "title": "Takeaways",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 35,
+      "title": "Thank You",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    }
+  ]
+}

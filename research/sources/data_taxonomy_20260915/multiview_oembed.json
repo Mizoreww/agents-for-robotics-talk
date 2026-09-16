@@ -1,0 +1,13 @@
+{
+  "url": "https://x.com/Lingxiao234/status/2096992059731443923",
+  "author_name": "lingxiao guo",
+  "author_url": "https://x.com/Lingxiao234",
+  "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">GPT-6 does real2sim end to end from robot demonstrations.<br><br>I gave it only multi-view RGB and robot actions, and one simple prompt.<br><br>It calibrated the cameras, built the object assets, performed physics system-ID, ran MuJoCo, and rendered in Blender. <a href=\"https://t.co/xDlOCXSQzT\">pic.twitter.com/xDlOCXSQzT</a></p>&mdash; lingxiao guo (@Lingxiao234) <a href=\"https://x.com/Lingxiao234/status/2096992059731443923?ref_src=twsrc%5Etfw\">September 7, 2026</a></blockquote>\n\n",
+  "width": 550,
+  "height": null,
+  "type": "rich",
+  "cache_age": "3153600000",
+  "provider_name": "X",
+  "provider_url": "https://x.com",
+  "version": "1.0"
+}

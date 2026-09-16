@@ -1,0 +1,484 @@
+[
+  {
+    "number": 1,
+    "title": "Agents for Robotics",
+    "section": "",
+    "ids": [],
+    "minutes": 0.5,
+    "script": "今天只围绕三个具体问题讲三个代表工作。第一，Agent 控制机器人时，动作由大模型直接生成，还是借助已有 policy？第二，Agent 能不能把真实交互变成可运行的 simulator？第三，Agent 能不能利用真实实验，改进机器人 policy？\n\n每一部分都按问题、方法、实验与结论来讲，不把不同论文的结果串成一个统一系统。开头和结尾各保留一个直观应用 demo，它们不承担实验结论。",
+    "old_slide": 1,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [],
+    "footer": "Primary sources checked 14 September 2026",
+    "startMinutes": 0
+  },
+  {
+    "number": 2,
+    "title": "Demo: Painting with Feedback",
+    "section": "",
+    "ids": [
+      "S11"
+    ],
+    "minutes": 2,
+    "script": "> 播放提示：先播放 painting demo，可播约半分钟后暂停。只用它引出 Agent 与机器人交互，不从视频推导成功率。\n\n先看一个直观例子：Agent 通过机器人画画，并根据图像反馈继续调整。这里既需要理解目标，也需要把目标变成可执行动作，还要检查实际画面与计划有多大差别。\n\n作者的流程包含 anchors、calibration 和人的反馈。这些准备没有消失；看到最后一幅画，也不能说明 foundation model 的 weights 在过程中更新了。\n\n这个 demo 提醒我们把三件事分开：当前怎么行动，交互留下什么记录，后续能否因为这些记录变得更好。接下来三个代表工作分别研究其中一个问题。",
+    "old_slide": 2,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [
+      {
+        "label": "@cdngdev, X demo and method thread (8 Sep 2026)",
+        "url": "https://x.com/cdngdev/status/2097339677128982873"
+      }
+    ],
+    "footer": "@cdngdev, X demo and method thread (8 Sep 2026)  ·  Original author demonstration",
+    "startMinutes": 0.5
+  },
+  {
+    "title": "Three Questions, Three Studies",
+    "ids": [],
+    "number": 3,
+    "minutes": 1.5,
+    "script": "第一部分 Control，围绕 GPT 6 Astra as an Embodied Policy 报告。它直接比较 Astra 生成 EEF action，和 π0.5 提出候选、Astra 再审核的 Hybrid。我们也会简要回顾 Claude Plays Robotics 和 RPent，看看这个问题从哪里来。\n\n第二部分 Data，只讲 Agentic Real2Sim。我们看它如何从真实记录得到模拟场景，以及论文所说的成功究竟怎样判定。\n\n第三部分 Improvement，只讲 ENPIRE。我们看真实机器人如何被组织成一个可重复的实验环境，Agent 又改了什么、曲线测了什么。\n\n三个工作的输入、产物和评价标准不同。我们不会把第一部分的控制成功率、第二部分的 replay acceptance、第三部分允许 recovery 的 rollout 成功率放到同一条排行榜上。",
+    "old_slide": null,
+    "new_slide_key": "questions",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Introduction",
+    "sources": [],
+    "footer": "One representative study per part · question, method, experiment, conclusion",
+    "startMinutes": 2.5
+  },
+  {
+    "title": "Agent Controls Robot",
+    "ids": [
+      "ANON"
+    ],
+    "number": 4,
+    "minutes": 4,
+    "script": "> 读图提示：这是匿名报告的原始控制架构图。先点击放大，讲右侧 Direct，再讲左侧 Hybrid；最后返回页面，点明本章问题。\n\n第一部分的问题是：同一个 Astra Agent，是否能从已有 learned action prior 中获益？这里比较的是两种 inference-time 控制架构，不是重新训练两个大模型。\n\n先读输入符号。o_t 表示 head 和左右 wrist 的三个 RGB 视图，p_t 表示 proprioception，ℓ 是任务指令，h_t 是执行历史与笔记。图里的 A_t 是 action segment，k_t 是本次执行的 control steps 数。EEF target 用位置 x、姿态 R、夹爪 g 表示；位置 x 不要和 proprioception p_t 混淆。\n\n右侧 Direct 不调用 π0.5 candidate service。Astra 根据图像、状态、指令和历史，自行给出双臂 EEF targets，包括位置、朝向和夹爪命令。执行一到五个 control steps，再得到新的 observation，继续决策。它仍然有运行工具和底层 controller，不是直接输出 torque。\n\n左侧 Hybrid 先让 π0.5 读图像、状态与指令，产生 joint-space candidate action segment。Astra 不只看到候选，还看当前 observation、history 和对应的 FK trajectory，然后选择接受，或作 EEF correction。\n\n这两条分支是 OR，不是先接受整段再追加修正。接受时执行候选的一个前缀，一到十五步；EEF correction 则执行一到五步。执行后重新观察、重新决策，未执行的 proposal suffix 不会自动一直跑下去。\n\n所以这个 Hybrid 不是“大模型发一句子任务，VLA 独立做完整 pick”。Astra 在每个 decision point 都参与审核。这张图展示的是控制系统的数据流；它没有披露 GPT 6 Astra 内部的网络结构或预训练配方，我们也不补猜。\n\n在看具体实验之前，用一页把它放回此前工作的背景。",
+    "old_slide": null,
+    "new_slide_key": "control",
+    "diagram_key": "control",
+    "chapter_opening": true,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Anonymous report · original control-system diagram, English page capture · click to enlarge",
+    "startMinutes": 4.0
+  },
+  {
+    "title": "Context: Models and Interfaces",
+    "ids": [
+      "S09",
+      "RPENT"
+    ],
+    "number": 5,
+    "minutes": 2,
+    "script": "> 读图提示：左侧三个简短数据流对应 Claude Plays Robotics 讨论的控制分工；右侧 RPent 只说明服务组织。不要在此展开各自 benchmark。\n\nClaude Plays Robotics 把多种接口放在一起比较：模型直接给 action；模型写 controller code，让程序在执行时反馈；或者借助 pretrained policy，再由模型进行 supervision。这里保留的是这些控制分工，不再复制它的整套结果。\n\nRPent 更偏工程组织：把 motion、perception、code、learned policy 等能力封装为可组合服务，Agent 根据任务使用它们。架构里的能力范围不等于每一个后端都已经实现和测过。它说明工具怎样组织，不证明大模型在原理上必须把动作外包。\n\n为什么不能把旧结论固定下来？当多模态模型通过机器人数据训练，学到更好的 observation-to-action 映射，直接行动的能力前提就可能改变。此前特定模型、任务和接口下得出的结果，需要在新的模型与预算下重新验证，不能继续外推成“LLM 只能规划、控制必须交给 tools”。\n\n需要分清两层：旧实验在它原来的设置下仍然成立；不可靠的是把它推广成所有未来模型的永久分工。对于 Astra，本次可查一手材料没有披露足以核实的机器人预训练数据规模或因果消融。因此这里讲的是训练改变结论适用范围的逻辑，不是宣称已经知道 Astra 的训练配方。\n\n有了这点背景，我们就回到唯一的主案例：这个 Direct/Hybrid 报告具体把什么固定了，又改变了什么？",
+    "old_slide": null,
+    "new_slide_key": "background",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Anthropic, Claude Plays Robotics (9 Jul 2026)",
+        "url": "https://www.anthropic.com/research/claude-plays-robotics"
+      },
+      {
+        "label": "RPent · Recursive Physical Agent (RLinf), official framework and source",
+        "url": "https://github.com/RLinf/RPent"
+      }
+    ],
+    "footer": "Background only: Claude Plays Robotics and RPent · not additional case studies",
+    "startMinutes": 8.0
+  },
+  {
+    "title": "What Enters and Leaves Each Model?",
+    "ids": [
+      "ANON"
+    ],
+    "number": 6,
+    "minutes": 3,
+    "script": "> 读图提示：按 Shared input、Direct、Hybrid 三列读。重点是 50×14 候选不等于每次执行 50 步，以及 25 Hz 不是 LLM 决策频率。\n\n接下来只讲报告的 RoboDojo panel，不把另一套 RoboLab 条件混进主结果。这里是 dual ARX X5 的仿真任务，选了十个任务，每个任务五个 cases，每组五十次。两组按 task、scene 和相应的 layout、reset、initial、policy seeds 对齐；任务选择偏向 π0.5 原有成功率较低的区域，并非随机代表所有 robotics tasks。\n\n共同输入包括三个 RGB view、14D proprioception 和任务指令。十四维按左右两臂排列，每臂六个 joint 加一个 gripper opening。Astra 还使用执行历史和笔记；两组采用相同 Astra 模型和 xhigh setting，以及相同的任务说明和 success-condition reminders。\n\nDirect 不启动 π0.5 服务，自行产生双臂 EEF target。Hybrid 使用 RoboDojo task-finetuned π0.5，每次返回 50×14 的 joint-space target segment，以及双臂 FK poses。这不是五十个独立任务，也不是一次把五十步全部执行。\n\nAstra 审核后，沿用候选最多执行十五步；生成 EEF correction 或 Direct action 时，最多五步。EEF target 经 local damped-least-squares IK 落到 joint motion，并在 control ACK 后重新求解；有 5 cm 和 0.35 rad 的目标保护。模型提出了目标，不等于已经到达或接触成功，仍要看执行后的图像和 measured state。\n\n环境 native control rate 是 25 Hz，即每步 0.04 秒；Astra 在 chunk boundary 观察，不以 25 Hz 连续推理。\n\n因此这不是只增删一个 VLA prior 的纯消融：action prior、生成接口和执行段长一起变了。它可以比较两种完整配置的结果，但不能单独证明哪一个因素造成差异。",
+    "old_slide": null,
+    "new_slide_key": "protocol",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Anonymous report · RoboDojo method and paired evaluation; control-step rate is not model decision frequency",
+    "startMinutes": 10.0
+  },
+  {
+    "title": "RoboDojo: Results and Examples",
+    "ids": [
+      "ANON"
+    ],
+    "number": 7,
+    "minutes": 5,
+    "script": "> 播放提示：两段都来自 RoboDojo simulation。左侧 sorting 是完整成功 rollout，右侧 packing 是最终成功 rollout 的作者摘录；不是同一任务的配对视频。视频省略 LLM 等待，不是端到端实时录屏。\n\n先看完整分母，再看具体过程。在十任务、每任务五个配对 cases 上，Direct 成功 13/50，Hybrid 成功 24/50。这里的主结果只有这一组，不把 public-reference baseline 或另一套 suite 的数值并排当成等条件重跑。\n\n这支持一个描述性结论：在所选 RoboDojo 条件下，Hybrid 配置完成的 cases 更多。它还没有证明，所有增益都来自 π0.5 prior，因为刚才已经看到 segment length 等条件也一起变化。\n\n再看视频。Direct 的 sorting 展示模型能够自己产生连续的局部 EEF 决策，并根据新图像继续；Hybrid 的 packing 展示 π0.5 proposal 与 Astra review 的交互。成功视频用于理解行为，不代替五十个 cases 的统计；尤其不能用不同任务的两段视频比较谁更快。\n\n如果追问 Astra 在 Hybrid 中做了多少，报告统计 42,750 个实际 control steps，其中 6,174 个是 correction，占 14.4%。这个数字只描述被执行的控制步，不是 Astra 只在 14.4% 的时刻被调用；它在每个 decision point 都审核 proposal。它也不自动证明每次 correction 都有正收益。\n\n所以先把“这套配置结果更高”与“为什么更高”分开。前者有这组统计，后者需要固定其他条件的进一步消融。",
+    "old_slide": null,
+    "new_slide_key": "control_results",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Anonymous report · 10-task RoboDojo panel only; both videos are selected illustrations, not a video-to-video comparison",
+    "startMinutes": 13.0
+  },
+  {
+    "title": "Control: What Did We Learn?",
+    "ids": [
+      "ANON"
+    ],
+    "number": 8,
+    "minutes": 2,
+    "script": "第一部分回到最初的问题：learned action prior 能不能帮助同一个 Agent？这个报告在所选 RoboDojo 配置里给出正面的比较结果，24/50 对 13/50；Direct 本身也展示了真实的动作生成能力，而不是只能输出高层语言计划。\n\n方法的关键已经明确：π0.5 产生 joint-space candidate，Astra 审核后接受或纠正；Direct 则自己给 EEF target。两组都需要 observation、history 和底层执行器。不要把它压缩成“有 tools 与没有 tools”。\n\n当前证据的边界也明确：任务经过选择、样本有限，而且 action prior 与执行段长同时变化。报告的 RoboLab 补充记录还有 selected final slots、retries 和预算不配对问题，我们不把它并入本章主表，也不用它证明严格的胜负反转。\n\n下一步应固定任务、初态、segment length、安全约束和总预算，分别测首次完成、recovery、端到端 latency 与资源消耗。这样的实验才能回答控制分工在什么条件下更有利。\n\n这一章不落在“LLM 必须调用 learned tools”，也不落在“Direct 已经普遍替代 policy”。它留下的是一个可以检验的问题。下一章换研究对象：不再比较谁控制动作，而是研究怎样把已有真实交互变成一个可运行的模拟场景。",
+    "old_slide": null,
+    "new_slide_key": "control_summary",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "1 · Agent Controls Robot",
+    "sources": [
+      {
+        "label": "Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      }
+    ],
+    "footer": "Anonymous report · bounded interpretation of the RoboDojo comparison; RoboLab is not pooled into these results",
+    "startMinutes": 18.0
+  },
+  {
+    "title": "Agent Produces Data",
+    "ids": [
+      "S13"
+    ],
+    "number": 9,
+    "minutes": 2,
+    "script": "> 读图提示：这是 Agentic Real2Sim 的章节导读。先讲真实 recording 与 candidate replay 的两条路径，再讲 mismatch 如何返回给 Agent。\n\n第二部分只讲 Agentic Real2Sim。问题是：给定一段真实机器人交互记录，能不能自动构建与之对应、可运行的 simulation episode，而不是人工逐件建模型和调参数？\n\n图左侧 recording 是观测依据。Agent 组织视觉处理、几何资产、参数与场景构建工具，交给 simulator 生成 candidate replay，再与真实记录比较。Mismatch 可以帮助它修正候选。\n\n这里产出的首先是 scene 和 replay，不是训练好的 robot policy，也不是已经证明能预测任意新动作的 world model。这两个目标需要不同实验。\n\n本章会按同一条线展开：先看真实 episode 和 twin；再看论文的原始 pipeline；然后解释 DROID-100 的判分方式和结果，最后判断这些结果到底回答了最初问题的哪一部分。",
+    "old_slide": null,
+    "new_slide_key": "world",
+    "diagram_key": "world",
+    "chapter_opening": true,
+    "group": "2 · Agent Produces Data",
+    "sources": [
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      }
+    ],
+    "footer": "Our synthesis of Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+    "startMinutes": 20.0
+  },
+  {
+    "number": 10,
+    "title": "Real Episode and Its Twin",
+    "section": "2",
+    "ids": [
+      "S13"
+    ],
+    "minutes": 2,
+    "script": "> 播放与指图提示：同时播放真实和模拟片段。它们来自同一个 recorded episode，但这里没有做逐帧同步的数值误差分析。\n\n这组视频直接展示了 Agentic Real2Sim 的目标：从一段真实交互出发，构建一个相应的 simulated episode。\n\n这件事远不止重建一个外形相似的 mesh。流程还需要把 robot、scene geometry、camera、object pose 和 trajectory 组装成 simulator 真正能运行的场景，并选择能支持该交互的表示和参数。\n\n难点在于，一段视频通常不能唯一确定一个 physical model。Camera pose 的误差，可能看起来像 object pose 的误差；collision shape 和 friction 也可能在某一条轨迹上互相补偿。于是，不同的模型可能都生成一个相似的 replay。\n\n比如，录制数据里机器人缓慢地从左边推了物体。重建出来的场景可能把这一次推得很像，但它是否能预测从另一侧推、或者更快地推？这是另外一个问题。\n\n这正是章首流程图里 comparison 的边界：与 reference recording 一致，和对新动作有预测力，是两种不同的要求。\n\n我们可以认可一个可运行、可评测的 conversion workflow 的价值，同时把 predictive validity 保留为单独需要验证的问题。下面进入它的内部流程。",
+    "old_slide": 10,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Produces Data",
+    "sources": [
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      }
+    ],
+    "footer": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)  ·  Original project videos",
+    "startMinutes": 22.0
+  },
+  {
+    "number": 11,
+    "title": "Agentic Real2Sim: Method",
+    "section": "2",
+    "ids": [
+      "S13"
+    ],
+    "minutes": 4,
+    "script": "> 播放与指图提示：沿原图的四个阶段讲。每经过一个阶段，都指出它交给下一阶段的 artifact。重点是数据如何流动，不必把所有工具名都念一遍。\n\n首先是 visual processing。系统需要识别相关物体、估计几何，并跟踪 pose。SAM3、SAM3D、FoundationStereo 和 FoundationPose 等专门工具，分别提供一部分信息。\n\nAgent 的职责主要是组织这些工具，而不是在语言模型内部直接完成所有 depth estimation 或 pose tracking。这一点决定了 pipeline 的信息来源，也决定了出了问题以后应该去哪里排查。\n\n第二部分引入 physical priors。系统需要对物体的性质形成结构化假设。有些属性仅凭图像很难确定，因此需要先建立假设，再检验它们产生的 simulation 是否与真实观察一致。\n\n接下来是 scene preparation。几何、pose、camera setting 和 motion trajectory，要在坐标系和 simulator 表示上保持一致。哪怕每个模块单独看都不错，只要模块之间的转换出错，整个场景仍然可能运行失败。\n\n最后，simulator 进入 feedback loop。Pipeline 运行一个 candidate episode，把输出和 recorded interaction 比较，再更新场景。这里既有 Agent 的决策，也有 deterministic optimization 和 search。\n\n读这张图时，可以一直追踪中间产物：perception 之后得到的是估计；assembly 之后得到的是可执行场景；simulation 之后得到的是 replay 和可用于修正的测量。产物越明确，越容易知道失败发生在哪一层。\n\n举个例子，如果物体 geometry 本身就不对，后面的参数搜索可能一直在补偿错误的形状。此时仅仅换一个更强的语言模型，未必能解决问题。不过，这只是关于 bottleneck 的一种合理机制解释，不能把架构图本身当成组件级因果证据。\n\n这项工作的价值，是把一个长而复杂的 robotics toolchain 组织成可检查的流程。至于这个流程究竟有多可靠，还需要看下一页的完整评价口径。",
+    "old_slide": 11,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Produces Data",
+    "sources": [
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      }
+    ],
+    "footer": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)  ·  Original architecture figure",
+    "startMinutes": 24.0
+  },
+  {
+    "number": 12,
+    "title": "DROID-100: Protocol and Results",
+    "section": "2",
+    "ids": [
+      "S13"
+    ],
+    "minutes": 6,
+    "script": "> 播放与指图提示：先读左图的 success、partial、failure；再完整解释 candidate/judge 规则；最后指向右图的 logarithmic cost axis。规则讲完后停顿，确保观众理解分母与判定方式。\n\n左图保留了抽样得到的全部一百个 DROID episode。表现最好的 backend 是 Gemma 4 31B：48 个达到 replay-success 标准，8 个是 partial，44 个失败。即使某次运行还没生成有效 replay record 就停止了，也仍然算在这一百分母里。\n\n这个分母很有价值，因为它描述的是整批尝试，而不是只展示 pipeline 最终成功输出的视频。\n\n但 success 到底是什么意思？Evaluator 首先筛选 reconstruction candidate，例如要求 grasp probe 有效、replay video 存在，以及 motion statistics 有限并且落在合理范围。随后，最多选五个 candidate 交给 judges。\n\n三个 VLM judge 比较真实和模拟的关键帧。评分关注 target-object identity、final object location、action similarity 和 final gripper location。每个 judge 会选出自己评分最高的 candidate。\n\n只要任意一个 judge 的最佳 candidate 达到 8/10 或以上，这个 episode 就可以通过。这是一种寻找可接受 candidate 的规则，不是 majority voting，也不要求三个 judge 一致，更不是把所有 candidate 的分数取平均。\n\n因此，48/100 的准确含义是：在这套 acceptance rule 下，pipeline 为多少个 episode 找到了被接受的 replay。它并不直接等价于 friction、stiffness 等物理参数估计准确，也不等价于新动作下的预测准确。\n\n再看右边，cost axis 是 logarithmic scale。论文统计的是 model-call bill，而不是 perception、simulation 和 preparation 的全部成本。这个结果可以支持 model usage 的成本比较，但不能直接当成完整部署成本。\n\n其他 backend 得到的 accepted episode 数量在 37 到 45 之间。它说明这个 workflow 可以搭配不同模型工作。不过，不宜把这一次排序扩展成普遍的模型能力排行榜，尤其当不少失败可能来自 pipeline 的其他部分时。\n\n对我们的问题来说，下一步真正有价值的实验，是改变 action 或 initial condition，再检验 simulator 的预测。带着这个区别，我们总结一下第二部分。",
+    "old_slide": 12,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Produces Data",
+    "sources": [
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      }
+    ],
+    "footer": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)  ·  Original paper Figure 3",
+    "startMinutes": 28.0
+  },
+  {
+    "title": "Data: Replay Is Not Prediction",
+    "ids": [
+      "S13"
+    ],
+    "number": 13,
+    "minutes": 2,
+    "script": "第二部分的问题，是从真实交互构建可运行的 simulation episode。Agentic Real2Sim 的方法，是让 Agent 组织 perception、geometry、scene assembly 与 simulation，再按 replay mismatch 迭代。\n\n它的主要实验告诉我们：在抽样的一百个 DROID episodes 中，最好的 backend 有 48 个通过给定的 replay-acceptance rule，8 个 partial，44 个 failure。失败和没有有效记录的运行都保留在分母里。\n\n这个结果支持自动化重建流程能够为部分真实记录找到可接受的模拟回放。但它的 judge 主要比较关键帧、对象身份、最终位置和动作相似性，不是在直接测量 friction 等物理参数，也没有由此证明换个 action 后仍然预测准确。\n\n所以不能把 48/100 改写成“物理建模准确率”。若下一步目标是用 simulator 支持 policy learning 或 planning，需要改变 action 或 initial condition，检验它是否仍然有效；这是下一阶段验证要求，而不是说论文已经完成。\n\n这也自然引出第三部分：改进机器人，不一定只能依靠模拟。ENPIRE 直接利用真实 rollout 产生反馈，研究能否把真实实验组织成一个持续修改 policy 的过程。它不依赖先运行 Agentic Real2Sim，两章不是一条已经打通的流水线。",
+    "old_slide": null,
+    "new_slide_key": "world_summary",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "2 · Agent Produces Data",
+    "sources": [
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      }
+    ],
+    "footer": "Our synthesis of Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+    "startMinutes": 34.0
+  },
+  {
+    "title": "Agent Improves Robot",
+    "ids": [
+      "S15"
+    ],
+    "number": 14,
+    "minutes": 2,
+    "script": "> 读图提示：先讲 Task + API 已经固定，再沿 Agent → Real rollout → Verifier + logs 回到 Agent。这里是下一版 policy 的改进环，而不是当前 action 的即时纠错。\n\n第三部分只讲 ENPIRE。它的问题是：能不能让 coding Agent 在真实机器人上反复提出修改、运行实验、检查结果，从而改善 policy，而不是每一轮都由研究者手动组织？\n\n这张图有一个重要前提。Environment construction 先在人的反馈下建立动作、安全、reset 和 success verification 接口；进入 improvement 阶段以后，environment contract 保持固定。Agent 改策略，不能顺便把成功标准改掉。\n\nAgent 可以改 heuristic code，也可以修改训练程序或训练 neural policy。Real rollout 产生结果和轨迹，verifier 与 logs 帮助它决定下一次改什么。保留下来的是后续 rollout 会继续使用的 policy 或程序变化，不要求 foundation LLM 自身更新 weights。\n\n这可以作为 Robot RSI、自进化目标的一种具体尝试，但我们只按 ENPIRE 的实验范围讲：真实反馈能否支持 policy improvement。它并没有因为存在循环，就证明系统的改进能力会无限递归增强。\n\n接下来先看真实任务，再读原始架构，随后检查 reset、verification、learning curve 和成本。所有结论都从这个工作自己的实验中来。",
+    "old_slide": null,
+    "new_slide_key": "improve",
+    "diagram_key": "improve",
+    "chapter_opening": true,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "Our synthesis of ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+    "startMinutes": 36.0
+  },
+  {
+    "number": 15,
+    "title": "ENPIRE: The Real Task",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 2,
+    "script": "> 播放与指图提示：播放原始 task video 中 300–330 秒的片段。它展示 hardware interaction，不是完整 rollout，也不是 success-rate 统计。\n\n在 ENPIRE 里，Agent 可以提出一个策略修改，运行真实机器人实验，检查发生了什么，再决定下一次修改。\n\n这里的 improvement 可以落在不同产物上。Agent 可能编辑 heuristic program，也可能修改 training procedure，或者通过环境接口训练 policy。这些变化并不要求 general language model 自身更新 weights。\n\n做 robotics 的同学应该会觉得，这很像我们平常的一部分工作：改代码、跑一次、看 video 或 log、解释失败，再继续修改。但大量时间往往花在准备下一次实验，以及判断上一轮究竟算不算成功。\n\nENPIRE 把这些外围环节放进了方法本身。机器人需要 action interface、hard safety constraints、automatic reset 和 success verification。缺少这些组件，Agent 想要更多证据时，就不能随时启动下一次实验。\n\n这一页的视频让我们看到物理场景。真正需要评价的，是一个可重复过程能否在清楚定义的 protocol 下产生更好的策略。接下来先看 environment 与 improvement 的分工，再看 reset 和 verification，最后读 learning curve 和资源代价。",
+    "old_slide": 14,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original project demonstration",
+    "startMinutes": 38.0
+  },
+  {
+    "number": 16,
+    "title": "ENPIRE: Environment and Improvement",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 5,
+    "script": "> 播放与指图提示：先追踪原图中的 human-assisted environment setup，再进入 improvement loop。可以问：“你们平常的机器人实验里，哪一步最耗时间？”留一小段回应时间。\n\n这张图把两个容易混淆的阶段分开了。第一个阶段，是 environment construction；第二个阶段，才是在这个环境里进行 autonomous improvement。\n\n构建 environment 的时候，系统会利用 human feedback，建立控制接口和配套工具，包括 safety constraints、automatic reset 和 success verification。构建完成以后，改进过程通过 immutable Gym APIs 访问这些能力。\n\n这个边界让后面的实验结果有稳定的含义。Agent 可以改 policy 或 training procedure，但 improvement 期间 environment contract 保持固定。否则，如果策略做不好时，系统还可以顺手重新定义 success，那么分数上升就很难解释了。\n\n在这个固定接口里，policy improvement 提出并实现修改，real rollout 检验当前策略。Agent 可以查看 trajectory、video 和 reward signal，再决定下一次尝试。\n\n策略的实现方式并不是唯一的。论文探索了 heuristic code，也包括 behavior cloning、reinforcement learning，以及与 VLA 的组合。这些是生成行为的不同路径，不能概括成“同一个模型把所有东西都学会了”。\n\n这里还有两个时间尺度。较短的尺度上，policy 执行一个 trial，并可能根据当前反馈进行修正。较长的尺度上，research Agent 比较实验依据，修改 policy 或 training code，让后续 trial 使用新的版本。后者产生的产物有机会跨越当前 rollout 保留下来。\n\n系统还支持多个 agent-robot pair 并行工作。不同 Agent 可以探索不同 hypothesis，也可以交换有效的代码改动。这样可能更快找到好策略，但总成本是否更低，需要后面的资源实验单独回答。\n\n大家可以看到，很大一部分贡献不在某一个 optimizer 里。再合理的下一步想法，如果机器人不能 reset、log 看不出失败原因，或者 verifier 给错 reward，也很难转化成可靠进展。Experimental interface 决定了 Agent 到底能从试验里获得什么信息。\n\n因此 human-assisted setup 不能从结论里消失。这里证明的是：在搭建好的环境和接口内，Agent 可以进行自动改进。它不等于机器人进入一个任意实验室，就能独立建立所有 safety 和 evaluation 条件。\n\n下一页把其中两个关键环节具体展示出来：如何让物理任务重新开始，以及如何判断结果。",
+    "old_slide": 15,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original Figure 2, method panel",
+    "startMinutes": 40.0
+  },
+  {
+    "number": 17,
+    "title": "ENPIRE: Reset and Verification",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 4,
+    "script": "> 播放与指图提示：依次播放 pin reset 和 zip-tie verification。Reset 约 62 秒。两个视频来自不同任务，不要讲成同一个 rollout 的同步流程。\n\nAutomatic reset 让一次实验变成可以反复运行的实验。如果每次失败都需要人恢复现场，Agent 的自主工作就会停在这里。\n\nPin 的例子展示了系统怎样准备下一次 trial。Reset 的质量也影响实验是否可比。假如后来的 policy 总是得到更容易的 initial state，那么分数改善可能部分来自状态分布变了，而不是策略更好了。\n\nENPIRE 的部分 reset 从较困难的 task subphase 开始。这是研究复杂 manipulation 的合理方式，但我们必须保留这个前提。从特定 subphase 出发的成功，不应被重新描述为“任意初始状态下都能完成全任务”。\n\n第二个例子展示 zip tie 的 verification。系统利用视觉处理，判断 strap 是否穿过 head，论文讨论了通过两个 camera view 降低 false positive。其他任务还可以结合 proprioception 或 torque 等信号。\n\nVerifier 提供了 Agent 据以改进的结果。如果出现 false positive，系统可能奖励了错误行为；如果出现 false negative，又可能错过有效修改。\n\n因此，要把三个问题分开：动作是否安全，reset 是否正确，success test 是否可信。它们各自承担不同职责，通过其中一个并不证明其他两个也没有问题。\n\n有了这些前提，接下来我们再读 improvement curve，才知道曲线究竟代表了什么。",
+    "old_slide": 16,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original project videos",
+    "startMinutes": 45.0
+  },
+  {
+    "number": 18,
+    "title": "ENPIRE: Pin Insertion Curve",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 5,
+    "script": "> 播放与指图提示：先读左侧不同 backend 的 learning curve，再读中间不同 team size 的曲线。讨论接近 99% 的结果时始终保留 retry 口径；可问观众还需要什么信息才能知道 one-shot precision。\n\n这是论文结果图中 pin insertion 的部分，原来的 axes、legend 和任务示意都保留下来了。\n\n左侧曲线随着 research time 推进，展示策略性能如何变化。Horizontal axis 是实验开发耗费的时间，不是最终 policy 在部署时生成 action 的 latency。\n\n中间改变的是 agent-robot pair 的数量。更多并行实验，可以更快找到高性能策略。论文报告，在 pin insertion 上，从一个 pair 扩展到八个 pair，达到接近完美 success rate 的时间，从超过一个半小时降低到大约四十分钟。\n\n但在解释最后的 success rate 之前，需要先说明 rollout 的定义。ENPIRE 使用固定的 retry budget，最多允许八次 retry。后续尝试可以利用之前失败带来的信息，所以这个指标同时包含初次执行的 precision 和 rollout 内部的 recovery。\n\n因此，在这套 protocol 下接近 99%，不能直接说成 99% one-shot insertion precision。它也不是 independent best-of-eight，因为这些尝试不是相互独立的。我们不能代入独立 Bernoulli 假设，反推出一次尝试的成功概率。\n\n这不意味着 recovery 没有价值。真实部署里，发现失败再修正，本来就是重要能力。关键是准确承认它测量了什么，同时保留 retry budget 和所需时间。\n\n这组结果支持一个明确而有边界的结论：在定义好的 environment 内，这个 research workflow 能随着实验推进改进 policy，额外并行资源也能缩短发现高性能策略的时间。\n\n仍然值得进一步测量的包括：first attempt 有多可靠？Recovery 增加了多少时间？留下来的策略，在新的 starting condition 或相关任务上是否仍然有效？\n\n此外，发现好策略更快，不代表总资源更少。下一页仍然是 ENPIRE 的实验，用资源图把这个代价讲清楚，再总结本章。",
+    "old_slide": 17,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original Figure 3, pin panel; axes and legend retained",
+    "startMinutes": 49.0
+  },
+  {
+    "number": 19,
+    "title": "ENPIRE: Cost and Chapter Summary",
+    "section": "3",
+    "ids": [
+      "S15"
+    ],
+    "minutes": 3,
+    "script": "> 播放与指图提示：依次读 utilization、实测 token use 与 linear projection、time/cost。可以短问一句：当前更关心最低 elapsed time，还是最低 total cost？\n\n这张图把 scaling 的几种含义拆开了。\n\n首先是 utilization。随着 fleet 变大，GPU utilization 可以提高，但平均到每台机器人的 utilization 可能下降。增加机器人数量，并不保证每台机器人都把更多比例的时间用在执行实验上。\n\n接下来是 token usage。图中同时给了实测曲线和 linear projection。实测曲线描述运行过程中真正发生的资源消耗；projection 则是一个简单线性增长的参照，两者不能混在一起说。\n\n最后，图把 tokens to success 和 time to success 分开。更大的 fleet 可以更早达到目标，同时消耗显著更多 tokens。论文的结果体现的是用 token efficiency 换取更短的开发时间。\n\n这个交换是否值得，取决于目标。如果最稀缺的是上线窗口或实验周期，缩短 elapsed time 可能值得付出更多成本；如果预算才是主要约束，最合适的配置又可能不同。\n\n对今天的讨论，重要的是把量说清楚。Research wall-clock time、policy latency、token consumption 和 robot utilization 回答的是不同问题，不能全部压缩成一个含糊的“效率更高”。\n\n结合前面的 learning curve，我们可以给 ENPIRE 一个具体评价：它组织起了能够改进策略的真实实验流程，同时也明确暴露了配套基础设施和资源 tradeoff 的重要性。\n\n最后按问题、方法、结果把这一章收束。问题是怎样让 Agent 利用真实反馈改进 policy；方法是 human-assisted environment construction 后固定 APIs，再执行 proposal、rollout、verification 和 policy revision；结果是在所测任务与 retry protocol 下，策略随 research time 改进，更多并行资源能更快找到好策略，但 tokens 代价增加。\n\n这个结果不等于 99% one-shot precision，不等于任意实验室都能自动建立可靠 reset/verifier，也不等于已经证明跨任务持续的 recursive self-improvement。它说明的是：把实验接口和评价条件固定好以后，Agent 可以在这些条件内推进真实机器人 policy research。\n\n三个部分到这里结束。最后一个机械手动画只是独立的工程应用展示，不再加入第四套研究结论。",
+    "old_slide": 18,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "3 · Agent Improves Robot",
+    "sources": [
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)  ·  Original paper resource-utilization figure",
+    "startMinutes": 54.0
+  },
+  {
+    "number": 20,
+    "title": "Beyond: Structural Design",
+    "section": "",
+    "ids": [
+      "S24"
+    ],
+    "minutes": 1.5,
+    "script": "> 播放与指图提示：播放 CAD animation。将它介绍为 structural design application，并始终保留 “Not a validated physical hand”。可以请观众提出一个下一步必须做的工程检查。\n\n这一页放在三个角色之外。Agent 对 robotics 的贡献不只有控制、数据和改进，也包括结构设计这类工程工作。这里的任务不是让一只现成机械手执行动作，而是借助 CAD 和 visualization 提出一份 hand design，展示生成的 geometry 和 animation。\n\n它的价值是帮助设计者更快地表达、检查和迭代一个机构方案。能调用工程工具以后，Agent 产生的就不只是解释文字，也可以是后续人员和工具继续处理的 design artifact。不过，这段 demo 本身没有给出节省了多少设计时间的对照实验。\n\n作者明确指出，这个设计目前不能直接在现实里工作。因此我们可以称它为 structural design application，但不能称它为已经制造并验证过的机械手，也不能把动画当成接触、负载或可靠性测试。\n\n要把方案推进成可用硬件，还需要检查 tendon routing、friction、actuator requirement、manufacturing tolerance 和装配关系，再制作 physical prototype。这些是对后续工程流程的建议，不是说作者已经完成了这些验证。\n\n这个 demo 只补充应用范围，不与前面三个工作的实验相互佐证。",
+    "old_slide": 19,
+    "new_slide_key": null,
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Other Applications / Closing",
+    "sources": [
+      {
+        "label": "@earthtojake, X hand design and limitation thread (10 Sep 2026)",
+        "url": "https://x.com/earthtojake/status/2097789988670709821"
+      },
+      {
+        "label": "Author limitation and follow-up",
+        "url": "https://x.com/earthtojake/status/2097789991426335015"
+      },
+      {
+        "label": "Author limitation and follow-up",
+        "url": "https://x.com/earthtojake/status/2097801101890207893"
+      }
+    ],
+    "footer": "@earthtojake, X hand design and limitation thread (10 Sep 2026)  ·  Original X design demonstration",
+    "startMinutes": 57.0
+  },
+  {
+    "title": "Three Studies, Three Conclusions",
+    "ids": [
+      "ANON",
+      "S13",
+      "S15"
+    ],
+    "number": 21,
+    "minutes": 1.5,
+    "script": "最后只保留三个结论，每个结论对应刚才的一个工作。\n\nControl：Direct/Hybrid 报告比较动作责任的两种分配。Hybrid 在所选 RoboDojo 配置下完成更多 cases，但 action prior 和执行段长同时变化，因此不能推广成所有模型都必须委托控制。旧架构可以作背景，新的训练与能力前提仍需新的对照。\n\nData：Agentic Real2Sim 把真实记录转成可运行的模拟回放。48/100 是按指定规则接受的 replay 数，不是物理参数准确率，也没有替代新动作下的预测检验。\n\nImprovement：ENPIRE 把真实 rollout、reset、verification 和 policy revision 组织成实验循环。它在所测协议下改善策略、用更多资源缩短 research time；人参与的 setup、conditional retries 和成本边界都属于结论的一部分。\n\n这三章研究的是不同对象，不是一套系统的三个已验证模块。希望大家带走的方法是：先问清楚问题，再看机制实际怎么工作，最后让结论停在实验能够支持的位置。谢谢大家。",
+    "old_slide": null,
+    "new_slide_key": "end",
+    "diagram_key": null,
+    "chapter_opening": false,
+    "group": "Other Applications / Closing",
+    "sources": [
+      {
+        "label": "Anonymous technical report · GPT 6 Astra as an Embodied Policy (accessed 14 Sep 2026)",
+        "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1"
+      },
+      {
+        "label": "Agentic Real2Sim, arXiv:2607.19190v3 (24 Jul 2026)",
+        "url": "https://arxiv.org/html/2607.19190v3"
+      },
+      {
+        "label": "ENPIRE, arXiv:2606.19980v1 (Jun 2026)",
+        "url": "https://arxiv.org/html/2606.19980v1"
+      }
+    ],
+    "footer": "Synthesis of the three representative studies; no cross-paper ranking",
+    "startMinutes": 58.5
+  }
+]

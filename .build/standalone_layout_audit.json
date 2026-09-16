@@ -1,5 +1,5 @@
 {
-  "html_sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
   "slides": [
     {
       "number": 1,
@@ -33,7 +33,7 @@
     },
     {
       "number": 3,
-      "title": "Our Goal",
+      "title": "Three Roles for Robotics Agents",
       "overflow": [],
       "images": [
         {
@@ -45,18 +45,6 @@
     },
     {
       "number": 4,
-      "title": "Three Roles",
-      "overflow": [],
-      "images": [
-        {
-          "alt": "CLEAR logo",
-          "loaded": true
-        }
-      ],
-      "videoClips": []
-    },
-    {
-      "number": 5,
       "title": "Agent Controls Robot",
       "overflow": [],
       "images": [
@@ -68,8 +56,32 @@
       "videoClips": []
     },
     {
+      "number": 5,
+      "title": "Hierarchical Robot Control",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Hi Robot original architecture: high-lev",
+          "loaded": true
+        },
+        {
+          "alt": "Figure Helix original architecture: Syst",
+          "loaded": true
+        },
+        {
+          "alt": "Figure Helix 02 original architecture wi",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
       "number": 6,
-      "title": "Direct Actions and Code",
+      "title": "Where Does Generalization Live?",
       "overflow": [],
       "images": [
         {
@@ -77,46 +89,11 @@
           "loaded": true
         }
       ],
-      "videoClips": [
-        "claude_humanoid",
-        "claude_manip"
-      ]
+      "videoClips": []
     },
     {
       "number": 7,
-      "title": "Model and Interface",
-      "overflow": [],
-      "images": [
-        {
-          "alt": "CLEAR logo",
-          "loaded": true
-        },
-        {
-          "alt": "Original Claude Plays Robotics interface",
-          "loaded": true
-        }
-      ],
-      "videoClips": []
-    },
-    {
-      "number": 8,
-      "title": "VLA as a Tool",
-      "overflow": [],
-      "images": [
-        {
-          "alt": "CLEAR logo",
-          "loaded": true
-        },
-        {
-          "alt": "Original report VLA supervision results ",
-          "loaded": true
-        }
-      ],
-      "videoClips": []
-    },
-    {
-      "number": 9,
-      "title": "Demo: Placement and Insertion",
+      "title": "Astra: Stronger Real-Robot Performance",
       "overflow": [],
       "images": [
         {
@@ -130,8 +107,8 @@
       ]
     },
     {
-      "number": 10,
-      "title": "Demo: Zero-shot Real Arms",
+      "number": 8,
+      "title": "Astra: More Real-Robot Demos",
       "overflow": [],
       "images": [
         {
@@ -140,13 +117,44 @@
         }
       ],
       "videoClips": [
-        "wenli_icl",
-        "arx_knob"
+        "policy_plug",
+        "keyboard"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Robot Puzzle Demos in Simulation",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "cube",
+        "claw"
+      ]
+    },
+    {
+      "number": 10,
+      "title": "One Model, Different Control Interfaces",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "asim_delta",
+        "asim_waypoint",
+        "asim_code"
       ]
     },
     {
       "number": 11,
-      "title": "Demo: Dexterity in Simulation",
+      "title": "Astra Interfaces: Three Tasks",
       "overflow": [],
       "images": [
         {
@@ -154,28 +162,11 @@
           "loaded": true
         }
       ],
-      "videoClips": [
-        "ze_rubik",
-        "juggle"
-      ]
+      "videoClips": []
     },
     {
       "number": 12,
-      "title": "Harness: Semantic Actions",
-      "overflow": [],
-      "images": [
-        {
-          "alt": "CLEAR logo",
-          "loaded": true
-        }
-      ],
-      "videoClips": [
-        "show_harness"
-      ]
-    },
-    {
-      "number": 13,
-      "title": "RPent: Robotics as Tools",
+      "title": "Astra: Introducing a Hybrid Architecture",
       "overflow": [],
       "images": [
         {
@@ -183,7 +174,30 @@
           "loaded": true
         },
         {
-          "alt": "Official RPent service-oriented framewor",
+          "alt": "Original anonymous Direct/Hybrid executi",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "anon_direct_sort",
+        "anon_hybrid_pack"
+      ]
+    },
+    {
+      "number": 13,
+      "title": "RoboDojo: Overall Results",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report RoboDojo panel-score-ran",
+          "loaded": true
+        },
+        {
+          "alt": "Original report RoboDojo panel-sr-rankin",
           "loaded": true
         }
       ],
@@ -191,25 +205,31 @@
     },
     {
       "number": 14,
-      "title": "Gaps and Directions",
+      "title": "RoboLab: Overall Results",
       "overflow": [],
       "images": [
         {
           "alt": "CLEAR logo",
           "loaded": true
+        },
+        {
+          "alt": "Original report RoboLab success-rate res",
+          "loaded": true
         }
       ],
-      "videoClips": [
-        "xhs_piper"
-      ]
+      "videoClips": []
     },
     {
       "number": 15,
-      "title": "Agent Produces Data",
+      "title": "RoboDojo: Task-Level Patterns",
       "overflow": [],
       "images": [
         {
           "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "Original report per-task Score heatmap; ",
           "loaded": true
         }
       ],
@@ -217,7 +237,43 @@
     },
     {
       "number": 16,
-      "title": "Real Episode and Its Twin",
+      "title": "High Latency Limits Real-Time Control",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 17,
+      "title": "Control: Strengths and Open Gaps",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 18,
+      "title": "Agent Creates Data",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 19,
+      "title": "Astra: Scene Reconstruction",
       "overflow": [],
       "images": [
         {
@@ -226,45 +282,28 @@
         }
       ],
       "videoClips": [
-        "ar2s_real",
-        "ar2s_sim"
+        "office_newton",
+        "kitchen"
       ]
     },
     {
-      "number": 17,
-      "title": "Conversion Pipeline",
+      "number": 20,
+      "title": "Astra: Hand Assets",
       "overflow": [],
       "images": [
         {
           "alt": "CLEAR logo",
           "loaded": true
-        },
-        {
-          "alt": "Agentic Real2Sim original architecture: ",
-          "loaded": true
         }
       ],
-      "videoClips": []
+      "videoClips": [
+        "hand",
+        "rope_hand"
+      ]
     },
     {
-      "number": 18,
-      "title": "Replay Acceptance on DROID-100",
-      "overflow": [],
-      "images": [
-        {
-          "alt": "CLEAR logo",
-          "loaded": true
-        },
-        {
-          "alt": "Original DROID-100 outcomes and model-ca",
-          "loaded": true
-        }
-      ],
-      "videoClips": []
-    },
-    {
-      "number": 19,
-      "title": "Demo: Real2Sim and a Failure",
+      "number": 21,
+      "title": "Astra: Replay and Data Rollout",
       "overflow": [],
       "images": [
         {
@@ -274,12 +313,12 @@
       ],
       "videoClips": [
         "astra_real2sim",
-        "astra_microphone"
+        "dexgpt"
       ]
     },
     {
-      "number": 20,
-      "title": "Agent Post-trains Robot",
+      "number": 22,
+      "title": "Data: From Demos to Useful Data",
       "overflow": [],
       "images": [
         {
@@ -290,8 +329,8 @@
       "videoClips": []
     },
     {
-      "number": 21,
-      "title": "ENPIRE: Real Experiments in the Loop",
+      "number": 23,
+      "title": "Agent Improves Policy",
       "overflow": [],
       "images": [
         {
@@ -299,12 +338,10 @@
           "loaded": true
         }
       ],
-      "videoClips": [
-        "enpire_task"
-      ]
+      "videoClips": []
     },
     {
-      "number": 22,
+      "number": 24,
       "title": "ENPIRE: Environment and Improvement",
       "overflow": [],
       "images": [
@@ -320,8 +357,8 @@
       "videoClips": []
     },
     {
-      "number": 23,
-      "title": "ENPIRE: Reset and Verification",
+      "number": 25,
+      "title": "ENPIRE: Auto Evaluation",
       "overflow": [],
       "images": [
         {
@@ -330,13 +367,81 @@
         }
       ],
       "videoClips": [
-        "enpire_reset",
-        "enpire_verify"
+        "enpire_verify_full"
       ]
     },
     {
-      "number": 24,
-      "title": "ENPIRE: Pin Insertion Curve",
+      "number": 26,
+      "title": "ENPIRE: Auto Reset",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": [
+        "enpire_reset_pusht",
+        "enpire_reset_full",
+        "enpire_reset_tie",
+        "enpire_reset_gpu"
+      ]
+    },
+    {
+      "number": 27,
+      "title": "ENPIRE: Two Ways to Improve Policy",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE official task photograph: Push-T:",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE official task photograph: Pin ins",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 28,
+      "title": "ENPIRE: What Did the Agent Change?",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE Figure 12: original idea tree and",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 29,
+      "title": "ENPIRE: Evaluate Coding Agents",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE complete original Figure 3; model",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 30,
+      "title": "ENPIRE: Parallel Physical Research",
       "overflow": [],
       "images": [
         {
@@ -348,11 +453,13 @@
           "loaded": true
         }
       ],
-      "videoClips": []
+      "videoClips": [
+        "enpire_fleet"
+      ]
     },
     {
-      "number": 25,
-      "title": "Faster Research, Higher Token Use",
+      "number": 31,
+      "title": "ENPIRE: Cost of Physical Research",
       "overflow": [],
       "images": [
         {
@@ -367,8 +474,24 @@
       "videoClips": []
     },
     {
-      "number": 26,
-      "title": "ASPIRE: Repairing Skills",
+      "number": 32,
+      "title": "ENPIRE: Autoresearch in RoboCasa",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        },
+        {
+          "alt": "ENPIRE original Figure 6; RoboCasa task ",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 33,
+      "title": "ENPIRE: Learned Manipulation Demos",
       "overflow": [],
       "images": [
         {
@@ -377,12 +500,15 @@
         }
       ],
       "videoClips": [
-        "aspire_trace"
+        "enpire_pin",
+        "enpire_gpu",
+        "enpire_tie",
+        "enpire_cut"
       ]
     },
     {
-      "number": 27,
-      "title": "Beyond: Structural Design",
+      "number": 34,
+      "title": "ENPIRE: Limitations",
       "overflow": [],
       "images": [
         {
@@ -390,13 +516,35 @@
           "loaded": true
         }
       ],
-      "videoClips": [
-        "hand"
-      ]
+      "videoClips": []
     },
     {
-      "number": 28,
-      "title": "Conclusion",
+      "number": 35,
+      "title": "Toward Recursive Self-Improvement",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 36,
+      "title": "Takeaways",
+      "overflow": [],
+      "images": [
+        {
+          "alt": "CLEAR logo",
+          "loaded": true
+        }
+      ],
+      "videoClips": []
+    },
+    {
+      "number": 37,
+      "title": "Thank You",
       "overflow": [],
       "images": [
         {

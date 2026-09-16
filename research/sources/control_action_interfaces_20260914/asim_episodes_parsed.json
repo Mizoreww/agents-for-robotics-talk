@@ -1,0 +1,2962 @@
+[
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 29 步 · 3 次查询 · 67316 tok · 76.83 s  最近距离 0.0142 m · 最大抬高 0.01 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 29 步 · 3 次查询 · 67045 tok · 62.63 s  最近距离 0.0099 m · 最大抬高 0.0193 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 27 步 · 3 次查询 · 49454 tok · 71.75 s  最近距离 0.0042 m · 最大抬高 0.0118 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 29 步 · 3 次查询 · 49442 tok · 69.69 s  最近距离 0.0167 m · 最大抬高 0.0147 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 29 步 · 3 次查询 · 67020 tok · 69.88 s  最近距离 0.0246 m · 最大抬高 0.0118 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260907T112134Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 33 步 · 2 次查询 · 38712 tok · 67.78 s  最近距离 0.0127 m · 最大抬高 0.0205 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 33 步 · 2 次查询 · 38812 tok · 71.75 s  最近距离 0.0108 m · 最大抬高 0.0191 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 33 步 · 2 次查询 · 23154 tok · 64.87 s  最近距离 0.0128 m · 最大抬高 0.0204 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 35 步 · 2 次查询 · 23200 tok · 57.53 s  最近距离 0.0158 m · 最大抬高 0.0203 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 34 步 · 2 次查询 · 23249 tok · 59.99 s  最近距离 0.0123 m · 最大抬高 0.019 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 34 步 · 2 次查询 · 7726 tok · 68.37 s  最近距离 0.0128 m · 最大抬高 0.0212 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep05.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 32 步 · 2 次查询 · 23191 tok · 62.72 s  最近距离 0.0102 m · 最大抬高 0.0216 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep06.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 34 步 · 2 次查询 · 23163 tok · 85.04 s  最近距离 0.0156 m · 最大抬高 0.0208 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep07.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 35 步 · 2 次查询 · 23242 tok · 65.56 s  最近距离 0.0246 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep08.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 34 步 · 2 次查询 · 23121 tok · 61.9 s  最近距离 0.0103 m · 最大抬高 0.0207 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep09.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 34 步 · 2 次查询 · 23284 tok · 59.65 s  最近距离 0.0087 m · 最大抬高 0.0245 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep10.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 35 步 · 2 次查询 · 23234 tok · 68.76 s  最近距离 0.0257 m · 最大抬高 0.023 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep11.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 32 步 · 2 次查询 · 7602 tok · 57.5 s  最近距离 0.0229 m · 最大抬高 0.0216 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep12.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 34 步 · 2 次查询 · 23170 tok · 55.51 s  最近距离 0.0098 m · 最大抬高 0.0247 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep13.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 118 步 · 6 次查询 · 54539 tok · 176.84 s  最近距离 0.0127 m · 最大抬高 0.0216 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep14.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 32 步 · 2 次查询 · 23251 tok · 64.28 s  最近距离 0.0071 m · 最大抬高 0.021 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep15.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 34 步 · 2 次查询 · 38658 tok · 61.34 s  最近距离 0.0168 m · 最大抬高 0.0243 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep16.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 35 步 · 2 次查询 · 38693 tok · 64.64 s  最近距离 0.0176 m · 最大抬高 0.0205 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep17.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 34 步 · 2 次查询 · 7762 tok · 119.17 s  最近距离 0.0182 m · 最大抬高 0.0252 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep18.mp4"
+  },
+  {
+    "run": "Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 34 步 · 2 次查询 · 7716 tok · 76.55 s  最近距离 0.0171 m · 最大抬高 0.0209 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__delta__proprio__codex-gpt-6-astra__s0__20260908T125956Z/ep19.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 44 步 · 1 次查询 · 22461 tok · 29.63 s  最近距离 0.0059 m · 最大抬高 0.0163 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 44 步 · 1 次查询 · 22338 tok · 24.77 s  最近距离 0.0048 m · 最大抬高 0.0163 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 93 步 · 3 次查询 · 67162 tok · 78.4 s  最近距离 0.0225 m · 最大抬高 0.0152 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 41 步 · 1 次查询 · 10186 tok · 28.91 s  最近距离 0.0146 m · 最大抬高 0.0154 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 140 步 · 4 次查询 · 90194 tok · 124.18 s  最近距离 0.0293 m · 最大抬高 0.0145 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260907T111645Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 146 步 · 3 次查询 · 26559 tok · 101.26 s  最近距离 0.0129 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 43 步 · 1 次查询 · 18902 tok · 25.58 s  最近距离 0.0127 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 40 步 · 1 次查询 · 3408 tok · 23.36 s  最近距离 0.0115 m · 最大抬高 0.0259 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 43 步 · 1 次查询 · 3471 tok · 24.94 s  最近距离 0.0224 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 45 步 · 1 次查询 · 3552 tok · 31.07 s  最近距离 0.0052 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 156 步 · 5 次查询 · 17816 tok · 148.53 s  最近距离 0.0323 m · 最大抬高 0.0197 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep05.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 43 步 · 2 次查询 · 6814 tok · 40.39 s  最近距离 0.0158 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep06.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 44 步 · 1 次查询 · 3467 tok · 27.96 s  最近距离 0.0105 m · 最大抬高 0.0269 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep07.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 45 步 · 1 次查询 · 3467 tok · 24.78 s  最近距离 0.0041 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep08.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 46 步 · 1 次查询 · 18937 tok · 23.97 s  最近距离 0.0194 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep09.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 43 步 · 1 次查询 · 3514 tok · 29.56 s  最近距离 0.024 m · 最大抬高 0.0259 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep10.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 52 步 · 2 次查询 · 7045 tok · 60.27 s  最近距离 0.0269 m · 最大抬高 0.024 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep11.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 44 步 · 1 次查询 · 3462 tok · 22.68 s  最近距离 0.0061 m · 最大抬高 0.0266 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep12.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 41 步 · 1 次查询 · 3507 tok · 29.08 s  最近距离 0.026 m · 最大抬高 0.0258 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep13.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 45 步 · 2 次查询 · 22465 tok · 54.58 s  最近距离 0.0214 m · 最大抬高 0.027 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep14.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 41 步 · 1 次查询 · 3635 tok · 29.06 s  最近距离 0.0073 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep15.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 43 步 · 1 次查询 · 3477 tok · 31.21 s  最近距离 0.0218 m · 最大抬高 0.0256 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep16.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 45 步 · 1 次查询 · 3627 tok · 32.64 s  最近距离 0.0049 m · 最大抬高 0.0268 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep17.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 46 步 · 2 次查询 · 6943 tok · 50.75 s  最近距离 0.015 m · 最大抬高 0.0201 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep18.mp4"
+  },
+  {
+    "run": "Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 89 步 · 2 次查询 · 7034 tok · 59.03 s  最近距离 0.006 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__none__codex-gpt-6-astra__s0__20260908T124519Z/ep19.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 41 步 · 2 次查询 · 44669 tok · 45.61 s  最近距离 0.0106 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 44 步 · 2 次查询 · 44612 tok · 40.81 s  最近距离 0.015 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 132 步 · 5 次查询 · 94980 tok · 148.72 s  最近距离 0.0208 m · 最大抬高 0.0154 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 42 步 · 2 次查询 · 44801 tok · 56.02 s  最近距离 0.0059 m · 最大抬高 0.0192 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 44 步 · 2 次查询 · 44953 tok · 62.45 s  最近距离 0.0047 m · 最大抬高 0.0158 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260907T111048Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 42 步 · 2 次查询 · 38245 tok · 51.77 s  最近距离 0.0026 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 42 步 · 2 次查询 · 38362 tok · 54.47 s  最近距离 0.0056 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 52 步 · 2 次查询 · 38398 tok · 61.83 s  最近距离 0.0146 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 46 步 · 2 次查询 · 22877 tok · 58.05 s  最近距离 0.0103 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 44 步 · 1 次查询 · 3770 tok · 43.48 s  最近距离 0.0026 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 44 步 · 2 次查询 · 22880 tok · 57.62 s  最近距离 0.0108 m · 最大抬高 0.0255 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep05.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 43 步 · 2 次查询 · 38424 tok · 52.58 s  最近距离 0.0168 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep06.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 45 步 · 1 次查询 · 19192 tok · 29.87 s  最近距离 0.0055 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep07.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 48 步 · 2 次查询 · 22828 tok · 49.85 s  最近距离 0.0143 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep08.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 42 步 · 1 次查询 · 19258 tok · 34.14 s  最近距离 0.0066 m · 最大抬高 0.0259 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep09.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 45 步 · 2 次查询 · 22935 tok · 61.35 s  最近距离 0.0104 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep10.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 46 步 · 2 次查询 · 7318 tok · 51.81 s  最近距离 0.0169 m · 最大抬高 0.028 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep11.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 44 步 · 2 次查询 · 36724 tok · 49.52 s  最近距离 0.0109 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep12.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 41 步 · 1 次查询 · 3827 tok · 34.98 s  最近距离 0.0104 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep13.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 43 步 · 2 次查询 · 7468 tok · 62.31 s  最近距离 0.0071 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep14.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 42 步 · 1 次查询 · 3801 tok · 28.29 s  最近距离 0.0042 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep15.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 39 步 · 2 次查询 · 7381 tok · 53.99 s  最近距离 0.0078 m · 最大抬高 0.0292 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep16.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 46 步 · 1 次查询 · 19251 tok · 28.7 s  最近距离 0.0052 m · 最大抬高 0.0268 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep17.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 50 步 · 2 次查询 · 22906 tok · 60.05 s  最近距离 0.0067 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep18.mp4"
+  },
+  {
+    "run": "Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 44 步 · 2 次查询 · 22823 tok · 54.63 s  最近距离 0.0012 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122854Z/ep19.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 48 步 · 1 次查询 · 22811 tok · 43.19 s  最近距离 0.0106 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 46 步 · 1 次查询 · 22788 tok · 41.5 s  最近距离 0.0034 m · 最大抬高 0.0161 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 44 步 · 1 次查询 · 23036 tok · 51.87 s  最近距离 0.0132 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 47 步 · 1 次查询 · 4996 tok · 37.01 s  最近距离 0.0135 m · 最大抬高 0.0157 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 47 步 · 1 次查询 · 22975 tok · 49.59 s  最近距离 0.0125 m · 最大抬高 0.0161 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260907T113113Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 47 步 · 1 次查询 · 3817 tok · 31.6 s  最近距离 0.0049 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 42 步 · 1 次查询 · 3887 tok · 36.39 s  最近距离 0.0063 m · 最大抬高 0.0266 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 48 步 · 1 次查询 · 19459 tok · 42.34 s  最近距离 0.0034 m · 最大抬高 0.0258 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 46 步 · 1 次查询 · 19356 tok · 31.86 s  最近距离 0.0015 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 47 步 · 1 次查询 · 19402 tok · 44.57 s  最近距离 0.0018 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 44 步 · 1 次查询 · 19421 tok · 50.42 s  最近距离 0.0064 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep05.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 43 步 · 1 次查询 · 19514 tok · 53.8 s  最近距离 0.0105 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep06.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 48 步 · 1 次查询 · 19297 tok · 25.97 s  最近距离 0.0055 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep07.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 55 步 · 1 次查询 · 19332 tok · 31.97 s  最近距离 0.0045 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep08.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 43 步 · 1 次查询 · 19338 tok · 35.91 s  最近距离 0.0036 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep09.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 42 步 · 1 次查询 · 19432 tok · 38.12 s  最近距离 0.0034 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep10.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 49 步 · 1 次查询 · 19345 tok · 36.06 s  最近距离 0.0045 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep11.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 46 步 · 1 次查询 · 19414 tok · 41.95 s  最近距离 0.002 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep12.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 43 步 · 1 次查询 · 4000 tok · 68.51 s  最近距离 0.0042 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep13.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 45 步 · 1 次查询 · 18314 tok · 75.19 s  最近距离 0.0094 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep14.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 43 步 · 1 次查询 · 3927 tok · 47.44 s  最近距离 0.0031 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep15.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 40 步 · 1 次查询 · 19379 tok · 40.15 s  最近距离 0.002 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep16.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 44 步 · 1 次查询 · 19374 tok · 35.6 s  最近距离 0.0016 m · 最大抬高 0.0256 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep17.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 46 步 · 1 次查询 · 19466 tok · 41.11 s  最近距离 0.0047 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep18.mp4"
+  },
+  {
+    "run": "Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 46 步 · 1 次查询 · 19380 tok · 33.38 s  最近距离 0.0033 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__proprio__codex-gpt-6-astra__s0__20260908T134254Z/ep19.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 49 步 · 1 次查询 · 22484 tok · 25.21 s  最近距离 0.0053 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 50 步 · 2 次查询 · 45141 tok · 48.99 s  最近距离 0.0029 m · 最大抬高 0.0162 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 52 步 · 2 次查询 · 45168 tok · 50.31 s  最近距离 0.0016 m · 最大抬高 0.0167 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 45 步 · 2 次查询 · 45102 tok · 46.1 s  最近距离 0.0035 m · 最大抬高 0.0159 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 42 步 · 2 次查询 · 45148 tok · 50.71 s  最近距离 0.0061 m · 最大抬高 0.0159 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260907T112729Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 55 步 · 2 次查询 · 38713 tok · 72.53 s  最近距离 0.0017 m · 最大抬高 0.0273 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep00.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 44 步 · 1 次查询 · 19212 tok · 26.0 s  最近距离 0.0021 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep01.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 47 步 · 2 次查询 · 38590 tok · 73.85 s  最近距离 0.0038 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep02.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 50 步 · 1 次查询 · 19228 tok · 19.47 s  最近距离 0.0021 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep03.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 53 步 · 1 次查询 · 19239 tok · 21.75 s  最近距离 0.0027 m · 最大抬高 0.0269 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep04.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 42 步 · 1 次查询 · 19218 tok · 21.73 s  最近距离 0.0038 m · 最大抬高 0.026 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep05.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 46 步 · 1 次查询 · 19231 tok · 30.52 s  最近距离 0.0026 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep06.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 52 步 · 1 次查询 · 19274 tok · 22.66 s  最近距离 0.0025 m · 最大抬高 0.0268 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep07.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 56 步 · 1 次查询 · 19396 tok · 39.26 s  最近距离 0.0022 m · 最大抬高 0.0265 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep08.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 51 步 · 1 次查询 · 19282 tok · 184.21 s  最近距离 0.0032 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep09.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 52 步 · 2 次查询 · 35632 tok · 121.76 s  最近距离 0.003 m · 最大抬高 0.0267 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep10.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 51 步 · 1 次查询 · 19216 tok · 38.19 s  最近距离 0.0024 m · 最大抬高 0.027 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep11.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 59 步 · 2 次查询 · 38650 tok · 57.71 s  最近距离 0.0013 m · 最大抬高 0.0275 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep12.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 43 步 · 2 次查询 · 23019 tok · 46.98 s  最近距离 0.0022 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep13.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 46 步 · 2 次查询 · 19707 tok · 70.44 s  最近距离 0.0035 m · 最大抬高 0.0262 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep14.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 44 步 · 1 次查询 · 19212 tok · 23.07 s  最近距离 0.0031 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep15.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 43 步 · 1 次查询 · 19223 tok · 33.34 s  最近距离 0.0038 m · 最大抬高 0.0261 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep16.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 48 步 · 1 次查询 · 19214 tok · 23.96 s  最近距离 0.0009 m · 最大抬高 0.0264 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep17.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 49 步 · 2 次查询 · 38537 tok · 85.78 s  最近距离 0.0035 m · 最大抬高 0.0266 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep18.mp4"
+  },
+  {
+    "run": "Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 46 步 · 2 次查询 · 38873 tok · 79.25 s  最近距离 0.0022 m · 最大抬高 0.0263 m",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Lift__code__privileged__codex-gpt-6-astra__s0__20260908T132433Z/ep19.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 148 步 · 8 次查询 · 184163 tok · 252.72 s  最近距离 0.0162 m · 最大抬高 0.2762 m · 终点离目标 1.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z/ep00.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep01 · 200 步 · 10 次查询 · 230801 tok · 347.2 s  最近距离 0.0101 m · 最大抬高 0.234 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z/ep01.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 148 步 · 8 次查询 · 166097 tok · 228.2 s  最近距离 0.0154 m · 最大抬高 0.2656 m · 终点离目标 2.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z/ep02.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 156 步 · 8 次查询 · 148684 tok · 268.08 s  最近距离 0.0268 m · 最大抬高 0.2758 m · 终点离目标 3.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z/ep03.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 129 步 · 7 次查询 · 95909 tok · 268.06 s  最近距离 0.0267 m · 最大抬高 0.2771 m · 终点离目标 1.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260907T135833Z/ep04.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 135 步 · 7 次查询 · 38647 tok · 174.77 s  最近距离 0.0056 m · 最大抬高 0.2773 m · 终点离目标 3.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep00.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 189 步 · 10 次查询 · 89286 tok · 256.45 s  最近距离 0.006 m · 最大抬高 0.2334 m · 终点离目标 2.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep01.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 187 步 · 10 次查询 · 47140 tok · 291.89 s  最近距离 0.0173 m · 最大抬高 0.2253 m · 终点离目标 4.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep02.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 148 步 · 8 次查询 · 65797 tok · 193.26 s  最近距离 0.0185 m · 最大抬高 0.2442 m · 终点离目标 5.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep03.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 149 步 · 8 次查询 · 54494 tok · 206.11 s  最近距离 0.0128 m · 最大抬高 0.2823 m · 终点离目标 1.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep04.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep05 · 200 步 · 10 次查询 · 51825 tok · 273.47 s  最近距离 0.0214 m · 最大抬高 0.0061 m · 终点离目标 75.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep05.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 136 步 · 7 次查询 · 28786 tok · 177.59 s  最近距离 0.013 m · 最大抬高 0.2639 m · 终点离目标 1.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep06.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 159 步 · 8 次查询 · 38355 tok · 215.88 s  最近距离 0.0143 m · 最大抬高 0.2565 m · 终点离目标 2.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep07.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 189 步 · 10 次查询 · 41668 tok · 259.15 s  最近距离 0.0115 m · 最大抬高 0.2611 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep08.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 128 步 · 7 次查询 · 33645 tok · 172.77 s  最近距离 0.0124 m · 最大抬高 0.24 m · 终点离目标 3.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep09.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 189 步 · 10 次查询 · 58323 tok · 272.5 s  最近距离 0.008 m · 最大抬高 0.3431 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep10.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 130 步 · 7 次查询 · 45271 tok · 171.83 s  最近距离 0.0249 m · 最大抬高 0.2376 m · 终点离目标 6.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep11.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 149 步 · 8 次查询 · 32801 tok · 188.48 s  最近距离 0.0122 m · 最大抬高 0.2398 m · 终点离目标 2.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep12.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 146 步 · 8 次查询 · 38480 tok · 223.28 s  最近距离 0.0271 m · 最大抬高 0.2635 m · 终点离目标 4.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep13.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 154 步 · 8 次查询 · 32888 tok · 200.63 s  最近距离 0.0124 m · 最大抬高 0.2461 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep14.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 176 步 · 9 次查询 · 53962 tok · 229.98 s  最近距离 0.0182 m · 最大抬高 0.2303 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep15.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep16.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep16 · 200 步 · 10 次查询 · 42177 tok · 291.8 s  最近距离 0.0217 m · 最大抬高 0.2786 m · 终点离目标 20.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep16.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 149 步 · 8 次查询 · 37966 tok · 204.12 s  最近距离 0.0102 m · 最大抬高 0.2728 m · 终点离目标 2.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep17.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 167 步 · 9 次查询 · 70589 tok · 236.7 s  最近距离 0.0179 m · 最大抬高 0.2435 m · 终点离目标 5.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep18.mp4"
+  },
+  {
+    "run": "Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 148 步 · 8 次查询 · 33059 tok · 202.38 s  最近距离 0.0138 m · 最大抬高 0.2532 m · 终点离目标 2.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__delta__proprio__codex-gpt-6-astra__s0__20260908T135533Z/ep19.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 211 步 · 2 次查询 · 9710 tok · 59.71 s  最近距离 0.0161 m · 最大抬高 0.2589 m · 终点离目标 5.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z/ep00.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep01 · 400 步 · 5 次查询 · 83200 tok · 139.63 s  最近距离 0.0241 m · 最大抬高 0.2398 m · 终点离目标 29.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z/ep01.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 161 步 · 2 次查询 · 27328 tok · 71.63 s  最近距离 0.0168 m · 最大抬高 0.2349 m · 终点离目标 3.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z/ep02.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 181 步 · 3 次查询 · 37930 tok · 87.85 s  最近距离 0.0183 m · 最大抬高 0.2363 m · 终点离目标 4.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z/ep03.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 397 步 · 7 次查询 · 83169 tok · 225.45 s  最近距离 0.0216 m · 最大抬高 0.2297 m · 终点离目标 2.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260907T120006Z/ep04.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 221 步 · 4 次查询 · 34778 tok · 117.38 s  最近距离 0.0158 m · 最大抬高 0.2358 m · 终点离目标 1.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep00.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 312 步 · 3 次查询 · 25746 tok · 76.18 s  最近距离 0.0083 m · 最大抬高 0.2163 m · 终点离目标 1.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep01.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 127 步 · 2 次查询 · 7466 tok · 64.07 s  最近距离 0.0206 m · 最大抬高 0.2183 m · 终点离目标 3.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep02.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 356 步 · 3 次查询 · 32683 tok · 87.26 s  最近距离 0.018 m · 最大抬高 0.2148 m · 终点离目标 2.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep03.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 195 步 · 3 次查询 · 21005 tok · 80.31 s  最近距离 0.0227 m · 最大抬高 0.241 m · 终点离目标 3.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep04.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep05 · 400 步 · 4 次查询 · 20180 tok · 133.45 s  最近距离 0.0233 m · 最大抬高 0.1753 m · 终点离目标 76.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep05.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 155 步 · 3 次查询 · 20914 tok · 85.03 s  最近距离 0.02 m · 最大抬高 0.2376 m · 终点离目标 4.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep06.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 344 步 · 4 次查询 · 29823 tok · 113.63 s  最近距离 0.0212 m · 最大抬高 0.206 m · 终点离目标 3.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep07.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 173 步 · 2 次查询 · 12197 tok · 47.89 s  最近距离 0.021 m · 最大抬高 0.2128 m · 终点离目标 2.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep08.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep09.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep09 · 400 步 · 9 次查询 · 65687 tok · 256.3 s  最近距离 0.0372 m · 最大抬高 0.2175 m · 终点离目标 41.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep09.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep10.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep10 · 400 步 · 6 次查询 · 49214 tok · 180.54 s  最近距离 0.0255 m · 最大抬高 0.2393 m · 终点离目标 27.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep10.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 249 步 · 3 次查询 · 11209 tok · 85.95 s  最近距离 0.0178 m · 最大抬高 0.2165 m · 终点离目标 4.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep11.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 285 步 · 3 次查询 · 20913 tok · 75.33 s  最近距离 0.0161 m · 最大抬高 0.2153 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep12.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 217 步 · 2 次查询 · 12274 tok · 58.26 s  最近距离 0.007 m · 最大抬高 0.2348 m · 终点离目标 2.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep13.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep14.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep14 · 400 步 · 4 次查询 · 15162 tok · 126.92 s  最近距离 0.0307 m · 最大抬高 0.0304 m · 终点离目标 70.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep14.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 249 步 · 3 次查询 · 10661 tok · 70.65 s  最近距离 0.0103 m · 最大抬高 0.2148 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep15.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 315 步 · 3 次查询 · 10852 tok · 82.46 s  最近距离 0.0119 m · 最大抬高 0.215 m · 终点离目标 5.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep16.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 147 步 · 2 次查询 · 12196 tok · 48.4 s  最近距离 0.0197 m · 最大抬高 0.238 m · 终点离目标 4.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep17.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 265 步 · 3 次查询 · 10882 tok · 89.59 s  最近距离 0.0148 m · 最大抬高 0.2147 m · 终点离目标 5.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep18.mp4"
+  },
+  {
+    "run": "Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z",
+    "episode": "ep19.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep19 · 400 步 · 7 次查询 · 41820 tok · 213.95 s  最近距离 0.0257 m · 最大抬高 0.239 m · 终点离目标 51.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__none__codex-gpt-6-astra__s0__20260908T132033Z/ep19.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 157 步 · 2 次查询 · 33331 tok · 59.67 s  最近距离 0.0193 m · 最大抬高 0.2343 m · 终点离目标 1.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z/ep00.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 164 步 · 3 次查询 · 32817 tok · 76.89 s  最近距离 0.0102 m · 最大抬高 0.2383 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z/ep01.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 167 步 · 4 次查询 · 55713 tok · 107.36 s  最近距离 0.017 m · 最大抬高 0.2388 m · 终点离目标 2.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z/ep02.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 183 步 · 4 次查询 · 55867 tok · 122.99 s  最近距离 0.0094 m · 最大抬高 0.2346 m · 终点离目标 1.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z/ep03.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 149 步 · 2 次查询 · 15788 tok · 59.1 s  最近距离 0.0071 m · 最大抬高 0.2547 m · 终点离目标 1.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260907T115255Z/ep04.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 153 步 · 3 次查询 · 58064 tok · 83.34 s  最近距离 0.0199 m · 最大抬高 0.2365 m · 终点离目标 3.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep00.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep01 · 400 步 · 4 次查询 · 77861 tok · 129.62 s  最近距离 0.0426 m · 最大抬高 0.174 m · 终点离目标 65.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep01.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 137 步 · 3 次查询 · 58095 tok · 96.82 s  最近距离 0.0101 m · 最大抬高 0.2362 m · 终点离目标 1.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep02.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 176 步 · 3 次查询 · 27101 tok · 77.13 s  最近距离 0.0182 m · 最大抬高 0.2359 m · 终点离目标 3.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep03.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 164 步 · 3 次查询 · 42644 tok · 89.77 s  最近距离 0.0152 m · 最大抬高 0.2346 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep04.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 170 步 · 2 次查询 · 38680 tok · 53.89 s  最近距离 0.0248 m · 最大抬高 0.2332 m · 终点离目标 1.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep05.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 146 步 · 3 次查询 · 25552 tok · 75.17 s  最近距离 0.0178 m · 最大抬高 0.2369 m · 终点离目标 4.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep06.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 149 步 · 3 次查询 · 11615 tok · 90.17 s  最近距离 0.0145 m · 最大抬高 0.2404 m · 终点离目标 2.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep07.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 179 步 · 3 次查询 · 26941 tok · 74.04 s  最近距离 0.0133 m · 最大抬高 0.2192 m · 终点离目标 1.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep08.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 149 步 · 3 次查询 · 42737 tok · 82.54 s  最近距离 0.0061 m · 最大抬高 0.234 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep09.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 172 步 · 3 次查询 · 11619 tok · 81.54 s  最近距离 0.0169 m · 最大抬高 0.2373 m · 终点离目标 2.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep10.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep11.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep11 · 400 步 · 8 次查询 · 78818 tok · 211.1 s  最近距离 0.0234 m · 最大抬高 0.2132 m · 终点离目标 26.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep11.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 329 步 · 4 次查询 · 27680 tok · 120.16 s  最近距离 0.0119 m · 最大抬高 0.2343 m · 终点离目标 1.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep12.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 149 步 · 3 次查询 · 11523 tok · 68.99 s  最近距离 0.0128 m · 最大抬高 0.2389 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep13.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 170 步 · 3 次查询 · 11561 tok · 64.48 s  最近距离 0.0161 m · 最大抬高 0.2401 m · 终点离目标 1.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep14.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 175 步 · 3 次查询 · 11520 tok · 72.3 s  最近距离 0.0108 m · 最大抬高 0.2366 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep15.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 189 步 · 4 次查询 · 30977 tok · 96.24 s  最近距离 0.0108 m · 最大抬高 0.2357 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep16.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 167 步 · 3 次查询 · 11681 tok · 80.17 s  最近距离 0.0157 m · 最大抬高 0.2353 m · 终点离目标 2.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep17.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep18.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep18 · 400 步 · 3 次查询 · 27298 tok · 76.41 s  最近距离 0.0094 m · 最大抬高 0.2139 m · 终点离目标 2.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep18.mp4"
+  },
+  {
+    "run": "Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 169 步 · 4 次查询 · 31068 tok · 109.9 s  最近距离 0.0089 m · 最大抬高 0.2354 m · 终点离目标 2.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__waypoint__proprio__codex-gpt-6-astra__s0__20260908T122925Z/ep19.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 169 步 · 1 次查询 · 5517 tok · 46.28 s  最近距离 0.0097 m · 最大抬高 0.2548 m · 终点离目标 1.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z/ep00.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 168 步 · 1 次查询 · 22921 tok · 29.27 s  最近距离 0.0099 m · 最大抬高 0.2549 m · 终点离目标 0.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z/ep01.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z",
+    "episode": "ep02.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep02 · 400 步 · 2 次查询 · 28787 tok · 79.22 s  最近距离 0.0495 m · 最大抬高 0.0048 m · 终点离目标 58.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z/ep02.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep03 · 400 步 · 1 次查询 · 10946 tok · 52.53 s  最近距离 0.0442 m · 最大抬高 0.0034 m · 终点离目标 74.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z/ep03.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 154 步 · 1 次查询 · 23108 tok · 40.03 s  最近距离 0.0164 m · 最大抬高 0.2599 m · 终点离目标 4.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260907T123628Z/ep04.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 157 步 · 1 次查询 · 4643 tok · 55.26 s  最近距离 0.0164 m · 最大抬高 0.2553 m · 终点离目标 3.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep00.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep01 · 400 步 · 1 次查询 · 20883 tok · 45.62 s  最近距离 0.0522 m · 最大抬高 0.006 m · 终点离目标 71.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep01.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 144 步 · 1 次查询 · 20796 tok · 36.68 s  最近距离 0.012 m · 最大抬高 0.254 m · 终点离目标 0.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep02.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep03 · 400 步 · 1 次查询 · 4133 tok · 31.19 s  最近距离 0.0575 m · 最大抬高 0.0055 m · 终点离目标 74.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep03.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep04 · 400 步 · 2 次查询 · 25287 tok · 70.04 s  最近距离 0.0349 m · 最大抬高 0.0014 m · 终点离目标 56.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep04.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep05 · 400 步 · 2 次查询 · 8672 tok · 68.0 s  最近距离 0.0378 m · 最大抬高 0.0021 m · 终点离目标 78.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep05.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep06.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep06 · 400 步 · 1 次查询 · 20681 tok · 31.51 s  最近距离 0.0442 m · 最大抬高 0.0034 m · 终点离目标 59.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep06.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 160 步 · 1 次查询 · 4188 tok · 34.39 s  最近距离 0.0106 m · 最大抬高 0.2541 m · 终点离目标 2.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep07.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep08.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep08 · 400 步 · 2 次查询 · 8710 tok · 64.05 s  最近距离 0.0528 m · 最大抬高 0.0039 m · 终点离目标 84.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep08.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 148 步 · 1 次查询 · 4202 tok · 34.4 s  最近距离 0.0257 m · 最大抬高 0.2337 m · 终点离目标 2.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep09.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep10.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep10 · 400 步 · 2 次查询 · 14292 tok · 93.79 s  最近距离 0.0442 m · 最大抬高 0.0 m · 终点离目标 68.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep10.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep11.mp4",
+    "result": "失败 · 没接近物体",
+    "success": false,
+    "metadata": "ep11 · 400 步 · 2 次查询 · 8564 tok · 58.17 s  最近距离 0.0736 m · 最大抬高 0.0 m · 终点离目标 70.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep11.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep12.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep12 · 400 步 · 2 次查询 · 9025 tok · 81.05 s  最近距离 0.0555 m · 最大抬高 0.0003 m · 终点离目标 72.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep12.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 152 步 · 1 次查询 · 4215 tok · 34.56 s  最近距离 0.0153 m · 最大抬高 0.2344 m · 终点离目标 1.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep13.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 169 步 · 1 次查询 · 4290 tok · 36.49 s  最近距离 0.0182 m · 最大抬高 0.2521 m · 终点离目标 1.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep14.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep15.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep15 · 400 步 · 2 次查询 · 8830 tok · 74.49 s  最近距离 0.0303 m · 最大抬高 0.2309 m · 终点离目标 75.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep15.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep16.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep16 · 400 步 · 2 次查询 · 25137 tok · 62.0 s  最近距离 0.0554 m · 最大抬高 0.0034 m · 终点离目标 82.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep16.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 164 步 · 1 次查询 · 4499 tok · 49.8 s  最近距离 0.0152 m · 最大抬高 0.2316 m · 终点离目标 1.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep17.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep18.mp4",
+    "result": "失败 · 没接近物体",
+    "success": false,
+    "metadata": "ep18 · 400 步 · 2 次查询 · 25344 tok · 66.9 s  最近距离 0.0774 m · 最大抬高 0.0 m · 终点离目标 75.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep18.mp4"
+  },
+  {
+    "run": "Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z",
+    "episode": "ep19.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep19 · 400 步 · 1 次查询 · 4454 tok · 47.78 s  最近距离 0.0402 m · 最大抬高 0.0026 m · 终点离目标 71.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__proprio__codex-gpt-6-astra__s0__20260908T152543Z/ep19.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 168 步 · 2 次查询 · 28323 tok · 58.13 s  最近距离 0.005 m · 最大抬高 0.2343 m · 终点离目标 1.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z/ep00.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 177 步 · 2 次查询 · 46143 tok · 60.45 s  最近距离 0.0041 m · 最大抬高 0.2557 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z/ep01.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 179 步 · 2 次查询 · 45931 tok · 54.0 s  最近距离 0.005 m · 最大抬高 0.2531 m · 终点离目标 1.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z/ep02.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 180 步 · 2 次查询 · 10680 tok · 59.18 s  最近距离 0.0069 m · 最大抬高 0.2536 m · 终点离目标 1.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z/ep03.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 163 步 · 2 次查询 · 16148 tok · 56.45 s  最近距离 0.0054 m · 最大抬高 0.2543 m · 终点离目标 1.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260907T123134Z/ep04.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 155 步 · 2 次查询 · 24699 tok · 43.93 s  最近距离 0.0086 m · 最大抬高 0.2317 m · 终点离目标 1.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep00.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 187 步 · 2 次查询 · 13146 tok · 47.02 s  最近距离 0.0063 m · 最大抬高 0.2543 m · 终点离目标 1.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep01.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 141 步 · 2 次查询 · 8235 tok · 51.74 s  最近距离 0.0075 m · 最大抬高 0.2344 m · 终点离目标 1.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep02.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 185 步 · 2 次查询 · 13088 tok · 47.6 s  最近距离 0.0062 m · 最大抬高 0.254 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep03.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 158 步 · 2 次查询 · 41150 tok · 45.19 s  最近距离 0.0048 m · 最大抬高 0.2326 m · 终点离目标 1.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep04.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 178 步 · 2 次查询 · 8199 tok · 47.6 s  最近距离 0.0048 m · 最大抬高 0.2352 m · 终点离目标 0.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep05.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 158 步 · 2 次查询 · 8203 tok · 45.72 s  最近距离 0.0044 m · 最大抬高 0.2341 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep06.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 169 步 · 2 次查询 · 8164 tok · 48.64 s  最近距离 0.0068 m · 最大抬高 0.2572 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep07.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 177 步 · 2 次查询 · 29783 tok · 54.39 s  最近距离 0.009 m · 最大抬高 0.2349 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep08.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 150 步 · 2 次查询 · 8274 tok · 46.49 s  最近距离 0.0063 m · 最大抬高 0.2443 m · 终点离目标 1.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep09.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 174 步 · 2 次查询 · 24841 tok · 51.72 s  最近距离 0.0068 m · 最大抬高 0.2345 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep10.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 183 步 · 2 次查询 · 24814 tok · 54.14 s  最近距离 0.0048 m · 最大抬高 0.2333 m · 终点离目标 1.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep11.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 169 步 · 2 次查询 · 8125 tok · 43.61 s  最近距离 0.0065 m · 最大抬高 0.2336 m · 终点离目标 2.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep12.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 146 步 · 2 次查询 · 29753 tok · 51.29 s  最近距离 0.0041 m · 最大抬高 0.2158 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep13.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 168 步 · 2 次查询 · 8132 tok · 49.18 s  最近距离 0.0047 m · 最大抬高 0.2352 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep14.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 192 步 · 2 次查询 · 17960 tok · 44.94 s  最近距离 0.0087 m · 最大抬高 0.236 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep15.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 175 步 · 2 次查询 · 13049 tok · 45.24 s  最近距离 0.0069 m · 最大抬高 0.2345 m · 终点离目标 1.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep16.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 161 步 · 2 次查询 · 8157 tok · 45.03 s  最近距离 0.0078 m · 最大抬高 0.2315 m · 终点离目标 0.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep17.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 186 步 · 2 次查询 · 24659 tok · 44.29 s  最近距离 0.0067 m · 最大抬高 0.2534 m · 终点离目标 2.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep18.mp4"
+  },
+  {
+    "run": "Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 162 步 · 2 次查询 · 24737 tok · 45.8 s  最近距离 0.0052 m · 最大抬高 0.2343 m · 终点离目标 1.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Can__code__privileged__codex-gpt-6-astra__s0__20260908T150945Z/ep19.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z",
+    "episode": "ep00.mp4",
+    "result": "失败 · 没接近物体",
+    "success": false,
+    "metadata": "ep00 · 200 步 · 10 次查询 · 124463 tok · 390.94 s  最近距离 0.0645 m · 最大抬高 0.1307 m · 终点离目标 15.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z/ep00.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 没接近物体",
+    "success": false,
+    "metadata": "ep01 · 200 步 · 10 次查询 · 136585 tok · 385.06 s  最近距离 0.0623 m · 最大抬高 0.1397 m · 终点离目标 15.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z/ep01.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z",
+    "episode": "ep02.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep02 · 200 步 · 10 次查询 · 114507 tok · 440.08 s  最近距离 0.0392 m · 最大抬高 0.0024 m · 终点离目标 35.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z/ep02.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 没接近物体",
+    "success": false,
+    "metadata": "ep03 · 200 步 · 10 次查询 · 91244 tok · 511.06 s  最近距离 0.0797 m · 最大抬高 0.0024 m · 终点离目标 36.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z/ep03.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep04 · 200 步 · 10 次查询 · 78910 tok · 415.16 s  最近距离 0.0167 m · 最大抬高 0.0884 m · 终点离目标 38.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260907T142127Z/ep04.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep00.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep00 · 200 步 · 10 次查询 · 105808 tok · 322.88 s  最近距离 0.0093 m · 最大抬高 0.0033 m · 终点离目标 38.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep00.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep01 · 200 步 · 10 次查询 · 82181 tok · 325.52 s  最近距离 0.0154 m · 最大抬高 0.152 m · 终点离目标 38.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep01.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep02.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep02 · 200 步 · 10 次查询 · 101579 tok · 360.21 s  最近距离 0.0091 m · 最大抬高 0.0253 m · 终点离目标 36.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep02.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep03 · 200 步 · 10 次查询 · 84287 tok · 325.84 s  最近距离 0.0198 m · 最大抬高 0.1032 m · 终点离目标 40.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep03.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep04 · 200 步 · 10 次查询 · 85186 tok · 363.34 s  最近距离 0.0226 m · 最大抬高 0.0135 m · 终点离目标 30.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep04.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep05 · 200 步 · 10 次查询 · 119990 tok · 357.62 s  最近距离 0.0191 m · 最大抬高 0.0187 m · 终点离目标 38.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep05.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep06.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep06 · 200 步 · 10 次查询 · 77648 tok · 333.86 s  最近距离 0.015 m · 最大抬高 0.0738 m · 终点离目标 38.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep06.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep07.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep07 · 200 步 · 10 次查询 · 48424 tok · 337.58 s  最近距离 0.0122 m · 最大抬高 0.0143 m · 终点离目标 32.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep07.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep08.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep08 · 200 步 · 10 次查询 · 87137 tok · 361.63 s  最近距离 0.0171 m · 最大抬高 0.01 m · 终点离目标 35.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep08.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep09.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep09 · 200 步 · 10 次查询 · 87134 tok · 367.07 s  最近距离 0.0325 m · 最大抬高 0.0242 m · 终点离目标 35.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep09.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep10.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep10 · 200 步 · 10 次查询 · 43992 tok · 350.38 s  最近距离 0.0096 m · 最大抬高 0.1849 m · 终点离目标 6.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep10.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep11.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep11 · 200 步 · 10 次查询 · 59904 tok · 323.54 s  最近距离 0.0164 m · 最大抬高 0.0259 m · 终点离目标 38.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep11.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep12.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep12 · 200 步 · 10 次查询 · 61103 tok · 387.16 s  最近距离 0.0188 m · 最大抬高 0.1935 m · 终点离目标 7.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep12.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep13.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep13 · 200 步 · 10 次查询 · 44285 tok · 357.64 s  最近距离 0.0221 m · 最大抬高 0.0009 m · 终点离目标 35.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep13.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep14.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep14 · 200 步 · 10 次查询 · 65141 tok · 336.5 s  最近距离 0.0136 m · 最大抬高 0.0231 m · 终点离目标 35.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep14.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 194 步 · 10 次查询 · 43332 tok · 312.49 s  最近距离 0.0057 m · 最大抬高 0.1926 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep15.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep16.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep16 · 200 步 · 10 次查询 · 60115 tok · 317.37 s  最近距离 0.0178 m · 最大抬高 0.0065 m · 终点离目标 38.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep16.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep17.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep17 · 200 步 · 10 次查询 · 43843 tok · 335.3 s  最近距离 0.0085 m · 最大抬高 0.1519 m · 终点离目标 33.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep17.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep18.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep18 · 200 步 · 10 次查询 · 44072 tok · 357.05 s  最近距离 0.0104 m · 最大抬高 0.0021 m · 终点离目标 38.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep18.mp4"
+  },
+  {
+    "run": "Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z",
+    "episode": "ep19.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep19 · 200 步 · 10 次查询 · 43965 tok · 342.81 s  最近距离 0.0243 m · 最大抬高 0.014 m · 终点离目标 27.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__delta__proprio__codex-gpt-6-astra__s0__20260908T131857Z/ep19.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep00.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep00 · 500 步 · 11 次查询 · 68822 tok · 546.97 s  最近距离 0.0253 m · 最大抬高 0.1643 m · 终点离目标 36.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep00.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep01.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep01 · 318 步 · 16 次查询 · 63699 tok · 579.06 s  最近距离 0.0351 m · 最大抬高 0.2293 m · 终点离目标 18.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep01.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep02.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep02 · 500 步 · 8 次查询 · 33917 tok · 367.02 s  最近距离 0.0282 m · 最大抬高 0.1904 m · 终点离目标 27.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep02.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep03 · 340 步 · 16 次查询 · 112994 tok · 550.67 s  最近距离 0.0234 m · 最大抬高 0.2586 m · 终点离目标 12.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep03.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep04 · 412 步 · 16 次查询 · 81931 tok · 650.65 s  最近距离 0.0124 m · 最大抬高 0.2476 m · 终点离目标 10.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep04.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep05 · 500 步 · 9 次查询 · 40509 tok · 488.88 s  最近距离 0.0147 m · 最大抬高 0.1034 m · 终点离目标 30.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep05.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep06.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep06 · 500 步 · 15 次查询 · 83228 tok · 630.99 s  最近距离 0.0231 m · 最大抬高 0.2849 m · 终点离目标 11.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep06.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep07.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep07 · 216 步 · 16 次查询 · 62687 tok · 595.53 s  最近距离 0.0337 m · 最大抬高 0.2766 m · 终点离目标 18.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep07.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep08.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep08 · 328 步 · 16 次查询 · 131304 tok · 650.88 s  最近距离 0.0061 m · 最大抬高 0.2706 m · 终点离目标 13.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep08.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep09.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep09 · 388 步 · 16 次查询 · 97802 tok · 657.86 s  最近距离 0.0259 m · 最大抬高 0.2693 m · 终点离目标 19.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep09.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep10.mp4",
+    "result": "失败 · 接近了没抓住",
+    "success": false,
+    "metadata": "ep10 · 500 步 · 10 次查询 · 73508 tok · 559.41 s  最近距离 0.0267 m · 最大抬高 0.0091 m · 终点离目标 35.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep10.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep11.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep11 · 500 步 · 14 次查询 · 90378 tok · 555.48 s  最近距离 0.0221 m · 最大抬高 0.2375 m · 终点离目标 14.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep11.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep12.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep12 · 500 步 · 12 次查询 · 65179 tok · 460.61 s  最近距离 0.0222 m · 最大抬高 0.233 m · 终点离目标 13.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep12.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep13.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep13 · 374 步 · 16 次查询 · 113695 tok · 596.92 s  最近距离 0.0238 m · 最大抬高 0.2777 m · 终点离目标 8.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep13.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep14.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep14 · 288 步 · 16 次查询 · 79886 tok · 540.06 s  最近距离 0.0062 m · 最大抬高 0.2578 m · 终点离目标 13.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep14.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep15.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep15 · 281 步 · 16 次查询 · 80319 tok · 547.05 s  最近距离 0.0059 m · 最大抬高 0.2544 m · 终点离目标 26.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep15.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep16.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep16 · 500 步 · 10 次查询 · 43666 tok · 518.76 s  最近距离 0.0182 m · 最大抬高 0.1931 m · 终点离目标 34.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep16.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep17.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep17 · 500 步 · 16 次查询 · 64929 tok · 672.54 s  最近距离 0.0203 m · 最大抬高 0.2322 m · 终点离目标 12.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep17.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep18.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep18 · 500 步 · 16 次查询 · 80391 tok · 654.47 s  最近距离 0.0018 m · 最大抬高 0.2909 m · 终点离目标 13.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep18.mp4"
+  },
+  {
+    "run": "Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z",
+    "episode": "ep19.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep19 · 396 步 · 16 次查询 · 112831 tok · 577.04 s  最近距离 0.0045 m · 最大抬高 0.2389 m · 终点离目标 13.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__none__codex-gpt-6-astra__s0__20260908T151342Z/ep19.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 450 步 · 8 次查询 · 130764 tok · 245.64 s  最近距离 0.0034 m · 最大抬高 0.1506 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z/ep00.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 454 步 · 8 次查询 · 95135 tok · 237.34 s  最近距离 0.0012 m · 最大抬高 0.169 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z/ep01.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 114 步 · 6 次查询 · 84110 tok · 179.65 s  最近距离 0.0113 m · 最大抬高 0.1664 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z/ep02.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep03 · 500 步 · 7 次查询 · 72041 tok · 206.04 s  最近距离 0.0082 m · 最大抬高 0.2164 m · 终点离目标 8.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z/ep03.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep04 · 500 步 · 9 次查询 · 53315 tok · 289.7 s  最近距离 0.0081 m · 最大抬高 0.1878 m · 终点离目标 4.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260907T145719Z/ep04.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 343 步 · 6 次查询 · 53641 tok · 141.27 s  最近距离 0.0077 m · 最大抬高 0.2349 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep00.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 388 步 · 7 次查询 · 74669 tok · 168.54 s  最近距离 0.0067 m · 最大抬高 0.2301 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep01.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 111 步 · 7 次查询 · 64721 tok · 192.32 s  最近距离 0.0091 m · 最大抬高 0.267 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep02.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep03 · 500 步 · 10 次查询 · 75693 tok · 251.67 s  最近距离 0.0094 m · 最大抬高 0.2212 m · 终点离目标 13.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep03.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 115 步 · 5 次查询 · 29272 tok · 111.51 s  最近距离 0.0086 m · 最大抬高 0.2312 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep04.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 130 步 · 6 次查询 · 29426 tok · 186.14 s  最近距离 0.0072 m · 最大抬高 0.2566 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep05.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep06.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep06 · 500 步 · 12 次查询 · 90721 tok · 334.78 s  最近距离 0.0105 m · 最大抬高 0.252 m · 终点离目标 3.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep06.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 390 步 · 9 次查询 · 58988 tok · 267.74 s  最近距离 0.0064 m · 最大抬高 0.2518 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep07.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 294 步 · 8 次查询 · 42641 tok · 234.95 s  最近距离 0.0034 m · 最大抬高 0.2505 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep08.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 124 步 · 5 次查询 · 41050 tok · 112.67 s  最近距离 0.0071 m · 最大抬高 0.2072 m · 终点离目标 1.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep09.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 124 步 · 5 次查询 · 19196 tok · 101.72 s  最近距离 0.0105 m · 最大抬高 0.2278 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep10.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 310 步 · 6 次查询 · 23549 tok · 140.15 s  最近距离 0.0009 m · 最大抬高 0.2602 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep11.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 123 步 · 6 次查询 · 23287 tok · 130.72 s  最近距离 0.0153 m · 最大抬高 0.2207 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep12.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 280 步 · 6 次查询 · 23605 tok · 145.32 s  最近距离 0.0024 m · 最大抬高 0.2165 m · 终点离目标 0.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep13.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 110 步 · 7 次查询 · 28483 tok · 204.98 s  最近距离 0.011 m · 最大抬高 0.2425 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep14.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 288 步 · 7 次查询 · 27443 tok · 154.19 s  最近距离 0.0036 m · 最大抬高 0.2489 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep15.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 222 步 · 8 次查询 · 32393 tok · 220.66 s  最近距离 0.0034 m · 最大抬高 0.2592 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep16.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 298 步 · 7 次查询 · 32761 tok · 174.3 s  最近距离 0.006 m · 最大抬高 0.2655 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep17.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 354 步 · 6 次查询 · 23902 tok · 159.6 s  最近距离 0.0052 m · 最大抬高 0.211 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep18.mp4"
+  },
+  {
+    "run": "Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 128 步 · 6 次查询 · 23261 tok · 135.45 s  最近距离 0.0106 m · 最大抬高 0.2359 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__waypoint__proprio__codex-gpt-6-astra__s0__20260908T132052Z/ep19.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 272 步 · 1 次查询 · 11009 tok · 44.77 s  最近距离 0.0042 m · 最大抬高 0.1688 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z/ep00.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 260 步 · 1 次查询 · 23316 tok · 50.22 s  最近距离 0.0029 m · 最大抬高 0.1495 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z/ep01.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 118 步 · 1 次查询 · 23220 tok · 42.97 s  最近距离 0.007 m · 最大抬高 0.1532 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z/ep02.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 281 步 · 1 次查询 · 23381 tok · 55.55 s  最近距离 0.0168 m · 最大抬高 0.1417 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z/ep03.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 103 步 · 1 次查询 · 23641 tok · 61.31 s  最近距离 0.0141 m · 最大抬高 0.159 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260907T151651Z/ep04.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 125 步 · 1 次查询 · 9442 tok · 42.42 s  最近距离 0.0066 m · 最大抬高 0.2267 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep00.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 283 步 · 1 次查询 · 9767 tok · 65.97 s  最近距离 0.0003 m · 最大抬高 0.2225 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep01.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep02.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep02 · 478 步 · 3 次查询 · 41292 tok · 177.14 s  最近距离 0.014 m · 最大抬高 0.0053 m · 终点离目标 33.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep02.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep03.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep03 · 500 步 · 2 次查询 · 19177 tok · 95.57 s  最近距离 0.0116 m · 最大抬高 0.1316 m · 终点离目标 33.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep03.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 114 步 · 1 次查询 · 20969 tok · 38.65 s  最近距离 0.0119 m · 最大抬高 0.212 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep04.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep05.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep05 · 500 步 · 2 次查询 · 31281 tok · 109.22 s  最近距离 0.0236 m · 最大抬高 0.0066 m · 终点离目标 36.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep05.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 128 步 · 1 次查询 · 9388 tok · 49.4 s  最近距离 0.0086 m · 最大抬高 0.2241 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep06.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep07.mp4",
+    "result": "失败 · 抓住了没举起",
+    "success": false,
+    "metadata": "ep07 · 500 步 · 2 次查询 · 19316 tok · 103.33 s  最近距离 0.0144 m · 最大抬高 0.008 m · 终点离目标 35.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep07.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 113 步 · 1 次查询 · 4533 tok · 43.21 s  最近距离 0.0082 m · 最大抬高 0.2424 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep08.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 121 步 · 1 次查询 · 20998 tok · 42.92 s  最近距离 0.007 m · 最大抬高 0.2047 m · 终点离目标 1.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep09.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 390 步 · 1 次查询 · 21442 tok · 61.6 s  最近距离 0.003 m · 最大抬高 0.2314 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep10.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 122 步 · 1 次查询 · 21104 tok · 44.0 s  最近距离 0.0192 m · 最大抬高 0.2184 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep11.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 126 步 · 1 次查询 · 21036 tok · 43.47 s  最近距离 0.0049 m · 最大抬高 0.2223 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep12.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 283 步 · 1 次查询 · 21344 tok · 55.3 s  最近距离 0.0044 m · 最大抬高 0.2111 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep13.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 145 步 · 1 次查询 · 4552 tok · 41.36 s  最近距离 0.0083 m · 最大抬高 0.2474 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep14.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 329 步 · 2 次查询 · 26163 tok · 99.35 s  最近距离 0.002 m · 最大抬高 0.2071 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep15.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep16.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep16 · 238 步 · 2 次查询 · 26303 tok · 110.08 s  最近距离 0.0067 m · 最大抬高 0.2218 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep16.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 179 步 · 1 次查询 · 4658 tok · 47.61 s  最近距离 0.0133 m · 最大抬高 0.2053 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep17.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 290 步 · 1 次查询 · 9469 tok · 47.27 s  最近距离 0.002 m · 最大抬高 0.2209 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep18.mp4"
+  },
+  {
+    "run": "Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 131 步 · 1 次查询 · 21103 tok · 39.01 s  最近距离 0.0085 m · 最大抬高 0.2065 m · 终点离目标 1.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep19.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 287 步 · 1 次查询 · 23237 tok · 37.31 s  最近距离 0.0522 m · 最大抬高 0.1833 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z/ep00.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 263 步 · 1 次查询 · 5727 tok · 47.64 s  最近距离 0.0519 m · 最大抬高 0.1339 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z/ep01.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 123 步 · 1 次查询 · 5760 tok · 48.17 s  最近距离 0.054 m · 最大抬高 0.1644 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z/ep02.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 261 步 · 1 次查询 · 5628 tok · 38.43 s  最近距离 0.0525 m · 最大抬高 0.152 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z/ep03.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z",
+    "episode": "ep04.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep04 · 500 步 · 3 次查询 · 71053 tok · 139.36 s  最近距离 0.025 m · 最大抬高 0.2216 m · 终点离目标 1.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260907T135143Z/ep04.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep00.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep00 · 126 步 · 1 次查询 · 21041 tok · 36.23 s  最近距离 0.002 m · 最大抬高 0.2431 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep00.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep01.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep01 · 280 步 · 1 次查询 · 9381 tok · 38.13 s  最近距离 0.0081 m · 最大抬高 0.212 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep01.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep02.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep02 · 137 步 · 1 次查询 · 21119 tok · 40.22 s  最近距离 0.0071 m · 最大抬高 0.2497 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep02.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep03.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep03 · 296 步 · 1 次查询 · 21150 tok · 42.23 s  最近距离 0.0072 m · 最大抬高 0.2628 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep03.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep04.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep04 · 131 步 · 1 次查询 · 20965 tok · 34.15 s  最近距离 0.0058 m · 最大抬高 0.2257 m · 终点离目标 0.9 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep04.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep05.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep05 · 143 步 · 1 次查询 · 9358 tok · 34.91 s  最近距离 0.0061 m · 最大抬高 0.2405 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep05.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep06.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep06 · 138 步 · 1 次查询 · 4533 tok · 35.24 s  最近距离 0.0058 m · 最大抬高 0.2542 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep06.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep07.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep07 · 155 步 · 1 次查询 · 21080 tok · 37.61 s  最近距离 0.0091 m · 最大抬高 0.2429 m · 终点离目标 0.3 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep07.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep08.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep08 · 120 步 · 1 次查询 · 9429 tok · 37.75 s  最近距离 0.0096 m · 最大抬高 0.2468 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep08.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep09.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep09 · 129 步 · 1 次查询 · 9384 tok · 34.56 s  最近距离 0.0038 m · 最大抬高 0.2241 m · 终点离目标 0.8 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep09.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep10.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep10 · 130 步 · 1 次查询 · 4515 tok · 34.55 s  最近距离 0.0036 m · 最大抬高 0.2205 m · 终点离目标 0.5 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep10.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep11.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep11 · 282 步 · 1 次查询 · 4399 tok · 32.89 s  最近距离 0.0067 m · 最大抬高 0.2156 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep11.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep12.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep12 · 131 步 · 1 次查询 · 4526 tok · 37.89 s  最近距离 0.003 m · 最大抬高 0.2211 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep12.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep13.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep13 · 278 步 · 1 次查询 · 4487 tok · 35.63 s  最近距离 0.0045 m · 最大抬高 0.2269 m · 终点离目标 0.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep13.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep14.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep14 · 372 步 · 3 次查询 · 52439 tok · 109.13 s  最近距离 0.0044 m · 最大抬高 0.25 m · 终点离目标 0.6 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep14.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep15.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep15 · 298 步 · 1 次查询 · 4477 tok · 34.68 s  最近距离 0.005 m · 最大抬高 0.2136 m · 终点离目标 0.0 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep15.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep16.mp4",
+    "result": "失败 · 举起了没放好",
+    "success": false,
+    "metadata": "ep16 · 500 步 · 3 次查询 · 52535 tok · 116.26 s  最近距离 0.0108 m · 最大抬高 0.257 m · 终点离目标 41.1 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep16.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep17.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep17 · 308 步 · 1 次查询 · 21023 tok · 38.3 s  最近距离 0.0025 m · 最大抬高 0.2219 m · 终点离目标 0.2 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep17.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep18.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep18 · 279 步 · 1 次查询 · 21006 tok · 38.68 s  最近距离 0.0026 m · 最大抬高 0.2378 m · 终点离目标 0.4 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep18.mp4"
+  },
+  {
+    "run": "Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z",
+    "episode": "ep19.mp4",
+    "result": "成功",
+    "success": true,
+    "metadata": "ep19 · 126 步 · 1 次查询 · 9390 tok · 37.91 s  最近距离 0.003 m · 最大抬高 0.2178 m · 终点离目标 0.7 cm",
+    "url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__privileged__codex-gpt-6-astra__s0__20260908T144311Z/ep19.mp4"
+  }
+]

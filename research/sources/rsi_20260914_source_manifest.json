@@ -1,0 +1,286 @@
+{
+  "retrieved_date": "2026-09-14",
+  "mode": "public read-only fetch, no model execution",
+  "files": [
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_aspire__real__cap__agent__skill_registry.py",
+      "bytes": 5992,
+      "sha256": "149d45e50fd96fd918e4814a25d22a78033c6f6c1b71f527cc6ae93da84e779d"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_aspire__sim__.claude__libero__fix-loop__INSTRUCTIONS.md",
+      "bytes": 1027,
+      "sha256": "6216d53a5f7567e8dac25f71d460497dc01ee5cf08c3ecccd635b282e62acd5c"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_aspire__sim__.claude__libero__library-size-scaling__main-agent-prompt.md",
+      "bytes": 11529,
+      "sha256": "15bc9b58679b652cc11a9572cd6e7abe229ba70d16d484e2b4dd52bf8dbab15e"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_aspire__sim__.claude__libero__zeroshot-transfer__INSTRUCTIONS.md",
+      "bytes": 736,
+      "sha256": "a7db8dd9527df8d7545217b8da63227c126dc5f2bd896f8dbb8c6e3e298d7dfb"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_aspire__sim__.claude__libero__zeroshot-transfer__main-agent-prompt.md",
+      "bytes": 13062,
+      "sha256": "616e3b23b43ae218873e3e07bcbd6b61bba210ff58c0b05ff1f9fe1669696b51"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_commits.json",
+      "bytes": 4830,
+      "sha256": "28ef70343d8b81f80fa4b30c9eb51bcfd1a4502a6769f46c5566c3241e857068"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_readme.json",
+      "bytes": 9641,
+      "sha256": "9ea4d25e06b30c4fe8c8fa37f3f47f1ec9c527c47706e29bd068e66c97341b29"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_readme.md",
+      "bytes": 6464,
+      "sha256": "e11351df2d824cc78a89817e100abb6bb16f28ee18e00c03210a5dd655cabedf"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ASPIRE_tree.json",
+      "bytes": 228497,
+      "sha256": "3cd06a02abbcb51c950cba4d8117364287744d7212c48ed7f55bb10d80d23bdb"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_commits.json",
+      "bytes": 3394,
+      "sha256": "a633c890497e79bdf89b905cad0fd5197a306210ac057058aa2540a62e27e503"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_enpire__policy__autoresearch_instruction.md",
+      "bytes": 2678,
+      "sha256": "bc46b5dc68d7d2492ac33444a077d85567525bb750866ac9880d31248f72c40a"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_enpire__policy__pld__runtime__README.md",
+      "bytes": 620,
+      "sha256": "3be28d38cf9f906e14bd4cc7f36a184cfa3dcce91006bb845baea5f545cd05ec"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_readme.json",
+      "bytes": 9299,
+      "sha256": "a1af1cfdc93cf9fffb4f561a365892b11a977d8c6f01ffe7517629c1ca2b47b9"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_readme.md",
+      "bytes": 6214,
+      "sha256": "9e6df09882b8fd39c314e7458624d4fc4ddbc1d97b78fbd8ce2bfb2f2fd85497"
+    },
+    {
+      "file": "research/sources/rsi_20260914_NVlabs_ENPIRE_tree.json",
+      "bytes": 320272,
+      "sha256": "9226f414081e414e273e5249e6352713413288ccb609ba23c459e91372c09191"
+    },
+    {
+      "file": "research/sources/rsi_20260914_aspire_current.html",
+      "bytes": 44341,
+      "sha256": "f5043aa09c56fba06505f5744b52656572123d4cc99240d1a80235d430ce9ec5"
+    },
+    {
+      "file": "research/sources/rsi_20260914_awesome_astra.md",
+      "bytes": 21712,
+      "sha256": "21c33434ed3fb92257bef5265d17a216ba58a268ab4115bd183947415219dd9c"
+    },
+    {
+      "file": "research/sources/rsi_20260914_bing_0.html",
+      "bytes": 95154,
+      "sha256": "c797cf0cf11018a26fd61f7a1d2fa71a1a9027f057135cd3e923e14c7095cd58"
+    },
+    {
+      "file": "research/sources/rsi_20260914_bing_1.html",
+      "bytes": 96516,
+      "sha256": "2156f0a6649d65632970fb2517c5123e844715295d081e163b1ae3dbf083f3bd"
+    },
+    {
+      "file": "research/sources/rsi_20260914_bing_2.html",
+      "bytes": 98421,
+      "sha256": "9f286b78cd6c927bb0c8acb7b38f99b49b16d1b9353cd655042783f597977f67"
+    },
+    {
+      "file": "research/sources/rsi_20260914_bing_3.html",
+      "bytes": 97037,
+      "sha256": "c696ee380af724cdd8eb63f4566c2927fb56b5dad610e94952743143e59b8351"
+    },
+    {
+      "file": "research/sources/rsi_20260914_dgm.html",
+      "bytes": 3082453,
+      "sha256": "effea2116602683c69b5807823778af3814987cb187ae93bc6ea31f2ccc7d07b"
+    },
+    {
+      "file": "research/sources/rsi_20260914_enpire_current.html",
+      "bytes": 44913,
+      "sha256": "e8e370da4947fa41f593471d6a4772f74f56f80b760d937aedd80f9e3c228867"
+    },
+    {
+      "file": "research/sources/rsi_20260914_github_ASPIRE_robot.json",
+      "bytes": 53022,
+      "sha256": "b8cdade1b1e44d1ace45aa20b9b99706d9c7130a46bc5cb8f7653542412b3d81"
+    },
+    {
+      "file": "research/sources/rsi_20260914_github_ENPIRE.json",
+      "bytes": 54544,
+      "sha256": "df32d271d33ff9874a39038c88710978b3690dec4c4f0ce78566aa112881962f"
+    },
+    {
+      "file": "research/sources/rsi_20260914_github_robot_RSI.json",
+      "bytes": 57814,
+      "sha256": "fe28fa7d98ee812662fa215fae2951977efe9577eceb672ba32a7e0a43a12698"
+    },
+    {
+      "file": "research/sources/rsi_20260914_github_robot_recursive_self_improvement.json",
+      "bytes": 5057,
+      "sha256": "ebed1bb3cbcbe05aa2e14607235120ba9454e25fc3d3d65c841424c3af4da77d"
+    },
+    {
+      "file": "research/sources/rsi_20260914_lixuan27_roborise_commits.json",
+      "bytes": 3234,
+      "sha256": "0cfde1f294fe6186d2def951cbea4401c377440877b2cb117162b335cbaf249c"
+    },
+    {
+      "file": "research/sources/rsi_20260914_lixuan27_roborise_readme.json",
+      "bytes": 902,
+      "sha256": "a3dc925c24f237f71433b153609bb498099a4e4d75d5f5797f9649da78222a01"
+    },
+    {
+      "file": "research/sources/rsi_20260914_lixuan27_roborise_readme.md",
+      "bytes": 100,
+      "sha256": "528bc28e4e869c094a24af1d2cc9af40a2f70a64b7f6b92f3b7fe4bf0aaff25b"
+    },
+    {
+      "file": "research/sources/rsi_20260914_lixuan27_roborise_tree.json",
+      "bytes": 2718,
+      "sha256": "1bf70cb9163e66bd31288fe315b886173ac1a73f26684739d66de91a92922538"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_commits.json",
+      "bytes": 3237,
+      "sha256": "13abb16f80732561aea9ee5728199341bde451dedc463e80af15359f07ff1766"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_docs__EVALUATION.md",
+      "bytes": 5890,
+      "sha256": "1da69c7dcd994eac81d2862ff3063e3a4d755bf0bead512160d028e123c4f1b7"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_docs__skill-taxonomy.md",
+      "bytes": 4084,
+      "sha256": "922c90f50ec823327ce024841774b3d4ad92628ad6fe3d78fc87611ea1e25ec2"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_readme.json",
+      "bytes": 8997,
+      "sha256": "0035b0d37c0e5096ab173cb976bc1aed0fddcfb78ac63c37c99f7a1bc3c83f74"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_readme.md",
+      "bytes": 5997,
+      "sha256": "d09eb04fd9256422941a0ac32243da97259e90a0a1814198b8aa557087bf57da"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__agents__atomic_backend.py",
+      "bytes": 3689,
+      "sha256": "48d4ad94ad51a7448a8348b66f34fc54db9dcc6e242546cf0075d65ec1d5924a"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__agents__compound_proposal.py",
+      "bytes": 6554,
+      "sha256": "e965c4e7f9eece4267c6169f6bdcf4794b340d5a87268e6e43b787cdd44fe62a"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__agents__skill_synthesizer.py",
+      "bytes": 10136,
+      "sha256": "739df54ec80f51b6fb3e672daf98c8ff7b6471f0855c55163a5911de1f14a8bc"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__embodied__skills___lib__training__pi0_finetune__policy.py",
+      "bytes": 5508,
+      "sha256": "d3e5bf3cdc5e2857631bac20ee71e54256205acf213c27e9e448d822f5254f6e"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__evaluation__suite.py",
+      "bytes": 21557,
+      "sha256": "c6f1213b704474e6e11ba178054b665920f318e4d813272ae47ca93a0539598b"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_roborsi__learning__base_skill_extractor.py",
+      "bytes": 6561,
+      "sha256": "923a7e30e5b9435d5fd554c61e60026944a94e3bef35c3cb032b77ba9aaa497c"
+    },
+    {
+      "file": "research/sources/rsi_20260914_nssmd_RoboRSI_tree.json",
+      "bytes": 559105,
+      "sha256": "b73ec0bead882f7f0ef0876e7f22789df8454005d45f98acf7985e0cc6d89302"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_iterations.json",
+      "bytes": 7223,
+      "sha256": "0cb39560085939a33fadd82e4e55e992ec191ab738783cb09f870dfc9b880d43"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_js.txt",
+      "bytes": 62711,
+      "sha256": "f488b3a3f7256e632df26f4348e1748880d725b92e47c25ada7a1fe01e0ece73"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_project.html",
+      "bytes": 567,
+      "sha256": "451cb63cf2ca7c6239f2a2ca9e6e4508d53060638e27b6a8e0845b6cebe34158"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_project.txt",
+      "bytes": 78,
+      "sha256": "941391f5f9d3d66c374ddcf83dfdd68006b74e513c123a9d37bd5dddeb088db4"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_report.html",
+      "bytes": 177969,
+      "sha256": "28f22dfc98c624ce742534d48e5d538b2cfd833d34cc0623298e4e4710cf5ab1"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_report.txt",
+      "bytes": 62512,
+      "sha256": "546c42b314d837bdfccd54504c88f10bc50b0df522d8d5a817d9d4a473dfefb7"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_showcase.json",
+      "bytes": 347109,
+      "sha256": "1844858dac29367f6c5de5c391f4bca932e1e984f4cace3bcb0dcab8f6acbfaa"
+    },
+    {
+      "file": "research/sources/rsi_20260914_roborsi_training_svg.txt",
+      "bytes": 7880,
+      "sha256": "f121685ddfb6ffa2e77766a890dffc20349c1407f88bc4c87b09e2d188029083"
+    },
+    {
+      "file": "research/sources/rsi_20260914_sakana_dgm.html",
+      "bytes": 21223,
+      "sha256": "733a2bad5c922cf25d1530d9a42951dcf14b2b8febb9af418862e6ebcfdd9a7b"
+    },
+    {
+      "file": "research/sources/rsi_20260914_web_0.html",
+      "bytes": 91620,
+      "sha256": "2cfc0613991b4e15e0d3844a46aeac887c531fed328a29fc6e4f179c3c762e4a"
+    },
+    {
+      "file": "research/sources/rsi_20260914_web_1.html",
+      "bytes": 91785,
+      "sha256": "aeab9b487d856b92c84a462fa5c943a8752213e653a1ec2cd8c7a0cfea1cbfbe"
+    },
+    {
+      "file": "research/sources/rsi_20260914_web_2.html",
+      "bytes": 91937,
+      "sha256": "1548392f37e40d80f2b2fea9cba18b764fbaed5427b8fa6f61a9662c69d8e871"
+    },
+    {
+      "file": "research/sources/rsi_20260914_web_3.html",
+      "bytes": 91815,
+      "sha256": "aa7ce104faf98e9f41e1d48f6caa8aacc8ebe10b45fe2851b92682a8d09f9bcf"
+    }
+  ]
+}

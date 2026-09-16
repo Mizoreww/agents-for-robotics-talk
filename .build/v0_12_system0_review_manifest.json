@@ -1,0 +1,10 @@
+{
+  "baseline": ".build/v0_12_controller_only_snapshot/manifest.json",
+  "html_sha256": "a37c40df984ba507afcf6fce78443bc9c6c208c1ca9e02218bd7fb3ae0fb202c",
+  "files": {
+    ".build/build_selfcontained.py": "ee8f814eb113b5795250102e34c1a4311e859790bec1cff9b4a125b7cbcb250d",
+    ".build/validate_standalone.py": "cb38563d1d7b23865738572fbc7c087a477072617c47e7b1f251f32e236af588",
+    ".build/script_revised.md": "89dec9ad41574f87e43cdd70b0d0a40a65ad07134af9657da3f2fd0dc00dd781",
+    "research/revision_0_12_spec.md": "d4d839e1e22f9f14aa312ef629d73c4f5f89412cbfd7d981d53559b1033c1ac7"
+  }
+}

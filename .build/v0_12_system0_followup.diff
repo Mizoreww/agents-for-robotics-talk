@@ -1,0 +1,54 @@
+--- Controller-only/.build/build_selfcontained.py
++++ System0-Controller/.build/build_selfcontained.py
+@@ -141,16 +141,16 @@
+  # Box widths show conceptual responsibility, not measured model capacity.
+  nodes=[(64,224,290,140,'System 2','Semantics',False),
+         (486,224,510,140,'System 1','Generalist VLA / WAM',True),
+-        (1050,224,166,140,'','Controller',False),
++        (1050,224,166,140,'System 0','Controller',False),
+         (64,490,510,140,'System 2','Semantics +\nSpatial & action reasoning',True),
+         (706,490,290,140,'System 1','Action primitives',False),
+-        (1050,490,166,140,'','Controller',False)]
++        (1050,490,166,140,'System 0','Controller',False)]
+  for x,y,w,h,role,label,emphasis in nodes:
+-  label_y = y+51 if emphasis or not role else y+69
++  label_y = y+51 if emphasis else y+69
+   els += [rect(x,y,w,h,'#2ba39b' if emphasis else '#f4f6f5',None if emphasis else '#d8e5e2'),
+-          *([text(role,x+8,y+15,w-16,28,20,'#e2f3ef' if emphasis else '#646464',align='center')] if role else []),
++          text(role,x+8,y+15,w-16,28,20,'#e2f3ef' if emphasis else '#646464',align='center'),
+           text(label,x+14,label_y,w-28,77 if '\n' in label else 39,
+-               28 if emphasis and role=='System 1' else (26 if role else 22),
++               28 if emphasis and role=='System 1' else (22 if role=='System 0' else 26),
+                '#ffffff' if emphasis else '#1a1a1a',True,align='center')]
+  els += [text('π(a | o, l)',502,318,478,31,25,'#e2f3ef',align='center'),
+          connector(354,294,486,294),connector(996,294,1050,294),
+--- Controller-only/.build/validate_standalone.py
++++ System0-Controller/.build/validate_standalone.py
+@@ -81,7 +81,7 @@
+ # v0.12: Hi Robot results are replaced, not the original architecture figures.
+ assert slide(6)['new_slide_key']=='responsibility_shift'
+ assert 'data-table-cell' not in slide(6)['html']
+-assert 'System 0' not in slide(6)['html'] and 'Servo' not in slide(6)['html']
++assert slide(6)['html'].count('System 0')==2 and 'Servo' not in slide(6)['html']
+ assert re.sub('<[^>]+>',' ',slide(6)['html']).split().count('Controller')==2
+ assert len(re.sub('<[^>]+>',' ',slide(6)['html']).split())<55
+ assert all(t in slide(6)['html'] for t in ['Earlier','Generalist VLA / WAM','π(a | o, l)','Emerging','Action primitives','Controller','Partial shift'])
+--- Controller-only/.build/script_revised.md
++++ System0-Controller/.build/script_revised.md
+@@ -74,7 +74,7 @@
+ 
+ 机器人经验进入foundation-model训练，是理解这种变化的一条重要研究假设。不过，Astra的具体robot-data配方与因果对照尚未披露。我们能直接讨论的是能力变化，以及它怎样改变系统分工；不能把训练数据原因当作已经证明的结论。
+ 
+-这样一来，在部分任务上，System 2加比较窄的action primitives就可能做得很好，未必需要一个独立、覆盖所有任务的generalist VLA。Primitive可以是受约束的EEF运动、joint chunk、局部控制程序，也可以是learned motor skill。这里把它们放在System 1，是本talk对执行职能的简称，不代表IK或OSC本身都是learned System 1网络。底层servo和tracking仍由Controller负责。
++这样一来，在部分任务上，System 2加比较窄的action primitives就可能做得很好，未必需要一个独立、覆盖所有任务的generalist VLA。Primitive可以是受约束的EEF运动、joint chunk、局部控制程序，也可以是learned motor skill。这里把它们放在System 1，是本talk对执行职能的简称，不代表IK或OSC本身都是learned System 1网络。底层servo和tracking仍由System 0中的Controller负责。
+ 
+ 这也不是说VLA失去价值。Narrow primitives仍然需要足够的动作能力，精细接触、高频反馈和跨动力学条件的泛化也没有因此自动解决。我们真正要检验的是：随着System 2变强，System 1还必须有多通用、多聪明？
+ 
+--- Controller-only/research/revision_0_12_spec.md
++++ System0-Controller/research/revision_0_12_spec.md
+@@ -15,4 +15,4 @@
+ 
+ The user rejected the initial diagram as wordy. Compress slide 6 into two sparse control chains: short role labels, generalist policy formula, a single transfer arrow and an area/color shift from System 1 to System 2. Move explanatory detail into the Chinese narration. Retain semantic accuracy and original fonts; do not weaken the source/causal caveats in narration.
+ 
+-Latest naming correction: the two slide-6 endpoints are labeled **Controller** only, without System 0 / Servo. Preserve original terminology inside the unedited slide-5 source figures.
++Latest naming correction: both slide-6 endpoints use **System 0** as the layer label and **Controller** as the function name, matching the System 2 / System 1 label hierarchy. Do not restore Servo. Preserve original terminology inside the unedited slide-5 source figures.

@@ -1,0 +1,18 @@
+{
+  "source": "https://research.nvidia.com/labs/gear/enpire/",
+  "selection": "First official reset case per task; entire original sequence.",
+  "sha256": {
+    ".build/clip_manifest_v11.json": "631772076c7d02789d7e61df3a43c19781b69ffeb7b59f05a717fe7384058ac8",
+    "research/sources/enpire_order_20260916/website.html": "1c7d7c7095d5ccc03ce0e7dbd6b3ab6f2c2a9abf08928b67e4eed7479fc73295",
+    "research/sources/enpire_order_20260916/user_toc.png": "3428f7ed34262c28de1c5255b4adab77712ca73f925c3cf8cc3e24155900858d",
+    ".build/assets/v0_19/pusht-reset-only-1.mp4": "e5db47d7c498865a34c9ccfd2ec93126bdd730de3d76d39fac1344a284b45d05",
+    ".build/clips/enpire_reset_pusht.mp4": "1a2937e89fff1299edbffaa33ff3ad97edb91074594a61d6e88a0aa51d26ffe7",
+    ".build/assets/v0_19/enpire_reset_pusht.jpg": "cfc0e43dd0bd1a1dba228be046f08b01dbc17e3e65b65b53541b7a59dc3117db",
+    ".build/assets/v0_19/ziptie-reset-1.mp4": "55acb55e47c96509b354df82bea1e996296655ada1ba6df95a7a06b09274574d",
+    ".build/clips/enpire_reset_tie.mp4": "2a08a03e096b5c347ec4cdd6ba97a53a5a19c7a5c565f5b24538d360a99213e1",
+    ".build/assets/v0_19/enpire_reset_tie.jpg": "b6596434d630b89b4e066ed9c974abb3b23f1347f3bee3a7a66794dd797d5927",
+    ".build/assets/v0_19/gpu-reset-1.mp4": "db746452a95f6ded7909220bc74b57e2890480991fc820a900636fcf9033e86f",
+    ".build/clips/enpire_reset_gpu.mp4": "bb6de3676b4726855aa4927c654e2fa021071143fbf72906c2ca360d52dd8220",
+    ".build/assets/v0_19/enpire_reset_gpu.jpg": "34d773cb11af51b764b8b2dcd8afad359093b42bd3ec3a24f72a536cfd0fa480"
+  }
+}

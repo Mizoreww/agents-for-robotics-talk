@@ -1,0 +1,962 @@
+--- baseline/.build/build_selfcontained.py
++++ current/.build/build_selfcontained.py
+@@ -7,11 +7,13 @@
+ old=json.loads((B/'slide_records_focus.json').read_text())
+ media=json.loads((OUT/'offline_player/media_credits.json').read_text())
+ community=[]
+-for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json']:
++for manifest in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json']:
+  community += json.loads((B/manifest).read_text())
+ for c in community:
+  c.setdefault('source_url',next((m['sourceUrl'] for m in media if m['name']==c['name']),''))
+ clip_by_name={c['name']:c for c in community}
++from code_video_v014 import verify_code_video
++verify_code_video(ROOT)
+ assets={}; layouts={}; image_audit=[]
+ def asset(data,mime):
+  key=hashlib.sha256(data).hexdigest()
+@@ -183,61 +185,60 @@
+  return pair_videos('control_demos','Astra: More Real-Robot Demos',1,'policy_plug','keyboard',['Plug insertion · real robot · 12×','Keyboard correction · real robot · 20×'],'',interface_notes=['Control interface: not disclosed','Control interface: not disclosed'])
+ 
+ def action_interfaces():
+- els=page('Same Astra, Different Action Outputs',1)
++ els=page('One Model, Different Control Interfaces',1)
+  labels=['ΔEEF chunks','EEF waypoints','Code → waypoints']
+  for x,label,count,budget in zip([64,460,856],labels,['1 / 20','18 / 20','16 / 20'],['≤200 steps · 10 queries','≤500 steps · 16 queries','≤500 steps · 3 revisions']):
+   els += [text(label,x,151,360,35,25,'#1d7d76',True),text(count,x,505,360,44,32,'#1d7d76',True),text(budget,x,557,360,28,18,'#646464')]
+- for name,x in [('asim_delta',88),('asim_waypoint',484)]:
++ for name,x in [('asim_delta',88),('asim_waypoint',484),('asim_code',880)]:
+   ve,bx=video_el(name,x,218,300,260,'Square ep00 · simulation replay')
+   els+=ve;new_placements.setdefault('interfaces',[]).append((name,bx))
+- els += [rect(888,259,280,64,'#f1f7f5','#c6d9d6'),text('plan(scene)',900,275,256,34,25,align='center'),connector(1028,323,1028,367),rect(888,367,280,64,'#f1f7f5','#c6d9d6'),text('≤12 waypoints',900,385,256,30,23,align='center')]
+- return els+band('Square · same model / proprio setting · unequal control and query budgets.')
++ return els
+ 
+ def direct_hybrid():
+- els=page('Astra: Direct or Hybrid?',1)
++ els=page('Astra: Introducing a Hybrid Architecture',1)
+  els += [figure(B/'assets/v0_7/report_architecture_original.png','Original anonymous Direct/Hybrid execution architecture; click to inspect inputs and step horizons',64,139,715,508,ANON_URL)]
+  for name,y,caption in [('anon_direct_sort',154,'Direct · 13 / 50 · sorting simulation'),('anon_hybrid_pack',391,'Hybrid · 24 / 50 · packing simulation')]:
+   ve,bx=video_el(name,821,y,395,196,caption);els+=ve;new_placements.setdefault('hybrid',[]).append((name,bx))
+  return els
+ 
++def capability_icon(name,x,y,color):
++ # Original inline vector icons; no external fonts, scripts or image requests.
++ return {'kind':'shape','bbox':[x,y,64,64],'capabilityIcon':name,'lineColor':color}
++
+ def control_summary():
+  els=page('Control: Strengths and Open Gaps',1)
+- els += [text('Demonstrated strengths',64,159,552,38,27,'#1d7d76',True),
+-         text('Not yet reliable / established',664,159,552,38,27,'#aa514a',True)]
+- pairs=[('Semantic understanding','Goals, objects and task constraints','High-frequency control','Fast feedback still runs locally'),
+-        ('Spatial generalization','Retargeting within tested settings','Physical generalization','Contact and dynamics across conditions')]
+- for i,(a,b,c,d) in enumerate(pairs):
+-  y=226+i*135
+-  for x,label,detail,color in [(64,a,b,'#1d7d76'),(664,c,d,'#aa514a')]:
+-   els += [rect(x,y,552,103,'#f4f6f5','#c6d9d6'),text(label,x+18,y+15,516,37,29,color,True),
+-           text(detail,x+18,y+62,516,30,22,'#646464')]
+- els += [connector(340,464,340,511,arrow=False),connector(940,464,940,511,arrow=False),
+-         connector(340,511,940,511,arrow=False),connector(640,511,640,552),
+-         text('Model + interface + feedback budget',240,559,800,38,29,'#1d7d76',True,align='center')]
+- return els+band('Evidence-limited boundaries, not permanent limits of foundation models.')
++ els += [text('Demonstrated strengths',64,155,552,38,27,'#1d7d76',True),
++         text('Still difficult',664,155,552,38,27,'#aa514a',True)]
++ for x,y,label,icon,color in [
++     (64,214,'Semantic understanding','semantic','#1d7d76'),
++     (64,336,'Spatial generalization','spatial','#1d7d76'),
++     (664,214,'High-frequency control','latency','#aa514a'),
++     (664,336,'Physical generalization','contact','#aa514a')]:
++  els += [rect(x,y,552,90,'#f4f6f5','#d8e5e2'),
++          text(label,x+18,y+26,435,38,27,color,True),
++          capability_icon(icon,x+470,y+13,color)]
++ els += [connector(340,426,340,467,arrow=False),connector(940,426,940,467,arrow=False),
++         connector(340,467,940,467,arrow=False),connector(640,467,640,501),
++         text('Open problems',64,506,1152,35,26,'#1d7d76',True,align='center'),
++         text('1  Lower foundation-model latency',64,558,552,74,27,bold=True,align='center'),
++         text('2  Better interfaces / action primitives',664,551,552,40,25,bold=True,align='center'),
++         text('Smoother motion · more stable contact-rich tasks',664,602,552,54,21,'#646464',align='center')]
++ return els
+ 
+ def interface_timing():
+  from evidence_v011 import load_evidence
+  times=load_evidence(ROOT)
+- els=page('Astra Interfaces and Query Time',1)
+- els += [text('Model output → local execution',64,150,650,34,26,'#1d7d76',True),
+-         text('Asim · mean query time',790,150,426,34,26,'#1d7d76',True),
+-         text('medium · proprio · 180 episodes',790,192,426,30,19,'#646464')]
+- rows=[('12-joint chunks','Go1 · simulator pauses for inference','Interpolation + PD'),
+-       ('EEF pose targets','Robocurve / report Direct','IK + controller'),
+-       ('ΔEEF / waypoints / code','Asim · code returns waypoints','OSC · 20 Hz'),
+-       ('Prior review / correction','Report Hybrid · candidate from π0.5','Joint tracking / IK')]
+- for i,(label,detail,executor) in enumerate(rows):
+-  y=224+i*91
+-  els += [text(label,64,y,370,32,25,bold=True),text(detail,64,y+37,400,28,17,'#646464'),
+-          connector(472,y+21,515,y+21),text(executor,529,y+4,228,57,21,'#1d7d76')]
+- for i,(interface,label) in enumerate([('delta','ΔEEF'),('waypoint','Waypoint'),('code','Code → waypoints')]):
+-  r=times[interface];y=248+i*104
+-  els += [text(label,790,y,426,28,21,'#646464'),
+-          text(f"{r['mean_s']:.2f} s",790,y+32,250,45,34,'#1d7d76',True),
+-          text(f"{r['queries']} queries",1040,y+42,176,30,18,'#646464')]
+- els += [text('Query workloads differ. Not a speed ranking.',790,569,426,31,18,'#646464')]
+- return els+band('Controller Hz ≠ Agent inference Hz. Query time is not full-loop latency.')
++ els=page('High Latency Limits Real-Time Control',1)
++ els += [text('Asim · mean model-query time',64,158,1152,37,28,'#1d7d76',True),
++         text('GPT-6 Astra · medium · proprio · 180 episodes / 731 queries',64,206,1152,30,21,'#646464')]
++ for x,(interface,label) in zip([64,460,856],[('delta','ΔEEF'),('waypoint','Waypoint'),('code','Code → waypoints')]):
++  r=times[interface]
++  els += [rect(x,285,360,239,'#f4f6f5','#d8e5e2'),
++          text(label,x+12,313,336,37,28,'#646464',align='center'),
++          text(f"{r['mean_s']:.2f} s",x+12,376,336,70,54,'#aa514a',True,align='center'),
++          text(f"{r['queries']} queries",x+12,469,336,29,21,'#646464',align='center')]
++ return els+band('Tens of seconds per query make rapid feedback difficult.')
++
+ def data_overview():
+  els=page('Agent Creates Data',2)
+  els += [text('Chapter overview · Real-to-sim Replay / Data Rollout',80,149,1120,34,24,'#1d7d76',True)]
+@@ -313,15 +314,13 @@
+  els=page('RoboDojo: Overall Results',1)
+  for name,x in [('panel-score-ranking.png',64),('panel-sr-ranking.png',656)]:
+   els += [figure(report_captures[name],'Original report RoboDojo '+name,x,145,560,455,REPORT_URL)]
+- els += [text('Hybrid 24/50  ·  Direct 13/50',64,608,1152,32,25,'#1d7d76',True),
+-         text('Public baselines are reweighted references, not paired reruns.',64,646,1152,27,18,'#646464')]
++ els += [text('Hybrid 24/50  ·  Direct 13/50',64,608,1152,32,25,'#1d7d76',True)]
+  return els
+ 
+ def report_lab_results():
+  els=page('RoboLab: Overall Results',1)
+  els += [figure(report_captures['robolab-success-ranking.png'],'Original report RoboLab success-rate result',84,145,1112,415,REPORT_URL),
+-         text('Direct 49/50  ·  Hybrid 46/50',84,582,1112,35,27,'#1d7d76',True),
+-         text('Selected final slots + retries / historical baselines; not fresh paired trials.',84,629,1112,29,19,'#646464')]
++         text('Direct 49/50  ·  Hybrid 46/50',84,582,1112,35,27,'#1d7d76',True)]
+  return els
+ 
+ def report_task_heatmap():
+@@ -336,9 +335,9 @@
+  'responsibility_shift':('Where Does Generalization Live?',responsibility_shift(),['HIROBOT_DISCUSSION','ROBOCURVE','ASIM','ANON']),
+  'astra_direct':('Astra: Stronger Real-Robot Performance',astra_direct(),['ROBOCURVE']),
+  'control_demos':('Astra: More Real-Robot Demos',control_demos(),['POLICYEVAL','KEYBOARD','AWESOME']),
+- 'interfaces':('Same Astra, Different Action Outputs',action_interfaces(),['ASIM']),
+- 'hybrid':('Astra: Direct or Hybrid?',direct_hybrid(),['ANON']),
+- 'interface_timing':('Astra Interfaces and Query Time',interface_timing(),['ASIM','DOG','ROBOCURVE','ANON','G1_SONIC']),
++ 'interfaces':('One Model, Different Control Interfaces',action_interfaces(),['ASIM']),
++ 'hybrid':('Astra: Introducing a Hybrid Architecture',direct_hybrid(),['ANON']),
++ 'interface_timing':('High Latency Limits Real-Time Control',interface_timing(),['ASIM']),
+  'control_summary':('Control: Strengths and Open Gaps',control_summary(),['HIROBOT_DISCUSSION','ASIM','ANON','ROBOCURVE','MOBILE_ICL']),
+  'world':('Agent Creates Data',data_overview(),['AWESOME','S13','DEXGPT']),
+  'simulation_demos':('Data: Replay and Scene Assets',simulation_demos(),['S12','OFFICE','AWESOME']),
+@@ -489,8 +488,8 @@
+  'robodojo_results':'Original report screenshots · 10 selected tasks · Direct Score n=48, Hybrid n=50; success denominator 50 each',
+  'robolab_results':'Original report screenshot · selected final slots + historical first-five baselines; initial states/budgets not fully paired',
+  'report_heatmap':'Original report Score heatmap · all 10 tasks and 7 methods · public references are not matched reruns; click to enlarge',
+- 'control_summary':'Our diagnostic synthesis · coupled task demands, not System 2 / 1 / 0 layers · Direct still uses low-level control',
+- 'interface_timing':'Asim prompt-v3: 3 tasks × 20 episodes/interface · mean of query seconds, not end-to-end Hz · Go1: all 12 leg joints, not humanoid control',
++ 'control_summary':'Our synthesis · demonstrated task-specific strengths and current research questions',
++ 'interface_timing':'Asim prompt-v3 · reported query time, not full-loop latency · workloads and control budgets differ',
+  'world':'Data taxonomy synthesis · assets, Real-to-sim Replay and Data Rollout have different validation requirements',
+  'world_summary':'DexGPT original comparison · one trajectory, not 203 trials · task_success=false; maximum penetration 5.623 mm, required <5 mm',
+  'simulation_demos':'Community demonstrations · source speed unspecified; workflow and physical fidelity are not independently validated',
+@@ -507,7 +506,7 @@
+  'claude_results':'Bold: highest reported success rate.',
+  'rpent_results':'Bold: column maximum; ties retained.',
+  'astra_direct':'Bold: row maximum; descriptive, not a controlled model comparison.',
+- 'interface_results':'Bold: best reported Astra per task; observations and budgets differ.',
++ 'interface_results':'Bold: row maxima + highlighted Waypoint proprio column.',
+  'real2sim_results':'Bold: most Accepted, fewest Failed, lowest model-call bill.',
+  'enpire_results':'Bold: highest reported mean per task; not statistical significance.',
+  'enpire_robocasa':'Bold: reported highest aggregate bar; no estimated percentage.',
+@@ -535,6 +534,14 @@
+  x,y,w,h=b;return f'left:{x:g}px;top:{y:g}px;width:{w:g}px;height:{h:g}px;'
+ def render_element(e):
+  b=e['bbox'];sty=style_bbox(b)
++ if 'capabilityIcon' in e:
++  paths={
++   'semantic':'<path d="M9 11h46v31H30L18 53V42H9z"/><path d="m22 26 7 7 14-14"/>',
++   'spatial':'<path d="m19 23 13-7 13 7v17l-13 8-13-8zM19 23l13 8 13-8M32 31v17"/><path d="M5 32h9m-4-4 4 4-4 4M50 32h9m-4-4 4 4-4 4M32 4v8m-4-4 4 4 4-4"/>',
++   'latency':'<circle cx="32" cy="33" r="23"/><path d="M32 17v17l12 7M25 4h14M32 4v6"/>',
++   'contact':'<path d="M13 9v19l10 8M51 9v19L41 36M18 12v14l10 7M46 12v14l-10 7"/><rect x="22" y="35" width="20" height="19" rx="2"/><path d="M8 42h7m34 0h7M10 52l6-3m32 0 6 3"/>'
++  }
++  return f'<svg class="art capability-icon" style="{html.escape(sty,quote=True)}" viewBox="0 0 64 64" fill="none" stroke="{e["lineColor"]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths[e["capabilityIcon"]]}</svg>'
+  if e['kind']=='image':
+   if e.get('alt','').startswith('VIDEO:'):return ''
+   cls='art original' if 'logo' not in e.get('alt','').lower() else 'art'
+@@ -592,7 +599,7 @@
+  payloads.append(f'<script id="{m["payloadId"]}" type="application/octet-stream" data-sha256="{m["sha256"]}">{base64.b64encode(raw).decode()}</script>')
+ page_html=page_html.replace('<!-- VIDEO_PAYLOADS -->','\n'.join(payloads))
+ dest=OUT/'Agents_for_Robotics_Self_Contained.html';dest.write_text(page_html)
+-assert len(new_media)==18,len(new_media)
++assert len(new_media)==19,len(new_media)
+ report={'slides':len(slides),'videos':len(new_media),'media_seconds':sum(m['duration_seconds'] for m in new_media),'minutes':sum(minutes),'chapter_opening_slides':[n for n,key in enumerate(order,1) if key in chapter_keys],'bytes':dest.stat().st_size,'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'standalone_file':str(dest),'media':[{k:m[k] for k in ['name','slide','sha256','duration_seconds']} for m in new_media],'images':image_audit,'native_text':True,'all_fonts_embedded':True}
+ (B/'standalone_build_audit.json').write_text(json.dumps(report,indent=2))
+ (B/'slide_records_revised.json').write_text(json.dumps([{k:v for k,v in r.items() if k not in ['html','notesHtml']} for r in slides],ensure_ascii=False,indent=2))
+--- baseline/.build/script_revised.md
++++ current/.build/script_revised.md
+@@ -114,13 +114,13 @@
+ 这两段比单纯说“能力更强了”具体得多：输入可以是示范或语义目标，输出已经落到真实动作。但接口仍然影响结果。下一页就固定为同一个 Astra，看不同 action 输出的公开比较。
+ 
+ 
+-## 09. Same Astra, Different Action Outputs
+-
+-> 读图提示：先读三种输出，再看两段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。
++## 09. One Model, Different Control Interfaces
++
++> 读图提示：先读三种输出，再看三段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。
+ 
+ 这组作者公开实验使用同一 GPT-6 Astra、medium reasoning，在 Franka / robosuite 的 Square 任务上比较 ΔEEF chunks、absolute EEF waypoints，以及返回 waypoints 的 Python 程序。
+ 
+-结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。
++结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。第三列现在是该code/proprio组真实的Square ep00：作者记录为成功，125 steps、1 query。视频只有6.4秒，但query本身花了41.339秒，整个episode为42.42秒；播放省略了模型等待，不能当作实时控制。
+ 
+ 最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式，也不能单凭这一行断言哪种primitive最通用。
+ 
+@@ -133,18 +133,18 @@
+ 
+ > 读表提示：先比较中间三个 proprio 列，再看没有 proprio 和 privileged observation 两列；不要逐格念数字。
+ 
+-Lift 几乎所有方式都达到20/20，无法区分接口。Can 中，ΔEEF和waypoint分别是18/20和17/20，code只有7/20。Square却相反：ΔEEF只有1/20，waypoint为18/20，code为16/20。因此没有跨任务通吃的接口赢家。
++Waypoint proprio整列加粗是为了突出这条接口路线，不表示它在每个任务都最好。Square中，排除privileged观测后，它的18/20最高；但Can中ΔEEF为18/20，高于waypoint的17/20。Lift几乎所有方式都达到20/20，无法区分接口。Can 中，ΔEEF和waypoint分别是18/20和17/20，code只有7/20。Square却相反：ΔEEF只有1/20，waypoint为18/20，code为16/20。因此没有跨任务通吃的接口赢家。
+ 
+ Observation 也影响解释。Square waypoint 没有 proprio 时是0/20，加入该档信息后是18/20；code换到privileged信息后是19/20。这里的 proprio 还含图像标记和固定参考，不能把差异都算成 action 表达的作用。
+ 
+ Script upper 与 random lower 只是这个实验的控制项。所有格子都是20 episodes，但控制步数与查询预算不同，特别是 Square 的waypoint平均256.6 steps已超过ΔEEF上限。当前结果说明 interface、observations 和预算都值得研究，不构成某种表达的纯因果优势。
+ 
+ 
+-## 11. Astra: Direct or Hybrid?
++## 11. Astra: Introducing a Hybrid Architecture
+ 
+ > 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。
+ 
+-这份匿名报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
++接下来引入另一种Hybrid架构：把learned action prior与Astra的判断、修正结合起来。这份报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
+ 
+ 共享输入包括三个 RGB views、14D proprioception、task instruction，以及 Astra 的 history / notes。Direct 由 Astra 生成双臂 EEF position、orientation 和 gripper targets，每次执行 1–5 control steps 后重新观察。
+ 
+@@ -194,19 +194,17 @@
+ 最后核对视频容易掩盖的另一个问题：这些系统具体输出什么，模型多久才返回一次？
+ 
+ 
+-## 15. Astra Interfaces and Query Time
+-
+-> 读图提示：左边看模型真正输出什么，右边看公开的单次查询耗时。数字是特定设置的观测，不是所有Astra系统的统一速度。
+-
+-接口没有统一到一种形式。Robocurve与匿名报告的Direct是EEF pose targets，经local IK与controller执行。Asim则比较7D ΔEEF、absolute waypoints，以及返回waypoints的代码；底层OSC_POSE是20 Hz。匿名Hybrid则先由π0.5给出joint-space candidate，Astra决定accept prefix或EEF correction。这是已有policy参与执行，不是Astra直接输出那些joint targets。另有G1 demo明确经过official SONIC planner与SONIC policy；但许多社媒案例只公开了视频，不能统一称为atomic skills，也无法确认其底层API。
+-
+-也确实有直接关节输出。GPT Dog Eval让Astra生成Go1四条腿全部12个关节的归一化position residual keyframes，最多4个keyframes、15个control steps。实际目标是q_nominal + 0.5a rad，经interpolation、guardrails和PD执行。这不是humanoid的全身角度，也不是裸motor torque。最关键的是：推理时simulator暂停。50 Hz是动作执行频率，报告的simulation-time feedback Hz也不是wall-clock推理速度。
+-
+-右侧来自Asim prompt-v3、medium reasoning、proprio设置下Lift、Can、Square各20个episodes，共180回合的逐query日志。ΔEEF有414次查询，平均30.75秒；waypoint有241次，平均26.08秒；code有76次，平均41.98秒。按显示秒数计算，不是我们独立计时。三种查询的内容与执行预算不同，不能据此给接口排统一的速度冠军。
+-
+-均值的倒数约0.024–0.038 queries/s，只是这些记录的sequential query-time倒数，不是完整闭环的decision rate；执行、渲染和工具调用还有额外开销。即使机器人端以20或25 Hz运行，也不代表Astra每秒推理20或25次。加速demo更不能用于推算频率。
+-
+-目前能回答的是：公开实例从joint chunks、EEF、code到learned-policy delegation都存在；明确披露的部分运行需要数十秒一次query，其他来源没有可比的端到端频率。下面用这条真实控制链路，总结能力与缺口。
++## 15. High Latency Limits Real-Time Control
++
++> 读图提示：这一页只看latency。三张卡是同一个公开harness的平均model-query time，不是所有Astra部署的统一速度。
++
++前面的simulation replay省略了模型等待；真实系统不可能把环境也一同暂停。这正是目前很严重的问题：模型作一次决策要等待数十秒，碰到扰动和持续接触时，很难及时根据新反馈调整。
++
++数字来自Asim prompt-v3、medium reasoning、proprio设置下Lift、Can、Square各20个episodes，共180回合、731次查询的公开日志。ΔEEF有414次查询，平均30.75秒；waypoint有241次，平均26.08秒；code有76次，平均41.98秒。这是根据已发布日志汇总，不是我们重新计时。
++
++三种query完成的工作量不同，不能把数值顺序直接当作接口速度排行榜。Query time也不是完整闭环latency，执行、工具调用和渲染还可能增加时间；机器人端的Controller Hz不等于Agent inference Hz。这里的结论不是给所有模型设一个速度上限，而是当前这组系统的数十秒级等待已经明显限制快速反馈。
++
++因此，下一页的第一个open problem是如何降低foundation model的latency，让更强的决策能力真正进入及时的交互闭环，而不只是在省略等待的视频中完成任务。
+ 
+ 
+ ## 16. Control: Strengths and Open Gaps
+@@ -219,10 +217,12 @@
+ 
+ Robocurve 的 bowl 是19/20，puzzle只有2/20，说明成功的语义任务不能代替精细接触验证。但单次失败也不能唯一定位为物理理解不足，sensing、pose、controller和budget都可能参与。Asim在同一个Astra上更换观测和action interface，也出现明显差异，但预算并不匹配，不能据此分离单一原因。
+ 
+-因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
++因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。
+ 
+ Hi Robot 的 Discussion 本身就说模型层面的角色分离 is not fundamental。我们不是宣布旧实验失效，而是在模型能力变化后重新检验旧结论。Astra 的机器人预训练配方及因果对照仍未披露，不能由成功 demo 反推训练原因。
+ 
++从这四项能力和缺口，箭头收束到两个当前open problems。第一，如何降低foundation model的latency，让系统能更及时地利用反馈。第二，如何为Agent设计更好的interface和action primitives，让动作段之间衔接更流畅，让contact-rich任务中的执行更稳定。这不仅是让模型选对目标，也涉及执行器提供什么抽象、如何保持连续性，以及怎样处理接触变化。它们是待研究问题，不是这组demo已经解决的结论。
++
+ 接下来从“怎样生成下一步 action”，转向“Agent 可以帮助生成哪些 Data”。
+ 
+ 
+--- baseline/.build/validate_standalone.py
++++ current/.build/validate_standalone.py
+@@ -26,7 +26,7 @@
+ assert text.startswith('<!DOCTYPE html>') and p.charset
+ assert len(p.ids)==len(set(p.ids))
+ assert not p.external,p.external
+-deck=json.loads(p.scripts['deck-data']);N=35;V=18
++deck=json.loads(p.scripts['deck-data']);N=35;V=19
+ assert len(deck['slides'])==N and len(deck['media'])==V
+ assert [r['number'] for r in deck['slides']]==list(range(1,N+1))
+ expected_keys=[1, 2, 'questions', 'control', 'hierarchy', 'responsibility_shift', 'astra_direct', 'control_demos', 'interfaces', 'interface_results', 'hybrid', 'robodojo_results', 'robolab_results', 'report_heatmap', 'interface_timing', 'control_summary', 'world', 10, 11, 12, 'real2sim_results', 'simulation_demos', 19, 'world_summary', 'improve', 15, 16, 'idea_tree', 17, 'enpire_results', 'enpire_robocasa', 'improvement_demos', 18, 'end', 'thanks']
+@@ -39,7 +39,7 @@
+  assert next(r['number'] for r in deck['slides'] if r['group']==chapter['group'])==number
+  assert 'Chapter overview' in chapter['html']
+ assert [r['group'] for r in deck['slides']]==['Introduction']*3+['1 · Agent Controls Robot']*13+['2 · Agent Creates Data']*8+['3 · Agent Improves Policy']*9+['Closing']*2
+-expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'Same Astra, Different Action Outputs', 'Astra Interfaces: Three Tasks', 'Astra: Direct or Hybrid?', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'Astra Interfaces and Query Time', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Real Episode and Its Twin', 'Agentic Real2Sim: Method', 'DROID-100: Protocol and Results', 'Real2Sim: All Backend Results', 'Data: Replay and Scene Assets', 'Data: Mechanism and CAD Assets', 'Data: Physics and Training Value', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Pin Insertion Curve', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Autoresearch in RoboCasa', 'Astra: Training and Context', 'ENPIRE: Cost and Chapter Summary', 'Takeaways', 'Thank You']
++expected_titles=['Agents for Robotics', 'Demo: Painting with Feedback', 'Three Roles for Robotics Agents', 'Agent Controls Robot', 'Hierarchical Robot Control', 'Where Does Generalization Live?', 'Astra: Stronger Real-Robot Performance', 'Astra: More Real-Robot Demos', 'One Model, Different Control Interfaces', 'Astra Interfaces: Three Tasks', 'Astra: Introducing a Hybrid Architecture', 'RoboDojo: Overall Results', 'RoboLab: Overall Results', 'RoboDojo: Task-Level Patterns', 'High Latency Limits Real-Time Control', 'Control: Strengths and Open Gaps', 'Agent Creates Data', 'Real Episode and Its Twin', 'Agentic Real2Sim: Method', 'DROID-100: Protocol and Results', 'Real2Sim: All Backend Results', 'Data: Replay and Scene Assets', 'Data: Mechanism and CAD Assets', 'Data: Physics and Training Value', 'Agent Improves Policy', 'ENPIRE: Environment and Improvement', 'ENPIRE: Reset and Verification', 'ENPIRE: What Did the Agent Change?', 'ENPIRE: Pin Insertion Curve', 'ENPIRE: Two Physical Tasks', 'ENPIRE: Autoresearch in RoboCasa', 'Astra: Training and Context', 'ENPIRE: Cost and Chapter Summary', 'Takeaways', 'Thank You']
+ assert [r['title'] for r in deck['slides']]==expected_titles
+ assert all(len(t)<=40 for t in expected_titles)
+ def slide(n):return deck['slides'][n-1]
+@@ -57,7 +57,7 @@
+ assert 'Selected demonstrations, not success-rate estimates.' not in slide(8)['html']
+ assert slide(8)['html'].count('Control interface: not disclosed')==2
+ assert '不能仅从Franka外观' in slide(8)['script']
+-assert all(t in slide(9)['html'] for t in ['1 / 20','18 / 20','16 / 20','200 steps','500 steps','unequal control'])
++assert all(t in slide(9)['html'] for t in ['1 / 20','18 / 20','16 / 20','200 steps','500 steps'])
+ assert all(t in slide(9)['script'] for t in ['256.6','不是 joint q','proprio','没有重跑'])
+ assert all(t in slide(11)['script'] for t in ['50×14','1–15','1–5','25 Hz','14D','OR','FK trajectory','内部网络'])
+ assert all(t in slide(11)['html'] for t in ['13 / 50','24 / 50'])
+@@ -69,7 +69,7 @@
+ assert all(t in slide(32)['footer'] for t in ['4 experts','FULL EVAL NOT MET','8×'])
+ assert 'Not a validated' in slide(23)['html']
+ # v0.10: shared-start interface layout, capability diagnosis and sparse closing.
+-assert all(t in slide(16)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Not yet reliable / established'])
++assert all(t in slide(16)['html'] for t in ['Semantic understanding','Spatial generalization','High-frequency control','Physical generalization','Still difficult','Open problems','Lower foundation-model latency','Better interfaces / action primitives'])
+ assert all(t in slide(16)['script'] for t in ['不是三种独立','is not fundamental','因果对照仍未披露'])
+ assert slide(16)['ids'][0]=='HIROBOT_DISCUSSION'
+ assert len(re.sub('<[^>]+>',' ',slide(34)['html']).split())<65
+@@ -92,10 +92,15 @@
+ # v0.11: distinguish inference time, local control and candidate-data validity.
+ from evidence_v011 import load_evidence
+ new_evidence=load_evidence(ROOT)
+-assert slide(15)['ids']==['ASIM','DOG','ROBOCURVE','ANON','G1_SONIC']
+-for term in ['12-joint chunks','simulator pauses','EEF pose targets','OSC · 20 Hz','Prior review / correction','Joint tracking / IK','30.75 s','26.08 s','41.98 s','414 queries','241 queries','76 queries','Controller Hz ≠ Agent inference Hz']:
++assert slide(15)['ids']==['ASIM']
++for term in ['30.75 s','26.08 s','41.98 s','414 queries','241 queries','76 queries','Tens of seconds per query make rapid feedback difficult.']:
+  assert term in slide(15)['html'],term
+-assert all(term in slide(15)['script'] for term in ['q_nominal + 0.5a','0.024–0.038','180回合','不是完整闭环','不能统一称为atomic skills'])
++assert all(term in slide(15)['script'] for term in ['180回合','731次','不是完整闭环latency','Controller Hz不等于Agent inference Hz'])
++assert '12-joint chunks' not in slide(15)['html']
++assert slide(16)['html'].count('class="art capability-icon"')==4
++assert 'Model + interface + feedback budget' not in slide(16)['html']
++assert 'Evidence-limited boundaries' not in slide(16)['html']
++assert all(term in slide(16)['script'] for term in ['open problems','动作段之间衔接更流畅','contact-rich'])
+ assert slide(17)['ids']==['AWESOME','S13','DEXGPT']
+ assert all(term in slide(17)['html'] for term in ['Assets / scenes','Real-to-sim Replay','Data Rollout','Validate physics'])
+ assert 'Not a validated' in slide(23)['html'] and '190个STEP' in slide(23)['script']
+@@ -105,7 +110,8 @@
+ assert 'Beyond' not in ' '.join(r['title'] for r in deck['slides'])
+ # No media payload was altered during reclassification.
+ baseline=json.loads((B/'revision_0_13_baseline/.build/standalone_build_audit.json').read_text())
+-assert {r['name']:r['sha256'] for r in baseline['media']}=={r['name']:r['sha256'] for r in deck['media']}
++assert {r['name']:r['sha256'] for r in baseline['media']}=={r['name']:r['sha256'] for r in deck['media'] if r['name']!='asim_code'}
++assert next(r['sha256'] for r in deck['media'] if r['name']=='asim_code')=='beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef'
+ removed_alts={
+  'Original Direct LIBERO-40 success-rate panel; uncertainty and all model labels retained',
+  'Original supervised LIBERO-40 panel; VLA-alone baseline and uncertainty retained',
+@@ -116,12 +122,12 @@
+ from report_figures_v013 import load_report_figures
+ captures=load_report_figures(ROOT)
+ new_image_keys={name:hashlib.sha256(file.read_bytes()).hexdigest() for name,file in captures.items()}
+-assert set(deck['assets'])==({r['sha256'] for r in baseline['images']}-removed_figures)|set(new_image_keys.values())
++assert set(deck['assets'])==({r['sha256'] for r in baseline['images']}-removed_figures)|set(new_image_keys.values())|{hashlib.sha256((B/'assets/v0_13_code/asim_code.jpg').read_bytes()).hexdigest()}
+ for n,names in {12:['panel-score-ranking.png','panel-sr-ranking.png'],13:['robolab-success-ranking.png'],14:['task-score-table-complete.png']}.items():
+  assert 'data-table-cell' not in slide(n)['html']
+  assert slide(n)['ids']==['ANON']
+  for name in names:assert new_image_keys[name] in slide(n)['html']
+-assert all(t in slide(12)['html'] for t in ['24/50','13/50','not paired reruns'])
++assert all(t in slide(12)['html'] for t in ['24/50','13/50'])
+ assert all(t in slide(12)['script'] for t in ['48个scored episodes','分母都保持50','执行段长'])
+ assert all(t in slide(13)['script'] for t in ['authorized retries','180提高到500','June cohort','49/50','46/50'])
+ assert all(t in slide(14)['script'] for t in ['不是success rate','64与12','十个任务','七种方法'])
+@@ -129,6 +135,17 @@
+ for r in deck['slides'][:16]:
+  assert 'S09' not in r['ids'] and 'RPENT' not in r['ids']
+  assert 'Claude' not in r['script'] and 'RPent' not in r['script']
++
++
++assert all(term not in slide(10)['html'] for term in ['Square is sensitive','Unequal budgets:'])
++assert 'highlighted Waypoint proprio column' in slide(10)['footer']
++assert all(term in slide(10)['script'] for term in ['不表示它在每个任务都最好','18/20','17/20','预算不同'])
++assert 'Public baselines are reweighted references, not paired reruns.' not in slide(12)['html']
++assert 'Selected final slots + retries / historical baselines; not fresh paired trials.' not in slide(13)['html']
++assert '重算了' in slide(12)['script'] and 'retained final slots' in slide(13)['script']
++assert 'Square · same model / proprio setting · unequal control and query budgets.' not in slide(9)['html']
++from code_video_v014 import verify_code_video
++verify_code_video(ROOT)
+ 
+ # v0.9: a result table is complete only when its cells and qualifying protocol travel together.
+ results=json.loads((ROOT/'research/results_v0_9.json').read_text())
+@@ -152,7 +169,7 @@
+ table_cells(33,['Agent–robot pairs','Mean robot utilization','Mean GPU utilization','Mean tokens / minute'],
+  [[str(r['agentCount']),f"{r['robotMean']:.1f} ± {r['robotStd']:.1f}%",f"{r['gpuMean']:.1f} ± {r['gpuStd']:.1f}%",f"{t['mean']/1000:.1f} ± {t['std']/1000:.1f}k"] for r,t in zip(results['enpire_resources']['utilization'],results['enpire_resources']['tokenRate'])])
+ # Independent expected coordinates: body rows/columns are zero-based. All ties retained.
+-expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 10: {(0, 7), (0, 4), (2, 7), (0, 3), (0, 6), (1, 7), (0, 5)}, 21: {(0, 1), (0, 3), (1, 3), (0, 4)}, 30: {(0, 1), (1, 2)}, 31: {(2, 2)}, 33: {(0, 1), (0, 3), (2, 2)}}
++expected_bold={7: {(1, 2), (1, 3), (0, 3)}, 10: {(0, 7), (0, 4), (2, 7), (0, 3), (0, 6), (1, 7), (0, 5), (1, 5), (2, 5)}, 21: {(0, 1), (0, 3), (1, 3), (0, 4)}, 30: {(0, 1), (1, 2)}, 31: {(2, 2)}, 33: {(0, 1), (0, 3), (2, 2)}}
+ for number,wanted in expected_bold.items():
+  observed=set();all_coordinates=set()
+  for tag in re.findall(r'<div class="text"[^>]+>',slide(number)['html']):
+@@ -167,7 +184,7 @@
+  assert observed==wanted,(number,observed,wanted)
+  assert 'Bold:' in slide(number)['footer']
+ assert {s['number'] for s in deck['slides'] if 'data-table-cell=' in s['html']}==set(expected_bold)
+-for number,terms in {10: ['Unequal budgets', '200', '500'], 21: ['100 episodes', 'excluded'], 30: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 31: ['40-episode', 'No reset/retry', 'not published']}.items():
++for number,terms in {21: ['100 episodes', 'excluded'], 30: ['4 plotted traces', 'conditional retries', 'not pooled pass@1'], 31: ['40-episode', 'No reset/retry', 'not published']}.items():
+  assert all(term in slide(number)['html'] for term in terms),(number,terms)
+ assert all(term in slide(33)['script'] for term in ['4.5/3.2/2.0','不是同一组数','整队 token rate'])
+ assert all(len(slide(n)['title'])<=40 for n in range(1,N+1))
+@@ -194,10 +211,10 @@
+ old_media=json.loads((out/'offline_player/media_credits.json').read_text())
+ original_by_name={m['name']:m for m in old_media}
+ community=[]
+-for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json']:
++for name in ['clip_manifest.json','clip_manifest_v2.json','clip_manifest_v3.json','clip_manifest_v4.json','clip_manifest_v5.json']:
+  community+=json.loads((B/name).read_text())
+ community_by_name={c['name']:c for c in community}
+-expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'asim_waypoint', 'asim_delta'}, 11: {'anon_hybrid_pack', 'anon_direct_sort'}, 18: {'ar2s_sim', 'ar2s_real'}, 22: {'astra_real2sim', 'office_newton'}, 27: {'enpire_verify', 'enpire_reset'}, 32: {'quad_rl', 'wenli_icl'}, 23: {'hand'}}
++expected_media={2: {'painting'}, 7: {'astra_bowl', 'astra_insertion'}, 8: {'keyboard', 'policy_plug'}, 9: {'asim_waypoint', 'asim_delta', 'asim_code'}, 11: {'anon_hybrid_pack', 'anon_direct_sort'}, 18: {'ar2s_sim', 'ar2s_real'}, 22: {'astra_real2sim', 'office_newton'}, 27: {'enpire_verify', 'enpire_reset'}, 32: {'quad_rl', 'wenli_icl'}, 23: {'hand'}}
+ assert set(m['slide'] for m in deck['media'])==set(expected_media)
+ for number,names in expected_media.items():
+  assert {m['name'] for m in deck['media'] if m['slide']==number}==names
+--- baseline/.build/results_slides_v09.py
++++ current/.build/results_slides_v09.py
+@@ -72,9 +72,8 @@
+     els += table(['Task', 'Script\nupper', 'Random\nlower', 'ΔEEF\nproprio', 'Waypoint\nnone',
+                   'Waypoint\nproprio', 'Code\nproprio', 'Code\nprivileged'], data['asim'],
+                  [137, 145, 145, 145, 145, 145, 145, 145], y=219, row_h=65, head_h=64, size=21,
+-                 comparisons=row_maxima(data['asim'], range(3, 8)))
+-    els += [text('Square is sensitive to both interface and observations', 74, 516, 1132, 38, 27, '#1d7d76', True)]
+-    els += note('Unequal budgets: ΔEEF ≤200 steps / 10 queries; Square waypoint ≤500 / 16; code ≤500 / 3 revisions.\n“Proprio” includes visual markers and fixed references. ΔEEF means OSC_POSE, not joint q.', 585, 18)
++                 comparisons=row_maxima(data['asim'], range(3, 8)),
++                 emphasize={(row,5) for row in range(len(data['asim']))})
+     slides['interface_results'] = (title, els, ['ASIM'])
+ 
+     title = 'RoboDojo: Per-Task Results'
+--- baseline/.build/extended_visual_audit.mjs
++++ current/.build/extended_visual_audit.mjs
+@@ -1,4 +1,4 @@
+-// Additional v0.13 verification: original-figure screenshots and whole new-clip playback.
++// Additional v0.14 verification: original-figure screenshots and whole new-clip playback.
+ // Visual inspection is recorded separately; playback progression is not experiment validation.
+ import {createRequire} from 'node:module';
+ import {readFileSync, writeFileSync} from 'node:fs';
+@@ -34,13 +34,13 @@
+   for (const [n,index] of [[5,0],[5,1],[5,2],[11,0],[12,0],[12,1],[13,0],[14,0],[19,0],[24,0],[26,0],[28,0],[30,0],[31,0]]) {
+     await go(n);await page.locator('#slide img.original').nth(index).click();
+     await page.waitForFunction(()=>document.getElementById('large-figure').complete);
+-    const file=`${root}/.build/v0_13_visual/figure-${n}-${index}.png`;
++    const file=`${root}/.build/v0_14_visual/figure-${n}-${index}.png`;
+     await page.screenshot({path:file});
+     figures.push({slide:n,index,file});
+     await page.keyboard.press('Escape');
+   }
+   const playback=[];
+-  for (const [n,name] of [[8,'keyboard'],[22,'office_newton'],[32,'quad_rl'],[9,'asim_delta'],[9,'asim_waypoint']]) {
++  for (const [n,name] of [[8,'keyboard'],[22,'office_newton'],[32,'quad_rl'],[9,'asim_delta'],[9,'asim_waypoint'],[9,'asim_code']]) {
+     await go(n);
+     const video=page.locator(`video[data-clip="${name}"]`);
+     await video.evaluate(async v=>{v.loop=false;v.currentTime=0;v.playbackRate=1;await v.play();});
+@@ -58,11 +58,11 @@
+     playback.push({slide:n,clip:name,samples,ended});
+   }
+   await go(8);await page.keyboard.press('n');
+-  await page.screenshot({path:`${root}/.build/v0_13_visual/script-desktop.png`});
++  await page.screenshot({path:`${root}/.build/v0_14_visual/script-desktop.png`});
+   await page.setViewportSize({width:390,height:844});
+-  await page.screenshot({path:`${root}/.build/v0_13_visual/script-mobile.png`,fullPage:true});
++  await page.screenshot({path:`${root}/.build/v0_14_visual/script-mobile.png`,fullPage:true});
+   if (await streamServedHash() !== html_sha256) throw new Error('Served HTML changed during audit');
+   const report={html_sha256,served_html_byte_identity:true,loaded_deck_data_sha256:loadedDeckHash,identity_check:'Streamed HTTP bytes before/after browser run plus SHA-256 of actual loaded deck-data DOM',figures,playback,scope:'Complete uninterrupted playback at 1x presentation rate; source speedups retained. Separate visual review uses sequential 1-second samples.'};
+-  writeFileSync(`${root}/.build/v0_13_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
++  writeFileSync(`${root}/.build/v0_14_extended_audit.json`,JSON.stringify(report,null,2)+'\n');
+   console.log(JSON.stringify({html_sha256,figures:figures.length,completeClips:playback.map(x=>x.clip)}));
+ } finally {await browser.close();}
+--- baseline/output/Speaker_Script_Revised.md
++++ current/output/Speaker_Script_Revised.md
+@@ -21,13 +21,13 @@
+ | 06 | Where Does Generalization Live? | 2 | 06:00 |
+ | 07 | Astra: Stronger Real-Robot Performance | 2 | 08:00 |
+ | 08 | Astra: More Real-Robot Demos | 1 | 10:00 |
+-| 09 | Same Astra, Different Action Outputs | 2 | 11:00 |
++| 09 | One Model, Different Control Interfaces | 2 | 11:00 |
+ | 10 | Astra Interfaces: Three Tasks | 1.5 | 13:00 |
+-| 11 | Astra: Direct or Hybrid? | 2.5 | 14:30 |
++| 11 | Astra: Introducing a Hybrid Architecture | 2.5 | 14:30 |
+ | 12 | RoboDojo: Overall Results | 2 | 17:00 |
+ | 13 | RoboLab: Overall Results | 2 | 19:00 |
+ | 14 | RoboDojo: Task-Level Patterns | 1.5 | 21:00 |
+-| 15 | Astra Interfaces and Query Time | 1.5 | 22:30 |
++| 15 | High Latency Limits Real-Time Control | 1.5 | 22:30 |
+ | 16 | Control: Strengths and Open Gaps | 1 | 24:00 |
+ | 17 | Agent Creates Data | 1 | 25:00 |
+ | 18 | Real Episode and Its Twin | 1.5 | 26:00 |
+@@ -199,15 +199,15 @@
+ - [Kaifeng Zhang (@kaiwynd) · Astra keyboard feedback demo, 20×](https://x.com/kaiwynd/status/2098823484474348008)
+ - [Awesome-Astra-Embodied-AI · curated discovery list, not an evaluation](https://github.com/zjwzcx/Awesome-Astra-Embodied-AI)
+ 
+-## 09. Same Astra, Different Action Outputs
+-
+-建议 2 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：先读三种输出，再看两段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。
++## 09. One Model, Different Control Interfaces
++
++建议 2 分钟（含读图、视频及停顿）。
++
++> 读图提示：先读三种输出，再看三段 Square ep00 replay 和 20 回合统计。数字下方的 budget 是解释的一部分。
+ 
+ 这组作者公开实验使用同一 GPT-6 Astra、medium reasoning，在 Franka / robosuite 的 Square 任务上比较 ΔEEF chunks、absolute EEF waypoints，以及返回 waypoints 的 Python 程序。
+ 
+-结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。
++结果分别是 1/20、18/20 和 16/20。ΔEEF 是 7D OSC_POSE action，不是 joint q。Code 生成的是 plan(scene)，返回至多 12 个 waypoints，再由同一个 waypoint controller 跟踪，不是任意高频闭环程序。第三列现在是该code/proprio组真实的Square ep00：作者记录为成功，125 steps、1 query。视频只有6.4秒，但query本身花了41.339秒，整个episode为42.42秒；播放省略了模型等待，不能当作实时控制。
+ 
+ 最重要的限制是预算没有配平。ΔEEF 最多 200 control steps / 10 queries；Square waypoint 最多 500 steps / 16 queries；code 最多 500 steps / 3 轮程序修改。Waypoint 平均用了 256.6 steps，已经超过 ΔEEF 的上限。因此不能把差距全部归因于表达方式，也不能单凭这一行断言哪种primitive最通用。
+ 
+@@ -225,7 +225,7 @@
+ 
+ > 读表提示：先比较中间三个 proprio 列，再看没有 proprio 和 privileged observation 两列；不要逐格念数字。
+ 
+-Lift 几乎所有方式都达到20/20，无法区分接口。Can 中，ΔEEF和waypoint分别是18/20和17/20，code只有7/20。Square却相反：ΔEEF只有1/20，waypoint为18/20，code为16/20。因此没有跨任务通吃的接口赢家。
++Waypoint proprio整列加粗是为了突出这条接口路线，不表示它在每个任务都最好。Square中，排除privileged观测后，它的18/20最高；但Can中ΔEEF为18/20，高于waypoint的17/20。Lift几乎所有方式都达到20/20，无法区分接口。Can 中，ΔEEF和waypoint分别是18/20和17/20，code只有7/20。Square却相反：ΔEEF只有1/20，waypoint为18/20，code为16/20。因此没有跨任务通吃的接口赢家。
+ 
+ Observation 也影响解释。Square waypoint 没有 proprio 时是0/20，加入该档信息后是18/20；code换到privileged信息后是19/20。这里的 proprio 还含图像标记和固定参考，不能把差异都算成 action 表达的作用。
+ 
+@@ -235,13 +235,13 @@
+ 
+ - [Astra control dashboard · prompt-v3, same-model interface records; unequal budgets](https://asimfish.github.io/astra-control-dashboard/#sec3)
+ 
+-## 11. Astra: Direct or Hybrid?
++## 11. Astra: Introducing a Hybrid Architecture
+ 
+ 建议 2.5 分钟（含读图、视频及停顿）。
+ 
+ > 读图提示：先放大左侧报告原架构，讲完后再看右侧两段不同仿真任务的视频。片段省略 LLM 等待，只展示 control-time playback，不能用来比较端到端 latency。13/50 与 24/50 来自完整 RoboDojo 面板，不是这两个视频的对比。
+ 
+-这份匿名报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
++接下来引入另一种Hybrid架构：把learned action prior与Astra的判断、修正结合起来。这份报告把问题推得更具体：当System 2已经能自己作动作决策时，再保留一个learned action prior还有什么价值？这里是系统执行架构，不是 Astra 未公开的内部网络结构。
+ 
+ 共享输入包括三个 RGB views、14D proprioception、task instruction，以及 Astra 的 history / notes。Direct 由 Astra 生成双臂 EEF position、orientation 和 gripper targets，每次执行 1–5 control steps 后重新观察。
+ 
+@@ -309,29 +309,23 @@
+ 
+ - [Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)](https://anonymous-report-421.github.io/public-website/?lang=en&view=1)
+ 
+-## 15. Astra Interfaces and Query Time
+-
+-建议 1.5 分钟（含读图、视频及停顿）。
+-
+-> 读图提示：左边看模型真正输出什么，右边看公开的单次查询耗时。数字是特定设置的观测，不是所有Astra系统的统一速度。
+-
+-接口没有统一到一种形式。Robocurve与匿名报告的Direct是EEF pose targets，经local IK与controller执行。Asim则比较7D ΔEEF、absolute waypoints，以及返回waypoints的代码；底层OSC_POSE是20 Hz。匿名Hybrid则先由π0.5给出joint-space candidate，Astra决定accept prefix或EEF correction。这是已有policy参与执行，不是Astra直接输出那些joint targets。另有G1 demo明确经过official SONIC planner与SONIC policy；但许多社媒案例只公开了视频，不能统一称为atomic skills，也无法确认其底层API。
+-
+-也确实有直接关节输出。GPT Dog Eval让Astra生成Go1四条腿全部12个关节的归一化position residual keyframes，最多4个keyframes、15个control steps。实际目标是q_nominal + 0.5a rad，经interpolation、guardrails和PD执行。这不是humanoid的全身角度，也不是裸motor torque。最关键的是：推理时simulator暂停。50 Hz是动作执行频率，报告的simulation-time feedback Hz也不是wall-clock推理速度。
+-
+-右侧来自Asim prompt-v3、medium reasoning、proprio设置下Lift、Can、Square各20个episodes，共180回合的逐query日志。ΔEEF有414次查询，平均30.75秒；waypoint有241次，平均26.08秒；code有76次，平均41.98秒。按显示秒数计算，不是我们独立计时。三种查询的内容与执行预算不同，不能据此给接口排统一的速度冠军。
+-
+-均值的倒数约0.024–0.038 queries/s，只是这些记录的sequential query-time倒数，不是完整闭环的decision rate；执行、渲染和工具调用还有额外开销。即使机器人端以20或25 Hz运行，也不代表Astra每秒推理20或25次。加速demo更不能用于推算频率。
+-
+-目前能回答的是：公开实例从joint chunks、EEF、code到learned-policy delegation都存在；明确披露的部分运行需要数十秒一次query，其他来源没有可比的端到端频率。下面用这条真实控制链路，总结能力与缺口。
++## 15. High Latency Limits Real-Time Control
++
++建议 1.5 分钟（含读图、视频及停顿）。
++
++> 读图提示：这一页只看latency。三张卡是同一个公开harness的平均model-query time，不是所有Astra部署的统一速度。
++
++前面的simulation replay省略了模型等待；真实系统不可能把环境也一同暂停。这正是目前很严重的问题：模型作一次决策要等待数十秒，碰到扰动和持续接触时，很难及时根据新反馈调整。
++
++数字来自Asim prompt-v3、medium reasoning、proprio设置下Lift、Can、Square各20个episodes，共180回合、731次查询的公开日志。ΔEEF有414次查询，平均30.75秒；waypoint有241次，平均26.08秒；code有76次，平均41.98秒。这是根据已发布日志汇总，不是我们重新计时。
++
++三种query完成的工作量不同，不能把数值顺序直接当作接口速度排行榜。Query time也不是完整闭环latency，执行、工具调用和渲染还可能增加时间；机器人端的Controller Hz不等于Agent inference Hz。这里的结论不是给所有模型设一个速度上限，而是当前这组系统的数十秒级等待已经明显限制快速反馈。
++
++因此，下一页的第一个open problem是如何降低foundation model的latency，让更强的决策能力真正进入及时的交互闭环，而不只是在省略等待的视频中完成任务。
+ 
+ ### 参考来源
+ 
+ - [Astra control dashboard · prompt-v3, same-model interface records; unequal budgets](https://asimfish.github.io/astra-control-dashboard/#sec3)
+-- [GPT Dog Eval · bounded Go1 joint-chunk loop, source pinned 15 Sep 2026](https://github.com/guajun/gpt-dog-eval/tree/04ef36d8120545341f6f1e77a464327c801e03aa)
+-- [Robocurve · GPT-6 Astra direct EEF evaluation (Sep 2026)](https://openai.robocurve.org/gpt-6-astra/)
+-- [Technical report · GPT 6 Astra as an Embodied Policy (result images captured 15 Sep 2026)](https://anonymous-report-421.github.io/public-website/?lang=en&view=1)
+-- [Flood G1 demo · official SONIC planner/policy; overlay rate is not LLM timing](https://x.com/RotekSong/status/2099104628562608371)
+ 
+ ## 16. Control: Strengths and Open Gaps
+ 
+@@ -345,9 +339,11 @@
+ 
+ Robocurve 的 bowl 是19/20，puzzle只有2/20，说明成功的语义任务不能代替精细接触验证。但单次失败也不能唯一定位为物理理解不足，sensing、pose、controller和budget都可能参与。Asim在同一个Astra上更换观测和action interface，也出现明显差异，但预算并不匹配，不能据此分离单一原因。
+ 
+-因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。选择 Direct、Hybrid 还是 Tools，需要一起考察 model、interface 和 feedback budget。
++因此不能把新模式概括为“System 1不需要智能”。更准确的表述是：语义理解与有限空间泛化已经展示，高频反馈控制和可靠物理泛化仍是短板。不是断言模型永远做不到，也不是说当前模型完全不懂物理。
+ 
+ Hi Robot 的 Discussion 本身就说模型层面的角色分离 is not fundamental。我们不是宣布旧实验失效，而是在模型能力变化后重新检验旧结论。Astra 的机器人预训练配方及因果对照仍未披露，不能由成功 demo 反推训练原因。
++
++从这四项能力和缺口，箭头收束到两个当前open problems。第一，如何降低foundation model的latency，让系统能更及时地利用反馈。第二，如何为Agent设计更好的interface和action primitives，让动作段之间衔接更流畅，让contact-rich任务中的执行更稳定。这不仅是让模型选对目标，也涉及执行器提供什么抽象、如何保持连续性，以及怎样处理接触变化。它们是待研究问题，不是这组demo已经解决的结论。
+ 
+ 接下来从“怎样生成下一步 action”，转向“Agent 可以帮助生成哪些 Data”。
+ 
+--- baseline/README.md
++++ current/README.md
+@@ -1,13 +1,13 @@
+ # Agents for Robotics
+ 
+-35 页英文技术分享，中文逐页讲稿。主交付是**一个全部内嵌的 HTML**：18 段视频、论文原图、Noto Serif / Noto Sans / CJK 字体、播放器与讲稿均在文件内。
++35 页英文技术分享，中文逐页讲稿。主交付是**一个全部内嵌的 HTML**：19 段视频、论文原图、Noto Serif / Noto Sans / CJK 字体、播放器与讲稿均在文件内。
+ 
+-- Zimo Huang · 2026-09-16；当前本地版 **0.13 · 2026-09-15**。
+-- HTML：`output/Agents_for_Robotics_Self_Contained.html`，约 134.6 MB。
++- Zimo Huang · 2026-09-16；当前本地版 **0.14 · 2026-09-15**。
++- HTML：`output/Agents_for_Robotics_Self_Contained.html`，约 134.7 MB。
+ - 职责迁移图预览：`output/Control_Responsibility_Shift.png`。
+ - 中文讲稿：`output/Speaker_Script_Revised.md`，与 HTML 内嵌稿一致。
+ - 章节问题—方法—结果提纲：`output/Chapter_Spine.md`。
+-- SHA-256：`9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c`。本次未发布 GitHub Release。
++- SHA-256：`dca813ac76e82ccf8e504fefe007df3c970afdbc2795e151a3a4f8f640dabe90`。本次未发布 GitHub Release。
+ - 55 分钟为包含视频、读图与讨论的建议安排，尚未彩排计时。
+ 
+ ## 主线
+@@ -22,15 +22,16 @@
+ 
+ 章首框图在 4 / 17 / 25；总结在 16 / 24 / 33。第 5 页合并上一场 Hi Robot、Helix、Helix 02 三张原图。第 11 页保留匿名 Direct/Hybrid 原执行架构；第 28 页保留 ENPIRE 原始 idea tree。论文图可点击放大。
+ 
+-按用户新确认的提纲展开 Control；Data / Improvement 各细讲一个代表工作。Community demos 分布在章节内，不扩成更多论文介绍。18 段视频合计约 6 分 47 秒，不是全部视频都需要完整播放。
++按用户新确认的提纲展开 Control；Data / Improvement 各细讲一个代表工作。Community demos 分布在章节内，不扩成更多论文介绍。19 段视频合计约 6 分 53 秒，不是全部视频都需要完整播放。
+ 
+ ## 本版调整
+ 
+-- 删除 Claude Plays Robotics / RPent 的4页方法与结果，职责迁移图后直接讲 Astra。
+-- RoboDojo 的 Score / SR 原图并列于第12页；RoboLab 原始总结果图位于第13页。
+-- 第14页新增原报告的逐任务 Score 热力图。只展开原网页的滚动区以显示完整列与行，不改数值和颜色。
+-- 35页、18段视频、6张原生结果表；章节导图、System 0 / Controller、Noto字体和播放器样式保留。
+-- 中文讲稿、导航与来源同步。原图均可点击放大，热力图的 Score 不等于成功率。
++- P9用三段同模型Square replay探索control interfaces，补入真实code/proprio ep00视频（6.4秒，省略模型等待）。
++- P10突出Waypoint proprio整列。它是Square的非privileged最佳，不是所有任务的统一赢家；原生表格保留其他行最大值。
++- P11标题明确引入Hybrid架构；P9–13按要求移除大段页面说明，协议和限制仍保留在讲稿/来源。
++- P15只讲latency，以30.75 / 26.08 / 41.98秒平均query time突出快速反馈问题。
++- P16四项能力/短板配原生矢量图，箭头指向两个open problems：降低foundation-model latency，以及让动作更流畅、contact-rich执行更稳定的interfaces/primitives。
++- 35页、19段内嵌视频，中文讲稿同步。原字体、按钮与单文件离线方式不变。
+ 
+ ## 证据边界
+ 
+@@ -48,7 +49,7 @@
+ 
+ - `WORKPLAN.md`：状态；`talk_outline.md`：页序与建议时间。
+ - `.build/standalone_delivery_audit.json`：实际静态/浏览器状态；`.build/standalone_visual_audit.json`：实际视觉验收，须与当前 hash 一致。
+-- `research/revision_0_13_spec.md`：当前范围；`research/revision_0_13_review.md`：Standards / Spec 复核。
++- `research/revision_0_14_spec.md`：当前范围；`research/revision_0_14_review.md`：Standards / Spec 复核。
+ - `research/sources.json`：当前引用和历史来源；`.build/assets/v0_8/` 与研究快照保留新增媒体 provenance。
+ 
+-旧 PPTX/PDF/ZIP 保留历史，不对应当前页序；本次不更新。v0.12 基线保存在 `.build/revision_0_13_baseline/`，不与更早 Git HEAD 混同。保留既有 dirty work，不调用 Claude / Anthropic 服务。
++旧 PPTX/PDF/ZIP 保留历史，不对应当前页序；本次不更新。最新v0.13基线保存在 `.build/revision_0_14_baseline/`，不与更早 Git HEAD 混同。保留既有 dirty work，不调用 Claude / Anthropic 服务。
+--- baseline/AGENTS.md
++++ current/AGENTS.md
+@@ -1,6 +1,6 @@
+ # Agents for Robotics
+ 
+-One self-contained HTML technical talk — 35 English slides, Chinese speaker script, 18 embedded clips,
++One self-contained HTML technical talk — 35 English slides, Chinese speaker script, 19 embedded clips,
+ ~135 MB — plus its research notes and build scripts. Speaker Zimo Huang, talk date 2026-09-16.
+ 
+ ## Build and verify
+@@ -11,6 +11,7 @@
+ 
+ ```bash
+ python3 .build/test_report_figures_v013.py                     # original report images and quantitative lineage
++python3 .build/test_v014.py                                  # code replay identity and interface highlight
+ python3 .build/test_evidence_v011.py                          # new source identity and query-time gates
+ python3 .build/test_table_emphasis.py                          # comparison groups and ties
+ python3 .build/test_results_v09.py                            # fail-closed source identity regressions
+@@ -69,16 +70,17 @@
+ 
+ ## Status
+ 
+-Version 0.13 (2026-09-15): Control 4–16, Data 17–24, Improvement 25–33, closing 34–35.
+-35 slides, 18 clips, 55-minute suggested timing. HTML SHA-256 `9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c`.
++Version 0.14 (2026-09-15): Control 4–16, Data 17–24, Improvement 25–33, closing 34–35.
++35 slides, 19 clips, 55-minute suggested timing. HTML SHA-256 `dca813ac76e82ccf8e504fefe007df3c970afdbc2795e151a3a4f8f640dabe90`.
+ 
+-Current scope: `research/revision_0_13_spec.md`. Fixed comparison is `.build/revision_0_13_baseline/`,
++Current scope: `research/revision_0_14_spec.md`. Fixed comparison is `.build/revision_0_14_baseline/`,
+ not older Git HEAD. Chapter spine: `output/Chapter_Spine.md`. Overview diagrams open 4/17/25;
+ three original hierarchy figures share 5; responsibility shift replaces Hi Robot results on 6; report architecture is 11; original results are 12–14; ENPIRE idea tree is 28.
+ Results come from `research/results_v0_9.json`, generated by `.build/derive_results_v09.py`.
+ The independent `research/results_v0_9_sources.json` pins reviewed source identities and is never regenerated by the normal build.
+ New source authority: `research/evidence_v0_11_sources.json`; loader `.build/evidence_v011.py` rejects byte drift.
+ Original report captures are pinned by `research/report_figures_v0_13_sources.json`; loader `.build/report_figures_v013.py` verifies images and query data. Heatmap export expands original DOM overflow only.
++Code replay authority: `research/code_video_v0_14_sources.json`, checked by `.build/code_video_v014.py`. All18 previous clips remain unchanged; code replay makes19.
+ RoboDojo public baselines are reweighted published references, not paired reruns; native Score denominators are 48/50.
+ Table implementation: `.build/results_slides_v09.py`; per-cell assertions live in the validator.
+ 
+@@ -90,7 +92,7 @@
+ Original curves retain uncertainty; no estimated RoboCasa bar values. Community demos remain qualitative.
+ 
+ Use `.build/standalone_delivery_audit.json`, `.build/standalone_visual_audit.json` and
+-`.build/v0_13_extended_audit.json` for actual hash-bound status. v0.13 final QA/review passed with 0 unresolved findings; see `research/revision_0_13_review.md`. Prior v0.9 source-freeze P2 remains resolved.
++`.build/v0_14_extended_audit.json` for actual hash-bound status. v0.14 QA/review in progress; see `research/revision_0_14_review.md`. Prior v0.9 source-freeze P2 remains resolved.
+ No measured rehearsal duration, new GitHub release, push, or PPTX/PDF/ZIP regeneration.
+ 
+ 
+@@ -106,3 +108,5 @@
+ Current presentation polish: merged learned tools on 4; Astra begins on 7; capability summary on 16; Takeaways on 34 and Thank You on 35. Native table emphasis is tested per cell; resources and retained slots are descriptive, not an overall winner.
+ 
+ Data now includes Real-to-sim Replay / Data Rollout and the hand CAD case (23). DexGPT original comparison (24) is a failed physical-acceptance example, not a new detailed study. Control timing (15) separates Asim published query seconds from controller Hz and Go1 simulation-time feedback.
++
++P15 is now latency-only (ASIM); P16 has four authored inline SVG icons and two open problems. Page-number typos in user edits are resolved by the exact quoted text. P10 Waypoint proprio is a highlighted column, not a universal winner; Can delta18/20 exceeds waypoint17/20. Current polish/build scope is v0.14.
+--- baseline/output/README.md
++++ current/output/README.md
+@@ -1,13 +1,13 @@
+-# Current delivery — v0.13
++# Current delivery — v0.14
+ 
+-- **Agents_for_Robotics_Self_Contained.html**: 35 English slides, 18 embedded clips, original figures, fonts and Chinese script. One file, about 134.6 MB; no runtime network dependency.
++- **Agents_for_Robotics_Self_Contained.html**: 35 English slides, 19 embedded clips, original figures, fonts and Chinese script. One file, about 134.7 MB; no runtime network dependency.
+ - **Speaker_Script_Revised.md**: synchronized Chinese narration with English terminology.
+ - **Control_Responsibility_Shift.png**: preview of the sparse slide-6 diagram with System 0 / Controller endpoints.
+ - **Astra_Report_Results.png**, **Astra_Task_Heatmap.png**: previews of the original report result graphics.
+ - **Chapter_Spine.md**: question, method, results and boundaries for each chapter.
+ 
+-HTML SHA-256: `9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c`. 55-minute timing is suggested, not rehearsed.
++HTML SHA-256: `dca813ac76e82ccf8e504fefe007df3c970afdbc2795e151a3a4f8f640dabe90`. 55-minute timing is suggested, not rehearsed.
+ Control 4–16; Data 17–24; Improvement 25–33; closing 34–35.
+-Latest hash-bound audit files in `.build/` determine actual verification status. Final v0.13 layout, playback, UI/mobile and Standards / Spec checks passed.
++Latest hash-bound audit files in `.build/` determine actual verification status. Final v0.14 QA/review in progress.
+ 
+ Other PPTX, PDF and ZIP files are historical and do not match this page order. This local revision is not a new public release.
+--- baseline/output/Chapter_Spine.md
++++ current/output/Chapter_Spine.md
+@@ -1,6 +1,6 @@
+-# Agents for Robotics — 章节主线 v0.13
++# Agents for Robotics — 章节主线 v0.14
+ 
+-讲者：Zimo Huang · 2026-09-16。35页，18段内嵌视频。英文slides，中文讲稿；建议55分钟含读图、视频与讨论，未彩排。
++讲者：Zimo Huang · 2026-09-16。35页，19段内嵌视频。英文slides，中文讲稿；建议55分钟含读图、视频与讨论，未彩排。
+ 
+ ## Introduction（1–3）
+ 
+@@ -14,13 +14,13 @@
+ 
+ **职责迁移（6）**：接口标注为上方l→π(a | o,l)→a，下方c=(k,g)→π(a | o,c)→a；o是observation，k/g是primitive选择及目标，a为Controller target。π是功能表达，不要求所有primitive都是learned网络。删除Hi Robot结果页。上方是原先的设计假设：System 2给semantic/subtask信息，System 1 VLA/WAM作为steerable generalist policy，承担π(a | o,l)的广泛泛化。下方是正在出现的能力模式：部分spatial grounding、action selection与参数化上移到System 2，System 1可提供更窄的primitives，System 0中的Controller保留servo/tracking。这是功能性简称，analytic tools不等于learned neural System 1。“任意输入”是理想目标，robot-data对Astra的具体训练因果仍未披露。
+ 
+-**新能力与接口（7–10）**：第7页先突出Astra真实机器人任务表现提升，不以Direct action作为主论点；bowl的提升不外推为所有精细操作均有提升。Robocurve两任务×三模型完整完成数，保留Direct EEF→IK实机视频。Astra bowl19/20、puzzle2/20，模型差异并不均匀。Bowl rigs与日期不同、评分不盲。Plug/keyboard是更多真实机器人操作的定性demo；公开材料没有披露具体action interface，不将它们猜测成IK goal。Asim完整三任务×七条件表解释同一Astra仍受interface、observations与预算影响；ΔEEF不是q，waypoint256.6平均steps超过delta200上限。
++**新能力与接口（7–10）**：第7页先突出Astra真实机器人任务表现提升，不以Direct action作为主论点；bowl的提升不外推为所有精细操作均有提升。Robocurve两任务×三模型完整完成数，保留Direct EEF→IK实机视频。Astra bowl19/20、puzzle2/20，模型差异并不均匀。Bowl rigs与日期不同、评分不盲。Plug/keyboard是更多真实机器人操作的定性demo；公开材料没有披露具体action interface，不将它们猜测成IK goal。P9增加真实code/proprio ep00（6.4秒replay，不是42.42秒wall-clock），与delta/waypoint并列。P10整列加粗Waypoint proprio仅作接口高亮，Square中非privileged最好，Can中却低于delta。Asim完整三任务×七条件表解释同一Astra仍受interface、observations与预算影响；ΔEEF不是q，waypoint256.6平均steps超过delta200上限。
+ 
+ **Direct/Hybrid代表报告（11–14）**：第11页原架构解释π0.5的50×14 joint proposal，Astra接受1–15 steps或改为1–5 steps EEF correction，Direct也是1–5 steps。第12页并列原报告的RoboDojo Score与SR图：Direct 13/50、Hybrid 24/50；有效Score分母分别48和50。公开baseline为重加权历史结果，不是配对重跑。第13页RoboLab原图保留五种方法：98/92/36/36/34%，每方法50 retained slots；含history/retries、Direct BlocksInBin的180→500决策预算变化，历史baseline取June前五次包括失败，设置未核实一致。第14页原报告Score热力图完整呈现十任务、Overall与七方法；只展开原DOM滚动区，未改数值/颜色。聚合改善不代表每个任务改善，更不能拆出prior、interface、horizon的独立因果。
+ 
+-**接口与耗时（15）**：Go1确实输出12D joint residual chunks，经interpolation/PD，推理时仿真暂停。Robocurve与报告Direct输出EEF；Asim输出ΔEEF、waypoints或生成waypoint的code；Hybrid审核π0.5候选。Asim prompt-v3、medium、proprio下，180回合731次查询，mean query time为30.75 / 26.08 / 41.98秒。20/25/50 Hz是底层执行，不能当LLM Hz。社媒tool call也不等于learned atomic skill。
++**高latency（15）**：移除左侧接口清单，只展示Asim prompt-v3、medium、proprio设置下180回合731次query的平均30.75 / 26.08 / 41.98秒。强调数十秒等待让快速反馈困难，不将query time冒称完整闭环latency，也不将不同工作量的query排成统一速度榜。
+ 
+-**总结（16）**：回到第6页，讨论更强System 2需要多通用的System 1，而不是判定tools或Direct唯一正确。语义理解和有限范围的空间迁移已有展示；实时高频反馈和跨接触/动力学条件的可靠物理泛化尚未确立。成功demo不能证明全部物理问题已解决，失败也不能唯一归因于“物理理解”。更强模型改变能力前提，仍需重测model、interface与feedback budget；不推测未披露的训练配方。
++**总结（16）**：四项能力/短板配风格一致的原生SVG小图，箭头收束到降低foundation-model latency，以及设计更好的interface/action primitive来获得更流畅、更稳定的contact-rich执行。回到第6页，讨论更强System 2需要多通用的System 1，而不是判定tools或Direct唯一正确。语义理解和有限范围的空间迁移已有展示；实时高频反馈和跨接触/动力学条件的可靠物理泛化尚未确立。成功demo不能证明全部物理问题已解决，失败也不能唯一归因于“物理理解”。更强模型改变能力前提，仍需重测model、interface与feedback budget；不推测未披露的训练配方。
+ 
+ **过渡**：从下一步action，转向Agent能帮助构建什么Data。
+ 
+--- baseline/talk_outline.md
++++ current/talk_outline.md
+@@ -1,6 +1,6 @@
+-# Agents for Robotics — v0.13 page order
++# Agents for Robotics — v0.14 page order
+ 
+-35 English slides, Chinese narration, 18 embedded clips. Suggested 55 minutes includes video, figures and discussion; not rehearsed.
++35 English slides, Chinese narration,19 embedded clips. Suggested55 minutes includes figures/videos/discussion; not rehearsed.
+ 
+ | Page | Title | Group | Minutes |
+ |---:|---|---|---:|
+@@ -12,13 +12,13 @@
+ | 6 | Where Does Generalization Live? | 1 · Agent Controls Robot | 2 |
+ | 7 | Astra: Stronger Real-Robot Performance | 1 · Agent Controls Robot | 2 |
+ | 8 | Astra: More Real-Robot Demos | 1 · Agent Controls Robot | 1 |
+-| 9 | Same Astra, Different Action Outputs | 1 · Agent Controls Robot | 2 |
++| 9 | One Model, Different Control Interfaces | 1 · Agent Controls Robot | 2 |
+ | 10 | Astra Interfaces: Three Tasks | 1 · Agent Controls Robot | 1.5 |
+-| 11 | Astra: Direct or Hybrid? | 1 · Agent Controls Robot | 2.5 |
++| 11 | Astra: Introducing a Hybrid Architecture | 1 · Agent Controls Robot | 2.5 |
+ | 12 | RoboDojo: Overall Results | 1 · Agent Controls Robot | 2 |
+ | 13 | RoboLab: Overall Results | 1 · Agent Controls Robot | 2 |
+ | 14 | RoboDojo: Task-Level Patterns | 1 · Agent Controls Robot | 1.5 |
+-| 15 | Astra Interfaces and Query Time | 1 · Agent Controls Robot | 1.5 |
++| 15 | High Latency Limits Real-Time Control | 1 · Agent Controls Robot | 1.5 |
+ | 16 | Control: Strengths and Open Gaps | 1 · Agent Controls Robot | 1 |
+ | 17 | Agent Creates Data | 2 · Agent Creates Data | 1 |
+ | 18 | Real Episode and Its Twin | 2 · Agent Creates Data | 1.5 |
+@@ -40,6 +40,4 @@
+ | 34 | Takeaways | Closing | 1 |
+ | 35 | Thank You | Closing | 0.5 |
+ 
+-Chapter openings: 4 / 17 / 25. Summaries: 16 / 24 / 33. Takeaways: 34. Thanks: 35.
+-Scope: research/revision_0_13_spec.md. Narration: output/Speaker_Script_Revised.md.
+-RoboDojo public references are not paired reruns; RoboLab is retained-slot evidence. Community demos remain qualitative.
++Chapter openings4/17/25; summaries16/24/33. Scope: research/revision_0_14_spec.md.
+--- baseline/CHANGELOG.md
++++ current/CHANGELOG.md
+@@ -1,4 +1,16 @@
+ # Changelog
++
++## [0.14] - 2026-09-15
++### Features
++- P9新增真实Square code/proprio视频，三个control interfaces并列；保留原18段视频，总数19。
++- P10高亮Waypoint proprio列；P11明确Hybrid架构，P9–13移除指定的大段说明。
++- P15用三张时间卡强调高latency；P16配四个原生矢量图并收束到两个open problems。
++### Design Rationale
++- 接口探索、架构选择和反馈延迟各用一页说明；限制与完整协议移到讲稿和来源，避免大段文字压住图。
++- Waypoint整列加粗为视觉强调，不断言Can中也最好；保留行最大值和讲稿解释。
++### Notes & Caveats
++- Query time不是完整闭环latency；新6.4秒视频省略模型等待，source episode42.42秒。
++- 35页、55分钟建议未彩排；所有素材内嵌，无新Release/push或历史PPTX/PDF/ZIP导出。
+ 
+ ## [0.13] - 2026-09-15
+ ### Features
+--- baseline/WORKPLAN.md
++++ current/WORKPLAN.md
+@@ -1,31 +1,9 @@
+ # Agents for Robotics — current work
+ 
+-## Revision 0.13 · 2026-09-15
+-
+-- [x] Preserve verified v0.12 baseline.
+-- [x] Locate report result screenshots and heatmap.
+-- [x] Remove Claude / RPent and revise Astra spine.
+-- [x] Replace two tables with original results graphics; add heatmap.
+-- [x] Renumber slides, notes, provenance and tests.
+-- [x] Build, visual/offline QA and Standards / Spec review.
+-
+-Final HTML SHA-256: `614151be450e730e6cbd2b905af76143ac3aedb90fbfd4aa9d54287e5ab479a5`. Standards: 0 findings. Spec: 1 P3 transition fixed and rechecked; 0 unresolved. 20 tests passed, 35-page layout and 18-clip controls passed, 5 full-length playback checks passed.
+-
+-## v0.13 slide4/5 polish
+-- Direct action box now uses the same gray fill/border as neighboring tools. Removed requested bottom sentences on slides4 and5.
+-- Rebuilt; final browser/layout/media controls/mobile and static checks passed. Visual inspection of4/5 passed. All35 pages and18 clips retained.
+-- Current HTML SHA-256: `3eda1d3fbd2b8a92a4712d916c5916ae59d6cc6594bcab4477ab7393adae52f1`. Earlier extended playback and two-axis review remain evidence for the pre-polish revision, not rerun for this cosmetic follow-up.
+-
+-## Slide6 interface notation
+-- Added l/a and c=(k,g)/a to four links; lower System1 is π(a | o,c), upper remains π(a | o,l). Definitions and functional-not-neural interpretation synchronized in Chinese notes.
+-- Final static/browser/layout/media-control/mobile gates passed. Slide6 visual inspection passed; current hash `7dd72dc9dc888b6edd7aac19d5b64220770c1fb94e02ce386872d0157d87e3cf`. No new experiments or full-length extended playback.
+-
+-## P7 capability framing and P4 tool colors
+-- P7 title: Astra: Stronger Real-Robot Performance. Removed the requested on-slide protocol paragraph; task values/video unchanged and interpretation boundaries retained in notes. Narration now leads with capability gains.
+-- P4 IK / motion planner shares Perception / state tools light-teal fill and text; Direct remains gray.
+-- Current build `ae50f078af71bb8f931b4ea421359411b72483073032bd68130c7f173a51dee9`; final audit status is in standalone_delivery_audit.json.
+-
+-## P8 demo framing and control interfaces
+-- Title changed to Astra: More Real-Robot Demos. Removed the requested large summary band. Gray per-video notes now read Control interface: not disclosed.
+-- Current primary-source check: GPT-Policy-Eval still README/media only; keyboard original post does not specify API. X replies were not accessible, so no claim to an exhaustive thread audit. See research/p8_control_interfaces_2026-09-15.md.
+-- Narration and CJK subset synchronized. Current HTML `9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c`; final verification recorded in standalone_delivery_audit.json.
++## Revision0.14 ·2026-09-15
++- [x] Freeze last verified presentation and latest requested scope.
++- [x] Locate authentic Square code/proprio replay.
++- [x] Update P9–13 and P15, synchronized narration and source labels.
++- [x] Embed code clip and preserve existing media.
++- [ ] Verify table emphasis, generated output, player and visuals.
++- [ ] Standards/Spec review and delivery.
+--- baseline/.build/code_video_v014.py
++++ current/.build/code_video_v014.py
+@@ -0,0 +1,28 @@
++"""Verify the separately pinned Square code/proprio replay before embedding it."""
++from pathlib import Path
++import hashlib
++import json
++
++EXPECTED_RUN = 'Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z'
++EXPECTED_SHA = 'beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef'
++
++
++def verify_code_video(root):
++    root = Path(root)
++    pins = json.loads((root / 'research/code_video_v0_14_sources.json').read_text())
++    for relative, expected in pins['sha256'].items():
++        if hashlib.sha256((root / relative).read_bytes()).hexdigest() != expected:
++            raise ValueError(f'Code replay source identity mismatch: {relative}')
++    capture = json.loads((root / '.build/assets/v0_13_code/capture.json').read_text())
++    assert capture['source']['run'] == EXPECTED_RUN
++    assert capture['source']['episode'] == 'ep00.mp4'
++    assert capture['source']['url'].endswith('/' + EXPECTED_RUN + '/ep00.mp4')
++    assert capture['sha256'] == EXPECTED_SHA
++    assert capture['group_successes'] == 16 and capture['group_episodes'] == 20
++    assert float(capture['ffprobe']['format']['duration']) == 6.4
++    assert capture['query_seconds'] == 41.339
++    assert capture['full_decode_passed'] is True
++    html = (root / 'research/sources/control_action_interfaces_20260914/asim_index_pinned.html').read_text()
++    assert EXPECTED_RUN in html and 'plan(scene)' in html
++    assert capture['pinned_html_sha256'] == hashlib.sha256(html.encode()).hexdigest()
++    return capture
+--- baseline/.build/test_v014.py
++++ current/.build/test_v014.py
+@@ -0,0 +1,43 @@
++"""Focused source identity and explicitly labelled interface highlighting checks."""
++from pathlib import Path
++import json
++import shutil
++import tempfile
++import unittest
++
++from code_video_v014 import verify_code_video
++from table_emphasis import best_cells, row_maxima
++
++ROOT = Path(__file__).resolve().parent.parent
++
++
++class RevisionTests(unittest.TestCase):
++    def test_code_replay_authority(self):
++        self.assertEqual(verify_code_video(ROOT)['source']['episode'], 'ep00.mp4')
++
++    def test_modified_video_rejected(self):
++        with tempfile.TemporaryDirectory() as directory:
++            mirror = Path(directory)
++            manifest = 'research/code_video_v0_14_sources.json'
++            pins = json.loads((ROOT / manifest).read_text())
++            for relative in [manifest, *pins['sha256']]:
++                target = mirror / relative
++                target.parent.mkdir(parents=True, exist_ok=True)
++                shutil.copy2(ROOT / relative, target)
++            video = mirror / '.build/assets/v0_13_code/asim_square_code_proprio_ep00.mp4'
++            video.write_bytes(video.read_bytes() + b'drift')
++            with self.assertRaises(ValueError):
++                verify_code_video(mirror)
++
++    def test_waypoint_column_is_highlight_not_universal_winner(self):
++        rows = json.loads((ROOT / 'research/results_v0_9.json').read_text())['asim']
++        nonprivileged_best = best_cells(rows, row_maxima(rows, range(3, 7)))
++        self.assertIn((2, 5), nonprivileged_best)  # Square waypoint
++        self.assertIn((1, 3), nonprivileged_best)  # Can delta
++        self.assertNotIn((1, 5), nonprivileged_best)
++        marked = best_cells(rows, row_maxima(rows, range(3, 8))) | {(r, 5) for r in range(3)}
++        self.assertEqual(marked, {(0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 7), (2, 7), (1, 5), (2, 5)})
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- baseline/.build/clip_manifest_v5.json
++++ current/.build/clip_manifest_v5.json
+@@ -0,0 +1,22 @@
++[
++  {
++    "name": "asim_code",
++    "source_url": "https://asimfish.github.io/astra-control-dashboard/#sec4",
++    "download_url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep00.mp4",
++    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_13_code/asim_square_code_proprio_ep00.mp4",
++    "source_sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
++    "source_playback": "Simulation replay; model waiting omitted",
++    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/asim_code.mp4",
++    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_13_code/asim_code.jpg",
++    "start_seconds": 0,
++    "duration_seconds": 6.4,
++    "speed_multiplier": 1,
++    "audio": "source has no audio",
++    "width": 256,
++    "height": 256,
++    "codec": "h264",
++    "pixel_format": "yuv420p",
++    "sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
++    "full_decode": "passed"
++  }
++]
+--- baseline/research/code_video_v0_14_sources.json
++++ current/research/code_video_v0_14_sources.json
+@@ -0,0 +1,8 @@
++{
++  "sha256": {
++    ".build/assets/v0_13_code/asim_square_code_proprio_ep00.mp4": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
++    ".build/assets/v0_13_code/capture.json": "ad1b128aa72d1014394b882d27d9abd44933a408417342499e941fd19b9ecd5b",
++    ".build/assets/v0_13_code/asim_code.jpg": "514bd122d67596d129cbfab76d79ed1dd2462ca10016053584c73adaf9dc71bb",
++    "research/sources/control_action_interfaces_20260914/asim_index_pinned.html": "50af836616bef6dfaed22e142702d37da7e5884c85954e9cb9ae3e7d685d4851"
++  }
++}
+--- baseline/research/revision_0_14_spec.md
++++ current/research/revision_0_14_spec.md
+@@ -0,0 +1,12 @@
++# v0.14 — Interface exploration and latency
++
++Fixed comparison: `.build/revision_0_14_baseline/manifest.json`, final v0.13 p8 HTML 9861057cad1b284c1ce17a6c313fbab02ec0662542ee73c8bb26bc1eda6af57c.
++
++- P9 title emphasizes same-model control-interface exploration. Remove requested large budget summary, retain the three exact success counts and per-column settings. Add authentic Square code/proprio episode00 video if verified, never relabel waypoint video.
++- P10 remove two requested discussion paragraphs. Bold whole Waypoint proprio column as an interface highlight in addition to existing maxima. Explain in notes/footer that it wins the non-privileged Square comparison, not every task (Can delta18 vs waypoint17). Keep all values unchanged.
++- P11 introduce Hybrid architecture in title. P12/13 remove requested large caution sentences, retain protocol in notes/source footer and all numerical content.
++- The last user message says P9 but quotes P15's exact latency sentence and references current slide15. Apply deletion of the left interface list to P15, not P9. Make P15 latency-focused, use reported mean query times30.75/26.08/41.98 seconds, retain sample context, and state that tens of seconds per query impede rapid feedback. Don't label query time full end-to-end loop time.
++- Keep35 pages and55 suggested minutes, English slides, synchronized Chinese notes, all existing18 clips, and fully embedded offline fonts/media. Additional verified code clip makes19. Do not modify source results or invent latency measurements.
++- Build/static/browser/visual checks and two-axis review; no release/push or old PPTX/PDF/ZIP export.
++
++- Additional request says P12 but quotes P16's exact summary text/current slide16. Apply to P16: four concise capability labels with original style-matched vector icons; remove Model+interface+feedback budget and Evidence-limited band. Arrow ends at open problems: lower foundation-model latency; better interfaces/primitives for smoother and more stable contact-rich execution. No claims that these problems are solved.

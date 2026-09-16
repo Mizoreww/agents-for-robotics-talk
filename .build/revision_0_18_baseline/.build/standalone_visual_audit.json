@@ -1,0 +1,12 @@
+{
+  "html_sha256": "38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88",
+  "date": "2026-09-16",
+  "status": "passed",
+  "manually_reviewed_slides": [
+    21
+  ],
+  "scope": "User-approved wording-only P21 revision. Full comparison proves the other31 slide records,20 media records and36 image assets identical. P21 final rendering inspected; centered single-line question fits. All current-hash browser, mobile and playback audits rerun and passed.",
+  "screenshots": {
+    ".build/v0_17_visual/21.png": "a64ac00c996cfe020ea1e2ae5ee7ac971dc21972c2d9a2e336aca3f602ee504c"
+  }
+}

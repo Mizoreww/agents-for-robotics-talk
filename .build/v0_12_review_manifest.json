@@ -1,0 +1,21 @@
+{
+  "baseline": ".build/revision_0_12_baseline/manifest.json",
+  "commits": "No commits; working source vs verified v0.11 snapshot",
+  "html_sha256": "c6ca5f7082a5b91f10387401e2405b2fc0c707d92814b9848f0ba035308c3ba1",
+  "files": {
+    ".build/build_selfcontained.py": "0cf8729f00e73b837ac1176f89af776e99b3b42e17f3e8748afad1e21b742899",
+    ".build/script_revised.md": "e195adbb47ecadce48278b7194aae79cf25a26d23f605cc79b868ffc3e86a57b",
+    ".build/validate_standalone.py": "3e33407869fd79569bd64101dcb5bebaad0fe32722c57485c422b5f13e2b8f5e",
+    ".build/extended_visual_audit.mjs": "551c94edb248670e307d1f0ba0bb9c94ee14dab4071a7fa8de066cf0cdf41176",
+    "research/revision_0_12_spec.md": "853907deb4a8d7f5ebe3fee446535a9cbef980a07b319cc07d5741338d8e4e29",
+    "README.md": "5fe6fb839abee46dbd183ae49590daff382546d10257a874ad42ba84d5823517",
+    "AGENTS.md": "7d89d1a147d6f4eab72ec6d54e6f898ca8a1ffcd0aa28e4a49581e99cdb53c6a",
+    "output/README.md": "58cbfccacdcc76e27ed66ae86b3c16b8009a29ffc8705bb1cdf936c563ad4a20",
+    "output/Chapter_Spine.md": "fa3c2a2d43ad03399746e480f462697adf908cf16525e5540eacb1e9c8ad05a8",
+    "talk_outline.md": "3cc72027e7b618598348ccdf65178c4676d9f1bee8f9071606e61c95bb44d75c",
+    "CHANGELOG.md": "b7ec4b0985f293e2de914ce747ad98807f2917e52078bcea2d9562dac0e39c33",
+    "research/sources.json": "b4b0d7d95f9bf63fc540655922b840e5f71dca5f6c6510152f7f3526b36fb5e2",
+    "WORKPLAN.md": "c41cdc8421d48234d3e70fefc25b8d4b4e23c9e84571424ed87f3d6c8643b6e0",
+    "output/Speaker_Script_Revised.md": "660e0a9092e36a1c12285f1449228369ae1e64b43b5115dbd2d831ab80157e5d"
+  }
+}

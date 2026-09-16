@@ -1,0 +1,142 @@
+[
+  {
+    "name": "policy_plug",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/policy_plug.mp4",
+    "sha256": "4ab601841dab2c479e206404360b4ea973a13b2f1d7d7e20c5c5f2a3771fe800",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 520
+        }
+      ],
+      "format": {
+        "duration": "28.166667"
+      }
+    }
+  },
+  {
+    "name": "policy_goal",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/policy_goal.mp4",
+    "sha256": "5623aaa210805db5bb82828670451ea17b3761d81d62046e09ac9753eeb75eb1",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 360
+        }
+      ],
+      "format": {
+        "duration": "33.083333"
+      }
+    }
+  },
+  {
+    "name": "astra_real2sim",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/astra_real2sim.mp4",
+    "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 720,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "16.766667"
+      }
+    }
+  },
+  {
+    "name": "ze_rubik",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/ze_rubik.mp4",
+    "sha256": "f8e36e1080d451ca3058a6fb99a3c16d78a605c14ab515c64312d9bdea972ce1",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "23.108008"
+      }
+    }
+  },
+  {
+    "name": "wenli_icl",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/wenli_icl.mp4",
+    "sha256": "b58ac0d20ba7ea718eff75094f8aa049c7c966b60258da50b8c1ee7ca489e1f6",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "11.200000"
+      }
+    }
+  },
+  {
+    "name": "painting",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/painting.mp4",
+    "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+    "existing_manifest_hash_matches": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "68.116667"
+      }
+    }
+  },
+  {
+    "name": "hand",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/hand.mp4",
+    "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+    "existing_manifest_hash_matches": null,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1190,
+          "height": 720
+        }
+      ],
+      "format": {
+        "duration": "28.833333"
+      }
+    }
+  }
+]

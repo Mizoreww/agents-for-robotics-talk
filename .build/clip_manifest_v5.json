@@ -1,0 +1,22 @@
+[
+  {
+    "name": "asim_code",
+    "source_url": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+    "download_url": "https://asimfish.github.io/astra-control-dashboard/media/Square__code__proprio__codex-gpt-6-astra__s0__20260908T142029Z/ep00.mp4",
+    "source_file": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_13_code/asim_square_code_proprio_ep00.mp4",
+    "source_sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
+    "source_playback": "Simulation replay; model waiting omitted",
+    "file": "/home/limx/Desktop/agent_for_robotics/.build/clips/asim_code.mp4",
+    "poster": "/home/limx/Desktop/agent_for_robotics/.build/assets/v0_13_code/asim_code.jpg",
+    "start_seconds": 0,
+    "duration_seconds": 6.4,
+    "speed_multiplier": 1,
+    "audio": "source has no audio",
+    "width": 256,
+    "height": 256,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "sha256": "beff2d66b6b6454652c19e9229c35183eff75e026671b06749bdbaaf57d981ef",
+    "full_decode": "passed"
+  }
+]

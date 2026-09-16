@@ -1,0 +1,42 @@
+[
+  {
+    "source": "enpire/policy/autoresearch_instruction.md",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__autoresearch_instruction.md",
+    "sha256": "bc46b5dc68d7d2492ac33444a077d85567525bb750866ac9880d31248f72c40a"
+  },
+  {
+    "source": "enpire/policy/autoresearch.py",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__autoresearch.py",
+    "sha256": "94c7c1250c53357360ad4bf4f43e8b573017129df6c70e92b9b353070075b0f3"
+  },
+  {
+    "source": "enpire/policy/interface.py",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__interface.py",
+    "sha256": "3cef7217372899d5fec600bdf4586fdefac9b3d199c93743b9989a59ca4e2817"
+  },
+  {
+    "source": "enpire/policy/pld/runtime/README.md",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__pld__runtime__README.md",
+    "sha256": "3be28d38cf9f906e14bd4cc7f36a184cfa3dcce91006bb845baea5f545cd05ec"
+  },
+  {
+    "source": "enpire/policy/rl/runner.py",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__rl__runner.py",
+    "sha256": "192620c170ae2eb837be470d345cc8fea3223875a81092f08fba404d841b8da3"
+  },
+  {
+    "source": "enpire/policy/rl/auto_eval.py",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__rl__auto_eval.py",
+    "sha256": "c366f98f3d530031d52e2f1863fc1f3589e158322395fe509d5ab3e24ddb8c52"
+  },
+  {
+    "source": "enpire/policy/rl/auto_reward.py",
+    "file": "research/sources/enpire_20260916/code__enpire__policy__rl__auto_reward.py",
+    "sha256": "e295a41b747af7c70fbe2558e592a412b0c1bac823c2e8670fa4329e2dc57f00"
+  },
+  {
+    "source": "enpire/env/forge/cap/saved_scripts/pusht/reset_t_skill.py",
+    "file": "research/sources/enpire_20260916/code__enpire__env__forge__cap__saved_scripts__pusht__reset_t_skill.py",
+    "sha256": "490fd88eb267777dfb45e7126e4d1ba5047a27d4ae22dff447e917dc0520e181"
+  }
+]

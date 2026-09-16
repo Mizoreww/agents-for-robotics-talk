@@ -1,0 +1,32 @@
+{
+  "html_sha256": "186705f7eeb90dd0db26b7784691669a5c591a2340da921446e0681a48a8c245",
+  "baseline_html": "e3b2d420b01fe153c34ef0336b41b16d11dbb6aa9ea20027c14ef571e0fbd210",
+  "files": {
+    "research/revision_0_14_review.md": "f7b5da5a87f002ab30a3fa1858d4b3c05b3e163835e63f386b6be6d31b29af42",
+    ".build/extended_visual_audit.mjs": "5f0ab2d1aefaaeffa577ba35b21eaece3e8b0dfc59726af270fdaed6f5f1ba76",
+    ".build/script_revised.md": "61b967d4083382d600cfc14bdea4ff617423d0599a00a9b5c7f4c26ba27f6a06",
+    ".build/test_data_demos_v015.py": "cbfe1500668c86c8d2e28e736836fdd5d0187b673060de7a1cec81f9abde2d8e",
+    "research/revision_0_14_spec.md": "a7f0c738bf06d0df7cc6aa8029458437966e0b4f8178f61f40093e7f1d04f619",
+    ".build/test_v014.py": "4fe0ddd047aa3387956d71e6581cfd6c64658733b750a965fce28a7e3b6c14b7",
+    "output/README.md": "62a68e0802122d58f56e36f437c6288e10b10ad1b172ff10994191cb30482332",
+    ".build/data_demos_v015.py": "0536257a4169a1a6b2512f5ad4e5d65c4e7b76d1da8cc1565def730c613c8afa",
+    "output/Speaker_Script_Revised.md": "b03005c931beddce18105b430518fa647b1a2420f96d182735451791c2ee35be",
+    "README.md": "3ce3fa2c23b98d61f624392936dcc54542d6e3353ac72911e5455a206dbb8051",
+    "research/revision_0_15_spec.md": "7538fb055bd33a3e00930a689c68d64f2ff85f5135f61ba5f222097b7f5a657b",
+    "talk_outline.md": "b5036b8908ecd7d3d8b8fdddc870ab94b8d2bc74f073331965698180ca8cd720",
+    "AGENTS.md": "02a0e23c25f2c51e9ce590bf7a54f9d00d2bfa12ffdcee9191fed282f6913359",
+    "research/revision_0_15_review.md": "7a930cd3ca696648f514342cca6848439907bd8635778135202823d217b35536",
+    ".build/build_selfcontained.py": "c715836d1cfec2e771f063f71964a120074c1edbb98cff9b7683e9dbb511da75",
+    ".build/browser_audit.mjs": "c2444937dcbc51b538bfbbc98ed84512f940e23de456889f6f3a0de771f646c9",
+    ".build/results_slides_v09.py": "862f975da7d420e4514e431d777174a9b914440116788232f1ed6f0ec97611f8",
+    "CHANGELOG.md": "7d7383e7b94633f62c582299e804270ad7be9c8b06c8e36b07fa976cd9713b82",
+    ".build/test_table_emphasis.py": "a7b4b279b572c5c9ffe5ed08fda847bc834ab2b42fb148b317964a7364745277",
+    ".build/validate_standalone.py": "e7541396916fd153574d40502d86361b0e20183b2107e0e71dd3f6625999493b",
+    ".build/code_video_v014.py": "dab164de402dd51b593bd599892ac81f91f196bd12412242e966491ef31d4387",
+    "WORKPLAN.md": "eb27605716c77212d5984aa5264008232a783321294e4401c9f0d39551418293",
+    "output/Chapter_Spine.md": "ad2c0eb8226ddf680c1276d949c509602fe35733637ae77b485508589ff7e799",
+    ".build/clip_manifest_v7.json": "50595d9ccd3fe132804d60dc5fd2a2aa5dc36a5458a0a7338785be39aa9d72b7",
+    "research/data_extra_v0_16_sources.json": "f0f3490abce844de2c962e5d366d521ccdb322779419c36e5d3ba124918ca7fc",
+    "research/revision_0_16_spec.md": "9a60bf1f4d1389f62d822645f31422fa1f64fc04c9b59afc7608360e53be06a3"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "html_sha256": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+  "loaded_deck_data_sha256": "87315dff87d5bb47dd0d37bbdf6c28a1ad75f80a4137af623762faffef4cdf98",
+  "served_html_byte_identity": true,
+  "slides": [
+    {
+      "number": 3,
+      "overflow": [],
+      "screenshot": "/home/limx/Desktop/agent_for_robotics/.build/v0_18_centering_visual/03.png"
+    },
+    {
+      "number": 23,
+      "overflow": [],
+      "screenshot": "/home/limx/Desktop/agent_for_robotics/.build/v0_18_centering_visual/23.png"
+    }
+  ],
+  "scope": "P3/P23 layout polish; all other slides, scripts, assets and media metadata are regression-checked against the verified v0.18 baseline."
+}

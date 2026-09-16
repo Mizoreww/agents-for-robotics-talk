@@ -1,4 +1,229 @@
+## [0.23] - 2026-09-16
+### Features
+- Redraw P36 as a native SVG with one Agent feeding three aligned research lanes.
+- Replace tiny screenshots with a compact System 2/primitives and strengths/gaps synthesis; use one 24px diagram type size and consistent strokes.
+- Retain Latency / Better interface, Sim2Real and Efficiency questions; update the Chinese reading guide.
+### Design Rationale
+- Keep the recap legible and visually coherent instead of mixing screenshot typography and oversized labels.
+### Publication
+- User-authorized source upload to the existing Private repository; self-contained HTML and SHA-256 are distributed through the v0.23 Release.
+- Exclude regenerable screenshots and unpinned raw downloads; retain all hash-pinned files consumed by the builder.
+### Notes & Caveats
+- Only P36 content changes. P35's deletion, other slide records, all video bytes and docked-script player remain unchanged. Two recap raster images leave the active asset set; total is again 46 images.
+- Title/logo/footer follow the existing deck; the diagram itself is pure SVG. No historical exports. Repository visibility remains Private.
+
+## [0.22] - 2026-09-16
+### Features
+- Rebuild P36 as Control → P6/P17 thumbnails → Latency / Better interface; Data → Sim2Real; Improvement → Efficiency.
+- Embed two faithful, enlargable thumbnails from the actual earlier slides and update Chinese narration.
+- Remove the specified Open test line from P35 without moving its remaining diagram.
+### Design Rationale
+- Recall the visual arguments before asking concrete research questions; remove generic closing slogans.
+### Notes & Caveats
+- 37 slides and all 28 video payloads are unchanged. Two local slide captures bring embedded images to 48. The v0.21 docked-script player remains unchanged.
+- No new scientific results, remote media, historical exports or public release.
+
+## [0.21] - 2026-09-16
+### Features
+- Dock the speaker script on the right; resize slides and toolbar into a separate left column with a restrained transition.
+- Add Close/Escape controls, independent script scrolling, focus restoration and fullscreen support; keep N and current/full script.
+- Stack the reader on narrow screens with a minimum readable height in landscape.
+### Design Rationale
+- Reserve real layout space instead of drawing over the presentation. Resize the existing canvas without recreating media elements.
+### Notes & Caveats
+- All 37 slides, Chinese notes, fonts and 28 clips are unchanged. No historical PPTX/PDF/ZIP rebuild or release.
+- Narrow screens use vertical stacking rather than an unreadably narrow split. Respect reduced-motion preferences.
+
+## [0.20] - 2026-09-16
+### Features
+- Vertically center P31's original plots without moving them horizontally or changing their size.
+- Split ENPIRE Limitations (P34) from Toward Recursive Self-Improvement (P35).
+- Change the final slide's central message to Thanks for listening!; closing pages are now P36–37.
+### Design Rationale
+- Separate current system limitations from the research question about improving the improver, while preserving sparse layouts and the existing visual language.
+### Notes & Caveats
+- 37 slides, 28 unchanged embedded clips, suggested 60 minutes without a timed rehearsal. No new experimental claims, media downloads, public release or historical PPTX/PDF/ZIP rebuild.
+
+## [0.19] - 2026-09-16
+### Features
+- Follow the ENPIRE official-site explanation order without adding slides: learned-policy demos, system, evaluation/reset, improvement, coding-agent evaluation, fleet/cost, simulation, limitations/RSI.
+- Add complete Push-T, zip-tie and GPU reset recordings; retain every earlier clip. The self-contained HTML now embeds 28 clips.
+- Synchronize Chinese narration and transitions. Keep the first two chapters, P23 and closing unchanged.
+### Design Rationale
+- Show the resulting behavior before explaining its production, establish the repeatable environment before the search method, and discuss evidence and costs together.
+- Fold the separate transfer discussion into the limitations/RSI conclusion rather than interrupting the main method-to-evaluation flow.
+### Follow-up polish
+- P31: remove the duplicate native table and takeaway band; keep the original three-panel figure, title and academic citation unchanged.
+- On user request, move the learned-policy demo page after quantitative results (P33), before limitations/RSI. Preserve all media and slide bodies.
+- Standardize ENPIRE footers as author/title/arXiv/year citations with figure/section or project-website attribution. Detailed caveats remain in narration and source records.
+### Notes & Caveats
+- New reset cases illustrate registered initialization routines, not arbitrary-state recovery. No new results or denominators are inferred from videos.
+- Physical conditional retries and RoboCasa single-script evaluation remain distinct. Original Noto fonts and all user-requested deletions are retained.
+
+## [0.18] - 2026-09-16
+### Features
+- Added the requested Cube/Claw simulation demo page after P8.
+- Expanded ENPIRE into a focused problem/method/results narrative with seven full official videos and two task photos; retained original evidence figures.
+- Removed CAD/RL preview and unrelated physical ICL media from the active talk.
+- Added Pin-to-GPU experience transfer and an explicitly open RSI discussion; synchronized Chinese narration.
+### Design Rationale
+- Keep one representative study, use media to explain repeatable experiments, and distinguish policy improvement from a more capable improver.
+- Preserve existing Control/Data/closing content and media, while renumbering after insertion.
+### Notes & Caveats
+- 36 slides / 25 clips / suggested59min, not rehearsed. Static, browser and independent review status is recorded by current-hash audits.
+- Physical retries, RoboCasa single-execution evaluation, historical baseline limits and kinematic puzzle assumptions remain separate.
+- No PPTX/PDF/ZIP rebuild, release, push, robot execution or foundation-model training.
+
 # Changelog
+
+## [0.17] - 2026-09-16
+### Features
+- Embed the complete author-posted20.93-second kitchen video from X; LinkedIn supplies workflow and status context.
+- Compact Data from8 to5 pages: overview,3 paired showcases, summary; preserve all6 cases.32 slides,20 embedded clips.
+- Synchronize sparse English labels, Chinese narration and navigation; retain all19 previous video payloads.
+### Design Rationale
+- Compare scenes, hand assets, and replay/rollout directly rather than repeating a workflow on each page. Allocate extra width to the three-panel DexGPT source video.
+### Notes & Caveats
+- Kitchen is human-in-the-loop asset modelling; simulation was still being added. It is not validated robot physics. No credential access or browser-policy bypass; the user supplied public alternatives.
+-51-minute timing is suggested, not rehearsed. No release, push or historical export.
+
+## [0.16] - 2026-09-15
+### Features
+- Add Awesome-Astra Case22 articulated kitchen source image and Case23 original rope-hand video; Data now has six examples plus opening and summary.
+- 35 slides,19 embedded clips. Chinese narration and source links updated; existing media unchanged.
+### Design Rationale
+- Pair scene geometry with articulation and distinguish hand CAD design from reference-driven simplified reconstruction.
+### Notes & Caveats
+- Kitchen video is login-required; use the pinned source image, not substitute video. Public kitchen-twin output repo independently describes ViPE / Blender workflow. Rope hand uses simplified mechanics and illustrative cables, not full tendon physics.
+- No release, push, legacy export or new experiments.
+
+## [0.15] - 2026-09-15
+### Features
+- Replace Data's Agentic Real2Sim paper deep dive with four Awesome-Astra community demos: Office scene, tendon-hand CAD, multi-view replay and DexGPT contact rollout.
+- Add byte-identical original20.3-second DexGPT video; remove two retired paper clips.33 slides,18 embedded videos; Chinese script and navigation synchronized.
+- Preserve opening diagram and add a concise artifact/validation summary diagram.
+### Design Rationale
+- Let large videos explain what Agents can produce, instead of another method/results lecture. Keep assets, replay and rollout distinctions explicit.
+### Notes & Caveats
+- Demo provenance and physical-validation status remain in captions/notes. No downstream training gain inferred. No changes to Control or Improvement content, no legacy exports or release.
+
+
+## [0.14] - 2026-09-15
+### Features
+- P9新增真实Square code/proprio视频，三个control interfaces并列；保留原18段视频，总数19。
+- P10高亮Waypoint proprio列；P11明确Hybrid架构，P9–13移除指定的大段说明。
+- P15用三张时间卡强调高latency；P16配四个原生矢量图并收束到两个open problems。
+### Design Rationale
+- 接口探索、架构选择和反馈延迟各用一页说明；限制与完整协议移到讲稿和来源，避免大段文字压住图。
+- Waypoint整列加粗为视觉强调，不断言Can中也最好；保留行最大值和讲稿解释。
+### Notes & Caveats
+- Query time不是完整闭环latency；新6.4秒视频省略模型等待，source episode42.42秒。
+- 35页、55分钟建议未彩排；所有素材内嵌，无新Release/push或历史PPTX/PDF/ZIP导出。
+
+## [0.13] - 2026-09-15
+### Features
+- 删除Claude Plays Robotics / RPent四页，职责迁移示意图后直接进入Astra。
+- RoboDojo / RoboLab大表改用报告原始结果图，新增完整逐任务Score热力图。
+- 同步35页顺序、中文讲稿、来源与导航；保留18段内嵌视频和原字体/按钮。
+### Design Rationale
+- 减少历史背景岔路，用原图串起Astra架构、整体结果与任务差异。
+- 热力图只展开原DOM的滚动区域；保留全部值、配色与指标，记录来源身份。
+### Notes & Caveats
+- RoboDojo公开baseline不是配对重跑，Score分母48/50；RoboLab是含历史与retries的retained slots，不支持纯组件因果结论。
+- 建议55分钟，未彩排；无新Release、push或历史PPTX/PDF/ZIP导出。
+
+## [0.12] - 2026-09-15
+### Features
+- 第6页Hi Robot结果替换为职责迁移示意图；保留第5页原架构。
+- Control讲稿围绕generalist能力的承载位置展开：从VLA/WAM到更强Agent配合较窄action primitives。
+### Design Rationale
+- 保持38页与现有章节页码，用同一页完成原假设、新模式与研究问题的对照。
+- 末端标System 0 / Controller，保留低层tracking；角色迁移是部分、功能性的，不混同网络架构与工具实现。
+### Notes & Caveats
+- 未新增实验数据或训练因果声明；Astra robot-data配方未披露，generalist任意输入能力只是目标。
+- 18段视频与其他结果不变；无新Release或legacy导出。
+
+## [0.11] - 2026-09-15
+### Features
+- 第二章统一为 Data，覆盖 Assets / scenes、Real-to-sim Replay、Data Rollout；手部CAD案例移入该章。
+- 新增一页 Astra实际动作接口与公开query time，明确Go1 joint chunks、EEF/IK、Asim OSC/waypoints/code、Hybrid prior review的区别。
+- Control总结明确语义/有限空间能力与高频反馈/物理泛化缺口；Data总结加入DexGPT原图和未通过物理验收的事实。
+- 38页英文slides，中文讲稿同步；18段视频与既有结果表不变，仍为单文件内嵌HTML。
+### Design Rationale
+- 用产物分类Data，避免将CAD或replay误当作通过物理验证的训练数据。
+- 秒/次用于展示具体harness的查询成本，Controller Hz与simulator-time feedback不作为LLM推理频率。
+### Notes & Caveats
+- Asim为prompt-v3/medium/proprio、180回合731次查询的公开日志重算，不是独立性能测试或匹配预算的速度排名。
+- 新来源单独冻结，原v0.9结果来源保持不变。未调用模型服务、未复现实验、未读取安全阻止的WeChat文章。
+- 尚未彩排计时；不更新历史PPTX/PDF/ZIP，不推送或发布Release。
+
+## [0.10] - 2026-09-14
+### Features
+- Merge the Control overview's learned-tool nodes and align the Claude interface branches around one LLM.
+- Add a capability-diagnostic Control summary, replace slide 36 with diagram-led Takeaways and append Thank You as slide 37.
+- Bold reported table extrema within explicit comparison groups, retaining ties and all original values.
+- Synchronize Chinese narration, preserve all 18 embedded clips, original figures and the Noto/player styling.
+### Design Rationale
+- Separate semantic intent, spatial grounding and physical interaction as coupled diagnostic questions, not fixed System 2/1/0 modules.
+- Preserve different execution/training endpoints and distinct validation needs across the three chapters.
+### Notes & Caveats
+- The WeChat article remains unread; the diagnostic synthesis is independent and user-approved.
+- Bold describes reported extrema, not significance, equal-budget comparisons or an overall resource-efficiency winner.
+- Local HTML/script revision only. No push, release or historical PPTX/PDF/ZIP update. Timing remains unmeasured.
+
+## [0.9] - 2026-09-14
+### Features
+- Expanded to 36 English slides while retaining all 18 embedded clips and the existing Noto/player design.
+- Added Hi Robot, Harness VLA, Asim, separate RoboDojo/RoboLab, full Real2Sim backend, and ENPIRE physical/RoboCasa results pages; enhanced Claude, Robocurve and resource pages with native tables.
+- Added source-hashed result derivation and per-cell/protocol regressions; synchronized Chinese narration and documentation.
+### Design Rationale
+- Keep the v0.8 narrative and its original figures, but make each formal source's experimental evidence inspectable rather than relying on headlines or selected videos.
+- Separate metrics, denominators, training conditions and selected-slot protocols instead of creating a cross-paper leaderboard.
+### Notes & Caveats
+- RoboLab is a descriptive retained-slot/retry comparison. Hi Robot IA/TP are not episode success; Harness uses exploration memory; Asim budgets differ.
+- ENPIRE physical and simulation protocols differ; official trace means/std are not asserted independent replications or confidence intervals. No numeric RoboCasa bar estimates.
+- All media remain embedded. Suggested 60 minutes is unmeasured. No public release, push, source experiment replication, or historical PPTX/PDF/ZIP update.
+
+## [0.8] - 2026-09-14
+### Features
+- Reorganize the talk into 28 English slides, synchronized Chinese narration and 18 embedded clips.
+- Restore the Agent/action/tools overview; combine Hi Robot, Helix and Helix 02 original figures; expand Claude's concrete experiments and retain one RPent framework page.
+- Add same-Astra action-interface evidence, the original Direct/Hybrid architecture, and chapter-local keyboard, Office/Newton and quadruped demos.
+- Clarify Agentic Real2Sim's decisions/artifacts and ENPIRE's actual policy changes using the complete original Figure 12 idea tree.
+### Design Rationale
+- Follow the user-approved sequence from common division of work to new capability and open questions, rather than declaring tools mandatory or obsolete.
+- Keep original figures and short videos primary; preserve Noto typography, player controls and one-file offline portability.
+### Notes & Caveats
+- Astra's pretraining cause is undisclosed; Asim budgets are unequal; Direct/Hybrid changes multiple factors; ENPIRE retries, setup and costs remain explicit.
+- Community demos are qualitative, sometimes sped up or partially validated. No source experiments were reproduced.
+- 60 minutes is suggested, not rehearsed. No PPTX/PDF/ZIP update, push or Release; final QA belongs to hash-bound audit records.
+
+## [0.7] - 2026-09-14
+### Features
+- Reduced the talk to 21 English slides and 9 embedded clips, with synchronized Chinese narration and a separate problem–method–results chapter spine. Noto typography, white/teal layout and player controls are preserved.
+- Each chapter now has one representative: the anonymous Direct/Hybrid report, Agentic Real2Sim, and ENPIRE. Claude Plays Robotics and RPent share one short Control background page; other supporting studies remain in the research archive.
+- Embedded the anonymous report's original English control architecture at chapter opening 4. Chapters open at 4/9/14 and summarize at 8/13/19. Retained original paper figures, relevant project videos, and separate painting/structural-design demos.
+### Design Rationale
+- Keep each problem, mechanism, experiment and conclusion within one study rather than assembling an argument from several partially explained works.
+- Robot-data training can change the premises behind earlier interface findings; the cited evidence does not establish Astra's internal training recipe. Tool necessity and universal Direct superiority both remain unproven.
+### Notes & Caveats
+- RoboDojo: 13/50 Direct versus 24/50 Hybrid on selected paired cases; action prior, interface and segment length vary together. RoboLab final slots are excluded from the main table. The two simulation clips depict different tasks and omit LLM waiting time.
+- Real2Sim's 48/100 is any-judge best-candidate replay acceptance, not physical-parameter accuracy. ENPIRE's conditional retries, human setup and token costs remain explicit.
+- Fixed an unsupported RPent IK label and filtered the image audit to delivered assets; static regressions cover both. All 9 clip payloads remain byte-identical to their sources in the previous build.
+- HTML SHA-256 `cccec9692b6470391539624e016cce0ee7860c3b0f4ebb8c3b0b8ac315cbd602`; final state is recorded in hash-bound audits. 60 minutes is an unmeasured timing target. Historical PPTX/PDF/ZIP and GitHub Release are unchanged.
+
+## [0.6] - 2026-09-14
+### Features
+- Reframed the28-slide talk as From Action to Reusable Capability; retained Noto fonts, white/teal style and polished offline controls. Chinese narration remains synchronized with English slides.
+- Added GPT-Policy-Eval plug/goal-image clips, the user-supplied anonymous Direct/Hybrid report with two RoboDojo clips, and RoboRSI original consolidation figure/ACT comparison.21active clips, about9minutes. Four superseded clips remain archived.
+- Renamed Part3 to Agent Improves Robot; chapter-opening diagram separates weights, code and skill knowledge. Corrected ASPIRE's knowledge-reuse mechanism. ENPIRE resource discussion moved into curve narration rather than adding pages.
+### Design Rationale
+- Do not infer that LLMs inherently must delegate control, or that Direct universally beats Hybrid. Numeric/semantic actions, code generation and complete skill delegation distribute responsibility differently.
+- Report primary evidence with its denominator/budget; model robot-pretraining scale/causality remains unverified. Treat RSI as a research question, not proven recursive amplification.
+### Notes & Caveats
+- Anonymous RoboLab final slots include historical runs/retries/unequal budgets; different reported orderings are not a controlled causal reversal. Both displayed report videos are different RoboDojo simulation tasks, excluding LLM latency.
+- RoboRSI code-on/off retains identical Base Skills; its ACT comparison is one same-task example, notRL/transfer evidence. Cumulative coverage is not frozen-policy SR.
+- Build hash `e4e8c9c571b8c7304364705c7a054d705c3ab1814a5b006d6a64e131570b2cf2`; final static/browser/visual status is recorded in hash-bound audits.60minutes is a rehearsal target. HistoricalPPTX/PDF/ZIP and GitHub Release are not updated.
 
 ## [0.5.1] - 2026-09-11
 ### Features
@@ -106,3 +331,5 @@
 ### Notes & Caveats
 - Demonstration footage and measured research evidence remain explicitly distinct.
 - PDF is static; browser playback passed for every clip, while PowerPoint-native playback still needs a pre-talk check on the presentation computer.
+
+本次保留范围例外：P8过渡句指向新增puzzle页，P3第三章提示同步为ENPIRE与可复用研究经验；其他原Control/Data正文不改。

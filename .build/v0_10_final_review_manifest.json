@@ -1,0 +1,28 @@
+{
+  "baseline": ".build/revision_0_10_baseline/manifest.json",
+  "files": {
+    ".build/build_selfcontained.py": "d82f57a9fc5748f9dbf117e264467365fdd0b36fe140c7c132725070ce51bf3b",
+    ".build/results_slides_v09.py": "d32d44490643883937b03928ad80febacff7957fc070fafdc2cf637daab7ae6b",
+    ".build/table_emphasis.py": "f5469b8cbf4faac70df3afe02ce1009b5658b2205bb54290c4df3b38ed7f2770",
+    ".build/test_table_emphasis.py": "a7b4b279b572c5c9ffe5ed08fda847bc834ab2b42fb148b317964a7364745277",
+    ".build/validate_standalone.py": "5e02722f54a550ef6d76f8263d0fa9f91923912877f8646568b9ee4c0da93169",
+    ".build/script_revised.md": "5e0d72441d4a040678fad991846bb50fb5a16a8bd0b55ccf681022ce46cdbaef",
+    ".build/extended_visual_audit.mjs": "bd14505f9ac98a7b7eaf6d4363d21edc40b84ab223e251e97769210b6fa95756",
+    "research/revision_0_10_spec.md": "03821e87218f9ddce8bb851e48aec015b0a1560d7b0dd7d0f031af72499fd23f",
+    "research/sources.json": "7d68e6af715d6ecbe37c934f0afde2002c394d1b59f6168dc27fc58045e36e69",
+    "AGENTS.md": "3cd29725cf5cd149617fbd5a9600ba4fcc28a3e024b298797e1081ba7510cd0d",
+    "README.md": "c008ffa79b521abf10f12359d2fc62dc319a90e45cb580422c50f8426df78fb8",
+    "WORKPLAN.md": "c5898140d5d66773428ea7e29f8691dc2e13cf39500f2470578d8a5fb47c33b5",
+    "CHANGELOG.md": "55f5806e0400a92965ae859c47ac677b1b5ea11922af78a8daaf2c6d64f42f52",
+    "output/Chapter_Spine.md": "5622ceb38465e82b72c2d8335c7439a957519abbb61148cabbbbfd5a697bbfae",
+    "output/README.md": "b4c9f4f90f89795cfb4c2848d44eaddbdd1ca8a241faf28863bbdf30ee6ad0fe",
+    "talk_outline.md": "8abc8545d2e3769e81acd9f986da4f806d7e4a5f5f37932c4a33c2364f7229f4",
+    "research/revision_0_10_review.md": "ba410f6a2f199728c304e683449e16fe3b5913880834ae72a0a76339227a02e8",
+    ".build/standalone_delivery_audit.json": "3a75acb66b7b5ee6d5dbd76cbe80fba9c1c5d5c58b486a8dae840743499d734f",
+    ".build/standalone_visual_audit.json": "dbe5fe1cd0d1163e270786974903c30bfbd37e3b079983721b793f91986a8e92",
+    ".build/v0_10_extended_audit.json": "2f6fbd9f8735ee0c7e6f4eec42d1912c6ee12c8bf402cbe290ebc769fc337e2d",
+    "output/Speaker_Script_Revised.md": "8a9315ed2273b0f7a8e5743acd0431f72aa50c44bb0bc4c1890e01822bc67f62"
+  },
+  "html_sha256": "c8ce5975116882cb36f40e827d53d9a64c18fb91e8767410d6ca7501de787a28",
+  "review": "Standards 0 unresolved / Spec 0 findings; final source-only semantics refactor independently rechecked"
+}

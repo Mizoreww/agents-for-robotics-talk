@@ -1,0 +1,65 @@
+
+per-source hits: arxiv=0, dblp=0, open_alex=6, openreview=0, semantic_scholar=0, crossref=6
+unique papers: 10 (2 cross-source duplicate records merged)
+============================================================
+  [1] (score 3) SIME: Enhancing Policy Self-Improvement with Modal-level Exploration
+      Authors: Jin Yang, Jun Lv, Wenye Yu...
+      Year: 2025  Citations: 0  Venue: arXiv (Cornell University)
+      Sources: open_alex  doi:10.48550/arxiv.2505.01396
+      URL: https://doi.org/10.48550/arxiv.2505.01396
+
+  [2] (score 3) Design and Control Algorithm Improvement for Modular Self-Reconfigurable Robot
+      Authors: Po-Lin Li, Yi-Liang Yeh
+      Year: 2024  Citations: 0  Venue: 2024 International Conference on Advanced Robotics and Intelligent Systems (ARIS)
+      Sources: crossref  doi:10.1109/aris62416.2024.10680004
+      URL: https://doi.org/10.1109/aris62416.2024.10680004
+
+  [3] (score 3) Authority Transfer in Recursive and Networked AI Systems Closed-Loop Self-Improvement (CLSI), Recursive Leverage (RLF), and Synchronized Recursive Leverage (SRL)
+      Authors: Adrian Erckenbrack
+      Year: None  Citations: 0  Venue: 
+      Sources: crossref  doi:10.2139/ssrn.6091646
+      URL: https://doi.org/10.2139/ssrn.6091646
+
+  [4] (score 3) On Closed-Loop Self-Improvement Interval (CLSI) and Recursive Leverage Factor (RLF) A Conceptual Framework for Recursive Intelligence Systems
+      Authors: Adrian Erckenbrack
+      Year: None  Citations: 0  Venue: 
+      Sources: crossref  doi:10.2139/ssrn.6082447
+      URL: https://doi.org/10.2139/ssrn.6082447
+
+  [5] (score 3) Human Superintelligence: How you can develop it using recursive self-improvement
+      Authors: John Stewart
+      Year: None  Citations: 0  Venue: 
+      Sources: crossref  doi:10.2139/ssrn.5841962
+      URL: https://doi.org/10.2139/ssrn.5841962
+
+  [6] (score 2) Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents
+      Authors: Jenny Zhang, Shengran Hu, Cong Lu...
+      Year: 2025  Citations: 18  Venue: SuperIntelligence - Robotics - Safety & Alignment
+      Sources: open_alex  doi:10.70777/si.v2i3.15063
+      URL: https://doi.org/10.70777/si.v2i3.15063
+
+  [7] (score 2) Grow Your Limits: Continuous Improvement with Real-World RL for Robotic Locomotion
+      Authors: Laura Smith, Yun-Hao Cao, Sergey Levine
+      Year: 2024  Citations: 12  Venue: 
+      Sources: open_alex  doi:10.1109/icra57147.2024.10610485
+      URL: https://doi.org/10.1109/icra57147.2024.10610485
+
+  [8] (score 2) Training Robotic Self-Evolving with GRPO
+      Authors: Q. B. Yi, Ping Zhang, Junwei Chen
+      Year: 2025  Citations: 0  Venue: Frontiers in artificial intelligence and applications
+      Sources: open_alex  doi:10.3233/faia251129
+      URL: https://doi.org/10.3233/faia251129
+
+  [9] (score 2) Improvement, Upgrade, and Development of Robots for The "Robot 2025 – Winning Faith" Competition
+      Authors: Nguyễn Văn Lâm, Thị Lan Hương
+      Year: 2026  Citations: 0  Venue: Engineering and Technology Journal
+      Sources: crossref  doi:10.47191/etj/v11i05.54
+      URL: https://doi.org/10.47191/etj/v11i05.54
+
+  [10] (score 2) Combination of decision making and machine learning for  improvement of robot learning for water analysis
+      Authors: Taraneh Javanbakht, Arbnor Pajaziti, Shaban Buza
+      Year: 2025  Citations: 0  Venue: Robot Learning
+      Sources: crossref  doi:10.55092/rl20250006
+      URL: https://doi.org/10.55092/rl20250006
+
+Total: 10 unique papers (ranked; surveys sunk to the bottom).

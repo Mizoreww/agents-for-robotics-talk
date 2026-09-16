@@ -1,0 +1,141 @@
+{
+  "html_sha256": "cccec9692b6470391539624e016cce0ee7860c3b0f4ebb8c3b0b8ac315cbd602",
+  "reviewed_at": "2026-09-14T06:29:20.769614+00:00",
+  "slides_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "preserved_style": "Noto Serif / Noto Sans / subset Noto Sans CJK SC; white/teal; original logos and toolbar",
+  "result": "passed",
+  "checks": [
+    "All 21 final slide renders inspected in sequence",
+    "Chapter opening diagrams at 4/9/14; chapter summaries at 8/13/19",
+    "Original Direct/Hybrid architecture and full-size lightbox inspected",
+    "Background slide names Claude Plays Robotics and RPent without extra benchmark cases",
+    "No visible clipping or text/image overlap; original axes and legends retained",
+    "Desktop and 390px toolbar inspected; browser audits verify playback and Chinese script controls"
+  ],
+  "screenshots": [
+    {
+      "file": ".build/revision_0_7_screens/01.png",
+      "sha256": "d4c3ea71e2a29aa2935e98b440bcf34109e950e16a03a98c7effea0bd476fde4"
+    },
+    {
+      "file": ".build/revision_0_7_screens/02.png",
+      "sha256": "6a96a253735746ff812b3ab452acb166f4c4657fb5e05b8e92448d2374a801cc"
+    },
+    {
+      "file": ".build/revision_0_7_screens/03.png",
+      "sha256": "b07578c55395c28b2282ef797cd8251cd3bbabeaf7127c6c5ddd58a9efa28a7d"
+    },
+    {
+      "file": ".build/revision_0_7_screens/04.png",
+      "sha256": "850e94155e48b4d70910b93e5a068d138ef0e9e7c19e17146698951c43660e8a"
+    },
+    {
+      "file": ".build/revision_0_7_screens/05.png",
+      "sha256": "e91f9129ea4d432b9e9689719ca096db81d86aedde0fc3d37fe69d0352c42ab7"
+    },
+    {
+      "file": ".build/revision_0_7_screens/06.png",
+      "sha256": "594daf3c9c6b414d7610f0c8945d80a7fcd106914a943dfb2fbafb59f69d3ed3"
+    },
+    {
+      "file": ".build/revision_0_7_screens/07.png",
+      "sha256": "4cb593527da9f8d2e62a75c3a9835a39680a6c6f7c8eda49d138b064d15d0105"
+    },
+    {
+      "file": ".build/revision_0_7_screens/08.png",
+      "sha256": "da3530a45d31414149cf051462afad0fa76b1600d4a118bbf9a450c93558ea7b"
+    },
+    {
+      "file": ".build/revision_0_7_screens/09.png",
+      "sha256": "89b565727cc149b938e382a708eccc52dfa22173ca8f4de3d43b166a0e9c6b61"
+    },
+    {
+      "file": ".build/revision_0_7_screens/10.png",
+      "sha256": "6d31bf27169a566ed4de91ccaad8bdd650f8810ca2f251029dc40b196d841b78"
+    },
+    {
+      "file": ".build/revision_0_7_screens/11.png",
+      "sha256": "82bcc07e5112cf9918ecc5e3445c607adbdc4dc12030437a786eec78c1978bf0"
+    },
+    {
+      "file": ".build/revision_0_7_screens/12.png",
+      "sha256": "6056bd118430bab188fd53a092256b33be6fbdf8b2523a97c1876b54edeb6f65"
+    },
+    {
+      "file": ".build/revision_0_7_screens/13.png",
+      "sha256": "569dfeadb0bbd722b28bf257be0556414fd35de9e7caeaadf4815dc2b0b3d598"
+    },
+    {
+      "file": ".build/revision_0_7_screens/14.png",
+      "sha256": "9caea08fd4a06b484651c5f84568141ed3df74217884989c93730c8682b0fec7"
+    },
+    {
+      "file": ".build/revision_0_7_screens/15.png",
+      "sha256": "3231dd3979230f865091253fa1e71525c474e1e727ae2e39210d6633c52ca8a8"
+    },
+    {
+      "file": ".build/revision_0_7_screens/16.png",
+      "sha256": "eb98dcf87f88369ab8cc021959545ee4a1496073d9d95b99a3f3f72ef69f65af"
+    },
+    {
+      "file": ".build/revision_0_7_screens/17.png",
+      "sha256": "beadb7f2f82c2006d7d584952c678973abf3849040c1afc3613ddba495e8d855"
+    },
+    {
+      "file": ".build/revision_0_7_screens/18.png",
+      "sha256": "dcd4cca45aa81c87497a882fa19ac41b11f699dffbfb268cf949bc4ce2c01d00"
+    },
+    {
+      "file": ".build/revision_0_7_screens/19.png",
+      "sha256": "4406e52696a75e08156e435702bfbe6b3c2ef7256730989b6456d204f37465fe"
+    },
+    {
+      "file": ".build/revision_0_7_screens/20.png",
+      "sha256": "4d173d5024c8a9c3f49051c669cf198cd82daf9b370396d0df4590fe119d5d83"
+    },
+    {
+      "file": ".build/revision_0_7_screens/21.png",
+      "sha256": "3d65098955efced4df5a86b9db10111fec134f17805a97fa42829ab28022115f"
+    },
+    {
+      "file": ".build/revision_0_7_screens/controls.png",
+      "sha256": "8b1f1a9f4b6b3fecfa8dc2d0c3bbff8735d4d47299546939a6a73b84b805c3bd"
+    },
+    {
+      "file": ".build/revision_0_7_screens/mobile.png",
+      "sha256": "ab225492c38d4878462ee57e29de8160f0b614d90e11f5b69058135ab9e33758"
+    },
+    {
+      "file": ".build/revision_0_7_screens/architecture-enlarged.png",
+      "sha256": "e537ccc7d18148ddb4e44745729393ff94cf826bd26e26bd34afa78facbc6377"
+    }
+  ],
+  "not_claimed": [
+    "Measured rehearsal timing",
+    "Source-experiment reproduction",
+    "Updated PPTX/PDF/ZIP",
+    "New GitHub release"
+  ]
+}

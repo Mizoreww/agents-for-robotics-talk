@@ -1,0 +1,669 @@
+{
+  "html_sha256": "4ee50b540fe42314e9e14774da37504da8790d66b1ef944c258abf4ca9987e49",
+  "slides": [
+    {
+      "slide": 2,
+      "playing": [
+        {
+          "clip": "painting",
+          "time": 1.49981,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "painting",
+          "time": 1.500686,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "painting",
+          "time": 1.500686,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "painting",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "playing": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.502642,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.502585,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.503381,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.503364,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "astra_bowl",
+          "time": 1.503381,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 1.503364,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "astra_bowl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "astra_insertion",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "playing": [
+        {
+          "clip": "policy_plug",
+          "time": 1.503862,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.533525,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "policy_plug",
+          "time": 1.50557,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.535264,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "policy_plug",
+          "time": 1.50557,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 1.535264,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "policy_plug",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "keyboard",
+          "time": 0.033,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "playing": [
+        {
+          "clip": "asim_delta",
+          "time": 1.501242,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.501214,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.501202,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "asim_delta",
+          "time": 1.502002,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.502011,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.501998,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "asim_delta",
+          "time": 1.502002,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 1.502011,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 1.501998,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "asim_delta",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_waypoint",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "asim_code",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "playing": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.502237,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.502192,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.50335,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.50334,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 1.50335,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 1.50334,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "anon_direct_sort",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "anon_hybrid_pack",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "playing": [
+        {
+          "clip": "office_newton",
+          "time": 1.496796,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "office_newton",
+          "time": 1.497463,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "office_newton",
+          "time": 1.497463,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "office_newton",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "playing": [
+        {
+          "clip": "hand",
+          "time": 1.502139,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "hand",
+          "time": 1.502777,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "hand",
+          "time": 1.502777,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "hand",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 21,
+      "playing": [
+        {
+          "clip": "rope_hand",
+          "time": 1.503575,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "rope_hand",
+          "time": 1.504425,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "rope_hand",
+          "time": 1.504425,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "rope_hand",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 22,
+      "playing": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.500976,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.502103,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "astra_real2sim",
+          "time": 1.502103,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "astra_real2sim",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 23,
+      "playing": [
+        {
+          "clip": "dexgpt",
+          "time": 1.502833,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "dexgpt",
+          "time": 1.503551,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "dexgpt",
+          "time": 1.503551,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "dexgpt",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 27,
+      "playing": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.502499,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.499707,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.503511,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.500748,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "enpire_reset",
+          "time": 1.503511,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 1.500748,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "enpire_reset",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "enpire_verify",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    },
+    {
+      "slide": 32,
+      "playing": [
+        {
+          "clip": "quad_rl",
+          "time": 1.499801,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.499321,
+          "paused": false,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pause": [
+        {
+          "clip": "quad_rl",
+          "time": 1.501117,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.500661,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "pauseLater": [
+        {
+          "clip": "quad_rl",
+          "time": 1.501117,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 1.500661,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ],
+      "restart": [
+        {
+          "clip": "quad_rl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        },
+        {
+          "clip": "wenli_icl",
+          "time": 0,
+          "paused": true,
+          "error": null,
+          "ready": 4
+        }
+      ]
+    }
+  ]
+}

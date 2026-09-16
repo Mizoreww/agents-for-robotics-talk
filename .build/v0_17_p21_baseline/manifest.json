@@ -1,0 +1,11 @@
+{
+  ".build/build_selfcontained.py": "bd0dc7f72aea4b6116971e02fa517e54c31ddc4c8c52c7621b6445116da3792c",
+  ".build/script_revised.md": "7fe7bf7d59362eacf7ee75e15ab586ca7ee7a4a5da323381e0274d9387d6019f",
+  ".build/validate_standalone.py": "1d84787bcdd0f29257a5e9d040829c1058472879f5e5a4eab6e1d3c8dd8857ea",
+  ".build/standalone_delivery_audit.json": "5c30a7b8b113aac762045d6ee81b41e4e0937a2af0778aceb193e362dee0f48d",
+  ".build/standalone_visual_audit.json": "246e30252642cd9f680195b2293223485b9e7d60a36e0d6c0b156645fef6d9bb",
+  ".build/v0_17_extended_audit.json": "7e6b37c861ab2ab7943233ef785ca52d5c5f7875b1aeec47f7083d568408a5ac",
+  ".build/v0_17_final_review_manifest.json": "3b5058b6ca54c5c772fb196f80d386476c70f29eaade4bbcac27905869511b20",
+  "output/Agents_for_Robotics_Self_Contained.html": "be67550534d0a2f2213ff8b6e0bf2fbc7222db04d16fdc4216a8a24b560bef38",
+  "output/Speaker_Script_Revised.md": "4fce7d2f6fec2ff66b518cfd5f925d465656a25896c87abba93e5993276eaaa7"
+}

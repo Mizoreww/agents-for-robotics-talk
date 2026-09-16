@@ -1,0 +1,13 @@
+{
+  "url": "https://x.com/huxiao93612565/status/2097815230105399402",
+  "author_name": "xiao hu",
+  "author_url": "https://x.com/huxiao93612565",
+  "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Video in \u2192 physics out. \ud83e\udd16<br>I gave GPT-6 Astra one video of a human hand. <br>It wrote this entire real2sim pipeline itself \u2014 hand tracking, IK retargeting to a 44-DOF dexterous hand, grasp refinement.<br><br>Zero code from me. Open-sourcing everything \ud83d\udc47<a href=\"https://t.co/s5Aw2IcA8E\">https://t.co/s5Aw2IcA8E</a> <a href=\"https://t.co/lwUTGY4zVl\">pic.twitter.com/lwUTGY4zVl</a></p>&mdash; xiao hu (@huxiao93612565) <a href=\"https://x.com/huxiao93612565/status/2097815230105399402?ref_src=twsrc%5Etfw\">September 9, 2026</a></blockquote>\n\n",
+  "width": 550,
+  "height": null,
+  "type": "rich",
+  "cache_age": "3153600000",
+  "provider_name": "X",
+  "provider_url": "https://x.com",
+  "version": "1.0"
+}

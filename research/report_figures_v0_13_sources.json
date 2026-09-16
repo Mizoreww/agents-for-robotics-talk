@@ -1,0 +1,15 @@
+{
+  "url": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+  "captured": "2026-09-15",
+  "method": "Live WebMCP original card exports; heatmap uses captured original DOM/styles with overflow expanded. No data/color edits.",
+  "sha256": {
+    ".build/assets/v0_13/capture_metadata.json": "7f6c614637942503aa2f82fa392bfeafe372b841a0aec49daf4f74eaea646b61",
+    ".build/assets/v0_13/heatmap_dom.json": "404cee8970b9ed7f2f8ef93f06d864f1afd43a8d84d1a6d8b944c8bbc949fcc0",
+    ".build/assets/v0_13/heatmap_render_audit.json": "f8e65d97d92fd2a122dd1e2760f475849373669e607cb876b7f1cee5e30260b7",
+    ".build/assets/v0_13/source_query_rows.json": "e88e31a93f56819fdbd20badd019c2714da2a71bb5e1fb61d95afec8ff493622",
+    ".build/assets/v0_13/panel-score-ranking.png": "948f4a6e92fee1b8dd33d8af4db909a0be8855a3ebc71afea993af41b3577984",
+    ".build/assets/v0_13/panel-sr-ranking.png": "855657a47b81fc0333be8aeff806aaee73c8d6ee616dd480bed81c4bbc3f6ed1",
+    ".build/assets/v0_13/robolab-success-ranking.png": "ad38b3487b1c4a28e4ec57bfb2c173164413e354b9a019c028ad9cdb7d63b284",
+    ".build/assets/v0_13/task-score-table-complete.png": "f9b63070c6ca90df4a0249ff45bb2011ddd2c5926e2b7efcc85bbe1f37c79598"
+  }
+}

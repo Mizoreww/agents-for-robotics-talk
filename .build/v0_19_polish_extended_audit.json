@@ -1,0 +1,2538 @@
+{
+  "html_sha256": "accf9c71db3afd0c4a2da64cf140bbeedffa485e889619c89056e472aaea1428",
+  "served_html_byte_identity": true,
+  "loaded_deck_data_sha256": "0633a99844a4b484a206ce8c68b022c03243e275c8d9366b48bbf5faaf72e870",
+  "identity_check": "Streamed HTTP bytes before/after browser run plus SHA-256 of actual loaded deck-data DOM",
+  "figures": [
+    {
+      "slide": 5,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-5-0.png"
+    },
+    {
+      "slide": 5,
+      "index": 1,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-5-1.png"
+    },
+    {
+      "slide": 5,
+      "index": 2,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-5-2.png"
+    },
+    {
+      "slide": 12,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-12-0.png"
+    },
+    {
+      "slide": 13,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-13-0.png"
+    },
+    {
+      "slide": 13,
+      "index": 1,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-13-1.png"
+    },
+    {
+      "slide": 14,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-14-0.png"
+    },
+    {
+      "slide": 15,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-15-0.png"
+    },
+    {
+      "slide": 24,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-24-0.png"
+    },
+    {
+      "slide": 27,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-27-0.png"
+    },
+    {
+      "slide": 27,
+      "index": 1,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-27-1.png"
+    },
+    {
+      "slide": 28,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-28-0.png"
+    },
+    {
+      "slide": 29,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-29-0.png"
+    },
+    {
+      "slide": 30,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-30-0.png"
+    },
+    {
+      "slide": 32,
+      "index": 0,
+      "file": "/home/limx/Desktop/agent_for_robotics/.build/v0_19_polish_visual/figure-32-0.png"
+    }
+  ],
+  "playback": [
+    {
+      "slide": 9,
+      "clip": "cube",
+      "samples": [
+        {
+          "time": 1.007458,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 35
+        },
+        {
+          "time": 2.01372,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 65
+        },
+        {
+          "time": 3.020861,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 95
+        },
+        {
+          "time": 4.033407,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 125
+        },
+        {
+          "time": 5.039603,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 156
+        },
+        {
+          "time": 6.045253,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 186
+        },
+        {
+          "time": 7.05185,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 216
+        },
+        {
+          "time": 8.056889,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 246
+        },
+        {
+          "time": 9.061043,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 276
+        },
+        {
+          "time": 10.067879,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 306
+        },
+        {
+          "time": 11.074416,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 337
+        },
+        {
+          "time": 12.081661,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 367
+        },
+        {
+          "time": 13.089014,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 397
+        },
+        {
+          "time": 14.096712,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 427
+        },
+        {
+          "time": 15.101389,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 457
+        },
+        {
+          "time": 16.106165,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 488
+        },
+        {
+          "time": 17.115869,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 518
+        },
+        {
+          "time": 18.123222,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 548
+        },
+        {
+          "time": 19.129437,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 578
+        },
+        {
+          "time": 20.136712,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 608
+        },
+        {
+          "time": 21.144985,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 639
+        },
+        {
+          "time": 22.151723,
+          "duration": 23.1,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 669
+        },
+        {
+          "time": 23.1,
+          "duration": 23.1,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 693
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 9,
+      "clip": "claw",
+      "samples": [
+        {
+          "time": 1.001447,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 36
+        },
+        {
+          "time": 2.005969,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 66
+        },
+        {
+          "time": 3.009455,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 96
+        },
+        {
+          "time": 4.014878,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 127
+        },
+        {
+          "time": 5.020333,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 157
+        },
+        {
+          "time": 6.025454,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 187
+        },
+        {
+          "time": 7.030535,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 217
+        },
+        {
+          "time": 8.035018,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 247
+        },
+        {
+          "time": 9.038784,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 277
+        },
+        {
+          "time": 10.044071,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 307
+        },
+        {
+          "time": 11.049839,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 338
+        },
+        {
+          "time": 12.055765,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 368
+        },
+        {
+          "time": 13.061967,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 398
+        },
+        {
+          "time": 14.066744,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 428
+        },
+        {
+          "time": 15.07131,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 458
+        },
+        {
+          "time": 16.0802,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 488
+        },
+        {
+          "time": 17.08883,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 519
+        },
+        {
+          "time": 18.097444,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 549
+        },
+        {
+          "time": 19.107717,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 579
+        },
+        {
+          "time": 20.116766,
+          "duration": 20.566016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 610
+        },
+        {
+          "time": 20.566016,
+          "duration": 20.566016,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 617
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 33,
+      "clip": "enpire_pin",
+      "samples": [
+        {
+          "time": 1.003755,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.0098,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.016341,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.026119,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 127
+        },
+        {
+          "time": 5.03175,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 158
+        },
+        {
+          "time": 6.038406,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 188
+        },
+        {
+          "time": 7.048168,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 8.056421,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 248
+        },
+        {
+          "time": 9.063214,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 279
+        },
+        {
+          "time": 10.068213,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 309
+        },
+        {
+          "time": 11.076767,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 339
+        },
+        {
+          "time": 12.08236,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 369
+        },
+        {
+          "time": 13.089384,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 399
+        },
+        {
+          "time": 14.097261,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 430
+        },
+        {
+          "time": 15.102077,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 460
+        },
+        {
+          "time": 16.108163,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 490
+        },
+        {
+          "time": 17.113103,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 520
+        },
+        {
+          "time": 18.117579,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 550
+        },
+        {
+          "time": 19.12263,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 580
+        },
+        {
+          "time": 20.129161,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 611
+        },
+        {
+          "time": 21.136414,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 641
+        },
+        {
+          "time": 22.141967,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 671
+        },
+        {
+          "time": 23.147338,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 701
+        },
+        {
+          "time": 24.153909,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 731
+        },
+        {
+          "time": 25.159523,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 761
+        },
+        {
+          "time": 26.166336,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 792
+        },
+        {
+          "time": 27.172489,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 822
+        },
+        {
+          "time": 28.178121,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 852
+        },
+        {
+          "time": 29.183024,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 882
+        },
+        {
+          "time": 30.187227,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 912
+        },
+        {
+          "time": 31.192451,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 942
+        },
+        {
+          "time": 32.197209,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 973
+        },
+        {
+          "time": 33.203251,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1003
+        },
+        {
+          "time": 34.210228,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1033
+        },
+        {
+          "time": 35.217571,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1063
+        },
+        {
+          "time": 36.223409,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1093
+        },
+        {
+          "time": 37.231654,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1124
+        },
+        {
+          "time": 38.239417,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1154
+        },
+        {
+          "time": 39.249406,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1184
+        },
+        {
+          "time": 40.258525,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1214
+        },
+        {
+          "time": 41.265345,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1245
+        },
+        {
+          "time": 42.271215,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1275
+        },
+        {
+          "time": 43.278761,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1305
+        },
+        {
+          "time": 44.285589,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1335
+        },
+        {
+          "time": 45.29536,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1366
+        },
+        {
+          "time": 46.300353,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1396
+        },
+        {
+          "time": 47.308303,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1426
+        },
+        {
+          "time": 48.314777,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1456
+        },
+        {
+          "time": 49.322136,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1486
+        },
+        {
+          "time": 50.327026,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1516
+        },
+        {
+          "time": 51.33422,
+          "duration": 51.666016,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1547
+        },
+        {
+          "time": 51.666016,
+          "duration": 51.666016,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 1550
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 33,
+      "clip": "enpire_gpu",
+      "samples": [
+        {
+          "time": 1.006951,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.014674,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.01919,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.025113,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 128
+        },
+        {
+          "time": 5.030889,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 158
+        },
+        {
+          "time": 6.03883,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 188
+        },
+        {
+          "time": 7.04555,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 8.052679,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 248
+        },
+        {
+          "time": 9.062116,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 279
+        },
+        {
+          "time": 10.070635,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 309
+        },
+        {
+          "time": 11.079437,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 339
+        },
+        {
+          "time": 12.087717,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 369
+        },
+        {
+          "time": 13.095057,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 400
+        },
+        {
+          "time": 14.102154,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 430
+        },
+        {
+          "time": 15.109208,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 460
+        },
+        {
+          "time": 16.114692,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 490
+        },
+        {
+          "time": 17.123168,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 521
+        },
+        {
+          "time": 18.128308,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 551
+        },
+        {
+          "time": 19.134443,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 581
+        },
+        {
+          "time": 20.141777,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 611
+        },
+        {
+          "time": 21.149426,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 641
+        },
+        {
+          "time": 22.156306,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 672
+        },
+        {
+          "time": 23.16357,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 702
+        },
+        {
+          "time": 24.168289,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 732
+        },
+        {
+          "time": 25.175302,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 762
+        },
+        {
+          "time": 26.180165,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 792
+        },
+        {
+          "time": 27.18479,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 822
+        },
+        {
+          "time": 28.189889,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 853
+        },
+        {
+          "time": 29.195299,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 883
+        },
+        {
+          "time": 30.200803,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 913
+        },
+        {
+          "time": 31.205448,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 943
+        },
+        {
+          "time": 32.210523,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 973
+        },
+        {
+          "time": 33.214822,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1003
+        },
+        {
+          "time": 34.220866,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1033
+        },
+        {
+          "time": 35.228585,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1064
+        },
+        {
+          "time": 36.235257,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1094
+        },
+        {
+          "time": 37.2437,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1124
+        },
+        {
+          "time": 38.251538,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1154
+        },
+        {
+          "time": 39.257853,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1185
+        },
+        {
+          "time": 40.265335,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1215
+        },
+        {
+          "time": 41.272497,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1245
+        },
+        {
+          "time": 42.27748,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1275
+        },
+        {
+          "time": 43.281989,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1305
+        },
+        {
+          "time": 44.287492,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1336
+        },
+        {
+          "time": 45.291846,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1366
+        },
+        {
+          "time": 46.297479,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1396
+        },
+        {
+          "time": 47.304517,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1426
+        },
+        {
+          "time": 48.310529,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1456
+        },
+        {
+          "time": 49.316067,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1486
+        },
+        {
+          "time": 50.321451,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1517
+        },
+        {
+          "time": 51.326663,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1547
+        },
+        {
+          "time": 52.331825,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1577
+        },
+        {
+          "time": 53.338227,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1607
+        },
+        {
+          "time": 54.344723,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1637
+        },
+        {
+          "time": 55.350552,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1667
+        },
+        {
+          "time": 56.3562,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1698
+        },
+        {
+          "time": 57.362653,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1728
+        },
+        {
+          "time": 58.368386,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1758
+        },
+        {
+          "time": 59.373445,
+          "duration": 59.9,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1788
+        },
+        {
+          "time": 59.9,
+          "duration": 59.9,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 1797
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 33,
+      "clip": "enpire_tie",
+      "samples": [
+        {
+          "time": 1.00475,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.010177,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.01475,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.020013,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 128
+        },
+        {
+          "time": 5.027763,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 158
+        },
+        {
+          "time": 6.033971,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 188
+        },
+        {
+          "time": 7.039483,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 8.04591,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 248
+        },
+        {
+          "time": 9.052012,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 279
+        },
+        {
+          "time": 10.056532,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 309
+        },
+        {
+          "time": 11.061631,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 339
+        },
+        {
+          "time": 12.067109,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 369
+        },
+        {
+          "time": 13.076624,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 399
+        },
+        {
+          "time": 14.08164,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 429
+        },
+        {
+          "time": 15.088937,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 460
+        },
+        {
+          "time": 16.095471,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 490
+        },
+        {
+          "time": 17.102007,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 520
+        },
+        {
+          "time": 18.106938,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 549
+        },
+        {
+          "time": 19.111114,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 579
+        },
+        {
+          "time": 20.116238,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 609
+        },
+        {
+          "time": 21.120058,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 640
+        },
+        {
+          "time": 22.124865,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 670
+        },
+        {
+          "time": 23.130784,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 700
+        },
+        {
+          "time": 24.135417,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 730
+        },
+        {
+          "time": 25.141295,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 760
+        },
+        {
+          "time": 26.146212,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 790
+        },
+        {
+          "time": 27.150536,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 821
+        },
+        {
+          "time": 28.156222,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 851
+        },
+        {
+          "time": 29.162154,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 881
+        },
+        {
+          "time": 30.165806,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 911
+        },
+        {
+          "time": 31.170691,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 941
+        },
+        {
+          "time": 32.175536,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 971
+        },
+        {
+          "time": 33.180731,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1001
+        },
+        {
+          "time": 34.186631,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1032
+        },
+        {
+          "time": 35.193439,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1062
+        },
+        {
+          "time": 36.200287,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1092
+        },
+        {
+          "time": 37.204858,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1122
+        },
+        {
+          "time": 38.209561,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1152
+        },
+        {
+          "time": 39.216668,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1183
+        },
+        {
+          "time": 40.223508,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1213
+        },
+        {
+          "time": 41.229668,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1243
+        },
+        {
+          "time": 42.236585,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1273
+        },
+        {
+          "time": 43.241623,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1303
+        },
+        {
+          "time": 44.247371,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1333
+        },
+        {
+          "time": 45.253129,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1364
+        },
+        {
+          "time": 46.258894,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1394
+        },
+        {
+          "time": 47.265174,
+          "duration": 47.666667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 1424
+        },
+        {
+          "time": 47.666667,
+          "duration": 47.666667,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 1430
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 33,
+      "clip": "enpire_cut",
+      "samples": [
+        {
+          "time": 1.006309,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 34
+        },
+        {
+          "time": 2.013986,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 65
+        },
+        {
+          "time": 3.02037,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 95
+        },
+        {
+          "time": 4.026611,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 125
+        },
+        {
+          "time": 5.032831,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 155
+        },
+        {
+          "time": 6.038805,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 185
+        },
+        {
+          "time": 7.043515,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 215
+        },
+        {
+          "time": 8.050527,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 246
+        },
+        {
+          "time": 9.056946,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 276
+        },
+        {
+          "time": 10.063618,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 306
+        },
+        {
+          "time": 11.069462,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 336
+        },
+        {
+          "time": 12.074285,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 366
+        },
+        {
+          "time": 13.081354,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 397
+        },
+        {
+          "time": 14.089546,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 427
+        },
+        {
+          "time": 15.097101,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 457
+        },
+        {
+          "time": 16.103614,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 487
+        },
+        {
+          "time": 17.108895,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 517
+        },
+        {
+          "time": 18.114798,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 548
+        },
+        {
+          "time": 19.11827,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 578
+        },
+        {
+          "time": 20.121634,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 608
+        },
+        {
+          "time": 21.126665,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 638
+        },
+        {
+          "time": 22.132713,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 668
+        },
+        {
+          "time": 23.140938,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 698
+        },
+        {
+          "time": 24.147591,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 729
+        },
+        {
+          "time": 25.155229,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 759
+        },
+        {
+          "time": 26.163043,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 789
+        },
+        {
+          "time": 27.169191,
+          "duration": 27.433333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 819
+        },
+        {
+          "time": 27.433333,
+          "duration": 27.433333,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 823
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 25,
+      "clip": "enpire_verify_full",
+      "samples": [
+        {
+          "time": 1.002345,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.009599,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.017751,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.023951,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 127
+        },
+        {
+          "time": 5.030524,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 158
+        },
+        {
+          "time": 6.036248,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 188
+        },
+        {
+          "time": 7.042309,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 8.047295,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 248
+        },
+        {
+          "time": 9.052321,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 278
+        },
+        {
+          "time": 10.057481,
+          "duration": 11.133333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 308
+        },
+        {
+          "time": 11.133333,
+          "duration": 11.133333,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 334
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 26,
+      "clip": "enpire_reset_pusht",
+      "samples": [
+        {
+          "time": 1.005559,
+          "duration": 1.7,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 35
+        },
+        {
+          "time": 1.7,
+          "duration": 1.7,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 51
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 26,
+      "clip": "enpire_reset_full",
+      "samples": [
+        {
+          "time": 1.00288,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.007071,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.011649,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.016073,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 127
+        },
+        {
+          "time": 5.021781,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 157
+        },
+        {
+          "time": 6.026767,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 187
+        },
+        {
+          "time": 7.033684,
+          "duration": 7.733333,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 7.733333,
+          "duration": 7.733333,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 232
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 26,
+      "clip": "enpire_reset_tie",
+      "samples": [
+        {
+          "time": 1.006587,
+          "duration": 4.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 34
+        },
+        {
+          "time": 2.011871,
+          "duration": 4.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 64
+        },
+        {
+          "time": 3.020762,
+          "duration": 4.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 95
+        },
+        {
+          "time": 4.027093,
+          "duration": 4.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 125
+        },
+        {
+          "time": 4.5,
+          "duration": 4.5,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 135
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 26,
+      "clip": "enpire_reset_gpu",
+      "samples": [
+        {
+          "time": 1.005676,
+          "duration": 5.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 34
+        },
+        {
+          "time": 2.011493,
+          "duration": 5.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 64
+        },
+        {
+          "time": 3.016646,
+          "duration": 5.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 95
+        },
+        {
+          "time": 4.022015,
+          "duration": 5.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 125
+        },
+        {
+          "time": 5.028898,
+          "duration": 5.5,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 155
+        },
+        {
+          "time": 5.5,
+          "duration": 5.5,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 165
+        }
+      ],
+      "ended": true
+    },
+    {
+      "slide": 30,
+      "clip": "enpire_fleet",
+      "samples": [
+        {
+          "time": 1.00584,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 37
+        },
+        {
+          "time": 2.013949,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 67
+        },
+        {
+          "time": 3.022011,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 97
+        },
+        {
+          "time": 4.032456,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 128
+        },
+        {
+          "time": 5.03968,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 158
+        },
+        {
+          "time": 6.046519,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 188
+        },
+        {
+          "time": 7.052409,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 218
+        },
+        {
+          "time": 8.061974,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 249
+        },
+        {
+          "time": 9.067357,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 279
+        },
+        {
+          "time": 10.072734,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 309
+        },
+        {
+          "time": 11.079534,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 339
+        },
+        {
+          "time": 12.084109,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 369
+        },
+        {
+          "time": 13.087964,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 399
+        },
+        {
+          "time": 14.092281,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 430
+        },
+        {
+          "time": 15.097538,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 460
+        },
+        {
+          "time": 16.102363,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 490
+        },
+        {
+          "time": 17.109164,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 520
+        },
+        {
+          "time": 18.115,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 550
+        },
+        {
+          "time": 19.120049,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 580
+        },
+        {
+          "time": 20.125367,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 611
+        },
+        {
+          "time": 21.131193,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 641
+        },
+        {
+          "time": 22.136423,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 671
+        },
+        {
+          "time": 23.14276,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 701
+        },
+        {
+          "time": 24.147815,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 731
+        },
+        {
+          "time": 25.154051,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 761
+        },
+        {
+          "time": 26.162282,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 792
+        },
+        {
+          "time": 27.168623,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 822
+        },
+        {
+          "time": 28.174573,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 852
+        },
+        {
+          "time": 29.179742,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 882
+        },
+        {
+          "time": 30.185432,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 912
+        },
+        {
+          "time": 31.191783,
+          "duration": 31.866667,
+          "ended": false,
+          "paused": false,
+          "error": null,
+          "frames": 943
+        },
+        {
+          "time": 31.866667,
+          "duration": 31.866667,
+          "ended": true,
+          "paused": true,
+          "error": null,
+          "frames": 956
+        }
+      ],
+      "ended": true
+    }
+  ],
+  "scope": "Complete uninterrupted playback at 1x presentation rate; source speedups retained. Separate visual review uses sequential 1-second samples."
+}

@@ -1,0 +1,27 @@
+{
+  "baseline_html_sha256": "38910e30003ab8727c6826e5ec0d7832fed47d626036511329364d6217110a88",
+  "html_sha256": "dbe02f333398eabbf6259d77726f9669b954b0f61a7872673263332c9c12cc82",
+  "files": {
+    ".build/build_selfcontained.py": "b022440262d1aec668f0bfd732f7dd339c3d4ebc3b10d0592652936af36b9460",
+    ".build/enpire_v018.py": "dae87209dd7efb518fe1143cf5f8e333bbfdcb2fb8a4d9585df56760184b6a44",
+    ".build/script_revised.md": "882ddde02d510d0c3592fd15fdce4084b249c2e1df4429965f943d7329406ec7",
+    ".build/validate_standalone.py": "af764c7dd83ee6ae6a8d3c2e631132d6bc35ea33cb4e4b8c7c053ff1108e23bf",
+    ".build/browser_audit.mjs": "f7b38e952400e5f8ef8d372b717e1af92a72704de54e943dc67730db3f054f49",
+    ".build/extended_visual_audit.mjs": "b3a8f4ddd605b142f2a0778e0e6b075d55d77283e8026eb01051dc1a13c13c6c",
+    ".build/test_enpire_v018.py": "acc597b2f55056e75f986790c420cf5d8c4d3f4ab745c590b727a7300b084fb9",
+    ".build/test_data_demos_v015.py": "3966446d4afa260074cf4deb66b6e42cdb8b6b3c047921f4e385fdd0ca1b26ce",
+    "research/revision_0_18_spec.md": "d7c147b8a862178280d62968b6c9a47dd788ca6bec9e13536697a1ac8e096955",
+    "research/enpire_rsi_evidence_2026-09-16.md": "bcc7b563b3112d68b3b133b5c1ca55881a34defecd88f8bdb0df61cdc73a4e9c",
+    "README.md": "46929de7b616b29f4775751959f8b5399d22c88d2a2105f88d87889f4335fff6",
+    "AGENTS.md": "0a24d3e53e4e414f52752b2e8aa601b1aea6ffceba68355358a4e55c6547d302",
+    "output/Chapter_Spine.md": "1033261fd49f60b3d7be545225d587c1af06b47f175a32db0021919d57f0c993",
+    "output/README.md": "2db1aec4b3589d1b020eb92f031993bd547d3c734079492cdd65451152e4007d",
+    "talk_outline.md": "d2a92e7a3373ebd0f1c1f249d6f96ba9e5d4a60cac7ba9e455efe977b113585e",
+    "CHANGELOG.md": "48a3298f12c40e1a6ec0a97dbdda0cb159b37aa1ebc277cd614c91d05a9d77d2",
+    ".build/clip_manifest_v9.json": "1893d7cdd2af7d500e791f0369104c2fd0b00aa097816ca4e96dfb5f7bc4d2c3",
+    ".build/clip_manifest_v10.json": "1745a1e248c2059603854308697cae1585867adeff8fd2339b6cd6d0ff0ec082",
+    "research/enpire_v0_18_sources.json": "a5322b990037f04aa23d392189ff403a357da6a152a4900d2fe35f3fc2b7a009",
+    "research/puzzle_v0_18_sources.json": "aed343485448fea65c2081b2df2c277995ee37c5813082699f3383f821b217fb",
+    "research/sources.json": "ba1765cd9693de331b6954ad1af269fde3430233ae0b431529e56c8b95d41e5a"
+  }
+}

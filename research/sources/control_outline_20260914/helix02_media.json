@@ -1,0 +1,35 @@
+{
+  "images": [
+    {
+      "src": "https://images.ctfassets.net/qx5k8y1u9drj/3ygvPaiOiIX62OhZ7oNO2h/d50ccd3bc449eab7ae098d87aa0cd040/figure-logo.svg"
+    }
+  ],
+  "links": [
+    "/",
+    "/figure",
+    "/helix",
+    "/index-app",
+    "/news",
+    "/careers",
+    "/company",
+    "https://www.figure.ai/news/helix",
+    "https://www.figure.ai/news/introducing-figure-03",
+    "https://www.figure.ai/news/botq",
+    "https://www.figure.ai/careers",
+    "https://twitter.com/figure_robot",
+    "https://www.instagram.com/figure_robot/",
+    "https://www.linkedin.com/company/figure-ai/",
+    "https://www.youtube.com/@figureai",
+    "/figure",
+    "/helix",
+    "/index-app",
+    "/news",
+    "/careers",
+    "/company",
+    "/terms-and-conditions",
+    "/privacy-policy",
+    "/accessibility-statement",
+    "https://policies.google.com/privacy",
+    "https://policies.google.com/terms"
+  ]
+}

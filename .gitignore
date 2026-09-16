@@ -87,3 +87,37 @@ research/searches/github_empire.json
 Thumbs.db
 __pycache__/
 *.pyc
+
+# Local v0.6 provenance staging and regenerated previews
+.build/revision_0_6_baseline/
+.build/revision_0_6_screens/
+.build/assets/v0_6/*.mp4
+
+# Local v0.7 source/delivery snapshot and regenerated visual checks
+.build/revision_0_7_baseline/
+.build/revision_0_7_screens/
+
+# Publication cleanup: regenerable screenshots and unpinned download staging.
+# Hash-pinned originals used by source-verification gates remain versioned below.
+.build/v*_visual/
+.build/v*_video_review/
+.build/*.png
+.build/assets/**/*.mp4
+.build/assets/**/*.pdf
+output/Kitchen_Reconstruction_Original.mp4
+!.build/assets/v0_13_code/asim_square_code_proprio_ep00.mp4
+!.build/assets/v0_15/dexgpt_source.mp4
+!.build/assets/v0_16/rope_hand_source.mp4
+!.build/assets/v0_17/kitchen_source.mp4
+!.build/assets/v0_18/cut-ziptie-success.mp4
+!.build/assets/v0_18/gpu-success.mp4
+!.build/assets/v0_18/pin-fleet.mp4
+!.build/assets/v0_18/pin-reset-only-1.mp4
+!.build/assets/v0_18/pin-success.mp4
+!.build/assets/v0_18/ziptie-reward-bbox.mp4
+!.build/assets/v0_18/ziptie-success.mp4
+!.build/assets/v0_18_control/claw_source.mp4
+!.build/assets/v0_18_control/cube_source.mp4
+!.build/assets/v0_19/gpu-reset-1.mp4
+!.build/assets/v0_19/pusht-reset-only-1.mp4
+!.build/assets/v0_19/ziptie-reset-1.mp4

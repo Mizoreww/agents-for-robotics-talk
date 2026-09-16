@@ -1,0 +1,413 @@
+{
+  "slides": 37,
+  "videos": 18,
+  "media_seconds": 406.975966,
+  "minutes": 60.0,
+  "chapter_opening_slides": [
+    4,
+    19,
+    26
+  ],
+  "bytes": 135039837,
+  "sha256": "c8ce5975116882cb36f40e827d53d9a64c18fb91e8767410d6ca7501de787a28",
+  "standalone_file": "/home/limx/Desktop/agent_for_robotics/output/Agents_for_Robotics_Self_Contained.html",
+  "media": [
+    {
+      "name": "painting",
+      "slide": 2,
+      "sha256": "00135bfaaaf13c282b94a9e1023bad54b781a2988357f615576f80d6cb2752ab",
+      "duration_seconds": 68.116667
+    },
+    {
+      "name": "astra_bowl",
+      "slide": 11,
+      "sha256": "08b7ca30dfd840d9a602fa6dcb581702a01c678dbf182e5c3bce0387a35e073a",
+      "duration_seconds": 14.3
+    },
+    {
+      "name": "astra_insertion",
+      "slide": 11,
+      "sha256": "e4089a3a778fefe428ac44e89bb42e32649b882927060a5bcbd3323a8a93ac99",
+      "duration_seconds": 13.8
+    },
+    {
+      "name": "policy_plug",
+      "slide": 12,
+      "sha256": "4ab601841dab2c479e206404360b4ea973a13b2f1d7d7e20c5c5f2a3771fe800",
+      "duration_seconds": 28.166667
+    },
+    {
+      "name": "keyboard",
+      "slide": 12,
+      "sha256": "f047faa2e68f9fbe5e1ee6b1608532b34bb6be21ea0c142a15576f57bf0aa8b3",
+      "duration_seconds": 25.992633
+    },
+    {
+      "name": "asim_delta",
+      "slide": 13,
+      "sha256": "0a38501925b229f02ced43d54b48dbad0798f011f719dd18fb4fa453a7de2262",
+      "duration_seconds": 10.2
+    },
+    {
+      "name": "asim_waypoint",
+      "slide": 13,
+      "sha256": "9bd84e8ca1600812ea985609525370543184c08c74c73d66ed00426eafb928fc",
+      "duration_seconds": 17.3
+    },
+    {
+      "name": "anon_direct_sort",
+      "slide": 15,
+      "sha256": "9860f94ce03b92bfd4bd28ea570dc7f43118442024753cc1faded74f2a7b1411",
+      "duration_seconds": 24.64
+    },
+    {
+      "name": "anon_hybrid_pack",
+      "slide": 15,
+      "sha256": "87a43a15cbef44fded03295d96510f6aa6ecb07c6b87857d67a8d0c5e4527fb9",
+      "duration_seconds": 15.44
+    },
+    {
+      "name": "ar2s_real",
+      "slide": 20,
+      "sha256": "c292f2fa539061124a6e3b13cb1bcfc1c9a63fae8befa5f75667ab23a3aa4c7e",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "ar2s_sim",
+      "slide": 20,
+      "sha256": "7c1d705172770378155b4fb9011758fa63f8264cd28c2e850a4535b973922d58",
+      "duration_seconds": 10.083333
+    },
+    {
+      "name": "astra_real2sim",
+      "slide": 24,
+      "sha256": "2195b834b6090b900339f5f7a672a917c9a98587d0c7c3f134a3e3985734da9d",
+      "duration_seconds": 16.766667
+    },
+    {
+      "name": "office_newton",
+      "slide": 24,
+      "sha256": "5c0840014fd7d76e1299c5b4a1f5717e2211691e6eef194ef79aa6c45a979b95",
+      "duration_seconds": 25.0
+    },
+    {
+      "name": "enpire_reset",
+      "slide": 28,
+      "sha256": "1cd1a7ed0f211253233c847f8818c875aaeadd3452d64c1f4322208f9986e375",
+      "duration_seconds": 61.92
+    },
+    {
+      "name": "enpire_verify",
+      "slide": 28,
+      "sha256": "4be0fa9ee68c4c7b05b6418aadb39a02ec2da3058c04d8b88d5f79a28c84da77",
+      "duration_seconds": 11.133333
+    },
+    {
+      "name": "quad_rl",
+      "slide": 33,
+      "sha256": "68d091be19213f147e9f50a62656259c5aa93ee7286eb908bc99dbc373ee925b",
+      "duration_seconds": 14.0
+    },
+    {
+      "name": "wenli_icl",
+      "slide": 33,
+      "sha256": "b58ac0d20ba7ea718eff75094f8aa049c7c966b60258da50b8c1ee7ca489e1f6",
+      "duration_seconds": 11.2
+    },
+    {
+      "name": "hand",
+      "slide": 35,
+      "sha256": "3ccce3df0be91cd0876893c49b7f84291b97049f59197974e9367e5a36b87983",
+      "duration_seconds": 28.833333
+    }
+  ],
+  "images": [
+    {
+      "old_slide": 1,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 1,
+      "alt": "SUSTech logo",
+      "sha256": "219d51cd691d89454219ac42d1207c2da9d9fc8ccfd8257e889c24277cd5dce1"
+    },
+    {
+      "old_slide": 2,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 2,
+      "alt": "VIDEO:painting",
+      "sha256": "f3a4f628c9681d929f40f9211de67e3e311fa2e8dee2f36a81e155b73fdc2ae8"
+    },
+    {
+      "old_slide": 3,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 4,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 5,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 6,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 7,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 8,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 9,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_real",
+      "sha256": "2822e4d5258e18168059547a8f83d3607bb9ccc546c89a9f03ce91baaddfef1e"
+    },
+    {
+      "old_slide": 10,
+      "alt": "VIDEO:ar2s_sim",
+      "sha256": "43064a1723a6f563d18d1286bcc52bd89a58f00eb7fc728789cd54f836152b90"
+    },
+    {
+      "old_slide": 11,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 11,
+      "alt": "Agentic Real2Sim original architecture: visual processing, physical priors, scene preparation, refinement",
+      "sha256": "c0b09432c8fa38ddb881057e2c5bb8cf861ea61270e26cfb2a5f220d115872c6"
+    },
+    {
+      "old_slide": 12,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 12,
+      "alt": "Original DROID-100 outcomes and model-call cost; all failures and logarithmic axis retained",
+      "sha256": "a7ca558c62667f21e719e58470f2d6b1adc8ae6bff26f21f2c5562b2c6a840c2"
+    },
+    {
+      "old_slide": 13,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 14,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 15,
+      "alt": "ENPIRE original framework, including human-assisted environment construction",
+      "sha256": "b26e41ce03c18eb21f45af22697a16dda5622eb0d7f090c025be8572a2571958"
+    },
+    {
+      "old_slide": 16,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_reset",
+      "sha256": "af1d17c7d4aa6db7e5b89c43cb961d2bd91c8873c1f079235d8346651aaac464"
+    },
+    {
+      "old_slide": 16,
+      "alt": "VIDEO:enpire_verify",
+      "sha256": "ef06af0358068e3e4733fdd00f95c4cd337abd551c421f9279311259d9259745"
+    },
+    {
+      "old_slide": 17,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 17,
+      "alt": "Original ENPIRE pin-insertion learning and scaling curves, cropped with full axes and legend",
+      "sha256": "07331a2787d65566e8e5bfe44113424e1c490489ea18929efd9e2907df1d5be3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 18,
+      "alt": "Original ENPIRE resource utilization, token use and time-to-success plots",
+      "sha256": "affffe53fd56289ab7897819d4cc219492dad61fb98de61976b987027b03c2e3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 19,
+      "alt": "VIDEO:hand",
+      "sha256": "dcb2cc39fd4b544e5f358aad45f2e1aca8c87d0bb667ade92840084c0f41f7e0"
+    },
+    {
+      "old_slide": 20,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 21,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "old_slide": 22,
+      "alt": "CLEAR logo",
+      "sha256": "401bc39f943cd8e0cc1dfa0da9f783a276ada5fd828a26ea7679cf0b778343f3"
+    },
+    {
+      "source": "https://arxiv.org/html/2502.19417v2#S5.F5",
+      "alt": "Hi Robot original Figure 5; complete axes, four panels and legend",
+      "sha256": "45402f1ef0c2aa490e5d961d00c5d45788df6990c6102627443d67d77decf570"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#S1.F3",
+      "alt": "ENPIRE complete original Figure 3; model curves, traces and fleet scaling",
+      "sha256": "e700a03681fc7e7d754ed71365633cf36c22b1418fd5943dd80dd099d87f4650"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#S3.F6",
+      "alt": "ENPIRE original Figure 6; RoboCasa task examples and aggregate baseline bars",
+      "sha256": "5f643f7eba7c44db67f49ca6a15d0827d183328f0b4b149682ddc78a6458ba60"
+    },
+    {
+      "source": "https://www.pi.website/research/hirobot",
+      "alt": "Hi Robot original architecture: high-level VLM and pi0",
+      "sha256": "fc307d2d240556863b3a60fd06bce0de869e9b7019cb9cc3dab2c09579d8969b"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix",
+      "alt": "Figure Helix original architecture: System 2 to System 1",
+      "sha256": "dee9f51122028c2f6547db81446c0c52e5ca1e54ce2d0ceef7621a163cbb5197"
+    },
+    {
+      "source": "https://www.figure.ai/news/helix-02",
+      "alt": "Figure Helix 02 original architecture with System 0",
+      "sha256": "a1fe99598192bd20106ef5bb8ef2ef33b0a75ee3a001dcb08339567fa9384a12"
+    },
+    {
+      "source": "https://www.anthropic.com/research/claude-plays-robotics",
+      "alt": "Original Direct LIBERO-40 success-rate panel; uncertainty and all model labels retained",
+      "sha256": "64c084ae9a1c275618763cf0a2c256930eaeff140c2d38f530ca7f248e84d8d5"
+    },
+    {
+      "source": "https://www.anthropic.com/research/claude-plays-robotics",
+      "alt": "Original supervised LIBERO-40 panel; VLA-alone baseline and uncertainty retained",
+      "sha256": "1a7b1b2b648172e85f73cfb74d0816b8ac374f601fc946ed9af98df8c7b7f126"
+    },
+    {
+      "source": "https://github.com/RLinf/RPent",
+      "alt": "RPent original framework",
+      "sha256": "031b682ae067ff574f028a65e74363e8583b727030f7d800cf87b0d147dbd84c"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_bowl",
+      "sha256": "e20f55d316e337c5acc193a4b7aa9e9a97c3f663becdaa911b68dcfd35125487"
+    },
+    {
+      "source": "https://openai.robocurve.org/gpt-6-astra/",
+      "alt": "VIDEO:astra_insertion",
+      "sha256": "7e67a55902ff079fabc7789adb5c0342840e09d7cc93d6b4c25a96d69962fa47"
+    },
+    {
+      "source": "https://github.com/cheng-haha/GPT-Policy-Eval",
+      "alt": "VIDEO:policy_plug",
+      "sha256": "0c20a3cf04d926bdc1bfc8d8a285b35e580740a268797b6ec4255943b7bfe9db"
+    },
+    {
+      "source": "https://x.com/kaiwynd/status/2098823484474348008",
+      "alt": "VIDEO:keyboard",
+      "sha256": "db4fa388e73b268c979f9f85e7a0ba4ff8e2af52ebf969a465ab6127e69d6581"
+    },
+    {
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_delta",
+      "sha256": "184eb61ef2a996e7a3d7ca5a1a7c3e216e6e4816b7323968690f7b9599b056fc"
+    },
+    {
+      "source": "https://asimfish.github.io/astra-control-dashboard/#sec4",
+      "alt": "VIDEO:asim_waypoint",
+      "sha256": "3cf20b0fbe41754e33103aa6e7f5dcf549ade0d8b8aae0d283b2e4e9b64644a9"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "Original anonymous Direct/Hybrid execution architecture; click to inspect inputs and step horizons",
+      "sha256": "4b9c06759d21fcfa3c71f409ce16ca609a4a2b7f5a6727d0e85c0ad22acf411a"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_direct_sort",
+      "sha256": "ca546f2189719da1456df9938140be8132567f0646c04bc329a0dec1e9826612"
+    },
+    {
+      "source": "https://anonymous-report-421.github.io/public-website/?lang=en&view=1",
+      "alt": "VIDEO:anon_hybrid_pack",
+      "sha256": "9b13b091cacd3198de85aec1038590f682ec3f55331545277b04e344ebbe44a1"
+    },
+    {
+      "source": "https://x.com/Lingxiao234/status/2096992059731443923",
+      "alt": "VIDEO:astra_real2sim",
+      "sha256": "2ce37c55de5d37a5662cf2c089cd00e61807963cf3593741e11e3f9093728c66"
+    },
+    {
+      "source": "https://x.com/Jiarui_X/status/2098439950991806804",
+      "alt": "VIDEO:office_newton",
+      "sha256": "1daa926a4c2b2984e756e70c84d9449e21c4e799b1537747d9d94469729cdf2f"
+    },
+    {
+      "source": "https://arxiv.org/html/2606.19980v1#A2.F12",
+      "alt": "ENPIRE Figure 12: original idea tree and hill-climbing curve, including no-gain nodes",
+      "sha256": "3daf3e0a1221207b967fa5555d8f1fab8821e1926225fe03600e262b4824e359"
+    },
+    {
+      "source": "https://x.com/gclue_akira/status/2098300921658868185",
+      "alt": "VIDEO:quad_rl",
+      "sha256": "2061910cddabcd2c347e2c2bef479399f77d7cb73755990bf4a89d3a6a1826d0"
+    },
+    {
+      "source": "https://x.com/_wenlixiao/status/2097801944119349455",
+      "alt": "VIDEO:wenli_icl",
+      "sha256": "da9f7fa711989d0d6cd746fa1a772816c69b32d86bf02e926d354627ae05f4cd"
+    }
+  ],
+  "native_text": true,
+  "all_fonts_embedded": true
+}

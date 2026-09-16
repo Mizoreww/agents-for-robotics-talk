@@ -1,0 +1,65 @@
+{
+  "source": "https://www.pi.website/research/hirobot",
+  "anchor": "Quantitative interactive chart after Training high-level policy with synthetic data",
+  "extraction": "Integer labels exposed as text in the official HTML, not digitized bars",
+  "metric_note": "IA is per-trial fraction of correct high-level commands; TP is fraction of correctly placed objects. Neither is episode success. Raw command/object denominators are undisclosed.",
+  "trials_per_task_method": 20,
+  "values": {
+    "Table Bussing": {
+      "Instruction Accuracy": {
+        "Flat VLA": 36,
+        "GPT-4o High-Level": 35,
+        "Hi Robot": 74,
+        "Expert Human": 100
+      },
+      "Task Progress": {
+        "Flat VLA": 61,
+        "GPT-4o High-Level": 63,
+        "Hi Robot": 77,
+        "Expert Human": 82
+      }
+    },
+    "Sandwich Making": {
+      "Instruction Accuracy": {
+        "Flat VLA": 34,
+        "GPT-4o High-Level": 13,
+        "Hi Robot": 83,
+        "Expert Human": 100
+      },
+      "Task Progress": {
+        "Flat VLA": 42,
+        "GPT-4o High-Level": 56,
+        "Hi Robot": 80,
+        "Expert Human": 92
+      }
+    },
+    "Grocery Shopping": {
+      "Instruction Accuracy": {
+        "Flat VLA": 39,
+        "GPT-4o High-Level": 41,
+        "Hi Robot": 72,
+        "Expert Human": 100
+      },
+      "Task Progress": {
+        "Flat VLA": 28,
+        "GPT-4o High-Level": 72,
+        "Hi Robot": 85,
+        "Expert Human": 93
+      }
+    },
+    "Average": {
+      "Instruction Accuracy": {
+        "Flat VLA": 36,
+        "GPT-4o High-Level": 30,
+        "Hi Robot": 76,
+        "Expert Human": 100
+      },
+      "Task Progress": {
+        "Flat VLA": 44,
+        "GPT-4o High-Level": 64,
+        "Hi Robot": 81,
+        "Expert Human": 89
+      }
+    }
+  }
+}

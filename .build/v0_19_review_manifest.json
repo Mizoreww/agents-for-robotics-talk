@@ -1,0 +1,31 @@
+{
+  "baseline_html_sha256": "95d1da40f3a068bbce20289945c105f3646b272e68fb3da51b9d9780e95e5b5a",
+  "html_sha256": "eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749",
+  "files": {
+    ".build/assets/noto_cjk_script.woff2": "8beabdc52b5757f2d39f4154f924c9b855b9e9b201c0fcfcf2feb55c558e1d62",
+    ".build/browser_audit.mjs": "bbd6669d5fb4c4ea35b71aab005654f08058e8ebdf14f99a8f3bdd373d1352a0",
+    ".build/build_selfcontained.py": "462b6e26fd1f32edbe3eca977807943fc94084f6c1b232d5ffeb69a20ed7e2d5",
+    ".build/clip_manifest_v11.json": "631772076c7d02789d7e61df3a43c19781b69ffeb7b59f05a717fe7384058ac8",
+    ".build/enpire_order_v019.py": "ff2e964e2b82ecd7adb7f7a7a3a644a271db2c89eb7196b0c4bfd27a6b6f6f30",
+    ".build/enpire_v018.py": "615fd15e72b2b495407c1cbfd52fe7f4d115df5ec155dc3e544939e0b914f632",
+    ".build/extended_visual_audit.mjs": "89729ffd3eec5662c436ef41d347536b23c465b8fcefdf12b84ac6e09d026e4f",
+    ".build/prepare_enpire_order_media.py": "1a6c4de366544fde20d0e697ea589966d330ac54b3f3174c5b874df7287068bc",
+    ".build/results_slides_v09.py": "1667a682595b060a5b467bab721530a6f450e9d94c311583a3f6616835beb5ec",
+    ".build/script_revised.md": "d3cd4f37e25ecda529eef95f59f9adc55ee4c30183b0ba530aff08c864691eb8",
+    ".build/test_centering_v018.py": "544b965c1ba0436dc1456f894114723e4f7ece055260930a7f695b3d0a42277f",
+    ".build/test_enpire_order_v019.py": "d8b7ab472b1e9a791a49ae455a2ea36834e0311f406029c16287e2a794943a1e",
+    ".build/test_enpire_v018.py": "d24eaa2223bd9d04f4b08d6dde6b5ee3908191db411799f333d3381bd0c463f9",
+    ".build/validate_standalone.py": "5f812f2ede7e6d1bd54365cbb6cf86d57edfa55c5afb2d02e8faf0d96f85ecb0",
+    "AGENTS.md": "1a78703408a3cb287f4f064ce2f7ff69f60af75b89ac63c73ee96c1508094deb",
+    "CHANGELOG.md": "4bb881fba67657a6263ac089a55c21d352d0b06b6f42b03cc84298247a73efe4",
+    "README.md": "311c168314a915132b1e468cbd96e2c5be81ec87e35eb9801c88736a030f3f65",
+    "WORKPLAN.md": "f8bf68102ef3ccf2a1ee7f75c6b55f82271b9f19c8e68a07812ea6b415f66c7c",
+    "output/Agents_for_Robotics_Self_Contained.html": "eb8011c95baa5e41b9f9fd1f09c35e611721c9d4c87fdf7793d2656d30972749",
+    "output/Chapter_Spine.md": "14656d738b788e75f0b9ead3e240b4655c3a9c9fb25b078b756f8e4f9f5930c2",
+    "output/README.md": "0708d89d0f68306517ea2465dd67ee53be423e38ca8117402441edeb5121593a",
+    "output/Speaker_Script_Revised.md": "d60bbe8da4296d14133d8025b33291cc116cc56525def83dbc53f67ea035dd15",
+    "research/enpire_v0_19_sources.json": "3730f1d655f32e507f66bd6df51b5b0c636d1a00a7c4ffc46b29613961bc5a3c",
+    "research/revision_0_19_spec.md": "57af5f7e99e562546f39d1fffe2b50692150238fa7efcdc19aea8b06fb082397",
+    "talk_outline.md": "1ea091a19484ac3369edb50d79b5e5835340beb9e9af2dfc25405bab8268887d"
+  }
+}

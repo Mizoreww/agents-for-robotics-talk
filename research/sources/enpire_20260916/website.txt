@@ -1,0 +1,703 @@
+ENPIRE: Agentic Robot Policy Self-Improvement in the Real World
+E
+N
+P
+I
+R
+E
+Scroll to explore
+Title
+Abstract
+Learned Policy
+ENPIRE System
+Environment Loop
+Auto Evaluation
+Auto Reset
+Case 1: Push T
+Case 2: Pin Insertion
+Case 3: Tie Zip-tie
+Case 4: GPU Insertion
+Policy Improvement
+Evaluate Coding Agent
+Fleet Scaling
+Simulation Evaluation
+Limitations & Future Directions
+Acknowledgements
+Contents
+Contents
+Title
+Abstract
+Learned Policy
+ENPIRE System
+Environment Loop
+Auto Evaluation
+Auto Reset
+Case 1: Push T
+Case 2: Pin Insertion
+Case 3: Tie Zip-tie
+Case 4: GPU Insertion
+Policy Improvement
+Evaluate Coding Agent
+Fleet Scaling
+Simulation Evaluation
+Limitations & Future Directions
+Acknowledgements
+ENPIRE: Agentic Robot Policy
+Self-Improvement in the Real World
+Wenli Xiao
+1,2†
+,
+Jia Xie
+2†
+,
+Tonghe Zhang
+2†
+,
+Haotian Lin
+2†
+,
+Letian "Max" Fu
+3
+,
+Haoru Xue
+3
+,
+Jalen Lu
+2
+,
+Yi Yang
+2
+,
+Cunxi Dai
+2
+,
+Zi Wang
+1
+,
+Jimmy Wu
+1
+,
+Guanzhi Wang
+1
+,
+S. Shankar Sastry
+3
+,
+Ken Goldberg
+3
+,
+Linxi "Jim" Fan
+1‡
+,
+Yuke Zhu
+1‡
+,
+Guanya Shi
+2‡
+1
+NVIDIA
+2
+CMU
+3
+UC Berkeley
+†
+Equal contribution
+‡
+Equal advising
+Paper
+Abstract
+Achieving dexterous robotic manipulation in the real world relies heavily on human supervision and algorithmic engineering, which is a central bottleneck in the pursuit of general physical intelligence. Although emerging coding agents can generate code to automate algorithm search, their successes remain largely confined to digital environments. We conjecture that the missing abstraction to automate robotics research is a repeatable feedback loop for real-world policy improvement: reset the scene, execute a policy, verify the outcome, and refine the next iteration.
+To bridge this gap, we introduce ENPIRE, a harness framework for coding agents that instantiates this physical feedback routine with four core modules: an Environment module (EN) for automatic reset and verification, a Policy Improvement module (PI) that launches policy refinement, a Rollout module (R) to evaluate policies with single or multiple physical robots operating in parallel, and an Evolution module (E) in which coding agents analyze logs, consult literature, improve training infrastructure and algorithm code to address failure modes.
+This closed-loop system transforms real-world robot learning into a controllable optimization procedure that agents can manage, thus minimizing human effort while allowing fair ablations across training recipes and agent variants. Powered by ENPIRE, frontier coding agents can autonomously develop a policy to achieve a 99% success rate on challenging, dexterous manipulation tasks in the real world, such as PushT, organizing pins into a pin box, and using a cutter to cut a zip tie.
+Coding agents can improve policies with various PI regimes, such as heuristic learning, tool calling, behavior cloning, offline or online RL. Moreover, ENPIRE can be significantly accelerated on a robot fleet, and we propose two metrics, namely, Mean Robot Utilization (MRU) and Mean Token Utilization (MTU) to measure the efficiency of multiagent physical autoresearch. We also include simulation results in RoboCasa. Our findings suggest a practical and scalable path toward autonomously advancing robotics in the real world.
+Learned Manipulation Policy
+Policies trained with ENPIRE reach a 99% pass@8 success rate across the showcased manipulation tasks.
+What “pass@8” means here
+pass@8 is
+not
+best-of-8 i.i.d. samples on the task. Within a single long-horizon rollout, the agentic loop gets up to 8 in-context retries per subtask, each conditioned on the previous failures — so it measures emergent retry and recovery, not sampling luck.
+Retries only help to the extent the policy can recover: a policy that can’t stays near pass@1 (a 13% policy stays ~13%, not 99%). Reaching 99% over 8 in-context retries is itself the capability we report — which is why we show the uncut 5-minute rollout here rather than a cherry-picked clip.
+8
+x
+Push T
+8
+x
+Pin Insertion
+8
+x
+GPU Insertion
+8
+x
+Tie Ziptie
+8
+x
+Cut Ziptie
+ENPIRE runs fully autonomously on real robots. Working only through the automated reset and verification interface, a team of coding agents proposes algorithmic hypotheses (heuristic learning, behavior cloning, offline and online RL), tests them against the real-world success rate, and keeps the changes that move it. The idea tree below traces that search as a hypothesis git-tree — one branch per agent, one node per idea tried — plotted on the same wall-clock-time axis as the success-rate curve, so you can see the ideas that moved the curve upward.
+I1
+I2
+I3
+I6
+I7
+I13
+I22
+I24
+I34
+I8
+I36
+I62
+I69
+I70
+I72
+I74
+I75
+I77
+I78
+I79
+I80
+I81
+I82
+I83
+I84
+I85
+I86
+I4
+I9
+I12
+I26
+I37
+I16
+I41
+I44
+I48
+I52
+I55
+I57
+I59
+I61
+I64
+I65
+I67
+I68
+I71
+I73
+I76
+I18
+I29
+I35
+I42
+I45
+I47
+I49
+I50
+I53
+I54
+I56
+I58
+I60
+I63
+I66
+I10
+I23
+I27
+I5
+I11
+I15
+I17
+I19
+I21
+I28
+I33
+I38
+I39
+I40
+I46
+I51
+I14
+I20
+I25
+I30
+I31
+I32
+I43
+0
+50%
+100%
+team-avg best success rate
+I16 Online RL mix Demo
++3.8 pp
+I37 BC regularization
++10.8 pp
+I56 Tweak BC term weight
++0.4 pp
+I66 Tune batch size 1024→512
++0.9 pp
+I76 Compensate controller
++1.3 pp
+0
+1 h
+2 h
+3 h
+research wall-clock time →
+each dot = an idea
+click any dot to read the idea
+green ring = idea that raised the team-avg score
+green curve = cross-agent inspiration
+Figure
+1
+:
+Each coding agent explores its own branch of ideas, one lane per branch. Every dot is an idea it tried; a green ring marks an idea that raised the team’s average success rate, and green curves trace cross-agent inspiration. The lower panel tracks the team’s average success rate climbing over research wall-clock time.
+ENPIRE System
+EN
+Environment
+Construct reset, safety, verification, and logging interfaces the agent can call.
+PI
+Policy Improvement
+Generate and revise policy code from rewards, videos, traces, and failure cases.
+R
+Rollout
+Run budgeted robot trials and preserve the state, action, video, and result for audit.
+E
+Evolution
+Compare branches, reuse successful recipes, and prune hypotheses that fail on hardware.
+Construct Environment
+Policy Improvement
+Action
+Obs
+Reward
+env.py
+1
+class
+InsertionEnv
+:
+2
+def
+reset
+(self):
+3
+# TODO: auto task reset
+4
+pick_and_place(obj, target)
+5
+go_home()
+6
+...
+7
+8
+def
+get_reward
+(self, obs, act):
+9
+# TODO: scalar reward
+10
+mask = sam3(obs[
+'left'
+])
+11
+pos = boundlsdf(obs, mask)
+12
+...
+13
+14
+def
+get_observation
+(self):
+15
+...
+16
+17
+def
+step
+(self, act):
+18
+...
+Human User
+Coding Agent
+Tool APIs
+Perception
+Planning
+Control
+ENPIRE
+Environment
+01
+Literature review
+PLD
+RL-Token
+CaP-X
+02
+Propose algorithm variant
+Heuristics
+Off2On RL
+Code-as-policy
+BC
+03
+Optimize Infra
+Data Sampler
+Param Sweep
+04
+Summarize experiment result
+0
+50%
+100%
+team-avg best success rate
+Online RL mix Demo
++3.8 pp
+BC regularization
++10.8 pp
+Re-evaluate
++12.5 pp
+Tweak BC term weight
++0.4 pp
+Tune batch size 1024→512
++0.9 pp
+Compensate controller
++1.3 pp
+0
+1h
+2h
+3h
+research wall-clock time →
+Hillclimb Timeline
+GPU insertion
+Pin insertion
+Push-T
+Zip tie cutting
+Real-world tasks
+BUILD
+BUILD
+task objective
+& feedback
+task objective
+& feedback
+RUN
+RUN
+rollouts
+rollouts
+logs
+logs
+Figure
+2
+: ENPIRE system overview, integrated as a native site component with shared typography and animation.
+From Robot Hardware to an Agent-Operable Environment
+Before an agent can improve a robot policy, the task must become self-resetting and self-verifying. Two capabilities make this possible: automatic evaluation, which scores the outcome of each trial without human judgment, and automatic reset, which returns the scene to a fresh initial state for the next trial.
+Auto Evaluation
+We use an autoresearch-derived reward function to automatically score the outcome of zip-tie insertion: a detector draws bounding boxes around the zip-tie head and strap, a segmentation model resolves the same parts into masks over the raw view, and each camera view independently judges whether the zip-tie strap passes through the head above a fixed length threshold. The per-camera verdicts are then fused into the final binary reward.
+top cam
+wrist cam
+Bounding boxes
+detector boxes drawn on the raw top and right views
+Segmentation
+part masks overlaid on the raw top and right views
+top camera
+No
+right camera
+No
+Per-camera verdict
+Is tail covered by head?
+AND
+REWARD=
+0
+Final reward
+both cameras fused into one binary reward
+Play
+1
+x
+View Code
+Auto Reset
+The reset panels below show the physical loop that makes repeated experiments possible: select a randomized initial state, run the reset behavior, and verify that the trial is ready for the next policy.
+Case 1: Push T
+View Code
+8
+x
+Random Init 1
+Random Init 2
+Random Init 3
+Random Init 4
+Case 2: Pin Insertion
+View Code
+8
+x
+Random Init 1
+Random Init 2
+Random Init 3
+Random Init 4
+Case 3: Tie Zip-tie
+View Code
+Zip-tie reset
+Grasp the zip-tie's head from anywhere on the table with one hand.
+Use the other hand to grab and curl its tail, aligning the strap with the head.
+8
+x
+Random Init 1
+Random Init 2
+Random Init 3
+Random Init 4
+Case 4: GPU Insertion
+View Code
+GPU reset
+Pick up the GPU from anywhere on the table and move it to a pre-insertion pose.
+Unplug the GPU from the board to return the scene for the next trial.
+8
+x
+Random Init 1
+Random Init 2
+Random Init 3
+Random Init 4
+Automatic reset returns each task to a known randomized initial state without manual intervention.
+Automatic verification records whether the reset succeeded and exposes representative frames for inspection.
+Agents Improve Policies From Physical Feedback
+Once the environment is operable, agents edit policy code, run trials, inspect failures, and decide what to change next. The Push-T panel visualizes actual rollout traces from multiple code agents under the same six initial states so the behavior is inspectable, not just summarized by a success rate.
+Push-T setup
+Clone
+huggingface/gym-pusht
+, then prompt a coding agent:
+Write a heuristic policy, with no neural network training, to achieve a 100% success rate in the Push-T environment over at least 50 continuous episodes. You are not allowed to modify environment code; that is cheating. No cheating. Fan out a subagent team to try approaches. For each policy evaluation, save a video with a unique name and a
+_success
+or
+_failure
+suffix.
+Run
+Codex
+Codex Push-T rollout
+0
+% coverage
+43
+steps
+Claude Code
+Claude Code Push-T rollout
+0
+% coverage
+73
+steps
+Kimi Code
+Kimi Code Push-T rollout
+0
+% coverage
+66
+steps
+In-distribution random initialization
+Case 1
+Case 2
+Case 3
+Case 4
+Case 5
+Case 6
+Out-of-distribution random initialization
+Case 1
+Case 2
+Case 3
+Case 4
+Case 5
+Case 6
+Evaluate Coding Agent
+We evaluate the physical autoresearch capability of three coding agents: Codex with GPT-5.5, Claude Code with Opus 4.7, and Kimi Code with Kimi K2.6. Instead of asking only whether a final policy succeeds, AutoEnvBench tracks agent-driven research progress over wall-clock time across Push-T and Pin Insertion.
+Pause
+0
+%
+Push-T (Heuristic Learning)
+Push-T model comparison
+0
+2
+4
+6
+8
+0%
+25%
+50%
+75%
+100%
+Normalized Score
+Research Time (h)
+0
+h
+Pin Insertion (Gradient-based Learning)
+Pin Insertion model comparison
+0
+1
+2
+3
+4
+50%
+75%
+100%
+Success Rate
+Research Time (h)
+0
+h
+Agent:
+Codex
+GPT-5.5
+Claude Code
+Opus 4.7
+Kimi Code
+Kimi K2.6
+Figure
+3
+: Coding-agent comparison on AutoEnvBench, measuring agent-driven research progress across Push-T and Pin Insertion.
+Scaling Autoresearch on Robot Fleets
+Scaling the number of agents changes both research progress and hardware pressure. The scaling-law plots compare one-, four-, and eight-agent teams on Push-T and Pin Insertion, while the resource utilization figure shows robot utilization, GPU utilization, token throughput, and the time required to reach task success.
+Pause
+0
+%
+Push-T Scaling
+Push-T team scaling
+0
+1
+2
+3
+4
+5
+0%
+25%
+50%
+75%
+100%
+Normalized Score
+Research Time (h)
+0
+h
+Pin Insertion Scaling
+Pin Insertion team scaling
+0
+0.5
+1
+1.5
+0%
+25%
+50%
+75%
+100%
+Success Rate
+Research Time (h)
+0.0
+h
+Team size:
+1 agent
+4 agents
+8 agents
+Figure
+4
+: Scaling-law view for AutoEnvBench, comparing one-, four-, and eight-agent research teams across Push-T and Pin Insertion.
+Pin Insertion
+Each robot is associated with an autoresearch coding agent. The auto-reset environment keeps trying until it resets the pin to a pre-insertion pose, then the coding agent conducts online RL research.
+Pin Insertion
+Push T
+8
+x
+Play
+0
+%
+Pin Insertion
+autoresearch with robot fleet
+First move
+Range ok
+Orientation ok
+First success
+Push-T stage-wise research progress
+Grouped bar chart showing minutes to first move, range satisfaction, orientation satisfaction, and first success for Codex vision ablations.
+0
+15
+30
+45
+60
+75
+90
+105
+120
+135
+Time-to- (min)
+25
+38
+55
+55
+Codex
+w/ native vision
+13
+20
+78
+99
+Codex
+w/ VLM as vision tool
+13
+13
+72
+72
+Codex
+w/ GoFE vision
+Figure
+5
+: Push-T stage-wise progress under the fleet scaling setup. Bars report time to successive behavioral milestones; whiskers mark first-success variability.
+Bars
+Robot / tokens
+GPU / observed throughput
+Reference
+Linear projection ±10%
+Time to success
+1 agent
+4 agents
+8 agents
+0
+25
+50
+75
+100
+(a) Mean Resource Utilization
+Utilization (%)
+1 agent
+4 agents
+8 agents
+0
+50k
+100k
+150k
+(b) Mean Token Utilization
+MTU
+1 agent
+4 agents
+8 agents
+0
+5
+10
+15
+0
+1
+2
+3
+4
+5
+(c) Token to Success
+Token to Success (M)
+Time to success (h)
+Figure
+6
+: Agent resource utilization across 1, 4, and 8 agents. (a) Mean robot and GPU utilization. (b) Mean token throughput with linear scaling projection. (c) Tokens and time required to reach task success.
+Evaluation in Simulation
+We also evaluate ENPIRE in simulation to separate agent-driven research behavior from real-world hardware throughput. Simulation tasks let agents run denser ablations, compare policy-improvement regimes under controlled resets, and test whether recipes discovered in the physical loop transfer to broader manipulation settings.
+Coffee Setup Mug
+Open Cabinet
+Open Drawer
+Open Stand Mixer
+Counter to Cabinet
+Sink to Counter
+Turn Off Stove
+Turn On Sink
+8
+x
+Coffee Setup Mug
+Seed 1
+·
+right camera
+Seed 1 rollout progress
+8
+x
+Coffee Setup Mug
+Seed 2
+·
+right camera
+Seed 2 rollout progress
+Limitations & Future Directions
+Robot and compute resources are underutilized
+Coding agents do not fully utilize robot resources when they are reading logs, writing code, debugging, or waiting for the language-model backbone. As the number of robots scales, MRU decreases while GPU active utilization increases. Compared to a single-robot setup, agent teams spend more time summarizing peer branches and less time operating the robot, and coding agents may fail to launch enough parallel training sessions to exhaust GPU resources.
+Scaling robot fleet causes higher token consumption
+Scaling the robot fleet drives higher token consumption: as more agents read logs, summarize peer branches, and coordinate, the total token budget required to reach a successful policy grows with fleet size. Larger fleets can reach success sooner, but the additional speedup comes at the cost of higher token consumption.
+Acknowledgements
+We are grateful to many colleagues whose help made this project possible. We thank Jason Liu, Tony Tao, Tairan He, Alex Lin, Jim Yang, Paul Zhou, and Abhi Maddukuri for insightful discussions and feedback; Yide Shentu, Bike Zhang, Angchen Xie, Dvij Kalaria, and Yuqi Xie for their support with the experiments; Lion Park, Matin Furutan, Jeremy Chimienti, Dennis Da, and Tri Cao for fleet operation; and Tri Cao for the demo shots. We also thank the NVIDIA GEAR Team and the CMU LeCAR Lab for their continuous support.

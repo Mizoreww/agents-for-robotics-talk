@@ -1,0 +1,22 @@
+{
+  "maximum_sampled_joint_limit_violation_degrees": 1.341978196366383,
+  "frames": 203,
+  "all_states_finite": true,
+  "controls_within_limits": true,
+  "no_hinge_actuator": true,
+  "actuator_count": 44,
+  "worst_sampled_penetration_by_side": {
+    "right": [
+      0.005614537214440444,
+      [
+        166,
+        "right__right_index_MP_fit",
+        "lever"
+      ]
+    ],
+    "left": [
+      0,
+      null
+    ]
+  }
+}

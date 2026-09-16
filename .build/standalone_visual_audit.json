@@ -1,0 +1,20 @@
+{
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
+  "status": "passed",
+  "date": "2026-09-16",
+  "scope": "P36 native SVG only; Agent origin, aligned lanes, uniform 24px diagram typography.",
+  "manually_reviewed_slides": [
+    36
+  ],
+  "screenshots": [
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_23_visual/36.png",
+    "/home/limx/Desktop/agent_for_robotics/.build/v0_23_visual/36-script.png"
+  ],
+  "screenshot_sha256": {
+    ".build/v0_23_visual/36.png": "9f1c98b0cc8a11783791d1b01e8b375ce7f4b63b539bfbbf6075d9c0d94df722",
+    ".build/v0_23_visual/36-script.png": "8071cd7471fbe6398f62da31fc3079edc55ebd84699c8e55511b214a99526dcf"
+  },
+  "baseline": ".build/v0_23_baseline/deck.json",
+  "scope_test": ".build/test_takeaways_v023.py",
+  "targeted_browser_audit": ".build/v0_23_closing_audit.json"
+}

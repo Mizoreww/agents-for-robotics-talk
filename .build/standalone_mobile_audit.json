@@ -1,5 +1,5 @@
 {
-  "html_sha256": "1f42a44b6f8875fab7fa800096a9bd94a9a999f539ccdef1c9c8b7ca986b5b5b",
+  "html_sha256": "1ad493bd19bb81264f4b7543600ed1124451586af34b424c56ec00d230014507",
   "viewport": 390,
   "documentWidth": 390,
   "buttons": [
@@ -13,7 +13,7 @@
       }
     },
     {
-      "label": "01 / 28 · Agents for Robotics0",
+      "label": "01 / 37 · Agents for Robotics0",
       "rect": {
         "left": 104.125,
         "right": 307.65625,
@@ -33,36 +33,36 @@
     {
       "label": "Play videos",
       "rect": {
-        "left": 62.015625,
-        "right": 165.703125,
-        "width": 103.6875,
+        "left": 65.015625,
+        "right": 166.703125,
+        "width": 101.6875,
         "height": 40
       }
     },
     {
       "label": "Pause",
       "rect": {
-        "left": 168.703125,
-        "right": 243.640625,
-        "width": 74.9375,
+        "left": 169.703125,
+        "right": 242.640625,
+        "width": 72.9375,
         "height": 40
       }
     },
     {
       "label": "Restart",
       "rect": {
-        "left": 246.640625,
-        "right": 327.984375,
-        "width": 81.34375,
+        "left": 245.640625,
+        "right": 324.984375,
+        "width": 79.34375,
         "height": 40
       }
     },
     {
       "label": "Speaker script",
       "rect": {
-        "left": 87.984375,
+        "left": 85.984375,
         "right": 204.984375,
-        "width": 117,
+        "width": 119,
         "height": 40
       }
     },
@@ -70,8 +70,8 @@
       "label": "Fullscreen",
       "rect": {
         "left": 207.984375,
-        "right": 302,
-        "width": 94.015625,
+        "right": 304,
+        "width": 96.015625,
         "height": 40
       }
     }
@@ -90,7 +90,7 @@
         }
       },
       {
-        "label": "01 / 28 · Agents for Robotics0",
+        "label": "01 / 37 · Agents for Robotics0",
         "rect": {
           "left": 104.125,
           "right": 307.65625,
@@ -110,36 +110,36 @@
       {
         "label": "Play videos",
         "rect": {
-          "left": 62.015625,
-          "right": 165.703125,
-          "width": 103.6875,
+          "left": 65.015625,
+          "right": 166.703125,
+          "width": 101.6875,
           "height": 40
         }
       },
       {
         "label": "Pause",
         "rect": {
-          "left": 168.703125,
-          "right": 243.640625,
-          "width": 74.9375,
+          "left": 169.703125,
+          "right": 242.640625,
+          "width": 72.9375,
           "height": 40
         }
       },
       {
         "label": "Restart",
         "rect": {
-          "left": 246.640625,
-          "right": 327.984375,
-          "width": 81.34375,
+          "left": 245.640625,
+          "right": 324.984375,
+          "width": 79.34375,
           "height": 40
         }
       },
       {
         "label": "Hide script",
         "rect": {
-          "left": 97.71875,
+          "left": 95.71875,
           "right": 195.25,
-          "width": 97.53125,
+          "width": 99.53125,
           "height": 40
         }
       },
@@ -147,16 +147,25 @@
         "label": "Fullscreen",
         "rect": {
           "left": 198.25,
-          "right": 292.265625,
-          "width": 94.015625,
+          "right": 294.265625,
+          "width": 96.015625,
           "height": 40
+        }
+      },
+      {
+        "label": "Close",
+        "rect": {
+          "left": 291,
+          "right": 370,
+          "width": 79,
+          "height": 34
         }
       },
       {
         "label": "Full script",
         "rect": {
-          "left": 21,
-          "right": 129.75,
+          "left": 20,
+          "right": 128.75,
           "width": 108.75,
           "height": 38
         }

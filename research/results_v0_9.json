@@ -1,0 +1,1758 @@
+{
+  "version": "0.9",
+  "sources": {
+    "research/sources/anonymous_report_421_public_results__evaluation_cases.json": "b2ef651cc5d4c90375165a852030a3864b33d9410986dafedde7b04253f1c39a",
+    "research/sources/anonymous_report_421_data.json": "8dc3f70d852cda713799d152c2459aa2011a8c6bb9e94690b830c5f1eb8298ff",
+    "research/sources/control_results_20260914/control/robolab.json": "9cbd12354be634adb68ecaffe93e1ab132b7859935c5e942ca845741ed6916fe",
+    "research/sources/control_results_20260914/control/robolab-baselines.json": "2f931c6cd982a14baccfbb9d79c46cb778f6a22eca30e356da4a297cd431e48e",
+    "research/sources/control_action_interfaces_20260914/asim_tables.json": "0ac64ca4949d5a14eb18c7c8774dc207ffd187f77cee5117b0ee3a2d21f153c0",
+    "research/sources/control_action_interfaces_20260914/robocurve.txt": "1ca7d139c4277713a4ef8aadab1355fc9007a89f464699acd7b105628e36dbbb",
+    "research/sources/control_results_20260914/background/rpent_paper_v4.txt": "737917d6fd7fba83dc45ca1fa7824e7c1ded5a0021e5f7b4f6639632c52e07bb",
+    "research/sources/control_results_20260914/later/enpire_site_model_scaling_data.json": "3caad954ab30a35a55cc51a8b681864e3de0dfe38412159e59f3588e82fba2aa",
+    "research/sources/control_results_20260914/later/enpire_site_resource_data.json": "20a4a2374d1b223026f551a2a0066330c85b1e5608595e02cfb7ee7e7c2affa1",
+    "research/sources/control_results_20260914/later/enpire_site_model_scaling_data.provenance.json": "34256662dd978d3319f93395f43c788304b365df6acda96f4c452b8643cc4fff",
+    "research/sources/control_results_20260914/later/enpire_site_resource_data.provenance.json": "ef747b99b83e09cfb6480c66412dbad4d30e927290c70d827a099253871920d7",
+    "research/sources/control_results_20260914/background/hirobot_chart_values.json": "1b69ab9cfa66a84f0bd55dfb86dc6ddd93729bfb0a026274b8092722941a0d68",
+    "research/sources/control_results_20260914/later/agentic_replay_results_original.png": "048010fa2871941a94f6228946d59fd97134b85235e606bb8f792642c5da682b"
+  },
+  "robodojo": {
+    "rows": [
+      {
+        "task": "organize_table",
+        "gpt": 0,
+        "mix": 0
+      },
+      {
+        "task": "classify_objects_by_language",
+        "gpt": 2,
+        "mix": 1
+      },
+      {
+        "task": "imitate_sorting_sequence",
+        "gpt": 0,
+        "mix": 2
+      },
+      {
+        "task": "arrange_largest_number",
+        "gpt": 2,
+        "mix": 2
+      },
+      {
+        "task": "pack_objects_into_box",
+        "gpt": 1,
+        "mix": 1
+      },
+      {
+        "task": "classify_objects",
+        "gpt": 5,
+        "mix": 3
+      },
+      {
+        "task": "build_tower",
+        "gpt": 0,
+        "mix": 3
+      },
+      {
+        "task": "make_kong",
+        "gpt": 0,
+        "mix": 2
+      },
+      {
+        "task": "fold_clothes",
+        "gpt": 2,
+        "mix": 5
+      },
+      {
+        "task": "put_bottles_into_dustbin",
+        "gpt": 1,
+        "mix": 5
+      }
+    ],
+    "totals": {
+      "gpt": {
+        "successes": 13,
+        "n": 50,
+        "score_n": 48,
+        "mean_score": 37.81249999999999
+      },
+      "mix": {
+        "successes": 24,
+        "n": 50,
+        "score_n": 50,
+        "mean_score": 62.6
+      }
+    }
+  },
+  "robolab": {
+    "schema": "robolab.leaderboard.v2",
+    "as_of": "2026-09-13",
+    "methods": [
+      {
+        "id": "pi05_only",
+        "label": "π₀.₅",
+        "successes": 18,
+        "episodes": 50,
+        "color": "#e9a150",
+        "source_kind": "historical",
+        "source_run": "robolab120_pi05_jointpos_specific_10ep_20260603",
+        "source_sha256": "02c28bfe20c14fae5fe41ed92e5c06be03d7159523de1056375852bad710bf2d"
+      },
+      {
+        "id": "astra_pi05",
+        "label": "π₀.₅ + GPT 6 Astra",
+        "successes": 46,
+        "episodes": 50,
+        "color": "#3478f6"
+      },
+      {
+        "id": "pure_astra",
+        "label": "GPT 6 Astra Direct",
+        "successes": 49,
+        "episodes": 50,
+        "color": "#56b5a4"
+      },
+      {
+        "id": "cosmos_nano_policy",
+        "label": "Cosmos3-Nano-Policy",
+        "color": "#9270c4",
+        "successes": 18,
+        "episodes": 50,
+        "source_kind": "historical",
+        "source_run": "robolab120_cosmos3_official_specific_10ep_20260603",
+        "source_sha256": "a4e7ab29d53eff05f61e42c03c267f86dfca2afe23c71f9e325639770d2818de"
+      },
+      {
+        "id": "dreamzero",
+        "label": "DreamZero",
+        "color": "#7791a8",
+        "successes": 17,
+        "episodes": 50,
+        "source_kind": "historical",
+        "source_run": "robolab120_dreamzero_specific_10ep_torchattn_20260603",
+        "source_sha256": "e2e8b70be9d934df9ca75d6c6ef1c8beb21486c4296f0d1be2d065c9d542ef3f"
+      }
+    ],
+    "tasks": [
+      {
+        "task": "BlocksInBinTask",
+        "label": "Blocks into bin",
+        "successes": {
+          "pi05_only": 0,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 2,
+          "dreamzero": 0
+        }
+      },
+      {
+        "task": "ClutterPumpkinTask",
+        "label": "Pumpkins in clutter",
+        "successes": {
+          "pi05_only": 0,
+          "astra_pi05": 4,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 0,
+          "dreamzero": 0
+        }
+      },
+      {
+        "task": "ButterAboveRaisinTask",
+        "label": "Butter on raisin box",
+        "successes": {
+          "pi05_only": 0,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 1,
+          "dreamzero": 2
+        }
+      },
+      {
+        "task": "BlockStackingSpecifiedOrderTask",
+        "label": "Stack blocks in order",
+        "successes": {
+          "pi05_only": 0,
+          "astra_pi05": 4,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 0,
+          "dreamzero": 0
+        }
+      },
+      {
+        "task": "ReorientRedMugTask",
+        "label": "Reorient red mug",
+        "successes": {
+          "pi05_only": 2,
+          "astra_pi05": 4,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 1,
+          "dreamzero": 1
+        }
+      },
+      {
+        "task": "LargerObjectRaisinBoxInBinTask",
+        "label": "Larger raisin box into bin",
+        "successes": {
+          "pi05_only": 3,
+          "astra_pi05": 4,
+          "pure_astra": 4,
+          "cosmos_nano_policy": 0,
+          "dreamzero": 0
+        }
+      },
+      {
+        "task": "SauceBottlesCrateTask",
+        "label": "Sauce bottle into crate",
+        "successes": {
+          "pi05_only": 2,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 5,
+          "dreamzero": 5
+        }
+      },
+      {
+        "task": "CannedFoodInBinTask",
+        "label": "Canned food into bin",
+        "successes": {
+          "pi05_only": 4,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 4,
+          "dreamzero": 4
+        }
+      },
+      {
+        "task": "YogurtInBowlTask",
+        "label": "Yogurt into bowl",
+        "successes": {
+          "pi05_only": 2,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 0,
+          "dreamzero": 0
+        }
+      },
+      {
+        "task": "RubiksCubeTask",
+        "label": "Rubik’s cube into bowl",
+        "successes": {
+          "pi05_only": 5,
+          "astra_pi05": 5,
+          "pure_astra": 5,
+          "cosmos_nano_policy": 5,
+          "dreamzero": 5
+        }
+      }
+    ],
+    "notes": [
+      "Each task has five final evaluation slots per method; all ten tasks are included.",
+      "Astra arms include retained historical results and explicitly authorized retries; initial states are not strictly paired across methods.",
+      "Model abandonment counts as failure. No incomplete slots remain.",
+      "The last two pure-Astra BlocksInBin retries used 500 decisions instead of 180; simulator horizon and success rules were unchanged.",
+      "These are descriptive results for the selected slots, not a uniform-budget, fresh, single-attempt paired benchmark.",
+      "All three historical baselines use the same June 2026 evaluation cohort as the existing pi0.5 reference, selecting the first five episodes per task by run, episode, env_id, including failures.",
+      "Task names and episode counts match; historical and Astra evaluations are not verified to share identical initial states, task versions or control settings.",
+      "Only scores are added for Cosmos3-Nano-Policy and DreamZero; the existing 150-video gallery is unchanged."
+    ],
+    "provenance": {
+      "audit_sha256": "5881f1d8aecc832ded9e8bdfda5c1bcc01722c83bed682ce04efb65221e18ff7",
+      "baseline_source_sha256": "02c28bfe20c14fae5fe41ed92e5c06be03d7159523de1056375852bad710bf2d",
+      "plan_sha256": "9a4bed6a79852bbde28970b87e4f9fbb007560568fc2a8b43eaff774458c87eb",
+      "raw_results_modified": false,
+      "private_responses_included": false,
+      "historical_baseline_sources": {
+        "pi05_only": "02c28bfe20c14fae5fe41ed92e5c06be03d7159523de1056375852bad710bf2d",
+        "cosmos_nano_policy": "a4e7ab29d53eff05f61e42c03c267f86dfca2afe23c71f9e325639770d2818de",
+        "dreamzero": "e2e8b70be9d934df9ca75d6c6ef1c8beb21486c4296f0d1be2d065c9d542ef3f"
+      }
+    },
+    "episodes_per_task": 5,
+    "historical_baseline_selection": "robolab-baselines.json"
+  },
+  "asim": [
+    [
+      "Lift",
+      "20/20",
+      "0/20",
+      "20/20",
+      "20/20",
+      "20/20",
+      "20/20",
+      "20/20"
+    ],
+    [
+      "Can",
+      "20/20",
+      "0/20",
+      "18/20",
+      "15/20",
+      "17/20",
+      "7/20",
+      "20/20"
+    ],
+    [
+      "Square",
+      "20/20",
+      "0/20",
+      "1/20",
+      "0/20",
+      "18/20",
+      "16/20",
+      "19/20"
+    ]
+  ],
+  "robocurve": [
+    {
+      "task": "Block into bowl",
+      "model": "Fable 5",
+      "successes": 1,
+      "n": 20
+    },
+    {
+      "task": "Block into bowl",
+      "model": "Fable 5.1",
+      "successes": 8,
+      "n": 20
+    },
+    {
+      "task": "Block into bowl",
+      "model": "GPT-6 Astra",
+      "successes": 19,
+      "n": 20
+    },
+    {
+      "task": "Puzzle into groove",
+      "model": "Fable 5",
+      "successes": 0,
+      "n": 20
+    },
+    {
+      "task": "Puzzle into groove",
+      "model": "Fable 5.1",
+      "successes": 2,
+      "n": 20
+    },
+    {
+      "task": "Puzzle into groove",
+      "model": "GPT-6 Astra",
+      "successes": 2,
+      "n": 20
+    }
+  ],
+  "rpent": [
+    {
+      "method": "πRLinf",
+      "cells": [
+        42.0,
+        59.0,
+        71.0,
+        78.0,
+        45.0,
+        42.0,
+        49.0,
+        14.0
+      ],
+      "redirect": 207,
+      "swap": 193,
+      "successes": 400,
+      "n": 800
+    },
+    {
+      "method": "Harness VLA (Codex)",
+      "cells": [
+        81.0,
+        69.0,
+        94.0,
+        91.0,
+        75.0,
+        66.0,
+        52.0,
+        49.0
+      ],
+      "redirect": 302,
+      "swap": 275,
+      "successes": 577,
+      "n": 800
+    },
+    {
+      "method": "Harness VLA (CC)",
+      "cells": [
+        94.0,
+        80.0,
+        88.0,
+        90.0,
+        87.0,
+        87.0,
+        71.0,
+        62.0
+      ],
+      "redirect": 340,
+      "swap": 319,
+      "successes": 659,
+      "n": 800
+    }
+  ],
+  "enpire_models": {
+    "pushtModel": [
+      {
+        "name": "codex",
+        "label": "Codex",
+        "color": "#6b73ff",
+        "runs": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.5,
+              0.25
+            ],
+            [
+              5.42861111,
+              0.5
+            ],
+            [
+              6.25361111,
+              0.75
+            ],
+            [
+              7.25222222,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.16666667,
+              0.25
+            ],
+            [
+              1,
+              0.5
+            ],
+            [
+              1.2,
+              0.75
+            ],
+            [
+              3.11666667,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.26666667,
+              0.25
+            ],
+            [
+              0.8,
+              0.5
+            ],
+            [
+              2.8,
+              0.75
+            ],
+            [
+              4.7,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.33333333,
+              0.25
+            ],
+            [
+              3.7,
+              0.5
+            ],
+            [
+              7.25,
+              0.75
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          2.6666666666666665,
+          5.333333333333333,
+          8
+        ],
+        "highlight_mean": [
+          0,
+          0.6144518761048563,
+          0.7775476455972508,
+          0.9375
+        ],
+        "highlight_lower": [
+          0,
+          0.4783415479002,
+          0.6468052225698819,
+          0.875
+        ],
+        "highlight_upper": [
+          0,
+          0.7505622043095126,
+          0.9082900686246196,
+          1
+        ],
+        "raw_scatter": [
+          [
+            0,
+            0
+          ],
+          [
+            0.5,
+            0.25
+          ],
+          [
+            5.42861111,
+            0.5
+          ],
+          [
+            6.25361111,
+            0.75
+          ],
+          [
+            7.25222222,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.16666667,
+            0.25
+          ],
+          [
+            1,
+            0.5
+          ],
+          [
+            1.2,
+            0.75
+          ],
+          [
+            3.11666667,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.26666667,
+            0.25
+          ],
+          [
+            0.8,
+            0.5
+          ],
+          [
+            2.8,
+            0.75
+          ],
+          [
+            4.7,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.33333333,
+            0.25
+          ],
+          [
+            3.7,
+            0.5
+          ],
+          [
+            7.25,
+            0.75
+          ]
+        ]
+      },
+      {
+        "name": "claude code",
+        "label": "Claude",
+        "color": "#d97759",
+        "runs": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.5,
+              0.25
+            ],
+            [
+              5.2075,
+              0.5
+            ],
+            [
+              5.82638889,
+              0.75
+            ],
+            [
+              22.75583333,
+              0.75
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0.25
+            ],
+            [
+              5,
+              0.5
+            ],
+            [
+              7,
+              0.75
+            ],
+            [
+              10,
+              0.75
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.48333333,
+              0.25
+            ],
+            [
+              2.16666667,
+              0.5
+            ],
+            [
+              3.5,
+              0.75
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.11666667,
+              0.25
+            ],
+            [
+              3.38333333,
+              0.5
+            ],
+            [
+              4.88333333,
+              0.75
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          2.6666666666666665,
+          5.333333333333333,
+          8
+        ],
+        "highlight_mean": [
+          0,
+          0.4395335852123945,
+          0.6481242519221289,
+          0.75
+        ],
+        "highlight_lower": [
+          0,
+          0.38427101533351143,
+          0.5892765256494658,
+          0.75
+        ],
+        "highlight_upper": [
+          0,
+          0.4947961550912776,
+          0.706971978194792,
+          0.75
+        ],
+        "raw_scatter": [
+          [
+            0,
+            0
+          ],
+          [
+            0.5,
+            0.25
+          ],
+          [
+            5.2075,
+            0.5
+          ],
+          [
+            5.82638889,
+            0.75
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0.25
+          ],
+          [
+            5,
+            0.5
+          ],
+          [
+            7,
+            0.75
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.48333333,
+            0.25
+          ],
+          [
+            2.16666667,
+            0.5
+          ],
+          [
+            3.5,
+            0.75
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.11666667,
+            0.25
+          ],
+          [
+            3.38333333,
+            0.5
+          ],
+          [
+            4.88333333,
+            0.75
+          ]
+        ]
+      },
+      {
+        "name": "kimi",
+        "label": "Kimi",
+        "color": "#a0a0a0",
+        "runs": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.71666667,
+              0.25
+            ],
+            [
+              1.66666667,
+              0.5
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.16861111,
+              0.25
+            ],
+            [
+              1.18527778,
+              0.5
+            ],
+            [
+              4.36861111,
+              0.75
+            ],
+            [
+              6.05194444,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3.2,
+              0.25
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.48333333,
+              0.25
+            ],
+            [
+              1.38333333,
+              0.5
+            ],
+            [
+              1.53333333,
+              0.75
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          2.6666666666666665,
+          5.333333333333333,
+          8
+        ],
+        "highlight_mean": [
+          0,
+          0.5186681937041029,
+          0.5983188945016216,
+          0.625
+        ],
+        "highlight_lower": [
+          0,
+          0.4033027221711151,
+          0.4566034342205087,
+          0.46362569390802433
+        ],
+        "highlight_upper": [
+          0,
+          0.6340336652370907,
+          0.7400343547827344,
+          0.7863743060919757
+        ],
+        "raw_scatter": [
+          [
+            0,
+            0
+          ],
+          [
+            0.71666667,
+            0.25
+          ],
+          [
+            1.66666667,
+            0.5
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.16861111,
+            0.25
+          ],
+          [
+            1.18527778,
+            0.5
+          ],
+          [
+            4.36861111,
+            0.75
+          ],
+          [
+            6.05194444,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3.2,
+            0.25
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.48333333,
+            0.25
+          ],
+          [
+            1.38333333,
+            0.5
+          ],
+          [
+            1.53333333,
+            0.75
+          ]
+        ]
+      }
+    ],
+    "pinModel": [
+      {
+        "name": "codex",
+        "label": "Codex",
+        "color": "#6b73ff",
+        "runs": [
+          [
+            [
+              0.07111166666666667,
+              0.46
+            ],
+            [
+              0.8433333333333334,
+              0.88
+            ],
+            [
+              2.000278333333333,
+              0.92
+            ],
+            [
+              2.349445,
+              0.94
+            ],
+            [
+              2.785555,
+              0.98
+            ]
+          ],
+          [
+            [
+              0.91,
+              0.4
+            ],
+            [
+              1.1900000000000002,
+              0.625
+            ],
+            [
+              1.41,
+              0.75
+            ],
+            [
+              1.43,
+              0.818
+            ],
+            [
+              3.953333333333333,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0.52
+            ],
+            [
+              1.3,
+              0.5820000000000001
+            ],
+            [
+              2.6,
+              0.789
+            ],
+            [
+              2.966666666666667,
+              0.84
+            ]
+          ],
+          [
+            [
+              0,
+              0.52
+            ],
+            [
+              0.9,
+              0.68
+            ],
+            [
+              1.1,
+              0.86
+            ],
+            [
+              1.3333333333333333,
+              0.94
+            ],
+            [
+              1.7666666666666666,
+              0.98
+            ],
+            [
+              3.6666666666666665,
+              1
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          1.3333333333333333,
+          2.6666666666666665,
+          4
+        ],
+        "highlight_mean": [
+          0.475,
+          0.7826720636456649,
+          0.9160097014121072,
+          0.955
+        ],
+        "highlight_lower": [
+          0.4462771867673099,
+          0.7001149292058452,
+          0.873041954374781,
+          0.9163778992458116
+        ],
+        "highlight_upper": [
+          0.5037228132326902,
+          0.8652291980854846,
+          0.9589774484494334,
+          0.9936221007541882
+        ],
+        "raw_scatter": [
+          [
+            0.07111166666666667,
+            0.46
+          ],
+          [
+            0.8433333333333334,
+            0.88
+          ],
+          [
+            2.000278333333333,
+            0.92
+          ],
+          [
+            2.349445,
+            0.94
+          ],
+          [
+            2.785555,
+            0.98
+          ],
+          [
+            0.91,
+            0.4
+          ],
+          [
+            1.1900000000000002,
+            0.625
+          ],
+          [
+            1.41,
+            0.75
+          ],
+          [
+            1.43,
+            0.818
+          ],
+          [
+            3.953333333333333,
+            1
+          ],
+          [
+            0,
+            0.52
+          ],
+          [
+            1.3,
+            0.5820000000000001
+          ],
+          [
+            2.6,
+            0.789
+          ],
+          [
+            2.966666666666667,
+            0.84
+          ],
+          [
+            0,
+            0.52
+          ],
+          [
+            0.9,
+            0.68
+          ],
+          [
+            1.1,
+            0.86
+          ],
+          [
+            1.3333333333333333,
+            0.94
+          ],
+          [
+            1.7666666666666666,
+            0.98
+          ],
+          [
+            3.6666666666666665,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "claude",
+        "label": "Claude",
+        "color": "#d97759",
+        "runs": [
+          [
+            [
+              0,
+              0.6
+            ],
+            [
+              1.0011116666666666,
+              0.86
+            ],
+            [
+              2.146945,
+              0.88
+            ],
+            [
+              3.4988883333333334,
+              0.98
+            ]
+          ],
+          [
+            [
+              0,
+              0.52
+            ],
+            [
+              1.9513883333333333,
+              0.78
+            ],
+            [
+              2.4011116666666665,
+              0.82
+            ],
+            [
+              3.0711116666666665,
+              0.98
+            ],
+            [
+              3.565833333333333,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0.58
+            ],
+            [
+              1.6511116666666663,
+              0.8
+            ],
+            [
+              2.0594449999999997,
+              0.84
+            ],
+            [
+              2.7336116666666666,
+              0.88
+            ],
+            [
+              3.0974999999999997,
+              0.92
+            ]
+          ],
+          [
+            [
+              0,
+              0.56
+            ],
+            [
+              0.4097216666666667,
+              0.86
+            ],
+            [
+              0.8008333333333333,
+              0.94
+            ],
+            [
+              1.606666666666667,
+              0.96
+            ],
+            [
+              1.9997216666666664,
+              1
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          1.3333333333333333,
+          2.6666666666666665,
+          4
+        ],
+        "highlight_mean": [
+          0.5650000000000001,
+          0.8185810723915099,
+          0.9194716668744478,
+          0.975
+        ],
+        "highlight_lower": [
+          0.5479217487234007,
+          0.7617980551591441,
+          0.8910797263004506,
+          0.9560703055139992
+        ],
+        "highlight_upper": [
+          0.5820782512765994,
+          0.8753640896238757,
+          0.947863607448445,
+          0.9939296944860008
+        ],
+        "raw_scatter": [
+          [
+            0,
+            0.6
+          ],
+          [
+            1.0011116666666666,
+            0.86
+          ],
+          [
+            2.146945,
+            0.88
+          ],
+          [
+            3.4988883333333334,
+            0.98
+          ],
+          [
+            0,
+            0.52
+          ],
+          [
+            1.9513883333333333,
+            0.78
+          ],
+          [
+            2.4011116666666665,
+            0.82
+          ],
+          [
+            3.0711116666666665,
+            0.98
+          ],
+          [
+            3.565833333333333,
+            1
+          ],
+          [
+            0,
+            0.58
+          ],
+          [
+            1.6511116666666663,
+            0.8
+          ],
+          [
+            2.0594449999999997,
+            0.84
+          ],
+          [
+            2.7336116666666666,
+            0.88
+          ],
+          [
+            3.0974999999999997,
+            0.92
+          ],
+          [
+            0,
+            0.56
+          ],
+          [
+            0.4097216666666667,
+            0.86
+          ],
+          [
+            0.8008333333333333,
+            0.94
+          ],
+          [
+            1.606666666666667,
+            0.96
+          ],
+          [
+            1.9997216666666664,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "kimi",
+        "label": "Kimi",
+        "color": "#a0a0a0",
+        "runs": [
+          [
+            [
+              0,
+              0.51
+            ],
+            [
+              0.20972166666666667,
+              0.62
+            ],
+            [
+              1.341945,
+              0.86
+            ],
+            [
+              2.593888333333333,
+              0.9
+            ]
+          ],
+          [
+            [
+              0,
+              0.412
+            ],
+            [
+              2.216666666666667,
+              0.78
+            ]
+          ],
+          [
+            [
+              0,
+              0.44
+            ],
+            [
+              3.066666666666667,
+              0.82
+            ]
+          ],
+          [
+            [
+              0,
+              0.6
+            ],
+            [
+              2.4113883333333335,
+              0.66
+            ]
+          ]
+        ],
+        "highlight_xs": [
+          0,
+          1.3333333333333333,
+          2.6666666666666665,
+          4
+        ],
+        "highlight_mean": [
+          0.4905000000000001,
+          0.6824803122222325,
+          0.7776086956521739,
+          0.79
+        ],
+        "highlight_lower": [
+          0.4485844102192673,
+          0.6235436168461324,
+          0.728560572992036,
+          0.74
+        ],
+        "highlight_upper": [
+          0.5324155897807328,
+          0.7414170075983326,
+          0.8266568183123119,
+          0.8400000000000001
+        ],
+        "raw_scatter": [
+          [
+            0,
+            0.51
+          ],
+          [
+            0.20972166666666667,
+            0.62
+          ],
+          [
+            1.341945,
+            0.86
+          ],
+          [
+            2.593888333333333,
+            0.9
+          ],
+          [
+            0,
+            0.412
+          ],
+          [
+            2.216666666666667,
+            0.78
+          ],
+          [
+            0,
+            0.44
+          ],
+          [
+            3.066666666666667,
+            0.82
+          ],
+          [
+            0,
+            0.6
+          ],
+          [
+            2.4113883333333335,
+            0.66
+          ]
+        ]
+      }
+    ],
+    "pushtScaling": [
+      {
+        "name": "1-agent best",
+        "key": "agent1",
+        "color": "#A1DF00",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0.26666667,
+            0.25
+          ],
+          [
+            0.8,
+            0.5
+          ],
+          [
+            2.8,
+            0.75
+          ],
+          [
+            4.7,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "4-agent team best",
+        "key": "agent4",
+        "color": "#82B500",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0.6,
+            0.25
+          ],
+          [
+            1.06666667,
+            0.5
+          ],
+          [
+            2.06666667,
+            0.75
+          ],
+          [
+            3.11666667,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "8-agent team best",
+        "key": "agent8",
+        "color": "#486600",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1.38333333,
+            0.5
+          ],
+          [
+            1.95,
+            0.75
+          ],
+          [
+            1.98333333,
+            1
+          ]
+        ]
+      }
+    ],
+    "pinScaling": [
+      {
+        "name": "1-agent best",
+        "key": "agent1",
+        "color": "#A1DF00",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0.5,
+            0.56
+          ],
+          [
+            0.9097216666666668,
+            0.86
+          ],
+          [
+            1.3008333333333333,
+            0.94
+          ],
+          [
+            2.1066666666666665,
+            0.96
+          ],
+          [
+            2.2666666666666666,
+            0.98
+          ],
+          [
+            2.499721666666667,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "4-agent team best",
+        "key": "agent4",
+        "color": "#82B500",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0.33,
+            0.76
+          ],
+          [
+            0.5933333333333334,
+            0.93
+          ],
+          [
+            0.8916666666666667,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "8-agent team best",
+        "key": "agent8",
+        "color": "#486600",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0.15,
+            0.353
+          ],
+          [
+            0.5,
+            0.977
+          ],
+          [
+            0.6666666666666666,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "enpire_resources": {
+    "utilization": [
+      {
+        "agentCount": 1,
+        "robotMean": 49.14,
+        "robotStd": 24.93,
+        "gpuMean": 29.41,
+        "gpuStd": 11.43
+      },
+      {
+        "agentCount": 4,
+        "robotMean": 30.87,
+        "gpuMean": 32.52,
+        "robotStd": 10.86,
+        "gpuStd": 12.86
+      },
+      {
+        "agentCount": 8,
+        "robotMean": 29.78,
+        "gpuMean": 48.96,
+        "robotStd": 9.48,
+        "gpuStd": 30.15
+      }
+    ],
+    "tokenRate": [
+      {
+        "agentCount": 1,
+        "mean": 9269.21,
+        "std": 2648.62
+      },
+      {
+        "agentCount": 4,
+        "mean": 40028.72,
+        "std": 29441.58
+      },
+      {
+        "agentCount": 8,
+        "mean": 140310.43,
+        "std": 14912.4
+      }
+    ],
+    "tokensToSuccess": [
+      {
+        "agentCount": 1,
+        "meanTokens": 2.5,
+        "stdTokens": 0.72,
+        "successHours": 4.5
+      },
+      {
+        "agentCount": 4,
+        "meanTokens": 7.69,
+        "stdTokens": 5.65,
+        "successHours": 3.2
+      },
+      {
+        "agentCount": 8,
+        "meanTokens": 16.84,
+        "stdTokens": 1.79,
+        "successHours": 2
+      }
+    ]
+  },
+  "hirobot": {
+    "source": "https://www.pi.website/research/hirobot",
+    "anchor": "Quantitative interactive chart after Training high-level policy with synthetic data",
+    "extraction": "Integer labels exposed as text in the official HTML, not digitized bars",
+    "metric_note": "IA is per-trial fraction of correct high-level commands; TP is fraction of correctly placed objects. Neither is episode success. Raw command/object denominators are undisclosed.",
+    "trials_per_task_method": 20,
+    "values": {
+      "Table Bussing": {
+        "Instruction Accuracy": {
+          "Flat VLA": 36,
+          "GPT-4o High-Level": 35,
+          "Hi Robot": 74,
+          "Expert Human": 100
+        },
+        "Task Progress": {
+          "Flat VLA": 61,
+          "GPT-4o High-Level": 63,
+          "Hi Robot": 77,
+          "Expert Human": 82
+        }
+      },
+      "Sandwich Making": {
+        "Instruction Accuracy": {
+          "Flat VLA": 34,
+          "GPT-4o High-Level": 13,
+          "Hi Robot": 83,
+          "Expert Human": 100
+        },
+        "Task Progress": {
+          "Flat VLA": 42,
+          "GPT-4o High-Level": 56,
+          "Hi Robot": 80,
+          "Expert Human": 92
+        }
+      },
+      "Grocery Shopping": {
+        "Instruction Accuracy": {
+          "Flat VLA": 39,
+          "GPT-4o High-Level": 41,
+          "Hi Robot": 72,
+          "Expert Human": 100
+        },
+        "Task Progress": {
+          "Flat VLA": 28,
+          "GPT-4o High-Level": 72,
+          "Hi Robot": 85,
+          "Expert Human": 93
+        }
+      },
+      "Average": {
+        "Instruction Accuracy": {
+          "Flat VLA": 36,
+          "GPT-4o High-Level": 30,
+          "Hi Robot": 76,
+          "Expert Human": 100
+        },
+        "Task Progress": {
+          "Flat VLA": 44,
+          "GPT-4o High-Level": 64,
+          "Hi Robot": 81,
+          "Expert Human": 89
+        }
+      }
+    }
+  },
+  "real2sim": [
+    [
+      "Gemma 4 31B",
+      48,
+      8,
+      44,
+      2.62
+    ],
+    [
+      "Qwen 3.6 35B",
+      45,
+      11,
+      44,
+      12.97
+    ],
+    [
+      "Claude Haiku 4.5",
+      37,
+      12,
+      51,
+      9.16
+    ],
+    [
+      "GPT-5.4",
+      43,
+      12,
+      45,
+      82.3
+    ]
+  ]
+}
